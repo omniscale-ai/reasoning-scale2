@@ -6,7 +6,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
-[![CI](https://github.com/GliteTech/glite-automatic-research-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/GliteTech/glite-automatic-research-framework/actions/workflows/ci.yml)
+[![CI](https://github.com/GliteTech/glite-arf/actions/workflows/ci.yml/badge.svg)](https://github.com/GliteTech/glite-arf/actions/workflows/ci.yml)
 
 Glite ARF is a file-based system for running AI-driven research projects with hard structural
 guardrails. Every task runs in isolation. Every artifact has a specification. Every step is logged.
@@ -198,7 +198,7 @@ both BibTeX and APA output.
   author = {{Glite Tech Ltd} and Philippov, Vassili},
   title = {{Glite Autonomous Research Framework (Glite ARF)}},
   year = {2026},
-  url = {https://github.com/GliteTech/glite-automatic-research-framework},
+  url = {https://github.com/GliteTech/glite-arf},
   license = {Apache-2.0}
 }
 ```

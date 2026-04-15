@@ -18,7 +18,7 @@ authors:
   - family-names: "Philippov"
     given-names: "Vassili"
     affiliation: "Glite Tech Ltd"
-repository-code: "https://github.com/GliteTech/glite-automatic-research-framework"
+repository-code: "https://github.com/GliteTech/glite-arf"
 url: "https://glite.ai"
 license: Apache-2.0
 keywords:
