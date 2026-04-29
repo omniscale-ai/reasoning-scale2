@@ -1,0 +1,65 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0005-01",
+      "title": "Hierarchical annotation v2: scale to >=200 rows with full human review",
+      "description": "Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or Cohen's kappa) between the human rater and the LLM annotator.",
+      "kind": "dataset",
+      "priority": "high",
+      "source_task": "t0005_hierarchical_annotation_pilot_v1",
+      "source_paper": null,
+      "categories": ["benchmark-annotation", "hierarchical-planning"]
+    },
+    {
+      "id": "S-0005-02",
+      "title": "Re-run LLM-as-judge with full problem text (no truncation)",
+      "description": "The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated excerpt. Re-run the audit using the full problem text (or a structured per-section summary) and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points on FrontierScience-Olympiad.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0005_hierarchical_annotation_pilot_v1",
+      "source_paper": "10.48550_arXiv.2306.13063",
+      "categories": ["uncertainty-calibration", "benchmark-annotation"]
+    },
+    {
+      "id": "S-0005-03",
+      "title": "Reconcile WorkArena++ flat-action sequences with the three-level schema",
+      "description": "The judge rejected all three WorkArena++ rows because the upstream annotation lacks `conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows as a distinct hierarchy_kind. Document the chosen approach and update the mapper.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0005_hierarchical_annotation_pilot_v1",
+      "source_paper": "10.48550_arXiv.2407.05291",
+      "categories": ["hierarchical-planning", "benchmark-workarena"]
+    },
+    {
+      "id": "S-0005-04",
+      "title": "Remediate proxy benchmark naming and task_id non-uniqueness",
+      "description": "The pilot file uses tau-bench and WorkArena++ as proxies but task_id prefixes are still `he_*` (HumanEval) and `m2w_*` (Mind2Web) from earlier drafts; additionally 14 of 115 task_ids are duplicated. Re-key the source data with synthetic per-row UUIDs and align task_id prefixes with the actual benchmark slugs (`tau_*`, `wa_*`).",
+      "kind": "dataset",
+      "priority": "medium",
+      "source_task": "t0005_hierarchical_annotation_pilot_v1",
+      "source_paper": null,
+      "categories": ["benchmark-annotation"]
+    },
+    {
+      "id": "S-0005-05",
+      "title": "Multi-judge disagreement study on hierarchical annotation",
+      "description": "Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-sonnet-4-6) and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality estimate. Estimated cost: ~$0.30 per run.",
+      "kind": "evaluation",
+      "priority": "low",
+      "source_task": "t0005_hierarchical_annotation_pilot_v1",
+      "source_paper": "10.48550_arXiv.2306.13063",
+      "categories": ["uncertainty-calibration", "agent-evaluation"]
+    },
+    {
+      "id": "S-0005-06",
+      "title": "Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning experiments",
+      "description": "The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent prompts (B vs G/S/A from the project's research questions).",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0005_hierarchical_annotation_pilot_v1",
+      "source_paper": "10.48550_arXiv.2305.04091",
+      "categories": ["granularity-conditioning", "agent-evaluation"]
+    }
+  ]
+}
