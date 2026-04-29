@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0011_metric2_calibration_aggregator",
+  "command": "uv run python -m arf.scripts.verificators.verify_library_asset --task-id t0011_metric2_calibration_aggregator metric2_calibration_aggregator_v1",
+  "exit_code": 1,
+  "duration_seconds": 0.034,
+  "started_at": "2026-04-29T23:38:44Z",
+  "completed_at": "2026-04-29T23:38:44Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator",
+  "stdout_file": "012_20260429T233844Z_uv-run-python.stdout.txt",
+  "stderr_file": "012_20260429T233844Z_uv-run-python.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 1,
+  "truncated": false
+}

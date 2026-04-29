@@ -1,0 +1,60 @@
+{
+  "spec_version": "2",
+  "library_id": "metric2_calibration_aggregator_v1",
+  "name": "Metric 2 Calibration Aggregator",
+  "version": "0.1.0",
+  "short_description": "Verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate per the Xiong2024 protocol.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/calibration.py",
+    "code/constants.py",
+    "code/paths.py"
+  ],
+  "entry_points": [
+    {
+      "name": "ConfidencePromptTemplate",
+      "kind": "class",
+      "module": "code/calibration.py",
+      "description": "Frozen dataclass wrapping the Xiong2024 §3.2 human-inspired prompt with {problem} and {action} placeholders."
+    },
+    {
+      "name": "ConfidenceJudge",
+      "kind": "class",
+      "module": "code/calibration.py",
+      "description": "Self-consistency aggregator that majority-votes on predicted action labels and returns the mean confidence within the majority cohort, falling back to the highest-confidence sample on a 3-way tie."
+    },
+    {
+      "name": "compute_overconfident_error_rate",
+      "kind": "function",
+      "module": "code/calibration.py",
+      "description": "Returns the fraction of CalibrationRecord values that are incorrect with predicted_confidence >= HIGH_CONFIDENCE_THRESHOLD (default 0.75); 0.0 for empty input."
+    },
+    {
+      "name": "elicit_confidence",
+      "kind": "function",
+      "module": "code/calibration.py",
+      "description": "Formats the confidence prompt, invokes a model_call, parses the verbalized label (low/medium/high), and returns (label, numeric_confidence)."
+    },
+    {
+      "name": "CalibrationRecord",
+      "kind": "class",
+      "module": "code/calibration.py",
+      "description": "Frozen dataclass holding (problem_id, predicted_label, predicted_confidence, is_correct); the canonical input shape for compute_overconfident_error_rate."
+    },
+    {
+      "name": "calibration_record_from_trajectory",
+      "kind": "function",
+      "module": "code/calibration.py",
+      "description": "Adapter that converts a t0006/t0007/t0010 trajectory record (canonical TRAJECTORY_RECORD_FIELDS schema) into a CalibrationRecord."
+    }
+  ],
+  "dependencies": [],
+  "test_paths": [
+    "code/test_calibration.py"
+  ],
+  "categories": [
+    "uncertainty-calibration"
+  ],
+  "created_by_task": "t0011_metric2_calibration_aggregator",
+  "date_created": "2026-04-29"
+}

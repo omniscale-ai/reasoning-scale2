@@ -1,0 +1,12 @@
+E501 Line too long (101 > 100)
+   --> tasks/t0011_metric2_calibration_aggregator/code/constants.py:106:101
+    |
+104 | """Canonical ordered tuple of trajectory record field names.
+105 |
+106 | Mirrors ``tasks.t0007_scope_unaware_planandsolve_library.code.planandsolve.TRAJECTORY_RECORD_FIELDS``
+    |                                                                                                     ^
+107 | so trajectory records produced by t0006/t0007/t0010 can be consumed by this library without
+108 | modification. The library never imports t0007 directly to avoid a cross-task code dependency
+    |
+
+Found 3 errors (2 fixed, 1 remaining).

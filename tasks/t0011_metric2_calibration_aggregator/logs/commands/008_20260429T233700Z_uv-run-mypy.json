@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0011_metric2_calibration_aggregator",
+  "command": "uv run mypy -p tasks.t0011_metric2_calibration_aggregator.code",
+  "exit_code": 0,
+  "duration_seconds": 1.636,
+  "started_at": "2026-04-29T23:37:00Z",
+  "completed_at": "2026-04-29T23:37:02Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator",
+  "stdout_file": "008_20260429T233700Z_uv-run-mypy.stdout.txt",
+  "stderr_file": "008_20260429T233700Z_uv-run-mypy.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}
