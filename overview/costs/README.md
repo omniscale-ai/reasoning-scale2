@@ -15,9 +15,9 @@ threshold.
 | Warn threshold | 80% ($80.00) |
 | Stop threshold | 100% ($100.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 9 |
+| Tasks with cost records | 10 |
 | Tasks with non-zero spend | 1 |
-| Skipped tasks | 3 |
+| Skipped tasks | 2 |
 
 ## Service Totals
 
@@ -31,7 +31,7 @@ threshold.
 |-----|------------|
 | `anthropic_api` | $0.06 |
 
-8 task cost record(s) are zero-cost and omitted from the main spend table.
+9 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 
@@ -44,5 +44,4 @@ threshold.
 | Task ID | Reason |
 |---------|--------|
 | `t0009_hierarchical_annotation_v2` | results/costs.json is missing or invalid |
-| `t0010_matched_mismatch_library` | results/costs.json is missing or invalid |
 | `t0012_phase2_abc_smoke_frontierscience` | results/costs.json is missing or invalid |
