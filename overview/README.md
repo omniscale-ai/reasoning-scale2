@@ -5,14 +5,14 @@
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-4-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-0-9370DB" alt="Predictions"></a>
-  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-1-20B2AA" alt="Libraries"></a>
+  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-2-20B2AA" alt="Libraries"></a>
   <a href="answers/"><img src="https://img.shields.io/badge/Answers-0-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-7-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-19-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-24-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-0-DC143C" alt="Results"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (3K) |
-[full](llm-context/full.xml) (20K) | [roadmap](llm-context/roadmap.xml) (8K) |
-[results](llm-context/results-deep-dive.xml) (14K) |
+[full](llm-context/full.xml) (22K) | [roadmap](llm-context/roadmap.xml) (8K) |
+[results](llm-context/results-deep-dive.xml) (17K) |
 [assets](llm-context/literature-and-assets.xml) (7K)
 
-*Last updated: 2026-04-29 20:02 UTC*
+*Last updated: 2026-04-29 20:09 UTC*
 
 * **Budget**: **$0** spent of $100
 * **Remaining**: **$100**
@@ -48,11 +48,10 @@ No daily news yet.
 
 ---
 
-## [In Progress (2)](tasks/by-status/in_progress.md)
+## [In Progress (1)](tasks/by-status/in_progress.md)
 
 | # | Task | Started |
 |---|------|---------|
-| 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | 2026-04-29 19:35 |
 | 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | 2026-04-29 19:35 |
 
 ---
@@ -69,10 +68,11 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (5 total)](tasks/by-status/completed.md)
+## [Recently Completed (6 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`results`](../tasks/t0006_scope_aware_react_library/results/results_detailed.md) | 2026-04-29 20:07 |
 | 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
 | 0004 | [Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries](../overview/tasks/task_pages/t0004_brainstorm_results_2.md) | [`results`](../tasks/t0004_brainstorm_results_2/results/results_detailed.md) | 2026-04-29 15:30 |
 | 0003 | [Download benchmark subsets for the four roadmap sources](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | [`results`](../tasks/t0003_download_benchmark_subsets/results/results_detailed.md) | 2026-04-29 14:58 |
@@ -81,7 +81,7 @@ No blocked tasks.
 
 ---
 
-## [Recent Suggestions (16 open)](suggestions/)
+## [Recent Suggestions (21 open)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -235,11 +235,11 @@ experiments.
 
 </details>
 
-*6 more open suggestions → [open suggestions](suggestions/)*
+*11 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (9)](suggestions/)
+## [High Priority Suggestions (11)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -349,6 +349,38 @@ fallback.
 </details>
 
 <details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
+subset</strong> (S-0006-03)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
+as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
+libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
+overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
+size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
+anchor.
+
+</details>
+
+<details>
 <summary>📚 <strong>Implement matched-mismatch (C) library on top of
 scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
 
@@ -364,20 +396,7 @@ local-only and deterministic.
 
 </details>
 
-<details>
-<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0007_scope_unaware_planandsolve_library](../tasks/t0007_scope_unaware_planandsolve_library/)
-
-Build the experiment harness that runs all three libraries (scope_aware_react_v1,
-scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
-slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
-computing the registered metrics task_success_rate, avg_decisions_per_task, and
-overconfident_error_rate per condition. The harness must depend on this library only via the
-trajectory schema, never via internal helpers, to preserve isolation.
-
-</details>
+*1 more high-priority suggestion → [high-priority suggestions](suggestions/)*
 
 ---
 
@@ -835,11 +854,12 @@ No predictions yet.
 
 ---
 
-## [Latest Libraries (1 total)](libraries/)
+## [Latest Libraries (2 total)](libraries/)
 
 | Name | Source | Created |
 |------|--------|---------|
 | [Scope-Unaware Plan-and-Solve Agent (v1)](../tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md) | [7](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | 2026-04-29 |
+| [Scope-Aware ReAct Agent](../tasks/t0006_scope_aware_react_library/assets/library/scope_aware_react_v1/description.md) | [6](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | 2026-04-29 |
 
 ---
 

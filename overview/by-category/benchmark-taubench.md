@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the tau-bench tool-use benchmar
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-taubench.md) | [Suggestions
-(1)](../suggestions/by-category/benchmark-taubench.md) | [Datasets
+(2)](../suggestions/by-category/benchmark-taubench.md) | [Datasets
 (1)](../datasets/by-category/benchmark-taubench.md)
 
 ---
@@ -65,7 +65,7 @@ scope-conditioning gains must be robust to single-rollout luck.
 
 No answers in this category.
 
-## Suggestions (1 open, 0 closed)
+## Suggestions (2 open, 0 closed)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -80,5 +80,21 @@ demonstrates that single-rollout pass@1 systematically overstates agent reliabil
 project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
 task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
 luck.
+
+</details>
+
+<details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
 
 </details>

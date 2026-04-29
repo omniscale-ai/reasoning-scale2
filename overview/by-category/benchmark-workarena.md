@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the WorkArena++ web-task benchm
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/benchmark-workarena.md) | [Suggestions
-(2)](../suggestions/by-category/benchmark-workarena.md) | [Datasets
+(3)](../suggestions/by-category/benchmark-workarena.md) | [Datasets
 (1)](../datasets/by-category/benchmark-workarena.md)
 
 ---
@@ -107,7 +107,7 @@ the planning step must address.
 
 No answers in this category.
 
-## Suggestions (2 open, 0 closed)
+## Suggestions (3 open, 0 closed)
 
 <details>
 <summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
@@ -137,5 +137,21 @@ upstream task-class manifest. Provision a free ServiceNow developer instance, re
 access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
 fallback.
+
+</details>
+
+<details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
 
 </details>

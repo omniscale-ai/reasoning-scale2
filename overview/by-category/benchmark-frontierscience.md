@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the FrontierScience-Olympiad be
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-frontierscience.md) |
-[Suggestions (3)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
+[Suggestions (5)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
 (1)](../datasets/by-category/benchmark-frontierscience.md)
 
 ---
@@ -63,7 +63,7 @@ AI's evaluation pipeline is a known operational risk for the t0003 download-data
 
 No answers in this category.
 
-## Suggestions (3 open, 0 closed)
+## Suggestions (5 open, 0 closed)
 
 <details>
 <summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
@@ -106,5 +106,37 @@ FrontierScience-Olympiad pilot rows currently lack per-instance step graphs beca
 solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
 problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
 apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+<details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
+subset</strong> (S-0006-03)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
+as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
+libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
+overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
+size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
+anchor.
 
 </details>

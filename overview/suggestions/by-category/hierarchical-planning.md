@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-8 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **5 open** (2 high,
-1 medium, 2 low), **3 closed**.
+9 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **6 open** (2 high,
+1 medium, 3 low), **3 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -95,6 +95,27 @@ HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would 
 conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether
 Reflexion-style memory adds further gains on top of the scope-aware (A) condition established
 in Phase 2.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Extend the library to support a granularity that varies within
+a single run</strong> (S-0006-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-05` |
+| **Kind** | technique |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+Currently ScopeAwareReactAgent takes one fixed granularity for an entire run. A natural
+extension is to let the agent emit a granularity transition (e.g., start global, drop to
+subtask once a plan is established, drop to atomic during execution). Add a model-driven mode
+where the parser also accepts <transition_to:subtask> markers and the agent updates the active
+granularity per turn. This is a research extension worth Phase 2 ablation.
 
 </details>
 

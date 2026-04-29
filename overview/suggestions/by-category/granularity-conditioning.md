@@ -1,8 +1,8 @@
 # Suggestions: `granularity-conditioning`
 
-6 suggestion(s) in category
-[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **4 open** (2
-high, 1 medium, 1 low), **2 closed**.
+9 suggestion(s) in category
+[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **7 open** (3
+high, 2 medium, 2 low), **2 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -53,7 +53,50 @@ trajectory schema, never via internal helpers, to preserve isolation.
 
 </details>
 
+<details>
+<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
+subset</strong> (S-0006-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | [`10.48550_arXiv.2210.03629`](../../../tasks/t0006_scope_aware_react_library/assets/paper/10.48550_arXiv.2210.03629/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
+as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
+libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
+overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
+size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
+anchor.
+
+</details>
+
 ## Medium Priority
+
+<details>
+<summary>📊 <strong>Measure the missing-tag fallback rate against real LLMs</strong>
+(S-0006-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-04` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The library defaults to atomic when the model omits a granularity tag and emits a
+tag_missing_defaulted_to_atomic warning observation. The deterministic tests cover the parser
+path but the fallback rate against real LLMs (GPT-4o, Claude 3.7 Sonnet, Llama-3.1-70B) is
+unknown. Build an evaluation task that runs each library at each granularity over N=20
+problems per benchmark and reports the fallback rate alongside task success.
+
+</details>
 
 <details>
 <summary>📊 <strong>Schema-parity dedup task between t0006 and t0007</strong>
@@ -96,6 +139,27 @@ HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would 
 conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether
 Reflexion-style memory adds further gains on top of the scope-aware (A) condition established
 in Phase 2.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Extend the library to support a granularity that varies within
+a single run</strong> (S-0006-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-05` |
+| **Kind** | technique |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+Currently ScopeAwareReactAgent takes one fixed granularity for an entire run. A natural
+extension is to let the agent emit a granularity transition (e.g., start global, drop to
+subtask once a plan is established, drop to atomic during execution). Add a model-driven mode
+where the parser also accepts <transition_to:subtask> markers and the agent updates the active
+granularity per turn. This is a research extension worth Phase 2 ablation.
 
 </details>
 

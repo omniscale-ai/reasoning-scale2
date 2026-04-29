@@ -15,9 +15,9 @@ threshold.
 | Warn threshold | 80% ($80.00) |
 | Stop threshold | 100% ($100.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 5 |
+| Tasks with cost records | 6 |
 | Tasks with non-zero spend | 0 |
-| Skipped tasks | 2 |
+| Skipped tasks | 1 |
 
 ## Service Totals
 
@@ -27,7 +27,7 @@ No entries found.
 
 No entries found.
 
-5 task cost record(s) are zero-cost and omitted from the main spend table.
+6 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 
@@ -38,4 +38,3 @@ No task cost records found.
 | Task ID | Reason |
 |---------|--------|
 | `t0005_hierarchical_annotation_pilot_v1` | results/costs.json is missing or invalid |
-| `t0006_scope_aware_react_library` | results/costs.json is missing or invalid |

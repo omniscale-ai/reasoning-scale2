@@ -5,8 +5,8 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (7)](../papers/by-category/agent-evaluation.md) | [Suggestions
-(6)](../suggestions/by-category/agent-evaluation.md) | [Libraries
-(1)](../libraries/by-category/agent-evaluation.md)
+(10)](../suggestions/by-category/agent-evaluation.md) | [Libraries
+(2)](../libraries/by-category/agent-evaluation.md)
 
 ---
 
@@ -317,7 +317,7 @@ scope-conditioning gains must be robust to single-rollout luck.
 
 No answers in this category.
 
-## Suggestions (6 open, 0 closed)
+## Suggestions (10 open, 0 closed)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -363,6 +363,68 @@ developer instance and the BrowserGym Python harness. This is a substantial infr
 task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
 any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
 annotation begins.
+
+</details>
+
+<details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
+
+</details>
+
+<details>
+<summary>📚 <strong>Add an async ScopeAwareReactAgent variant for streaming and
+parallel tool calls</strong> (S-0006-02)</summary>
+
+**Kind**: library | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming
+model output and from issuing multiple independent tool calls concurrently within a single
+Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an
+async model_call signature and asyncio.gather over Action lists. Tests should use
+AsyncScriptedModel mirroring the sync helper.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
+subset</strong> (S-0006-03)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
+as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
+libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
+overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
+size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
+anchor.
+
+</details>
+
+<details>
+<summary>📊 <strong>Measure the missing-tag fallback rate against real LLMs</strong>
+(S-0006-04)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+The library defaults to atomic when the model omits a granularity tag and emits a
+tag_missing_defaulted_to_atomic warning observation. The deterministic tests cover the parser
+path but the fallback rate against real LLMs (GPT-4o, Claude 3.7 Sonnet, Llama-3.1-70B) is
+unknown. Build an evaluation task that runs each library at each granularity over N=20
+problems per benchmark and reports the fallback rate alongside task success.
 
 </details>
 
