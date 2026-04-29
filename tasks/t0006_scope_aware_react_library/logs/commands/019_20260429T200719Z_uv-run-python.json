@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0006_scope_aware_react_library",
+  "command": "uv run python -m arf.scripts.verificators.verify_task_metrics t0006_scope_aware_react_library",
+  "exit_code": 0,
+  "duration_seconds": 0.053,
+  "started_at": "2026-04-29T20:07:19Z",
+  "completed_at": "2026-04-29T20:07:19Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0006_scope_aware_react_library",
+  "stdout_file": "019_20260429T200719Z_uv-run-python.stdout.txt",
+  "stderr_file": "019_20260429T200719Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}

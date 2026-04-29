@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.3, pluggy-1.6.0 -- /Users/anaderi/git/reasoning-scale2-worktrees/t0006_scope_aware_react_library/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anaderi/git/reasoning-scale2-worktrees/t0006_scope_aware_react_library
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 8 items
+
+tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py::test_tag_injection_in_prompt PASSED [ 12%]
+tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py::test_action_parsing_round_trip PASSED [ 25%]
+tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py::test_finish_terminates_loop PASSED [ 37%]
+tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py::test_malformed_action_recovery PASSED [ 50%]
+tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py::test_trajectory_log_schema PASSED [ 62%]
+tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py::test_missing_tag_defaults_to_atomic PASSED [ 75%]
+tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py::test_max_turns_safety_cap PASSED [ 87%]
+tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py::test_unknown_tool_is_observed_not_raised PASSED [100%]
+
+============================== 8 passed in 0.03s ===============================

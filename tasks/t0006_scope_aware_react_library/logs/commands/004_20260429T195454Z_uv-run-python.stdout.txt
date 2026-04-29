@@ -1,0 +1,7 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0006_scope_aware_react_library/tasks/t0006_scope_aware_react_library/research/research_code.md
+
+[31m[1mERRORS:[0m
+[31m  RC-E006 error: Inline citation [t0007] has no matching Task Index entry[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)

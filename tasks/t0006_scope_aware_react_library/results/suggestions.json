@@ -1,0 +1,73 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0006-01",
+      "title": "Build benchmark-specific tool registries for the four roadmap benchmarks",
+      "description": "scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++ (browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests, git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own write-library task that imports scope_aware_react_v1 and registers a registry with consistent naming conventions.",
+      "kind": "library",
+      "priority": "high",
+      "source_task": "t0006_scope_aware_react_library",
+      "source_paper": null,
+      "categories": [
+        "agent-evaluation",
+        "benchmark-frontierscience",
+        "benchmark-workarena",
+        "benchmark-swebench",
+        "benchmark-taubench"
+      ]
+    },
+    {
+      "id": "S-0006-02",
+      "title": "Add an async ScopeAwareReactAgent variant for streaming and parallel tool calls",
+      "description": "The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming model output and from issuing multiple independent tool calls concurrently within a single Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an async model_call signature and asyncio.gather over Action lists. Tests should use AsyncScriptedModel mirroring the sync helper.",
+      "kind": "library",
+      "priority": "medium",
+      "source_task": "t0006_scope_aware_react_library",
+      "source_paper": null,
+      "categories": [
+        "agent-evaluation"
+      ]
+    },
+    {
+      "id": "S-0006-03",
+      "title": "Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience subset",
+      "description": "scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate, overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result anchor.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0006_scope_aware_react_library",
+      "source_paper": "10.48550_arXiv.2210.03629",
+      "categories": [
+        "granularity-conditioning",
+        "agent-evaluation",
+        "benchmark-frontierscience"
+      ]
+    },
+    {
+      "id": "S-0006-04",
+      "title": "Measure the missing-tag fallback rate against real LLMs",
+      "description": "The library defaults to atomic when the model omits a granularity tag and emits a tag_missing_defaulted_to_atomic warning observation. The deterministic tests cover the parser path but the fallback rate against real LLMs (GPT-4o, Claude 3.7 Sonnet, Llama-3.1-70B) is unknown. Build an evaluation task that runs each library at each granularity over N=20 problems per benchmark and reports the fallback rate alongside task success.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0006_scope_aware_react_library",
+      "source_paper": null,
+      "categories": [
+        "granularity-conditioning",
+        "agent-evaluation"
+      ]
+    },
+    {
+      "id": "S-0006-05",
+      "title": "Extend the library to support a granularity that varies within a single run",
+      "description": "Currently ScopeAwareReactAgent takes one fixed granularity for an entire run. A natural extension is to let the agent emit a granularity transition (e.g., start global, drop to subtask once a plan is established, drop to atomic during execution). Add a model-driven mode where the parser also accepts <transition_to:subtask> markers and the agent updates the active granularity per turn. This is a research extension worth Phase 2 ablation.",
+      "kind": "technique",
+      "priority": "low",
+      "source_task": "t0006_scope_aware_react_library",
+      "source_paper": null,
+      "categories": [
+        "granularity-conditioning",
+        "hierarchical-planning"
+      ]
+    }
+  ]
+}

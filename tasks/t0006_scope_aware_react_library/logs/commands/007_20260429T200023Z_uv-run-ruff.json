@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0006_scope_aware_react_library",
+  "command": "uv run ruff check --fix tasks/t0006_scope_aware_react_library/code/",
+  "exit_code": 0,
+  "duration_seconds": 0.583,
+  "started_at": "2026-04-29T20:00:23Z",
+  "completed_at": "2026-04-29T20:00:23Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0006_scope_aware_react_library",
+  "stdout_file": "007_20260429T200023Z_uv-run-ruff.stdout.txt",
+  "stderr_file": "007_20260429T200023Z_uv-run-ruff.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}
