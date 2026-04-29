@@ -1,0 +1,62 @@
+{
+  "task_id": "t0003_download_benchmark_subsets",
+  "generated_at": "2026-04-29",
+  "rows": [
+    {
+      "dataset_id": "frontierscience-olympiad-subset",
+      "name": "FrontierScience-Olympiad subset (pilot v0)",
+      "download_status": "success",
+      "download_failure_reason": null,
+      "size_description": "40 Olympiad-style problems (physics, chemistry, biology) packaged from the project pilot annotation run; per-domain: biology=15, chemistry=10, physics=15",
+      "url": "https://arxiv.org/abs/2411.04872",
+      "license": "research-only",
+      "access_kind": "public",
+      "categories": [
+        "benchmark-frontierscience"
+      ],
+      "subset_rule": "all FrontierScience-Olympiad rows from pilot JSONL; domain-stratified across physics, chemistry, biology"
+    },
+    {
+      "dataset_id": "workarena-plus-plus-subset",
+      "name": "WorkArena++ compositional task manifest",
+      "download_status": "success",
+      "download_failure_reason": null,
+      "size_description": "42 compositional task class lists from the upstream curriculum manifest. Task instances are not enumerated (requires live ServiceNow + gated HF).",
+      "url": "https://arxiv.org/abs/2407.05291",
+      "license": "Apache-2.0",
+      "access_kind": "restricted",
+      "categories": [
+        "benchmark-workarena"
+      ],
+      "subset_rule": "compositional task class manifest extracted from upstream curriculum.py; instance-level filter deferred"
+    },
+    {
+      "dataset_id": "swebench-verified-subset",
+      "name": "SWE-bench Verified subset (4-8 hunks)",
+      "download_status": "success",
+      "download_failure_reason": null,
+      "size_description": "60 instances filtered from 500 SWE-bench Verified instances (kept iff gold patch has between 4 and 8 `@@` hunks)",
+      "url": "https://openai.com/index/introducing-swe-bench-verified/",
+      "license": "MIT",
+      "access_kind": "public",
+      "categories": [
+        "benchmark-swebench"
+      ],
+      "subset_rule": "keep iff gold patch has between 4 and 8 `@@ -` hunks (inclusive)"
+    },
+    {
+      "dataset_id": "taubench-subset",
+      "name": "tau-bench subset (4-8 actions)",
+      "download_status": "success",
+      "download_failure_reason": null,
+      "size_description": "87 tasks filtered from 665 upstream tau-bench tasks (kept iff gold action sequence has between 4 and 8 actions)",
+      "url": "https://arxiv.org/abs/2406.12045",
+      "license": "MIT",
+      "access_kind": "public",
+      "categories": [
+        "benchmark-taubench"
+      ],
+      "subset_rule": "keep iff gold action sequence has between 4 and 8 actions (inclusive)"
+    }
+  ]
+}

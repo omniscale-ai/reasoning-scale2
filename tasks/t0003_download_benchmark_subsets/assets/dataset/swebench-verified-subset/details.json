@@ -1,0 +1,57 @@
+{
+  "spec_version": "2",
+  "dataset_id": "swebench-verified-subset",
+  "name": "SWE-bench Verified subset (4-8 hunks)",
+  "version": "verified-2024",
+  "short_description": "SWE-bench Verified subset filtered to 60 instances whose gold patch has 4 to 8 diff hunks; suitable for multi-step code-edit experiments.",
+  "description_path": "description.md",
+  "source_paper_id": "no-doi_OpenAI2024_swe-bench-verified",
+  "url": "https://openai.com/index/introducing-swe-bench-verified/",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Carlos E. Jimenez (parent SWE-bench)",
+      "country": "US",
+      "institution": "Princeton University",
+      "orcid": null
+    },
+    {
+      "name": "OpenAI Verified curation team",
+      "country": "US",
+      "institution": "OpenAI",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Princeton University",
+      "country": "US"
+    },
+    {
+      "name": "OpenAI",
+      "country": "US"
+    }
+  ],
+  "license": "MIT",
+  "access_kind": "public",
+  "size_description": "60 instances filtered from 500 SWE-bench Verified instances (kept iff gold patch has between 4 and 8 `@@` hunks)",
+  "files": [
+    {
+      "path": "files/swe-bench-verified-test.parquet",
+      "description": "Original SWE-bench Verified parquet downloaded from princeton-nlp/SWE-bench_Verified.",
+      "format": "parquet"
+    },
+    {
+      "path": "files/swebench-verified-subset.jsonl",
+      "description": "Filtered subset: 60 instances with 4-8 patch hunks. Each line is the upstream Verified row serialized as JSON.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "benchmark-swebench"
+  ],
+  "download_url": "https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified/resolve/main/data/test-00000-of-00001.parquet",
+  "date_published": "2024-08-13",
+  "download_status": "success",
+  "download_failure_reason": null
+}

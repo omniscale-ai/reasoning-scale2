@@ -1,0 +1,19 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0003_download_benchmark_subsets/tasks/t0003_download_benchmark_subsets/assets/dataset/frontierscience-olympiad-subset
+
+[32m[1mPASSED[0m — no errors or warnings
+
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0003_download_benchmark_subsets/tasks/t0003_download_benchmark_subsets/assets/dataset/swebench-verified-subset
+
+[32m[1mPASSED[0m — no errors or warnings
+
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0003_download_benchmark_subsets/tasks/t0003_download_benchmark_subsets/assets/dataset/taubench-subset
+
+[32m[1mPASSED[0m — no errors or warnings
+
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0003_download_benchmark_subsets/tasks/t0003_download_benchmark_subsets/assets/dataset/workarena-plus-plus-subset
+
+[32m[1mPASSED[0m — no errors or warnings

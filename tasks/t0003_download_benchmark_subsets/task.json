@@ -5,10 +5,10 @@
   "name": "Download benchmark subsets for the four roadmap sources",
   "short_description": "Wire up access to FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, and tau-bench subsets at 4-8 decisions per task.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [],
   "start_time": "2026-04-29T14:30:55Z",
-  "end_time": null,
+  "end_time": "2026-04-29T14:58:30Z",
   "expected_assets": {
     "dataset": 4
   },

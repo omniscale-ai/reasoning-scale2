@@ -1,0 +1,55 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0003-01",
+      "title": "Negotiate Epoch AI access for full FrontierMath benchmark",
+      "description": "FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses 40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per the t0002 fallback plan.",
+      "kind": "dataset",
+      "priority": "high",
+      "source_task": "t0003_download_benchmark_subsets",
+      "source_paper": "10.48550_arXiv.2411.04872",
+      "categories": ["benchmark-frontierscience"]
+    },
+    {
+      "id": "S-0003-02",
+      "title": "Provision a ServiceNow developer instance for WorkArena++ live evaluation",
+      "description": "WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the upstream task-class manifest. Provision a free ServiceNow developer instance, request HF access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2 fallback.",
+      "kind": "dataset",
+      "priority": "high",
+      "source_task": "t0003_download_benchmark_subsets",
+      "source_paper": "10.48550_arXiv.2407.05291",
+      "categories": ["benchmark-workarena"]
+    },
+    {
+      "id": "S-0003-03",
+      "title": "Sensitivity-check the SWE-bench Verified 4-8-hunks subset against [3, 12]",
+      "description": "The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks. The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo distributions; this informs whether the 4-8 boundary is too narrow for Phase 2's atomic-edit experiments.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0003_download_benchmark_subsets",
+      "source_paper": "no-doi_OpenAI2024_swe-bench-verified",
+      "categories": ["benchmark-swebench"]
+    },
+    {
+      "id": "S-0003-04",
+      "title": "Derive step graphs for FrontierScience-Olympiad rows",
+      "description": "FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0003_download_benchmark_subsets",
+      "source_paper": "10.48550_arXiv.2411.04872",
+      "categories": ["benchmark-frontierscience", "benchmark-annotation", "hierarchical-planning"]
+    },
+    {
+      "id": "S-0003-05",
+      "title": "Add a write-library task for shared dataset-asset writers",
+      "description": "This task wrote the `code/dataset_asset.py` helper inline, but the same DatasetDetails / write_dataset_asset helpers will be needed by every future download-dataset task. Promote this code to a registered library asset (under a future task) so subsequent tasks can import the helpers via `assets/library/` rather than re-implementing them.",
+      "kind": "library",
+      "priority": "low",
+      "source_task": "t0003_download_benchmark_subsets",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}

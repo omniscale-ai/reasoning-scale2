@@ -1,0 +1,5 @@
+branch: task/t0003_download_benchmark_subsets
+base_branch: main
+base_commit: cce5e0ba0103afeb92bfb5012caf84a5f9b73d1c
+worktree_path: /Users/anaderi/git/reasoning-scale2-worktrees/t0003_download_benchmark_subsets
+created_at: 2026-04-29T14:31:11Z
