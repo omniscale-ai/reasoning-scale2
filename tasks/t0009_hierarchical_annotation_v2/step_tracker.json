@@ -32,9 +32,9 @@
       "step": 4,
       "name": "research-papers",
       "description": "Review t0002 papers on hierarchical planning and t0005 findings on judge failure modes.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T23:29:18Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T23:32:10Z",
       "log_file": "logs/steps/004_research-papers/"
     },
     {
