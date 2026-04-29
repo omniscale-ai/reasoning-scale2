@@ -122,9 +122,9 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up suggestions including the matched-mismatch (C) library.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T19:58:53Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T19:59:49Z",
       "log_file": "logs/steps/014_suggestions/"
     },
     {
