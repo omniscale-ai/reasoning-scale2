@@ -1,0 +1,2 @@
+tasks/t0011_metric2_calibration_aggregator/code/constants.py: error: Source file found twice under different module names: "t0011_metric2_calibration_aggregator.code.constants" and "tasks.t0011_metric2_calibration_aggregator.code.constants"
+Found 1 error in 1 file (errors prevented further checking)

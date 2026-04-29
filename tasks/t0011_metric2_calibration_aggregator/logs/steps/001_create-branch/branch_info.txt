@@ -1,0 +1,5 @@
+branch: task/t0011_metric2_calibration_aggregator
+base_branch: main
+base_commit: ff319cacf2f7e14ea9db1ab874a97da8d602dfb4
+worktree_path: /Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator
+created_at: 2026-04-29T23:25:21Z

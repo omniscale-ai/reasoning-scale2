@@ -1,0 +1,35 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.3, pluggy-1.6.0 -- /Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 25 items
+
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_prompt_template_default_contains_placeholders PASSED [  4%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_prompt_template_rejects_missing_problem_placeholder PASSED [  8%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_prompt_template_rejects_missing_action_placeholder PASSED [ 12%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_elicit_confidence_parses_high_label PASSED [ 16%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_elicit_confidence_parses_low_label PASSED [ 20%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_elicit_confidence_parses_medium_label_in_freeform_text PASSED [ 24%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_elicit_confidence_raises_on_unparseable_response PASSED [ 28%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_elicit_confidence_prefix_overrides_freeform_text PASSED [ 32%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_aggregate_clean_majority_uses_cohort_mean PASSED [ 36%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_aggregate_unanimous_returns_global_mean PASSED [ 40%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_aggregate_three_way_tie_returns_highest_confidence_sample PASSED [ 44%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_aggregate_three_way_tie_picks_first_on_equal_max PASSED [ 48%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_aggregate_rejects_empty_samples PASSED [ 52%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_judge_end_to_end_correct_majority PASSED [ 56%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_judge_marks_wrong_when_majority_label_differs_from_gold PASSED [ 60%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_judge_rejects_empty_sampled_actions PASSED [ 64%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_overconfident_error_rate_at_threshold_boundary PASSED [ 68%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_overconfident_error_rate_correct_high_confidence_does_not_count PASSED [ 72%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_overconfident_error_rate_empty_returns_zero PASSED [ 76%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_overconfident_error_rate_synthetic_ten_record_dataset PASSED [ 80%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_overconfident_error_rate_respects_custom_threshold PASSED [ 84%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_calibration_record_from_trajectory_with_verbalized_label PASSED [ 88%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_calibration_record_from_trajectory_with_numeric_confidence PASSED [ 92%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_calibration_record_from_trajectory_rejects_none_confidence PASSED [ 96%]
+tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py::test_constants_match_xiong2024_protocol PASSED [100%]
+
+============================== 25 passed in 0.03s ==============================

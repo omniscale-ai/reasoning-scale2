@@ -1,0 +1,12 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator/tasks/t0011_metric2_calibration_aggregator/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 002_20260429T233101Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 005_20260429T233639Z_uv-run-ruff.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 009_20260429T233708Z_uv-run-mypy.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 012_20260429T233844Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 6 warning(s)
