@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Plan v2 annotation pipeline: prompts, full problem text, judge sampling, $15 budget cap.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T23:32:16Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
