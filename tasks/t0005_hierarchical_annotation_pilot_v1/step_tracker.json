@@ -32,8 +32,8 @@
       "step": 4,
       "name": "research-papers",
       "description": "Review the 11-paper corpus for hierarchical-annotation precedent and schema guidance.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T19:45:43Z",
       "completed_at": null,
       "log_file": "logs/steps/004_research-papers/"
     },
