@@ -1,12 +1,12 @@
 # Suggestions by Date Added
 
-10 suggestion(s) grouped by derived added date.
+15 suggestion(s) grouped by derived added date.
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## 2026-04-29 (10)
+## 2026-04-29 (15)
 
 ## High Priority
 
@@ -97,6 +97,27 @@ the self-consistency aggregator, and validate calibration on a small held-out se
 </details>
 
 <details>
+<summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
+benchmark</strong> (S-0003-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0003-01` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0003_download_benchmark_subsets`](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
+| **Source paper** | [`10.48550_arXiv.2411.04872`](../../../tasks/t0003_download_benchmark_subsets/assets/paper/10.48550_arXiv.2411.04872/) |
+| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to
+FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses
+40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research
+access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per
+the t0002 fallback plan.
+
+</details>
+
+<details>
 <summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
 pipeline</strong> (S-0002-04)</summary>
 
@@ -114,6 +135,28 @@ AI's evaluation pipeline; the raw problems are not publicly downloadable. The pr
 explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
 (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
+
+</details>
+
+<details>
+<summary>📂 <strong>Provision a ServiceNow developer instance for WorkArena++ live
+evaluation</strong> (S-0003-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0003-02` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0003_download_benchmark_subsets`](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
+| **Source paper** | [`10.48550_arXiv.2407.05291`](../../../tasks/t0003_download_benchmark_subsets/assets/paper/10.48550_arXiv.2407.05291/) |
+| **Categories** | [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/) |
+
+WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to
+the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the
+upstream task-class manifest. Provision a free ServiceNow developer instance, request HF
+access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
+decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
+fallback.
 
 </details>
 
@@ -163,6 +206,26 @@ annotation begins.
 ## Medium Priority
 
 <details>
+<summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
+(S-0003-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0003-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0003_download_benchmark_subsets`](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
+| **Source paper** | [`10.48550_arXiv.2411.04872`](../../../tasks/t0003_download_benchmark_subsets/assets/paper/10.48550_arXiv.2411.04872/) |
+| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad
+solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
+problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
+apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+<details>
 <summary>📚 <strong>Re-fetch the 11 paper PDFs with git LFS enabled</strong>
 (S-0002-09)</summary>
 
@@ -204,7 +267,48 @@ atomic actions, leaving manual annotation effort focused on global and subtask l
 
 </details>
 
+<details>
+<summary>📊 <strong>Sensitivity-check the SWE-bench Verified 4-8-hunks subset against
+[3, 12]</strong> (S-0003-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0003-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0003_download_benchmark_subsets`](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
+| **Source paper** | [`no-doi_OpenAI2024_swe-bench-verified`](../../../tasks/t0003_download_benchmark_subsets/assets/paper/no-doi_OpenAI2024_swe-bench-verified/) |
+| **Categories** | [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) |
+
+The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks.
+The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by
+re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo
+distributions; this informs whether the 4-8 boundary is too narrow for Phase 2's atomic-edit
+experiments.
+
+</details>
+
 ## Low Priority
+
+<details>
+<summary>📚 <strong>Add a write-library task for shared dataset-asset
+writers</strong> (S-0003-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0003-05` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0003_download_benchmark_subsets`](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
+| **Source paper** | — |
+| **Categories** | — |
+
+This task wrote the `code/dataset_asset.py` helper inline, but the same DatasetDetails /
+write_dataset_asset helpers will be needed by every future download-dataset task. Promote this
+code to a registered library asset (under a future task) so subsequent tasks can import the
+helpers via `assets/library/` rather than re-implementing them.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3

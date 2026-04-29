@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-4 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **4 open** (2 high,
-1 medium, 1 low).
+5 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **5 open** (2 high,
+2 medium, 1 low).
 
 [Back to all suggestions](../README.md)
 
@@ -55,6 +55,26 @@ pattern [Zhou2022] inside the implementation.
 </details>
 
 ## Medium Priority
+
+<details>
+<summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
+(S-0003-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0003-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0003_download_benchmark_subsets`](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
+| **Source paper** | [`10.48550_arXiv.2411.04872`](../../../tasks/t0003_download_benchmark_subsets/assets/paper/10.48550_arXiv.2411.04872/) |
+| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad
+solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
+problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
+apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Run a Phase 1 pilot annotation on 20 tasks before scaling to

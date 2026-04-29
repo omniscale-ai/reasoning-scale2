@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive type_id="datasets" generated_at_utc="2026-04-29T15:00:39Z">
+  <archive_summary>
+    <title>All Datasets</title>
+    <description>Complete dataset inventory with full descriptions, access info, and sizes.</description>
+    <section_count>1</section_count>
+    <char_count>23155</char_count>
+    <byte_count>23168</byte_count>
+    <estimated_tokens>5788</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>all datasets with full descriptions</item>
+  </included_content>
+  <sections>
+    <section id="full-datasets" source_kind="aggregator">
+      <title>All Datasets (Full Detail)</title>
+      <source_name>aggregate_datasets_full</source_name>
+      <source_ids>
+        <id>frontierscience-olympiad-subset</id>
+        <id>swebench-verified-subset</id>
+        <id>taubench-subset</id>
+        <id>workarena-plus-plus-subset</id>
+      </source_ids>
+      <content>
+Datasets: 4
+
+## FrontierScience-Olympiad subset (pilot v0)
+ID: frontierscience-olympiad-subset
+Year: 2026
+Access: public
+Size: 40 Olympiad-style problems (physics, chemistry, biology) packaged from the project pilot annotation run; per-domain: biology=15, chemistry=10, physics=15
+Version: v0
+License: research-only
+URL: https://arxiv.org/abs/2411.04872
+Categories: benchmark-frontierscience
+Added by task: t0003_download_benchmark_subsets
+Date added: 2026-04-29
+
+#### Metadata
+
+* **Name**: FrontierScience-Olympiad subset (pilot v0)
+* **Year**: 2026
+* **Authors**: This project (subset packaging); original problems sourced from Olympiad-style
+  FrontierScience problem repositories
+* **License**: research-only
+* **Access**: public (within this project&#x27;s repository)
+* **Size**: 40 problems across 3 domains (biology=15, chemistry=10, physics=15)
+
+#### Overview
+
+This dataset packages the FrontierScience-Olympiad pilot rows as a reproducible v0 subset for the
+project&#x27;s three-level granularity-conditioning experiments. The pilot rows were annotated under task
+t0001 (annotation pilot) using Olympiad-style problems from physics, chemistry, and biology. The
+closest publicly named benchmark analogue is FrontierMath (Glazer et al. 2024, arXiv:2411.04872),
+which is gated behind Epoch AI access; this access barrier was identified by the t0002 literature
+survey and remains unresolved at the time of this task. Until full FrontierMath access is
+negotiated, the pilot rows serve as the canonical FrontierScience-Olympiad subset for Phase 2 work.
+Each row contains the full problem text, the gold solution, the problem domain, and the annotator&#x27;s
+pre-existing token-usage metadata. Domain coverage is intentionally balanced across physics,
+chemistry, and biology to match the project&#x27;s stated scope.
+
+#### Content &amp; Annotation
+
+Every row follows the pilot annotation schema with these fields: `task_id`, `benchmark` (always
+`FrontierScience-Olympiad`), `domain` (one of physics, chemistry, biology), `problem` (full problem
+statement), `solution` (gold reference solution, where annotated), `difficulty`, `metadata.subject`,
+`metadata.source_id`, `annotation_model`, `annotated_at`, `errors`, `steps`, and `token_usage`. The
+`steps` field is `null` for FrontierScience-Olympiad rows because Olympiad solutions are graded as
+final answers rather than as multi-step graphs; the project will derive step graphs in the t-future
+hierarchical-annotation tasks. Annotation was performed by the project&#x27;s pilot LLM-assisted
+pipeline; gold solutions come from the source problem set.
+
+#### Statistics
+
+| Metric | Value |
+| --- | --- |
+| Total problems | 40 |
+| Average problem length (chars) | 1514 |
+
+##### Per-domain breakdown
+
+| Domain | Problems |
+| --- | --- |
+| biology | 15 |
+| chemistry | 10 |
+| physics | 15 |
+
+##### Subset rule
+
+All FrontierScience-Olympiad rows from the pilot file are included. Per-instance step counts are not
+available for FrontierScience-Olympiad, so the canonical 4-8 decisions per task filter cannot be
+applied at row level; instead, the subset is domain-stratified across physics / chemistry / biology
+to match the pilot focus. Future tasks that derive step graphs (hierarchical-annotation) can
+re-subset using node counts.
+
+#### Usage Notes
+
+Load with the Python standard library:
+
+```python
+import json
+with open(&#x27;files/frontierscience-olympiad-subset.jsonl&#x27;) as fh:
+    rows = [json.loads(line) for line in fh if line.strip()]
+```
+
+Each row is a dict with the schema described in the Content &amp; Annotation section. The `solution`
+field is plain text. The `metadata.source_id` field uniquely identifies the upstream Olympiad
+problem and should be preserved for traceability.
+
+#### Main Ideas
+
+* This v0 subset is the canonical reproducible FrontierScience-Olympiad source for the project until
+  upstream Epoch AI / FrontierMath access is resolved.
+* Domain coverage is balanced across physics, chemistry, and biology, matching the project&#x27;s
+  three-domain scope.
+* Step graphs are not available at row level for FrontierScience-Olympiad — Phase 2 experiments must
+  either treat each row as single-decision or derive step graphs in a follow-up
+  hierarchical-annotation task before computing per-step metrics.
+* This subset is fully self-contained and does not require any external network access to load or
+  use.
+
+#### Summary
+
+The FrontierScience-Olympiad subset (pilot v0) packages 40 Olympiad-style problems spanning physics,
+chemistry, and biology, sourced from the project&#x27;s pilot annotation run. Every row contains the full
+problem text, gold solution, and annotation metadata. The subset is the canonical
+FrontierScience-Olympiad source for the project&#x27;s Phase 2 scope-aware vs. scope-unaware baseline
+experiment.
+
+FrontierMath itself (the closest publicly named analogue) remains gated behind Epoch AI access. The
+v0 subset is therefore a pragmatic substitute that preserves Phase 2 reproducibility; a follow-up
+suggestion will track the open access negotiation. The domain-stratified design ensures every
+experiment can report per-domain metrics without needing to re-balance.
+
+## SWE-bench Verified subset (4-8 hunks)
+ID: swebench-verified-subset
+Year: 2024
+Access: public
+Size: 60 instances filtered from 500 SWE-bench Verified instances (kept iff gold patch has between 4 and 8 `@@` hunks)
+Version: verified-2024
+License: MIT
+URL: https://openai.com/index/introducing-swe-bench-verified/
+Categories: benchmark-swebench
+Added by task: t0003_download_benchmark_subsets
+Date added: 2026-04-29
+
+#### Metadata
+
+* **Name**: SWE-bench Verified subset (4-8 hunks)
+* **Year**: 2024
+* **Authors**: Carlos E. Jimenez et al. (parent SWE-bench); the OpenAI Verified curation team
+  (Verified)
+* **License**: MIT (parent SWE-bench license)
+* **Access**: public (HuggingFace `princeton-nlp/SWE-bench_Verified`)
+* **Size**: 60 instances (filtered from 500 Verified)
+
+#### Overview
+
+This subset of SWE-bench Verified contains GitHub-issue-driven repository patch tasks where the gold
+patch has between 4 and 8 diff hunks (the canonical 4-8 decisions per task range). SWE-bench
+Verified is the 500-instance human-validated subset of the parent SWE-bench (Jimenez et al. 2023)
+released by OpenAI in 2024. Each instance gives an LLM agent a real GitHub issue plus the
+corresponding repository at a specific commit, and asks for a patch that passes a hidden test suite.
+The full 500 Verified instances have hunk counts ranging from 1 to 45 with a long tail; filtering to
+4-8 hunks selects medium-complexity tasks that map cleanly onto the project&#x27;s three-level hierarchy:
+the issue text is the global intent, the FAIL_TO_PASS test names are the subtask gates, and each
+diff hunk is one atomic edit decision.
+
+#### Content &amp; Annotation
+
+Every row preserves the upstream Verified schema: `instance_id`, `repo`, `base_commit`, `patch`
+(gold patch), `test_patch` (gold test diff), `problem_statement` (the GitHub issue body),
+`hints_text`, `created_at`, `version`, `FAIL_TO_PASS` (string-encoded list of pytest IDs that should
+now pass), `PASS_TO_PASS` (regression tests that must still pass), `environment_setup_commit`, and
+`difficulty` (one of `&lt;15 min fix`, `15 min - 1 hour`, `1-4 hours`, `&gt;4 hours`). The annotation is
+the gold patch produced by the original GitHub PR author and validated by OpenAI&#x27;s Verified curation
+pass.
+
+#### Statistics
+
+| Metric | Value |
+| --- | --- |
+| Verified total | 500 |
+| Subset (4-8 hunks) | 60 |
+
+##### Per-hunk-count distribution within subset
+
+| Hunks | Instances |
+| --- | --- |
+| 4 | 24 |
+| 5 | 12 |
+| 6 | 14 |
+| 7 | 7 |
+| 8 | 3 |
+
+##### Top repositories in subset
+
+| Repo | Instances |
+| --- | --- |
+| django/django | 19 |
+| sympy/sympy | 8 |
+| pydata/xarray | 6 |
+| scikit-learn/scikit-learn | 6 |
+| pylint-dev/pylint | 5 |
+| sphinx-doc/sphinx | 5 |
+| pytest-dev/pytest | 4 |
+| astropy/astropy | 3 |
+| matplotlib/matplotlib | 3 |
+| mwaskom/seaborn | 1 |
+
+##### Difficulty in subset
+
+| Difficulty | Instances |
+| --- | --- |
+| 1-4 hours | 19 |
+| 15 min - 1 hour | 35 |
+| &lt;15 min fix | 5 |
+| &gt;4 hours | 1 |
+
+##### Subset rule
+
+Instances are kept iff the gold `patch` field contains between 4 and 8 `@@ -` hunk headers
+(inclusive). Hunk count is the natural per-instance decision count for SWE-bench: each hunk
+corresponds to one localized edit the agent must produce. No random sampling is performed.
+
+#### Usage Notes
+
+Load with pyarrow:
+
+```python
+import pyarrow.parquet as pq
+t = pq.read_table(&#x27;files/swebench-verified-subset.parquet&#x27;)
+rows = t.to_pylist()  # list[dict]
+```
+
+Or as JSONL via the bundled lightweight `swebench-verified-subset.jsonl` (one parsed row per line).
+The parquet preserves binary encoding for `patch`/`test_patch`; the JSONL converts those fields to
+plain UTF-8 strings. FAIL_TO_PASS and PASS_TO_PASS arrive as JSON-encoded strings; decode with
+`json.loads(row[&#x27;FAIL_TO_PASS&#x27;])` to get the list.
+
+#### Main Ideas
+
+* The 4-8-hunk filter selects medium-complexity SWE-bench Verified tasks that are large enough to
+  exercise multi-step reasoning but small enough to fit in a single agent context window without
+  aggressive truncation.
+* Each diff hunk maps one-to-one onto an atomic edit decision in the project&#x27;s three-level hierarchy
+  (global issue intent -&gt; FAIL_TO_PASS subtask gates -&gt; per-hunk atomic edits).
+* The subset preserves the upstream license (MIT), schema, and instance IDs, so any Phase 2 result
+  on this subset can be cross-referenced against the public princeton-nlp/SWE-bench_Verified
+  leaderboard.
+* Difficulty distribution within the subset is dominated by `15 min - 1 hour` and `&lt;15 min fix`
+  tasks, matching the project&#x27;s wall-clock budget for per-instance runs.
+
+#### Summary
+
+This SWE-bench Verified subset contains 60 GitHub-issue-driven patch tasks filtered from the
+500-instance Verified release to those whose gold patch has 4 to 8 diff hunks (the project&#x27;s
+canonical multi-step decision range). Each row preserves the upstream Verified schema verbatim,
+including problem statement, gold patch, test patch, and the FAIL_TO_PASS / PASS_TO_PASS test name
+lists.
+
+For this project, the subset is the primary atomic-execution test bed for the scope-aware vs.
+scope-unaware Phase 2 comparison. The hunk-count filter ensures every instance offers between 4 and
+8 atomic edit decisions, and the upstream Verified license (MIT) plus stable instance IDs let us
+publish results that interoperate with the public SWE-bench leaderboard.
+
+## tau-bench subset (4-8 actions)
+ID: taubench-subset
+Year: 2024
+Access: public
+Size: 87 tasks filtered from 665 upstream tau-bench tasks (kept iff gold action sequence has between 4 and 8 actions)
+Version: github-main
+License: MIT
+URL: https://arxiv.org/abs/2406.12045
+Categories: benchmark-taubench
+Added by task: t0003_download_benchmark_subsets
+Date added: 2026-04-29
+
+#### Metadata
+
+* **Name**: tau-bench subset (4-8 actions)
+* **Year**: 2024
+* **Authors**: Shunyu Yao et al. (Sierra Research)
+* **License**: MIT (parent tau-bench repository license)
+* **Access**: public (GitHub `sierra-research/tau-bench`)
+* **Size**: 87 tasks (filtered from 665 total)
+
+#### Overview
+
+tau-bench (Yao et al. 2024, arXiv:2406.12045) is a tool-agent-user interaction benchmark spanning
+two domains: airline customer service and retail returns/exchanges. Each task gives the agent a user
+intent and a domain API; the agent must produce a sequence of API calls (`Action` objects) that
+satisfies the user. The original benchmark ships task definitions as Python source files in the
+upstream repository — this dataset asset extracts those task definitions without installing the
+harness or calling any LLM, so the subset is a pure metadata export. Each subset row records the
+domain, split (test or train), instruction text, gold action sequence (names only), and action
+count. We filter to tasks whose gold sequence has 4 to 8 actions (the project&#x27;s canonical multi-step
+decision range).
+
+#### Content &amp; Annotation
+
+Each row has these fields: `domain` (`airline` or `retail`), `split` (`test` or `train`),
+`task_index` (position in the upstream `TASKS` list), `annotator` (the upstream annotator id, where
+present), `user_id` (the synthetic user id), `instruction` (the user&#x27;s natural-language request),
+`actions` (list of API call names in the gold sequence), `action_count` (length of `actions`), and
+`outputs` (list of expected agent outputs, where annotated). The gold action sequence is what the
+upstream project uses to grade an agent&#x27;s pass/fail at the task level.
+
+#### Statistics
+
+| Metric | Value |
+| --- | --- |
+| Total tasks across upstream Python files | 665 |
+| Subset (4-8 actions) | 87 |
+
+##### Per-domain-split breakdown of subset
+
+| Domain / split | Tasks |
+| --- | --- |
+| airline/test | 13 |
+| retail/test | 50 |
+| retail/train | 24 |
+
+##### Action-count distribution within subset
+
+| Actions | Tasks |
+| --- | --- |
+| 4 | 24 |
+| 5 | 24 |
+| 6 | 23 |
+| 7 | 13 |
+| 8 | 3 |
+
+##### Subset rule
+
+Tasks are kept iff the gold `actions` list has between 4 and 8 entries (inclusive). Action counts
+are extracted from the upstream Python source files via the `ast` module — no installation required.
+
+#### Usage Notes
+
+Load with the Python standard library:
+
+```python
+import json
+with open(&#x27;files/taubench-subset.jsonl&#x27;) as fh:
+    rows = [json.loads(line) for line in fh if line.strip()]
+```
+
+The full upstream Python source for each (domain, split) pair is preserved verbatim in
+`files/upstream/&lt;domain&gt;__tasks_&lt;split&gt;.py` so downstream tasks can re-extract richer fields (action
+kwargs, output shapes) without re-fetching from GitHub. Note that running tau-bench end-to-end
+(instantiating the env and querying an LLM) still requires installing the harness and providing API
+keys — this asset only captures the task metadata needed for the project&#x27;s scope-aware vs
+scope-unaware comparison.
+
+#### Main Ideas
+
+* The action sequence length is the natural per-task decision count for tau-bench: each
+  `Action(...)` call is one tool invocation the agent must produce.
+* By extracting metadata from upstream source rather than installing the harness, this asset is
+  fully reproducible, requires no API keys, and stays under 1 MB.
+* The subset combines all available splits (test + train where present) so Phase 2 can use train
+  tasks for prompt tuning and test tasks for unbiased evaluation if needed.
+* Action kwargs (e.g., flight numbers, user IDs) are intentionally omitted from the subset rows to
+  keep them small; the full upstream Python is preserved separately for agents that need the kwargs.
+
+#### Summary
+
+This tau-bench subset contains 87 tasks from the upstream Sierra Research tau-bench repository,
+filtered to the 4-8 actions per task range. Tasks span the airline customer-service and retail
+return/exchange domains. Metadata is extracted from upstream Python source files using the `ast`
+module, so this asset works fully offline once the source files are downloaded.
+
+For this project, the subset is the primary tool-use multi-step test bed for the scope-aware vs.
+scope-unaware Phase 2 comparison. The upstream MIT license and stable task indices preserve
+interoperability with the public tau-bench leaderboard.
+
+## WorkArena++ compositional task manifest
+ID: workarena-plus-plus-subset
+Year: 2024
+Access: restricted
+Size: 42 compositional task class lists from the upstream curriculum manifest. Task instances are not enumerated (requires live ServiceNow + gated HF).
+Version: github-main
+License: Apache-2.0
+URL: https://arxiv.org/abs/2407.05291
+Categories: benchmark-workarena
+Added by task: t0003_download_benchmark_subsets
+Date added: 2026-04-29
+
+#### Metadata
+
+* **Name**: WorkArena++ compositional task manifest
+* **Year**: 2024
+* **Authors**: Léo Boisvert et al. (ServiceNow Research)
+* **License**: parent WorkArena Apache-2.0 license
+* **Access**: restricted (full instantiation requires a live ServiceNow developer instance and a
+  gated HuggingFace dataset)
+* **Size**: 42 compositional task class lists exported from the upstream `curriculum.py` manifest
+
+#### Overview
+
+WorkArena++ (Boisvert et al. 2024, arXiv:2407.05291) is a benchmark of compositional knowledge-work
+tasks built from 33 atomic ServiceNow operations. Running a single task end-to-end requires (a) a
+live ServiceNow developer instance, (b) gated access to the `ServiceNow/WorkArena-Instances`
+HuggingFace dataset, and (c) the `browsergym-workarena` Python harness with Playwright. None of
+these are available within this task&#x27;s local-only download budget, so this dataset asset packages
+the **compositional task class manifest** extracted from the upstream
+`tasks/compositional/utils/curriculum.py` source file. The manifest gives Phase 2 the canonical task
+taxonomy without needing to instantiate any task — every name listed is a class group representing a
+distinct WorkArena++ compositional task family. The existing pilot Mind2Web proxy remains the
+de-facto Phase 2 fallback for end-to-end execution until upstream access is resolved.
+
+#### Content &amp; Annotation
+
+The `files/workarena-plus-plus-task-manifest.json` file lists every task class group imported by the
+upstream `curriculum.py`. Each entry is a string identifier (e.g., `DASH_AND_ORDER`,
+`NAVIGATE_AND_CREATE_TASKS`) that maps to a Python class list in the
+`browsergym.workarena.tasks.compositional` package. Task instances are not enumerated (that requires
+the live ServiceNow instance and the gated HF dataset). The files `files/upstream/curriculum.py`,
+`files/upstream/compositional__init__.py`, and `files/upstream/README.md` preserve the upstream
+source verbatim so downstream tasks can re-extract richer metadata (per-class skill annotations,
+level breakdowns) without re-fetching from GitHub.
+
+#### Statistics
+
+| Metric | Value |
+| --- | --- |
+| Compositional task class lists | 42 |
+| Atomic operations (per upstream paper) | 33 |
+| Compositional tasks (per upstream paper, both L2 and L3 levels) | ~682 |
+| Source file | `tasks/compositional/utils/curriculum.py` |
+| Download method | urllib.request.urlretrieve from https://raw.githubusercontent.com/ServiceNow/WorkArena/main/src/browsergym/workarena/tasks/compositional/utils/curriculum.py |
+
+##### Task class list manifest
+
+* `DASH_AND_ORDER`
+* `DASH_COMPUTE_MEAN_AND_ORDER`
+* `DASH_COMPUTE_MEDIAN_AND_ORDER`
+* `DASH_COMPUTE_MODE_AND_ORDER`
+* `DASH_AND_CREATE_INCIDENT`
+* `DASH_COMPUTE_AND_CREATE_INCIDENT`
+* `DASH_AND_CREATE_PROBLEM`
+* `DASH_COMPUTE_AND_CREATE_PROBLEM`
+* `DASH_COMPUTE_MIN_FILTER_LIST`
+* `DASH_COMPUTE_MAX_FILTER_LIST`
+* `DASH_COMPUTE_MEAN_FILTER_LIST`
+* `DASH_COMPUTE_MEDIAN_FILTER_LIST`
+* `DASH_COMPUTE_MODE_FILTER_LIST`
+* `DASH_AND_REQUEST`
+* `DASH_COMPUTE_MEAN_AND_REQUEST`
+* `DASH_COMPUTE_MEDIAN_AND_REQUEST`
+* `DASH_COMPUTE_MODE_AND_REQUEST`
+* `EXPENSE_MANAGEMENT_TASKS`
+* `FIND_AND_ORDER_ITEM_TASKS`
+* `SMALL_BASE_SCHEDULING_TASKS`
+* `LARGE_BASE_SCHEDULING_TASKS`
+* `SMALL_TIGHT_SCHEDULING_TASKS`
+* `LARGE_TIGHT_SCHEDULING_TASKS`
+* `MARK_DUPLICATE_PROBLEMS_TASKS`
+* `MAXIMIZE_INVESTMENT_RETURN_TASKS`
+* `NAVIGATE_AND_CREATE_TASKS`
+* `NAVIGATE_AND_FILTER_TASKS`
+* `NAVIGATE_AND_ORDER_TASKS`
+* `NAVIGATE_AND_SORT_TASKS`
+* `INFEASIBLE_NAVIGATE_AND_CREATE_WITH_REASON`
+* `INFEASIBLE_NAVIGATE_AND_CREATE`
+* `INFEASIBLE_NAVIGATE_AND_ORDER_WITH_REASON`
+* `INFEASIBLE_NAVIGATE_AND_ORDER`
+* `INFEASIBLE_NAVIGATE_AND_FILTER_WITH_REASON`
+* `INFEASIBLE_NAVIGATE_AND_FILTER`
+* `INFEASIBLE_NAVIGATE_AND_SORT_WITH_REASON`
+* `INFEASIBLE_NAVIGATE_AND_SORT`
+* `OFFBOARD_USER_TASKS`
+* `ONBOARD_USER_TASKS`
+* `WARRANTY_CHECK_TASKS`
+* `WORK_ASSIGNMENT_TASKS`
+* `WORKLOAD_BALANCING_TASKS`
+
+##### Subset rule
+
+All compositional task class lists from the upstream curriculum are kept. The canonical 4-8
+decisions per task filter cannot be applied at this layer because instantiated task instances (with
+concrete action sequences) are not available without ServiceNow + HF access. Phase 2 must apply the
+filter at instance time once full upstream access is resolved.
+
+#### Usage Notes
+
+Load with the Python standard library:
+
+```python
+import json
+with open(&#x27;files/workarena-plus-plus-subset-task-manifest.json&#x27;) as fh:
+    task_class_lists = json.load(fh)
+```
+
+To actually run any of these tasks end-to-end, install `browsergym-workarena`, follow the upstream
+README to (a) request access to `ServiceNow/WorkArena-Instances` on HuggingFace and (b) provision a
+ServiceNow developer instance, then dispatch tasks via the BrowserGym `make()` API. None of those
+operations are required to use this manifest as a taxonomy reference.
+
+#### Main Ideas
+
+* WorkArena++ end-to-end execution is gated on ServiceNow + HF access; this asset documents the
+  access barrier and packages the upstream taxonomy without crossing it.
+* The pilot Mind2Web proxy remains the operative Phase 2 fallback for knowledge-worker compositional
+  tasks until upstream access is resolved.
+* The 4-8 decisions per task filter must be deferred to instance time — the upstream curriculum
+  manifest is at the task-class level, not the task-instance level.
+* The upstream license is permissive (Apache-2.0) but the live ServiceNow developer instance is the
+  binding access cost in practical terms.
+
+#### Summary
+
+This dataset asset packages the WorkArena++ compositional task class manifest (42 task class lists)
+extracted from the upstream `tasks/compositional/utils/curriculum.py` source. End-to-end task
+instantiation requires a live ServiceNow developer instance plus access to the
+`ServiceNow/WorkArena-Instances` gated HuggingFace dataset; this access is treated as out of scope
+for this download task and is documented as a project follow-up.
+
+For this project, the asset gives Phase 2 the canonical WorkArena++ task taxonomy and preserves the
+upstream source files for traceability. The pilot Mind2Web proxy remains the actual end-to-end test
+bed for compositional knowledge-worker tasks until the access barriers are resolved.
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>

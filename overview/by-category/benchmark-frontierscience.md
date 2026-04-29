@@ -5,7 +5,8 @@ Per-source tag for tasks and assets sourced from the FrontierScience-Olympiad be
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-frontierscience.md) |
-[Suggestions (1)](../suggestions/by-category/benchmark-frontierscience.md)
+[Suggestions (3)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
+(1)](../datasets/by-category/benchmark-frontierscience.md)
 
 ---
 
@@ -62,7 +63,7 @@ AI's evaluation pipeline is a known operational risk for the t0003 download-data
 
 No answers in this category.
 
-## Suggestions (1 open, 0 closed)
+## Suggestions (3 open, 0 closed)
 
 <details>
 <summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
@@ -76,5 +77,34 @@ AI's evaluation pipeline; the raw problems are not publicly downloadable. The pr
 explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
 (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
+
+</details>
+
+<details>
+<summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
+benchmark</strong> (S-0003-01)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../../tasks/t0003_download_benchmark_subsets/)
+
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to
+FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses
+40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research
+access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per
+the t0002 fallback plan.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
+(S-0003-04)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../../tasks/t0003_download_benchmark_subsets/)
+
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad
+solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
+problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
+apply the canonical 4-8 decisions filter consistently across all four benchmarks.
 
 </details>

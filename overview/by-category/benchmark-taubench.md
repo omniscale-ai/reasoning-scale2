@@ -5,7 +5,8 @@ Per-source tag for tasks and assets sourced from the tau-bench tool-use benchmar
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-taubench.md) | [Suggestions
-(1)](../suggestions/by-category/benchmark-taubench.md)
+(1)](../suggestions/by-category/benchmark-taubench.md) | [Datasets
+(1)](../datasets/by-category/benchmark-taubench.md)
 
 ---
 

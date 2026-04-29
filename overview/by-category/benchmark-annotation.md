@@ -5,7 +5,7 @@ Manual or LLM-assisted gold-action annotation across the three granularity level
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-annotation.md) | [Suggestions
-(1)](../suggestions/by-category/benchmark-annotation.md)
+(2)](../suggestions/by-category/benchmark-annotation.md)
 
 ---
 
@@ -62,7 +62,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (1 open, 0 closed)
+## Suggestions (2 open, 0 closed)
 
 <details>
 <summary>🧪 <strong>Run a Phase 1 pilot annotation on 20 tasks before scaling to
@@ -76,5 +76,19 @@ scaling, run a 20-task pilot to validate the annotation schema, measure inter-an
 agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest
 atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold
 atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
+(S-0003-04)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../../tasks/t0003_download_benchmark_subsets/)
+
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad
+solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
+problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
+apply the canonical 4-8 decisions filter consistently across all four benchmarks.
 
 </details>

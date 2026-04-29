@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-29T14:29:11Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-29T15:00:39Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>27771</char_count>
-    <byte_count>27816</byte_count>
-    <estimated_tokens>6942</estimated_tokens>
+    <char_count>34330</char_count>
+    <byte_count>34375</byte_count>
+    <estimated_tokens>8582</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -133,9 +133,10 @@ annotations bootstrap the gold-action set required by all three metrics.
       <source_ids>
         <id>t0001_brainstorm_results_1</id>
         <id>t0002_literature_survey_granularity_conditioning</id>
+        <id>t0003_download_benchmark_subsets</id>
       </source_ids>
       <content>
-Completed tasks: 2
+Completed tasks: 3
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -148,22 +149,19 @@ ID: t0002_literature_survey_granularity_conditioning
 Completed: 2026-04-29
 Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
 Result summary: Results Summary: Literature Survey on Granularity Conditioning and Hierarchical Agents Summary Completed a literature survey of 11 papers covering granularity / scope conditioning of LLM agents, hierarchical task decomposition, uncertainty calibration, and the four roadmap benchmarks (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). All 11 paper assets pass the v3 paper-asset verificator and are tagged with project categories. Metrics * **11 paper assets created** out of a 10-paper minimum target — exceeds REQ-1 by one paper. * **4 of 4 survey threads covered** with at least 2 papers each: granularity / hierarchical prompting (Yao2022, Wang2023, Shinn2023, Zhou2022...
+
+## Download benchmark subsets for the four roadmap sources
+ID: t0003_download_benchmark_subsets
+Completed: 2026-04-29
+Short description: Wire up access to FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, and tau-bench subsets at 4-8 decisions per task.
+Result summary: Results Summary: Download Benchmark Subsets Summary Acquired four benchmark subsets covering the project&#x27;s roadmap sources (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). Three were downloaded directly from public sources; WorkArena++ instance enumeration is gated on a live ServiceNow developer instance, so its asset captures the upstream curriculum manifest only and freezes the Mind2Web pilot proxy as the de-facto Phase 2 fallback. All four dataset assets pass `verify_dataset_asset` with zero errors. Metrics * **4 of 4** dataset assets created and passing `verify_dataset_asset` (zero errors, zero warnings). * **FrontierScience-Olympiad subset**: **40** problems (15...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
-      <source_ids>
-        <id>t0003_download_benchmark_subsets</id>
-      </source_ids>
       <content>
-Planned or active tasks: 1
-
-## Download benchmark subsets for the four roadmap sources
-ID: t0003_download_benchmark_subsets
-Status: not_started
-Effective date: 2026-04-29
-Short description: Wire up access to FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, and tau-bench subsets at 4-8 decisions per task.
+Planned or active tasks: 0
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -184,12 +182,17 @@ Answers: 0
         <id>S-0002-05</id>
         <id>S-0002-06</id>
         <id>S-0002-07</id>
+        <id>S-0003-01</id>
+        <id>S-0003-02</id>
         <id>S-0002-08</id>
         <id>S-0002-09</id>
+        <id>S-0003-03</id>
+        <id>S-0003-04</id>
         <id>S-0002-10</id>
+        <id>S-0003-05</id>
       </source_ids>
       <content>
-Open suggestions: 10
+Open suggestions: 15
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -240,6 +243,20 @@ Kind: technique
 Source task: t0002_literature_survey_granularity_conditioning
 The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token granularity tag from the set {global, subtask, atomic}. This task would specify the prompt template per granularity, the tagging logic that decides which granularity is active at each LLM call, and a logging schema that records the active granularity for every action so post-hoc per-granularity analysis is possible. Replicate Least-to-Most&#x27;s solution-reuse pattern [Zhou2022] inside the implementation.
 
+## Negotiate Epoch AI access for full FrontierMath benchmark
+ID: S-0003-01
+Priority: high
+Kind: dataset
+Source task: t0003_download_benchmark_subsets
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses 40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per the t0002 fallback plan.
+
+## Provision a ServiceNow developer instance for WorkArena++ live evaluation
+ID: S-0003-02
+Priority: high
+Kind: dataset
+Source task: t0003_download_benchmark_subsets
+WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the upstream task-class manifest. Provision a free ServiceNow developer instance, request HF access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2 fallback.
+
 ## Run a Phase 1 pilot annotation on 20 tasks before scaling to 100
 ID: S-0002-08
 Priority: medium
@@ -254,12 +271,33 @@ Kind: library
 Source task: t0002_literature_survey_granularity_conditioning
 All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset&#x27;s files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.
 
+## Sensitivity-check the SWE-bench Verified 4-8-hunks subset against [3, 12]
+ID: S-0003-03
+Priority: medium
+Kind: evaluation
+Source task: t0003_download_benchmark_subsets
+The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks. The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo distributions; this informs whether the 4-8 boundary is too narrow for Phase 2&#x27;s atomic-edit experiments.
+
+## Derive step graphs for FrontierScience-Olympiad rows
+ID: S-0003-04
+Priority: medium
+Kind: experiment
+Source task: t0003_download_benchmark_subsets
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
 ## Defer Reflexion-style episodic memory to a Phase 3 ablation
 ID: S-0002-10
 Priority: low
 Kind: experiment
 Source task: t0002_literature_survey_granularity_conditioning
 Reflexion [Shinn2023] adds verbal self-reflection across trials and reaches 91% pass@1 on HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would conflate scope conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether Reflexion-style memory adds further gains on top of the scope-aware (A) condition established in Phase 2.
+
+## Add a write-library task for shared dataset-asset writers
+ID: S-0003-05
+Priority: low
+Kind: library
+Source task: t0003_download_benchmark_subsets
+This task wrote the `code/dataset_asset.py` helper inline, but the same DatasetDetails / write_dataset_asset helpers will be needed by every future download-dataset task. Promote this code to a registered library asset (under a future task) so subsequent tasks can import the helpers via `assets/library/` rather than re-implementing them.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
@@ -362,8 +400,46 @@ Least-to-Most (LtM) prompting is a two-stage prompting technique designed to ove
     <section id="datasets" source_kind="aggregator">
       <title>Datasets</title>
       <source_name>aggregate_datasets_full</source_name>
+      <source_ids>
+        <id>frontierscience-olympiad-subset</id>
+        <id>swebench-verified-subset</id>
+        <id>taubench-subset</id>
+        <id>workarena-plus-plus-subset</id>
+      </source_ids>
       <content>
-Datasets: 0
+Datasets: 4
+
+## FrontierScience-Olympiad subset (pilot v0)
+ID: frontierscience-olympiad-subset
+Year: 2026
+Access: public
+Added by task: t0003_download_benchmark_subsets
+Size: 40 Olympiad-style problems (physics, chemistry, biology) packaged from the project pilot annotation run; per-domain: biology=15, chemistry=10, physics=15
+The FrontierScience-Olympiad subset (pilot v0) packages 40 Olympiad-style problems spanning physics, chemistry, and biology, sourced from the project&#x27;s pilot annotation run. Every row contains the full problem text, gold solution, and annotation metadata. The subset is the canonical FrontierScience-Olympiad source for the project&#x27;s Phase 2 scope-aware vs. scope-unaware baseline experiment. FrontierMath itself (the...
+
+## SWE-bench Verified subset (4-8 hunks)
+ID: swebench-verified-subset
+Year: 2024
+Access: public
+Added by task: t0003_download_benchmark_subsets
+Size: 60 instances filtered from 500 SWE-bench Verified instances (kept iff gold patch has between 4 and 8 `@@` hunks)
+This SWE-bench Verified subset contains 60 GitHub-issue-driven patch tasks filtered from the 500-instance Verified release to those whose gold patch has 4 to 8 diff hunks (the project&#x27;s canonical multi-step decision range). Each row preserves the upstream Verified schema verbatim, including problem statement, gold patch, test patch, and the FAIL_TO_PASS / PASS_TO_PASS test name lists. For this project, the subset is...
+
+## tau-bench subset (4-8 actions)
+ID: taubench-subset
+Year: 2024
+Access: public
+Added by task: t0003_download_benchmark_subsets
+Size: 87 tasks filtered from 665 upstream tau-bench tasks (kept iff gold action sequence has between 4 and 8 actions)
+This tau-bench subset contains 87 tasks from the upstream Sierra Research tau-bench repository, filtered to the 4-8 actions per task range. Tasks span the airline customer-service and retail return/exchange domains. Metadata is extracted from upstream Python source files using the `ast` module, so this asset works fully offline once the source files are downloaded. For this project, the subset is the primary tool-use...
+
+## WorkArena++ compositional task manifest
+ID: workarena-plus-plus-subset
+Year: 2024
+Access: restricted
+Added by task: t0003_download_benchmark_subsets
+Size: 42 compositional task class lists from the upstream curriculum manifest. Task instances are not enumerated (requires live ServiceNow + gated HF).
+This dataset asset packages the WorkArena++ compositional task class manifest (42 task class lists) extracted from the upstream `tasks/compositional/utils/curriculum.py` source. End-to-end task instantiation requires a live ServiceNow developer instance plus access to the `ServiceNow/WorkArena-Instances` gated HuggingFace dataset; this access is treated as out of scope for this download task and is documented as a...
       </content>
     </section>
     <section id="libraries" source_kind="aggregator">

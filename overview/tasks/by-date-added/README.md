@@ -8,23 +8,27 @@
 
 ## 2026-04-29 (3)
 
-## ⏹ Not Started
+## ✅ Completed
 
 <details>
-<summary>⏹ 0003 — <strong>Download benchmark subsets for the four roadmap
+<summary>✅ 0003 — <strong>Download benchmark subsets for the four roadmap
 sources</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0003_download_benchmark_subsets` |
-| **Status** | not_started |
+| **Status** | completed |
 | **Effective date** | 2026-04-29 |
 | **Dependencies** | — |
 | **Expected assets** | 4 dataset |
 | **Source suggestion** | — |
 | **Task types** | [`download-dataset`](../../../meta/task_types/download-dataset/) |
+| **Start time** | 2026-04-29T14:30:55Z |
+| **End time** | 2026-04-29T14:58:30Z |
+| **Step progress** | 8/15 |
 | **Task page** | [Download benchmark subsets for the four roadmap sources](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
 | **Task folder** | [`t0003_download_benchmark_subsets/`](../../../tasks/t0003_download_benchmark_subsets/) |
+| **Detailed report** | [results_detailed.md](../../../tasks/t0003_download_benchmark_subsets/results/results_detailed.md) |
 
 # Download Benchmark Subsets
 
@@ -94,9 +98,38 @@ Estimated cost: USD 0.
   `project/data/annotation_pilot/tasks_annotated.jsonl` documents the proxy decisions this
   task must either resolve or formalise.
 
-</details>
+**Results summary:**
 
-## ✅ Completed
+> **Results Summary: Download Benchmark Subsets**
+>
+> **Summary**
+>
+> Acquired four benchmark subsets covering the project's roadmap sources
+> (FrontierScience-Olympiad,
+> WorkArena++, SWE-bench Verified, tau-bench). Three were downloaded directly from public
+> sources;
+> WorkArena++ instance enumeration is gated on a live ServiceNow developer instance, so its
+> asset
+> captures the upstream curriculum manifest only and freezes the Mind2Web pilot proxy as the
+> de-facto
+> Phase 2 fallback. All four dataset assets pass `verify_dataset_asset` with zero errors.
+>
+> **Metrics**
+>
+> * **4 of 4** dataset assets created and passing `verify_dataset_asset` (zero errors, zero
+>   warnings).
+> * **FrontierScience-Olympiad subset**: **40** problems (15 physics, 10 chemistry, 15
+>   biology),
+> packaged from pilot rows; status **success** (FrontierMath upstream still gated).
+> * **WorkArena++ subset**: **42** compositional task class lists extracted from upstream
+> `curriculum.py`; status **success (manifest only)**, instance enumeration deferred and
+> Mind2Web
+> pilot proxy frozen.
+> * **SWE-bench Verified subset**: **60** instances filtered from **500** Verified using the
+>   4-8 hunks
+> rule; status **success**.
+
+</details>
 
 <details>
 <summary>✅ 0002 — <strong>Literature survey: granularity conditioning and
