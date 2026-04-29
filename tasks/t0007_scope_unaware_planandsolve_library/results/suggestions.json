@@ -1,0 +1,45 @@
+{
+  "spec_version": "1",
+  "suggestions": [
+    {
+      "id": "S-0007-01",
+      "title": "Implement matched-mismatch (C) library on top of scope_unaware_planandsolve_v1",
+      "description": "Create a third agent library that wraps scope_unaware_planandsolve_v1 (or scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity, producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory schema. The classifier should be a small fine-tuned model or heuristic so the task is local-only and deterministic.",
+      "kind": "library",
+      "priority": "high",
+      "source_task": "t0007_scope_unaware_planandsolve_library",
+      "source_paper": null,
+      "categories": ["hierarchical-planning", "granularity-conditioning", "agent-evaluation"]
+    },
+    {
+      "id": "S-0007-02",
+      "title": "Phase 2 A-vs-B-vs-C evaluation harness",
+      "description": "Build the experiment harness that runs all three libraries (scope_aware_react_v1, scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and computing the registered metrics task_success_rate, avg_decisions_per_task, and overconfident_error_rate per condition. The harness must depend on this library only via the trajectory schema, never via internal helpers, to preserve isolation.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0007_scope_unaware_planandsolve_library",
+      "source_paper": "10.48550_arXiv.2305.04091",
+      "categories": ["agent-evaluation", "hierarchical-planning", "granularity-conditioning"]
+    },
+    {
+      "id": "S-0007-03",
+      "title": "Schema-parity dedup task between t0006 and t0007",
+      "description": "After t0006 (scope_aware_react_v1) merges, run a small deduplication-style task that imports both libraries' TRAJECTORY_RECORD_FIELDS tuples and asserts they are identical, plus a smoke test that runs both libraries on the same toy problem and verifies the trajectory JSON shapes round-trip through a single Pydantic loader. If they diverge, file a correction in the later-merged task. This is the cheapest insurance against silent schema drift.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0007_scope_unaware_planandsolve_library",
+      "source_paper": null,
+      "categories": ["agent-evaluation", "granularity-conditioning"]
+    },
+    {
+      "id": "S-0007-04",
+      "title": "Re-download Wang2023 PDF and verify the verbatim PS+ prompt text",
+      "description": "The PS+ instruction string in scope_unaware_planandsolve_v1 was sourced through the t0002 paper summary, which was itself grounded only in the abstract because the PDF download failed in t0002. A small download-paper task should re-attempt the download against arXiv:2305.04091 and verify that the prompt text in code/planandsolve.py matches the published version verbatim. If it diverges, file a correction.",
+      "kind": "evaluation",
+      "priority": "low",
+      "source_task": "t0007_scope_unaware_planandsolve_library",
+      "source_paper": "10.48550_arXiv.2305.04091",
+      "categories": ["hierarchical-planning"]
+    }
+  ]
+}
