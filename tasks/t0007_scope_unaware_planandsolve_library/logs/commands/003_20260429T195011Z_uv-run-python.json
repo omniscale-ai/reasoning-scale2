@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0007_scope_unaware_planandsolve_library",
+  "command": "uv run python -m arf.scripts.verificators.verify_plan t0007_scope_unaware_planandsolve_library",
+  "exit_code": 0,
+  "duration_seconds": 0.069,
+  "started_at": "2026-04-29T19:50:11Z",
+  "completed_at": "2026-04-29T19:50:11Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0007_scope_unaware_planandsolve_library",
+  "stdout_file": "003_20260429T195011Z_uv-run-python.stdout.txt",
+  "stderr_file": "003_20260429T195011Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}

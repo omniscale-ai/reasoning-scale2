@@ -1,0 +1,29 @@
+UP040 Type alias `ModelCall` uses `TypeAlias` annotation instead of the `type` keyword
+   --> tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py:149:1
+    |
+149 | ModelCall: TypeAlias = Callable[[str], str]
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+150 | """Callable that takes a prompt and returns a model response."""
+    |
+help: Use the `type` keyword
+
+UP040 Type alias `Tool` uses `TypeAlias` annotation instead of the `type` keyword
+   --> tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py:153:1
+    |
+153 | Tool: TypeAlias = Callable[[str], str]
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+154 | """Callable that takes an argument string and returns an observation string."""
+    |
+help: Use the `type` keyword
+
+UP040 Type alias `ToolRegistry` uses `TypeAlias` annotation instead of the `type` keyword
+   --> tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py:157:1
+    |
+157 | ToolRegistry: TypeAlias = dict[str, Tool]
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+158 | """Mapping of tool name to a callable returning an observation string."""
+    |
+help: Use the `type` keyword
+
+Found 5 errors (2 fixed, 3 remaining).
+No fixes available (3 hidden fixes can be enabled with the `--unsafe-fixes` option).

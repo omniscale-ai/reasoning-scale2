@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0007_scope_unaware_planandsolve_library",
+  "command": "uv run ruff check tasks/t0007_scope_unaware_planandsolve_library/code/",
+  "exit_code": 0,
+  "duration_seconds": 0.032,
+  "started_at": "2026-04-29T19:53:00Z",
+  "completed_at": "2026-04-29T19:53:00Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0007_scope_unaware_planandsolve_library",
+  "stdout_file": "008_20260429T195300Z_uv-run-ruff.stdout.txt",
+  "stderr_file": "008_20260429T195300Z_uv-run-ruff.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}
