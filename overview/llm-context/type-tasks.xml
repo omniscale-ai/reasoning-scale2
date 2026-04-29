@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T13:44:19Z">
+  <archive_summary>
+    <title>All Tasks</title>
+    <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
+    <section_count>1</section_count>
+    <char_count>14921</char_count>
+    <byte_count>14945</byte_count>
+    <estimated_tokens>3730</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>all tasks with full descriptions and results summaries</item>
+  </included_content>
+  <sections>
+    <section id="full-tasks" source_kind="aggregator">
+      <title>All Tasks (Full Detail)</title>
+      <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0001_brainstorm_results_1</id>
+        <id>t0002_literature_survey_granularity_conditioning</id>
+        <id>t0003_download_benchmark_subsets</id>
+      </source_ids>
+      <content>
+Total tasks: 3
+
+## Brainstorm session 1: plan first project tasks
+ID: t0001_brainstorm_results_1
+Status: completed
+Effective date: 2026-04-29
+Short description: Plan first tasks for the granularity-aware hierarchical agents project: literature survey and benchmark dataset download.
+Task types: brainstorming
+Start time: 2026-04-29T00:00:00Z
+End time: 2026-04-29T00:00:00Z
+
+#### Context
+
+This is the first brainstorm session for the granularity-aware hierarchical agents project, executed
+inline as part of `/setup-project` immediately after `meta/` was populated. The project has no
+completed tasks, no suggestions, and no answer assets, so the session focused on Round 1 (propose
+first tasks). Rounds 2 (suggestion cleanup) and 3 (confirmation) had nothing to clean up and
+proceeded straight to confirmation.
+
+#### Decisions
+
+The researcher accepted two child tasks for immediate creation:
+
+* `t0002_literature_survey_granularity_conditioning` — survey papers on granularity / scope / scale
+  conditioning in LLM agents, hierarchical task decomposition, and uncertainty calibration metrics.
+* `t0003_download_benchmark_subsets` — wire up access to subsets of the four roadmap benchmarks
+  (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench) at difficulty 4-8 decisions
+  per task.
+
+Two further candidate tasks (`hierarchical_annotation_pilot` and
+`baseline_scope_experiment_smoke_test`) were discussed in detail but deferred — the researcher will
+review T1 and T2 outputs before committing.
+
+#### Why these tasks first
+
+T1 and T2 are independent and low-cost. T1 anchors later planning decisions in the literature; T2
+unblocks every Phase 1 annotation extension and every Phase 2/3 experiment. Running them in parallel
+keeps the project moving while preserving the option to redirect after the literature survey.
+
+#### Out-of-band notes
+
+* `project/data/annotation_pilot/tasks_annotated.jsonl` already contains 115 LLM-annotated rows, but
+  tau-bench and WorkArena++ rows use HumanEval and Mind2Web proxies because the real benchmarks were
+  &quot;unavailable on HF&quot; at original-annotation time. T2 must address this directly.
+* The `available_services` list dropped `openai_api` during setup because no API key was provided;
+  `anthropic_api` remains. T1 and T2 should plan their LLM use accordingly.
+
+### Results Summary
+
+#### Summary
+
+The first brainstorm session for the granularity-aware hierarchical agents project produced two new
+not-started tasks (literature survey and benchmark download) and deferred two further candidates
+pending the literature-survey output. No suggestions, corrections, or answer assets were produced;
+the project is brand new and the suggestion backlog is empty.
+
+#### Session Overview
+
+* **Date**: 2026-04-29
+* **Context**: Inline brainstorm executed by `/setup-project` immediately after `meta/` was
+  populated. Project repository was a fresh fork of the Glite ARF template.
+* **Prompt**: Translate the project description and four-phase roadmap into concrete first tasks the
+  researcher can launch.
+
+#### Decisions
+
+1. **Create `t0002_literature_survey_granularity_conditioning`**. Survey the literature on
+   granularity / scope conditioning for LLM agents, hierarchical task decomposition, and uncertainty
+   calibration metrics. Anchors all later planning decisions.
+2. **Create `t0003_download_benchmark_subsets`**. Wire up subsets of FrontierScience-Olympiad,
+   WorkArena++, SWE-bench Verified, and tau-bench at 4-8 decisions per task. Unblocks every Phase 1
+   annotation extension and every Phase 2/3 experiment.
+3. **Defer `hierarchical_annotation_pilot`** (T3 candidate). Existing pilot data covers 115 rows but
+   uses HumanEval and Mind2Web proxies for tau-bench and WorkArena++; the decision on whether to
+   replace those with real data depends on the literature survey&#x27;s findings about benchmark
+   importance. Will revisit after T1 lands.
+4. **Defer `baseline_scope_experiment_smoke_test`** (T4 candidate). Depends on T3, and is only
+   useful once we have the annotated dataset asset. Will revisit after T3 is created.
+5. **No suggestions to reject or reprioritize**. The project&#x27;s suggestion backlog is empty.
+
+#### Metrics
+
+| Item | Count |
+| --- | --- |
+| New tasks created | 2 |
+| Suggestions covered by new tasks | 0 |
+| Suggestions rejected | 0 |
+| Suggestions reprioritized | 0 |
+| Corrections written | 0 |
+| Answer assets produced | 0 |
+
+#### Verification
+
+* `verify_task_file` — t0001, t0002, t0003 all PASSED.
+* `verify_corrections` — t0001 PASSED (no corrections).
+* `verify_suggestions` — t0001 PASSED (empty suggestions list).
+* `verify_logs` — t0001 PASSED (warnings LG-W005, LG-W007, LG-W008 acceptable for a planning task on
+  a fresh fork).
+
+#### Next Steps
+
+* Execute T1 (`t0002_literature_survey_granularity_conditioning`) and T2
+  (`t0003_download_benchmark_subsets`) in parallel; both are independent and low-cost.
+* After T1 completes, run a follow-up brainstorm to decide whether T3
+  (`hierarchical_annotation_pilot`) should replace the proxy benchmark rows or accept them.
+* T4 (`baseline_scope_experiment_smoke_test`) is queued behind T3.
+
+## Literature survey: granularity conditioning and hierarchical agents
+ID: t0002_literature_survey_granularity_conditioning
+Status: not_started
+Effective date: 2026-04-29
+Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+Task types: literature-survey
+
+#### Motivation
+
+The project&#x27;s central hypothesis is that explicitly conditioning an LLM agent on its current
+operating granularity (global / subtask / atomic) improves task success, calibration, and
+request-vs-act discrimination. Before designing the Phase 2 baseline experiment we need literature
+grounding on three threads: how prior work has framed and operationalised &quot;granularity&quot; or &quot;scope&quot;
+labels for hierarchical agents, what hierarchical task decomposition schemas exist in the four
+benchmark sources, and which uncertainty-calibration metrics have been used in agent settings (in
+particular, definitions and prior measurements of the overconfident error rate). The survey output
+anchors every later planning decision and lets us cite prior work in the Phase 4 paper-ready report.
+
+#### Scope
+
+* Granularity / scope / scale conditioning in LLM agents and prompt engineering. Include any work
+  that varies the level of abstraction at which an agent receives its instructions, even if the
+  authors do not use the word &quot;granularity&quot;.
+* Hierarchical task decomposition: papers proposing two-, three-, or n-level decompositions for
+  benchmarks similar to those in this project (FrontierScience-Olympiad, WorkArena++, SWE-bench
+  Verified, tau-bench).
+* Uncertainty calibration in LLM agents: confidence elicitation methods, definitions of
+  overconfident error rate, calibration plots and metrics, and prior reports on how calibration
+  changes with prompt design.
+* The four roadmap benchmarks themselves: their official task structures, scoring conventions, and
+  any published results that bracket what counts as competitive performance.
+
+Out of scope: training-time techniques (RL, gradient-based fine-tuning), non-English benchmarks,
+production deployment papers — all consistent with the project&#x27;s Out of Scope section.
+
+#### Approach
+
+1. Run the standard `/research-papers` and `/research-internet` stages with the three thread queries
+   above. Use the `download-paper` skill for any candidate paper found via search.
+2. Produce paper assets under `assets/paper/` for at least 10 highly relevant papers, each with a
+   summary that conforms to the paper asset specification.
+3. Aggregate findings into `research/research_papers.md` with a section per thread: granularity
+   conditioning, hierarchical decomposition, calibration metrics, benchmark grounding.
+4. Connect each thread back to the project&#x27;s research questions and explicitly flag (a) any prior
+   work that already answers a research question, (b) any methodological choices the survey resolves
+   for Phase 2, and (c) any open questions to surface as suggestions.
+
+#### Expected Outputs
+
+* At least 10 paper assets under `assets/paper/&lt;paper_id&gt;/` with `details.json`, summary, and PDF or
+  markdown file.
+* `research/research_papers.md` and `research/research_internet.md` synthesising the survey.
+* `results/results_summary.md` with a thread-by-thread takeaway and explicit follow-up suggestions
+  for the next brainstorm session (typically: which benchmarks to deprioritise, which conditioning
+  prompts to adopt, which calibration metric to register as a project metric).
+* `results/suggestions.json` with concrete follow-up ideas surfaced by the survey.
+
+#### Compute and Budget
+
+No GPU. Anthropic API only (the project&#x27;s `available_services` list dropped `openai_api` until an
+API key is provided). Estimated cost: under 5 USD for paper summarisation through Claude.
+
+#### Dependencies and Cross-References
+
+* No task dependencies. Independent of T2.
+* Reads `project/description.md` for research questions and success criteria.
+* The project&#x27;s pre-existing `project/data/annotation_pilot/tasks_annotated.jsonl` should be
+  inspected during the survey to ground discussion of benchmark coverage.
+
+#### Key Questions
+
+1. What prior work explicitly compares scope-aware vs. scope-unaware vs. scope-mismatched LLM agents
+   on multi-step benchmarks, and what effect sizes did they report?
+2. What definitions of &quot;overconfident error rate&quot; exist in the agent calibration literature, and
+   which is most appropriate for our Metric 2 specification?
+3. What hierarchical decomposition schemas are already published for FrontierScience-Olympiad,
+   WorkArena++, SWE-bench Verified, and tau-bench, and how do they map to our global / subtask /
+   atomic split?
+4. Are the WorkArena++ and tau-bench benchmarks truly inaccessible (as the existing pilot data
+   suggests), or are there standard distribution channels we missed?
+
+## Download benchmark subsets for the four roadmap sources
+ID: t0003_download_benchmark_subsets
+Status: not_started
+Effective date: 2026-04-29
+Short description: Wire up access to FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, and tau-bench subsets at 4-8 decisions per task.
+Task types: download-dataset
+
+#### Motivation
+
+Phase 1 (annotation) and Phase 2 (baseline scope-aware vs. scope-unaware experiment) both depend on
+having local, reproducible subsets of the four roadmap benchmarks. The existing pilot annotation
+data uses HumanEval and Mind2Web proxies for tau-bench and WorkArena++ because the real benchmarks
+were &quot;unavailable on HF&quot; at original-annotation time. This task either resolves that gap by
+acquiring the real benchmarks or, if access is genuinely unavailable, documents the decision to keep
+proxies and freezes the choice for Phase 2.
+
+#### Scope
+
+Acquire four benchmark subsets, each targeted at multi-step tasks of 4-8 decisions per task to match
+the project&#x27;s stated difficulty range:
+
+* FrontierScience-Olympiad — full official distribution path; subset by domain to match the pilot&#x27;s
+  physics / chemistry / biology focus.
+* WorkArena++ — official distribution. If genuinely inaccessible (gated, retired, dataset moved),
+  document the access attempt and keep the Mind2Web proxy already present in the pilot.
+* SWE-bench Verified — official Princeton/HF distribution; subset to instances that map cleanly onto
+  the project&#x27;s three-level hierarchy.
+* tau-bench — official distribution. If genuinely inaccessible, keep the HumanEval proxy with
+  documented justification.
+
+Out of scope: full benchmark execution harnesses (those belong in later experiment-run tasks),
+custom annotation (that belongs in T3 hierarchical-annotation pilot), and modifications of benchmark
+data (subsetting only, no relabelling).
+
+#### Approach
+
+1. For each benchmark, attempt the official distribution path documented in its source paper or
+   GitHub README. Cache successful downloads under the task&#x27;s `assets/dataset/&lt;slug&gt;/files/`.
+2. Subset to 4-8 decisions per task using whatever per-instance step or step-count metadata the
+   benchmark provides. If no such metadata exists, sample uniformly and document the sampling seed.
+3. Produce one dataset asset per benchmark with `details.json` describing source URL, version,
+   license, sample count, and subset selection criteria.
+4. If a benchmark is inaccessible, write the access attempt log to the dataset asset&#x27;s
+   `details.json` with `download_status: &quot;failed&quot;` and a clear `download_failure_reason`. The
+   project&#x27;s policy in this case is to keep the existing pilot proxy and not block on access.
+5. Emit follow-up suggestions for any benchmark whose access pathway is non-obvious or whose
+   subsetting choice deserves a Phase 2 sensitivity check.
+
+#### Expected Outputs
+
+* Four dataset assets under
+  `assets/dataset/{frontierscience,workarena_plus_plus,swebench_verified, taubench}/` with
+  `details.json` and `files/` directories (or empty `files/` plus a clear failed status if
+  inaccessible).
+* `results/results_summary.md` with a per-benchmark access status, sample count, and any subset
+  decisions.
+* `results/suggestions.json` flagging any benchmarks where the proxy choice is now permanent.
+
+#### Compute and Budget
+
+No GPU. No paid API calls anticipated. All work is local downloads and metadata writing. Estimated
+cost: USD 0.
+
+#### Dependencies and Cross-References
+
+* No task dependencies. Independent of T1.
+* Cross-references: existing pilot annotation data at
+  `project/data/annotation_pilot/tasks_annotated.jsonl` documents the proxy decisions this task must
+  either resolve or formalise.
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>

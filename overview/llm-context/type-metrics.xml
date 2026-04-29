@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive type_id="metrics" generated_at_utc="2026-04-29T13:44:19Z">
+  <archive_summary>
+    <title>All Metrics</title>
+    <description>Complete metric definitions with full descriptions, units, and associated datasets.</description>
+    <section_count>1</section_count>
+    <char_count>1986</char_count>
+    <byte_count>1986</byte_count>
+    <estimated_tokens>496</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>all metrics with full descriptions</item>
+  </included_content>
+  <sections>
+    <section id="full-metrics" source_kind="aggregator">
+      <title>All Metrics (Full Detail)</title>
+      <source_name>aggregate_metrics_full</source_name>
+      <source_ids>
+        <id>avg_decisions_per_task</id>
+        <id>overconfident_error_rate</id>
+        <id>task_success_rate</id>
+      </source_ids>
+      <content>
+Metrics: 3
+
+## Average Decisions per Task
+Key: avg_decisions_per_task
+Unit: count
+Value type: float
+Version: 1
+
+Mean number of agent decisions executed per task in a run, reported per condition. Informational diagnostic that exposes replanning behavior and depth of execution; not a leaderboard metric.
+
+## Overconfident Error Rate
+Key: overconfident_error_rate
+Unit: ratio
+Value type: float
+Version: 1
+
+Project Metric 2: fraction of incorrect actions taken with high model-reported confidence on the composite annotated benchmark, reported per condition (A scope-aware, B scope-unaware, C scope-mismatched). Lower values indicate better calibration.
+
+## Task Success Rate
+Key: task_success_rate
+Unit: accuracy
+Value type: float
+Version: 1
+
+Project Metric 1: normalized fraction of fully solved tasks (or binary success on the full task) on the composite annotated benchmark, reported per condition (A scope-aware, B scope-unaware, C scope-mismatched).
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>
