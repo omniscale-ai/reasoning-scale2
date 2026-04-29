@@ -50,8 +50,8 @@
       "step": 6,
       "name": "research-code",
       "description": "Survey existing project libraries and prior code to avoid duplicating ReAct primitives or trajectory-logging utilities.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T19:53:44Z",
       "completed_at": null,
       "log_file": "logs/steps/006_research-code/"
     },
