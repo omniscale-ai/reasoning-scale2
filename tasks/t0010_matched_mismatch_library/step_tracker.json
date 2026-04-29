@@ -32,9 +32,9 @@
       "step": 4,
       "name": "research-papers",
       "description": "Read t0007 TRAJECTORY_RECORD_FIELDS schema and t0006 scope-aware library, plus relevant papers.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T23:31:41Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T23:32:12Z",
       "log_file": "logs/steps/004_research-papers/"
     },
     {
