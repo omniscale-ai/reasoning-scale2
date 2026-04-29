@@ -122,8 +122,8 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up suggestions including benchmark-specific tool registries and Phase 2 experiment integration.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T20:05:45Z",
       "completed_at": null,
       "log_file": "logs/steps/014_suggestions/"
     },
