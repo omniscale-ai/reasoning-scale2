@@ -59,9 +59,9 @@
       "step": 7,
       "name": "planning",
       "description": "Design API surface, prompt template, parser, and test matrix.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T23:32:11Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T23:33:58Z",
       "log_file": "logs/steps/007_planning/"
     },
     {
