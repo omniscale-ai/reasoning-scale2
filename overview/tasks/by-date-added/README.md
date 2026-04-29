@@ -8,206 +8,22 @@
 
 ## 2026-04-29 (7)
 
-## ⏹ Not Started
+## ⏳ In Progress
 
 <details>
-<summary>⏹ 0007 — <strong>Scope-unaware Plan-and-Solve library: condition B
-baseline</strong></summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `t0007_scope_unaware_planandsolve_library` |
-| **Status** | not_started |
-| **Effective date** | 2026-04-29 |
-| **Dependencies** | — |
-| **Expected assets** | 1 library |
-| **Source suggestion** | `S-0002-06` |
-| **Task types** | [`write-library`](../../../meta/task_types/write-library/) |
-| **Task page** | [Scope-unaware Plan-and-Solve library: condition B baseline](../../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
-| **Task folder** | [`t0007_scope_unaware_planandsolve_library/`](../../../tasks/t0007_scope_unaware_planandsolve_library/) |
-
-# Scope-Unaware Plan-and-Solve Library (Condition B)
-
-## Motivation
-
-The literature survey in t0002 identified Plan-and-Solve (Wang2023) as the strongest published
-prompt-only baseline that does not condition on explicit granularity tags. It is therefore the
-canonical scope-unaware (B) baseline for the project's A-vs-B-vs-C comparison. This task
-produces the matching library asset, sharing the trajectory-log schema with t0006 so a Phase 2
-experiment can run both libraries against the same harness without bespoke glue. Implements
-suggestion S-0002-06.
-
-## Scope
-
-* Implement a library asset under `assets/library/scope_unaware_planandsolve_v1/` exposing a
-  `PlanAndSolveAgent` class that:
-  * Accepts a problem statement, a tool registry, and a model-call callable.
-  * Generates a free-form numbered plan, then executes each step sequentially through a
-    Plan-and-Execute loop.
-  * Emits trajectory records in the same schema as `scope_aware_react_v1` so both libraries
-    are drop-in interchangeable. The `granularity` field in the schema is filled with the
-    literal string `"unspecified"` to mark the B condition.
-  * Logs every step's `{turn_index, granularity, thought, action, observation, confidence}`.
-  * Supports a deterministic-test mode that accepts pre-recorded model outputs.
-* Adapt LangChain's `Plan-and-Execute` reference implementation rather than re-implementing
-  from scratch. License is Apache 2.0; record attribution in `description.md`.
-* Provide pytest coverage at
-  `tasks/t0007_scope_unaware_planandsolve_library/code/test_planandsolve.py` covering: plan
-  parsing, sequential execution, trajectory schema parity with t0006, finish detection, and
-  error recovery on malformed model output.
-
-Out of scope: actual A-vs-B-vs-C experiment, benchmark-specific tool registries, remote
-execution.
-
-## Approach
-
-1. Read t0002's Wang2023 paper summary and the LangChain Plan-and-Execute source to ground the
-   prompt template and execution loop.
-2. Implement the library in
-   `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` and re-export the
-   public API from `assets/library/scope_unaware_planandsolve_v1/library/`.
-3. Reuse the trajectory log schema defined in t0006 by reading t0006's library when it lands;
-   if t0006 has not landed yet, define the schema here and document that t0006 must conform.
-4. Write `details.json`, `description.md`, and `files/` for the asset.
-5. Run `verify_library_asset` and the test suite.
-
-## Expected Outputs
-
-* `assets/library/scope_unaware_planandsolve_v1/` with `details.json`, `description.md`,
-  `files/`.
-* `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` and tests.
-* `results/results_summary.md` with API surface description and test summary.
-* Follow-up suggestion for the matched mismatch (C) library.
-
-## Compute and Budget
-
-No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
-
-## Dependencies and Cross-References
-
-* No task dependencies. May reference t0006's library if it merges first; otherwise this task
-  defines the trajectory schema and t0006 must conform.
-* References Wang2023 paper asset (`10.48550_arXiv.2305.04091`) from t0002.
-
-## Source Suggestion
-
-S-0002-06 — "Implement Plan-and-Solve as the canonical scope-unaware (B) baseline."
-
-## Key Questions
-
-1. What plan format does Plan-and-Solve produce, and how should it be parsed
-   deterministically?
-2. How should the library mark the absence of a granularity tag in the trajectory record?
-3. What is the minimal API surface that lets a Phase 2 harness swap between this and t0006's
-   library by changing only one line?
-
-</details>
-
-<details>
-<summary>⏹ 0006 — <strong>Scope-aware ReAct library: condition A with explicit
-granularity tags</strong></summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `t0006_scope_aware_react_library` |
-| **Status** | not_started |
-| **Effective date** | 2026-04-29 |
-| **Dependencies** | — |
-| **Expected assets** | 1 library |
-| **Source suggestion** | `S-0002-07` |
-| **Task types** | [`write-library`](../../../meta/task_types/write-library/) |
-| **Task page** | [Scope-aware ReAct library: condition A with explicit granularity tags](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
-| **Task folder** | [`t0006_scope_aware_react_library/`](../../../tasks/t0006_scope_aware_react_library/) |
-
-# Scope-Aware ReAct Library (Condition A)
-
-## Motivation
-
-The project's main hypothesis is that explicit granularity conditioning improves agent
-performance. The literature survey in t0002 identified ReAct (Yao2022) as the canonical
-foundation for the scope-aware (A) condition. This task produces a self-contained library that
-extends ReAct with a `{global, subtask, atomic}` granularity tag emitted at every Thought /
-Action turn, plus a logging hook that records the active tag alongside the model's confidence.
-The library is the substrate every Phase 2 A-condition experiment will import. Implements
-suggestion S-0002-07.
-
-## Scope
-
-* Implement a library asset under `assets/library/scope_aware_react_v1/` exposing a
-  `ScopeAwareReactAgent` class that:
-  * Accepts a problem statement, a fixed `granularity` argument (`"global" | "subtask" |
-    "atomic"`), a tool registry, and a model-call callable.
-  * Loops Thought / Action / Observation steps, prepending the active granularity tag to every
-    Thought emission, and parses Action JSON until the agent emits a `Finish` action.
-  * Logs every step's `{turn_index, granularity, thought, action, observation, confidence}` to
-    a JSONL trajectory file the experiment harness can replay.
-  * Supports a deterministic-test mode that accepts pre-recorded model outputs.
-* Provide pytest coverage at
-  `tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py` covering: tag
-  injection, action parsing, finish detection, error recovery on malformed JSON, and
-  trajectory logging integrity.
-
-Out of scope: the actual A-vs-B-vs-C experiment (a separate experiment-run task), benchmark-
-specific tool registries (also a separate task), and any remote-execution wiring.
-
-## Approach
-
-1. Read t0002's `research/research_papers.md` and the Yao2022 paper summary to ground the
-   prompt format. Reuse LangChain's ReAct prompt where appropriate; the project licence is
-   Apache 2.0.
-2. Implement the library in `tasks/t0006_scope_aware_react_library/code/scope_aware_react.py`
-   and re-export the public API from a `library/__init__.py` shim under `assets/library/
-   scope_aware_react_v1/`.
-3. Write the asset's `details.json`, `description.md`, and `files/` directory with the
-   runnable source.
-4. Write tests as deterministic unit tests; no live API calls.
-5. Run `verify_library_asset` and the test suite.
-
-## Expected Outputs
-
-* `assets/library/scope_aware_react_v1/` with `details.json`, `description.md`, and `files/`.
-* `tasks/t0006_scope_aware_react_library/code/scope_aware_react.py` and matching test file.
-* `results/results_summary.md` with API surface description and test summary.
-* Follow-up suggestion for benchmark-specific tool registries.
-
-## Compute and Budget
-
-No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
-
-## Dependencies and Cross-References
-
-* No task dependencies.
-* References Yao2022 paper asset (`10.48550_arXiv.2210.03629`) from t0002.
-* Sister task `t0007_scope_unaware_planandsolve_library` produces the matched B baseline; both
-  must follow the same trajectory-logging schema so a Phase 2 experiment can consume both.
-
-## Source Suggestion
-
-S-0002-07 — "Implement scope-aware (A) as ReAct extended with explicit granularity tags."
-
-## Key Questions
-
-1. What is the minimal extension to ReAct's prompt template that reliably elicits a
-   granularity tag on every Thought emission?
-2. How should the library handle a model that refuses to emit a tag (back off, abort, or
-   default to `atomic`)?
-3. What schema for the trajectory log lets t0007 emit identical-shape records?
-
-</details>
-
-<details>
-<summary>⏹ 0005 — <strong>Hierarchical annotation pilot v1: audit and conform
+<summary>⏳ 0005 — <strong>Hierarchical annotation pilot v1: audit and conform
 existing 115 rows</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0005_hierarchical_annotation_pilot_v1` |
-| **Status** | not_started |
+| **Status** | in_progress |
 | **Effective date** | 2026-04-29 |
 | **Dependencies** | — |
 | **Expected assets** | 1 dataset |
 | **Source suggestion** | `S-0002-08` |
 | **Task types** | [`hierarchical-annotation`](../../../meta/task_types/hierarchical-annotation/) |
+| **Start time** | 2026-04-29T19:35:28Z |
 | **Task page** | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
 | **Task folder** | [`t0005_hierarchical_annotation_pilot_v1/`](../../../tasks/t0005_hierarchical_annotation_pilot_v1/) |
 
@@ -296,7 +112,221 @@ from scratch.
 
 </details>
 
+<details>
+<summary>⏳ 0006 — <strong>Scope-aware ReAct library: condition A with explicit
+granularity tags</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0006_scope_aware_react_library` |
+| **Status** | in_progress |
+| **Effective date** | 2026-04-29 |
+| **Dependencies** | — |
+| **Expected assets** | 1 library |
+| **Source suggestion** | `S-0002-07` |
+| **Task types** | [`write-library`](../../../meta/task_types/write-library/) |
+| **Start time** | 2026-04-29T19:35:38Z |
+| **Task page** | [Scope-aware ReAct library: condition A with explicit granularity tags](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Task folder** | [`t0006_scope_aware_react_library/`](../../../tasks/t0006_scope_aware_react_library/) |
+
+# Scope-Aware ReAct Library (Condition A)
+
+## Motivation
+
+The project's main hypothesis is that explicit granularity conditioning improves agent
+performance. The literature survey in t0002 identified ReAct (Yao2022) as the canonical
+foundation for the scope-aware (A) condition. This task produces a self-contained library that
+extends ReAct with a `{global, subtask, atomic}` granularity tag emitted at every Thought /
+Action turn, plus a logging hook that records the active tag alongside the model's confidence.
+The library is the substrate every Phase 2 A-condition experiment will import. Implements
+suggestion S-0002-07.
+
+## Scope
+
+* Implement a library asset under `assets/library/scope_aware_react_v1/` exposing a
+  `ScopeAwareReactAgent` class that:
+  * Accepts a problem statement, a fixed `granularity` argument (`"global" | "subtask" |
+    "atomic"`), a tool registry, and a model-call callable.
+  * Loops Thought / Action / Observation steps, prepending the active granularity tag to every
+    Thought emission, and parses Action JSON until the agent emits a `Finish` action.
+  * Logs every step's `{turn_index, granularity, thought, action, observation, confidence}` to
+    a JSONL trajectory file the experiment harness can replay.
+  * Supports a deterministic-test mode that accepts pre-recorded model outputs.
+* Provide pytest coverage at
+  `tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py` covering: tag
+  injection, action parsing, finish detection, error recovery on malformed JSON, and
+  trajectory logging integrity.
+
+Out of scope: the actual A-vs-B-vs-C experiment (a separate experiment-run task), benchmark-
+specific tool registries (also a separate task), and any remote-execution wiring.
+
+## Approach
+
+1. Read t0002's `research/research_papers.md` and the Yao2022 paper summary to ground the
+   prompt format. Reuse LangChain's ReAct prompt where appropriate; the project licence is
+   Apache 2.0.
+2. Implement the library in `tasks/t0006_scope_aware_react_library/code/scope_aware_react.py`
+   and re-export the public API from a `library/__init__.py` shim under `assets/library/
+   scope_aware_react_v1/`.
+3. Write the asset's `details.json`, `description.md`, and `files/` directory with the
+   runnable source.
+4. Write tests as deterministic unit tests; no live API calls.
+5. Run `verify_library_asset` and the test suite.
+
+## Expected Outputs
+
+* `assets/library/scope_aware_react_v1/` with `details.json`, `description.md`, and `files/`.
+* `tasks/t0006_scope_aware_react_library/code/scope_aware_react.py` and matching test file.
+* `results/results_summary.md` with API surface description and test summary.
+* Follow-up suggestion for benchmark-specific tool registries.
+
+## Compute and Budget
+
+No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
+
+## Dependencies and Cross-References
+
+* No task dependencies.
+* References Yao2022 paper asset (`10.48550_arXiv.2210.03629`) from t0002.
+* Sister task `t0007_scope_unaware_planandsolve_library` produces the matched B baseline; both
+  must follow the same trajectory-logging schema so a Phase 2 experiment can consume both.
+
+## Source Suggestion
+
+S-0002-07 — "Implement scope-aware (A) as ReAct extended with explicit granularity tags."
+
+## Key Questions
+
+1. What is the minimal extension to ReAct's prompt template that reliably elicits a
+   granularity tag on every Thought emission?
+2. How should the library handle a model that refuses to emit a tag (back off, abort, or
+   default to `atomic`)?
+3. What schema for the trajectory log lets t0007 emit identical-shape records?
+
+</details>
+
 ## ✅ Completed
+
+<details>
+<summary>✅ 0007 — <strong>Scope-unaware Plan-and-Solve library: condition B
+baseline</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0007_scope_unaware_planandsolve_library` |
+| **Status** | completed |
+| **Effective date** | 2026-04-29 |
+| **Dependencies** | — |
+| **Expected assets** | 1 library |
+| **Source suggestion** | `S-0002-06` |
+| **Task types** | [`write-library`](../../../meta/task_types/write-library/) |
+| **Start time** | 2026-04-29T19:35:48Z |
+| **End time** | 2026-04-29T20:01:00Z |
+| **Step progress** | 9/15 |
+| **Task page** | [Scope-unaware Plan-and-Solve library: condition B baseline](../../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
+| **Task folder** | [`t0007_scope_unaware_planandsolve_library/`](../../../tasks/t0007_scope_unaware_planandsolve_library/) |
+| **Detailed report** | [results_detailed.md](../../../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) |
+
+# Scope-Unaware Plan-and-Solve Library (Condition B)
+
+## Motivation
+
+The literature survey in t0002 identified Plan-and-Solve (Wang2023) as the strongest published
+prompt-only baseline that does not condition on explicit granularity tags. It is therefore the
+canonical scope-unaware (B) baseline for the project's A-vs-B-vs-C comparison. This task
+produces the matching library asset, sharing the trajectory-log schema with t0006 so a Phase 2
+experiment can run both libraries against the same harness without bespoke glue. Implements
+suggestion S-0002-06.
+
+## Scope
+
+* Implement a library asset under `assets/library/scope_unaware_planandsolve_v1/` exposing a
+  `PlanAndSolveAgent` class that:
+  * Accepts a problem statement, a tool registry, and a model-call callable.
+  * Generates a free-form numbered plan, then executes each step sequentially through a
+    Plan-and-Execute loop.
+  * Emits trajectory records in the same schema as `scope_aware_react_v1` so both libraries
+    are drop-in interchangeable. The `granularity` field in the schema is filled with the
+    literal string `"unspecified"` to mark the B condition.
+  * Logs every step's `{turn_index, granularity, thought, action, observation, confidence}`.
+  * Supports a deterministic-test mode that accepts pre-recorded model outputs.
+* Adapt LangChain's `Plan-and-Execute` reference implementation rather than re-implementing
+  from scratch. License is Apache 2.0; record attribution in `description.md`.
+* Provide pytest coverage at
+  `tasks/t0007_scope_unaware_planandsolve_library/code/test_planandsolve.py` covering: plan
+  parsing, sequential execution, trajectory schema parity with t0006, finish detection, and
+  error recovery on malformed model output.
+
+Out of scope: actual A-vs-B-vs-C experiment, benchmark-specific tool registries, remote
+execution.
+
+## Approach
+
+1. Read t0002's Wang2023 paper summary and the LangChain Plan-and-Execute source to ground the
+   prompt template and execution loop.
+2. Implement the library in
+   `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` and re-export the
+   public API from `assets/library/scope_unaware_planandsolve_v1/library/`.
+3. Reuse the trajectory log schema defined in t0006 by reading t0006's library when it lands;
+   if t0006 has not landed yet, define the schema here and document that t0006 must conform.
+4. Write `details.json`, `description.md`, and `files/` for the asset.
+5. Run `verify_library_asset` and the test suite.
+
+## Expected Outputs
+
+* `assets/library/scope_unaware_planandsolve_v1/` with `details.json`, `description.md`,
+  `files/`.
+* `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` and tests.
+* `results/results_summary.md` with API surface description and test summary.
+* Follow-up suggestion for the matched mismatch (C) library.
+
+## Compute and Budget
+
+No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
+
+## Dependencies and Cross-References
+
+* No task dependencies. May reference t0006's library if it merges first; otherwise this task
+  defines the trajectory schema and t0006 must conform.
+* References Wang2023 paper asset (`10.48550_arXiv.2305.04091`) from t0002.
+
+## Source Suggestion
+
+S-0002-06 — "Implement Plan-and-Solve as the canonical scope-unaware (B) baseline."
+
+## Key Questions
+
+1. What plan format does Plan-and-Solve produce, and how should it be parsed
+   deterministically?
+2. How should the library mark the absence of a granularity tag in the trajectory record?
+3. What is the minimal API surface that lets a Phase 2 harness swap between this and t0006's
+   library by changing only one line?
+
+**Results summary:**
+
+> ---
+> spec_version: "2"
+> task_id: "t0007_scope_unaware_planandsolve_library"
+> date_completed: "2026-04-29"
+> ---
+> **Results Summary — t0007_scope_unaware_planandsolve_library**
+>
+> **Summary**
+>
+> Produced one library asset, `scope_unaware_planandsolve_v1`, that adapts LangChain's
+> Plan-and-Execute reference implementation of Wang et al.'s Plan-and-Solve prompting (arXiv
+> 2305.04091) as the canonical scope-unaware (B) baseline for the project. The library passes
+> its
+> asset verificator and a 14-case pytest suite, all without any paid API calls.
+>
+> **Metrics**
+>
+> * **Library tests passing**: **14 / 14** (zero failures)
+> * **Ruff errors on task code**: **0**
+> * **Mypy errors on task code**: **0**
+> * **Library asset verificator errors / warnings**: **0 / 0**
+
+</details>
 
 <details>
 <summary>✅ 0004 — <strong>Brainstorm session 2: plan Phase 1 annotation and Phase

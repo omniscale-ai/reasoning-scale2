@@ -1,12 +1,57 @@
 # Suggestions: `hierarchical-planning`
 
-5 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **2 open** (1
-medium, 1 low), **3 closed**.
+8 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **5 open** (2 high,
+1 medium, 2 low), **3 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
+
+## High Priority
+
+<details>
+<summary>📚 <strong>Implement matched-mismatch (C) library on top of
+scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0007-01` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0007_scope_unaware_planandsolve_library`](../../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
+scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
+producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
+this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
+schema. The classifier should be a small fine-tuned model or heuristic so the task is
+local-only and deterministic.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0007-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0007_scope_unaware_planandsolve_library`](../../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0007_scope_unaware_planandsolve_library/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+
+Build the experiment harness that runs all three libraries (scope_aware_react_v1,
+scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
+slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
+computing the registered metrics task_success_rate, avg_decisions_per_task, and
+overconfident_error_rate per condition. The harness must depend on this library only via the
+trajectory schema, never via internal helpers, to preserve isolation.
+
+</details>
 
 ## Medium Priority
 
@@ -50,6 +95,27 @@ HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would 
 conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether
 Reflexion-style memory adds further gains on top of the scope-aware (A) condition established
 in Phase 2.
+
+</details>
+
+<details>
+<summary>📊 <strong>Re-download Wang2023 PDF and verify the verbatim PS+ prompt
+text</strong> (S-0007-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0007-04` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0007_scope_unaware_planandsolve_library`](../../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0007_scope_unaware_planandsolve_library/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The PS+ instruction string in scope_unaware_planandsolve_v1 was sourced through the t0002
+paper summary, which was itself grounded only in the abstract because the PDF download failed
+in t0002. A small download-paper task should re-attempt the download against arXiv:2305.04091
+and verify that the prompt text in code/planandsolve.py matches the published version
+verbatim. If it diverges, file a correction.
 
 </details>
 

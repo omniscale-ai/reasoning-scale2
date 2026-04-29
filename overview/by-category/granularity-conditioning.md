@@ -6,7 +6,8 @@ subtask, atomic).
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (4)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (3)](../suggestions/by-category/granularity-conditioning.md)
+[Suggestions (6)](../suggestions/by-category/granularity-conditioning.md) | [Libraries
+(1)](../libraries/by-category/granularity-conditioning.md)
 
 ---
 
@@ -189,7 +190,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (1 open, 2 closed)
+## Suggestions (4 open, 2 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
@@ -203,5 +204,51 @@ HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would 
 conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether
 Reflexion-style memory adds further gains on top of the scope-aware (A) condition established
 in Phase 2.
+
+</details>
+
+<details>
+<summary>📚 <strong>Implement matched-mismatch (C) library on top of
+scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
+
+Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
+scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
+producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
+this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
+schema. The classifier should be a small fine-tuned model or heuristic so the task is
+local-only and deterministic.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
+
+Build the experiment harness that runs all three libraries (scope_aware_react_v1,
+scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
+slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
+computing the registered metrics task_success_rate, avg_decisions_per_task, and
+overconfident_error_rate per condition. The harness must depend on this library only via the
+trajectory schema, never via internal helpers, to preserve isolation.
+
+</details>
+
+<details>
+<summary>📊 <strong>Schema-parity dedup task between t0006 and t0007</strong>
+(S-0007-03)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
+
+After t0006 (scope_aware_react_v1) merges, run a small deduplication-style task that imports
+both libraries' TRAJECTORY_RECORD_FIELDS tuples and asserts they are identical, plus a smoke
+test that runs both libraries on the same toy problem and verifies the trajectory JSON shapes
+round-trip through a single Pydantic loader. If they diverge, file a correction in the
+later-merged task. This is the cheapest insurance against silent schema drift.
 
 </details>

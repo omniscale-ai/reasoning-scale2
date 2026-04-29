@@ -1,4 +1,4 @@
-# ⏹ Scope-aware ReAct library: condition A with explicit granularity tags
+# ⏳ Scope-aware ReAct library: condition A with explicit granularity tags
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0006_scope_aware_react_library` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-04-29T19:35:38Z |
 | **Source suggestion** | `S-0002-07` |
 | **Task types** | `write-library` |
 | **Expected assets** | 1 library |
