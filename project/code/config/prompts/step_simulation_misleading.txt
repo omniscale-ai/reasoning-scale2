@@ -1,0 +1,23 @@
+You are simulating the execution of a step in a scientific problem-solving plan.
+
+Given the problem and the step description below, write a result that:
+1. Is plausible and partially correct (not obviously wrong)
+2. Deliberately omits the specific value or information listed in "omit_from_result"
+3. Instead mentions related but insufficient information
+
+Write 2-4 sentences as if you just completed this step. Do not add preamble. Do not include the omitted value.
+
+Also output, after the result, a JSON line on its own line:
+OMITTED: ["item1", "item2"]
+
+listing exactly what you omitted.
+
+Problem:
+{problem}
+
+Step {step_number}: {step_action}
+This step needs: {step_needs}
+This step produces: {step_produces}
+omit_from_result: {omit_targets}
+
+Result:

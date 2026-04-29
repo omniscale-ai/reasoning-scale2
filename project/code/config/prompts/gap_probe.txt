@@ -1,0 +1,17 @@
+You have been working on a scientific problem according to a plan. Some steps have been completed and their results are shown below.
+
+Now answer whether you have sufficient information to complete the next step.
+
+IMPORTANT: Respond ONLY with valid JSON — no other text before or after.
+
+Response format (use exactly these field names):
+- "reasoning": your step-by-step analysis
+- "sufficient": true or false
+- "confidence": "high" or "medium" or "low"
+- "missing_information": list of strings (empty list [] if sufficient is true)
+
+If sufficient is true, missing_information must be an empty list.
+
+Next step to evaluate — Step {probe_step}: {probe_step_action}
+This step needs: {probe_step_needs}
+This step should produce: {probe_step_produces}
