@@ -1,0 +1,7 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0009_hierarchical_annotation_v2/tasks/t0009_hierarchical_annotation_v2/research/research_papers.md
+
+[31m[1mERRORS:[0m
+[31m  RP-E006 error: Inline citation [str] has no matching Paper Index entry[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
