@@ -1,0 +1,17 @@
+{
+  "spec_version": 4,
+  "task_id": "t0011_metric2_calibration_aggregator",
+  "task_index": 11,
+  "name": "Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency",
+  "short_description": "Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "library": 1
+  },
+  "task_types": ["write-library"],
+  "source_suggestion": "S-0002-02"
+}
