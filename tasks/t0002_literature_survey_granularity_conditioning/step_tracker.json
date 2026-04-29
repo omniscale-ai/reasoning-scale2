@@ -41,8 +41,8 @@
       "step": 5,
       "name": "research-internet",
       "description": "Search the internet for >=10 relevant papers across granularity conditioning, hierarchical decomposition, calibration, and the four roadmap benchmarks; populate Discovered Papers section.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T13:56:32Z",
       "completed_at": null,
       "log_file": "logs/steps/005_research-internet/"
     },
