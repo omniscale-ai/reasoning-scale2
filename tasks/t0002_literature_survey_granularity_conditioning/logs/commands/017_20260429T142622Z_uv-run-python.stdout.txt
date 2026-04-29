@@ -1,0 +1,9 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0002_literature_survey_granularity_conditioning/tasks/t0002_literature_survey_granularity_conditioning/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 003_20260429T140103Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 3 warning(s)

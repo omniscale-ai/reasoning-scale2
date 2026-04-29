@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0002_literature_survey_granularity_conditioning",
+  "command": "uv run python -m arf.scripts.verificators.verify_logs t0002_literature_survey_granularity_conditioning",
+  "exit_code": 0,
+  "duration_seconds": 0.061,
+  "started_at": "2026-04-29T14:26:32Z",
+  "completed_at": "2026-04-29T14:26:32Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0002_literature_survey_granularity_conditioning",
+  "stdout_file": "021_20260429T142632Z_uv-run-python.stdout.txt",
+  "stderr_file": "021_20260429T142632Z_uv-run-python.stderr.txt",
+  "stdout_lines": 10,
+  "stderr_lines": 0,
+  "truncated": false
+}
