@@ -1,0 +1,5 @@
+branch: task/t0007_scope_unaware_planandsolve_library
+base_branch: main
+base_commit: 4a6f268a7d3010cf2d20e8ff6a4d4b60e72c9077
+worktree_path: /Users/anaderi/git/reasoning-scale2-worktrees/t0007_scope_unaware_planandsolve_library
+created_at: 2026-04-29T19:35:57Z
