@@ -1,0 +1,140 @@
+{
+  "task_id": "t0003_download_benchmark_subsets",
+  "steps": [
+    {
+      "step": 1,
+      "name": "create-branch",
+      "description": "Create task/t0003_download_benchmark_subsets branch from main.",
+      "status": "in_progress",
+      "started_at": "2026-04-29T14:31:11Z",
+      "completed_at": null,
+      "log_file": "logs/steps/001_create-branch/"
+    },
+    {
+      "step": 2,
+      "name": "check-deps",
+      "description": "Verify task has no dependencies (independent of T1).",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/002_check-deps/"
+    },
+    {
+      "step": 3,
+      "name": "init-folders",
+      "description": "Initialize task folders for assets/dataset and other mandatory subfolders.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/003_init-folders/"
+    },
+    {
+      "step": 4,
+      "name": "research-papers",
+      "description": "Skipped: t0002 literature survey already produced 11 paper assets covering all four target benchmarks.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/004_research-papers/"
+    },
+    {
+      "step": 5,
+      "name": "research-internet",
+      "description": "Skipped: official distribution paths are documented in the t0002 paper assets; no new internet research needed.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/005_research-internet/"
+    },
+    {
+      "step": 6,
+      "name": "research-code",
+      "description": "Skipped: no prior task code or libraries relevant to dataset downloads.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/006_research-code/"
+    },
+    {
+      "step": 7,
+      "name": "planning",
+      "description": "Plan the four benchmark download attempts with explicit URLs, fallback policies, and subset criteria.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/007_planning/"
+    },
+    {
+      "step": 8,
+      "name": "setup-machines",
+      "description": "Skipped: local-only downloads; no GPU or remote compute required.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/008_setup-machines/"
+    },
+    {
+      "step": 9,
+      "name": "implementation",
+      "description": "Download four benchmark subsets, subset to multi-step instances, and produce four dataset assets.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/009_implementation/"
+    },
+    {
+      "step": 10,
+      "name": "teardown",
+      "description": "Skipped: no remote machines to tear down.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/010_teardown/"
+    },
+    {
+      "step": 11,
+      "name": "creative-thinking",
+      "description": "Skipped: mechanical download task with no out-of-the-box analysis.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/011_creative-thinking/"
+    },
+    {
+      "step": 12,
+      "name": "results",
+      "description": "Write per-benchmark access status, sample counts, and subset decisions in results files.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/012_results/"
+    },
+    {
+      "step": 13,
+      "name": "compare-literature",
+      "description": "Skipped: no quantitative metrics produced; nothing to compare against published results.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/013_compare-literature/"
+    },
+    {
+      "step": 14,
+      "name": "suggestions",
+      "description": "Generate follow-up suggestions for benchmarks with non-obvious access pathways or sensitivity checks.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/014_suggestions/"
+    },
+    {
+      "step": 15,
+      "name": "reporting",
+      "description": "Run all verificators, capture sessions, mark task completed.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/015_reporting/"
+    }
+  ]
+}
