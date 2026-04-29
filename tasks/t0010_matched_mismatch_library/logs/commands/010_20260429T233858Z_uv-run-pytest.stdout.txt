@@ -1,0 +1,24 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.3, pluggy-1.6.0 -- /Users/anaderi/git/reasoning-scale2-worktrees/t0010_matched_mismatch_library/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anaderi/git/reasoning-scale2-worktrees/t0010_matched_mismatch_library
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 14 items
+
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_granularity_values_and_adversarial_map PASSED [  7%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_trajectory_schema_parity_with_t0007 PASSED [ 14%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_phase_order PASSED [ 21%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_global_atomics_treated_as_atomic PASSED [ 28%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_iter_phases_accepts_inner_hierarchy_directly PASSED [ 35%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_random_strategy_uniformity PASSED [ 42%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_adversarial_strategy_correctness PASSED [ 50%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_pick_mismatch_tag_rejects_unknown_correct_tag PASSED [ 57%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_records_carry_wrong_tag_with_correct_tag_in_extras PASSED [ 64%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_end_to_end_with_planandsolve_delegate PASSED [ 71%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_end_to_end_with_react_delegate PASSED [ 78%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_unknown_strategy_raises PASSED [ 85%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_unknown_delegate_raises PASSED [ 92%]
+tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py::test_seed_determinism PASSED [100%]
+
+============================== 14 passed in 0.04s ==============================

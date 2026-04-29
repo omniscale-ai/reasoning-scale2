@@ -1,0 +1,60 @@
+{
+  "spec_version": "2",
+  "library_id": "matched_mismatch_v1",
+  "name": "Matched-Mismatch Agent (v1)",
+  "version": "0.1.0",
+  "short_description": "Condition-C wrapper that walks the v2 hierarchy in phase order and substitutes deliberately incorrect granularity tags around either the t0006 ReAct delegate or the t0007 Plan-and-Solve delegate.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/matched_mismatch.py"
+  ],
+  "entry_points": [
+    {
+      "name": "MatchedMismatchAgent",
+      "kind": "class",
+      "module": "code/matched_mismatch.py",
+      "description": "Condition-C agent that walks a v2 hierarchy and emits trajectory records carrying a deliberately wrong granularity tag."
+    },
+    {
+      "name": "MatchedMismatchRecord",
+      "kind": "class",
+      "module": "code/matched_mismatch.py",
+      "description": "Frozen dataclass whose first six fields are exactly TRAJECTORY_RECORD_FIELDS; an extras mapping carries the correct tag under _correct_granularity."
+    },
+    {
+      "name": "AgentRunResult",
+      "kind": "class",
+      "module": "code/matched_mismatch.py",
+      "description": "Aggregate output of one MatchedMismatchAgent.run call: final_answer, trajectory, phases."
+    },
+    {
+      "name": "Phase",
+      "kind": "class",
+      "module": "code/matched_mismatch.py",
+      "description": "One step of the canonical phase-ordered walk over a v2 annotation tree (kind, correct_tag, payload)."
+    },
+    {
+      "name": "iter_phases",
+      "kind": "function",
+      "module": "code/matched_mismatch.py",
+      "description": "Yield Phase objects in canonical order: global, then per-subtask (subtask, atomics), then global_atomics."
+    },
+    {
+      "name": "pick_mismatch_tag",
+      "kind": "function",
+      "module": "code/matched_mismatch.py",
+      "description": "Return a granularity tag distinct from the correct tag, picked uniformly at random or per ADVERSARIAL_MAP."
+    }
+  ],
+  "dependencies": [],
+  "test_paths": [
+    "code/test_matched_mismatch.py"
+  ],
+  "categories": [
+    "granularity-conditioning",
+    "hierarchical-planning",
+    "agent-evaluation"
+  ],
+  "created_by_task": "t0010_matched_mismatch_library",
+  "date_created": "2026-04-29"
+}

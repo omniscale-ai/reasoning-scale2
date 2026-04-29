@@ -1,0 +1,2 @@
+Captured 0 session transcript(s) into /Users/anaderi/git/reasoning-scale2-worktrees/t0010_matched_mismatch_library/tasks/t0010_matched_mismatch_library/logs/sessions.
+Wrote capture report to /Users/anaderi/git/reasoning-scale2-worktrees/t0010_matched_mismatch_library/tasks/t0010_matched_mismatch_library/logs/sessions/capture_report.json.
