@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Synthesize research outputs into plan/plan.md describing implementation: paper-asset creation and synthesis writing.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T14:04:32Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
