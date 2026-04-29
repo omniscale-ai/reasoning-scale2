@@ -1,0 +1,34 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2310.06770",
+  "doi": "10.48550/arXiv.2310.06770",
+  "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+  "url": "https://arxiv.org/abs/2310.06770",
+  "pdf_url": "https://arxiv.org/pdf/2310.06770",
+  "date_published": "2023-10-10",
+  "year": 2024,
+  "authors": [
+    {"name": "Carlos E. Jimenez", "country": "US", "institution": "Princeton University", "orcid": null},
+    {"name": "John Yang", "country": "US", "institution": "Princeton University", "orcid": null},
+    {"name": "Alexander Wettig", "country": "US", "institution": "Princeton University", "orcid": null},
+    {"name": "Shunyu Yao", "country": "US", "institution": "Princeton University", "orcid": null},
+    {"name": "Kexin Pei", "country": "US", "institution": "University of Chicago", "orcid": null},
+    {"name": "Ofir Press", "country": "US", "institution": "Princeton University", "orcid": null},
+    {"name": "Karthik Narasimhan", "country": "US", "institution": "Princeton University", "orcid": null}
+  ],
+  "institutions": [
+    {"name": "Princeton University", "country": "US"},
+    {"name": "University of Chicago", "country": "US"}
+  ],
+  "journal": "ICLR 2024 (oral)",
+  "venue_type": "conference",
+  "categories": ["benchmark-swebench", "agent-evaluation"],
+  "abstract": "Language models have outpaced our ability to evaluate them effectively, but for their future development it is essential to study the frontier of their capabilities. We find real-world software engineering to be a rich, sustainable, and challenging testbed for evaluating the next generation of language models. To this end, we introduce SWE-bench, an evaluation framework consisting of 2,294 software engineering problems drawn from real GitHub issues and corresponding pull requests across 12 popular Python repositories. Given a codebase along with a description of an issue to be resolved, a language model is tasked with editing the codebase to address the issue. Resolving issues in SWE-bench frequently requires understanding and coordinating changes across multiple functions, classes, and even files simultaneously, calling for models to interact with execution environments, process extremely long contexts and perform complex reasoning that goes far beyond traditional code generation tasks. Our evaluations show that both state-of-the-art proprietary models and our fine-tuned model SWE-Llama can resolve only the simplest issues. The best-performing model, Claude 2, is able to solve a mere 1.96% of the issues. Advances on SWE-bench represent steps towards LMs that are more practical, intelligent, and autonomous.",
+  "citation_key": "Jimenez2024",
+  "summary_path": "summary.md",
+  "files": [],
+  "download_status": "failed",
+  "download_failure_reason": "PDF download deferred per task plan: literature-survey uses abstract-based summaries; PDFs deferred to a future task that enables git LFS.",
+  "added_by_task": "t0002_literature_survey_granularity_conditioning",
+  "date_added": "2026-04-29"
+}

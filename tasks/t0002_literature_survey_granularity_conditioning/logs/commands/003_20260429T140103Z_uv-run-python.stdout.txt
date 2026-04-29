@@ -1,0 +1,7 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0002_literature_survey_granularity_conditioning/tasks/t0002_literature_survey_granularity_conditioning/research/research_internet.md
+
+[31m[1mERRORS:[0m
+[31m  RI-E006 error: Inline citation [OpenAI-Hallucination-2025] has no matching Source Index entry[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)

@@ -1,0 +1,34 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2306.13063",
+  "doi": "10.48550/arXiv.2306.13063",
+  "title": "Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs",
+  "url": "https://arxiv.org/abs/2306.13063",
+  "pdf_url": "https://arxiv.org/pdf/2306.13063",
+  "date_published": "2023-06-22",
+  "year": 2024,
+  "authors": [
+    {"name": "Miao Xiong", "country": "SG", "institution": "National University of Singapore", "orcid": null},
+    {"name": "Zhiyuan Hu", "country": "SG", "institution": "National University of Singapore", "orcid": null},
+    {"name": "Xinyang Lu", "country": "SG", "institution": "National University of Singapore", "orcid": null},
+    {"name": "Yifei Li", "country": "HK", "institution": "Hong Kong University of Science and Technology", "orcid": null},
+    {"name": "Jie Fu", "country": "HK", "institution": "Hong Kong University of Science and Technology", "orcid": null},
+    {"name": "Junxian He", "country": "HK", "institution": "Hong Kong University of Science and Technology", "orcid": null},
+    {"name": "Bryan Hooi", "country": "SG", "institution": "National University of Singapore", "orcid": null}
+  ],
+  "institutions": [
+    {"name": "National University of Singapore", "country": "SG"},
+    {"name": "Hong Kong University of Science and Technology", "country": "HK"}
+  ],
+  "journal": "ICLR 2024",
+  "venue_type": "conference",
+  "categories": ["uncertainty-calibration", "agent-evaluation"],
+  "abstract": "Empowering large language models (LLMs) to accurately express confidence in their answers is essential for trustworthy decision-making. Previous confidence elicitation methods, which primarily rely on white-box access to internal model information or model fine-tuning, have become less suitable for LLMs, especially closed-source commercial APIs. This leads to a growing need to explore the untapped area of black-box approaches for LLM uncertainty estimation. To better break down the problem, we define a systematic framework with three components: prompting strategies for eliciting verbal confidence, sampling methods for generating multiple responses, and aggregation techniques for computing consistency. We then benchmark these methods on two key tasks—confidence calibration and failure prediction—across five types of datasets (e.g., commonsense and arithmetic reasoning) and five widely-used LLMs including GPT-4 and LLaMA 2 Chat. Our analysis uncovers several key insights: 1) LLMs, when verbalizing their confidence, tend to be overconfident, potentially imitating human patterns of expressing confidence. 2) As model capability scales up, both calibration and failure prediction performance improve. 3) Employing our proposed strategies, such as human-inspired prompts, consistency among multiple responses, and better aggregation strategies can help mitigate this overconfidence from various perspectives.",
+  "citation_key": "Xiong2024",
+  "summary_path": "summary.md",
+  "files": [],
+  "download_status": "failed",
+  "download_failure_reason": "PDF download deferred per task plan: literature-survey uses abstract-based summaries; PDFs deferred to a future task that enables git LFS.",
+  "added_by_task": "t0002_literature_survey_granularity_conditioning",
+  "date_added": "2026-04-29"
+}

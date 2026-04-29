@@ -1,0 +1,5 @@
+{
+  "total_cost_usd": 0,
+  "breakdown": {},
+  "note": "Literature survey ran inside the orchestrator's existing Anthropic context with no separate API spend. WebSearch and WebFetch are not billed against the project budget."
+}

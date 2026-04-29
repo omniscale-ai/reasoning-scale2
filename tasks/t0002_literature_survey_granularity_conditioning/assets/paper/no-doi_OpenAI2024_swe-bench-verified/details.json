@@ -1,0 +1,27 @@
+{
+  "spec_version": "3",
+  "paper_id": "no-doi_OpenAI2024_swe-bench-verified",
+  "doi": null,
+  "title": "Introducing SWE-bench Verified",
+  "url": "https://openai.com/index/introducing-swe-bench-verified/",
+  "pdf_url": null,
+  "date_published": "2024-08-13",
+  "year": 2024,
+  "authors": [
+    {"name": "OpenAI Preparedness team", "country": "US", "institution": "OpenAI", "orcid": null}
+  ],
+  "institutions": [
+    {"name": "OpenAI", "country": "US"}
+  ],
+  "journal": "OpenAI technical card (institutional, not peer-reviewed)",
+  "venue_type": "technical_report",
+  "categories": ["benchmark-swebench", "benchmark-annotation", "agent-evaluation"],
+  "abstract": "We are releasing SWE-bench Verified, a human-validated subset of SWE-bench that more reliably evaluates AI models' ability to solve real-world software issues. SWE-bench Verified consists of 500 problems that real software engineers have confirmed are solvable: each problem description is clear, the test patches correctly identify the issue's resolution, and the tests are not flaky. The original SWE-bench dataset can include problems with under-specified instructions or test patches that miss the intended fix; OpenAI's Preparedness team worked with the SWE-bench authors and 93 expert software engineers to filter to 500 problems where the issue description is unambiguous, the unit tests cover the intended fix, and the development environment can be reliably reproduced. SWE-bench Verified is intended to be the new standard subset for measuring frontier autonomous-software-engineering capability.",
+  "citation_key": "OpenAI2024",
+  "summary_path": "summary.md",
+  "files": [],
+  "download_status": "failed",
+  "download_failure_reason": "Source is an HTML technical card on openai.com, not a PDF. Saving HTML in this task is deferred to a future task that handles non-PDF asset files. Content above is summarized from the public web page.",
+  "added_by_task": "t0002_literature_survey_granularity_conditioning",
+  "date_added": "2026-04-29"
+}

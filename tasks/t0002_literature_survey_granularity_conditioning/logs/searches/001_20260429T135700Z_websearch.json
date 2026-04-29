@@ -1,0 +1,103 @@
+{
+  "spec_version": "1",
+  "task_id": "t0002_literature_survey_granularity_conditioning",
+  "step_number": 5,
+  "timestamp": "2026-04-29T13:57:00Z",
+  "source": "WebSearch",
+  "query": "consolidated literature-survey research-internet queries: see results section for individual queries",
+  "results_count": 11,
+  "results": [
+    {
+      "title": "FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI",
+      "url": "https://arxiv.org/abs/2411.04872",
+      "snippet": "FrontierMath benchmark of hundreds of original mathematics problems crafted by expert mathematicians; SOTA solves under 2%.",
+      "relevance_note": "Canonical FrontierMath paper; 'FrontierScience-Olympiad' candidate."
+    },
+    {
+      "title": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
+      "url": "https://arxiv.org/abs/2403.07718",
+      "snippet": "33 web tasks on ServiceNow with BrowserGym; GPT-4 reaches 42.7%.",
+      "relevance_note": "Original WorkArena ICML 2024 paper."
+    },
+    {
+      "title": "WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks",
+      "url": "https://arxiv.org/abs/2407.05291",
+      "snippet": "682 compositional tasks built from WorkArena atomics; NeurIPS 2024 D&B.",
+      "relevance_note": "The exact benchmark named in project description."
+    },
+    {
+      "title": "SWE-bench: Can Language Models Resolve Real-world Github Issues?",
+      "url": "https://arxiv.org/abs/2310.06770",
+      "snippet": "2,294 GitHub issues across 12 Python repos; ICLR 2024 oral.",
+      "relevance_note": "Parent paper for SWE-bench Verified."
+    },
+    {
+      "title": "Introducing SWE-bench Verified",
+      "url": "https://openai.com/index/introducing-swe-bench-verified/",
+      "snippet": "Human-validated 500-instance subset by OpenAI in collaboration with the SWE-bench team.",
+      "relevance_note": "Canonical SWE-bench Verified card."
+    },
+    {
+      "title": "tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "url": "https://arxiv.org/abs/2406.12045",
+      "snippet": "Two domains (retail, airline); pass^k metric; gpt-4o under 50% pass@1.",
+      "relevance_note": "Canonical tau-bench paper, Sierra Research."
+    },
+    {
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "snippet": "Interleaves reasoning traces and actions; 34% gain on ALFWorld.",
+      "relevance_note": "Foundational reasoning+acting agent baseline."
+    },
+    {
+      "title": "Plan-and-Solve Prompting",
+      "url": "https://arxiv.org/abs/2305.04091",
+      "snippet": "Two-step prompting: plan subtasks then solve; reduces missing-step errors in Zero-shot-CoT.",
+      "relevance_note": "Direct example of granularity conditioning at the prompt level."
+    },
+    {
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2303.11366",
+      "snippet": "Self-reflection on episode feedback; NeurIPS 2023.",
+      "relevance_note": "Hierarchical agent paper relevant to scope conditioning across episodes."
+    },
+    {
+      "title": "Least-to-Most Prompting Enables Complex Reasoning in Large Language Models",
+      "url": "https://arxiv.org/abs/2205.10625",
+      "snippet": "Decomposes problems into ordered subproblems; SCAN length-split 99%+.",
+      "relevance_note": "Hierarchical decomposition prior with explicit difficulty granularity."
+    },
+    {
+      "title": "Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs",
+      "url": "https://arxiv.org/abs/2306.13063",
+      "snippet": "Verbalized confidence elicitation framework; ICLR 2024; LLMs are overconfident.",
+      "relevance_note": "Primary calibration / overconfidence reference for Metric 2."
+    },
+    {
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "url": "https://arxiv.org/abs/2201.11903",
+      "snippet": "Foundational CoT prompting; NeurIPS 2022.",
+      "relevance_note": "Establishes baseline that subtask-granularity prompts compete against."
+    }
+  ],
+  "error": null,
+  "queries_executed": [
+    "FrontierMath benchmark math olympiad LLM evaluation paper arXiv",
+    "WorkArena benchmark web agent enterprise tasks ServiceNow paper",
+    "SWE-bench Verified OpenAI human-validated software engineering benchmark",
+    "tau-bench tool agent benchmark Sierra retail airline paper arXiv",
+    "LLM agent hierarchical task decomposition planning subtask granularity scope conditioning",
+    "plan-and-solve prompting LLM hierarchical reasoning arXiv 2023 ACL",
+    "LLM uncertainty calibration verbalized confidence overconfident error rate selective prediction agent",
+    "ReAct reasoning acting language model agent paper Yao 2022 ICLR",
+    "WorkArena++ compositional planning reasoning enterprise web agents NeurIPS 2024",
+    "Reflexion verbal reinforcement language agent Shinn arXiv 2023",
+    "least-to-most prompting decomposition complex reasoning Zhou Google 2022",
+    "LLM calibration expected calibration error knowing what they know language model",
+    "chain-of-thought prompting reasoning Wei Google 2022 emergent NeurIPS",
+    "LLM agent overconfidence errors hallucination calibration selective abstention know-don't-know",
+    "FrontierMath Glazer arXiv 2411.04872 Epoch AI authors",
+    "Drouin WorkArena arXiv 2403.07718 ICML 2024 authors list",
+    "SWE-bench Jimenez Yang Princeton ICLR 2024 software engineering benchmark arXiv"
+  ]
+}

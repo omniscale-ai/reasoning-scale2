@@ -1,0 +1,2 @@
+Captured 0 session transcript(s) into /Users/anaderi/git/reasoning-scale2-worktrees/t0002_literature_survey_granularity_conditioning/tasks/t0002_literature_survey_granularity_conditioning/logs/sessions.
+Wrote capture report to /Users/anaderi/git/reasoning-scale2-worktrees/t0002_literature_survey_granularity_conditioning/tasks/t0002_literature_survey_granularity_conditioning/logs/sessions/capture_report.json.

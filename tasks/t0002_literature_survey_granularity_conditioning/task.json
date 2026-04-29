@@ -5,10 +5,10 @@
   "name": "Literature survey: granularity conditioning and hierarchical agents",
   "short_description": "Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [],
   "start_time": "2026-04-29T13:50:47Z",
-  "end_time": null,
+  "end_time": "2026-04-29T14:26:49Z",
   "expected_assets": {
     "paper": 10
   },
