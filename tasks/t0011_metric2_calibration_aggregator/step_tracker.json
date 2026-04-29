@@ -71,7 +71,7 @@
       "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/008_setup-machines/"
     },
     {
       "step": 9,
