@@ -1,12 +1,64 @@
 # Suggestions: `uncertainty-calibration`
 
-3 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **1 open** (1
-low), **2 closed**.
+6 suggestion(s) in category
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **4 open** (2
+medium, 2 low), **2 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
+
+## Medium Priority
+
+<details>
+<summary>📚 <strong>Add Expected Calibration Error (ECE) computation alongside
+overconfident_error_rate</strong> (S-0011-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0011-01` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0011_metric2_calibration_aggregator`](../../../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0011_metric2_calibration_aggregator/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+Extend the metric2_calibration_aggregator_v1 library (or add a sibling library) with Expected
+Calibration Error (ECE) computation using the standard 10-bucket binning and produce
+per-bucket calibration plots. Xiong2024 reports ECE as the primary headline metric; the
+current library reports only the binary overconfident_error_rate. Adding ECE gives Phase 2 a
+richer calibration signal and lets t0012's results display the bucket where overconfidence
+concentrates rather than just a single number. Should be a small follow-up: bucket each
+CalibrationRecord by predicted_confidence, compute |accuracy - mean_confidence| within each
+bucket, weight by bucket size. Output should be both a scalar ECE value and a list of
+(bucket_lower, bucket_upper, accuracy, mean_confidence, count) tuples for plotting.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Add provider-specific calibration prompt variants for
+instruction-tuned vs reasoning models</strong> (S-0011-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0011-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0011_metric2_calibration_aggregator`](../../../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0011_metric2_calibration_aggregator/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+The current ConfidencePromptTemplate uses a single Xiong2024 human-inspired prompt.
+Reasoning-focused models (e.g., o-series, Claude 4.5+ thinking models) often produce a
+chain-of-thought before stating confidence, which the current parser handles but which
+Xiong2024's own results show can hurt calibration in some configurations. Build a small
+library of named prompt variants (instruction_tuned, reasoning_with_cot, reasoning_no_cot) and
+benchmark them on a held-out 50-problem set during Phase 2. Goal: identify which variant
+minimizes overconfident_error_rate per provider and ship that as the default mapping in
+t0012's experiment harness. Out of scope for this task per task_description.md but identified
+as the obvious next sweep.
+
+</details>
 
 ## Low Priority
 
@@ -27,6 +79,29 @@ Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-
 and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept
 rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality
 estimate. Estimated cost: ~$0.30 per run.
+
+</details>
+
+<details>
+<summary>📊 <strong>Sweep HIGH_CONFIDENCE_THRESHOLD to find the operating point that
+maximizes signal in t0012</strong> (S-0011-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0011-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0011_metric2_calibration_aggregator`](../../../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0011_metric2_calibration_aggregator/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+The current default HIGH_CONFIDENCE_THRESHOLD = 0.75 sits between the verbalized medium (0.5)
+and high (0.9) numeric anchor points and matches Xiong2024's high-bucket boundary. The
+threshold is exposed as a module constant for sweeps. After t0012 runs, sweep the threshold
+over {0.5, 0.6, 0.7, 0.75, 0.8, 0.9} and report overconfident_error_rate at each operating
+point. The best threshold for the project's hierarchical agents may differ from Xiong2024's QA
+setting because the project judges actions at trajectory steps, not final answers. Output: a
+small chart and a recommended threshold for downstream tasks.
 
 </details>
 

@@ -5,14 +5,14 @@
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-5-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-0-9370DB" alt="Predictions"></a>
-  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-2-20B2AA" alt="Libraries"></a>
+  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-3-20B2AA" alt="Libraries"></a>
   <a href="answers/"><img src="https://img.shields.io/badge/Answers-0-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-12-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-30-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-33-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-1-DC143C" alt="Results"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (4K) |
-[full](llm-context/full.xml) (32K) | [roadmap](llm-context/roadmap.xml) (14K) |
-[results](llm-context/results-deep-dive.xml) (22K) |
-[assets](llm-context/literature-and-assets.xml) (8K)
+[full](llm-context/full.xml) (34K) | [roadmap](llm-context/roadmap.xml) (14K) |
+[results](llm-context/results-deep-dive.xml) (25K) |
+[assets](llm-context/literature-and-assets.xml) (9K)
 
-*Last updated: 2026-04-29 23:24 UTC*
+*Last updated: 2026-04-29 23:45 UTC*
 
 * **Budget**: **$0** spent of $100
 * **Remaining**: **$100**
@@ -48,19 +48,18 @@ No daily news yet.
 
 ---
 
-## [In Progress (0)](tasks/by-status/in_progress.md)
+## [In Progress (2)](tasks/by-status/in_progress.md)
 
-No tasks in progress.
+| # | Task | Started |
+|---|------|---------|
+| 0010 | [Matched-mismatch library: condition C with deliberately wrong granularity tags](../overview/tasks/task_pages/t0010_matched_mismatch_library.md) | 2026-04-29 23:25 |
+| 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | 2026-04-29 23:24 |
 
 ---
 
-## [Ready to Start (3)](tasks/by-status/not_started.md)
+## [Ready to Start (0)](tasks/by-status/not_started.md)
 
-| # | Task | Description | Date Added |
-|---|------|-------------|------------|
-| 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`description`](../tasks/t0009_hierarchical_annotation_v2/task_description.md) | 2026-04-30 |
-| 0010 | [Matched-mismatch library: condition C with deliberately wrong granularity tags](../overview/tasks/task_pages/t0010_matched_mismatch_library.md) | [`description`](../tasks/t0010_matched_mismatch_library/task_description.md) | 2026-04-30 |
-| 0011 | [Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) | [`description`](../tasks/t0011_metric2_calibration_aggregator/task_description.md) | 2026-04-30 |
+No tasks ready to start.
 
 ---
 
@@ -68,15 +67,16 @@ No tasks in progress.
 
 | # | Task | Blocked By |
 |---|------|------------|
-| 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`t0009_hierarchical_annotation_v2`](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md), [`t0010_matched_mismatch_library`](../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0011_metric2_calibration_aggregator`](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
+| 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`t0009_hierarchical_annotation_v2`](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md), [`t0010_matched_mismatch_library`](../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
 
 ---
 
-## [Recently Completed (8 total)](tasks/by-status/completed.md)
+## [Recently Completed (9 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
 | 0008 | [Brainstorm session 3: insert v2 re-annotation, plan Phase 2 smoke](../overview/tasks/task_pages/t0008_brainstorm_results_3.md) | [`results`](../tasks/t0008_brainstorm_results_3/results/results_detailed.md) | 2026-04-30 00:00 |
+| 0011 | [Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) | [`results`](../tasks/t0011_metric2_calibration_aggregator/results/results_detailed.md) | 2026-04-29 23:43 |
 | 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`results`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/results_detailed.md) | 2026-04-29 20:14 |
 | 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`results`](../tasks/t0006_scope_aware_react_library/results/results_detailed.md) | 2026-04-29 20:07 |
 | 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
@@ -87,7 +87,7 @@ No tasks in progress.
 
 ---
 
-## [Recent Suggestions (23 open)](suggestions/)
+## [Recent Suggestions (26 open)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -239,7 +239,7 @@ apply the canonical 4-8 decisions filter consistently across all four benchmarks
 
 </details>
 
-*13 more open suggestions → [open suggestions](suggestions/)*
+*16 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
@@ -851,12 +851,13 @@ No predictions yet.
 
 ---
 
-## [Latest Libraries (2 total)](libraries/)
+## [Latest Libraries (3 total)](libraries/)
 
 | Name | Source | Created |
 |------|--------|---------|
 | [Scope-Unaware Plan-and-Solve Agent (v1)](../tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md) | [7](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | 2026-04-29 |
 | [Scope-Aware ReAct Agent](../tasks/t0006_scope_aware_react_library/assets/library/scope_aware_react_v1/description.md) | [6](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | 2026-04-29 |
+| [Metric 2 Calibration Aggregator](../tasks/t0011_metric2_calibration_aggregator/assets/library/metric2_calibration_aggregator_v1/description.md) | [11](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) | 2026-04-29 |
 
 ---
 

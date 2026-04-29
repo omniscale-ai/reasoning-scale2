@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-29T23:24:02Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-29T23:45:04Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>56944</char_count>
-    <byte_count>57052</byte_count>
-    <estimated_tokens>14236</estimated_tokens>
+    <char_count>55810</char_count>
+    <byte_count>55916</byte_count>
+    <estimated_tokens>13952</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -135,9 +135,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
         <id>t0008_brainstorm_results_3</id>
+        <id>t0011_metric2_calibration_aggregator</id>
       </source_ids>
       <content>
-Completed tasks: 8
+Completed tasks: 9
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -186,6 +187,12 @@ ID: t0008_brainstorm_results_3
 Completed: 2026-04-30
 Short description: Brainstorm 3: insert v2 tree-schema re-annotation as the new ASAP task; preserve original wave 3 (matched-mismatch lib, Metric 2 lib, A/B/C smoke harness).
 Result summary: Brainstorm Session 3 — Results Summary Summary Third brainstorm produced four new not-started tasks. The v1 annotation schema was found to lack subtask-to-atomic edges; a v2 re-annotation task was inserted ASAP as t0009. The original wave 3 plan (matched-mismatch library, Metric 2 calibration, A/B/C smoke harness) was preserved and renumbered to t0010-t0012, with t0012 gated on the other three. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after wave 2 (t0004-t0007) merged at $0.06 spend, with 27 uncovered suggestions and the v2 schema gap surfaced during prompt-modelling discussion of the `is_bored` annotation. * **Prompt**: Plan the first Phase 2 result on a real...
+
+## Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency
+ID: t0011_metric2_calibration_aggregator
+Completed: 2026-04-29
+Short description: Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.
+Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Implemented the metric2_calibration_aggregator_v1 library that operationalizes the project&#x27;s Metric 2 (`overconfident_error_rate`) using the Xiong2024 §3.2 black-box calibration protocol. The library exposes `ConfidencePromptTemplate`, `ConfidenceJudge`, `elicit_confidence`, `compute_overconfident_error_rate`, and `CalibrationRecord` plus a trajectory-record adapter, with a single overridable threshold default (`HIGH_CONFIDENCE_THRESHOLD = 0.75`) and the canonical low/medium/high → 0.25/0.5/0.9 numeric mapping. Metrics * **Tests run**: 25 — all passed in 0.03 s (`uv run pytest tasks/t0011_metric2_calibration_aggregator/code/`). *...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -194,16 +201,15 @@ Result summary: Brainstorm Session 3 — Results Summary Summary Third brainstor
       <source_ids>
         <id>t0009_hierarchical_annotation_v2</id>
         <id>t0010_matched_mismatch_library</id>
-        <id>t0011_metric2_calibration_aggregator</id>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
       </source_ids>
       <content>
-Planned or active tasks: 4
+Planned or active tasks: 3
 
 ## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
 ID: t0009_hierarchical_annotation_v2
-Status: not_started
-Effective date: 2026-04-30
+Status: in_progress
+Effective date: 2026-04-29
 Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
 
 #### Motivation
@@ -325,8 +331,8 @@ S-0005-01 (annotation v2 schema) and the schema-gap finding from brainstorm 3.
 
 ## Matched-mismatch library: condition C with deliberately wrong granularity tags
 ID: t0010_matched_mismatch_library
-Status: not_started
-Effective date: 2026-04-30
+Status: in_progress
+Effective date: 2026-04-29
 Short description: Write-library implementing condition C: wrap scope_unaware_planandsolve_v1 with a tag-classifier that assigns deliberately incorrect granularity tags.
 
 #### Motivation
@@ -408,92 +414,6 @@ S-0007-01 — &quot;Implement matched-mismatch (C) library on top of scope_unawa
    targeted mismatches in specific phases)? Default: no, keep the wrapper minimal.
 3. How should the schema&#x27;s `_correct_granularity` extras field be standardised so a downstream
    experiment can compute the mismatch contribution per step?
-
-## Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency
-ID: t0011_metric2_calibration_aggregator
-Status: not_started
-Effective date: 2026-04-30
-Short description: Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.
-
-#### Motivation
-
-The project&#x27;s Metric 2 (`overconfident_error_rate`) has no implementation: it is registered in
-`meta/metrics/` but no code computes it. The literature survey (t0002) identified Xiong2024 as the
-canonical calibration protocol — verbalized confidence elicitation (low / medium / high + brief
-justification) plus 3-sample self-consistency aggregation. Without this library, the Phase 2 smoke
-test (t0012) cannot report Metric 2 — only Metric 1 (success rate) and the diagnostic Metric 3 (avg
-decisions per task). This task unblocks the headline experiment by producing a library that any
-agent&#x27;s trajectory records can be passed through to compute `overconfident_error_rate`. Implements
-suggestion S-0002-02.
-
-#### Scope
-
-* Implement a library asset under `assets/library/metric2_calibration_aggregator_v1/` exposing:
-  * `class ConfidencePromptTemplate`: the human-inspired confidence-elicitation prompt (low / medium
-    / high + one-sentence justification) per Xiong2024 §3.2.
-  * `class ConfidenceJudge`: aggregator that takes 3 trajectory samples for the same problem and
-    returns `(predicted_label, predicted_confidence, is_correct)`. Self-consistency is majority-vote
-    on the predicted label; confidence is the mean across samples.
-  * `function compute_overconfident_error_rate(records: Iterable[CalibrationRecord]) -&gt; float` that
-    returns the fraction of records where `is_correct == False` and `predicted_confidence
-    &gt; = HIGH_CONFIDENCE_THRESHOLD`. The threshold is a module constant (default 0.75).
-  * `function elicit_confidence(model_call, problem, action) -&gt; tuple[str, float]` that calls the
-    model with the prompt template and parses the response.
-  * `dataclass CalibrationRecord(frozen=True, slots=True)`: the canonical record shape that
-    `compute_overconfident_error_rate` consumes.
-* Implementation must accept trajectory records emitted by t0006/t0007/t0010 libraries — i.e., must
-  consume the canonical `TRAJECTORY_RECORD_FIELDS` schema as input.
-* Provide pytest coverage at `tasks/t0011_metric2_calibration_aggregator/code/test_calibration.py`
-  covering: prompt template formatting, parsing of low / medium / high confidence labels,
-  majority-vote aggregation across 3 samples (including ties), threshold-based overconfident
-  detection, and end-to-end run on a synthetic 10-record dataset.
-
-Out of scope: the actual experiment harness (handled by t0012), live API calls (deterministic tests
-only), provider-specific calibration variants.
-
-#### Approach
-
-1. Read t0002&#x27;s Xiong2024 paper summary
-   (`tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2306.13063/summary.md`)
-   to ground the prompt template and threshold choice.
-2. Implement in `tasks/t0011_metric2_calibration_aggregator/code/calibration.py` with a `paths.py`
-   and `constants.py` per the project Python style guide.
-3. Write `details.json`, `description.md`, and `files/` for the asset.
-4. Tests use `ScriptedModel` from t0007 to simulate model responses for the confidence prompt.
-5. Run `verify_library_asset`, ruff, mypy, and pytest.
-
-#### Expected Outputs
-
-* `assets/library/metric2_calibration_aggregator_v1/` with `details.json`, `description.md`,
-  `files/`.
-* `tasks/t0011_metric2_calibration_aggregator/code/calibration.py` and tests.
-* `results/results_summary.md` with API surface description, test summary, and the threshold default
-  rationale.
-* Follow-up suggestion for: provider-specific calibration variants, ECE (expected calibration error)
-  computation in addition to overconfident-error-rate.
-
-#### Compute and Budget
-
-No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
-
-#### Dependencies and Cross-References
-
-* No task dependencies.
-* References Xiong2024 paper asset (`10.48550_arXiv.2306.13063`) from t0002&#x27;s library.
-* Output format consumed by t0012&#x27;s experiment harness.
-
-#### Source Suggestion
-
-S-0002-02 — &quot;Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2.&quot;
-
-#### Key Questions
-
-1. What is the right default `HIGH_CONFIDENCE_THRESHOLD`? Xiong2024 uses 0.75 with verbalized labels
-   mapped to {low: 0.25, medium: 0.5, high: 0.9}; the default should match.
-2. How should the aggregator handle ties in the majority vote across 3 samples? Default: prefer the
-   highest-confidence sample.
-3. What is the expected output schema for compute_overconfident_error_rate so Phase 2 results can
-   include it in `metrics.json` directly?
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
@@ -649,14 +569,17 @@ Answers: 0
         <id>S-0006-02</id>
         <id>S-0006-04</id>
         <id>S-0007-03</id>
+        <id>S-0011-01</id>
+        <id>S-0011-02</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
         <id>S-0005-05</id>
         <id>S-0006-05</id>
         <id>S-0007-04</id>
+        <id>S-0011-03</id>
       </source_ids>
       <content>
-Open suggestions: 30
+Open suggestions: 33
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -833,6 +756,20 @@ Kind: evaluation
 Source task: t0007_scope_unaware_planandsolve_library
 After t0006 (scope_aware_react_v1) merges, run a small deduplication-style task that imports both libraries&#x27; TRAJECTORY_RECORD_FIELDS tuples and asserts they are identical, plus a smoke test that runs both libraries on the same toy problem and verifies the trajectory JSON shapes round-trip through a single Pydantic loader. If they diverge, file a correction in the later-merged task. This is the cheapest insurance against silent schema drift.
 
+## Add Expected Calibration Error (ECE) computation alongside overconfident_error_rate
+ID: S-0011-01
+Priority: medium
+Kind: library
+Source task: t0011_metric2_calibration_aggregator
+Extend the metric2_calibration_aggregator_v1 library (or add a sibling library) with Expected Calibration Error (ECE) computation using the standard 10-bucket binning and produce per-bucket calibration plots. Xiong2024 reports ECE as the primary headline metric; the current library reports only the binary overconfident_error_rate. Adding ECE gives Phase 2 a richer calibration signal and lets t0012&#x27;s results display the bucket where overconfidence concentrates rather than just a single number. Should be a small follow-up: bucket each CalibrationRecord by predicted_confidence, compute |accuracy - mean_confidence| within each bucket, weight by bucket size. Output should be both a scalar ECE...
+
+## Add provider-specific calibration prompt variants for instruction-tuned vs reasoning models
+ID: S-0011-02
+Priority: medium
+Kind: experiment
+Source task: t0011_metric2_calibration_aggregator
+The current ConfidencePromptTemplate uses a single Xiong2024 human-inspired prompt. Reasoning-focused models (e.g., o-series, Claude 4.5+ thinking models) often produce a chain-of-thought before stating confidence, which the current parser handles but which Xiong2024&#x27;s own results show can hurt calibration in some configurations. Build a small library of named prompt variants (instruction_tuned, reasoning_with_cot, reasoning_no_cot) and benchmark them on a held-out 50-problem set during Phase 2. Goal: identify which variant minimizes overconfident_error_rate per provider and ship that as the default mapping in t0012&#x27;s experiment harness. Out of scope for this task per task_description.md but...
+
 ## Defer Reflexion-style episodic memory to a Phase 3 ablation
 ID: S-0002-10
 Priority: low
@@ -867,6 +804,13 @@ Priority: low
 Kind: evaluation
 Source task: t0007_scope_unaware_planandsolve_library
 The PS+ instruction string in scope_unaware_planandsolve_v1 was sourced through the t0002 paper summary, which was itself grounded only in the abstract because the PDF download failed in t0002. A small download-paper task should re-attempt the download against arXiv:2305.04091 and verify that the prompt text in code/planandsolve.py matches the published version verbatim. If it diverges, file a correction.
+
+## Sweep HIGH_CONFIDENCE_THRESHOLD to find the operating point that maximizes signal in t0012
+ID: S-0011-03
+Priority: low
+Kind: evaluation
+Source task: t0011_metric2_calibration_aggregator
+The current default HIGH_CONFIDENCE_THRESHOLD = 0.75 sits between the verbalized medium (0.5) and high (0.9) numeric anchor points and matches Xiong2024&#x27;s high-bucket boundary. The threshold is exposed as a module constant for sweeps. After t0012 runs, sweep the threshold over {0.5, 0.6, 0.7, 0.75, 0.8, 0.9} and report overconfident_error_rate at each operating point. The best threshold for the project&#x27;s hierarchical agents may differ from Xiong2024&#x27;s QA setting because the project judges actions at trajectory steps, not final answers. Output: a small chart and a recommended threshold for downstream tasks.
       </content>
     </section>
   </sections>
