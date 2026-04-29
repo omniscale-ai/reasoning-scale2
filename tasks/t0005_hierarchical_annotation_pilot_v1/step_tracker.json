@@ -122,9 +122,9 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up suggestions for >=200-row extension, full human review, and proxy benchmark remediation.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T20:12:17Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T20:13:18Z",
       "log_file": "logs/steps/014_suggestions/"
     },
     {
