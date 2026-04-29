@@ -1,0 +1,7 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator/tasks/t0011_metric2_calibration_aggregator/task.json
+
+[33m[1mWARNINGS:[0m
+[33m  TF-W002 warning: name is 82 characters (maximum: 80)[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)

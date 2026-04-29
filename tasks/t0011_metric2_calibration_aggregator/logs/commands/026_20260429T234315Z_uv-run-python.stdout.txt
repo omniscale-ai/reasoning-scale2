@@ -1,0 +1,2 @@
+Captured 0 session transcript(s) into /Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator/tasks/t0011_metric2_calibration_aggregator/logs/sessions.
+Wrote capture report to /Users/anaderi/git/reasoning-scale2-worktrees/t0011_metric2_calibration_aggregator/tasks/t0011_metric2_calibration_aggregator/logs/sessions/capture_report.json.
