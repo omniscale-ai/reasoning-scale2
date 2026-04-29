@@ -23,8 +23,8 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create mandatory task folders for assets/dataset, results, logs, plan, research, etc.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T19:44:56Z",
       "completed_at": null,
       "log_file": "logs/steps/003_init-folders/"
     },
