@@ -1,14 +1,36 @@
 # Suggestions: `benchmark-frontierscience`
 
-3 suggestion(s) in category
-[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **3 open**
-(2 high, 1 medium).
+5 suggestion(s) in category
+[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **5 open**
+(4 high, 1 medium).
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
+
+<details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-01` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/), [`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) |
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
+
+</details>
 
 <details>
 <summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
@@ -49,6 +71,28 @@ AI's evaluation pipeline; the raw problems are not publicly downloadable. The pr
 explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
 (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
+subset</strong> (S-0006-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | [`10.48550_arXiv.2210.03629`](../../../tasks/t0006_scope_aware_react_library/assets/paper/10.48550_arXiv.2210.03629/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
+as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
+libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
+overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
+size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
+anchor.
 
 </details>
 

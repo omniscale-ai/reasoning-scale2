@@ -5,7 +5,7 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (5)](../papers/by-category/hierarchical-planning.md) | [Suggestions
-(8)](../suggestions/by-category/hierarchical-planning.md) | [Libraries
+(9)](../suggestions/by-category/hierarchical-planning.md) | [Libraries
 (1)](../libraries/by-category/hierarchical-planning.md)
 
 ---
@@ -232,7 +232,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (5 open, 3 closed)
+## Suggestions (6 open, 3 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
@@ -260,6 +260,21 @@ FrontierScience-Olympiad pilot rows currently lack per-instance step graphs beca
 solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
 problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
 apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Extend the library to support a granularity that varies within
+a single run</strong> (S-0006-05)</summary>
+
+**Kind**: technique | **Priority**: low | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
+
+Currently ScopeAwareReactAgent takes one fixed granularity for an entire run. A natural
+extension is to let the agent emit a granularity transition (e.g., start global, drop to
+subtask once a plan is established, drop to atomic during execution). Add a model-driven mode
+where the parser also accepts <transition_to:subtask> markers and the agent updates the active
+granularity per turn. This is a research extension worth Phase 2 ablation.
 
 </details>
 

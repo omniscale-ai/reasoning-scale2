@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T20:02:35Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T20:09:42Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>44687</char_count>
-    <byte_count>44813</byte_count>
-    <estimated_tokens>11171</estimated_tokens>
+    <char_count>46407</char_count>
+    <byte_count>46545</byte_count>
+    <estimated_tokens>11601</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -651,12 +651,13 @@ that idea in v1 form, leveraging the existing 115 rows rather than re-annotating
 
 ## Scope-aware ReAct library: condition A with explicit granularity tags
 ID: t0006_scope_aware_react_library
-Status: in_progress
+Status: completed
 Effective date: 2026-04-29
 Short description: Write-library implementing ReAct extended with explicit granularity tags ({global, subtask, atomic}) for the A condition.
 Task types: write-library
 Source suggestion: S-0002-07
 Start time: 2026-04-29T19:35:38Z
+End time: 2026-04-29T20:07:30Z
 
 #### Motivation
 
@@ -726,6 +727,42 @@ S-0002-07 — &quot;Implement scope-aware (A) as ReAct extended with explicit gr
 2. How should the library handle a model that refuses to emit a tag (back off, abort, or default to
    `atomic`)?
 3. What schema for the trajectory log lets t0007 emit identical-shape records?
+
+### Results Summary
+
+#### Summary
+
+Shipped the project&#x27;s first library asset: `scope_aware_react_v1`, implementing condition A
+(scope-aware ReAct) with explicit `{global, subtask, atomic}` granularity tags, a JSONL trajectory
+writer whose six-field schema is the canonical contract for both this library and t0007, and
+deterministic-replay testing via `ScriptedModel`. All quality gates clean and the asset verificator
+passed.
+
+#### Metrics
+
+* **Library asset**: 1 (`scope_aware_react_v1`), passes `meta.asset_types.library.verificator` with
+  **0 errors / 0 warnings**.
+* **Tests**: **8 / 8** passing in `code/test_scope_aware_react.py`
+  (`pytest tasks/t0006_scope_aware_react_library/code/ -v` reported all tests passing).
+* **Source files**: **3 modules** in `code/` (`scope_aware_react.py` ~370 lines, `constants.py`,
+  `paths.py`) plus 1 test file.
+* **Public entry points**: **6** (`ScopeAwareReactAgent`, `ScriptedModel`, `TrajectoryRecord`,
+  `Action`, `AgentResult`, `MalformedActionError`).
+* **REQ items satisfied**: **10 / 10** (REQ-1 through REQ-10 from `plan/plan.md`, all marked
+  `Done`).
+* **Quality gates**: ruff check **0 errors**, ruff format clean, mypy **0 errors**, pre-commit hooks
+  **all passing**.
+* **Cost**: USD **$0** (deterministic tests; no live API calls).
+
+#### Verification
+
+* `meta.asset_types.library.verificator` (asset `scope_aware_react_v1`) — PASSED (0 errors, 0
+  warnings).
+* `verify_research_papers` — PASSED.
+* `verify_research_code` — PASSED.
+* `verify_plan` — PASSED.
+* `pytest tasks/t0006_scope_aware_react_library/code/` — 8 / 8 passing.
+* `ruff check`, `ruff format`, `mypy -p tasks.t0006_scope_aware_react_library.code` — all clean.
 
 ## Scope-unaware Plan-and-Solve library: condition B baseline
 ID: t0007_scope_unaware_planandsolve_library

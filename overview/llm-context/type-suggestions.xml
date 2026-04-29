@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-29T20:02:35Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-29T20:09:42Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>15119</char_count>
-    <byte_count>15119</byte_count>
-    <estimated_tokens>3779</estimated_tokens>
+    <char_count>18860</char_count>
+    <byte_count>18860</byte_count>
+    <estimated_tokens>4715</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -32,13 +32,18 @@
         <id>S-0003-03</id>
         <id>S-0003-04</id>
         <id>S-0003-05</id>
+        <id>S-0006-01</id>
+        <id>S-0006-02</id>
+        <id>S-0006-03</id>
+        <id>S-0006-04</id>
+        <id>S-0006-05</id>
         <id>S-0007-01</id>
         <id>S-0007-02</id>
         <id>S-0007-03</id>
         <id>S-0007-04</id>
       </source_ids>
       <content>
-Suggestions: 19
+Suggestions: 24
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -215,6 +220,62 @@ Source task: t0003_download_benchmark_subsets
 Date added: 2026-04-29
 
 This task wrote the `code/dataset_asset.py` helper inline, but the same DatasetDetails / write_dataset_asset helpers will be needed by every future download-dataset task. Promote this code to a registered library asset (under a future task) so subsequent tasks can import the helpers via `assets/library/` rather than re-implementing them.
+
+## Build benchmark-specific tool registries for the four roadmap benchmarks
+ID: S-0006-01
+Status: active
+Priority: high
+Kind: library
+Source task: t0006_scope_aware_react_library
+Categories: agent-evaluation, benchmark-frontierscience, benchmark-workarena, benchmark-swebench, benchmark-taubench
+Date added: 2026-04-29
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++ (browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests, git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own write-library task that imports scope_aware_react_v1 and registers a registry with consistent naming conventions.
+
+## Add an async ScopeAwareReactAgent variant for streaming and parallel tool calls
+ID: S-0006-02
+Status: active
+Priority: medium
+Kind: library
+Source task: t0006_scope_aware_react_library
+Categories: agent-evaluation
+Date added: 2026-04-29
+
+The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming model output and from issuing multiple independent tool calls concurrently within a single Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an async model_call signature and asyncio.gather over Action lists. Tests should use AsyncScriptedModel mirroring the sync helper.
+
+## Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience subset
+ID: S-0006-03
+Status: active
+Priority: high
+Kind: experiment
+Source task: t0006_scope_aware_react_library
+Source paper: 10.48550_arXiv.2210.03629
+Categories: granularity-conditioning, agent-evaluation, benchmark-frontierscience
+Date added: 2026-04-29
+
+scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate, overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result anchor.
+
+## Measure the missing-tag fallback rate against real LLMs
+ID: S-0006-04
+Status: active
+Priority: medium
+Kind: evaluation
+Source task: t0006_scope_aware_react_library
+Categories: granularity-conditioning, agent-evaluation
+Date added: 2026-04-29
+
+The library defaults to atomic when the model omits a granularity tag and emits a tag_missing_defaulted_to_atomic warning observation. The deterministic tests cover the parser path but the fallback rate against real LLMs (GPT-4o, Claude 3.7 Sonnet, Llama-3.1-70B) is unknown. Build an evaluation task that runs each library at each granularity over N=20 problems per benchmark and reports the fallback rate alongside task success.
+
+## Extend the library to support a granularity that varies within a single run
+ID: S-0006-05
+Status: active
+Priority: low
+Kind: technique
+Source task: t0006_scope_aware_react_library
+Categories: granularity-conditioning, hierarchical-planning
+Date added: 2026-04-29
+
+Currently ScopeAwareReactAgent takes one fixed granularity for an entire run. A natural extension is to let the agent emit a granularity transition (e.g., start global, drop to subtask once a plan is established, drop to atomic during execution). Add a model-driven mode where the parser also accepts &lt;transition_to:subtask&gt; markers and the agent updates the active granularity per turn. This is a research extension worth Phase 2 ablation.
 
 ## Implement matched-mismatch (C) library on top of scope_unaware_planandsolve_v1
 ID: S-0007-01

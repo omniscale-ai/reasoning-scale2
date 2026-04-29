@@ -1,12 +1,47 @@
 # Libraries by Date Added
 
-1 librar(y/ies) grouped by creation date.
+2 librar(y/ies) grouped by creation date.
 
 [Back to all libraries](../README.md)
 
 ---
 
-## 2026-04-29 (1)
+## 2026-04-29 (2)
+
+<details>
+<summary>📦 <strong>Scope-Aware ReAct Agent</strong>
+(<code>scope_aware_react_v1</code>)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `scope_aware_react_v1` |
+| **Version** | 0.1.0 |
+| **Modules** | `tasks/t0006_scope_aware_react_library/code/scope_aware_react.py`, `tasks/t0006_scope_aware_react_library/code/constants.py`, `tasks/t0006_scope_aware_react_library/code/paths.py` |
+| **Dependencies** | — |
+| **Date created** | 2026-04-29 |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+| **Created by** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Documentation** | [`description.md`](../../../tasks/t0006_scope_aware_react_library/assets/library/scope_aware_react_v1/description.md) |
+
+**Entry points:**
+
+* `ScopeAwareReactAgent` (class) — Run the scope-aware ReAct loop with a fixed granularity for
+  all turns; writes a JSONL trajectory log.
+* `ScriptedModel` (class) — Deterministic helper that replays a fixed list of model
+  completions for unit tests.
+* `TrajectoryRecord` (class) — Frozen dataclass describing one JSONL record with the canonical
+  six-field schema.
+* `Action` (class) — Frozen dataclass holding a parsed Action: name (tool or 'Finish') plus
+  args dict.
+* `AgentResult` (class) — Frozen dataclass returned by ScopeAwareReactAgent.run() with answer,
+  finished flag, turn count, and full trajectory.
+* `MalformedActionError` (class) — Raised internally when the model emits a malformed Action
+  JSON line; surfaced as <parse_error> in the trajectory log.
+
+ReAct agent extended with explicit {global, subtask, atomic} granularity tags and a JSONL
+trajectory writer.
+
+</details>
 
 <details>
 <summary>📦 <strong>Scope-Unaware Plan-and-Solve Agent (v1)</strong>

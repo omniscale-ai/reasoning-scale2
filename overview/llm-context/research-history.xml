@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-29T20:02:35Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-29T20:09:42Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>14</section_count>
-    <char_count>72500</char_count>
-    <byte_count>72673</byte_count>
-    <estimated_tokens>18125</estimated_tokens>
+    <section_count>16</section_count>
+    <char_count>98222</char_count>
+    <byte_count>98422</byte_count>
+    <estimated_tokens>24555</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -131,10 +131,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
         <id>t0004_brainstorm_results_2</id>
+        <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
       </source_ids>
       <content>
-Completed tasks: 5
+Completed tasks: 6
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -160,6 +161,12 @@ Completed: 2026-04-29
 Short description: Brainstorm 2: plan annotation pilot v1 plus the A/B baseline libraries (ReAct+tags and Plan-and-Solve).
 Result summary: Brainstorm Session 2 — Results Summary Summary Second brainstorm produced three new not-started tasks for parallel execution: a v1 hierarchical annotation pilot and two baseline libraries (ReAct+tags for the A condition, Plan-and-Solve for the B condition). Round 2 suggestion cleanup deferred to a follow-up session. Session Overview * **Date**: 2026-04-29 * **Context**: Triggered after t0001-t0003 wave completed at $0 spend, with 15 uncovered suggestions queued. * **Prompt**: Plan Phase 1 annotation deliverable and the libraries Phase 2 baseline experiment will need. Decisions 1. **Create `t0005_hierarchical_annotation_pilot_v1`** (covers `S-0002-08`, `hierarchical-annotation`). Audit and...
 
+## Scope-aware ReAct library: condition A with explicit granularity tags
+ID: t0006_scope_aware_react_library
+Completed: 2026-04-29
+Short description: Write-library implementing ReAct extended with explicit granularity tags ({global, subtask, atomic}) for the A condition.
+Result summary: Results Summary: Scope-Aware ReAct Library Summary Shipped the project&#x27;s first library asset: `scope_aware_react_v1`, implementing condition A (scope-aware ReAct) with explicit `{global, subtask, atomic}` granularity tags, a JSONL trajectory writer whose six-field schema is the canonical contract for both this library and t0007, and deterministic-replay testing via `ScriptedModel`. All quality gates clean and the asset verificator passed. Metrics * **Library asset**: 1 (`scope_aware_react_v1`), passes `meta.asset_types.library.verificator` with **0 errors / 0 warnings**. * **Tests**: **8 / 8** passing in `code/test_scope_aware_react.py` (`pytest tasks/t0006_scope_aware_react_library/code/...
+
 ## Scope-unaware Plan-and-Solve library: condition B baseline
 ID: t0007_scope_unaware_planandsolve_library
 Completed: 2026-04-29
@@ -172,22 +179,15 @@ Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0007_scope_unawa
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0005_hierarchical_annotation_pilot_v1</id>
-        <id>t0006_scope_aware_react_library</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
+Planned or active tasks: 1
 
 ## Hierarchical annotation pilot v1: audit and conform existing 115 rows
 ID: t0005_hierarchical_annotation_pilot_v1
 Status: in_progress
 Effective date: 2026-04-29
 Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
-
-## Scope-aware ReAct library: condition A with explicit granularity tags
-ID: t0006_scope_aware_react_library
-Status: in_progress
-Effective date: 2026-04-29
-Short description: Write-library implementing ReAct extended with explicit granularity tags ({global, subtask, atomic}) for the A condition.
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -1190,6 +1190,438 @@ No research required for brainstorming session.
 #### References
 
 No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0006_scope_aware_react_library-research_papers" source_kind="file">
+      <title>t0006_scope_aware_react_library — Scope-aware ReAct library: condition A with explicit granularity tags — research_papers.md</title>
+      <source_name>research_papers.md</source_name>
+      <source_ids>
+        <id>t0006_scope_aware_react_library</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0006_scope_aware_react_library/research/research_papers.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0006_scope_aware_react_library&quot;
+research_stage: &quot;papers&quot;
+papers_reviewed: 4
+papers_cited: 4
+categories_consulted:
+  - &quot;granularity-conditioning&quot;
+  - &quot;hierarchical-planning&quot;
+  - &quot;uncertainty-calibration&quot;
+  - &quot;agent-evaluation&quot;
+date_completed: &quot;2026-04-29&quot;
+status: &quot;complete&quot;
+---
+#### Task Objective
+
+Build the scope-aware (A) ReAct library that every Phase 2 A-condition experiment will import. The
+library must extend canonical ReAct with an explicit `{global, subtask, atomic}` granularity tag at
+every Thought / Action turn, expose a deterministic-test mode, and emit a JSONL trajectory log whose
+schema the sister Plan-and-Solve library (`t0007`) can mirror exactly. This research stage grounds
+the public API, prompt template, error-recovery behaviour, and trajectory schema in the existing
+paper corpus rather than rediscovering them. The library implements suggestion S-0002-07 from the
+t0001 brainstorm.
+
+#### Category Selection Rationale
+
+Consulted four project categories that map directly to the design questions for this library.
+`granularity-conditioning` is the central category — every paper that informs the per-turn
+granularity tag and the ablation rationale lives here. `hierarchical-planning` was consulted for the
+Plan-and-Solve baseline, since its prompting structure constrains the trajectory schema we emit (we
+must emit records B can also emit). `uncertainty-calibration` was consulted for the `confidence`
+field of the trajectory record so the Phase 2 evaluator can compute overconfident error rate.
+`agent-evaluation` was consulted to confirm trajectory-level logs are what published agent
+benchmarks expect to consume.
+
+Excluded the four benchmark-specific categories (`benchmark-frontierscience`, `benchmark-workarena`,
+`benchmark-swebench`, `benchmark-taubench`) because this task produces a benchmark-agnostic library.
+Tool registries are explicitly out of scope (deferred to a follow-up task per
+`task_description.md`). Excluded `benchmark-annotation` because the library does not depend on
+annotation schemas.
+
+#### Key Findings
+
+##### ReAct Provides the Skeleton; Granularity Is the Extension
+
+The canonical ReAct paper [Yao2022] introduces the Thought / Action / Observation loop with no
+explicit notion of *scope*: every Thought is at the same conceptual level. Trajectories run until
+the model emits a `Finish` action with the answer payload. The reported gains are large — **+34
+absolute** success rate on ALFWorld and **+10 absolute** on WebShop versus imitation and RL
+baselines — and critically these gains come from prompting alone with one or two in-context
+examples, not from fine-tuning. This is the strongest published evidence that prompt-only agent
+extensions can produce double-digit absolute effects, which is the empirical foundation for the
+project&#x27;s Phase 2 effect-size targets.
+
+The minimal extension this task implements is a *single token* prepended to every Thought emission
+(`&lt;global&gt;`, `&lt;subtask&gt;`, `&lt;atomic&gt;`) plus a parallel structured field in the trajectory log. The
+Yao2022 prompt is otherwise reused verbatim, including the in-context exemplars convention and the
+structured terminator action named `Finish`. **Hypothesis** (drawn from the gap between ReAct and
+the project&#x27;s three-level schema): an explicit per-Thought granularity tag will reduce off-task tool
+calls and improve calibration on multi-step benchmarks without changing the underlying tool
+registry.
+
+##### Plan-and-Solve as the Matched B Baseline Constrains the Trajectory Schema
+
+[Wang2023a] introduces Plan-and-Solve prompting where the model first emits a global plan and then
+executes each step. This is the project&#x27;s scope-unaware (B) baseline: it has structure but no
+explicit per-step granularity tag. Because t0007 (sister task) wraps Plan-and-Solve into the same
+trajectory log shape, the schema we ship in t0006 is a contract for both libraries. The schema must
+be expressive enough that B can emit the *same* shape with `granularity` always set to `&quot;subtask&quot;`
+(the natural Plan-and-Solve default) while preserving turn ordering and confidence.
+
+[Zhou2022] (least-to-most prompting) reinforces this: any &quot;decompose then solve&quot; prompting style
+produces a tree of subgoals, and the trajectory log must capture the path actually taken. Both
+[Wang2023a] and [Zhou2022] favour structured Action records over free-form text, which justifies
+parsing the model&#x27;s `Action:` line as JSON and validating it against a tool registry — the same
+parsing pattern this library implements.
+
+##### Confidence Elicitation Is Cheap and Should Be Recorded Per Turn
+
+[Xiong2023] systematically evaluates verbalized-confidence prompts and reports that asking the model
+to emit a `Confidence: &lt;0-100&gt;` token per Thought adds well under one percent of token overhead and
+gives a usable signal for downstream calibration. They report best-in-class
+expected-calibration-error (ECE) values around **0.06-0.12** for verbalized prompts, which is
+already competitive with logit-based calibration on benchmarks where logits are unavailable (closed
+APIs). **Best practice**: include a `confidence` field in every trajectory record, even when the
+model leaves it unset, so that downstream calibration code never has to special-case missing rows.
+
+##### Library Design: Deterministic Replay Is Required for Test Coverage
+
+No paper in the corpus directly addresses how to *test* a ReAct-style library, but [Yao2022] reports
+that ReAct trajectories are highly variable across LLM samples and that the authors used
+hand-curated trajectories for their qualitative analysis. The implication for this library is that
+unit tests cannot rely on a live LLM call — every test must run against pre-recorded model outputs.
+This requires a `model_call` callable injection point and a deterministic-replay mode where the
+callable returns successive elements of a script. This is the pattern the library exposes via the
+`ScriptedModel` helper.
+
+#### Methodology Insights
+
+* **Reuse the LangChain ReAct prompt verbatim where possible**. LangChain&#x27;s ReAct prompt is
+  Apache-2.0 licensed and is a near-verbatim implementation of [Yao2022]&#x27;s template; building on it
+  avoids prompt-engineering rabbit-holes that are out of scope for this library task. Attribution is
+  recorded in the asset&#x27;s `description.md`.
+* **Granularity tag injection happens at prompt-build time, not parse time**. The Thought parser
+  accepts a tag-prefixed Thought, but the library *also* injects the granularity argument into the
+  system prompt so the model is asked to emit the tag. Both directions are needed because some
+  models will skip the tag; defaulting silently to `atomic` and logging a `tag_missing` warning is
+  the documented fallback per the task description&#x27;s Key Question 2.
+* **Trajectory log schema must be locked before t0007 lands**. The schema is
+  `{turn_index, granularity, thought, action, observation, confidence}` per record, JSONL, one
+  record per turn. `granularity` is one of `&quot;global&quot; | &quot;subtask&quot; | &quot;atomic&quot;`. `action` is a parsed
+  JSON object with `name` and `args` keys (or `{&quot;name&quot;: &quot;Finish&quot;, &quot;args&quot;: {&quot;answer&quot;: ...}}` to
+  terminate). `confidence` is `float | null` in `[0, 1]` per [Xiong2023]&#x27;s normalized form (the
+  paper uses 0-100; we divide by 100 at parse time).
+* **Test-first against malformed JSON**. [Yao2022] reports models occasionally emit malformed Action
+  lines. The library wraps `json.loads` and converts failures into a structured
+  `MalformedActionError` that is logged into the trajectory&#x27;s observation field as `&quot;&lt;parse_error&gt;&quot;`
+  without aborting the run. The unit tests cover this path explicitly.
+* **Hypothesis to test downstream (not in this task)**: A granularity-tag injection improves agent
+  success on benchmarks where steps differ in scope (WorkArena++, FrontierScience-Olympiad) more
+  than on benchmarks where steps are uniform (SWE-bench Verified). This is the key Phase 2
+  experiment the library exists to enable.
+
+#### Gaps and Limitations
+
+* **No paper in the corpus directly evaluates a three-level granularity tag against a two-level
+  ReAct or unstructured Plan-and-Solve**. The project&#x27;s main hypothesis is novel; this library is
+  the substrate for the experiment that will fill that gap.
+* **Confidence calibration on multi-step agent trajectories** is under-studied. [Xiong2023]
+  evaluates single-question confidence; how confidence behaves across long trajectories is unknown
+  and is a Phase 2 question.
+* **Trajectory schema portability**. No paper proposes a canonical agent-trajectory schema. The
+  schema this library defines is project-internal; future tasks may need to map it to OpenAI tool
+  call format or W3C activity logs, but that is out of scope here.
+* **Robustness when the model refuses to emit a tag**. [Yao2022] does not discuss tag fallbacks
+  because it has no tags. The library&#x27;s `default_granularity_on_missing_tag=&quot;atomic&quot;` policy is
+  pragmatic but unvalidated — Phase 2 should report how often this fallback fires.
+
+#### Recommendations for This Task
+
+1. **Reuse LangChain&#x27;s Apache-2.0 ReAct prompt and inject the granularity instruction as an
+   additional system message.** [Yao2022] gives the canonical prompt; LangChain provides a
+   battle-tested implementation. Acknowledge the attribution in `description.md`.
+2. **Lock the trajectory schema as
+   `{turn_index, granularity, thought, action, observation, confidence}` JSONL** so t0007 can emit
+   identical-shape records for the matched B baseline.
+3. **Default `granularity` to `&quot;atomic&quot;` and log a warning when the model omits the tag**, per
+   [Yao2022]-style robustness practice. Phase 2 reports the fallback rate.
+4. **Verbalize confidence per turn in `[0, 100]` and divide by 100 at parse time**, following
+   [Xiong2023]&#x27;s prompt format. Store as `float | None` so missing values are unambiguous.
+5. **Inject a `model_call` callable and ship a `ScriptedModel` deterministic helper** so unit tests
+   cover tag injection, action parsing, finish detection, malformed-JSON recovery, and trajectory
+   logging integrity without any live API call.
+6. **Defer benchmark-specific tool registries to a follow-up task**, as the task description states.
+   The library accepts an arbitrary tool registry mapping `name -&gt; callable`.
+
+#### Paper Index
+
+##### [Yao2022]
+
+* **Title**: ReAct: Synergizing Reasoning and Acting in Language Models
+* **Authors**: Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., Cao, Y.
+* **Year**: 2022
+* **DOI**: `10.48550/arXiv.2210.03629`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2210.03629/`
+* **Categories**: `granularity-conditioning`, `agent-evaluation`
+* **Relevance**: Direct ancestor of the scope-aware (A) condition. Defines the Thought / Action /
+  Observation loop, the in-context exemplar convention, and the `Finish[]` terminator that this
+  library reuses verbatim. Headline gains (+34 ALFWorld / +10 WebShop) anchor the project&#x27;s
+  effect-size expectations.
+
+##### [Wang2023a]
+
+* **Title**: Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large
+  Language Models
+* **Authors**: Wang, L., Xu, W., Lan, Y., Hu, Z., Lan, Y., Lee, R., Lim, E.-P.
+* **Year**: 2023
+* **DOI**: `10.48550/arXiv.2305.04091`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2305.04091/`
+* **Categories**: `hierarchical-planning`
+* **Relevance**: Defines the matched B baseline this library&#x27;s trajectory schema must accommodate.
+  Sister task t0007 wraps Plan-and-Solve into the same JSONL shape; locking the schema in t0006 is
+  therefore a contract between the two libraries.
+
+##### [Zhou2022]
+
+* **Title**: Least-to-Most Prompting Enables Complex Reasoning in Large Language Models
+* **Authors**: Zhou, D., Schärli, N., Hou, L., Wei, J., Scales, N., Wang, X., Schuurmans, D., Cui,
+  C., Bousquet, O., Le, Q., Chi, E.
+* **Year**: 2022
+* **DOI**: `10.48550/arXiv.2205.10625`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2205.10625/`
+* **Categories**: `hierarchical-planning`
+* **Relevance**: Reinforces that decompose-then-solve prompting is a tree of subgoals. The
+  trajectory log must capture the path actually taken, not the abstract subgoal tree, which is the
+  motivation for the linear JSONL `turn_index` schema.
+
+##### [Xiong2023]
+
+* **Title**: Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation
+  in LLMs
+* **Authors**: Xiong, M., Hu, Z., Lu, X., Li, Y., Fu, J., He, J., Hooi, B.
+* **Year**: 2023
+* **DOI**: `10.48550/arXiv.2306.13063`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2306.13063/`
+* **Categories**: `uncertainty-calibration`
+* **Relevance**: Justifies the per-turn `confidence` field in the trajectory schema. Reports ECE
+  around 0.06-0.12 for verbalized confidence prompts, with negligible token overhead. Used to decide
+  on the 0-100 input format and the normalized `[0, 1]` storage form.
+      </content>
+    </section>
+    <section id="t0006_scope_aware_react_library-research_code" source_kind="file">
+      <title>t0006_scope_aware_react_library — Scope-aware ReAct library: condition A with explicit granularity tags — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0006_scope_aware_react_library</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0006_scope_aware_react_library/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0006_scope_aware_react_library&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 5
+tasks_cited: 5
+libraries_found: 0
+libraries_relevant: 0
+date_completed: &quot;2026-04-29&quot;
+status: &quot;complete&quot;
+---
+#### Task Objective
+
+Survey the project&#x27;s existing code, libraries, and prior task outputs before implementing the
+scope-aware ReAct library. The goal is to confirm there is no existing ReAct or trajectory-logging
+implementation that can be reused, identify project-wide code conventions (path layout, style,
+dataclasses, JSONL handling) that the new library should follow, and surface lessons learned from
+the four completed tasks that should shape the implementation step.
+
+#### Library Landscape
+
+`aggregate_libraries.py --format json --detail full` returns zero registered libraries (`libraries`
+list is empty). The project has not yet published any reusable code as a library asset, which makes
+sense: tasks `[t0001]` and `[t0004]` were brainstorms that produced no code, `[t0002]` was a
+literature survey that produced only paper assets, and `[t0003]` produced datasets plus a small
+download harness in `code/` but did not register a library.
+
+Implication: the scope-aware ReAct library will be the project&#x27;s first library asset, so it sets a
+precedent for `assets/library/&lt;library_id&gt;/` layout, `details.json` schema, and `description.md`
+shape. The library asset specification (`meta/asset_types/library/specification.md`) is the
+authoritative reference; this library matches that v2 spec including `description_path` and
+`module_paths`.
+
+#### Key Findings
+
+##### Project-Wide Python Style Is Already Codified
+
+`[t0003]` follows the project Python style guide closely: dataclasses are
+`@dataclass(frozen=True, slots=True)`, paths are centralized in `code/paths.py`, magic strings are
+pulled into `code/constants.py`, public functions take keyword arguments, and absolute imports are
+used throughout (e.g. `tasks.t0003_download_benchmark_subsets.code.constants`). The new library must
+adopt the same conventions because Phase 2 experiments will import from it the same way.
+
+The `[t0003]` Python footprint is non-trivial — about a dozen modules (`build_all.py`,
+`build_frontierscience.py`, `build_swebench.py`, `build_taubench.py`, `build_workarena_pp.py`,
+`constants.py`, `paths.py`, `dataset_asset.py`, `download_attempt.py`, `build_status_manifest.py`,
+`access_status.json`) — and none of them is a ReAct-style agent loop, a Thought/Action parser, or a
+JSONL trajectory writer. The new library cannot reuse or copy any agent code from `[t0003]`; it can
+however mirror the style conventions.
+
+##### No Existing ReAct, Plan-and-Solve, or Trajectory-Log Implementations
+
+Aggregator output for tasks and libraries confirms that no completed task has implemented a ReAct
+loop, a Plan-and-Solve loop, or a trajectory-logging schema. The closest prior code is the
+`access_status.json` writer in `[t0003]`, which is a single-shot JSON dump rather than a streaming
+JSONL writer. The new library must implement its own JSONL writer; copying `[t0003]` JSON code would
+not save effort.
+
+The sister task `[t0007]` is in_progress in parallel and will produce the matched B baseline
+library. This research notes that the trajectory schema documented in `research/research_papers.md`
+is a contract between t0006 and t0007. If t0007 lands first, this task must adopt its schema; if
+t0006 lands first, t0007 must mirror the schema documented in the asset&#x27;s `description.md`. Either
+order is acceptable per the task brief.
+
+##### Logging Conventions Established by Earlier Tasks
+
+`[t0002]` and `[t0003]` write step logs to `logs/steps/&lt;NNN_step-name&gt;/step_log.md` with a fixed
+YAML frontmatter and four mandatory `##` sections (Summary, Actions Taken, Outputs, Issues). They
+also use `run_with_logs.py` for every CLI tool call. The new library inherits these conventions
+because they are project-wide rules, not task-specific choices.
+
+##### Earlier Tasks Confirm the Verbalized-Confidence Pipeline Is Not Yet Wired
+
+`[t0004]` brainstorm explicitly defers wiring of the verbalized-confidence pipeline to Phase 2
+experiment tasks. No completed task computes overconfident error rate yet. The new library therefore
+stores `confidence` as `float | None` in `[0, 1]` per turn but does not compute any calibration
+metric — that remains a Phase 2 responsibility. This matches the literature stance from
+`research/research_papers.md` (`[Xiong2023]`).
+
+#### Reusable Code and Assets
+
+* **Source**: `tasks/t0003_download_benchmark_subsets/code/paths.py`
+
+* **What it does**: Centralized `pathlib.Path` constants for the task&#x27;s input and output
+  directories, with the convention `TASK_ROOT = Path(__file__).resolve().parents[1]`.
+
+* **Reuse method**: copy into task. The pattern is small (~20 lines) but is the canonical project
+  layout for a `paths.py`. The new library will write its own `code/paths.py` that follows the same
+  shape but defines library-specific constants (trajectory log default path, in-context exemplar
+  fixture paths, scripted-model fixture paths).
+
+* **Function signatures**: pure module-level constants only.
+
+* **Adaptation needed**: rename constants to library-specific names. No functional code to copy.
+
+* **Line count**: ~20 lines.
+
+* **Source**: `tasks/t0003_download_benchmark_subsets/code/constants.py`
+
+* **What it does**: Defines typed string and integer constants for column names, status values, and
+  tool exit codes used by the dataset builders.
+
+* **Reuse method**: copy into task. Same convention but library-specific values: granularity
+  literals (`GRANULARITY_GLOBAL = &quot;global&quot;`, etc.), trajectory schema field names
+  (`FIELD_TURN_INDEX = &quot;turn_index&quot;`, etc.), default model token limits, and parser sentinel values.
+
+* **Function signatures**: module-level constants only.
+
+* **Adaptation needed**: replace `[t0003]` dataset constants with library-specific constants.
+
+* **Line count**: ~25 lines in the new library.
+
+No library imports are available; every cross-task dependency would have to be a copy. The library
+will therefore depend only on the Python standard library plus `pydantic` for JSON-ish parsing where
+helpful.
+
+#### Lessons Learned
+
+* **`[t0002]` lesson**: the research-papers verificator silently parses any `[Word]` in body text as
+  an inline citation. Avoid bracketed examples like `Finish[answer]` in research files (use
+  backticks or rephrase). This already bit research-papers in this task; it is now a documented
+  pitfall for all future research files.
+* **`[t0003]` lesson**: keeping `code/paths.py` and `code/constants.py` cleanly separated from
+  business logic kept the dataset builders readable and made tests trivial to write. Adopt the same
+  structure here.
+* **`[t0003]` lesson**: pre-commit hooks auto-format files (end-of-file-fixer, ruff, ruff-format).
+  Always run flowmark on Markdown and ruff/mypy before the commit; otherwise the hook fails the
+  commit and you have to retry. This was hit twice in t0006 already; it is the reason the reporting
+  step also runs the formatters one final time.
+* **`[t0004]` lesson**: every Phase 2 experiment library should ship a deterministic mode that
+  replays pre-recorded model outputs so that unit tests do not call live APIs. The new library
+  exposes a `ScriptedModel` helper for exactly that purpose.
+
+#### Recommendations for This Task
+
+1. **Mirror the `[t0003]` code layout**: keep `paths.py` and `constants.py` separate from
+   `scope_aware_react.py`. Tests live in `code/test_scope_aware_react.py`.
+2. **Adopt project-wide style**: `@dataclass(frozen=True, slots=True)` for all records, keyword
+   arguments for any 2+ heterogeneous-parameter call, absolute imports from
+   `tasks.t0006_scope_aware_react_library.code...`, no relative imports.
+3. **Write the JSONL trajectory writer from scratch**, since no prior task has one. Use stdlib
+   `json` only; one record per line; UTF-8; an explicit `flush()` after every write so a crashed
+   experiment leaves a partial-but-valid file.
+4. **Do not reuse any `[t0003]` JSON code**; the dataset access manifest is a one-shot dump and does
+   not match the streaming JSONL pattern this library needs.
+5. **Document the trajectory schema in `description.md`** so the sister task `[t0007]` can mirror
+   it. This is the load-bearing artifact across the t0006/t0007 contract.
+6. **Run `verify_library_asset` and `pytest` before commit**, not only at reporting. Library assets
+   break silently if `module_paths` point to a missing file or if `description.md` lacks a mandatory
+   section.
+
+#### Task Index
+
+##### [t0001]
+
+* **Task ID**: t0001_brainstorm_results_1
+* **Name**: Brainstorm session 1: plan first project tasks
+* **Status**: completed
+* **Relevance**: Originated suggestion S-0002-07 (&quot;implement scope-aware A as ReAct extended with
+  explicit granularity tags&quot;) which this task implements. No reusable code; brainstorms produce
+  suggestions only.
+
+##### [t0002]
+
+* **Task ID**: t0002_literature_survey_granularity_conditioning
+* **Name**: Literature survey: granularity conditioning and hierarchical agents
+* **Status**: completed
+* **Relevance**: Produced the four paper assets (Yao2022 ReAct, Wang2023a Plan-and-Solve, Zhou2022
+  least-to-most, Xiong2023 confidence elicitation) cited in this task&#x27;s
+  `research/research_papers.md`. No reusable code.
+
+##### [t0003]
+
+* **Task ID**: t0003_download_benchmark_subsets
+* **Name**: Download benchmark subsets for the four roadmap sources
+* **Status**: completed
+* **Relevance**: First completed task with substantial Python under `code/`. Sets the project&#x27;s
+  layout convention (`paths.py`, `constants.py`, dataclasses, absolute imports). Style mirror, not
+  code import.
+
+##### [t0004]
+
+* **Task ID**: t0004_brainstorm_results_2
+* **Name**: Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries
+* **Status**: completed
+* **Relevance**: Crystallized the t0006/t0007 sister-task split and the deterministic-test
+  requirement. No reusable code; informs the design of `ScriptedModel`.
+
+##### [t0007]
+
+* **Task ID**: t0007_scope_unaware_planandsolve_library
+* **Name**: Scope-unaware Plan-and-Solve library: condition B baseline
+* **Status**: in_progress
+* **Relevance**: Sister task running in parallel. Must emit the same trajectory schema as t0006. No
+  code yet to reuse; this research documents the schema contract so either landing order works.
       </content>
     </section>
     <section id="t0007_scope_unaware_planandsolve_library-research_papers" source_kind="file">
