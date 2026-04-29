@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "SWE-bench Verified",
+  "short_description": "Per-source tag for tasks and assets sourced from the SWE-bench Verified benchmark.",
+  "detailed_description": "Tags annotation, experiment, and analysis work that operates on SWE-bench Verified instances. SWE-bench Verified supplies repository-grounded software engineering problems used for atomic-execution evaluation. Use this category for stratified per-source breakdowns and for filtering datasets, models, and predictions that originate from SWE-bench Verified."
+}

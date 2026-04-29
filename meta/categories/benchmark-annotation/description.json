@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "Benchmark Annotation",
+  "short_description": "Manual or LLM-assisted gold-action annotation across the three granularity levels.",
+  "detailed_description": "Tags Phase 1 work that decomposes benchmark tasks into hierarchical solutions and labels gold actions at the global, subtask, and execution levels. Covers annotation schemas, inter-annotator agreement studies, and the construction of the ≥100-task annotated set required by the project's success criteria."
+}

@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "FrontierScience-Olympiad",
+  "short_description": "Per-source tag for tasks and assets sourced from the FrontierScience-Olympiad benchmark.",
+  "detailed_description": "Tags any annotation, experiment, or analysis that operates on FrontierScience-Olympiad problems. FrontierScience-Olympiad supplies the project's top-of-hierarchy strategic-planning material. Use this category for stratified per-source breakdowns and for filtering paper or dataset assets that originate from this benchmark."
+}

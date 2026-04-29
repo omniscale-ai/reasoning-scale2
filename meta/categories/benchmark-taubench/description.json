@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "tau-bench",
+  "short_description": "Per-source tag for tasks and assets sourced from the tau-bench tool-use benchmark.",
+  "detailed_description": "Tags annotation, experiment, and analysis work that operates on tau-bench dialogues. tau-bench supplies fine-grained tool-use and request-vs-act decisions used in low-level execution evaluation. Use this category for stratified per-source breakdowns and for filtering datasets, models, and predictions that originate from tau-bench runs."
+}

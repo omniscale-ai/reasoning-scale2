@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "Agent Evaluation",
+  "short_description": "Running the A/B/C conditions against annotated tasks and computing the three project metrics.",
+  "detailed_description": "Tags experimental tasks that execute scope-aware, scope-unaware, or scope-mismatched agents on the annotated benchmark and report Metric 1 (task success), Metric 2 (overconfident error rate), and Metric 3 (can-execute-now vs. must-request accuracy). Covers significance testing and stratified breakdowns by difficulty and granularity."
+}
