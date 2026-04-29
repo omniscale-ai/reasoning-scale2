@@ -1,0 +1,61 @@
+{
+  "spec_version": "2",
+  "library_id": "scope_aware_react_v1",
+  "name": "Scope-Aware ReAct Agent",
+  "version": "0.1.0",
+  "short_description": "ReAct agent extended with explicit {global, subtask, atomic} granularity tags and a JSONL trajectory writer.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/scope_aware_react.py",
+    "code/constants.py",
+    "code/paths.py"
+  ],
+  "entry_points": [
+    {
+      "name": "ScopeAwareReactAgent",
+      "kind": "class",
+      "module": "code/scope_aware_react.py",
+      "description": "Run the scope-aware ReAct loop with a fixed granularity for all turns; writes a JSONL trajectory log."
+    },
+    {
+      "name": "ScriptedModel",
+      "kind": "class",
+      "module": "code/scope_aware_react.py",
+      "description": "Deterministic helper that replays a fixed list of model completions for unit tests."
+    },
+    {
+      "name": "TrajectoryRecord",
+      "kind": "class",
+      "module": "code/scope_aware_react.py",
+      "description": "Frozen dataclass describing one JSONL record with the canonical six-field schema."
+    },
+    {
+      "name": "Action",
+      "kind": "class",
+      "module": "code/scope_aware_react.py",
+      "description": "Frozen dataclass holding a parsed Action: name (tool or 'Finish') plus args dict."
+    },
+    {
+      "name": "AgentResult",
+      "kind": "class",
+      "module": "code/scope_aware_react.py",
+      "description": "Frozen dataclass returned by ScopeAwareReactAgent.run() with answer, finished flag, turn count, and full trajectory."
+    },
+    {
+      "name": "MalformedActionError",
+      "kind": "class",
+      "module": "code/scope_aware_react.py",
+      "description": "Raised internally when the model emits a malformed Action JSON line; surfaced as <parse_error> in the trajectory log."
+    }
+  ],
+  "dependencies": [],
+  "test_paths": [
+    "code/test_scope_aware_react.py"
+  ],
+  "categories": [
+    "granularity-conditioning",
+    "agent-evaluation"
+  ],
+  "created_by_task": "t0006_scope_aware_react_library",
+  "date_created": "2026-04-29"
+}
