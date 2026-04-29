@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Plan the four benchmark download attempts with explicit URLs, fallback policies, and subset criteria.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T14:36:32Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
