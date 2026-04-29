@@ -23,9 +23,9 @@
       "step": 3,
       "name": "init-folders",
       "description": "Initialize mandatory task folder structure.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T23:28:32Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T23:28:48Z",
       "log_file": "logs/steps/003_init-folders/"
     },
     {
