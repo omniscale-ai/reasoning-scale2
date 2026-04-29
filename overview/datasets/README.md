@@ -1,12 +1,14 @@
-# Datasets (4)
+# Datasets (5)
 
-4 dataset(s).
+5 dataset(s).
 
-**Browse by view**: By category:
+**Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
+[`benchmark-annotation`](by-category/benchmark-annotation.md),
 [`benchmark-frontierscience`](by-category/benchmark-frontierscience.md),
 [`benchmark-swebench`](by-category/benchmark-swebench.md),
 [`benchmark-taubench`](by-category/benchmark-taubench.md),
-[`benchmark-workarena`](by-category/benchmark-workarena.md); [By date
+[`benchmark-workarena`](by-category/benchmark-workarena.md),
+[`hierarchical-planning`](by-category/hierarchical-planning.md); [By date
 added](by-date-added/README.md)
 
 ---
@@ -28,6 +30,26 @@ added](by-date-added/README.md)
 | **Added by** | [`t0003_download_benchmark_subsets`](../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
 | **Description** | [`description.md`](../../tasks/t0003_download_benchmark_subsets/assets/dataset/frontierscience-olympiad-subset/description.md) |
 | **Summary** | FrontierScience-Olympiad pilot v0 subset: 40 Olympiad problems across physics, chemistry, biology with gold solutions, packaged for Phase 2 experiments. |
+
+</details>
+
+<details>
+<summary>📂 <strong>Hierarchical Annotation v1 (115-row pilot audit) vv1</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `hierarchical-annotation-v1` |
+| **Year** | 2026 |
+| **Authors** | Glite ARF reasoning-scale project |
+| **URL** | — |
+| **License** | inherited-per-row |
+| **Access** | restricted |
+| **Size** | 115 rows total (FrontierScience-Olympiad=40, SWE-bench Verified=23, WorkArena++=26, tau-bench=26); each row carries a global / subtask / atomic hierarchy and gold-action triple. Twelve rows (three per benchmark) carry an LLM-as-judge verdict. |
+| **Date added** | 2026-04-29 |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+| **Added by** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Description** | [`description.md`](../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/dataset/hierarchical-annotation-v1/description.md) |
+| **Summary** | Three-level (global / subtask / atomic) hierarchical annotation of 115 benchmark tasks drawn from FrontierScience-Olympiad, SWE-bench Verified, tau-bench, and WorkArena++. Includes a 12-row LLM-as-judge spot-check. |
 
 </details>
 

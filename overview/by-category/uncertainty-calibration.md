@@ -6,7 +6,7 @@ probabilities.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/uncertainty-calibration.md) |
-[Suggestions (1)](../suggestions/by-category/uncertainty-calibration.md)
+[Suggestions (3)](../suggestions/by-category/uncertainty-calibration.md)
 
 ---
 
@@ -65,7 +65,7 @@ condition's confidence elicitation.
 
 No answers in this category.
 
-## Suggestions (1 open, 0 closed)
+## Suggestions (3 open, 0 closed)
 
 <details>
 <summary>📚 <strong>Implement verbalized-confidence + 3-sample self-consistency
@@ -80,5 +80,34 @@ this protocol for Metric 2 (overconfident error rate). This task would specify t
 human-inspired confidence prompt template (low/medium/high + brief justification), implement
 the self-consistency aggregator, and validate calibration on a small held-out set before Phase
 2 launches.
+
+</details>
+
+<details>
+<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
+truncation)</strong> (S-0005-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
+verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
+excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
+and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
+on FrontierScience-Olympiad.
+
+</details>
+
+<details>
+<summary>📊 <strong>Multi-judge disagreement study on hierarchical
+annotation</strong> (S-0005-05)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-sonnet-4-6)
+and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept
+rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality
+estimate. Estimated cost: ~$0.30 per run.
 
 </details>

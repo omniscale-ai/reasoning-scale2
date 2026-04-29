@@ -1,7 +1,8 @@
 # Suggestions: `benchmark-workarena`
 
-3 suggestion(s) in category
-[`benchmark-workarena`](../../../meta/categories/benchmark-workarena/) **3 open** (3 high).
+4 suggestion(s) in category
+[`benchmark-workarena`](../../../meta/categories/benchmark-workarena/) **4 open** (3 high, 1
+medium).
 
 [Back to all suggestions](../README.md)
 
@@ -71,5 +72,28 @@ developer instance and the BrowserGym Python harness. This is a substantial infr
 task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
 any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
 annotation begins.
+
+</details>
+
+## Medium Priority
+
+<details>
+<summary>🔧 <strong>Reconcile WorkArena++ flat-action sequences with the three-level
+schema</strong> (S-0005-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-03` |
+| **Kind** | technique |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2407.05291`](../../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2407.05291/) |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/) |
+
+The judge rejected all three WorkArena++ rows because the upstream annotation lacks
+`conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the
+WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be
+detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows
+as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
 
 </details>

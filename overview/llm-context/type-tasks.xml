@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T20:09:42Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T20:16:06Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>46407</char_count>
-    <byte_count>46545</byte_count>
-    <estimated_tokens>11601</estimated_tokens>
+    <char_count>48365</char_count>
+    <byte_count>48513</byte_count>
+    <estimated_tokens>12091</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -566,12 +566,13 @@ brainstorm to clean up duplicate suggestions and propose the Phase 2 smoke-test 
 
 ## Hierarchical annotation pilot v1: audit and conform existing 115 rows
 ID: t0005_hierarchical_annotation_pilot_v1
-Status: in_progress
+Status: completed
 Effective date: 2026-04-29
 Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
 Task types: hierarchical-annotation
 Source suggestion: S-0002-08
 Start time: 2026-04-29T19:35:28Z
+End time: 2026-04-29T20:14:30Z
 
 #### Motivation
 
@@ -648,6 +649,41 @@ that idea in v1 form, leveraging the existing 115 rows rather than re-annotating
 2. What is the per-benchmark hierarchy-completeness rate?
 3. What is the LLM-as-judge accept rate? Does it differ across benchmarks?
 4. Are there systematic patterns in rejected rows (e.g., one benchmark consistently failing)?
+
+### Results Summary
+
+#### Summary
+
+Audited the 115-row pilot annotation file, projected each row&#x27;s `steps.nodes` graph onto the
+project&#x27;s three-level global / subtask / atomic schema with a deterministic Python mapper, ran an
+LLM-as-judge spot-check on a 12-row stratified sample using `claude-haiku-4-5-20251001` via the
+local `claude` CLI, and produced a single canonical `hierarchical-annotation-v1` dataset asset (115
+rows). The asset passes the dataset verificator with 0 errors and 1 warning.
+
+#### Metrics
+
+* **Rows in dataset**: **115** (FrontierScience-Olympiad **40**, SWE-bench Verified **23**,
+  tau-bench **26**, WorkArena++ **26**)
+* **Overall hierarchy completeness**: **88.7%** (102 / 115 rows have a non-null `global` and a
+  non-empty `atomic` list)
+* **Per-benchmark completeness**: FrontierScience-Olympiad **70.0%** (28/40), SWE-bench Verified
+  **100.0%** (23/23), tau-bench **96.2%** (25/26), WorkArena++ **100.0%** (26/26)
+* **LLM-as-judge accept rate (overall)**: **33.3%** (4/12 rows accepted)
+* **Per-benchmark judge accept rate**: FrontierScience-Olympiad **0.0%** (0/3), SWE-bench Verified
+  **66.7%** (2/3), tau-bench **66.7%** (2/3), WorkArena++ **0.0%** (0/3)
+* **`avg_decisions_per_task`** (registered metric): **5.76** atomic actions per task
+* **Total LLM cost**: **$0.06** (well under the $5 per-task cap)
+
+#### Verification
+
+* `meta.asset_types.dataset.verificator` — **PASSED** (0 errors, 1 warning DA-W007 — author has no
+  country field, acceptable for project-internal asset)
+* `verify_research_papers` — **PASSED** (0 errors, 0 warnings)
+* `verify_plan` — **PASSED** (0 errors, 1 warning PL-W009 about descriptive references to
+  orchestrator-managed files in the REQ checklist)
+* `verify_task_dependencies` — **PASSED** (no dependencies)
+* `verify_task_metrics` and the rest of the reporting-step verificators run during the next step;
+  see Step 15 for their final outcome.
 
 ## Scope-aware ReAct library: condition A with explicit granularity tags
 ID: t0006_scope_aware_react_library

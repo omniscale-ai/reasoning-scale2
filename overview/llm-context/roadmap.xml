@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-29T20:09:42Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-29T20:16:06Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>33482</char_count>
-    <byte_count>33528</byte_count>
-    <estimated_tokens>8370</estimated_tokens>
+    <char_count>33144</char_count>
+    <byte_count>33180</byte_count>
+    <estimated_tokens>8286</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -131,11 +131,12 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
         <id>t0004_brainstorm_results_2</id>
+        <id>t0005_hierarchical_annotation_pilot_v1</id>
         <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
       </source_ids>
       <content>
-Completed tasks: 6
+Completed tasks: 7
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -161,6 +162,12 @@ Completed: 2026-04-29
 Short description: Brainstorm 2: plan annotation pilot v1 plus the A/B baseline libraries (ReAct+tags and Plan-and-Solve).
 Result summary: Brainstorm Session 2 — Results Summary Summary Second brainstorm produced three new not-started tasks for parallel execution: a v1 hierarchical annotation pilot and two baseline libraries (ReAct+tags for the A condition, Plan-and-Solve for the B condition). Round 2 suggestion cleanup deferred to a follow-up session. Session Overview * **Date**: 2026-04-29 * **Context**: Triggered after t0001-t0003 wave completed at $0 spend, with 15 uncovered suggestions queued. * **Prompt**: Plan Phase 1 annotation deliverable and the libraries Phase 2 baseline experiment will need. Decisions 1. **Create `t0005_hierarchical_annotation_pilot_v1`** (covers `S-0002-08`, `hierarchical-annotation`). Audit and...
 
+## Hierarchical annotation pilot v1: audit and conform existing 115 rows
+ID: t0005_hierarchical_annotation_pilot_v1
+Completed: 2026-04-29
+Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
+Result summary: Results Summary: Hierarchical Annotation Pilot v1 Summary Audited the 115-row pilot annotation file, projected each row&#x27;s `steps.nodes` graph onto the project&#x27;s three-level global / subtask / atomic schema with a deterministic Python mapper, ran an LLM-as-judge spot-check on a 12-row stratified sample using `claude-haiku-4-5-20251001` via the local `claude` CLI, and produced a single canonical `hierarchical-annotation-v1` dataset asset (115 rows). The asset passes the dataset verificator with 0 errors and 1 warning. Metrics * **Rows in dataset**: **115** (FrontierScience-Olympiad **40**, SWE-bench Verified **23**, tau-bench **26**, WorkArena++ **26**) * **Overall hierarchy completeness**...
+
 ## Scope-aware ReAct library: condition A with explicit granularity tags
 ID: t0006_scope_aware_react_library
 Completed: 2026-04-29
@@ -177,93 +184,8 @@ Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0007_scope_unawa
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
-      <source_ids>
-        <id>t0005_hierarchical_annotation_pilot_v1</id>
-      </source_ids>
       <content>
-Planned or active tasks: 1
-
-## Hierarchical annotation pilot v1: audit and conform existing 115 rows
-ID: t0005_hierarchical_annotation_pilot_v1
-Status: in_progress
-Effective date: 2026-04-29
-Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
-
-#### Motivation
-
-Phase 1 of the project&#x27;s roadmap requires ≥100 tasks fully annotated with gold actions at three
-granularity levels (global / subtask / atomic). The imported
-`project/data/annotation_pilot/ tasks_annotated.jsonl` already contains 115 LLM-annotated rows, but
-the rows have not been verified to conform to the project&#x27;s three-level schema and there is no human
-or LLM-as-judge spot-check pass on record. This task closes that gap in v1 form: keep the existing
-115 rows in place, audit their structure, and produce a canonical dataset asset that downstream
-Phase 2 / 3 experiments can consume. Implements suggestion S-0002-08.
-
-#### Scope
-
-* Read `project/data/annotation_pilot/tasks_annotated.jsonl` and inspect the `steps` field on each
-  row to determine whether it carries explicit global / subtask / atomic granularity labels or
-  whether the granularity must be inferred.
-* If labels are missing, write a deterministic mapper that derives the three-level structure from
-  the existing `steps` and adds an explicit `hierarchy: {global, subtask, atomic}` block per row.
-* Run an LLM-as-judge spot-check on at least 10% of rows (≥12 rows) to estimate hierarchy quality.
-  Use `claude-haiku-4-5-20251001` for the judge to keep cost low.
-* Produce one consolidated `dataset` asset under `assets/dataset/hierarchical_annotation_v1/` with
-  rows of shape
-  `{task_id, benchmark, difficulty, problem, hierarchy: {global, subtask, atomic}, gold_actions: {global, subtask, atomic}, annotation_model, judge_verdict, judge_notes}`.
-
-Out of scope for v1: replacing the HumanEval and Mind2Web proxies, expanding beyond 115 rows, human
-review, inter-rater agreement studies. All deferred to follow-up tasks.
-
-#### Approach
-
-1. Load the 115-row pilot file. For each row, compute the inferred or stated hierarchy and emit the
-   canonical schema record.
-2. Sample at least 12 rows stratified across the four benchmarks (FrontierScience-Olympiad,
-   SWE-bench Verified, HumanEval-proxy, Mind2Web-proxy). Send each to the LLM judge with the row&#x27;s
-   problem text and proposed hierarchy; capture verdict (&quot;acceptable&quot; / &quot;needs revision&quot;) plus a
-   one-sentence justification.
-3. Persist the consolidated dataset asset with `details.json` (source URL = the imported pilot path,
-   version = &quot;v1&quot;, license = inherited from each upstream benchmark, sample count = 115) and
-   `files/hierarchical_annotation_v1.jsonl`.
-4. Report distribution stats in `results/results_detailed.md` (per-benchmark counts, per-domain
-   counts, hierarchy-completeness rate, judge accept rate).
-
-#### Expected Outputs
-
-* `assets/dataset/hierarchical_annotation_v1/` with `details.json`, `files/`, and a
-  `description.md`.
-* `results/results_summary.md` with per-benchmark completeness and judge accept rate.
-* `results/results_detailed.md` with the full audit table and any rows that failed the judge.
-* `results/metrics.json` reporting `avg_decisions_per_task` (the registered diagnostic metric).
-* Follow-up suggestions for: extension to ≥200 rows, full human-review pass, and proxy benchmark
-  remediation.
-
-#### Compute and Budget
-
-No GPU. Anthropic API only. Estimated cost: under 3 USD for 12-15 LLM-as-judge calls on
-`claude-haiku-4-5-20251001`. Per-task cap: 5 USD.
-
-#### Dependencies and Cross-References
-
-* No task dependencies.
-* Reads `project/data/annotation_pilot/tasks_annotated.jsonl` (115 rows).
-* Reads `project/code/scripts/collect_and_annotate.py` and `project/code/src/` modules — wrap as
-  black-box utilities, never modify in place.
-* References the four benchmark dataset assets produced by `t0003_download_benchmark_subsets`.
-
-#### Source Suggestion
-
-S-0002-08 — &quot;Run a Phase 1 pilot annotation on 20 tasks before scaling to 100.&quot; This task implements
-that idea in v1 form, leveraging the existing 115 rows rather than re-annotating from scratch.
-
-#### Key Questions
-
-1. Do the existing 115 rows already carry a global / subtask / atomic decomposition, or must one be
-   inferred?
-2. What is the per-benchmark hierarchy-completeness rate?
-3. What is the LLM-as-judge accept rate? Does it differ across benchmarks?
-4. Are there systematic patterns in rejected rows (e.g., one benchmark consistently failing)?
+Planned or active tasks: 0
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -286,6 +208,9 @@ Answers: 0
         <id>S-0002-07</id>
         <id>S-0003-01</id>
         <id>S-0003-02</id>
+        <id>S-0005-01</id>
+        <id>S-0005-02</id>
+        <id>S-0005-06</id>
         <id>S-0006-01</id>
         <id>S-0006-03</id>
         <id>S-0007-01</id>
@@ -294,16 +219,19 @@ Answers: 0
         <id>S-0002-09</id>
         <id>S-0003-03</id>
         <id>S-0003-04</id>
+        <id>S-0005-03</id>
+        <id>S-0005-04</id>
         <id>S-0006-02</id>
         <id>S-0006-04</id>
         <id>S-0007-03</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
+        <id>S-0005-05</id>
         <id>S-0006-05</id>
         <id>S-0007-04</id>
       </source_ids>
       <content>
-Open suggestions: 24
+Open suggestions: 30
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -368,6 +296,27 @@ Kind: dataset
 Source task: t0003_download_benchmark_subsets
 WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the upstream task-class manifest. Provision a free ServiceNow developer instance, request HF access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2 fallback.
 
+## Hierarchical annotation v2: scale to &gt;=200 rows with full human review
+ID: S-0005-01
+Priority: high
+Kind: dataset
+Source task: t0005_hierarchical_annotation_pilot_v1
+Extend the v1 pilot to &gt;=200 rows by re-running the upstream pilot pipeline with a stricter retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform a full human-rater review of every row. Compute inter-rater agreement (Krippendorff&#x27;s alpha or Cohen&#x27;s kappa) between the human rater and the LLM annotator.
+
+## Re-run LLM-as-judge with full problem text (no truncation)
+ID: S-0005-02
+Priority: high
+Kind: evaluation
+Source task: t0005_hierarchical_annotation_pilot_v1
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated excerpt. Re-run the audit using the full problem text (or a structured per-section summary) and compare accept rates. Predict an absolute accept-rate increase of &gt;=15 percentage points on FrontierScience-Olympiad.
+
+## Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning experiments
+ID: S-0005-06
+Priority: high
+Kind: experiment
+Source task: t0005_hierarchical_annotation_pilot_v1
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent prompts (B vs G/S/A from the project&#x27;s research questions).
+
 ## Build benchmark-specific tool registries for the four roadmap benchmarks
 ID: S-0006-01
 Priority: high
@@ -424,6 +373,20 @@ Kind: experiment
 Source task: t0003_download_benchmark_subsets
 FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.
 
+## Reconcile WorkArena++ flat-action sequences with the three-level schema
+ID: S-0005-03
+Priority: medium
+Kind: technique
+Source task: t0005_hierarchical_annotation_pilot_v1
+The judge rejected all three WorkArena++ rows because the upstream annotation lacks `conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
+
+## Remediate proxy benchmark naming and task_id non-uniqueness
+ID: S-0005-04
+Priority: medium
+Kind: dataset
+Source task: t0005_hierarchical_annotation_pilot_v1
+The pilot file uses tau-bench and WorkArena++ as proxies but task_id prefixes are still `he_*` (HumanEval) and `m2w_*` (Mind2Web) from earlier drafts; additionally 14 of 115 task_ids are duplicated. Re-key the source data with synthetic per-row UUIDs and align task_id prefixes with the actual benchmark slugs (`tau_*`, `wa_*`).
+
 ## Add an async ScopeAwareReactAgent variant for streaming and parallel tool calls
 ID: S-0006-02
 Priority: medium
@@ -458,6 +421,13 @@ Priority: low
 Kind: library
 Source task: t0003_download_benchmark_subsets
 This task wrote the `code/dataset_asset.py` helper inline, but the same DatasetDetails / write_dataset_asset helpers will be needed by every future download-dataset task. Promote this code to a registered library asset (under a future task) so subsequent tasks can import the helpers via `assets/library/` rather than re-implementing them.
+
+## Multi-judge disagreement study on hierarchical annotation
+ID: S-0005-05
+Priority: low
+Kind: evaluation
+Source task: t0005_hierarchical_annotation_pilot_v1
+Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-sonnet-4-6) and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality estimate. Estimated cost: ~$0.30 per run.
 
 ## Extend the library to support a granularity that varies within a single run
 ID: S-0006-05

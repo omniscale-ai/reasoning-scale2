@@ -1,6 +1,6 @@
 # Research Suggestions Backlog
 
-24 suggestions **21 open** (11 high, 6 medium, 4 low), **3 closed**.
+30 suggestions **27 open** (14 high, 8 medium, 5 low), **3 closed**.
 
 **Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
 [`benchmark-annotation`](by-category/benchmark-annotation.md),
@@ -56,6 +56,26 @@ composite. Its evaluation harness uses Docker per repository to isolate test run
 would download the Verified problem set, pull the Docker images, and run a 10-instance smoke
 test to confirm the harness reproduces published baseline numbers (e.g., one of the early
 Claude or GPT scores).
+
+</details>
+
+<details>
+<summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
+review</strong> (S-0005-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-01` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../meta/categories/hierarchical-planning/) |
+
+Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter
+retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
+a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
+Cohen's kappa) between the human rater and the LLM annotator.
 
 </details>
 
@@ -189,6 +209,27 @@ fallback.
 </details>
 
 <details>
+<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
+truncation)</strong> (S-0005-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/) |
+
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
+verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
+excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
+and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
+on FrontierScience-Olympiad.
+
+</details>
+
+<details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
 reporting</strong> (S-0002-01)</summary>
 
@@ -250,6 +291,25 @@ developer instance and the BrowserGym Python harness. This is a substantial infr
 task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
 any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
 annotation begins.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
+experiments</strong> (S-0005-06)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-06` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
+that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
+prompts (B vs G/S/A from the project's research questions).
 
 </details>
 
@@ -335,6 +395,47 @@ a future task that enables git LFS. Once LFS is configured, run a download-paper
 asset that fetches the PDF (or markdown conversion) into the asset's files/ directory and
 updates download_status to success. This will let later tasks (especially compare-literature)
 cite specific page numbers and tables from the source PDFs.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Reconcile WorkArena++ flat-action sequences with the three-level
+schema</strong> (S-0005-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-03` |
+| **Kind** | technique |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2407.05291`](../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2407.05291/) |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`benchmark-workarena`](../../meta/categories/benchmark-workarena/) |
+
+The judge rejected all three WorkArena++ rows because the upstream annotation lacks
+`conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the
+WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be
+detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows
+as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
+
+</details>
+
+<details>
+<summary>📂 <strong>Remediate proxy benchmark naming and task_id
+non-uniqueness</strong> (S-0005-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-04` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../meta/categories/benchmark-annotation/) |
+
+The pilot file uses tau-bench and WorkArena++ as proxies but task_id prefixes are still `he_*`
+(HumanEval) and `m2w_*` (Mind2Web) from earlier drafts; additionally 14 of 115 task_ids are
+duplicated. Re-key the source data with synthetic per-row UUIDs and align task_id prefixes
+with the actual benchmark slugs (`tau_*`, `wa_*`).
 
 </details>
 
@@ -441,6 +542,26 @@ extension is to let the agent emit a granularity transition (e.g., start global,
 subtask once a plan is established, drop to atomic during execution). Add a model-driven mode
 where the parser also accepts <transition_to:subtask> markers and the agent updates the active
 granularity per turn. This is a research extension worth Phase 2 ablation.
+
+</details>
+
+<details>
+<summary>📊 <strong>Multi-judge disagreement study on hierarchical
+annotation</strong> (S-0005-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-05` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-sonnet-4-6)
+and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept
+rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality
+estimate. Estimated cost: ~$0.30 per run.
 
 </details>
 

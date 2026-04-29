@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-29T20:09:42Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-29T20:16:06Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>42790</char_count>
-    <byte_count>42843</byte_count>
-    <estimated_tokens>10697</estimated_tokens>
+    <char_count>44098</char_count>
+    <byte_count>44151</byte_count>
+    <estimated_tokens>11024</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -135,11 +135,12 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
         <id>t0004_brainstorm_results_2</id>
+        <id>t0005_hierarchical_annotation_pilot_v1</id>
         <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
       </source_ids>
       <content>
-Completed tasks: 6
+Completed tasks: 7
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -165,6 +166,12 @@ Completed: 2026-04-29
 Short description: Brainstorm 2: plan annotation pilot v1 plus the A/B baseline libraries (ReAct+tags and Plan-and-Solve).
 Result summary: Brainstorm Session 2 — Results Summary Summary Second brainstorm produced three new not-started tasks for parallel execution: a v1 hierarchical annotation pilot and two baseline libraries (ReAct+tags for the A condition, Plan-and-Solve for the B condition). Round 2 suggestion cleanup deferred to a follow-up session. Session Overview * **Date**: 2026-04-29 * **Context**: Triggered after t0001-t0003 wave completed at $0 spend, with 15 uncovered suggestions queued. * **Prompt**: Plan Phase 1 annotation deliverable and the libraries Phase 2 baseline experiment will need. Decisions 1. **Create `t0005_hierarchical_annotation_pilot_v1`** (covers `S-0002-08`, `hierarchical-annotation`). Audit and...
 
+## Hierarchical annotation pilot v1: audit and conform existing 115 rows
+ID: t0005_hierarchical_annotation_pilot_v1
+Completed: 2026-04-29
+Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
+Result summary: Results Summary: Hierarchical Annotation Pilot v1 Summary Audited the 115-row pilot annotation file, projected each row&#x27;s `steps.nodes` graph onto the project&#x27;s three-level global / subtask / atomic schema with a deterministic Python mapper, ran an LLM-as-judge spot-check on a 12-row stratified sample using `claude-haiku-4-5-20251001` via the local `claude` CLI, and produced a single canonical `hierarchical-annotation-v1` dataset asset (115 rows). The asset passes the dataset verificator with 0 errors and 1 warning. Metrics * **Rows in dataset**: **115** (FrontierScience-Olympiad **40**, SWE-bench Verified **23**, tau-bench **26**, WorkArena++ **26**) * **Overall hierarchy completeness**...
+
 ## Scope-aware ReAct library: condition A with explicit granularity tags
 ID: t0006_scope_aware_react_library
 Completed: 2026-04-29
@@ -181,17 +188,8 @@ Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0007_scope_unawa
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
-      <source_ids>
-        <id>t0005_hierarchical_annotation_pilot_v1</id>
-      </source_ids>
       <content>
-Planned or active tasks: 1
-
-## Hierarchical annotation pilot v1: audit and conform existing 115 rows
-ID: t0005_hierarchical_annotation_pilot_v1
-Status: in_progress
-Effective date: 2026-04-29
-Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
+Planned or active tasks: 0
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -214,6 +212,9 @@ Answers: 0
         <id>S-0002-07</id>
         <id>S-0003-01</id>
         <id>S-0003-02</id>
+        <id>S-0005-01</id>
+        <id>S-0005-02</id>
+        <id>S-0005-06</id>
         <id>S-0006-01</id>
         <id>S-0006-03</id>
         <id>S-0007-01</id>
@@ -222,9 +223,6 @@ Answers: 0
         <id>S-0002-09</id>
         <id>S-0003-03</id>
         <id>S-0003-04</id>
-        <id>S-0006-02</id>
-        <id>S-0006-04</id>
-        <id>S-0007-03</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -292,6 +290,27 @@ Kind: dataset
 Source task: t0003_download_benchmark_subsets
 WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the upstream task-class manifest. Provision a free ServiceNow developer instance, request HF access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2 fallback.
 
+## Hierarchical annotation v2: scale to &gt;=200 rows with full human review
+ID: S-0005-01
+Priority: high
+Kind: dataset
+Source task: t0005_hierarchical_annotation_pilot_v1
+Extend the v1 pilot to &gt;=200 rows by re-running the upstream pilot pipeline with a stricter retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform a full human-rater review of every row. Compute inter-rater agreement (Krippendorff&#x27;s alpha or Cohen&#x27;s kappa) between the human rater and the LLM annotator.
+
+## Re-run LLM-as-judge with full problem text (no truncation)
+ID: S-0005-02
+Priority: high
+Kind: evaluation
+Source task: t0005_hierarchical_annotation_pilot_v1
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated excerpt. Re-run the audit using the full problem text (or a structured per-section summary) and compare accept rates. Predict an absolute accept-rate increase of &gt;=15 percentage points on FrontierScience-Olympiad.
+
+## Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning experiments
+ID: S-0005-06
+Priority: high
+Kind: experiment
+Source task: t0005_hierarchical_annotation_pilot_v1
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent prompts (B vs G/S/A from the project&#x27;s research questions).
+
 ## Build benchmark-specific tool registries for the four roadmap benchmarks
 ID: S-0006-01
 Priority: high
@@ -347,27 +366,6 @@ Priority: medium
 Kind: experiment
 Source task: t0003_download_benchmark_subsets
 FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.
-
-## Add an async ScopeAwareReactAgent variant for streaming and parallel tool calls
-ID: S-0006-02
-Priority: medium
-Kind: library
-Source task: t0006_scope_aware_react_library
-The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming model output and from issuing multiple independent tool calls concurrently within a single Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an async model_call signature and asyncio.gather over Action lists. Tests should use AsyncScriptedModel mirroring the sync helper.
-
-## Measure the missing-tag fallback rate against real LLMs
-ID: S-0006-04
-Priority: medium
-Kind: evaluation
-Source task: t0006_scope_aware_react_library
-The library defaults to atomic when the model omits a granularity tag and emits a tag_missing_defaulted_to_atomic warning observation. The deterministic tests cover the parser path but the fallback rate against real LLMs (GPT-4o, Claude 3.7 Sonnet, Llama-3.1-70B) is unknown. Build an evaluation task that runs each library at each granularity over N=20 problems per benchmark and reports the fallback rate alongside task success.
-
-## Schema-parity dedup task between t0006 and t0007
-ID: S-0007-03
-Priority: medium
-Kind: evaluation
-Source task: t0007_scope_unaware_planandsolve_library
-After t0006 (scope_aware_react_v1) merges, run a small deduplication-style task that imports both libraries&#x27; TRAJECTORY_RECORD_FIELDS tuples and asserts they are identical, plus a smoke test that runs both libraries on the same toy problem and verifies the trajectory JSON shapes round-trip through a single Pydantic loader. If they diverge, file a correction in the later-merged task. This is the cheapest insurance against silent schema drift.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
@@ -472,12 +470,13 @@ Least-to-Most (LtM) prompting is a two-stage prompting technique designed to ove
       <source_name>aggregate_datasets_full</source_name>
       <source_ids>
         <id>frontierscience-olympiad-subset</id>
+        <id>hierarchical-annotation-v1</id>
         <id>swebench-verified-subset</id>
         <id>taubench-subset</id>
         <id>workarena-plus-plus-subset</id>
       </source_ids>
       <content>
-Datasets: 4
+Datasets: 5
 
 ## FrontierScience-Olympiad subset (pilot v0)
 ID: frontierscience-olympiad-subset
@@ -486,6 +485,14 @@ Access: public
 Added by task: t0003_download_benchmark_subsets
 Size: 40 Olympiad-style problems (physics, chemistry, biology) packaged from the project pilot annotation run; per-domain: biology=15, chemistry=10, physics=15
 The FrontierScience-Olympiad subset (pilot v0) packages 40 Olympiad-style problems spanning physics, chemistry, and biology, sourced from the project&#x27;s pilot annotation run. Every row contains the full problem text, gold solution, and annotation metadata. The subset is the canonical FrontierScience-Olympiad source for the project&#x27;s Phase 2 scope-aware vs. scope-unaware baseline experiment. FrontierMath itself (the...
+
+## Hierarchical Annotation v1 (115-row pilot audit)
+ID: hierarchical-annotation-v1
+Year: 2026
+Access: restricted
+Added by task: t0005_hierarchical_annotation_pilot_v1
+Size: 115 rows total (FrontierScience-Olympiad=40, SWE-bench Verified=23, WorkArena++=26, tau-bench=26); each row carries a global / subtask / atomic hierarchy and gold-action triple. Twelve rows (three per benchmark) carry an LLM-as-judge verdict.
+The hierarchical-annotation-v1 dataset converts 115 LLM-annotated benchmark tasks into a uniform global / subtask / atomic schema using a deterministic Python mapper, and supplements that with a 12-row LLM-as-judge audit. It is the input to all Phase 2 / Phase 3 scope-conditioning experiments in the project. For the project, this asset is the first concrete instantiation of the project&#x27;s hierarchical schema. Its main...
 
 ## SWE-bench Verified subset (4-8 hunks)
 ID: swebench-verified-subset

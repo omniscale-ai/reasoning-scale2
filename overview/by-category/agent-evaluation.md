@@ -5,7 +5,8 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (7)](../papers/by-category/agent-evaluation.md) | [Suggestions
-(10)](../suggestions/by-category/agent-evaluation.md) | [Libraries
+(12)](../suggestions/by-category/agent-evaluation.md) | [Datasets
+(1)](../datasets/by-category/agent-evaluation.md) | [Libraries
 (2)](../libraries/by-category/agent-evaluation.md)
 
 ---
@@ -317,7 +318,7 @@ scope-conditioning gains must be robust to single-rollout luck.
 
 No answers in this category.
 
-## Suggestions (10 open, 0 closed)
+## Suggestions (12 open, 0 closed)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -363,6 +364,33 @@ developer instance and the BrowserGym Python harness. This is a substantial infr
 task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
 any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
 annotation begins.
+
+</details>
+
+<details>
+<summary>📊 <strong>Multi-judge disagreement study on hierarchical
+annotation</strong> (S-0005-05)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-sonnet-4-6)
+and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept
+rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality
+estimate. Estimated cost: ~$0.30 per run.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
+experiments</strong> (S-0005-06)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
+that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
+prompts (B vs G/S/A from the project's research questions).
 
 </details>
 

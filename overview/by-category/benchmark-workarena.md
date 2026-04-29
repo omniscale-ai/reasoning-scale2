@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the WorkArena++ web-task benchm
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/benchmark-workarena.md) | [Suggestions
-(3)](../suggestions/by-category/benchmark-workarena.md) | [Datasets
+(4)](../suggestions/by-category/benchmark-workarena.md) | [Datasets
 (1)](../datasets/by-category/benchmark-workarena.md)
 
 ---
@@ -107,7 +107,7 @@ the planning step must address.
 
 No answers in this category.
 
-## Suggestions (3 open, 0 closed)
+## Suggestions (4 open, 0 closed)
 
 <details>
 <summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
@@ -137,6 +137,21 @@ upstream task-class manifest. Provision a free ServiceNow developer instance, re
 access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
 fallback.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Reconcile WorkArena++ flat-action sequences with the three-level
+schema</strong> (S-0005-03)</summary>
+
+**Kind**: technique | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The judge rejected all three WorkArena++ rows because the upstream annotation lacks
+`conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the
+WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be
+detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows
+as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
 
 </details>
 

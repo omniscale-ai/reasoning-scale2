@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="datasets" generated_at_utc="2026-04-29T20:09:42Z">
+<llm_context_archive type_id="datasets" generated_at_utc="2026-04-29T20:16:06Z">
   <archive_summary>
     <title>All Datasets</title>
     <description>Complete dataset inventory with full descriptions, access info, and sizes.</description>
     <section_count>1</section_count>
-    <char_count>23155</char_count>
-    <byte_count>23168</byte_count>
-    <estimated_tokens>5788</estimated_tokens>
+    <char_count>28869</char_count>
+    <byte_count>28888</byte_count>
+    <estimated_tokens>7217</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -18,12 +18,13 @@
       <source_name>aggregate_datasets_full</source_name>
       <source_ids>
         <id>frontierscience-olympiad-subset</id>
+        <id>hierarchical-annotation-v1</id>
         <id>swebench-verified-subset</id>
         <id>taubench-subset</id>
         <id>workarena-plus-plus-subset</id>
       </source_ids>
       <content>
-Datasets: 4
+Datasets: 5
 
 ## FrontierScience-Olympiad subset (pilot v0)
 ID: frontierscience-olympiad-subset
@@ -132,6 +133,121 @@ FrontierMath itself (the closest publicly named analogue) remains gated behind E
 v0 subset is therefore a pragmatic substitute that preserves Phase 2 reproducibility; a follow-up
 suggestion will track the open access negotiation. The domain-stratified design ensures every
 experiment can report per-domain metrics without needing to re-balance.
+
+## Hierarchical Annotation v1 (115-row pilot audit)
+ID: hierarchical-annotation-v1
+Year: 2026
+Access: restricted
+Size: 115 rows total (FrontierScience-Olympiad=40, SWE-bench Verified=23, WorkArena++=26, tau-bench=26); each row carries a global / subtask / atomic hierarchy and gold-action triple. Twelve rows (three per benchmark) carry an LLM-as-judge verdict.
+Version: v1
+License: inherited-per-row
+Categories: hierarchical-planning, benchmark-annotation, agent-evaluation
+Added by task: t0005_hierarchical_annotation_pilot_v1
+Date added: 2026-04-29
+
+#### Metadata
+
+* **Name**: Hierarchical Annotation v1 (115-row pilot audit)
+* **Year**: 2026
+* **Authors**: Glite ARF reasoning-scale project
+* **License**: inherited-per-row
+* **Access**: restricted
+* **Size**: 115 rows; one row per benchmark task
+
+#### Overview
+
+This dataset is the v1 hierarchical-annotation pilot of the Glite ARF reasoning-scale project. It
+takes the 115 LLM-annotated rows produced by `project/code/scripts/collect_and_annotate.py` and
+projects each row&#x27;s `steps.nodes` graph onto the project&#x27;s three-level global / subtask / atomic
+schema using a deterministic mapper. A 12-row LLM-as-judge spot-check (3 rows per benchmark) using
+`claude-haiku-4-5-20251001` provides an external quality estimate.
+
+The dataset feeds Phase 2 and Phase 3 scope-conditioning experiments. It is the canonical
+gold-action source until a larger v2 (&gt;=200 rows with full human review) is produced.
+
+#### Content &amp; Annotation
+
+Each row follows the canonical schema:
+
+```json
+{
+  &quot;task_id&quot;: &quot;&lt;benchmark prefix + uuid&gt;&quot;,
+  &quot;benchmark&quot;: &quot;FrontierScience-Olympiad&quot; | &quot;SWE-bench Verified&quot; | &quot;tau-bench&quot; | &quot;WorkArena++&quot;,
+  &quot;domain&quot;: &quot;&lt;benchmark-specific category, e.g. physics or sales&gt;&quot;,
+  &quot;difficulty&quot;: {...},
+  &quot;problem&quot;: &quot;&lt;full problem statement&gt;&quot;,
+  &quot;hierarchy&quot;: {
+    &quot;global&quot;: &quot;&lt;short label of the high-level plan move&gt; | null&quot;,
+    &quot;subtask&quot;: [&quot;&lt;conceptual subtask labels in id order&gt;&quot;, ...],
+    &quot;atomic&quot;:  [&quot;&lt;computational + verification action labels in id order&gt;&quot;, ...]
+  },
+  &quot;gold_actions&quot;: { ... mirrors hierarchy but uses the longer &#x27;detail&#x27; field ... },
+  &quot;annotation_model&quot;: &quot;claude-sonnet-4-6&quot;,
+  &quot;judge_verdict&quot;: &quot;acceptable&quot; | &quot;needs revision&quot; | null,
+  &quot;judge_notes&quot;: &quot;&lt;one-sentence justification or null&gt;&quot;,
+  &quot;hierarchy_completeness&quot;: true | false
+}
+```
+
+Mapper rules:
+
+* **`global`**: text from the lowest-id `strategic` node, falling back to the first node by id when
+  none exists, and `null` when the input row&#x27;s `steps` is `null` (LLM annotation failure).
+* **`subtask`**: list of `conceptual` node labels in id order; falls back to `strategic` nodes
+  beyond the first when no conceptual nodes are present.
+* **`atomic`**: `computational` and `verification` nodes in id order.
+
+`hierarchy_completeness` is `true` iff `global is not None` and `len(atomic) &gt; 0`.
+
+#### Statistics
+
+| Benchmark | Row count | Hierarchy completeness | Judge accept rate |
+| --- | --- | --- | --- |
+| FrontierScience-Olympiad | 40 | 70.0% | 0.0% (0/3) |
+| SWE-bench Verified | 23 | 100.0% | 66.7% (2/3) |
+| WorkArena++ | 26 | 100.0% | 0.0% (0/3) |
+| tau-bench | 26 | 96.2% | 66.7% (2/3) |
+
+* **Mean atomic actions per task**: 5.76
+* **Total rows**: 115
+
+#### Usage Notes
+
+Load with `jsonlines` or pandas (`pd.read_json(..., lines=True)`). Filter by
+`hierarchy_completeness == true` if downstream consumers need only fully-decomposed rows. The judge
+verdict is populated only on the stratified sample (12 rows total); for all other rows
+`judge_verdict` is `null` — this is by design.
+
+Known quirks:
+
+* FrontierScience-Olympiad has 11 rows with `steps == null` due to upstream LLM annotation failures.
+  These rows are preserved with `hierarchy_completeness == false` and a `null` global label so
+  downstream tasks can re-annotate without re-running the original pipeline.
+* The pilot file&#x27;s &quot;agentic proxies&quot; are tau-bench and WorkArena++ (not HumanEval-proxy and
+  Mind2Web-proxy as one earlier draft of the task description named them).
+
+#### Main Ideas
+
+* The deterministic mapper exploits the existing `type` field (`strategic`, `conceptual`,
+  `computational`, `verification`) so no extra LLM cost is needed for the mapping itself; the
+  external judge check is what guards quality.
+* A small (12-row) stratified judge sample is sufficient to surface schema bugs because hierarchy
+  errors tend to be systematic across rows of the same benchmark.
+* Empty `subtask` lists are valid v1 output: when the upstream annotator produced a flat list of
+  computational nodes without conceptual abstractions, the mapper preserves that flatness rather
+  than inventing subtask boundaries.
+
+#### Summary
+
+The hierarchical-annotation-v1 dataset converts 115 LLM-annotated benchmark tasks into a uniform
+global / subtask / atomic schema using a deterministic Python mapper, and supplements that with a
+12-row LLM-as-judge audit. It is the input to all Phase 2 / Phase 3 scope-conditioning experiments
+in the project.
+
+For the project, this asset is the first concrete instantiation of the project&#x27;s hierarchical
+schema. Its main limitations — the small sample size, the reliance on a single annotator
+(`claude-sonnet-4-6`), and the absence of human-rater agreement — are deferred to a v2 task that
+will scale to &gt;=200 rows and add human review.
 
 ## SWE-bench Verified subset (4-8 hunks)
 ID: swebench-verified-subset
