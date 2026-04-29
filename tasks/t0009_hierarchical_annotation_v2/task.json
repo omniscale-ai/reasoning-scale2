@@ -5,13 +5,15 @@
   "name": "Hierarchical annotation v2: tree schema with subtask-to-atomic edges",
   "short_description": "Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [],
-  "start_time": null,
+  "start_time": "2026-04-29T23:24:52Z",
   "end_time": null,
   "expected_assets": {
     "dataset": 1
   },
-  "task_types": ["hierarchical-annotation"],
+  "task_types": [
+    "hierarchical-annotation"
+  ],
   "source_suggestion": "S-0005-02"
 }
