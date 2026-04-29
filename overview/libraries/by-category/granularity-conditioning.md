@@ -1,10 +1,47 @@
 # Libraries: `granularity-conditioning`
 
-2 librar(y/ies).
+3 librar(y/ies).
 
 [Back to all libraries](../README.md)
 
 ---
+
+<details>
+<summary>📦 <strong>Matched-Mismatch Agent (v1)</strong>
+(<code>matched_mismatch_v1</code>)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `matched_mismatch_v1` |
+| **Version** | 0.1.0 |
+| **Modules** | `tasks/t0010_matched_mismatch_library/code/matched_mismatch.py` |
+| **Dependencies** | — |
+| **Date created** | 2026-04-29 |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+| **Created by** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Documentation** | [`description.md`](../../../tasks/t0010_matched_mismatch_library/assets/library/matched_mismatch_v1/description.md) |
+
+**Entry points:**
+
+* `MatchedMismatchAgent` (class) — Condition-C agent that walks a v2 hierarchy and emits
+  trajectory records carrying a deliberately wrong granularity tag.
+* `MatchedMismatchRecord` (class) — Frozen dataclass whose first six fields are exactly
+  TRAJECTORY_RECORD_FIELDS; an extras mapping carries the correct tag under
+  _correct_granularity.
+* `AgentRunResult` (class) — Aggregate output of one MatchedMismatchAgent.run call:
+  final_answer, trajectory, phases.
+* `Phase` (class) — One step of the canonical phase-ordered walk over a v2 annotation tree
+  (kind, correct_tag, payload).
+* `iter_phases` (function) — Yield Phase objects in canonical order: global, then per-subtask
+  (subtask, atomics), then global_atomics.
+* `pick_mismatch_tag` (function) — Return a granularity tag distinct from the correct tag,
+  picked uniformly at random or per ADVERSARIAL_MAP.
+
+Condition-C wrapper that walks the v2 hierarchy in phase order and substitutes deliberately
+incorrect granularity tags around either the t0006 ReAct delegate or the t0007 Plan-and-Solve
+delegate.
+
+</details>
 
 <details>
 <summary>📦 <strong>Scope-Aware ReAct Agent</strong>

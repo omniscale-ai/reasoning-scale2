@@ -6,8 +6,8 @@ subtask, atomic).
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (4)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (10)](../suggestions/by-category/granularity-conditioning.md) | [Libraries
-(2)](../libraries/by-category/granularity-conditioning.md)
+[Suggestions (13)](../suggestions/by-category/granularity-conditioning.md) | [Libraries
+(3)](../libraries/by-category/granularity-conditioning.md)
 
 ---
 
@@ -190,7 +190,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (6 open, 4 closed)
+## Suggestions (9 open, 4 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
@@ -277,5 +277,54 @@ both libraries' TRAJECTORY_RECORD_FIELDS tuples and asserts they are identical, 
 test that runs both libraries on the same toy problem and verifies the trajectory JSON shapes
 round-trip through a single Pydantic loader. If they diverge, file a correction in the
 later-merged task. This is the cheapest insurance against silent schema drift.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
+t0012</strong> (S-0010-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0010_matched_mismatch_library](../../tasks/t0010_matched_mismatch_library/)
+
+When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
+and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
+with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
+v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
+'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
+preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
+effect (see research_papers.md, Wang2023 and Zhou2022).
+
+</details>
+
+<details>
+<summary>📚 <strong>Per-step strategy override for matched_mismatch_v1</strong>
+(S-0010-02)</summary>
+
+**Kind**: library | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0010_matched_mismatch_library](../../tasks/t0010_matched_mismatch_library/)
+
+Extend matched_mismatch_v1 with a per-step strategy override so callers can inject targeted
+mismatches in specific phases (e.g., wrong-tag only at the global level; correct everywhere
+else). This decomposes the C-condition gap by phase kind and supports follow-up analysis on
+which structural slots are most sensitive to tag mismatch. Should be additive: the existing
+uniform-strategy API stays the default. Keep the trajectory schema unchanged; the override is
+constructor-side only.
+
+</details>
+
+<details>
+<summary>📊 <strong>Resolve the subtask-adversarial ambiguity with empirical
+evidence</strong> (S-0010-03)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-04-29 | **Source**:
+[t0010_matched_mismatch_library](../../tasks/t0010_matched_mismatch_library/)
+
+ADVERSARIAL_MAP currently pins 'subtask -> atomic' because subtask is equidistant from global
+and atomic. Run a small ablation in t0012 with both 'subtask -> atomic' and 'subtask ->
+global' adversarial maps and report the per-step contribution. If the two choices differ
+materially, document the chosen direction and the empirical justification in
+matched_mismatch_v1's description.md. If they do not differ, lock the current choice and
+remove the ambiguity note.
 
 </details>

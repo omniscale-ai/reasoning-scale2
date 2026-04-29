@@ -7,7 +7,7 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 **Detail pages**: [Papers (5)](../papers/by-category/hierarchical-planning.md) | [Suggestions
 (11)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
 (1)](../datasets/by-category/hierarchical-planning.md) | [Libraries
-(1)](../libraries/by-category/hierarchical-planning.md)
+(2)](../libraries/by-category/hierarchical-planning.md)
 
 ---
 

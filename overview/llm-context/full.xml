@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="full" generated_at_utc="2026-04-29T23:45:04Z">
+<llm_context_archive preset_id="full" generated_at_utc="2026-04-29T23:47:15Z">
   <archive_summary>
     <title>Full Project Context</title>
     <description>Largest preset with detailed completed-task reports and the full project knowledge base.</description>
     <use_case>Deep project review, comprehensive planning, and long-context synthesis.</use_case>
-    <section_count>17</section_count>
-    <char_count>134102</char_count>
-    <byte_count>134528</byte_count>
-    <estimated_tokens>33525</estimated_tokens>
+    <section_count>18</section_count>
+    <char_count>140721</char_count>
+    <byte_count>141187</byte_count>
+    <estimated_tokens>35180</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -139,10 +139,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
         <id>t0008_brainstorm_results_3</id>
+        <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
       </source_ids>
       <content>
-Completed tasks: 9
+Completed tasks: 10
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -192,6 +193,12 @@ Completed: 2026-04-30
 Short description: Brainstorm 3: insert v2 tree-schema re-annotation as the new ASAP task; preserve original wave 3 (matched-mismatch lib, Metric 2 lib, A/B/C smoke harness).
 Result summary: Brainstorm Session 3 — Results Summary Summary Third brainstorm produced four new not-started tasks. The v1 annotation schema was found to lack subtask-to-atomic edges; a v2 re-annotation task was inserted ASAP as t0009. The original wave 3 plan (matched-mismatch library, Metric 2 calibration, A/B/C smoke harness) was preserved and renumbered to t0010-t0012, with t0012 gated on the other three. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after wave 2 (t0004-t0007) merged at $0.06 spend, with 27 uncovered suggestions and the v2 schema gap surfaced during prompt-modelling discussion of the `is_bored` annotation. * **Prompt**: Plan the first Phase 2 result on a real...
 
+## Matched-mismatch library: condition C with deliberately wrong granularity tags
+ID: t0010_matched_mismatch_library
+Completed: 2026-04-29
+Short description: Write-library implementing condition C: wrap scope_unaware_planandsolve_v1 with a tag-classifier that assigns deliberately incorrect granularity tags.
+Result summary: Results Summary: Matched-Mismatch Library (Condition C) Summary Implemented the project&#x27;s condition-C library `matched_mismatch_v1` — a wrapper that walks the v2 hierarchy from t0009 in canonical phase order, substitutes a deliberately incorrect granularity tag according to a `random` or `adversarial` strategy, and delegates the per-phase model call to either the t0006 ReAct or t0007 Plan-and-Solve format. The library reuses t0007&#x27;s `TRAJECTORY_RECORD_FIELDS` schema unchanged and stores the correct tag in `extras[&quot;_correct_granularity&quot;]`. All 14 deterministic tests pass and every `REQ-*` checklist item is satisfied. Metrics * **Tests passed**: 14 of 14 (`uv run pytest...
+
 ## Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency
 ID: t0011_metric2_calibration_aggregator
 Completed: 2026-04-29
@@ -204,11 +211,10 @@ Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Impl
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0009_hierarchical_annotation_v2</id>
-        <id>t0010_matched_mismatch_library</id>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
 ID: t0009_hierarchical_annotation_v2
@@ -332,92 +338,6 @@ S-0005-01 (annotation v2 schema) and the schema-gap finding from brainstorm 3.
 3. Are there rows where the v2 tree decomposition is well-defined but the v1 flat decomposition was
    empty (hierarchy_completeness: false in v1)?
 4. What fraction of atomics fall under `global_atomics` vs assigned to a specific subtask?
-
-## Matched-mismatch library: condition C with deliberately wrong granularity tags
-ID: t0010_matched_mismatch_library
-Status: in_progress
-Effective date: 2026-04-29
-Short description: Write-library implementing condition C: wrap scope_unaware_planandsolve_v1 with a tag-classifier that assigns deliberately incorrect granularity tags.
-
-#### Motivation
-
-The project&#x27;s main hypothesis includes sub-hypothesis 2: scope-mismatched agents perform strictly
-worse than both scope-aware (A) and scope-unaware (B) baselines. Without a C library, research
-question 5 cannot be tested. This task implements C by wrapping the existing libraries
-(`scope_aware_react_v1` from t0006 or `scope_unaware_planandsolve_v1` from t0007) with a
-granularity-tag layer that emits **deliberately incorrect** tags at each step. The library shares
-the canonical `TRAJECTORY_RECORD_FIELDS` schema from t0007 so a Phase 2 harness can run all three
-conditions interchangeably. Implements suggestion S-0007-01.
-
-#### Scope
-
-* Implement a library asset under `assets/library/matched_mismatch_v1/` exposing a
-  `MatchedMismatchAgent` class that:
-  * Accepts a problem statement, an annotation tree (the v2 hierarchy from t0009), a tool registry,
-    a model-call callable, and a `mismatch_strategy: &quot;random&quot; | &quot;adversarial&quot;`.
-  * Walks the v2 hierarchy in phase order (the harness&#x27;s canonical walk), determines the correct
-    granularity at each step from the annotation, and **assigns an incorrect tag** according to the
-    strategy:
-    * `random`: pick uniformly from `{global, subtask, atomic} \ correct_tag`.
-    * `adversarial`: always pick the most distant tag (`atomic` when correct is `global`, `global`
-      when correct is `atomic`, `atomic` when correct is `subtask`).
-  * Delegates each step to either `scope_aware_react_v1` or `scope_unaware_planandsolve_v1`
-    (configurable). The delegate handles the actual model call; the wrapper only controls the
-    granularity tag.
-  * Emits trajectory records in the canonical `TRAJECTORY_RECORD_FIELDS` schema, with the
-    `granularity` field carrying the *wrong* tag (the actual correct tag is logged separately as
-    `_correct_granularity` in an extras blob).
-  * Supports a deterministic-test mode that accepts pre-recorded model outputs.
-* Provide pytest coverage at `tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py`
-  covering: random-strategy uniformity over `{global, subtask, atomic} \ correct_tag`,
-  adversarial-strategy correctness, schema parity with t0007, end-to-end run with both delegate
-  options.
-
-Out of scope: the actual A/B/C experiment (handled by t0012), benchmark-specific tool registries,
-remote execution.
-
-#### Approach
-
-1. Read t0007&#x27;s `scope_unaware_planandsolve_v1` library and t0006&#x27;s `scope_aware_react_v1` library.
-   Confirm the canonical trajectory schema is `TRAJECTORY_RECORD_FIELDS` from t0007.
-2. Implement the library in `tasks/t0010_matched_mismatch_library/code/matched_mismatch.py`.
-   Re-export the public API from `assets/library/matched_mismatch_v1/library/`.
-3. Write `details.json`, `description.md`, and `files/` for the asset.
-4. Tests are deterministic (no live API calls). Use `ScriptedModel` from t0007 as the delegate&#x27;s
-   model.
-5. Run `verify_library_asset` and the test suite.
-
-#### Expected Outputs
-
-* `assets/library/matched_mismatch_v1/` with `details.json`, `description.md`, `files/`.
-* `tasks/t0010_matched_mismatch_library/code/matched_mismatch.py` and tests.
-* `results/results_summary.md` with API surface description and test summary.
-* Follow-up suggestion to make the random-strategy mismatch ablation (uniform random vs. adversarial
-  vs. matched) explicit in t0012.
-
-#### Compute and Budget
-
-No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
-
-#### Dependencies and Cross-References
-
-* No task dependencies.
-* References t0006 (`scope_aware_react_v1`) and t0007 (`scope_unaware_planandsolve_v1`) library
-  assets. Reads `TRAJECTORY_RECORD_FIELDS` from t0007.
-
-#### Source Suggestion
-
-S-0007-01 — &quot;Implement matched-mismatch (C) library on top of scope_unaware_planandsolve_v1.&quot;
-
-#### Key Questions
-
-1. What is the cleanest way to handle a granularity tag for steps that fall under `global_atomics`
-   (cross-cutting atomics with no parent subtask)? Default: treat as `atomic` for the purposes of
-   the mismatch strategy.
-2. Should the wrapper expose a way to override the mismatch policy per-step (e.g., to inject
-   targeted mismatches in specific phases)? Default: no, keep the wrapper minimal.
-3. How should the schema&#x27;s `_correct_granularity` extras field be standardised so a downstream
-   experiment can compute the mismatch contribution per step?
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
@@ -699,12 +619,20 @@ This dataset asset packages the WorkArena++ compositional task class manifest (4
       <title>Libraries</title>
       <source_name>aggregate_libraries_full</source_name>
       <source_ids>
+        <id>matched_mismatch_v1</id>
         <id>metric2_calibration_aggregator_v1</id>
         <id>scope_aware_react_v1</id>
         <id>scope_unaware_planandsolve_v1</id>
       </source_ids>
       <content>
-Libraries: 3
+Libraries: 4
+
+## Matched-Mismatch Agent (v1)
+ID: matched_mismatch_v1
+Version: 0.1.0
+Created by task: t0010_matched_mismatch_library
+Module paths: tasks/t0010_matched_mismatch_library/code/matched_mismatch.py
+This library is condition C of the project&#x27;s A-vs-B-vs-C comparison. It wraps either of the sister libraries (t0006&#x27;s scope-aware ReAct or t0007&#x27;s scope-unaware Plan-and-Solve) with a phase-ordered walk over a v2 annotation tree from t0009 and substitutes a deliberately incorrect granularity tag at each step. The trajectory schema is the canonical six-field schema from t0007, unchanged; the per-step correct tag is...
 
 ## Metric 2 Calibration Aggregator
 ID: metric2_calibration_aggregator_v1
@@ -1978,6 +1906,128 @@ remains after this session.
 * `verify_corrections` — t0008: PASSED (no corrections).
 * `verify_suggestions` — t0008: PASSED.
 * `verify_logs` — t0008: PASSED.
+      </content>
+    </section>
+    <section id="t0010_matched_mismatch_library-results-detailed" source_kind="file">
+      <title>t0010_matched_mismatch_library — Matched-mismatch library: condition C with deliberately wrong granularity tags — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0010_matched_mismatch_library</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0010_matched_mismatch_library/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0010_matched_mismatch_library&quot;
+---
+### Results Detailed: Matched-Mismatch Library (Condition C)
+
+#### Summary
+
+Delivered the project&#x27;s condition-C library, `matched_mismatch_v1`, as a write-library task with
+zero external cost. The library exposes a `MatchedMismatchAgent` class that walks a v2 hierarchy
+from t0009 in canonical phase order, substitutes a deliberately incorrect granularity tag at each
+step, and delegates per-phase model calls to either the t0006 ReAct or t0007 Plan-and-Solve prompt
+format. The trajectory record schema (`TRAJECTORY_RECORD_FIELDS`) from t0007 is reused unchanged;
+the correct tag is recorded under `extras[&quot;_correct_granularity&quot;]`. All 14 deterministic tests pass
+and the library asset verificator reports zero errors and zero warnings.
+
+#### Methodology
+
+* **Machine specs**: local development (Apple Darwin 25.3.0, Python 3.13.11). No remote compute.
+* **Runtime**: implementation + tests + asset writing wall-clock &lt; 10 minutes; pytest suite runs in
+  0.04s.
+* **Timestamps**: implementation step started 2026-04-29T23:34:58Z; results step started
+  2026-04-29T23:41:44Z.
+* **Approach**: per-phase model call with delegate-specific prompt format and output parser. The
+  wrapper drives the v2-walk loop itself rather than calling each delegate&#x27;s outer `run()`, because
+  each delegate&#x27;s `run()` runs its own multi-turn loop that would conflict with the per-phase walk.
+  The wrapper reuses each delegate&#x27;s *parsing* logic (`_parse_model_output` from t0006,
+  `_parse_executor_output` from t0007) so the prompt-format and output-parser axis is delegated
+  correctly.
+* **Test design**: deterministic via `ScriptedModel` from t0006 and t0007. Random-strategy
+  uniformity is verified across N=300 trials per correct tag with a 100/300 lower-bound acceptance
+  band (well within the fair-coin 3-sigma envelope).
+
+#### Verification
+
+* `verify_research_papers.py` — PASSED (0 errors, 0 warnings).
+* `verify_plan.py` — PASSED (0 errors, 0 warnings).
+* `meta/asset_types/library/verificator.py` — PASSED (0 errors, 0 warnings).
+* `ruff check` — 0 issues.
+* `ruff format` — clean.
+* `mypy -p tasks.t0010_matched_mismatch_library.code` — 0 issues.
+* `pytest tasks/t0010_matched_mismatch_library/code/` — 14 of 14 PASSED.
+
+#### Limitations
+
+* The wrapper does not propagate any post-`run()` book-keeping the delegates do (e.g., t0006&#x27;s
+  `TrajectoryWriter` writing a JSONL file). Consumers that need that side effect must invoke the
+  delegates directly or open an issue against this library.
+* The mismatch strategy is a single literal applied uniformly across all phases; per-step strategy
+  overrides are not currently supported.
+* `subtask` is equidistant from `global` and `atomic` in the adversarial map; the choice
+  `subtask → atomic` is documented and pinned by tests but represents one of two reasonable
+  interpretations of &quot;most distant tag&quot; for `subtask`.
+* Phase-order vs. mismatched-tag confound (per the research synthesis) is not addressed by this
+  library — t0012 must include a phase-randomised control to isolate the two effects.
+
+#### Files Created
+
+* `tasks/t0010_matched_mismatch_library/code/matched_mismatch.py` (463 lines).
+* `tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py` (310 lines).
+* `tasks/t0010_matched_mismatch_library/assets/library/matched_mismatch_v1/details.json`.
+* `tasks/t0010_matched_mismatch_library/assets/library/matched_mismatch_v1/description.md`.
+* `tasks/t0010_matched_mismatch_library/research/research_papers.md`.
+* `tasks/t0010_matched_mismatch_library/plan/plan.md`.
+* `tasks/t0010_matched_mismatch_library/results/results_summary.md`.
+* `tasks/t0010_matched_mismatch_library/results/results_detailed.md` (this file).
+* `tasks/t0010_matched_mismatch_library/results/metrics.json`.
+* `tasks/t0010_matched_mismatch_library/results/costs.json`.
+* `tasks/t0010_matched_mismatch_library/results/remote_machines_used.json`.
+* `tasks/t0010_matched_mismatch_library/results/suggestions.json` (produced by the suggestions
+  step).
+* All step logs under `tasks/t0010_matched_mismatch_library/logs/steps/NNN_*/step_log.md`.
+
+#### Task Requirement Coverage
+
+The operative task request from `tasks/t0010_matched_mismatch_library/task.json`:
+
+&gt; **Name**: Matched-mismatch library: condition C with deliberately wrong granularity tags
+&gt;
+&gt; **Short description**: Write-library implementing condition C: wrap scope_unaware_planandsolve_v1
+&gt; with a tag-classifier that assigns deliberately incorrect granularity tags.
+
+The resolved long description (from `task_description.md`) requires: a `MatchedMismatchAgent` that
+accepts a problem statement, an annotation tree (the v2 hierarchy from t0009), a tool registry, a
+model-call callable, and a `mismatch_strategy: &quot;random&quot; | &quot;adversarial&quot;`; walks the v2 hierarchy in
+phase order; assigns an incorrect tag according to the strategy; delegates each step to either
+`scope_aware_react_v1` (t0006) or `scope_unaware_planandsolve_v1` (t0007); emits trajectory records
+carrying the wrong `granularity` tag with the correct tag logged separately as
+`_correct_granularity` in extras; supports a deterministic-test mode; and provides pytest coverage
+of random-strategy uniformity, adversarial-strategy correctness, schema parity with t0007, and
+end-to-end runs with both delegate options. Expected outputs:
+`assets/library/matched_mismatch_v1/{details.json, description.md, files/}` (note: the v2 library
+asset spec drops `files/` — code lives in `code/`),
+`tasks/t0010_matched_mismatch_library/code/matched_mismatch.py` and tests, and
+`results/results_summary.md` with API surface description and test summary.
+
+| ID | Requirement | Status | Evidence |
+| --- | --- | --- | --- |
+| REQ-1 | `MatchedMismatchAgent` class accepts `problem`, `annotation`, `tool_registry`, `model_call`, `mismatch_strategy`, and a delegate selector | Done | `code/matched_mismatch.py` (`@dataclass(slots=True) class MatchedMismatchAgent` with keyword-only `run`); `test_records_carry_wrong_tag_with_correct_tag_in_extras` and end-to-end tests construct and call the class. |
+| REQ-2 | Phase-ordered walk over v2 hierarchy (`global → for each subtask: (subtask, atomics) → global_atomics`) | Done | `iter_phases` in `code/matched_mismatch.py`; pinned by `test_phase_order` against an 8-phase fixture. |
+| REQ-3 | `random` strategy picks uniformly from `{global, subtask, atomic} \ correct_tag` | Done | `pick_mismatch_tag(...strategy=&quot;random&quot;...)` in `code/matched_mismatch.py`; `test_random_strategy_uniformity` runs 300 trials per correct tag and asserts ≥ 100 of each wrong tag and zero of the correct tag. |
+| REQ-4 | `adversarial` strategy picks the most distant tag (`global → atomic`, `atomic → global`, `subtask → atomic`) | Done | `ADVERSARIAL_MAP` in `code/matched_mismatch.py`; `test_adversarial_strategy_correctness` checks all three correct-tag cases and `test_granularity_values_and_adversarial_map` pins the literal map. |
+| REQ-5 | Schema parity with t0007&#x27;s `TRAJECTORY_RECORD_FIELDS` | Done | Module-level `assert TRAJECTORY_RECORD_FIELDS == _TRAJECTORY_FIELDS_EXPECTED` in `code/matched_mismatch.py`; `test_trajectory_schema_parity_with_t0007` asserts the canonical six-tuple matches and that `MatchedMismatchRecord`&#x27;s first six dataclass fields match in order. |
+| REQ-6 | Trajectory records carry the *wrong* tag in `granularity` and the correct tag in `extras[&quot;_correct_granularity&quot;]` | Done | `MatchedMismatchRecord` dataclass and the `extras` payload assembled in `MatchedMismatchAgent.run`; `test_records_carry_wrong_tag_with_correct_tag_in_extras` and the two end-to-end tests verify per-record. |
+| REQ-7 | Wrapper delegates to either `scope_aware_react_v1` (t0006) or `scope_unaware_planandsolve_v1` (t0007); the wrapper only controls the granularity tag | Done | `_run_react_phase` / `_run_planandsolve_phase` dispatch via the chosen delegate&#x27;s parser and prompt template; `test_end_to_end_with_react_delegate` and `test_end_to_end_with_planandsolve_delegate` run a full v2-fixture trajectory through each. |
+| REQ-8 | Deterministic-test mode using t0007&#x27;s `ScriptedModel` | Done | All 14 tests construct either `ReactScriptedModel` (t0006) or `PlanAndSolveScriptedModel` (t0007). The pytest suite runs in 0.04s with no API keys and no network. |
+| REQ-9 | Library asset `assets/library/matched_mismatch_v1/{details.json, description.md}` per the v2 library spec | Done | `assets/library/matched_mismatch_v1/details.json` and `description.md` exist; the library asset verificator (`meta/asset_types/library/verificator.py`) reports `PASSED — no errors or warnings`. |
+| REQ-10 | `global_atomics` handling — treat as `atomic` for the mismatch policy | Done | `iter_phases` yields `correct_tag=&quot;atomic&quot;` for items from the `global_atomics` list; `test_global_atomics_treated_as_atomic` asserts this on a two-item global-atomic fixture. |
+
+All ten REQ items are marked `Done`. No `Partial` or `Not done` items remain.
       </content>
     </section>
     <section id="t0011_metric2_calibration_aggregator-results-detailed" source_kind="file">

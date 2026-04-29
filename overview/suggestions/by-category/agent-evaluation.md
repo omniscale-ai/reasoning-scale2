@@ -1,13 +1,36 @@
 # Suggestions: `agent-evaluation`
 
-12 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**9 open** (5 high, 3 medium, 1 low), **3 closed**.
+14 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
+**11 open** (6 high, 3 medium, 2 low), **3 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
+
+<details>
+<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
+t0012</strong> (S-0010-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0010_matched_mismatch_library/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
+and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
+with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
+v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
+'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
+preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
+effect (see research_papers.md, Wang2023 and Zhou2022).
+
+</details>
 
 <details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
@@ -198,6 +221,28 @@ Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-
 and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept
 rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality
 estimate. Estimated cost: ~$0.30 per run.
+
+</details>
+
+<details>
+<summary>📊 <strong>Resolve the subtask-adversarial ambiguity with empirical
+evidence</strong> (S-0010-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+ADVERSARIAL_MAP currently pins 'subtask -> atomic' because subtask is equidistant from global
+and atomic. Run a small ablation in t0012 with both 'subtask -> atomic' and 'subtask ->
+global' adversarial maps and report the per-step contribution. If the two choices differ
+materially, document the chosen direction and the empirical justification in
+matched_mismatch_v1's description.md. If they do not differ, lock the current choice and
+remove the ambiguity note.
 
 </details>
 

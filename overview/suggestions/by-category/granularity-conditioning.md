@@ -1,14 +1,37 @@
 # Suggestions: `granularity-conditioning`
 
-10 suggestion(s) in category
-[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **6 open** (2
-high, 2 medium, 2 low), **4 closed**.
+13 suggestion(s) in category
+[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **9 open** (3
+high, 3 medium, 3 low), **4 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
+
+<details>
+<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
+t0012</strong> (S-0010-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0010_matched_mismatch_library/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
+and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
+with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
+v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
+'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
+preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
+effect (see research_papers.md, Wang2023 and Zhou2022).
+
+</details>
 
 <details>
 <summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
@@ -74,6 +97,28 @@ problems per benchmark and reports the fallback rate alongside task success.
 </details>
 
 <details>
+<summary>📚 <strong>Per-step strategy override for matched_mismatch_v1</strong>
+(S-0010-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-02` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+
+Extend matched_mismatch_v1 with a per-step strategy override so callers can inject targeted
+mismatches in specific phases (e.g., wrong-tag only at the global level; correct everywhere
+else). This decomposes the C-condition gap by phase kind and supports follow-up analysis on
+which structural slots are most sensitive to tag mismatch. Should be additive: the existing
+uniform-strategy API stays the default. Keep the trajectory schema unchanged; the override is
+constructor-side only.
+
+</details>
+
+<details>
 <summary>📊 <strong>Schema-parity dedup task between t0006 and t0007</strong>
 (S-0007-03)</summary>
 
@@ -135,6 +180,28 @@ extension is to let the agent emit a granularity transition (e.g., start global,
 subtask once a plan is established, drop to atomic during execution). Add a model-driven mode
 where the parser also accepts <transition_to:subtask> markers and the agent updates the active
 granularity per turn. This is a research extension worth Phase 2 ablation.
+
+</details>
+
+<details>
+<summary>📊 <strong>Resolve the subtask-adversarial ambiguity with empirical
+evidence</strong> (S-0010-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+ADVERSARIAL_MAP currently pins 'subtask -> atomic' because subtask is equidistant from global
+and atomic. Run a small ablation in t0012 with both 'subtask -> atomic' and 'subtask ->
+global' adversarial maps and report the per-step contribution. If the two choices differ
+materially, document the chosen direction and the empirical justification in
+matched_mismatch_v1's description.md. If they do not differ, lock the current choice and
+remove the ambiguity note.
 
 </details>
 

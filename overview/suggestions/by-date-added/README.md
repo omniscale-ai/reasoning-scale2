@@ -1,14 +1,37 @@
 # Suggestions by Date Added
 
-33 suggestion(s) grouped by derived added date.
+36 suggestion(s) grouped by derived added date.
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## 2026-04-29 (33)
+## 2026-04-29 (36)
 
 ## High Priority
+
+<details>
+<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
+t0012</strong> (S-0010-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0010_matched_mismatch_library/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
+and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
+with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
+v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
+'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
+preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
+effect (see research_papers.md, Wang2023 and Zhou2022).
+
+</details>
 
 <details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
@@ -334,6 +357,28 @@ problems per benchmark and reports the fallback rate alongside task success.
 </details>
 
 <details>
+<summary>📚 <strong>Per-step strategy override for matched_mismatch_v1</strong>
+(S-0010-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-02` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+
+Extend matched_mismatch_v1 with a per-step strategy override so callers can inject targeted
+mismatches in specific phases (e.g., wrong-tag only at the global level; correct everywhere
+else). This decomposes the C-condition gap by phase kind and supports follow-up analysis on
+which structural slots are most sensitive to tag mismatch. Should be additive: the existing
+uniform-strategy API stays the default. Keep the trajectory schema unchanged; the override is
+constructor-side only.
+
+</details>
+
+<details>
 <summary>📚 <strong>Re-fetch the 11 paper PDFs with git LFS enabled</strong>
 (S-0002-09)</summary>
 
@@ -539,6 +584,28 @@ paper summary, which was itself grounded only in the abstract because the PDF do
 in t0002. A small download-paper task should re-attempt the download against arXiv:2305.04091
 and verify that the prompt text in code/planandsolve.py matches the published version
 verbatim. If it diverges, file a correction.
+
+</details>
+
+<details>
+<summary>📊 <strong>Resolve the subtask-adversarial ambiguity with empirical
+evidence</strong> (S-0010-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+ADVERSARIAL_MAP currently pins 'subtask -> atomic' because subtask is equidistant from global
+and atomic. Run a small ablation in t0012 with both 'subtask -> atomic' and 'subtask ->
+global' adversarial maps and report the per-step contribution. If the two choices differ
+materially, document the chosen direction and the empirical justification in
+matched_mismatch_v1's description.md. If they do not differ, lock the current choice and
+remove the ambiguity note.
 
 </details>
 

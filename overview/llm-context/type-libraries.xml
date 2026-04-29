@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="libraries" generated_at_utc="2026-04-29T23:45:04Z">
+<llm_context_archive type_id="libraries" generated_at_utc="2026-04-29T23:47:15Z">
   <archive_summary>
     <title>All Libraries</title>
     <description>Complete library registry with full descriptions, module paths, and entry points.</description>
     <section_count>1</section_count>
-    <char_count>44249</char_count>
-    <byte_count>44367</byte_count>
-    <estimated_tokens>11062</estimated_tokens>
+    <char_count>61263</char_count>
+    <byte_count>61431</byte_count>
+    <estimated_tokens>15315</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -17,12 +17,356 @@
       <title>All Libraries (Full Detail)</title>
       <source_name>aggregate_libraries_full</source_name>
       <source_ids>
+        <id>matched_mismatch_v1</id>
         <id>metric2_calibration_aggregator_v1</id>
         <id>scope_aware_react_v1</id>
         <id>scope_unaware_planandsolve_v1</id>
       </source_ids>
       <content>
-Libraries: 3
+Libraries: 4
+
+## Matched-Mismatch Agent (v1)
+ID: matched_mismatch_v1
+Version: 0.1.0
+Created by task: t0010_matched_mismatch_library
+Date created: 2026-04-29
+Module paths: tasks/t0010_matched_mismatch_library/code/matched_mismatch.py
+Test paths: tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py
+Categories: granularity-conditioning, hierarchical-planning, agent-evaluation
+Entry point: MatchedMismatchAgent (class) — Condition-C agent that walks a v2 hierarchy and emits trajectory records carrying a deliberately wrong granularity tag.
+Entry point: MatchedMismatchRecord (class) — Frozen dataclass whose first six fields are exactly TRAJECTORY_RECORD_FIELDS; an extras mapping carries the correct tag under _correct_granularity.
+Entry point: AgentRunResult (class) — Aggregate output of one MatchedMismatchAgent.run call: final_answer, trajectory, phases.
+Entry point: Phase (class) — One step of the canonical phase-ordered walk over a v2 annotation tree (kind, correct_tag, payload).
+Entry point: iter_phases (function) — Yield Phase objects in canonical order: global, then per-subtask (subtask, atomics), then global_atomics.
+Entry point: pick_mismatch_tag (function) — Return a granularity tag distinct from the correct tag, picked uniformly at random or per ADVERSARIAL_MAP.
+
+#### Metadata
+
+* **Name**: Matched-Mismatch Agent (v1)
+* **Version**: 0.1.0
+* **Task**: `t0010_matched_mismatch_library`
+* **Module**: `code/matched_mismatch.py`
+* **Tests**: `code/test_matched_mismatch.py`
+* **Dependencies**: none beyond the Python 3.12+ standard library and the two sister libraries
+  `tasks.t0006_scope_aware_react_library` and `tasks.t0007_scope_unaware_planandsolve_library`
+* **Reference papers**: Yao et al., &quot;ReAct&quot; (arXiv:2210.03629); Wang et al., &quot;Plan-and-Solve
+  Prompting&quot; (arXiv:2305.04091); Shinn et al., &quot;Reflexion&quot; (arXiv:2303.11366)
+
+#### Overview
+
+This library implements **condition C** of the project&#x27;s A-vs-B-vs-C scope-conditioning comparison.
+Condition A (`scope_aware_react_v1`, t0006) emits the *correct* granularity tag at every step;
+condition B (`scope_unaware_planandsolve_v1`, t0007) emits the literal `&quot;unspecified&quot;` tag at every
+step; condition C — implemented here — emits a *deliberately incorrect* granularity tag at every
+step, drawn from one of two strategies:
+
+* `random`: pick uniformly from `{global, subtask, atomic} \ correct_tag`. This is the
+  weak-perturbation control.
+* `adversarial`: pick the most distant tag (`global → atomic`, `atomic → global`,
+  `subtask → atomic`). This is the strong-perturbation probe, mirroring the mismatched-context
+  ablation pattern from Reflexion (Shinn et al., 2023).
+
+The wrapper walks a v2 hierarchy from t0009 in canonical phase order: `global` first, then for each
+subtask the subtask itself followed by its atomics, then any cross-cutting `global_atomics` last.
+Per phase it dispatches one model call via the chosen delegate&#x27;s prompt format and output parser,
+substitutes the wrong granularity tag, and emits one `MatchedMismatchRecord`. The first six fields
+of the record are exactly `TRAJECTORY_RECORD_FIELDS` from t0007 — same names, same order, same types
+— so a Phase 2 evaluation harness can read all three condition&#x27;s trajectories through one schema.
+The seventh field, `extras`, carries the correct tag under the well-known key `_correct_granularity`
+for downstream evaluators that need to compute the per-step mismatch contribution.
+
+The wrapper&#x27;s design isolates the perturbation to the *logged* tag: the model itself still reasons
+under the correct tag in its prompt, so observed metric drops in t0012 will reflect the log-side
+mismatch effect rather than a confounded &quot;what the model sees vs. what we record&quot; axis.
+
+#### API Reference
+
+##### `class MatchedMismatchAgent`
+
+```python
+@dataclass(slots=True)
+class MatchedMismatchAgent:
+    model_call: Callable[[str], str]
+    tool_registry: Mapping[str, Callable[..., Any]]
+    delegate: Literal[&quot;scope_aware_react&quot;, &quot;scope_unaware_planandsolve&quot;]
+    mismatch_strategy: Literal[&quot;random&quot;, &quot;adversarial&quot;]
+    seed: int = 0
+
+    def run(
+        self,
+        *,
+        problem: str,
+        annotation: Mapping[str, Any],
+    ) -&gt; AgentRunResult: ...
+```
+
+Drives one matched-mismatch run over a v2 annotation tree. `model_call` is called once per phase.
+`tool_registry`&#x27;s callable signature must match the chosen delegate: t0006-style
+`tool(**action.args)` for `delegate=&quot;scope_aware_react&quot;`, t0007-style `tool(args_str)` for
+`delegate=&quot;scope_unaware_planandsolve&quot;`. `seed` makes `mismatch_strategy=&quot;random&quot;` runs
+deterministic. Raises `ValueError` if `mismatch_strategy` or `delegate` is not a documented literal.
+
+##### `class MatchedMismatchRecord`
+
+```python
+@dataclass(frozen=True, slots=True)
+class MatchedMismatchRecord:
+    turn_index: int
+    granularity: str            # the WRONG tag
+    thought: str
+    action: str
+    observation: str
+    confidence: float | None
+    extras: dict[str, str]      # carries _correct_granularity, phase_kind, delegate, mismatch_strategy
+```
+
+The first six fields are exactly `TRAJECTORY_RECORD_FIELDS`. `extras` is the seventh, appended
+field; downstream consumers that read only the canonical six see a normal trajectory record.
+`extras` carries:
+
+* `_correct_granularity`: the granularity tag that *would* have been emitted by a matched- condition
+  agent for this step (from `Phase.correct_tag`).
+* `phase_kind`: which structural slot the step came from (`&quot;global&quot;`, `&quot;subtask&quot;`, `&quot;atomic&quot;`, or
+  `&quot;global_atomic&quot;`).
+* `delegate`: the delegate the wrapper used.
+* `mismatch_strategy`: the strategy the wrapper used.
+
+##### `class AgentRunResult`
+
+```python
+@dataclass(frozen=True, slots=True)
+class AgentRunResult:
+    final_answer: str | None
+    trajectory: list[MatchedMismatchRecord]
+    phases: list[Phase]
+```
+
+`final_answer` is `None` if no phase emitted a final answer; `trajectory` lists one record per
+executed phase; `phases` lists every phase yielded by `iter_phases` (so callers can compare intended
+vs. executed walks).
+
+##### `class Phase`
+
+```python
+@dataclass(frozen=True, slots=True)
+class Phase:
+    kind: str             # &quot;global&quot; | &quot;subtask&quot; | &quot;atomic&quot; | &quot;global_atomic&quot;
+    correct_tag: str      # &quot;global&quot; | &quot;subtask&quot; | &quot;atomic&quot;
+    payload: str          # the textual content drawn from the annotation
+```
+
+##### `function iter_phases`
+
+```python
+def iter_phases(annotation: Mapping[str, Any]) -&gt; Iterator[Phase]: ...
+```
+
+Walks the v2 hierarchy in canonical phase order. Accepts either the full v2 annotation row (with a
+top-level `hierarchy` key) or the inner `hierarchy` mapping directly. Missing optional slots (empty
+subtasks, missing global_atomics) are skipped silently.
+
+##### `function pick_mismatch_tag`
+
+```python
+def pick_mismatch_tag(
+    correct_tag: str,
+    *,
+    strategy: Literal[&quot;random&quot;, &quot;adversarial&quot;],
+    rng: random.Random,
+) -&gt; str: ...
+```
+
+Returns a granularity tag guaranteed to differ from `correct_tag`. Raises `ValueError` if
+`correct_tag` is not in `GRANULARITY_VALUES`.
+
+##### Module-level constants
+
+* `GRANULARITY_VALUES = (&quot;global&quot;, &quot;subtask&quot;, &quot;atomic&quot;)` — canonical ordered tuple.
+* `ADVERSARIAL_MAP = {&quot;global&quot;: &quot;atomic&quot;, &quot;atomic&quot;: &quot;global&quot;, &quot;subtask&quot;: &quot;atomic&quot;}` — the
+  most-distant-tag map. `subtask` is equidistant from `global` and `atomic`; we pick `atomic`
+  consistently with the planning literature where the global-vs-atomic axis is the primary variable.
+* `CORRECT_GRANULARITY_EXTRAS_KEY = &quot;_correct_granularity&quot;` — well-known key in
+  `MatchedMismatchRecord.extras` carrying the correct tag.
+* `TRAJECTORY_RECORD_FIELDS` — re-exported from t0007 for parity assertions.
+
+##### Adversarial Mapping Table
+
+| Correct tag | Adversarial tag |
+| --- | --- |
+| `global` | `atomic` |
+| `atomic` | `global` |
+| `subtask` | `atomic` |
+
+##### `global_atomics` Handling
+
+`Phase` objects emitted from items in the annotation&#x27;s `global_atomics` list carry
+`kind=&quot;global_atomic&quot;` but `correct_tag=&quot;atomic&quot;` — cross-cutting atomics are still atomic for the
+mismatch policy. This decision is documented here and pinned by
+`test_global_atomics_treated_as_atomic` so a future change is detected immediately.
+
+#### Usage Examples
+
+End-to-end example using the t0007 Plan-and-Solve delegate and a deterministic
+`PlanAndSolveScriptedModel`:
+
+```python
+from tasks.t0007_scope_unaware_planandsolve_library.code.planandsolve import (
+    ScriptedModel as PlanAndSolveScriptedModel,
+)
+from tasks.t0010_matched_mismatch_library.code.matched_mismatch import (
+    ADVERSARIAL_MAP,
+    CORRECT_GRANULARITY_EXTRAS_KEY,
+    MatchedMismatchAgent,
+)
+
+
+annotation = {
+    &quot;task_id&quot;: &quot;fixture-001&quot;,
+    &quot;benchmark&quot;: &quot;synthetic&quot;,
+    &quot;hierarchy&quot;: {
+        &quot;global&quot;: &quot;Solve the toy arithmetic problem.&quot;,
+        &quot;subtasks&quot;: [
+            {
+                &quot;subtask&quot;: &quot;Identify operands.&quot;,
+                &quot;atomics&quot;: [&quot;Read first number.&quot;, &quot;Read second number.&quot;],
+            },
+            {
+                &quot;subtask&quot;: &quot;Compute the result.&quot;,
+                &quot;atomics&quot;: [&quot;Add operands.&quot;, &quot;Format the answer.&quot;],
+            },
+        ],
+        &quot;global_atomics&quot;: [&quot;Sanity check magnitude.&quot;],
+    },
+}
+
+
+def add_tool(args: str) -&gt; str:
+    a, b = args.split(&quot;,&quot;)
+    return str(int(a) + int(b))
+
+
+### Eight phases in `annotation`; the eighth emits the FINAL_ANSWER.
+script = [&quot;Action: add | Args: 1,1\n&quot;] * 7 + [&quot;FINAL_ANSWER: 2\n&quot;]
+
+agent = MatchedMismatchAgent(
+    model_call=PlanAndSolveScriptedModel(responses=script),
+    tool_registry={&quot;add&quot;: add_tool},
+    delegate=&quot;scope_unaware_planandsolve&quot;,
+    mismatch_strategy=&quot;adversarial&quot;,
+    seed=0,
+)
+result = agent.run(problem=&quot;What is 1 + 1?&quot;, annotation=annotation)
+print(result.final_answer)                              # &quot;2&quot;
+print(len(result.trajectory))                           # 8
+for record in result.trajectory:
+    correct = record.extras[CORRECT_GRANULARITY_EXTRAS_KEY]
+    assert record.granularity == ADVERSARIAL_MAP[correct]
+```
+
+To use a real LLM, replace `PlanAndSolveScriptedModel(...)` with any callable taking a prompt string
+and returning a response string. To switch delegates to the ReAct prompt/parser, pass
+`delegate=&quot;scope_aware_react&quot;` and supply a `tool_registry` whose callables accept keyword arguments
+(`tool(**action.args)`).
+
+#### Dependencies
+
+No external dependencies beyond:
+
+* The Python 3.12+ standard library (`dataclasses`, `random`, `collections.abc`, `typing`).
+* `tasks.t0006_scope_aware_react_library.code.scope_aware_react` — for the ReAct output parser and
+  the `Action` dataclass.
+* `tasks.t0006_scope_aware_react_library.code.constants` — for `GRANULARITY_GLOBAL`,
+  `GRANULARITY_SUBTASK`, `GRANULARITY_ATOMIC`.
+* `tasks.t0007_scope_unaware_planandsolve_library.code.planandsolve` — for
+  `TRAJECTORY_RECORD_FIELDS`, the executor output parser, and the `EXECUTE_PROMPT_TEMPLATE` /
+  `PLAN_PROMPT_TEMPLATE` strings.
+
+These project-internal imports are stable: the libraries pin their public symbols and the
+matched-mismatch module asserts schema parity at import time, so any drift in either delegate&#x27;s
+canonical schema raises `AssertionError` immediately.
+
+#### Testing
+
+Run the test suite with:
+
+```bash
+uv run pytest tasks/t0010_matched_mismatch_library/code/ -v
+```
+
+There are 14 deterministic tests covering: granularity constants and the adversarial map, trajectory
+schema parity with t0007, canonical phase order over a v2 fixture, `global_atomics → atomic`
+handling, hierarchy-key vs. inner-mapping equivalence, random-strategy uniformity over 300 trials
+per correct tag, adversarial-strategy correctness, input validation on `pick_mismatch_tag`,
+extras-blob round-trip, end-to-end run with each of the two delegates, defensive validation on
+unknown `mismatch_strategy` / `delegate`, and seed determinism.
+
+All tests use the deterministic `ScriptedModel` helpers from t0006 and t0007 so the suite runs
+without API keys and without network access.
+
+#### Main Ideas
+
+* The wrapper perturbs only the *logged* granularity tag, never the prompt the model receives. This
+  is the cleaner experimental design per Reflexion&#x27;s mismatched-context ablation pattern: it
+  isolates the log-side mismatch effect from any &quot;what the model sees&quot; confound.
+
+* The trajectory record schema is preserved exactly. `MatchedMismatchRecord`&#x27;s first six fields
+  match `TRAJECTORY_RECORD_FIELDS` in name, order, and type so a Phase 2 evaluator can read
+  trajectories from all three conditions through one schema. The `extras` mapping is appended, not
+  interleaved.
+
+* Two strategies are exposed deliberately: `random` is a weak-perturbation control whose
+  null-hypothesis equivalent is &quot;the tag is random noise,&quot; while `adversarial` is the strong probe
+  whose null-hypothesis equivalent is &quot;the tag is actively misleading.&quot; Per Reflexion, the strongest
+  mismatch ablation forces the most distant choice; this is the recommended default for t0012&#x27;s
+  headline contrast.
+
+* The phase-ordered walk is a public iterator (`iter_phases`) so downstream tasks share one
+  canonical traversal of the v2 hierarchy. Per Plan-and-Solve and Least-to-Most, the phase order
+  itself is signal — losing it would conflate the granularity-mismatch effect with a
+  step-order-mismatch effect.
+
+* `subtask` is equidistant from `global` and `atomic` in the adversarial map; we pin
+  `subtask → atomic`. This is documented in `description.md` and asserted in
+  `test_adversarial_strategy_correctness` so a future change is detected.
+
+#### Trajectory Schema
+
+The canonical six-field schema from t0007 is reused unchanged. `MatchedMismatchRecord` extends it
+with one extra field `extras` whose well-known key `_correct_granularity` holds the correct tag.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `turn_index` | `int` | Zero-based index of the executed phase. |
+| `granularity` | `str` | The *wrong* granularity tag emitted for this step. |
+| `thought` | `str` | The free-form thought text from the model. |
+| `action` | `str` | The action: `&quot;finish&quot;`, `&quot;thought_only&quot;`, `&quot;&lt;tool&gt;(&lt;args&gt;)&quot;`, or `&quot;&lt;unparsed&gt;&quot;`. |
+| `observation` | `str` | The tool&#x27;s return value, the final answer, or the parse-error message. |
+| `confidence` | `float \| None` | Optional self-reported confidence in `[0.0, 1.0]`; `None` when not available. |
+| `extras` | `dict[str, str]` | At minimum: `{&quot;_correct_granularity&quot;: &lt;correct_tag&gt;, &quot;phase_kind&quot;: ..., &quot;delegate&quot;: ..., &quot;mismatch_strategy&quot;: ...}`. |
+
+#### Summary
+
+This library is condition C of the project&#x27;s A-vs-B-vs-C comparison. It wraps either of the sister
+libraries (t0006&#x27;s scope-aware ReAct or t0007&#x27;s scope-unaware Plan-and-Solve) with a phase-ordered
+walk over a v2 annotation tree from t0009 and substitutes a deliberately incorrect granularity tag
+at each step. The trajectory schema is the canonical six-field schema from t0007, unchanged; the
+per-step correct tag is recorded in an `extras` blob so downstream evaluators can compute the
+per-step mismatch contribution.
+
+Within the project, this library is the third leg of the Phase 2 evaluation harness designed by
+t0012. The harness will compare A (scope-aware), B (scope-unaware), and C (matched-mismatch) on the
+same annotation set with the same trajectory schema, isolating the effect of the granularity tag
+from delegate-specific reasoning effects. The library exposes both `random` and `adversarial`
+strategies so t0012 can run an ablation that decomposes the mismatch contribution into &quot;any wrong
+tag&quot; vs. &quot;the most distant wrong tag.&quot;
+
+Limitations and known gaps: the wrapper drives the v2-walk loop itself rather than calling each
+delegate&#x27;s outer `run()` method, so any post-`run()` book-keeping the delegates do (writing a JSONL
+trajectory file in t0006&#x27;s case) is not propagated. If t0012 needs that side effect it must either
+invoke the delegates directly or open an issue here. The wrapper also does not currently support
+per-step strategy overrides — the strategy is a single literal that applies uniformly across all
+phases. If t0012 finds it useful to inject targeted mismatches in specific phases, that should be
+added in a v2 of this library.
 
 ## Metric 2 Calibration Aggregator
 ID: metric2_calibration_aggregator_v1

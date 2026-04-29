@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-04-29T23:45:04Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-04-29T23:47:15Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>35511</char_count>
-    <byte_count>35578</byte_count>
-    <estimated_tokens>8877</estimated_tokens>
+    <char_count>36871</char_count>
+    <byte_count>36940</byte_count>
+    <estimated_tokens>9217</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -138,10 +138,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
         <id>t0008_brainstorm_results_3</id>
+        <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
       </source_ids>
       <content>
-Completed tasks: 9
+Completed tasks: 10
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -191,6 +192,12 @@ Completed: 2026-04-30
 Short description: Brainstorm 3: insert v2 tree-schema re-annotation as the new ASAP task; preserve original wave 3 (matched-mismatch lib, Metric 2 lib, A/B/C smoke harness).
 Result summary: Brainstorm Session 3 — Results Summary Summary Third brainstorm produced four new not-started tasks. The v1 annotation schema was found to lack subtask-to-atomic edges; a v2 re-annotation task was inserted ASAP as t0009. The original wave 3 plan (matched-mismatch library, Metric 2 calibration, A/B/C smoke harness) was preserved and renumbered to t0010-t0012, with t0012 gated on the other three. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after wave 2 (t0004-t0007) merged at $0.06 spend, with 27 uncovered suggestions and the v2 schema gap surfaced during prompt-modelling discussion of the `is_bored` annotation. * **Prompt**: Plan the first Phase 2 result on a real...
 
+## Matched-mismatch library: condition C with deliberately wrong granularity tags
+ID: t0010_matched_mismatch_library
+Completed: 2026-04-29
+Short description: Write-library implementing condition C: wrap scope_unaware_planandsolve_v1 with a tag-classifier that assigns deliberately incorrect granularity tags.
+Result summary: Results Summary: Matched-Mismatch Library (Condition C) Summary Implemented the project&#x27;s condition-C library `matched_mismatch_v1` — a wrapper that walks the v2 hierarchy from t0009 in canonical phase order, substitutes a deliberately incorrect granularity tag according to a `random` or `adversarial` strategy, and delegates the per-phase model call to either the t0006 ReAct or t0007 Plan-and-Solve format. The library reuses t0007&#x27;s `TRAJECTORY_RECORD_FIELDS` schema unchanged and stores the correct tag in `extras[&quot;_correct_granularity&quot;]`. All 14 deterministic tests pass and every `REQ-*` checklist item is satisfied. Metrics * **Tests passed**: 14 of 14 (`uv run pytest...
+
 ## Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency
 ID: t0011_metric2_calibration_aggregator
 Completed: 2026-04-29
@@ -203,23 +210,16 @@ Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Impl
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0009_hierarchical_annotation_v2</id>
-        <id>t0010_matched_mismatch_library</id>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
 ID: t0009_hierarchical_annotation_v2
 Status: in_progress
 Effective date: 2026-04-29
 Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
-
-## Matched-mismatch library: condition C with deliberately wrong granularity tags
-ID: t0010_matched_mismatch_library
-Status: in_progress
-Effective date: 2026-04-29
-Short description: Write-library implementing condition C: wrap scope_unaware_planandsolve_v1 with a tag-classifier that assigns deliberately incorrect granularity tags.
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
@@ -391,12 +391,20 @@ This dataset asset packages the WorkArena++ compositional task class manifest (4
       <title>Libraries</title>
       <source_name>aggregate_libraries_full</source_name>
       <source_ids>
+        <id>matched_mismatch_v1</id>
         <id>metric2_calibration_aggregator_v1</id>
         <id>scope_aware_react_v1</id>
         <id>scope_unaware_planandsolve_v1</id>
       </source_ids>
       <content>
-Libraries: 3
+Libraries: 4
+
+## Matched-Mismatch Agent (v1)
+ID: matched_mismatch_v1
+Version: 0.1.0
+Created by task: t0010_matched_mismatch_library
+Module paths: tasks/t0010_matched_mismatch_library/code/matched_mismatch.py
+This library is condition C of the project&#x27;s A-vs-B-vs-C comparison. It wraps either of the sister libraries (t0006&#x27;s scope-aware ReAct or t0007&#x27;s scope-unaware Plan-and-Solve) with a phase-ordered walk over a v2 annotation tree from t0009 and substitutes a deliberately incorrect granularity tag at each step. The trajectory schema is the canonical six-field schema from t0007, unchanged; the per-step correct tag is...
 
 ## Metric 2 Calibration Aggregator
 ID: metric2_calibration_aggregator_v1
