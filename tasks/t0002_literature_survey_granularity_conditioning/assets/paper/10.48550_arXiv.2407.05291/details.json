@@ -1,0 +1,36 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2407.05291",
+  "doi": "10.48550/arXiv.2407.05291",
+  "title": "WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks",
+  "url": "https://arxiv.org/abs/2407.05291",
+  "pdf_url": "https://arxiv.org/pdf/2407.05291",
+  "date_published": "2024-07-07",
+  "year": 2024,
+  "authors": [
+    {"name": "Léo Boisvert", "country": "CA", "institution": "ServiceNow Research", "orcid": null},
+    {"name": "Megh Thakkar", "country": "CA", "institution": "ServiceNow Research", "orcid": null},
+    {"name": "Maxime Gasse", "country": "CA", "institution": "ServiceNow Research", "orcid": null},
+    {"name": "Massimo Caccia", "country": "CA", "institution": "ServiceNow Research", "orcid": null},
+    {"name": "Thibault Le Sellier De Chezelles", "country": "CA", "institution": "ServiceNow Research", "orcid": null},
+    {"name": "Quentin Cappart", "country": "CA", "institution": "Polytechnique Montreal", "orcid": null},
+    {"name": "Nicolas Chapados", "country": "CA", "institution": "ServiceNow Research", "orcid": null},
+    {"name": "Alexandre Lacoste", "country": "CA", "institution": "ServiceNow Research", "orcid": null},
+    {"name": "Alexandre Drouin", "country": "CA", "institution": "ServiceNow Research", "orcid": null}
+  ],
+  "institutions": [
+    {"name": "ServiceNow Research", "country": "CA"},
+    {"name": "Polytechnique Montreal", "country": "CA"}
+  ],
+  "journal": "NeurIPS 2024 Datasets and Benchmarks Track",
+  "venue_type": "conference",
+  "categories": ["benchmark-workarena", "hierarchical-planning", "agent-evaluation"],
+  "abstract": "The ability of large language models (LLMs) to mimic human-like intelligence has led to a surge in LLM-based autonomous agents. Though recent LLMs seem capable of planning and reasoning given user instructions, their effectiveness in applying these capabilities for autonomous task solving remains underexplored. This is especially true in enterprise settings, where automated agents hold the promise of a high impact. To fill this gap, we propose WorkArena++, a novel benchmark consisting of 682 tasks corresponding to realistic workflows routinely performed by knowledge workers. WorkArena++ is designed to evaluate the planning, problem-solving, logical/arithmetic reasoning, retrieval, and contextual understanding abilities of web agents. Our empirical studies across state-of-the-art LLMs and vision-language models (VLMs), as well as human workers, reveal several challenges for such models to serve as useful assistants in the workplace. In addition to the benchmark, we provide a mechanism to effortlessly generate thousands of ground-truth observation/action traces, which can be used for fine-tuning existing models. Overall, we expect this work to serve as a useful resource to help the community progress toward capable autonomous agents.",
+  "citation_key": "Boisvert2024",
+  "summary_path": "summary.md",
+  "files": [],
+  "download_status": "failed",
+  "download_failure_reason": "PDF download deferred per task plan: literature-survey uses abstract-based summaries; PDFs deferred to a future task that enables git LFS.",
+  "added_by_task": "t0002_literature_survey_granularity_conditioning",
+  "date_added": "2026-04-29"
+}

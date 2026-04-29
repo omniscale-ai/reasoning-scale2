@@ -1,0 +1,30 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2406.12045",
+  "doi": "10.48550/arXiv.2406.12045",
+  "title": "tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+  "url": "https://arxiv.org/abs/2406.12045",
+  "pdf_url": "https://arxiv.org/pdf/2406.12045",
+  "date_published": "2024-06-17",
+  "year": 2024,
+  "authors": [
+    {"name": "Shunyu Yao", "country": "US", "institution": "Sierra Research", "orcid": null},
+    {"name": "Noah Shinn", "country": "US", "institution": "Sierra Research", "orcid": null},
+    {"name": "Pedram Razavi", "country": "US", "institution": "Sierra Research", "orcid": null},
+    {"name": "Karthik Narasimhan", "country": "US", "institution": "Sierra Research", "orcid": null}
+  ],
+  "institutions": [
+    {"name": "Sierra Research", "country": "US"}
+  ],
+  "journal": "arXiv preprint",
+  "venue_type": "preprint",
+  "categories": ["benchmark-taubench", "agent-evaluation"],
+  "abstract": "Existing benchmarks do not test language agents on their interaction with human users or ability to follow domain-specific rules, both of which are vital for deploying them in real applications. We propose tau-bench, a benchmark emulating dynamic conversations between a user (simulated by language models) and a language agent provided with domain-specific API tools and policy guidelines. We employ an efficient and faithful evaluation process that compares the database state at the end of a conversation with the annotated goal state, and propose a new metric (pass^k) to evaluate the reliability of agent behavior over multiple trials. Our experiments show that even state-of-the-art function calling agents (like gpt-4o) succeed on less than 50% of the tasks, and are quite inconsistent (pass^8 < 25% in retail). Our findings point to the need for methods that can improve the ability of agents to act consistently and follow rules reliably.",
+  "citation_key": "Yao2024",
+  "summary_path": "summary.md",
+  "files": [],
+  "download_status": "failed",
+  "download_failure_reason": "PDF download deferred per task plan: literature-survey uses abstract-based summaries; PDFs deferred to a future task that enables git LFS.",
+  "added_by_task": "t0002_literature_survey_granularity_conditioning",
+  "date_added": "2026-04-29"
+}

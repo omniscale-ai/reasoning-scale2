@@ -1,0 +1,35 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2305.04091",
+  "doi": "10.48550/arXiv.2305.04091",
+  "title": "Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models",
+  "url": "https://arxiv.org/abs/2305.04091",
+  "pdf_url": "https://arxiv.org/pdf/2305.04091",
+  "date_published": "2023-05-06",
+  "year": 2023,
+  "authors": [
+    {"name": "Lei Wang", "country": "SG", "institution": "Singapore Management University", "orcid": null},
+    {"name": "Wanyu Xu", "country": "SG", "institution": "Singapore Management University", "orcid": null},
+    {"name": "Yihuai Lan", "country": "SG", "institution": "Singapore Management University", "orcid": null},
+    {"name": "Zhiqiang Hu", "country": "SG", "institution": "Singapore Management University", "orcid": null},
+    {"name": "Yunshi Lan", "country": "CN", "institution": "East China Normal University", "orcid": null},
+    {"name": "Roy Ka-Wei Lee", "country": "SG", "institution": "Singapore University of Technology and Design", "orcid": null},
+    {"name": "Ee-Peng Lim", "country": "SG", "institution": "Singapore Management University", "orcid": null}
+  ],
+  "institutions": [
+    {"name": "Singapore Management University", "country": "SG"},
+    {"name": "East China Normal University", "country": "CN"},
+    {"name": "Singapore University of Technology and Design", "country": "SG"}
+  ],
+  "journal": "ACL 2023",
+  "venue_type": "conference",
+  "categories": ["granularity-conditioning", "hierarchical-planning"],
+  "abstract": "Large language models (LLMs) have recently been shown to deliver impressive performance in various NLP tasks. To tackle multi-step reasoning tasks, few-shot chain-of-thought (CoT) prompting includes a few manually crafted step-by-step reasoning demonstrations which enable LLMs to explicitly generate reasoning steps and improve their reasoning task accuracy. To eliminate the manual effort, Zero-shot-CoT concatenates the target problem statement with 'Let's think step by step' as an input prompt to LLMs. Despite the success of Zero-shot-CoT, it still suffers from three pitfalls: calculation errors, missing-step errors, and semantic misunderstanding errors. To address the missing-step errors, we propose Plan-and-Solve (PS) Prompting. It consists of two components: first, devising a plan to divide the entire task into smaller subtasks, and then carrying out the subtasks according to the plan. To address the calculation errors and improve the quality of generated reasoning steps, we extend PS prompting with more detailed instructions and derive PS+ prompting. We evaluate our proposed prompting strategy on ten datasets across three reasoning problems. The experimental results over GPT-3 show that our proposed zero-shot prompting consistently outperforms Zero-shot-CoT across all datasets by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable performance with 8-shot CoT prompting on the math reasoning problem. The code can be found at https://github.com/AGI-Edgerunners/Plan-and-Solve-Prompting.",
+  "citation_key": "Wang2023",
+  "summary_path": "summary.md",
+  "files": [],
+  "download_status": "failed",
+  "download_failure_reason": "PDF download deferred per task plan: literature-survey uses abstract-based summaries; PDFs deferred to a future task that enables git LFS.",
+  "added_by_task": "t0002_literature_survey_granularity_conditioning",
+  "date_added": "2026-04-29"
+}
