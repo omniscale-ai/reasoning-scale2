@@ -1,0 +1,5 @@
+{
+  "total_cost_usd": 0,
+  "breakdown": {},
+  "note": "Deterministic local tests; no external API calls or remote compute."
+}
