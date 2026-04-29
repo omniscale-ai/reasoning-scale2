@@ -122,8 +122,8 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up suggestions for downstream tasks.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T23:44:05Z",
       "completed_at": null,
       "log_file": "logs/steps/014_suggestions/"
     },
