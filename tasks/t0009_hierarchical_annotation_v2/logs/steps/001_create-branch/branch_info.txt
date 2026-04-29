@@ -1,0 +1,5 @@
+branch: task/t0009_hierarchical_annotation_v2
+base_branch: main
+base_commit: cc166e11c376d34e4e54856b42238369201b3463
+worktree_path: /Users/anaderi/git/reasoning-scale2-worktrees/t0009_hierarchical_annotation_v2
+created_at: 2026-04-29T23:25:02Z
