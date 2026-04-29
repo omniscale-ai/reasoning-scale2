@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="qa" generated_at_utc="2026-04-29T13:44:19Z">
+<llm_context_archive preset_id="qa" generated_at_utc="2026-04-29T14:29:11Z">
   <archive_summary>
     <title>Questions and Answers</title>
     <description>Question-centric preset with the full answer corpus and compact project state.</description>
     <use_case>Answer review, follow-up questioning, and project knowledge-base chats.</use_case>
     <section_count>4</section_count>
-    <char_count>8935</char_count>
-    <byte_count>8965</byte_count>
-    <estimated_tokens>2233</estimated_tokens>
+    <char_count>9625</char_count>
+    <byte_count>9657</byte_count>
+    <estimated_tokens>2406</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -127,32 +127,32 @@ annotations bootstrap the gold-action set required by all three metrics.
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0001_brainstorm_results_1</id>
+        <id>t0002_literature_survey_granularity_conditioning</id>
       </source_ids>
       <content>
-Completed tasks: 1
+Completed tasks: 2
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
 Completed: 2026-04-29
 Short description: Plan first tasks for the granularity-aware hierarchical agents project: literature survey and benchmark dataset download.
 Result summary: Brainstorm Session 1 — Results Summary Summary The first brainstorm session for the granularity-aware hierarchical agents project produced two new not-started tasks (literature survey and benchmark download) and deferred two further candidates pending the literature-survey output. No suggestions, corrections, or answer assets were produced; the project is brand new and the suggestion backlog is empty. Session Overview * **Date**: 2026-04-29 * **Context**: Inline brainstorm executed by `/setup-project` immediately after `meta/` was populated. Project repository was a fresh fork of the Glite ARF template. * **Prompt**: Translate the project description and four-phase roadmap into concrete...
+
+## Literature survey: granularity conditioning and hierarchical agents
+ID: t0002_literature_survey_granularity_conditioning
+Completed: 2026-04-29
+Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+Result summary: Results Summary: Literature Survey on Granularity Conditioning and Hierarchical Agents Summary Completed a literature survey of 11 papers covering granularity / scope conditioning of LLM agents, hierarchical task decomposition, uncertainty calibration, and the four roadmap benchmarks (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). All 11 paper assets pass the v3 paper-asset verificator and are tagged with project categories. Metrics * **11 paper assets created** out of a 10-paper minimum target — exceeds REQ-1 by one paper. * **4 of 4 survey threads covered** with at least 2 papers each: granularity / hierarchical prompting (Yao2022, Wang2023, Shinn2023, Zhou2022...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## Literature survey: granularity conditioning and hierarchical agents
-ID: t0002_literature_survey_granularity_conditioning
-Status: not_started
-Effective date: 2026-04-29
-Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+Planned or active tasks: 1
 
 ## Download benchmark subsets for the four roadmap sources
 ID: t0003_download_benchmark_subsets

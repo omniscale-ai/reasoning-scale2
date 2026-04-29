@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-29T13:44:19Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-29T14:29:11Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>11196</char_count>
-    <byte_count>11226</byte_count>
-    <estimated_tokens>2799</estimated_tokens>
+    <char_count>27771</char_count>
+    <byte_count>27816</byte_count>
+    <estimated_tokens>6942</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -132,32 +132,32 @@ annotations bootstrap the gold-action set required by all three metrics.
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0001_brainstorm_results_1</id>
+        <id>t0002_literature_survey_granularity_conditioning</id>
       </source_ids>
       <content>
-Completed tasks: 1
+Completed tasks: 2
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
 Completed: 2026-04-29
 Short description: Plan first tasks for the granularity-aware hierarchical agents project: literature survey and benchmark dataset download.
 Result summary: Brainstorm Session 1 — Results Summary Summary The first brainstorm session for the granularity-aware hierarchical agents project produced two new not-started tasks (literature survey and benchmark download) and deferred two further candidates pending the literature-survey output. No suggestions, corrections, or answer assets were produced; the project is brand new and the suggestion backlog is empty. Session Overview * **Date**: 2026-04-29 * **Context**: Inline brainstorm executed by `/setup-project` immediately after `meta/` was populated. Project repository was a fresh fork of the Glite ARF template. * **Prompt**: Translate the project description and four-phase roadmap into concrete...
+
+## Literature survey: granularity conditioning and hierarchical agents
+ID: t0002_literature_survey_granularity_conditioning
+Completed: 2026-04-29
+Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+Result summary: Results Summary: Literature Survey on Granularity Conditioning and Hierarchical Agents Summary Completed a literature survey of 11 papers covering granularity / scope conditioning of LLM agents, hierarchical task decomposition, uncertainty calibration, and the four roadmap benchmarks (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). All 11 paper assets pass the v3 paper-asset verificator and are tagged with project categories. Metrics * **11 paper assets created** out of a 10-paper minimum target — exceeds REQ-1 by one paper. * **4 of 4 survey threads covered** with at least 2 papers each: granularity / hierarchical prompting (Yao2022, Wang2023, Shinn2023, Zhou2022...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## Literature survey: granularity conditioning and hierarchical agents
-ID: t0002_literature_survey_granularity_conditioning
-Status: not_started
-Effective date: 2026-04-29
-Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+Planned or active tasks: 1
 
 ## Download benchmark subsets for the four roadmap sources
 ID: t0003_download_benchmark_subsets
@@ -176,15 +176,187 @@ Answers: 0
     <section id="open-suggestions" source_kind="aggregator">
       <title>Open Suggestions</title>
       <source_name>aggregate_suggestions_full</source_name>
+      <source_ids>
+        <id>S-0002-01</id>
+        <id>S-0002-02</id>
+        <id>S-0002-03</id>
+        <id>S-0002-04</id>
+        <id>S-0002-05</id>
+        <id>S-0002-06</id>
+        <id>S-0002-07</id>
+        <id>S-0002-08</id>
+        <id>S-0002-09</id>
+        <id>S-0002-10</id>
+      </source_ids>
       <content>
-Open suggestions: 0
+Open suggestions: 10
+
+## Register pass^k as a project metric for reliability reporting
+ID: S-0002-01
+Priority: high
+Kind: evaluation
+Source task: t0002_literature_survey_granularity_conditioning
+tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.
+
+## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
+ID: S-0002-02
+Priority: high
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that 3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to this protocol for Metric 2 (overconfident error rate). This task would specify the human-inspired confidence prompt template (low/medium/high + brief justification), implement the self-consistency aggregator, and validate calibration on a small held-out set before Phase 2 launches.
+
+## Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++
+ID: S-0002-03
+Priority: high
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow developer instance and the BrowserGym Python harness. This is a substantial infrastructure task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1 annotation begins.
+
+## Negotiate FrontierMath access via Epoch AI evaluation pipeline
+ID: S-0002-04
+Priority: high
+Kind: dataset
+Source task: t0002_literature_survey_granularity_conditioning
+FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch AI&#x27;s evaluation pipeline; the raw problems are not publicly downloadable. The project needs an explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
+
+## Build the SWE-bench Verified Docker harness
+ID: S-0002-05
+Priority: high
+Kind: dataset
+Source task: t0002_literature_survey_granularity_conditioning
+SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
+
+## Implement Plan-and-Solve as the canonical scope-unaware (B) baseline
+ID: S-0002-06
+Priority: high
+Kind: technique
+Source task: t0002_literature_survey_granularity_conditioning
+Plan-and-Solve [Wang2023] is the strongest published prompt-only baseline that does not condition on explicit granularity tags. The project should reuse LangChain&#x27;s Plan-and-Execute implementation rather than reimplementing from scratch. This task would adapt the LangChain implementation to the project&#x27;s task harness, log both stages (plan and solve) separately, and produce a 10-instance validation run on the composite benchmark to confirm the baseline beats vanilla Zero-shot-CoT.
+
+## Implement scope-aware (A) as ReAct extended with explicit granularity tags
+ID: S-0002-07
+Priority: high
+Kind: technique
+Source task: t0002_literature_survey_granularity_conditioning
+The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token granularity tag from the set {global, subtask, atomic}. This task would specify the prompt template per granularity, the tagging logic that decides which granularity is active at each LLM call, and a logging schema that records the active granularity for every action so post-hoc per-granularity analysis is possible. Replicate Least-to-Most&#x27;s solution-reuse pattern [Zhou2022] inside the implementation.
+
+## Run a Phase 1 pilot annotation on 20 tasks before scaling to 100
+ID: S-0002-08
+Priority: medium
+Kind: experiment
+Source task: t0002_literature_survey_granularity_conditioning
+The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+## Re-fetch the 11 paper PDFs with git LFS enabled
+ID: S-0002-09
+Priority: medium
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset&#x27;s files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.
+
+## Defer Reflexion-style episodic memory to a Phase 3 ablation
+ID: S-0002-10
+Priority: low
+Kind: experiment
+Source task: t0002_literature_survey_granularity_conditioning
+Reflexion [Shinn2023] adds verbal self-reflection across trials and reaches 91% pass@1 on HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would conflate scope conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether Reflexion-style memory adds further gains on top of the scope-aware (A) condition established in Phase 2.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
       <title>Paper Summaries</title>
       <source_name>aggregate_papers_full</source_name>
+      <source_ids>
+        <id>no-doi_OpenAI2024_swe-bench-verified</id>
+        <id>10.48550_arXiv.2411.04872</id>
+        <id>10.48550_arXiv.2407.05291</id>
+        <id>10.48550_arXiv.2406.12045</id>
+        <id>10.48550_arXiv.2403.07718</id>
+        <id>10.48550_arXiv.2310.06770</id>
+        <id>10.48550_arXiv.2306.13063</id>
+        <id>10.48550_arXiv.2305.04091</id>
+        <id>10.48550_arXiv.2303.11366</id>
+        <id>10.48550_arXiv.2210.03629</id>
+        <id>10.48550_arXiv.2205.10625</id>
+      </source_ids>
       <content>
-Papers: 0
+Papers: 11
+
+## Introducing SWE-bench Verified
+ID: no-doi_OpenAI2024_swe-bench-verified
+Year: 2024
+Authors: OpenAI Preparedness team
+Added by task: t0002_literature_survey_granularity_conditioning
+SWE-bench Verified is a 500-instance human-validated subset of SWE-bench produced by OpenAI&#x27;s Preparedness team in collaboration with the original SWE-bench authors. The motivation is that the parent benchmark of 2,294 problems contains some items with ambiguous issue descriptions or flaky tests, which add noise to capability measurements at the frontier. Methodologically, 93 expert software engineers each reviewed candidate problems on three axes: (a) clear instructions, (b) correct test patches, (c) reproducible environments. Three independent...
+
+## FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI
+ID: 10.48550_arXiv.2411.04872
+Year: 2024
+Authors: Elliot Glazer, Ege Erdil, Tamay Besiroglu, Diego Chicharro
+Added by task: t0002_literature_survey_granularity_conditioning
+The paper introduces FrontierMath, a research-mathematician-grade math reasoning benchmark designed to evaluate frontier LLMs on problems that require hours to days of human expert effort. The motivation is the saturation of prior math benchmarks (GSM8K, MATH) by SOTA models and the contamination risk of using publicly available problems for evaluation. The benchmark is built by commissioning hundreds of original, unpublished problems from expert mathematicians, with programmatic answer-checking that scales to repeated automated runs. Problems span...
+
+## WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks
+ID: 10.48550_arXiv.2407.05291
+Year: 2024
+Authors: Léo Boisvert, Megh Thakkar, Maxime Gasse, Massimo Caccia
+Added by task: t0002_literature_survey_granularity_conditioning
+WorkArena++ extends the 33 atomic WorkArena task families into 682 compositional knowledge-work tasks evaluated on the same ServiceNow + BrowserGym substrate. The motivation is that prior benchmarks measure either atomic or end-to-end success but rarely the gap between the two — the gap that explains why agents that handle individual web actions still cannot complete realistic enterprise workflows. Methodologically, the paper composes WorkArena atomic operations into multi-step workflows whose ground-truth solutions exercise five skill axes: planning...
+
+## tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains
+ID: 10.48550_arXiv.2406.12045
+Year: 2024
+Authors: Shunyu Yao, Noah Shinn, Pedram Razavi, Karthik Narasimhan
+Added by task: t0002_literature_survey_granularity_conditioning
+tau-bench introduces a tool-agent-user interaction benchmark in two simulated customer-service domains (retail and airline). The motivation is that prior tool-use benchmarks fail to test two critical capabilities for production agents: dynamic interaction with a human user (simulated here by another LLM) and adherence to domain-specific policy documents that constrain allowable actions. Methodologically, each task pairs a user-goal database state, an LLM-roleplayed user persona, and a policy document. The agent conducts a multi-turn conversation, calls...
+
+## WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?
+ID: 10.48550_arXiv.2403.07718
+Year: 2024
+Authors: Alexandre Drouin, Maxime Gasse, Massimo Caccia, Issam H. Laradji
+Added by task: t0002_literature_survey_granularity_conditioning
+WorkArena introduces a remote-hosted benchmark of 33 enterprise-grade web tasks built on the ServiceNow platform, accompanied by BrowserGym — a reusable Python environment for web-agent evaluation. The motivation is that prior web-agent benchmarks (MiniWoB, WebShop) lack the complexity of modern enterprise software, where agents must navigate content management systems, intricate forms, custom layouts, and modal popups. Methodologically, the paper instantiates 33 task families with 19,912 unique parameterized instances, evaluates them via BrowserGym&#x27;s...
+
+## SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
+ID: 10.48550_arXiv.2310.06770
+Year: 2024
+Authors: Carlos E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao
+Added by task: t0002_literature_survey_granularity_conditioning
+SWE-bench introduces a real-world software-engineering evaluation framework where 2,294 problems are sourced from genuine GitHub issues in 12 popular Python repositories. The motivation is that prior code-generation benchmarks (HumanEval, MBPP) test isolated function-level capability and saturate quickly with frontier models, while real software engineering requires multi-file coordination, long codebase context, and resolution of issues whose correct fix is judged by existing test suites. Methodologically, each problem provides the full repository state...
+
+## Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs
+ID: 10.48550_arXiv.2306.13063
+Year: 2024
+Authors: Miao Xiong, Zhiyuan Hu, Xinyang Lu, Yifei Li
+Added by task: t0002_literature_survey_granularity_conditioning
+Xiong et al. address the calibration gap in modern LLMs: verbalized confidence is systematically higher than actual accuracy, making it an unreliable signal for any system that needs to abstain or escalate based on uncertainty. The motivation is that previous calibration methods relied on white-box access to internal logits or model fine-tuning, neither of which is available for closed-source commercial APIs. Methodologically, the paper proposes a three-component black-box framework: prompting strategy (vanilla, human-inspired, CoT, self-probing) ×...
+
+## Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models
+ID: 10.48550_arXiv.2305.04091
+Year: 2023
+Authors: Lei Wang, Wanyu Xu, Yihuai Lan, Zhiqiang Hu
+Added by task: t0002_literature_survey_granularity_conditioning
+Plan-and-Solve (PS) prompting is a zero-shot prompting technique that explicitly forces a language model to first produce a plan, then execute the plan step by step. The motivation is that Zero-shot-CoT — while a powerful zero-shot baseline — exhibits three error modes: calculation errors, missing-step errors, and semantic-misunderstanding errors. PS targets the missing-step mode by demanding an explicit plan; PS+ extends to calculation errors via additional in-prompt instructions to &quot;pay attention to correct numerical calculation.&quot; Methodologically, PS...
+
+## Reflexion: Language Agents with Verbal Reinforcement Learning
+ID: 10.48550_arXiv.2303.11366
+Year: 2023
+Authors: Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath
+Added by task: t0002_literature_survey_granularity_conditioning
+Reflexion is a language-agent framework that adds a verbal self-reflection loop on top of ReAct-style prompting agents. After each trial, the agent writes a free-form natural-language critique of its own behavior, stores the critique in an episodic memory buffer, and uses the buffer as additional context for the next trial. No model weights are updated — the learning is entirely linguistic. Methodologically, Reflexion has three components: an actor (ReAct policy), an evaluator (scalar or free-form feedback), and a reflector (LLM in critique mode). The...
+
+## ReAct: Synergizing Reasoning and Acting in Language Models
+ID: 10.48550_arXiv.2210.03629
+Year: 2023
+Authors: Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du
+Added by task: t0002_literature_survey_granularity_conditioning
+ReAct introduces an agent prompting paradigm where the language model alternates between Thought tokens (free-form reasoning) and Action tokens (calls to external tools or environments). The motivation is that prior work treated reasoning (chain-of-thought) and acting (tool-use) as separate problems, missing the synergy where reasoning helps the agent track and update its plan while acting lets the agent ground its reasoning in real information. Methodologically, ReAct uses one or two in-context examples to teach the model the Thought/Action/Observation...
+
+## Least-to-Most Prompting Enables Complex Reasoning in Large Language Models
+ID: 10.48550_arXiv.2205.10625
+Year: 2022
+Authors: Denny Zhou, Nathanael Schärli, Le Hou, Jason Wei
+Added by task: t0002_literature_survey_granularity_conditioning
+Least-to-Most (LtM) prompting is a two-stage prompting technique designed to overcome chain-of- thought&#x27;s easy-to-hard generalization gap. The first stage decomposes a complex problem into a sequence of simpler subproblems ordered by difficulty; the second stage solves each subproblem using the answers to previously solved subproblems as additional context. The motivation is that CoT performs well on test problems similar to in-context exemplars but degrades sharply when test problems are harder. Methodologically, LtM uses the same model (GPT-3...
       </content>
     </section>
     <section id="datasets" source_kind="aggregator">

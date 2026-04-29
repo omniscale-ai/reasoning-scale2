@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-29T13:44:19Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-29T14:29:11Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>17231</char_count>
-    <byte_count>17271</byte_count>
-    <estimated_tokens>4307</estimated_tokens>
+    <char_count>19841</char_count>
+    <byte_count>19881</byte_count>
+    <estimated_tokens>4960</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -128,106 +128,32 @@ annotations bootstrap the gold-action set required by all three metrics.
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0001_brainstorm_results_1</id>
+        <id>t0002_literature_survey_granularity_conditioning</id>
       </source_ids>
       <content>
-Completed tasks: 1
+Completed tasks: 2
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
 Completed: 2026-04-29
 Short description: Plan first tasks for the granularity-aware hierarchical agents project: literature survey and benchmark dataset download.
 Result summary: Brainstorm Session 1 — Results Summary Summary The first brainstorm session for the granularity-aware hierarchical agents project produced two new not-started tasks (literature survey and benchmark download) and deferred two further candidates pending the literature-survey output. No suggestions, corrections, or answer assets were produced; the project is brand new and the suggestion backlog is empty. Session Overview * **Date**: 2026-04-29 * **Context**: Inline brainstorm executed by `/setup-project` immediately after `meta/` was populated. Project repository was a fresh fork of the Glite ARF template. * **Prompt**: Translate the project description and four-phase roadmap into concrete...
+
+## Literature survey: granularity conditioning and hierarchical agents
+ID: t0002_literature_survey_granularity_conditioning
+Completed: 2026-04-29
+Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+Result summary: Results Summary: Literature Survey on Granularity Conditioning and Hierarchical Agents Summary Completed a literature survey of 11 papers covering granularity / scope conditioning of LLM agents, hierarchical task decomposition, uncertainty calibration, and the four roadmap benchmarks (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). All 11 paper assets pass the v3 paper-asset verificator and are tagged with project categories. Metrics * **11 paper assets created** out of a 10-paper minimum target — exceeds REQ-1 by one paper. * **4 of 4 survey threads covered** with at least 2 papers each: granularity / hierarchical prompting (Yao2022, Wang2023, Shinn2023, Zhou2022...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## Literature survey: granularity conditioning and hierarchical agents
-ID: t0002_literature_survey_granularity_conditioning
-Status: not_started
-Effective date: 2026-04-29
-Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
-
-#### Motivation
-
-The project&#x27;s central hypothesis is that explicitly conditioning an LLM agent on its current
-operating granularity (global / subtask / atomic) improves task success, calibration, and
-request-vs-act discrimination. Before designing the Phase 2 baseline experiment we need literature
-grounding on three threads: how prior work has framed and operationalised &quot;granularity&quot; or &quot;scope&quot;
-labels for hierarchical agents, what hierarchical task decomposition schemas exist in the four
-benchmark sources, and which uncertainty-calibration metrics have been used in agent settings (in
-particular, definitions and prior measurements of the overconfident error rate). The survey output
-anchors every later planning decision and lets us cite prior work in the Phase 4 paper-ready report.
-
-#### Scope
-
-* Granularity / scope / scale conditioning in LLM agents and prompt engineering. Include any work
-  that varies the level of abstraction at which an agent receives its instructions, even if the
-  authors do not use the word &quot;granularity&quot;.
-* Hierarchical task decomposition: papers proposing two-, three-, or n-level decompositions for
-  benchmarks similar to those in this project (FrontierScience-Olympiad, WorkArena++, SWE-bench
-  Verified, tau-bench).
-* Uncertainty calibration in LLM agents: confidence elicitation methods, definitions of
-  overconfident error rate, calibration plots and metrics, and prior reports on how calibration
-  changes with prompt design.
-* The four roadmap benchmarks themselves: their official task structures, scoring conventions, and
-  any published results that bracket what counts as competitive performance.
-
-Out of scope: training-time techniques (RL, gradient-based fine-tuning), non-English benchmarks,
-production deployment papers — all consistent with the project&#x27;s Out of Scope section.
-
-#### Approach
-
-1. Run the standard `/research-papers` and `/research-internet` stages with the three thread queries
-   above. Use the `download-paper` skill for any candidate paper found via search.
-2. Produce paper assets under `assets/paper/` for at least 10 highly relevant papers, each with a
-   summary that conforms to the paper asset specification.
-3. Aggregate findings into `research/research_papers.md` with a section per thread: granularity
-   conditioning, hierarchical decomposition, calibration metrics, benchmark grounding.
-4. Connect each thread back to the project&#x27;s research questions and explicitly flag (a) any prior
-   work that already answers a research question, (b) any methodological choices the survey resolves
-   for Phase 2, and (c) any open questions to surface as suggestions.
-
-#### Expected Outputs
-
-* At least 10 paper assets under `assets/paper/&lt;paper_id&gt;/` with `details.json`, summary, and PDF or
-  markdown file.
-* `research/research_papers.md` and `research/research_internet.md` synthesising the survey.
-* `results/results_summary.md` with a thread-by-thread takeaway and explicit follow-up suggestions
-  for the next brainstorm session (typically: which benchmarks to deprioritise, which conditioning
-  prompts to adopt, which calibration metric to register as a project metric).
-* `results/suggestions.json` with concrete follow-up ideas surfaced by the survey.
-
-#### Compute and Budget
-
-No GPU. Anthropic API only (the project&#x27;s `available_services` list dropped `openai_api` until an
-API key is provided). Estimated cost: under 5 USD for paper summarisation through Claude.
-
-#### Dependencies and Cross-References
-
-* No task dependencies. Independent of T2.
-* Reads `project/description.md` for research questions and success criteria.
-* The project&#x27;s pre-existing `project/data/annotation_pilot/tasks_annotated.jsonl` should be
-  inspected during the survey to ground discussion of benchmark coverage.
-
-#### Key Questions
-
-1. What prior work explicitly compares scope-aware vs. scope-unaware vs. scope-mismatched LLM agents
-   on multi-step benchmarks, and what effect sizes did they report?
-2. What definitions of &quot;overconfident error rate&quot; exist in the agent calibration literature, and
-   which is most appropriate for our Metric 2 specification?
-3. What hierarchical decomposition schemas are already published for FrontierScience-Olympiad,
-   WorkArena++, SWE-bench Verified, and tau-bench, and how do they map to our global / subtask /
-   atomic split?
-4. Are the WorkArena++ and tau-bench benchmarks truly inaccessible (as the existing pilot data
-   suggests), or are there standard distribution channels we missed?
+Planned or active tasks: 1
 
 ## Download benchmark subsets for the four roadmap sources
 ID: t0003_download_benchmark_subsets
@@ -309,8 +235,90 @@ Answers: 0
     <section id="open-suggestions" source_kind="aggregator">
       <title>Open Suggestions</title>
       <source_name>aggregate_suggestions_full</source_name>
+      <source_ids>
+        <id>S-0002-01</id>
+        <id>S-0002-02</id>
+        <id>S-0002-03</id>
+        <id>S-0002-04</id>
+        <id>S-0002-05</id>
+        <id>S-0002-06</id>
+        <id>S-0002-07</id>
+        <id>S-0002-08</id>
+        <id>S-0002-09</id>
+        <id>S-0002-10</id>
+      </source_ids>
       <content>
-Open suggestions: 0
+Open suggestions: 10
+
+## Register pass^k as a project metric for reliability reporting
+ID: S-0002-01
+Priority: high
+Kind: evaluation
+Source task: t0002_literature_survey_granularity_conditioning
+tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.
+
+## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
+ID: S-0002-02
+Priority: high
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that 3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to this protocol for Metric 2 (overconfident error rate). This task would specify the human-inspired confidence prompt template (low/medium/high + brief justification), implement the self-consistency aggregator, and validate calibration on a small held-out set before Phase 2 launches.
+
+## Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++
+ID: S-0002-03
+Priority: high
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow developer instance and the BrowserGym Python harness. This is a substantial infrastructure task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1 annotation begins.
+
+## Negotiate FrontierMath access via Epoch AI evaluation pipeline
+ID: S-0002-04
+Priority: high
+Kind: dataset
+Source task: t0002_literature_survey_granularity_conditioning
+FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch AI&#x27;s evaluation pipeline; the raw problems are not publicly downloadable. The project needs an explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
+
+## Build the SWE-bench Verified Docker harness
+ID: S-0002-05
+Priority: high
+Kind: dataset
+Source task: t0002_literature_survey_granularity_conditioning
+SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
+
+## Implement Plan-and-Solve as the canonical scope-unaware (B) baseline
+ID: S-0002-06
+Priority: high
+Kind: technique
+Source task: t0002_literature_survey_granularity_conditioning
+Plan-and-Solve [Wang2023] is the strongest published prompt-only baseline that does not condition on explicit granularity tags. The project should reuse LangChain&#x27;s Plan-and-Execute implementation rather than reimplementing from scratch. This task would adapt the LangChain implementation to the project&#x27;s task harness, log both stages (plan and solve) separately, and produce a 10-instance validation run on the composite benchmark to confirm the baseline beats vanilla Zero-shot-CoT.
+
+## Implement scope-aware (A) as ReAct extended with explicit granularity tags
+ID: S-0002-07
+Priority: high
+Kind: technique
+Source task: t0002_literature_survey_granularity_conditioning
+The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token granularity tag from the set {global, subtask, atomic}. This task would specify the prompt template per granularity, the tagging logic that decides which granularity is active at each LLM call, and a logging schema that records the active granularity for every action so post-hoc per-granularity analysis is possible. Replicate Least-to-Most&#x27;s solution-reuse pattern [Zhou2022] inside the implementation.
+
+## Run a Phase 1 pilot annotation on 20 tasks before scaling to 100
+ID: S-0002-08
+Priority: medium
+Kind: experiment
+Source task: t0002_literature_survey_granularity_conditioning
+The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+## Re-fetch the 11 paper PDFs with git LFS enabled
+ID: S-0002-09
+Priority: medium
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset&#x27;s files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.
+
+## Defer Reflexion-style episodic memory to a Phase 3 ablation
+ID: S-0002-10
+Priority: low
+Kind: experiment
+Source task: t0002_literature_survey_granularity_conditioning
+Reflexion [Shinn2023] adds verbal self-reflection across trials and reaches 91% pass@1 on HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would conflate scope conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether Reflexion-style memory adds further gains on top of the scope-aware (A) condition established in Phase 2.
       </content>
     </section>
   </sections>

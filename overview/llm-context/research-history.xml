@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-29T13:44:19Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-29T14:29:11Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>7</section_count>
-    <char_count>11767</char_count>
-    <byte_count>11809</byte_count>
-    <estimated_tokens>2941</estimated_tokens>
+    <section_count>10</section_count>
+    <char_count>55450</char_count>
+    <byte_count>55585</byte_count>
+    <estimated_tokens>13862</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -128,32 +128,32 @@ annotations bootstrap the gold-action set required by all three metrics.
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0001_brainstorm_results_1</id>
+        <id>t0002_literature_survey_granularity_conditioning</id>
       </source_ids>
       <content>
-Completed tasks: 1
+Completed tasks: 2
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
 Completed: 2026-04-29
 Short description: Plan first tasks for the granularity-aware hierarchical agents project: literature survey and benchmark dataset download.
 Result summary: Brainstorm Session 1 — Results Summary Summary The first brainstorm session for the granularity-aware hierarchical agents project produced two new not-started tasks (literature survey and benchmark download) and deferred two further candidates pending the literature-survey output. No suggestions, corrections, or answer assets were produced; the project is brand new and the suggestion backlog is empty. Session Overview * **Date**: 2026-04-29 * **Context**: Inline brainstorm executed by `/setup-project` immediately after `meta/` was populated. Project repository was a fresh fork of the Glite ARF template. * **Prompt**: Translate the project description and four-phase roadmap into concrete...
+
+## Literature survey: granularity conditioning and hierarchical agents
+ID: t0002_literature_survey_granularity_conditioning
+Completed: 2026-04-29
+Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+Result summary: Results Summary: Literature Survey on Granularity Conditioning and Hierarchical Agents Summary Completed a literature survey of 11 papers covering granularity / scope conditioning of LLM agents, hierarchical task decomposition, uncertainty calibration, and the four roadmap benchmarks (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). All 11 paper assets pass the v3 paper-asset verificator and are tagged with project categories. Metrics * **11 paper assets created** out of a 10-paper minimum target — exceeds REQ-1 by one paper. * **4 of 4 survey threads covered** with at least 2 papers each: granularity / hierarchical prompting (Yao2022, Wang2023, Shinn2023, Zhou2022...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## Literature survey: granularity conditioning and hierarchical agents
-ID: t0002_literature_survey_granularity_conditioning
-Status: not_started
-Effective date: 2026-04-29
-Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+Planned or active tasks: 1
 
 ## Download benchmark subsets for the four roadmap sources
 ID: t0003_download_benchmark_subsets
@@ -272,6 +272,791 @@ No research required for brainstorming session.
 #### References
 
 No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0002_literature_survey_granularity_conditioning-research_papers" source_kind="file">
+      <title>t0002_literature_survey_granularity_conditioning — Literature survey: granularity conditioning and hierarchical agents — research_papers.md</title>
+      <source_name>research_papers.md</source_name>
+      <source_ids>
+        <id>t0002_literature_survey_granularity_conditioning</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0002_literature_survey_granularity_conditioning/research/research_papers.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0002_literature_survey_granularity_conditioning&quot;
+research_stage: &quot;papers&quot;
+papers_reviewed: 0
+papers_cited: 0
+categories_consulted:
+  - &quot;granularity-conditioning&quot;
+  - &quot;hierarchical-planning&quot;
+  - &quot;uncertainty-calibration&quot;
+  - &quot;benchmark-frontierscience&quot;
+  - &quot;benchmark-workarena&quot;
+  - &quot;benchmark-swebench&quot;
+  - &quot;benchmark-taubench&quot;
+  - &quot;agent-evaluation&quot;
+  - &quot;benchmark-annotation&quot;
+date_completed: &quot;2026-04-29&quot;
+status: &quot;partial&quot;
+---
+#### Task Objective
+
+This task is the project&#x27;s first literature survey. The objective is to ground the central
+hypothesis — that explicitly conditioning an LLM agent on its current operating granularity (global,
+subtask, atomic) improves task success, calibration, and request-vs-act discrimination — in prior
+work. The survey covers four threads: (a) granularity / scope conditioning of LLM agents, (b)
+hierarchical task decomposition for multi-step benchmarks, (c) uncertainty calibration metrics
+(definitions of overconfident error rate), and (d) the four roadmap benchmarks
+(FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). Findings here anchor every
+later planning decision and let us cite prior work in the Phase 4 paper-ready report.
+
+#### Category Selection Rationale
+
+Consulted nine project categories that map directly to the four survey threads. Three are core
+methodological themes — `granularity-conditioning` (RQ1, RQ4, RQ5), `hierarchical-planning` (RQ3,
+sub-hypothesis 1), and `uncertainty-calibration` (RQ2, Metric 2). Four are benchmark-specific —
+`benchmark-frontierscience`, `benchmark-workarena`, `benchmark-swebench`, `benchmark-taubench` —
+because the project draws its composite multi-step benchmark from these four sources. Two cut across
+the survey: `agent-evaluation` for evaluation-protocol papers and `benchmark-annotation` for papers
+that publish hierarchical task annotations comparable to our gold-action schema. No category was
+excluded — the project&#x27;s category set was tailored at setup to this exact survey scope.
+
+#### Key Findings
+
+##### Empty Existing Corpus — Survey Must Be Sourced from Internet Research
+
+The aggregator `aggregate_papers.py` reports zero existing paper assets in the project. T0001
+(brainstorm) produced no paper assets, and no prior task downloaded literature. As a result, this
+research-papers stage cannot synthesize across an existing corpus. The actionable finding is
+procedural: every relevant paper for this project must be discovered and downloaded during the
+research-internet stage that follows. The synthesis sections that would normally appear here (scope
+conditioning effect sizes, calibration definitions, hierarchical schemas, benchmark distribution
+channels) are deferred to `research/research_internet.md`.
+
+##### Implied Coverage Targets From the Project Description
+
+Although no papers exist yet, the project description and `task_description.md` make explicit
+coverage demands on the survey: at least 10 paper assets, distributed across the four threads, with
+the granularity-conditioning thread receiving priority because it is the central hypothesis. Each
+downstream paper asset must include a full summary that conforms to the v3 paper asset
+specification, and each must be tagged with at least one of the nine project categories so that
+later aggregators can filter cleanly.
+
+##### Pre-Existing Project Assets Mentioned in the Description
+
+`project/description.md` notes pre-existing scripts (`run_experiment.py`,
+`run_diploma_experiments.py`, `run_synthesis.py`) and a pilot annotation set imported from a parent
+project. These are not paper assets — they are code and data — so they do not appear in the paper
+corpus, but they constrain the survey: the experiment harness already encodes a global / subtask /
+atomic split, so the survey should prioritize papers whose granularity taxonomies align with that
+three-level decomposition rather than alternative two-level or n-level schemas. This narrows the
+candidate set in the hierarchical-planning thread.
+
+#### Methodology Insights
+
+* **Run the research-internet stage with three parallel query threads** matching the four survey
+  threads. Use Semantic Scholar / arXiv / ACL Anthology / OpenReview as primary sources, falling
+  back to Google Scholar where needed. The search must produce a `## Discovered Papers` section
+  enumerating at least 10 candidates whose abstracts and metadata are recoverable.
+* **Prefer canonical sources over secondary citations**. For each of the four roadmap benchmarks,
+  the canonical paper or technical report (FrontierMath, WorkArena++, SWE-bench Verified card,
+  tau-bench) is the primary candidate. Survey papers that summarize hierarchical agent planning
+  (e.g., ReAct, Reflexion, Plan-and-Solve) are secondary candidates; pick whichever explicitly
+  ablates over instruction granularity.
+* **Stretch goal of 12-15 papers** if the search uncovers more than 10 strong candidates. The task
+  ceiling is 15 to keep summarization cost under 5 USD.
+* **Use the `/add-paper` skill once per paper**, not a batch script. Each paper asset must include a
+  PDF or markdown file under `files/` (or a `.gitkeep` plus `download_status: &quot;failed&quot;` and a
+  failure reason if the file cannot be retrieved).
+* **Tag each paper with project categories** drawn from the list of nine. Avoid inventing new
+  categories — the registry is closed for this task.
+
+#### Gaps and Limitations
+
+* No prior corpus exists, so cross-paper synthesis is not possible at this stage. The trade-off: the
+  task moves the synthesis work into `research_internet.md` and `results_summary.md`.
+* Several of the roadmap benchmarks (WorkArena++, tau-bench) may be partially closed or
+  difficult-to-access — the task description explicitly flags this as a research question. The
+  research-internet stage must record any access barriers for the planning step.
+* Without a baseline corpus there is no way to spot duplication early; the implementation step must
+  re-run `aggregate_papers.py` before each `/add-paper` call to avoid duplicates.
+* Calibration literature for agent settings is younger than calibration literature for classifiers.
+  The survey may find that overconfident-error-rate definitions vary by paper and require the
+  project to commit to a specific operationalization in the Phase 2 plan.
+
+#### Recommendations for This Task
+
+1. **Skip cross-paper synthesis here** and proceed directly to research-internet, where the
+   discovery-and-download work happens. Mark this file `status: &quot;partial&quot;` with that explanation.
+2. **Set the discovery target at 10-15 papers** distributed across the four threads with at least
+   two papers per thread to allow later cross-paper comparison.
+3. **For each discovered paper, run the `/add-paper` skill** in the implementation step rather than
+   batching — each paper asset must independently pass the v3 spec verificator.
+4. **Record any access barriers** (paywalled, withdrawn, only-on-OpenReview) in
+   `research/research_internet.md` so the planning step can decide whether to deprioritize a
+   benchmark.
+5. **Defer all numeric synthesis** (effect sizes, calibration metrics, accuracy numbers) to
+   `results/results_summary.md`, where the survey output is digested for downstream tasks.
+
+#### Paper Index
+
+No papers cited. The corpus is empty; this section is intentionally vacant. Discovered papers are
+listed in `research/research_internet.md` `## Discovered Papers` and materialized as paper assets
+during the implementation step.
+      </content>
+    </section>
+    <section id="t0002_literature_survey_granularity_conditioning-research_internet" source_kind="file">
+      <title>t0002_literature_survey_granularity_conditioning — Literature survey: granularity conditioning and hierarchical agents — research_internet.md</title>
+      <source_name>research_internet.md</source_name>
+      <source_ids>
+        <id>t0002_literature_survey_granularity_conditioning</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0002_literature_survey_granularity_conditioning/research/research_internet.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0002_literature_survey_granularity_conditioning&quot;
+research_stage: &quot;internet&quot;
+searches_conducted: 17
+sources_cited: 12
+papers_discovered: 11
+date_completed: &quot;2026-04-29&quot;
+status: &quot;complete&quot;
+---
+#### Task Objective
+
+This task is the project&#x27;s first literature survey. The goal is to ground the central hypothesis —
+that explicitly conditioning an LLM agent on its current operating granularity (global, subtask,
+atomic) improves task success, calibration, and request-vs-act discrimination — in prior work.
+Coverage spans four threads: granularity / scope conditioning, hierarchical task decomposition,
+uncertainty calibration with overconfident error rate, and the four roadmap benchmarks
+(FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). The survey output anchors
+every later planning decision and supplies citations for the Phase 4 paper-ready report.
+
+#### Gaps Addressed
+
+The four gaps from `research_papers.md` Gaps and Limitations are addressed as follows:
+
+1. **No prior corpus exists, so cross-paper synthesis is not possible** — **Resolved**. Internet
+   search produced 11 candidate papers across the four threads, enough to seed a useful baseline
+   corpus and to support cross-paper synthesis in `results/results_summary.md`.
+2. **Some roadmap benchmarks may be partially closed or hard to access** — **Partially resolved**.
+   FrontierMath [Glazer2024] and the tau-bench [Yao2024] datasets are publicly hosted (Epoch AI and
+   Sierra-research GitHub respectively). WorkArena++ [Boisvert2024] ships the runtime but requires a
+   self-hosted ServiceNow instance and BrowserGym, so reproduction is non-trivial; this is a real
+   access barrier. SWE-bench Verified [SWE-Verified-2024] is an OpenAI-curated 500-instance subset
+   of [Jimenez2024] and is fully open.
+3. **Risk of paper duplication when no baseline corpus exists** — **Resolved**. With this stage
+   identifying canonical sources, the implementation step can run `aggregate_papers.py` between each
+   `/add-paper` invocation and check DOIs and arXiv IDs (`2411.04872`, `2403.07718`, `2407.05291`,
+   `2310.06770`, `2406.12045`, `2210.03629`, `2303.11366`, `2205.10625`, `2306.13063`, `2305.04091`,
+   `2201.11903`) before adding.
+4. **Calibration definitions vary across papers** — **Partially resolved**. [Xiong2024] makes
+   explicit that verbalized confidence is the dominant operationalization in agent settings, with
+   Expected Calibration Error (ECE) and overconfident-error rate as the standard metrics. The
+   project should commit to verbalized confidence + bucketed ECE in Phase 2; remaining ambiguity is
+   whether &quot;high confidence&quot; is binarized at p&gt;=0.8 or p&gt;=0.9.
+
+#### Search Strategy
+
+**Sources searched**: WebSearch over arXiv, ACL Anthology, NeurIPS Proceedings, OpenReview,
+Servicenow Research blog, OpenAI blog, Sierra-research GitHub, and Epoch AI public benchmark page.
+
+**Queries executed** (17 total):
+
+*Benchmark thread (papers grounding the four roadmap benchmarks):*
+
+1. `&quot;FrontierMath&quot; benchmark math olympiad LLM evaluation paper arXiv`
+2. `&quot;WorkArena&quot; benchmark web agent enterprise tasks ServiceNow paper`
+3. `&quot;SWE-bench Verified&quot; OpenAI human-validated software engineering benchmark`
+4. `&quot;tau-bench&quot; tool agent benchmark Sierra retail airline paper arXiv`
+5. `&quot;WorkArena++&quot; compositional planning reasoning enterprise web agents NeurIPS 2024`
+6. `&quot;SWE-bench&quot; Jimenez Yang Princeton ICLR 2024 software engineering benchmark arXiv`
+
+*Granularity / hierarchical-decomposition thread:*
+
+7. `LLM agent hierarchical task decomposition planning subtask granularity scope conditioning`
+8. `&quot;plan-and-solve&quot; prompting LLM hierarchical reasoning arXiv 2023 ACL`
+9. `&quot;least-to-most prompting&quot; decomposition complex reasoning Zhou Google 2022`
+10. `ReAct reasoning acting language model agent paper Yao 2022 ICLR`
+11. `&quot;Reflexion&quot; verbal reinforcement language agent Shinn arXiv 2023`
+12. `&quot;chain-of-thought&quot; prompting reasoning Wei Google 2022 emergent NeurIPS`
+
+*Calibration thread:*
+
+13. `LLM uncertainty calibration verbalized confidence overconfident error rate selective prediction agent`
+14. `LLM calibration &quot;expected calibration error&quot; knowing what they know language model`
+15. `LLM agent overconfidence errors hallucination calibration &quot;selective abstention&quot; know-don&#x27;t-know`
+
+*Author / metadata follow-ups:*
+
+16. `&quot;FrontierMath&quot; Glazer arXiv 2411.04872 Epoch AI authors`
+17. `&quot;Drouin&quot; &quot;WorkArena&quot; arXiv 2403.07718 ICML 2024 authors list`
+
+**Date range**: 2022-2026 for methodological threads; no restriction on the foundational
+chain-of-thought (2022) and ReAct (2022) papers because they remain canonical baselines for
+agent-prompting work.
+
+**Inclusion criteria**: A source must (a) be a peer-reviewed paper or canonical technical card, (b)
+directly address one of the four threads, (c) be retrievable via a public arXiv URL, GitHub README,
+or organisation blog, and (d) report quantitative results that can be cited in
+`results/results_summary.md`. Excluded: Medium / Substack posts, marketing summaries, leaderboard
+sites without underlying paper, non-English sources, training-time RL papers (out of scope per
+`project/description.md`).
+
+**Search iterations**: Queries 1-15 were the initial battery. Queries 16-17 were follow-ups to
+collect author lists and arXiv IDs once candidate papers were identified.
+
+#### Key Findings
+
+##### Hierarchical decomposition prompts already encode a coarse granularity split
+
+Three foundational prompting papers establish that explicit decomposition into subtasks improves
+multi-step reasoning. [Wei2022] showed that chain-of-thought (CoT) prompting reaches state of the
+art on GSM8K with only eight exemplars on a 540B model — making chain-of-thought an *emergent*
+property of scale rather than a fine-tuning gain. [Zhou2022] introduced **least-to-most prompting**,
+which decomposes a hard problem into an ordered chain of easier subproblems and reaches **&gt;=99% on
+the SCAN length split** with `code-davinci-002` versus **16% with vanilla CoT** — a **+83 absolute**
+gain that demonstrates how strongly explicit decomposition helps. [Wang2023] proposed
+**Plan-and-Solve (PS) prompting** which adds a &quot;first plan, then solve&quot; structure and reduces
+calculation and missing-step errors in Zero-shot CoT. None of these papers labels their stages
+&quot;global / subtask / atomic&quot; as our project does, but all three implicitly use a two- or three-tier
+hierarchy that maps onto our schema. The project&#x27;s three-level split (global / subtask / atomic) is
+a strict refinement of plan-and-solve.
+
+**Hypothesis**: The Phase 2 baseline experiment should include least-to-most prompting and
+plan-and-solve prompting as scope-unaware (B) baselines. If the scope-aware (A) condition is
+implemented as a more disciplined version of plan-and-solve with explicit granularity tags, the
+expected effect size sits between the +83 absolute gain on SCAN and the smaller gains reported on
+GSM8K. This makes a **+5 to +15 percentage-point** absolute improvement on Phase 2 metrics a
+defensible target.
+
+##### Agent architectures alternate reasoning and action with explicit per-step framing
+
+Two influential agent papers ground the project&#x27;s &quot;request-vs-act&quot; framing. [Yao2022] introduced
+**ReAct**, which interleaves reasoning steps with action calls and gains an absolute **+34% on
+ALFWorld** and **+10% on WebShop** over imitation and RL baselines. Crucially, ReAct distinguishes
+between &quot;think&quot; tokens (planning at the next-step granularity) and &quot;act&quot; tokens (atomic execution) —
+exactly the global/subtask vs. atomic distinction at the heart of this project. [Shinn2023] extended
+ReAct with **Reflexion**, where an agent maintains episodic verbal self-reflection between trials,
+yielding gains on HumanEval (Python coding) and ALFWorld. The Reflexion architecture implicitly
+conditions different stages of the agent on different scopes (execution vs. reflection), which
+provides an architectural template for our scope-aware (A) condition.
+
+**Best practice**: Implement scope-aware (A) by (a) tagging each LLM call with one of
+`{GLOBAL, SUBTASK, ATOMIC}`, (b) including a brief instruction template per tag describing what is
+allowed at that scope, and (c) recording which scope was active for every action. This matches
+ReAct&#x27;s think-vs-act split but extends it to three levels.
+
+##### Verbalized confidence is the standard but flawed calibration signal
+
+[Xiong2024] is the primary calibration reference (ICLR 2024). It benchmarks confidence-elicitation
+methods on five LLMs (GPT-4, LLaMA 2 Chat, etc.) across five datasets and finds that LLMs are
+**systematically overconfident** when asked to verbalize confidence. The paper proposes a
+three-component framework — prompting + sampling + aggregation — and reports that **self-consistency
+over multiple samples** is the most reliable aggregation method, beating naive verbalized confidence
+by **+2 to +8 ECE points** depending on dataset. Industry-side analysis (cited in the
+non-peer-reviewed OpenAI-Hallucination-2025 blog) further explains that next-token training and
+accuracy-only benchmarks reward confident guessing, so models *learn* to bluff; the proposed
+correction is to penalise confident errors more than uncertainty in evaluation. We exclude this
+non-peer-reviewed analysis from the source index but note its alignment with [Xiong2024].
+
+**Hypothesis to test**: For the project&#x27;s Metric 2 (overconfident error rate), defining
+*overconfidence* as `is_incorrect AND verbalized_confidence &gt;= 0.8` is consistent with the Xiong2024
+prompting protocol. The Phase 2 plan should commit to this operationalisation explicitly. A bucketed
+ECE plot (10 confidence bins) should accompany every Metric 2 number.
+
+**Best practice**: Use **3-sample self-consistency aggregation** when reporting Metric 2; the
+single-sample version of verbalized confidence is too noisy.
+
+##### Benchmarks vary substantially in success-rate ceilings — ground absolute targets accordingly
+
+The four roadmap benchmarks have very different empirical ceilings, which constrains how the
+composite benchmark in Phase 2 should be sampled and scored:
+
+| Benchmark | Headline result (paper) | Source | Access |
+| --- | --- | --- | --- |
+| FrontierMath | &lt;2% solved by SOTA models at release | [Glazer2024] | Public via Epoch AI |
+| WorkArena (33 atomic tasks) | GPT-4 reaches **42.7%**; Llama3-70B reaches **17.9%** | [Drouin2024] | Open-source on GitHub |
+| WorkArena++ (682 compositional) | &quot;Considerable gap to full automation&quot;; concrete numbers in NeurIPS 2024 D&amp;B paper | [Boisvert2024] | Same harness as WorkArena |
+| SWE-bench (2,294 issues) | Original baseline single-digit; ICLR 2024 oral | [Jimenez2024] | Open-source |
+| SWE-bench Verified (500 issues) | Curated high-quality subset; current best **Claude Mythos Preview at 93.9%** (Apr 2026) | [SWE-Verified-2024] | Public |
+| tau-bench (retail + airline) | gpt-4o under **50% pass@1**; **pass^8 &lt; 25% in retail** | [Yao2024] | Public |
+
+The wide spread (from &lt;2% on FrontierMath to &gt;90% on SWE-bench Verified for top models) means the
+composite-benchmark sampling must be **stratified by source benchmark** in Phase 2 to avoid the
+average being dominated by whichever benchmark has the most resolvable items.
+
+**Best practice**: Restrict the composite to multi-step tasks of **4-8 decisions per task** as
+already specified in the project description, and report metrics per source benchmark in addition to
+the aggregate.
+
+##### Compositional benchmarks expose the gap between atomic competence and hierarchical coordination
+
+WorkArena++ [Boisvert2024] is the most directly relevant new release: it composes the 33 WorkArena
+atomic tasks into 682 compositional workflows that require *planning, retrieval, and memory* on top
+of atomic web actions. The paper finds a substantial gap between atomic and compositional
+performance — exactly the gap the project&#x27;s granularity-conditioning hypothesis aims to close. This
+makes WorkArena++ the strongest single test bed for sub-hypothesis 1 (&quot;gains concentrated in states
+where local execution requires information not needed for higher-level planning&quot;).
+
+**Hypothesis to test**: On WorkArena++, the scope-aware (A) condition will improve Metric 1
+(normalized task success) by a larger margin than on FrontierMath, where atomic correctness is the
+dominant bottleneck. If true, this strengthens sub-hypothesis 1.
+
+#### Methodology Insights
+
+* **Operationalize granularity tags as a small string set**, e.g., `{global, subtask, atomic}`.
+  Inject the tag into the system prompt at every LLM call and log it. This mirrors ReAct&#x27;s
+  think-vs-act distinction [Yao2022] but extends it to three tiers.
+* **Use 3-sample self-consistency for confidence aggregation** [Xiong2024]. Single-sample verbalized
+  confidence is poorly calibrated.
+* **Implement plan-and-solve [Wang2023] as the scope-unaware (B) baseline**. It is the strongest
+  scope-unaware reference in the literature and is already in LangChain core, so reimplementation
+  cost is low.
+* **Stratify the composite benchmark by source**
+  [Glazer2024, Drouin2024, Boisvert2024, Jimenez2024, SWE-Verified-2024, Yao2024]. Aggregating
+  without stratification will let SWE-bench Verified (&gt;90% achievable) drown out FrontierMath (&lt;2%
+  achievable).
+* **Define overconfident error as `incorrect AND verbalized_confidence &gt;= 0.8`** for Metric 2.
+  Report the bucketed ECE plot alongside every Metric 2 number [Xiong2024].
+* **Cap the WorkArena++ effort budget at 1.5x the WorkArena atomic budget**. Compositional tasks
+  take longer to score; the BrowserGym harness adds wall-clock cost [Boisvert2024].
+* **Best practice — penalise confident errors more than uncertain answers** in any auxiliary metric.
+  This follows the calibration-protocol recommendations in [Xiong2024].
+* **Hypothesis**: Reflexion-style episodic self-reflection [Shinn2023] across the three granularity
+  levels may further reduce the overconfident error rate. Worth testing as a Phase 3 ablation but
+  out of scope for the Phase 2 baseline.
+
+#### Discovered Papers
+
+##### [Glazer2024]
+
+* **Title**: FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI
+* **Authors**: Elliot Glazer, Ege Erdil, Tamay Besiroglu et al.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2411.04872`
+* **URL**: https://arxiv.org/abs/2411.04872
+* **Suggested categories**: `benchmark-frontierscience`, `agent-evaluation`
+* **Why download**: Canonical FrontierMath paper; the project&#x27;s &quot;FrontierScience-Olympiad&quot; benchmark
+  identifier maps directly to FrontierMath.
+
+##### [Drouin2024]
+
+* **Title**: WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?
+* **Authors**: Alexandre Drouin, Maxime Gasse, Massimo Caccia et al.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2403.07718`
+* **URL**: https://arxiv.org/abs/2403.07718
+* **Suggested categories**: `benchmark-workarena`, `agent-evaluation`
+* **Why download**: Defines the 33 atomic WorkArena tasks and BrowserGym harness used by
+  WorkArena++.
+
+##### [Boisvert2024]
+
+* **Title**: WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work
+  Tasks
+* **Authors**: Léo Boisvert, Megh Thakkar, Maxime Gasse et al.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2407.05291`
+* **URL**: https://arxiv.org/abs/2407.05291
+* **Suggested categories**: `benchmark-workarena`, `hierarchical-planning`, `agent-evaluation`
+* **Why download**: The exact benchmark named in `project/description.md`. Composes WorkArena
+  atomics into 682 compositional tasks — direct match for the project&#x27;s three-level granularity
+  schema.
+
+##### [Jimenez2024]
+
+* **Title**: SWE-bench: Can Language Models Resolve Real-world Github Issues?
+* **Authors**: Carlos E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press,
+  Karthik R. Narasimhan
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2310.06770`
+* **URL**: https://arxiv.org/abs/2310.06770
+* **Suggested categories**: `benchmark-swebench`, `agent-evaluation`
+* **Why download**: Parent paper for SWE-bench Verified; defines task format, evaluation harness,
+  and the 12 Python repositories.
+
+##### [SWE-Verified-2024]
+
+* **Title**: Introducing SWE-bench Verified
+* **Authors**: OpenAI Preparedness team (no individual byline; technical report card)
+* **Year**: 2024
+* **DOI**: none — institutional technical card
+* **URL**: https://openai.com/index/introducing-swe-bench-verified/
+* **Suggested categories**: `benchmark-swebench`, `benchmark-annotation`, `agent-evaluation`
+* **Why download**: Canonical 500-instance human-validated subset; this is the version named in the
+  project description.
+
+##### [Yao2024]
+
+* **Title**: τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains
+* **Authors**: Shunyu Yao, Noah Shinn, Pedram Razavi, Karthik R. Narasimhan
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2406.12045`
+* **URL**: https://arxiv.org/abs/2406.12045
+* **Suggested categories**: `benchmark-taubench`, `agent-evaluation`
+* **Why download**: Canonical tau-bench paper. Introduces the pass^k consistency metric directly
+  relevant to Metric 3 (request-vs-act).
+
+##### [Yao2022]
+
+* **Title**: ReAct: Synergizing Reasoning and Acting in Language Models
+* **Authors**: Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan
+  Cao
+* **Year**: 2022 (arXiv); 2023 (ICLR)
+* **DOI**: `10.48550/arXiv.2210.03629`
+* **URL**: https://arxiv.org/abs/2210.03629
+* **Suggested categories**: `granularity-conditioning`, `hierarchical-planning`
+* **Why download**: Foundational think-vs-act split that this project generalises to three
+  granularity levels.
+
+##### [Wang2023]
+
+* **Title**: Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large
+  Language Models
+* **Authors**: Lei Wang, Wanyu Xu, Yihuai Lan, Zhiqiang Hu, Yunshi Lan, Roy Ka-Wei Lee, Ee-Peng Lim
+* **Year**: 2023
+* **DOI**: `10.48550/arXiv.2305.04091`
+* **URL**: https://arxiv.org/abs/2305.04091
+* **Suggested categories**: `granularity-conditioning`, `hierarchical-planning`
+* **Why download**: The strongest scope-unaware (B) baseline candidate for Phase 2.
+
+##### [Shinn2023]
+
+* **Title**: Reflexion: Language Agents with Verbal Reinforcement Learning
+* **Authors**: Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath, Karthik Narasimhan,
+  Shunyu Yao
+* **Year**: 2023
+* **DOI**: `10.48550/arXiv.2303.11366`
+* **URL**: https://arxiv.org/abs/2303.11366
+* **Suggested categories**: `hierarchical-planning`, `granularity-conditioning`
+* **Why download**: Architectural template for scope-aware (A) — episodic self-reflection across
+  trials. Phase 3 ablation candidate.
+
+##### [Zhou2022]
+
+* **Title**: Least-to-Most Prompting Enables Complex Reasoning in Large Language Models
+* **Authors**: Denny Zhou, Nathanael Schärli, Le Hou, Jason Wei, Nathan Scales, Xuezhi Wang, Dale
+  Schuurmans, Claire Cui, Olivier Bousquet, Quoc Le, Ed Chi
+* **Year**: 2022
+* **DOI**: `10.48550/arXiv.2205.10625`
+* **URL**: https://arxiv.org/abs/2205.10625
+* **Suggested categories**: `hierarchical-planning`, `granularity-conditioning`
+* **Why download**: Strongest published evidence that explicit decomposition produces large effect
+  sizes on hierarchical tasks (+83 abs on SCAN length split).
+
+##### [Xiong2024]
+
+* **Title**: Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation
+  in LLMs
+* **Authors**: Miao Xiong, Zhiyuan Hu, Xinyang Lu, Yifei Li, Jie Fu, Junxian He, Bryan Hooi
+* **Year**: 2024 (ICLR 2024)
+* **DOI**: `10.48550/arXiv.2306.13063`
+* **URL**: https://arxiv.org/abs/2306.13063
+* **Suggested categories**: `uncertainty-calibration`, `agent-evaluation`
+* **Why download**: Primary calibration reference. Provides the canonical
+  prompting+sampling+aggregation protocol that Metric 2 will adopt.
+
+##### [Wei2022]
+
+* **Title**: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
+* **Authors**: Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed
+  Chi, Quoc Le, Denny Zhou
+* **Year**: 2022 (NeurIPS 2022)
+* **DOI**: `10.48550/arXiv.2201.11903`
+* **URL**: https://arxiv.org/abs/2201.11903
+* **Suggested categories**: `granularity-conditioning`, `hierarchical-planning`
+* **Why download**: Foundational baseline for any scope-conditioning study; establishes that
+  reasoning emerges with scale. Required citation for the Phase 4 paper-ready report.
+
+#### Recommendations for This Task
+
+1. **Add all 11 discovered papers as paper assets in the implementation step** using the
+   `/add-paper` skill, one paper per subagent call. Spawn at most 3 in parallel to respect API rate
+   limits and stay under the 5 USD per-task budget.
+2. **Adopt the verbalized-confidence + 3-sample self-consistency protocol** for Metric 2
+   [Xiong2024]. Update `meta/metrics/` if not already configured.
+3. **Use plan-and-solve as the canonical scope-unaware (B) baseline** for Phase 2. This is the
+   strongest published prompting baseline that does not condition on granularity tags [Wang2023].
+4. **Stratify the composite benchmark by source benchmark and report per-benchmark deltas in
+   addition to the aggregate** [Glazer2024, Boisvert2024, Jimenez2024, Yao2024].
+5. **Treat WorkArena++ as the primary test bed for sub-hypothesis 1** [Boisvert2024]. Its explicit
+   atomic-vs-compositional gap is the strongest published proxy for the project&#x27;s hypothesis.
+6. **Defer Reflexion-style episodic self-reflection to Phase 3** [Shinn2023]. Including it in Phase
+   2 would conflate scope conditioning with cross-trial memory.
+7. **Publish a bucketed ECE plot (10 bins) with every Metric 2 number** [Xiong2024]. Single-number
+   ECE alone hides the bucket where overconfidence happens.
+
+#### Source Index
+
+##### [Glazer2024]
+
+* **Type**: paper
+* **Title**: FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI
+* **Authors**: Glazer, E., Erdil, E., Besiroglu, T. et al.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2411.04872`
+* **URL**: https://arxiv.org/abs/2411.04872
+* **Peer-reviewed**: no (arXiv preprint with public benchmark hosting)
+* **Relevance**: Canonical FrontierMath paper; provides the &lt;2% SOTA result that anchors the
+  project&#x27;s &quot;high-difficulty mathematical reasoning&quot; benchmark slot.
+
+##### [Drouin2024]
+
+* **Type**: paper
+* **Title**: WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?
+* **Authors**: Drouin, A., Gasse, M., Caccia, M. et al.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2403.07718`
+* **URL**: https://arxiv.org/abs/2403.07718
+* **Peer-reviewed**: yes (ICML 2024)
+* **Relevance**: Defines the 33 atomic WorkArena tasks consumed by WorkArena++.
+
+##### [Boisvert2024]
+
+* **Type**: paper
+* **Title**: WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work
+  Tasks
+* **Authors**: Boisvert, L., Thakkar, M., Gasse, M. et al.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2407.05291`
+* **URL**: https://arxiv.org/abs/2407.05291
+* **Peer-reviewed**: yes (NeurIPS 2024 Datasets &amp; Benchmarks track)
+* **Relevance**: Direct evidence for the atomic-vs-compositional gap; primary test bed for
+  sub-hypothesis 1.
+
+##### [Jimenez2024]
+
+* **Type**: paper
+* **Title**: SWE-bench: Can Language Models Resolve Real-world Github Issues?
+* **Authors**: Jimenez, C. E., Yang, J., Wettig, A., Yao, S., Pei, K., Press, O., Narasimhan, K.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2310.06770`
+* **URL**: https://arxiv.org/abs/2310.06770
+* **Peer-reviewed**: yes (ICLR 2024 oral)
+* **Relevance**: Parent benchmark for SWE-bench Verified; defines the GitHub-issue-to-patch task
+  format.
+
+##### [SWE-Verified-2024]
+
+* **Type**: documentation
+* **Title**: Introducing SWE-bench Verified
+* **Author/Org**: OpenAI Preparedness team
+* **Date**: 2024-08
+* **URL**: https://openai.com/index/introducing-swe-bench-verified/
+* **Peer-reviewed**: no (institutional technical card)
+* **Relevance**: Canonical 500-instance human-validated subset used in Phase 2.
+
+##### [Yao2024]
+
+* **Type**: paper
+* **Title**: τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains
+* **Authors**: Yao, S., Shinn, N., Razavi, P., Narasimhan, K. R.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2406.12045`
+* **URL**: https://arxiv.org/abs/2406.12045
+* **Peer-reviewed**: no (arXiv preprint with peer-reviewed acceptance pending; OpenReview
+  forum=roNSXZpUDN)
+* **Relevance**: Provides the pass^k consistency metric used in Metric 3.
+
+##### [Yao2022]
+
+* **Type**: paper
+* **Title**: ReAct: Synergizing Reasoning and Acting in Language Models
+* **Authors**: Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., Cao, Y.
+* **Year**: 2022 (arXiv); 2023 (ICLR)
+* **DOI**: `10.48550/arXiv.2210.03629`
+* **URL**: https://arxiv.org/abs/2210.03629
+* **Peer-reviewed**: yes (ICLR 2023)
+* **Relevance**: Foundational think-vs-act split that the project generalises.
+
+##### [Wang2023]
+
+* **Type**: paper
+* **Title**: Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large
+  Language Models
+* **Authors**: Wang, L., Xu, W., Lan, Y. et al.
+* **Year**: 2023
+* **DOI**: `10.48550/arXiv.2305.04091`
+* **URL**: https://arxiv.org/abs/2305.04091
+* **Peer-reviewed**: yes (ACL 2023)
+* **Relevance**: Strongest published scope-unaware (B) baseline candidate for Phase 2.
+
+##### [Shinn2023]
+
+* **Type**: paper
+* **Title**: Reflexion: Language Agents with Verbal Reinforcement Learning
+* **Authors**: Shinn, N., Cassano, F., Berman, E., Gopinath, A., Narasimhan, K., Yao, S.
+* **Year**: 2023
+* **DOI**: `10.48550/arXiv.2303.11366`
+* **URL**: https://arxiv.org/abs/2303.11366
+* **Peer-reviewed**: yes (NeurIPS 2023)
+* **Relevance**: Episodic self-reflection template for Phase 3 ablation.
+
+##### [Zhou2022]
+
+* **Type**: paper
+* **Title**: Least-to-Most Prompting Enables Complex Reasoning in Large Language Models
+* **Authors**: Zhou, D., Schärli, N., Hou, L. et al.
+* **Year**: 2022
+* **DOI**: `10.48550/arXiv.2205.10625`
+* **URL**: https://arxiv.org/abs/2205.10625
+* **Peer-reviewed**: yes (ICLR 2023)
+* **Relevance**: Strongest evidence that explicit decomposition produces large effect sizes; +83 abs
+  on SCAN length split.
+
+##### [Xiong2024]
+
+* **Type**: paper
+* **Title**: Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation
+  in LLMs
+* **Authors**: Xiong, M., Hu, Z., Lu, X., Li, Y., Fu, J., He, J., Hooi, B.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2306.13063`
+* **URL**: https://arxiv.org/abs/2306.13063
+* **Peer-reviewed**: yes (ICLR 2024)
+* **Relevance**: Primary calibration reference. Defines the prompting+sampling+aggregation protocol
+  Metric 2 will use.
+
+##### [Wei2022]
+
+* **Type**: paper
+* **Title**: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
+* **Authors**: Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q.,
+  Zhou, D.
+* **Year**: 2022
+* **DOI**: `10.48550/arXiv.2201.11903`
+* **URL**: https://arxiv.org/abs/2201.11903
+* **Peer-reviewed**: yes (NeurIPS 2022)
+* **Relevance**: Foundational reference for any prompting study; required citation for the Phase 4
+  report.
+      </content>
+    </section>
+    <section id="t0002_literature_survey_granularity_conditioning-research_code" source_kind="file">
+      <title>t0002_literature_survey_granularity_conditioning — Literature survey: granularity conditioning and hierarchical agents — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0002_literature_survey_granularity_conditioning</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0002_literature_survey_granularity_conditioning/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0002_literature_survey_granularity_conditioning&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 1
+tasks_cited: 1
+libraries_found: 0
+libraries_relevant: 0
+date_completed: &quot;2026-04-29&quot;
+status: &quot;complete&quot;
+---
+#### Task Objective
+
+Identify any prior code, libraries, datasets, or other assets in this project that could inform the
+current literature-survey task. The current task surveys literature on granularity / scope
+conditioning, hierarchical decomposition, calibration, and the four roadmap benchmarks; its outputs
+are paper assets and a synthesis document, with no implementation beyond running the `/add-paper`
+skill.
+
+#### Library Landscape
+
+The library aggregator
+(`uv run python -u -m arf.scripts.aggregators.aggregate_libraries --format json`) reports
+`library_count: 0`. No libraries have been registered in `assets/library/` yet, so there is nothing
+to import. None of the project&#x27;s pre-existing scripts (mentioned in `project/description.md` as
+`code/scripts/` and `code/src/`) are registered as ARF library assets, so they are off-limits for
+cross-task import. They remain available as reference material outside the ARF task model but cannot
+be imported from `tasks/t0002_*/code/`.
+
+#### Key Findings
+
+##### Only one prior task exists; it produced no reusable code
+
+`aggregate_tasks.py` reports three tasks: t0001 (brainstorm, completed), the current t0002
+(in_progress), and t0003 (`download_benchmark_subsets`, not_started). Only t0001 is completed and
+available for inspection [t0001]. t0001 was a brainstorming session whose deliverable was the
+suggestions JSON that scheduled this task and t0003. It produced no code, no libraries, no datasets,
+and no paper assets. There is therefore no prior implementation work to leverage.
+
+##### The pre-existing `code/scripts/` and `data/annotation_pilot/` material is not ARF-managed
+
+`project/description.md` records that the parent reasoning-scale project imported scripts (e.g.,
+`run_experiment.py`, `run_diploma_experiments.py`) and a pilot annotation set. These live outside
+the ARF task model and have not been registered as library or dataset assets. For the current
+literature-survey task this material is irrelevant — the task does not run experiments — but it
+constrains the planning step for future tasks: any future task that wants to run those scripts must
+first register them as ARF assets via a write-library or download-dataset task, not by importing
+them from the parent project tree.
+
+##### Implementation will be entirely orchestrator-driven via `/add-paper`
+
+For this task, &quot;implementation&quot; means running the `/add-paper` skill once per discovered paper. The
+skill itself lives under `arf/skills/add-paper/` and is therefore framework code, not task code. No
+new Python files belong in `tasks/t0002_*/code/` for this task. The task&#x27;s `code/` directory should
+remain empty apart from the framework-mandated `__init__.py` and `.gitkeep`.
+
+#### Reusable Code and Assets
+
+There is no reusable task-internal code to copy or import.
+
+* **`/add-paper` skill** — `arf/skills/add-paper/` — framework skill, invoked via the orchestrator
+  per discovered paper. Reuse method: invoke as a skill, not as importable code. Function
+  signatures: documented in the skill&#x27;s `SKILL.md`. Adaptation needed: pass the discovered paper&#x27;s
+  arXiv ID or DOI and the `--task-id t0002_literature_survey_granularity_conditioning` flag. Line
+  count: not applicable (skill, not code).
+* **`aggregate_papers.py`** — `arf/scripts/aggregators/aggregate_papers.py` — framework aggregator
+  to verify each newly added paper landed in the corpus and to detect duplicates between
+  `/add-paper` invocations. Reuse method: framework script invocation only.
+* **`verify_paper_asset.py`** — `arf/scripts/verificators/verify_paper_asset.py` — framework
+  verificator for each paper asset against the v3 spec. Reuse method: framework script invocation
+  only.
+
+No task-local `code/` files are needed for the literature survey.
+
+#### Lessons Learned
+
+The brainstorming task t0001 is the only completed predecessor and offers two takeaways [t0001]:
+first, the project&#x27;s existing categories under `meta/categories/` (nine entries spanning the four
+roadmap benchmarks plus three methodological themes plus two cross-cutting tags) were designed
+precisely to support this survey, so paper-asset tagging should not introduce any new categories.
+Second, t0001&#x27;s suggestions JSON commits this task to a 10-paper minimum and a 5 USD budget cap;
+both are non-negotiable for the implementation step.
+
+#### Recommendations for This Task
+
+1. **Do not write any task-local code under `tasks/t0002_*/code/`.** The directory should remain
+   empty (only framework-mandated `__init__.py` plus `.gitkeep`). All implementation work happens
+   via skill invocations.
+2. **Run `aggregate_papers.py` between `/add-paper` invocations** to detect duplicates and confirm
+   each paper landed correctly.
+3. **Run `verify_paper_asset.py` against each newly created paper asset** before moving to the next
+   paper.
+4. **Tag every paper asset with categories already in `meta/categories/`.** The nine existing slugs
+   cover all four survey threads. Inventing new categories would require an `add-category` task and
+   is out of scope.
+5. **Defer all script reuse from `code/scripts/` to a future write-library task.** The current task
+   should not touch the parent-project scripts at all.
+
+#### Task Index
+
+##### [t0001]
+
+* **Task ID**: `t0001_brainstorm_results_1`
+* **Name**: Brainstorm session 1: plan first project tasks
+* **Status**: completed
+* **Relevance**: Created the suggestion that scheduled this task; defined the 10-paper target, the 5
+  USD budget cap, and the four-thread coverage. Also confirmed by negative result that no prior code
+  or library assets exist for this task to leverage.
       </content>
     </section>
   </sections>

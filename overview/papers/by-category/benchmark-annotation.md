@@ -1,18 +1,15 @@
-# Category: Benchmark Annotation
+# Papers: `benchmark-annotation` (1)
 
-Manual or LLM-assisted gold-action annotation across the three granularity levels.
+1 papers across 1 year(s).
 
-[Back to Dashboard](../README.md)
-
-**Detail pages**: [Papers (1)](../papers/by-category/benchmark-annotation.md) | [Suggestions
-(1)](../suggestions/by-category/benchmark-annotation.md)
+[Back to all papers](../README.md)
 
 ---
 
-## Papers (1)
+## 2024 (1)
 
 <details>
-<summary>📋 <strong>Introducing SWE-bench Verified</strong> — team, 2024</summary>
+<summary>📋 Introducing SWE-bench Verified — team, 2024</summary>
 
 | Field | Value |
 |---|---|
@@ -22,9 +19,9 @@ Manual or LLM-assisted gold-action annotation across the three granularity level
 | **DOI** | — |
 | **URL** | https://openai.com/index/introducing-swe-bench-verified/ |
 | **Date added** | 2026-04-29 |
-| **Categories** | [`benchmark-swebench`](../../meta/categories/benchmark-swebench/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-| **Added by** | [`t0002_literature_survey_granularity_conditioning`](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Full summary** | [`summary.md`](../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/no-doi_OpenAI2024_swe-bench-verified/summary.md) |
+| **Categories** | [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+| **Added by** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Full summary** | [`summary.md`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/no-doi_OpenAI2024_swe-bench-verified/summary.md) |
 
 SWE-bench Verified is a 500-instance human-validated subset of SWE-bench produced by OpenAI's
 Preparedness team in collaboration with the original SWE-bench authors. The motivation is that
@@ -49,32 +46,5 @@ for multiple-condition evaluation, the human validation removes benchmark noise,
 stratified reporting is essential because Verified's >90%-achievable ceiling would otherwise
 drown out FrontierMath's <2% baseline. The project should plan a fallback to SWE-bench
 Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 completes.
-
-</details>
-
-## Tasks (1)
-
-| # | Task | Status | Completed |
-|---|------|--------|-----------|
-| 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
-
-## Answers (0)
-
-No answers in this category.
-
-## Suggestions (1 open, 0 closed)
-
-<details>
-<summary>🧪 <strong>Run a Phase 1 pilot annotation on 20 tasks before scaling to
-100</strong> (S-0002-08)</summary>
-
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
-
-The project's success criteria require 100 tasks annotated at three granularity levels. Before
-scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator
-agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest
-atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold
-atomic actions, leaving manual annotation effort focused on global and subtask levels.
 
 </details>

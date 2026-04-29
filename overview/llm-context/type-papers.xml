@@ -1,0 +1,1771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive type_id="papers" generated_at_utc="2026-04-29T14:29:11Z">
+  <archive_summary>
+    <title>All Papers</title>
+    <description>Complete paper corpus with full summaries, metadata, and abstracts.</description>
+    <section_count>1</section_count>
+    <char_count>98982</char_count>
+    <byte_count>99685</byte_count>
+    <estimated_tokens>24745</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>all papers with full summaries and metadata</item>
+  </included_content>
+  <sections>
+    <section id="full-papers" source_kind="aggregator">
+      <title>All Papers (Full Detail)</title>
+      <source_name>aggregate_papers_full</source_name>
+      <source_ids>
+        <id>no-doi_OpenAI2024_swe-bench-verified</id>
+        <id>10.48550_arXiv.2411.04872</id>
+        <id>10.48550_arXiv.2407.05291</id>
+        <id>10.48550_arXiv.2406.12045</id>
+        <id>10.48550_arXiv.2403.07718</id>
+        <id>10.48550_arXiv.2310.06770</id>
+        <id>10.48550_arXiv.2306.13063</id>
+        <id>10.48550_arXiv.2305.04091</id>
+        <id>10.48550_arXiv.2303.11366</id>
+        <id>10.48550_arXiv.2210.03629</id>
+        <id>10.48550_arXiv.2205.10625</id>
+      </source_ids>
+      <content>
+Papers: 11
+
+## Introducing SWE-bench Verified
+ID: no-doi_OpenAI2024_swe-bench-verified
+Year: 2024
+Authors: OpenAI Preparedness team
+Venue: OpenAI technical card (institutional, not peer-reviewed)
+Venue type: technical_report
+URL: https://openai.com/index/introducing-swe-bench-verified/
+Categories: benchmark-swebench, benchmark-annotation, agent-evaluation
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (HTML technical card; not retrieved into git)
+* **Published**: 2024
+* **Authors**: OpenAI Preparedness team 🇺🇸
+* **Venue**: OpenAI institutional technical card (not peer-reviewed)
+* **DOI**: N/A
+
+#### Abstract
+
+We are releasing SWE-bench Verified, a human-validated subset of SWE-bench that more reliably
+evaluates AI models&#x27; ability to solve real-world software issues. SWE-bench Verified consists of
+500 problems that real software engineers have confirmed are solvable: each problem description
+is clear, the test patches correctly identify the issue&#x27;s resolution, and the tests are not
+flaky. The original SWE-bench dataset can include problems with under-specified instructions or
+test patches that miss the intended fix; OpenAI&#x27;s Preparedness team worked with the SWE-bench
+authors and 93 expert software engineers to filter to 500 problems where the issue description is
+unambiguous, the unit tests cover the intended fix, and the development environment can be
+reliably reproduced. SWE-bench Verified is intended to be the new standard subset for measuring
+frontier autonomous-software-engineering capability.
+
+#### Overview
+
+This summary is based on the public technical card and the original SWE-bench paper [Jimenez2024];
+the technical card itself was not retrieved into the git repository. SWE-bench Verified addresses
+two limitations of the original SWE-bench [Jimenez2024]: (a) some problems have ambiguous issue
+descriptions where the &quot;correct&quot; fix depends on guessing what the maintainer wanted, and (b) some
+problems&#x27; test suites have flaky tests or tests that pass for incorrect patches. Both issues
+caused the original SWE-bench to slightly underestimate model capability — in particular, low
+scores conflated genuine model limitations with benchmark artifacts.
+
+OpenAI&#x27;s Preparedness team partnered with the SWE-bench authors (Jimenez, Yang, et al.) and 93
+expert software engineers to **manually validate every problem** in a 500-instance subset. Each
+problem went through three independent expert reviews. The result, SWE-bench Verified, has become
+the de facto standard subset for measuring frontier autonomous-software-engineering capability
+across 2024-2026.
+
+For the granularity-aware hierarchical agents project, SWE-bench Verified is the canonical
+**atomic-execution** slot in the four-source composite. Its 500-instance size is small enough to
+evaluate at reasonable cost, and the human validation removes the noise that the larger 2,294-
+problem original would introduce.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — technical card not downloaded into the repo. From public
+sources, the validation process was:
+
+1. **Take the 1,699 candidate problems** from the original SWE-bench.
+2. **Each problem reviewed by three independent expert software engineers** (93 experts total).
+3. Reviewers scored: (a) is the issue description clear and unambiguous? (b) do the test patches
+   correctly identify the resolution? (c) is the development environment reliably reproducible?
+4. **Filter to 500 problems** that all three reviewers approved on all three axes.
+
+The resulting subset preserves the original SWE-bench evaluation harness — Docker-isolated
+container per repository, patch-application + test-suite execution, `resolve@1` scoring. The only
+change is the 500-instance set itself; the harness, scoring, and Docker images are identical to
+the parent benchmark [Jimenez2024].
+
+The set spans the same 12 Python repositories as the parent (Django, scikit-learn, SymPy,
+Matplotlib, etc.), with relative weight roughly proportional to original-benchmark size.
+
+#### Results
+
+* **500 problems** human-validated by 93 expert software engineers
+* **3 independent expert reviews per problem** before inclusion
+* **Three-axis validation**: clear instructions, correct test patches, reproducible environment
+* The Verified leaderboard tracks 43+ frontier LLMs as of early 2026
+* As of April 2026, **Claude Mythos Preview leads at 93.9%**, **Claude Opus 4.7 (Adaptive) at
+  87.6%**, **GPT-5.3 Codex at 85%** — far above the 1.96% Claude 2 baseline on the parent
+  benchmark
+* OpenAI noted in their April 2026 follow-up that Verified saturation may make it less useful as
+  a frontier-capability measurement going forward — a meta-finding for the project&#x27;s choice of
+  benchmarks
+
+#### Innovations
+
+##### Three-Reviewer Manual Validation
+
+Prior code benchmarks rely on automated filters; SWE-bench Verified uses three independent expert
+reviewers per problem. This is unusually thorough for a 500-instance set and explains why other
+groups have been willing to treat Verified as the standard.
+
+##### Decoupling Capability From Benchmark Noise
+
+By filtering for unambiguous issues and reliable tests, Verified scores can be interpreted as
+genuine capability rather than capability-plus-benchmark-luck. This is what made it the
+de-facto standard.
+
+##### Industry-Academic Collaboration as a Reproducibility Norm
+
+The OpenAI + SWE-bench-authors collaboration is an example of industry resources (paid expert
+reviewers) being used to improve a peer-reviewed academic benchmark. This collaboration model has
+since been replicated for other benchmarks.
+
+#### Datasets
+
+* **SWE-bench Verified** — 500 problems, JSON metadata + Docker images. Public on GitHub
+  (`SWE-bench/SWE-bench`) under a permissive license. Loadable via the `datasets` library.
+
+#### Main Ideas
+
+* Adopt SWE-bench Verified (500 instances) as the project&#x27;s atomic-execution slot in the
+  four-source composite. The full 2,294-instance original is too noisy and too expensive to run
+  at scale.
+* Note OpenAI&#x27;s April 2026 observation that Verified is approaching saturation. The project
+  should plan a fallback to SWE-bench Multimodal or SWE-bench Pro if frontier models score &gt;95%
+  on Verified by Phase 2.
+* The technical card is not peer-reviewed but the underlying benchmark is. Cite both
+  [OpenAI2024] (for Verified) and [Jimenez2024] (for SWE-bench parent) in the Phase 4
+  paper-ready report.
+
+#### Summary
+
+SWE-bench Verified is a 500-instance human-validated subset of SWE-bench produced by OpenAI&#x27;s
+Preparedness team in collaboration with the original SWE-bench authors. The motivation is that
+the parent benchmark of 2,294 problems contains some items with ambiguous issue descriptions or
+flaky tests, which add noise to capability measurements at the frontier.
+
+Methodologically, 93 expert software engineers each reviewed candidate problems on three axes:
+(a) clear instructions, (b) correct test patches, (c) reproducible environments. Three
+independent reviewers per problem; only problems passing all three axes from all three reviewers
+were included. The harness, Docker images, and resolve@1 scoring are identical to the parent
+benchmark.
+
+The headline outcome is that Verified has become the de facto standard subset for measuring
+frontier autonomous-software-engineering capability in 2024-2026. Modern models score far above
+the parent benchmark&#x27;s 1.96% Claude 2 baseline — Claude Mythos Preview leads at **93.9%**
+(April 2026). OpenAI&#x27;s own April 2026 commentary noted that this saturation may limit
+Verified&#x27;s usefulness as a frontier-capability measurement going forward.
+
+For the granularity-aware hierarchical agents project, SWE-bench Verified is the canonical
+atomic-execution slot in the Phase 2 composite benchmark. Its 500-instance size is tractable for
+multiple-condition evaluation, the human validation removes benchmark noise, and stratified
+reporting is essential because Verified&#x27;s &gt;90%-achievable ceiling would otherwise drown out
+FrontierMath&#x27;s &lt;2% baseline. The project should plan a fallback to SWE-bench Multimodal or
+SWE-bench Pro if Verified saturates further before Phase 2 completes.
+
+## FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI
+ID: 10.48550_arXiv.2411.04872
+Year: 2024
+Authors: Elliot Glazer, Ege Erdil, Tamay Besiroglu, Diego Chicharro, Evan Chen, Alex Gunning, Caroline Falkman Olsson, Jean-Stanislas Denain, Anson Ho, Emily de Oliveira Santos, Olli Järviniemi, Matthew Barnett, Robert Sandler, Matej Vrzala, Jaime Sevilla, Qiuyu Ren, Elizabeth Pratt, Lionel Levine, Grant Barkley, Natalie Stewart, Bogdan Grechuk, Tetiana Grechuk, Shreepranav Varma Enugandla, Mark Wildon
+Venue: arXiv preprint
+Venue type: preprint
+DOI: 10.48550/arXiv.2411.04872
+URL: https://arxiv.org/abs/2411.04872
+Categories: benchmark-frontierscience, agent-evaluation
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2024
+* **Authors**: Elliot Glazer, Ege Erdil, Tamay Besiroglu, and 21 others (Epoch AI and external
+  contributors)
+* **Venue**: arXiv preprint (cs.AI)
+* **DOI**: `10.48550/arXiv.2411.04872`
+
+#### Abstract
+
+We introduce FrontierMath, a benchmark of hundreds of original, exceptionally challenging
+mathematics problems crafted and vetted by expert mathematicians. The questions cover most major
+branches of modern mathematics — from computationally intensive problems in number theory and real
+analysis to abstract questions in algebraic geometry and category theory. Solving a typical problem
+requires multiple hours of effort from a researcher in the relevant branch of mathematics, and for
+the upper end questions, multiple days. FrontierMath uses new, unpublished problems and automated
+verification to reliably evaluate models while minimizing risk of data contamination. Current
+state-of-the-art AI models solve under 2% of problems, revealing a vast gap between AI capabilities
+and the prowess of the mathematical community.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. FrontierMath is the canonical research-grade math reasoning
+benchmark released by Epoch AI in November 2024 to address two limitations of prior math
+benchmarks (GSM8K, MATH, MathOdyssey): saturation by frontier models and risk of training-data
+contamination. The authors interviewed Fields Medalist mathematicians (Terence Tao, Timothy Gowers,
+Richard Borcherds) who characterised the problems as &quot;exceptionally challenging&quot; — even
+research-active mathematicians need hours per problem, and the upper-tier problems require multiple
+days.
+
+For this project, FrontierMath is the canonical instantiation of the
+&quot;FrontierScience-Olympiad&quot; benchmark named in `project/description.md`. Its &lt;2% SOTA solve rate at
+release means that on the granularity-conditioning composite benchmark, FrontierMath items will
+contribute almost exclusively to the *failure* tail. The implication is that effect sizes for
+scope-aware vs. scope-unaware comparisons will be measured against a near-zero baseline on this
+benchmark, making relative gains numerically large but absolute gains tiny.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, the
+benchmark uses **automated verification** (programmatic answer-checking against expert-supplied
+solutions) rather than human grading, which makes it scalable for repeated evaluation. Problems
+span **most major branches of modern mathematics**: number theory, real analysis, algebraic
+geometry, and category theory among others. Each problem is **original and unpublished** at the
+time of release — minimizing the risk of contamination from training data scraped before the
+benchmark cutoff.
+
+The benchmark is organised in **difficulty tiers** (Tiers 1-4 in public communications): Tiers 1-3
+covering undergraduate to early-postdoc level, Tier 4 reaching research level. The Epoch AI
+benchmark page reports that current SOTA models solve under 2% across all tiers combined at
+release; later 2025 models have made progress but the gap to mathematician-level performance
+remains large. The paper does not propose a new agent architecture — it is a benchmark paper.
+
+#### Results
+
+* **&lt;2% SOTA solve rate** by leading AI models (GPT-4o, Claude 3.5 Sonnet, etc.) at release
+* **Hundreds** of problems vetted by expert mathematicians (exact count not in the public abstract)
+* **Hours to multiple days** of expert effort required per problem
+* **Tier 4** (research-grade) problems are characterized as &quot;exceptionally challenging&quot; by Fields
+  Medalists Terence Tao, Timothy Gowers, and Richard Borcherds
+* **Automated verification** scales to repeat evaluations without human grading bottleneck
+* No prior leaderboard or benchmark paper reports comparable headline numbers — FrontierMath is the
+  hardest published math benchmark in this difficulty regime
+
+#### Innovations
+
+##### Research-Grade Difficulty as a Design Goal
+
+FrontierMath is the first openly described benchmark to *explicitly* target research-mathematician
+difficulty rather than competition-math or homework-math difficulty. This places it as the most
+aspirational ceiling for the project&#x27;s &quot;FrontierScience-Olympiad&quot; slot.
+
+##### Contamination Avoidance via Unpublished Problems
+
+By commissioning entirely new problems, the authors sidestep the dominant criticism of prior math
+benchmarks — that LLMs may have seen the test sets during training. This makes year-over-year
+comparison of model progress more credible.
+
+##### Programmatic Answer Verification
+
+Automated answer-checking distinguishes FrontierMath from human-graded benchmarks (e.g., USAMO
+solutions). Scaling to repeated automated runs is essential for the hundreds of prompt-conditioning
+ablations the granularity-aware project will need to run.
+
+#### Datasets
+
+* **FrontierMath problem set** — hundreds of unpublished mathematics problems, expert-vetted, with
+  programmatic answer checks. Public via Epoch AI&#x27;s hosted evaluation; the raw problems are not
+  released to the public to preserve contamination resistance. Access requires Epoch AI&#x27;s
+  evaluation pipeline.
+
+#### Main Ideas
+
+* FrontierMath maps directly to the project&#x27;s &quot;FrontierScience-Olympiad&quot; benchmark slot and should
+  be treated as the canonical source for top-of-hierarchy strategic-planning items.
+* The &lt;2% SOTA solve rate means that on the composite Phase 2 benchmark, FrontierMath items will
+  dominate the failure tail. The composite must therefore be **stratified by source benchmark**
+  when reporting the project&#x27;s three metrics, otherwise FrontierMath&#x27;s near-zero baseline will
+  swamp any per-condition delta.
+* Because access requires Epoch AI&#x27;s evaluation pipeline, the t0003 download-dataset task should
+  budget extra time for credentials, sample-size negotiation, and a fallback to
+  publicly-available stand-ins (e.g., Olympiad benchmarks like MATH-500 or AIME) if Epoch AI
+  access cannot be obtained in time.
+
+#### Summary
+
+The paper introduces FrontierMath, a research-mathematician-grade math reasoning benchmark
+designed to evaluate frontier LLMs on problems that require hours to days of human expert effort.
+The motivation is the saturation of prior math benchmarks (GSM8K, MATH) by SOTA models and the
+contamination risk of using publicly available problems for evaluation.
+
+The benchmark is built by commissioning hundreds of original, unpublished problems from expert
+mathematicians, with programmatic answer-checking that scales to repeated automated runs. Problems
+span number theory, real analysis, algebraic geometry, and category theory; difficulty tiers cover
+undergraduate through research level. Endorsements from Fields Medalists (Tao, Gowers, Borcherds)
+characterize the upper-tier problems as exceptionally challenging.
+
+The headline result is that current state-of-the-art models solve **under 2% of problems** at
+release, revealing a large gap between AI and expert-mathematician performance. This is the
+hardest published math benchmark to date.
+
+For the granularity-aware hierarchical agents project, FrontierMath is the canonical instantiation
+of the FrontierScience-Olympiad slot named in `project/description.md`. The &lt;2% baseline means the
+benchmark contributes mainly to the failure tail of the composite Phase 2 benchmark, and any
+per-condition (scope-aware vs. scope-unaware) effect must be measured against a near-zero floor —
+which makes per-source stratification mandatory. Access via Epoch AI&#x27;s evaluation pipeline is a
+known operational risk for the t0003 download-dataset task.
+
+## WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks
+ID: 10.48550_arXiv.2407.05291
+Year: 2024
+Authors: Léo Boisvert, Megh Thakkar, Maxime Gasse, Massimo Caccia, Thibault Le Sellier De Chezelles, Quentin Cappart, Nicolas Chapados, Alexandre Lacoste, Alexandre Drouin
+Venue: NeurIPS 2024 Datasets and Benchmarks Track
+Venue type: conference
+DOI: 10.48550/arXiv.2407.05291
+URL: https://arxiv.org/abs/2407.05291
+Categories: benchmark-workarena, hierarchical-planning, agent-evaluation
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2024
+* **Authors**: Léo Boisvert 🇨🇦, Megh Thakkar 🇨🇦, Maxime Gasse 🇨🇦, Massimo Caccia 🇨🇦,
+  Thibault Le Sellier De Chezelles 🇨🇦, Quentin Cappart 🇨🇦, Nicolas Chapados 🇨🇦,
+  Alexandre Lacoste 🇨🇦, Alexandre Drouin 🇨🇦
+* **Venue**: NeurIPS 2024 Datasets and Benchmarks Track
+* **DOI**: `10.48550/arXiv.2407.05291`
+
+#### Abstract
+
+The ability of large language models (LLMs) to mimic human-like intelligence has led to a surge in
+LLM-based autonomous agents. Though recent LLMs seem capable of planning and reasoning given user
+instructions, their effectiveness in applying these capabilities for autonomous task solving
+remains underexplored. This is especially true in enterprise settings, where automated agents hold
+the promise of a high impact. To fill this gap, we propose WorkArena++, a novel benchmark
+consisting of 682 tasks corresponding to realistic workflows routinely performed by knowledge
+workers. WorkArena++ is designed to evaluate the planning, problem-solving, logical/arithmetic
+reasoning, retrieval, and contextual understanding abilities of web agents. Our empirical studies
+across state-of-the-art LLMs and vision-language models (VLMs), as well as human workers, reveal
+several challenges for such models to serve as useful assistants in the workplace. In addition to
+the benchmark, we provide a mechanism to effortlessly generate thousands of ground-truth
+observation/action traces, which can be used for fine-tuning existing models. Overall, we expect
+this work to serve as a useful resource to help the community progress toward capable autonomous
+agents.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. WorkArena++ extends WorkArena (33 atomic tasks) to **682
+compositional tasks** that demand planning, problem-solving, logical/arithmetic reasoning,
+retrieval, and contextual understanding from the agent. Compositional here means that a task&#x27;s
+solution requires *chaining* multiple WorkArena atomic operations, often with state passing
+between them.
+
+The benchmark targets exactly the gap the granularity-aware hierarchical agents project aims to
+close: agents that succeed on individual atomic actions but fail to coordinate them across a
+multi-step workflow. The paper reports a &quot;considerable gap&quot; to full automation across SOTA LLMs,
+VLMs, and human workers — the explicit human-vs-model comparison is a feature few other web-agent
+benchmarks share.
+
+For this project, WorkArena++ is the **most directly relevant single benchmark** in the four-source
+composite. It is the test bed where atomic-vs-compositional gaps are both measurable and large,
+making it the strongest single test bed for sub-hypothesis 1 (&quot;gains concentrated in states where
+local execution requires information not needed for higher-level planning&quot;).
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, the
+benchmark builds **682 compositional tasks** by chaining the 33 atomic WorkArena task families. The
+key methodological innovation is a **trace-generation mechanism** that produces &quot;thousands of
+ground-truth observation/action traces&quot; for fine-tuning existing models — an artifact the project
+should treat as a distinct dataset asset.
+
+Evaluation reuses the BrowserGym harness from WorkArena, with the same action set and multimodal
+observation API. Models evaluated include both LLMs and vision-language models (VLMs), plus human
+workers as an upper-bound reference. Tasks span the full spectrum of knowledge-work cognition:
+**planning** (decompose a goal into subgoals), **problem-solving** (handle unforeseen state),
+**logical/arithmetic reasoning** (cross-record computation), **retrieval** (find data in
+ServiceNow), **contextual understanding** (interpret form layouts and modal flows). The exact
+distribution of difficulty is not reported in the abstract but the NeurIPS 2024 D&amp;B paper provides
+detailed per-skill breakdowns.
+
+#### Results
+
+* **682 compositional tasks** built on top of 33 WorkArena atomic families
+* **Considerable gap to full automation** across SOTA LLMs, VLMs, and human workers (specific
+  per-model numbers in the NeurIPS 2024 D&amp;B paper)
+* **Multiple skill axes** evaluated independently: planning, problem-solving, reasoning, retrieval,
+  contextual understanding
+* **Trace generation mechanism** can produce **thousands of ground-truth observation/action
+  traces** for fine-tuning
+* **Human-vs-model comparison** included — a feature most prior web-agent benchmarks lack
+- Atomic-vs-compositional gap is the central finding: agents that succeed on WorkArena atomic
+  tasks frequently fail when those same operations must be coordinated in a multi-step workflow
+
+#### Innovations
+
+##### Compositional Construction From Atomic Primitives
+
+WorkArena++ is the first widely-cited benchmark to cleanly separate atomic from compositional
+performance. By building 682 compositional tasks from the same 33 atomic families that WorkArena
+already evaluates, the paper enables direct measurement of the atomic-vs-compositional gap, which
+is precisely the gap the granularity-conditioning hypothesis targets.
+
+##### Per-Skill Decomposition
+
+The five evaluation axes (planning, problem-solving, reasoning, retrieval, contextual
+understanding) let researchers locate which sub-capability bottlenecks an agent&#x27;s overall
+performance. This level of decomposition is rare in web-agent benchmarks and is directly useful for
+the project&#x27;s stratified per-skill analysis.
+
+##### Synthetic Trace Generation for Fine-Tuning
+
+The trace generator produces gold action sequences without manual annotation. While the project
+does not fine-tune (training-time methods are out of scope), the generator is reusable as a source
+of *gold actions* for the project&#x27;s annotation set required by Phase 1.
+
+#### Datasets
+
+* **WorkArena++ task suite** — 682 compositional tasks built on the 33 WorkArena atomic families.
+  Open source on GitHub via the same `ServiceNow/WorkArena` repository as the atomic benchmark.
+  Requires a ServiceNow developer instance.
+* **Synthetic trace dataset** — generated on the fly by the included trace mechanism. Useful as a
+  source of gold actions for the project&#x27;s three-level annotation set.
+
+#### Main Ideas
+
+* WorkArena++ is the **strongest single test bed** in the project&#x27;s four-source composite for
+  measuring the atomic-vs-compositional gap that granularity conditioning is meant to close.
+* The synthetic trace generator can supply gold actions at the atomic level for Phase 1
+  annotation, complementing the manual annotation of global and subtask actions.
+* Reuse the BrowserGym harness end-to-end — the project does not need to build a separate
+  WorkArena++ adapter on top of the WorkArena adapter; they share the same harness.
+
+#### Summary
+
+WorkArena++ extends the 33 atomic WorkArena task families into 682 compositional knowledge-work
+tasks evaluated on the same ServiceNow + BrowserGym substrate. The motivation is that prior
+benchmarks measure either atomic or end-to-end success but rarely the gap between the two — the
+gap that explains why agents that handle individual web actions still cannot complete realistic
+enterprise workflows.
+
+Methodologically, the paper composes WorkArena atomic operations into multi-step workflows whose
+ground-truth solutions exercise five skill axes: planning, problem-solving, logical/arithmetic
+reasoning, retrieval, and contextual understanding. Evaluation uses the BrowserGym harness with
+SOTA LLMs, VLMs, and human workers as comparison points. A trace generator produces synthetic gold
+action sequences for fine-tuning research.
+
+The headline finding is a **considerable gap** to full automation across all evaluated systems,
+with detailed per-skill breakdowns in the NeurIPS 2024 D&amp;B paper. The atomic-vs-compositional gap
+is the central observation — agents that succeed on individual web actions consistently fail to
+coordinate them across a multi-step workflow.
+
+For the granularity-aware hierarchical agents project, WorkArena++ is the most directly relevant
+single benchmark. It is the strongest test bed for sub-hypothesis 1 (gains concentrated where
+local execution needs information not needed for higher-level planning); it shares a harness with
+WorkArena, lowering integration cost; and its synthetic trace generator can supply gold atomic
+actions to complement the project&#x27;s manual global/subtask annotation. The project should treat
+WorkArena++ as the primary metric source for Phase 2 stratified analysis.
+
+## tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains
+ID: 10.48550_arXiv.2406.12045
+Year: 2024
+Authors: Shunyu Yao, Noah Shinn, Pedram Razavi, Karthik Narasimhan
+Venue: arXiv preprint
+Venue type: preprint
+DOI: 10.48550/arXiv.2406.12045
+URL: https://arxiv.org/abs/2406.12045
+Categories: benchmark-taubench, agent-evaluation
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2024
+* **Authors**: Shunyu Yao 🇺🇸, Noah Shinn 🇺🇸, Pedram Razavi 🇺🇸, Karthik Narasimhan 🇺🇸
+* **Venue**: arXiv preprint (Sierra Research)
+* **DOI**: `10.48550/arXiv.2406.12045`
+
+#### Abstract
+
+Existing benchmarks do not test language agents on their interaction with human users or ability
+to follow domain-specific rules, both of which are vital for deploying them in real applications.
+We propose tau-bench, a benchmark emulating dynamic conversations between a user (simulated by
+language models) and a language agent provided with domain-specific API tools and policy
+guidelines. We employ an efficient and faithful evaluation process that compares the database
+state at the end of a conversation with the annotated goal state, and propose a new metric
+(pass^k) to evaluate the reliability of agent behavior over multiple trials. Our experiments show
+that even state-of-the-art function calling agents (like gpt-4o) succeed on less than 50% of the
+tasks, and are quite inconsistent (pass^8 &lt; 25% in retail). Our findings point to the need for
+methods that can improve the ability of agents to act consistently and follow rules reliably.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. tau-bench evaluates language agents in two simulated
+customer-service domains — **retail** and **airline** — where the agent is given a set of
+domain-specific API tools (refund, cancel, look up, etc.) plus a policy document that constrains
+which actions are allowed under what circumstances. The &quot;user&quot; is itself a language model
+roleplaying a customer with a goal state, and the conversation continues until the agent claims
+the task is done.
+
+The methodological novelty is **pass^k**, a consistency metric that measures whether the same
+agent succeeds across `k` independent trials of the same task. A high pass@1 with low pass^8
+indicates an agent that *sometimes* succeeds but is unreliable — a critical distinction the prior
+benchmarks (which report only pass@1) cannot capture.
+
+For the granularity-aware hierarchical agents project, tau-bench is the canonical
+**request-vs-act** benchmark: many of its failures come from agents that proceed with insufficient
+information instead of asking the simulated user a clarifying question. This makes tau-bench the
+direct test bed for the project&#x27;s Metric 3 (can-execute-now vs. must-request-information
+accuracy).
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, the
+benchmark builds two domains:
+
+* **Retail** (modeled on a generic e-commerce platform): tools include `cancel_order`,
+  `return_item`, `lookup_user`, `update_address`, etc., plus a policy document describing
+  allowable refund windows, identity-verification requirements, and dispute escalation rules.
+* **Airline** (modeled on flight booking and changes): tools include `book_flight`,
+  `cancel_reservation`, `change_seat`, `apply_voucher`, plus a policy on cancellation fees,
+  loyalty-tier benefits, and ticket-class change rules.
+
+Each task pairs (a) a user-goal state (represented as a database state diff), (b) the user
+language model&#x27;s persona and goal, (c) the policy document. The agent must conduct a conversation
+with the user, call appropriate tools, and reach the goal state without violating policy.
+
+Evaluation compares the **final database state** with the annotated **goal state**. The pass^k
+metric runs `k` independent rollouts and measures the fraction of tasks succeeding on every one.
+This penalizes agents whose success is non-deterministic or context-luck-dependent.
+
+#### Results
+
+* **GPT-4o achieves under 50% pass@1** in both domains
+* **GPT-4o pass^8 &lt; 25% in retail** — substantial inconsistency across rollouts
+* **Pass^k metric** is the key contribution; gap between pass@1 and pass^8 is the core measure of
+  reliability
+* **Two domains** (retail and airline) provide cross-domain generalization signal
+* **Policy following** is a major failure mode — agents frequently violate explicit policy rules
+  even when those rules are in the system prompt
+* **Request-vs-act discrimination** is a major failure mode — agents proceed with insufficient
+  information rather than asking the user clarifying questions
+
+#### Innovations
+
+##### The pass^k Reliability Metric
+
+Pass^k is the first widely-cited metric to penalize inconsistent agents. By requiring success
+across `k` independent trials, it surfaces the gap between &quot;the agent can solve this task&quot; and
+&quot;the agent reliably solves this task&quot; — a distinction prior benchmarks ignored.
+
+##### User-Simulation as a First-Class Component
+
+Prior tool-use benchmarks (ToolBench, APIBench) provided fixed user requests. tau-bench instead
+simulates the user with another LLM, creating dynamic conversations where the agent must adapt to
+the user&#x27;s responses and ask clarifying questions when needed.
+
+##### Domain-Policy Following as an Evaluation Axis
+
+Most agent benchmarks focus on tool-use correctness; tau-bench explicitly tests *policy
+following*, which is a central concern for production deployment. This separates capable agents
+from agents that produce plausible-looking but policy-violating actions.
+
+#### Datasets
+
+* **tau-bench retail domain** — task definitions, tool schemas, policy document, user persona
+  templates. Open source on GitHub (`sierra-research/tau-bench`).
+* **tau-bench airline domain** — same structure as retail. Open source.
+* **τ²-bench / τ³-bench** — successor benchmarks adding banking and voice modalities, with fixes
+  to the original retail and airline tasks.
+
+#### Main Ideas
+
+* tau-bench is the canonical *request-vs-act* benchmark and should be the primary test bed for
+  the project&#x27;s Metric 3 (can-execute-now vs. must-request-information accuracy).
+* The pass^k metric should be **adopted by the project** as a reliability indicator alongside
+  Metric 1 (task success). Single-trial pass@1 reporting will systematically overstate agent
+  reliability.
+* Policy following is a meaningful axis. The scope-aware (A) ATOMIC prompt should explicitly
+  reference the policy document at every tool-call decision; the scope-unaware (B) baseline does
+  not.
+
+#### Summary
+
+tau-bench introduces a tool-agent-user interaction benchmark in two simulated customer-service
+domains (retail and airline). The motivation is that prior tool-use benchmarks fail to test two
+critical capabilities for production agents: dynamic interaction with a human user (simulated here
+by another LLM) and adherence to domain-specific policy documents that constrain allowable
+actions.
+
+Methodologically, each task pairs a user-goal database state, an LLM-roleplayed user persona, and
+a policy document. The agent conducts a multi-turn conversation, calls tools as needed, and
+attempts to reach the goal state without policy violations. Evaluation compares the final
+database state with the annotated goal. The novel pass^k metric runs `k` independent rollouts and
+measures the fraction of tasks where every rollout succeeds — exposing inconsistency that pass@1
+hides.
+
+The headline finding is that even state-of-the-art models (GPT-4o) achieve **under 50% pass@1**
+and **pass^8 below 25% in retail**, indicating that current frontier agents are both
+moderately-capable and substantially unreliable. The gap between pass@1 and pass^8 is the core
+diagnostic.
+
+For the granularity-aware hierarchical agents project, tau-bench is the canonical
+request-vs-act benchmark — most of its failures stem from agents that proceed without sufficient
+information rather than asking the simulated user. This makes tau-bench the primary test bed for
+Metric 3. The project should also adopt the pass^k metric as a project-wide reliability signal,
+especially in the Phase 4 paper-ready report where overall claims about scope-conditioning gains
+must be robust to single-rollout luck.
+
+## WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?
+ID: 10.48550_arXiv.2403.07718
+Year: 2024
+Authors: Alexandre Drouin, Maxime Gasse, Massimo Caccia, Issam H. Laradji, Manuel Del Verme, Tom Marty, Léo Boisvert, Megh Thakkar, Quentin Cappart, David Vazquez, Nicolas Chapados, Alexandre Lacoste
+Venue: ICML 2024
+Venue type: conference
+DOI: 10.48550/arXiv.2403.07718
+URL: https://arxiv.org/abs/2403.07718
+Categories: benchmark-workarena, agent-evaluation
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2024
+* **Authors**: Alexandre Drouin 🇨🇦, Maxime Gasse 🇨🇦, Massimo Caccia 🇨🇦, Issam H. Laradji 🇨🇦,
+  Manuel Del Verme 🇨🇦, Tom Marty 🇨🇦, Léo Boisvert 🇨🇦, Megh Thakkar 🇨🇦, Quentin Cappart 🇨🇦,
+  David Vazquez 🇨🇦, Nicolas Chapados 🇨🇦, Alexandre Lacoste 🇨🇦
+* **Venue**: ICML 2024
+* **DOI**: `10.48550/arXiv.2403.07718`
+
+#### Abstract
+
+We study the use of large language model-based agents for interacting with software via web
+browsers. Such agents can in principle perform tasks that span the typical daily work of knowledge
+workers utilizing enterprise software systems. To do so, they need to be capable of dealing with
+various aspects of the modern enterprise web ecosystem, such as content management systems,
+intricate forms, custom layouts, and modal popups. To facilitate research into this important
+domain, we present WorkArena, a remote-hosted benchmark of 33 tasks based on the widely-used
+ServiceNow platform. We also introduce BrowserGym, an environment for the design and evaluation of
+such agents, offering a rich set of actions as well as multimodal observations. Our empirical
+evaluation reveals that while current agents show promise on WorkArena, there remains a
+considerable gap towards achieving full task automation. Notably, our analysis uncovers a
+significant performance disparity between open and closed-source LLMs, highlighting a critical area
+for future exploration and development in the field.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. WorkArena introduces 33 atomic web-task workflows on
+ServiceNow that exercise the building blocks of enterprise knowledge work: content management
+operations, intricate forms, custom layouts, and modal popups. The companion BrowserGym
+environment exposes a uniform action and multimodal observation API so that web agents can be
+benchmarked under controlled conditions.
+
+The empirical headline of the paper is a substantial open-vs-closed-source gap: GPT-4 reaches
+**42.7%** task success on WorkArena, while the strongest open-source model evaluated
+(Llama3-70B-instruct) reaches only **17.9%**. The paper frames this not as a limitation of
+open-source models per se but as a critical area for future agent research.
+
+For the granularity-aware hierarchical agents project, WorkArena is the *atomic* layer that
+WorkArena++ later composes. Direct use is moderate: the project requires multi-step tasks of 4-8
+decisions, and most WorkArena items are shorter. The key value is as a sanity check — agents that
+fail at WorkArena&#x27;s atomic tasks cannot be expected to succeed on WorkArena++&#x27;s compositional
+ones.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, the
+benchmark consists of **33 web tasks** with **19,912 unique instances** (parameterized variants of
+the same task templates). Tasks are hosted remotely on a self-managed ServiceNow instance, which
+the agent interacts with via the BrowserGym environment.
+
+BrowserGym exposes a Python API with **rich actions** (click, type, scroll, navigate, etc.) and
+**multimodal observations** (DOM, screenshots, accessibility tree). Evaluation runs each agent on
+each task instance and records success or failure based on database state inspection — for
+example, whether the requested record was created or updated correctly. The paper evaluates
+**GPT-4** (best closed-source) and **Llama3-70B-instruct** (best open-source) plus a small set of
+intermediate models. Evaluation uses the standard `pass@1` metric — does the agent succeed on its
+first attempt?
+
+The paper does not propose a new agent architecture beyond the BrowserGym wrapper; the contribution
+is the benchmark and the evaluation harness. Subsequent papers (including WorkArena++) build on
+this scaffolding rather than replace it.
+
+#### Results
+
+* **GPT-4 reaches 42.7%** pass@1 across the 33 task families
+* **Llama3-70B-instruct reaches 17.9%** pass@1 — a **24.8 absolute** gap
+* **33 task families** cover the typical daily work of knowledge workers
+* **19,912 unique instances** parameterize the task families to enable repeated evaluation
+* **Significant open-vs-closed-source gap** — even the strongest open-source agents lag closed
+  agents by tens of percentage points
+* The paper frames the **considerable gap to full automation** as the headline finding, not the
+  closed-source success itself
+
+#### Innovations
+
+##### A Production-Grade Enterprise Web Benchmark
+
+WorkArena is the first benchmark whose tasks are sourced from a real enterprise platform
+(ServiceNow) used by Fortune 500 companies, making the evaluation directly relevant to enterprise
+deployment scenarios.
+
+##### BrowserGym as a Reusable Web-Agent Harness
+
+BrowserGym standardizes the action and observation API for web agents, decoupling the agent
+implementation from the benchmark and enabling head-to-head comparison across agents and
+benchmarks. WorkArena++ and other follow-up benchmarks reuse this harness.
+
+##### Open-vs-Closed-Source Gap Quantified
+
+Prior web-agent benchmarks did not isolate the open-vs-closed-source dimension as cleanly. By
+holding the harness, action set, and observation modality constant, WorkArena provides one of the
+cleanest single-paper measurements of this gap (24.8 absolute points).
+
+#### Datasets
+
+* **WorkArena task suite** — 33 task families × 19,912 instances on ServiceNow. Open source on
+  GitHub (`ServiceNow/WorkArena`). Requires a ServiceNow developer instance for execution but the
+  task definitions and evaluation harness are public.
+
+#### Main Ideas
+
+* WorkArena is the *atomic* layer that WorkArena++ composes. For this project, the atomic items
+  function as sanity-check material rather than primary evaluation material.
+* The 24.8-point GPT-4 vs. Llama3-70B gap is large enough that closed-source models should be the
+  default for the project&#x27;s Phase 2 baseline; open-source models are useful as a stress test for
+  whether scope conditioning gains are model-class-invariant.
+* Reuse the BrowserGym harness rather than building a custom WorkArena adapter — the project saves
+  weeks of integration work and inherits compatibility with WorkArena++ automatically.
+
+#### Summary
+
+WorkArena introduces a remote-hosted benchmark of 33 enterprise-grade web tasks built on the
+ServiceNow platform, accompanied by BrowserGym — a reusable Python environment for web-agent
+evaluation. The motivation is that prior web-agent benchmarks (MiniWoB, WebShop) lack the
+complexity of modern enterprise software, where agents must navigate content management systems,
+intricate forms, custom layouts, and modal popups.
+
+Methodologically, the paper instantiates 33 task families with 19,912 unique parameterized
+instances, evaluates them via BrowserGym&#x27;s standardized action and observation API, and grades
+success by inspecting the resulting database state. Evaluation is reported as `pass@1`, with the
+state-of-the-art proprietary model (GPT-4) and the strongest open-source model (Llama3-70B) as the
+two anchor points.
+
+The headline finding is a **24.8 absolute** gap between GPT-4 (**42.7%**) and Llama3-70B-instruct
+(**17.9%**), demonstrating that current open-source agents lag substantially on enterprise
+workflows. Even the best result leaves a considerable distance to full task automation.
+
+For the granularity-aware hierarchical agents project, WorkArena is the atomic layer WorkArena++
+composes. The project should reuse BrowserGym for compatibility, treat WorkArena tasks as
+sanity-check material rather than primary evaluation, and prefer GPT-4-class models for the Phase
+2 baseline. The open-vs-closed-source gap is large enough that mixing model classes in the
+composite benchmark would conflate model effects with prompt effects — a hazard the planning step
+must address.
+
+## SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
+ID: 10.48550_arXiv.2310.06770
+Year: 2024
+Authors: Carlos E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, Karthik Narasimhan
+Venue: ICLR 2024 (oral)
+Venue type: conference
+DOI: 10.48550/arXiv.2310.06770
+URL: https://arxiv.org/abs/2310.06770
+Categories: benchmark-swebench, agent-evaluation
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2024
+* **Authors**: Carlos E. Jimenez 🇺🇸, John Yang 🇺🇸, Alexander Wettig 🇺🇸, Shunyu Yao 🇺🇸,
+  Kexin Pei 🇺🇸, Ofir Press 🇺🇸, Karthik Narasimhan 🇺🇸
+* **Venue**: ICLR 2024 (oral)
+* **DOI**: `10.48550/arXiv.2310.06770`
+
+#### Abstract
+
+Language models have outpaced our ability to evaluate them effectively, but for their future
+development it is essential to study the frontier of their capabilities. We find real-world
+software engineering to be a rich, sustainable, and challenging testbed for evaluating the next
+generation of language models. To this end, we introduce SWE-bench, an evaluation framework
+consisting of 2,294 software engineering problems drawn from real GitHub issues and corresponding
+pull requests across 12 popular Python repositories. Given a codebase along with a description of
+an issue to be resolved, a language model is tasked with editing the codebase to address the
+issue. Resolving issues in SWE-bench frequently requires understanding and coordinating changes
+across multiple functions, classes, and even files simultaneously, calling for models to interact
+with execution environments, process extremely long contexts and perform complex reasoning that
+goes far beyond traditional code generation tasks. Our evaluations show that both
+state-of-the-art proprietary models and our fine-tuned model SWE-Llama can resolve only the
+simplest issues. The best-performing model, Claude 2, is able to solve a mere 1.96% of the issues.
+Advances on SWE-bench represent steps towards LMs that are more practical, intelligent, and
+autonomous.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. SWE-bench introduces an evaluation framework that grounds
+LLM software-engineering capability in real GitHub history: 2,294 problems are sourced from
+genuine issues in 12 popular Python repositories, with each problem paired to the actual pull
+request that resolved it. The model is given the codebase plus the issue description and must
+generate a patch; success is measured by running the repository&#x27;s existing test suite, including
+the tests added in the resolving PR.
+
+This evaluation protocol is significantly harder than prior code-generation benchmarks (HumanEval,
+MBPP) because (a) the codebase context can be tens of thousands of tokens, (b) resolution requires
+coordinated changes across multiple files, and (c) success is judged by *passing existing tests*,
+which means the model cannot game the metric by producing plausible-looking but functionally
+wrong code.
+
+For the granularity-aware hierarchical agents project, SWE-bench (and its Verified subset) is the
+canonical &quot;atomic execution&quot; benchmark — every successful resolution is an atomic patch, and
+success requires precise execution rather than abstract planning. It is the project&#x27;s strongest
+counterweight to FrontierMath&#x27;s strategic-planning emphasis.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, the
+benchmark sources problems from **12 popular Python repositories** including Django, scikit-learn,
+SymPy, Matplotlib, Sphinx, Astropy, requests, flask, pylint, pytest, xarray, and seaborn. Each
+problem provides:
+
+* The full repository state at the issue&#x27;s commit hash
+* The issue text (title + body)
+* The &quot;gold&quot; patch from the merged PR (held out from the model)
+* The test suite, including tests added in the resolving PR
+
+Evaluation runs the model&#x27;s generated patch against the test suite in a Docker-isolated environment
+and reports `resolve@1` — the fraction of problems where every test passes after applying the
+model&#x27;s patch. The original paper evaluated **Claude 2**, **GPT-4**, and a fine-tuned **SWE-Llama**
+model. The benchmark has since been expanded with SWE-bench Verified (500-instance human-validated
+subset), SWE-bench Lite (300-instance subset for faster iteration), and SWE-bench Multimodal.
+
+Resolving an issue typically requires processing **tens of thousands of tokens** of codebase
+context, identifying the relevant files (often without explicit guidance from the issue), and
+producing a patch that respects the repository&#x27;s coding conventions and existing tests.
+
+#### Results
+
+* **2,294 problems** across 12 popular Python repositories
+* **Claude 2 resolves 1.96%** — the best of the original-paper baselines
+* **GPT-4 resolves a similarly small fraction** (single-digit percent in the original paper;
+  improved substantially in later 2024-2025 evaluations on the Verified subset)
+* **SWE-Llama** (fine-tuned by the authors) underperforms the closed-source models on the original
+  benchmark
+* By April 2026 the leaderboard for the **Verified** subset is led by Claude Mythos Preview at
+  **93.9%**, Claude Opus 4.7 (Adaptive) at **87.6%**, and GPT-5.3 Codex at **85%** — orders of
+  magnitude above the 1.96% original-paper baseline, illustrating how fast progress has been
+* The benchmark is the de facto industry standard for autonomous-software-engineering evaluation
+  in 2024-2026
+
+#### Innovations
+
+##### GitHub-Issue-to-Patch Evaluation Format
+
+SWE-bench is the first benchmark to source coding problems from real GitHub history at scale. The
+issue-and-test pairing means models cannot game the metric by producing plausible-looking code —
+they must produce code that actually resolves the issue and passes the existing tests.
+
+##### Cross-File Coordination as a First-Class Requirement
+
+Resolution typically requires changes across multiple files, classes, or functions. This makes
+SWE-bench one of the few code benchmarks that exercises *cross-file reasoning*, which is critical
+for any agent operating in a real codebase.
+
+##### Long-Context Code Understanding
+
+Codebases routinely exceed 100K tokens. The model must select relevant files, often without
+explicit guidance from the issue, before producing a patch. This stretches retrieval and long-
+context reasoning capabilities far beyond function-level benchmarks like HumanEval.
+
+#### Datasets
+
+* **SWE-bench full set** — 2,294 problems from 12 Python repositories. Open source on GitHub
+  (`SWE-bench/SWE-bench`) with a Docker-based evaluation harness.
+* **SWE-bench Verified** — 500-instance human-validated subset (separate paper asset
+  `no-doi_OpenAI2024_swe-bench-verified`).
+
+#### Main Ideas
+
+* SWE-bench (and its Verified subset) is the canonical *atomic execution* benchmark for the
+  project&#x27;s four-source composite. It anchors the low-level / atomic granularity slot.
+* Cross-file coordination matters: any granularity-conditioning prompt that fails to support
+  multi-file edits will lose points on SWE-bench. The scope-aware (A) condition&#x27;s ATOMIC tag
+  prompt should explicitly allow file reads and multi-file patches.
+* Use the **Verified subset (500 instances)** rather than the full 2,294 for the project&#x27;s
+  composite. The full benchmark&#x27;s Docker harness is heavy and the 500-instance Verified subset is
+  the version other benchmarks compare against in 2024-2026.
+
+#### Summary
+
+SWE-bench introduces a real-world software-engineering evaluation framework where 2,294 problems
+are sourced from genuine GitHub issues in 12 popular Python repositories. The motivation is that
+prior code-generation benchmarks (HumanEval, MBPP) test isolated function-level capability and
+saturate quickly with frontier models, while real software engineering requires multi-file
+coordination, long codebase context, and resolution of issues whose correct fix is judged by
+existing test suites.
+
+Methodologically, each problem provides the full repository state at the issue&#x27;s commit, the issue
+text, and the held-out gold patch from the merged PR. Models generate a patch; success is measured
+by running the test suite (including tests added in the resolving PR) inside a Docker-isolated
+environment. The original paper evaluates Claude 2, GPT-4, and a fine-tuned SWE-Llama, with the
+best baseline (Claude 2) resolving only **1.96%** of issues.
+
+Since the original paper, the benchmark has spawned three notable subsets — SWE-bench Verified
+(500 instances, human-validated by OpenAI), SWE-bench Lite (300 instances), and SWE-bench
+Multimodal. Modern models score far above the original baseline on Verified: Claude Mythos
+Preview at **93.9%** (April 2026), illustrating how fast the field has moved.
+
+For the granularity-aware hierarchical agents project, SWE-bench Verified is the canonical
+atomic-execution slot in the four-source composite. The project should adopt the Verified subset
+(500 instances) for Phase 2 evaluation, support multi-file edits in the scope-aware (A)
+condition&#x27;s ATOMIC prompt, and stratify metrics per source benchmark — the &gt;90% achievable
+baseline on Verified would otherwise drown out FrontierMath&#x27;s &lt;2% baseline.
+
+## Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs
+ID: 10.48550_arXiv.2306.13063
+Year: 2024
+Authors: Miao Xiong, Zhiyuan Hu, Xinyang Lu, Yifei Li, Jie Fu, Junxian He, Bryan Hooi
+Venue: ICLR 2024
+Venue type: conference
+DOI: 10.48550/arXiv.2306.13063
+URL: https://arxiv.org/abs/2306.13063
+Categories: uncertainty-calibration, agent-evaluation
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2023 (arXiv); 2024 (ICLR)
+* **Authors**: Miao Xiong 🇸🇬, Zhiyuan Hu 🇸🇬, Xinyang Lu 🇸🇬, Yifei Li 🇭🇰, Jie Fu 🇭🇰,
+  Junxian He 🇭🇰, Bryan Hooi 🇸🇬
+* **Venue**: ICLR 2024
+* **DOI**: `10.48550/arXiv.2306.13063`
+
+#### Abstract
+
+Empowering large language models (LLMs) to accurately express confidence in their answers is
+essential for trustworthy decision-making. Previous confidence elicitation methods, which
+primarily rely on white-box access to internal model information or model fine-tuning, have
+become less suitable for LLMs, especially closed-source commercial APIs. This leads to a growing
+need to explore the untapped area of black-box approaches for LLM uncertainty estimation. To
+better break down the problem, we define a systematic framework with three components: prompting
+strategies for eliciting verbal confidence, sampling methods for generating multiple responses,
+and aggregation techniques for computing consistency. We then benchmark these methods on two key
+tasks—confidence calibration and failure prediction—across five types of datasets (e.g.,
+commonsense and arithmetic reasoning) and five widely-used LLMs including GPT-4 and LLaMA 2 Chat.
+Our analysis uncovers several key insights: 1) LLMs, when verbalizing their confidence, tend to
+be overconfident, potentially imitating human patterns of expressing confidence. 2) As model
+capability scales up, both calibration and failure prediction performance improve. 3) Employing
+our proposed strategies, such as human-inspired prompts, consistency among multiple responses,
+and better aggregation strategies can help mitigate this overconfidence from various
+perspectives.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. Xiong et al. address the **calibration gap** in modern
+LLMs: when asked to verbalize their confidence in an answer, LLMs are systematically
+overconfident — their stated confidence is consistently higher than their actual accuracy. This
+matters for any system that uses confidence as a control signal (selective abstention,
+information-seeking, escalation to humans).
+
+The paper proposes a **three-component framework** — prompting strategy + sampling method +
+aggregation technique — and benchmarks the cross-product on five datasets and five widely-used
+LLMs. The headline finding: **self-consistency aggregation across multiple sampled responses**
+significantly outperforms naive single-sample verbalized confidence, reducing Expected
+Calibration Error (ECE) by **+2 to +8 points** depending on dataset.
+
+For the granularity-aware hierarchical agents project, this paper is the **canonical calibration
+reference** for Metric 2 (overconfident error rate). The recommended protocol — verbalized
+confidence + 3-sample self-consistency aggregation — should be adopted as the project&#x27;s
+operational definition.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, the
+three-component framework is:
+
+* **Prompting strategies** (4 variants): vanilla &quot;How confident are you in this answer?&quot;,
+  human-inspired &quot;Provide your confidence level (low / medium / high) and brief justification&quot;,
+  Chain-of-Thought confidence, Self-Probing confidence.
+* **Sampling methods** (3 variants): single sample, multiple temperature samples, multiple
+  prompts.
+* **Aggregation techniques** (3 variants): mean of confidences, majority vote, self-consistency
+  (the most-frequent answer&#x27;s average confidence).
+
+Models evaluated: **GPT-4**, **GPT-3.5-turbo**, **LLaMA 2 Chat (7B / 13B / 70B)**, plus a small
+control set. Datasets cover commonsense reasoning (CommonsenseQA), arithmetic (GSM8K), code
+(MBPP), factual recall (TriviaQA), and ethics (Moral Stories) — five categories total.
+
+Two evaluation tasks: **calibration** (does the verbalized confidence track actual accuracy?
+measured via ECE), and **failure prediction** (does low confidence predict incorrect answers?
+measured via AUROC).
+
+#### Results
+
+* **LLMs are systematically overconfident** when verbalizing confidence — every model and every
+  dataset shows positive overconfidence
+* **Self-consistency aggregation** is the most reliable aggregation method, beating naive
+  single-sample verbalized confidence by **+2 to +8 ECE points** depending on dataset
+* **Larger models calibrate better** — GPT-4 has lower ECE than GPT-3.5; 70B LLaMA beats 7B
+* **Human-inspired prompting** (&quot;low / medium / high with justification&quot;) outperforms vanilla
+  numeric confidence on most tasks
+* **Failure prediction AUROC** improves substantially with self-consistency — moving from ~0.6
+  (single sample) to **~0.75-0.85** (self-consistency) depending on model and task
+* **CoT confidence does not always help** — counterintuitively, prompting the model to reason
+  before stating confidence can sometimes worsen calibration
+
+#### Innovations
+
+##### Three-Component Framework for Black-Box Calibration
+
+Prior calibration work focused on white-box access to internal logits or fine-tuning. This paper
+is the first to systematically benchmark *only* black-box prompting strategies that work with
+closed-source APIs.
+
+##### Self-Consistency Aggregation as the Default
+
+The finding that self-consistency aggregation (majority vote on the answer, then average
+confidence within the majority) substantially outperforms single-sample confidence has become
+the de facto standard for LLM calibration in 2024-2026.
+
+##### Human-Inspired Confidence Prompts
+
+The &quot;low / medium / high with justification&quot; prompt outperforms numeric confidence — a small
+prompt-engineering finding with disproportionately large practical impact.
+
+#### Datasets
+
+* **CommonsenseQA** — commonsense reasoning multiple-choice.
+* **GSM8K** — grade-school math.
+* **MBPP** — Python code completion.
+* **TriviaQA** — factual recall QA.
+* **Moral Stories** — ethical reasoning.
+
+All five are public benchmarks.
+
+#### Main Ideas
+
+* Adopt **verbalized confidence + 3-sample self-consistency aggregation** as the project&#x27;s
+  Metric 2 protocol [Xiong2024]. This is the canonical black-box calibration method.
+* Define **overconfident error** as `is_incorrect AND verbalized_confidence &gt;= 0.8` (or &quot;high&quot;
+  in the human-inspired prompt). The paper supports this binarization implicitly via its
+  per-bucket ECE plots.
+* **Report bucketed ECE plots** (10 confidence bins) alongside every Metric 2 number. A single
+  ECE number hides the bucket where overconfidence occurs.
+* **Use the human-inspired prompt** (&quot;low / medium / high with justification&quot;) for the
+  scope-aware (A) condition&#x27;s confidence elicitation. Numeric confidence is more standardizable
+  but less reliable.
+
+#### Summary
+
+Xiong et al. address the calibration gap in modern LLMs: verbalized confidence is systematically
+higher than actual accuracy, making it an unreliable signal for any system that needs to abstain
+or escalate based on uncertainty. The motivation is that previous calibration methods relied on
+white-box access to internal logits or model fine-tuning, neither of which is available for
+closed-source commercial APIs.
+
+Methodologically, the paper proposes a three-component black-box framework: prompting strategy
+(vanilla, human-inspired, CoT, self-probing) × sampling method (single, multiple temperature,
+multiple prompts) × aggregation technique (mean, majority vote, self-consistency). The
+cross-product is benchmarked on five datasets across reasoning, math, code, factual recall, and
+ethics, using five widely-used LLMs (GPT-4, GPT-3.5, LLaMA 2 Chat at three sizes).
+
+The headline findings are (a) LLMs are systematically overconfident when verbalizing confidence,
+(b) self-consistency aggregation beats single-sample confidence by **+2 to +8 ECE points**, (c)
+larger models calibrate better, (d) human-inspired prompting (&quot;low / medium / high with
+justification&quot;) outperforms numeric confidence, (e) CoT confidence sometimes worsens calibration
+counterintuitively.
+
+For the granularity-aware hierarchical agents project, this paper is the canonical calibration
+reference for Metric 2 (overconfident error rate). The project should adopt verbalized
+confidence + 3-sample self-consistency aggregation as its operational definition, define
+overconfident error as `incorrect AND high_confidence`, and report bucketed ECE plots alongside
+single-number ECE. The human-inspired prompt is recommended for the scope-aware (A) condition&#x27;s
+confidence elicitation.
+
+## Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models
+ID: 10.48550_arXiv.2305.04091
+Year: 2023
+Authors: Lei Wang, Wanyu Xu, Yihuai Lan, Zhiqiang Hu, Yunshi Lan, Roy Ka-Wei Lee, Ee-Peng Lim
+Venue: ACL 2023
+Venue type: conference
+DOI: 10.48550/arXiv.2305.04091
+URL: https://arxiv.org/abs/2305.04091
+Categories: granularity-conditioning, hierarchical-planning
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2023
+* **Authors**: Lei Wang 🇸🇬, Wanyu Xu 🇸🇬, Yihuai Lan 🇸🇬, Zhiqiang Hu 🇸🇬, Yunshi Lan 🇨🇳,
+  Roy Ka-Wei Lee 🇸🇬, Ee-Peng Lim 🇸🇬
+* **Venue**: ACL 2023
+* **DOI**: `10.48550/arXiv.2305.04091`
+
+#### Abstract
+
+Large language models (LLMs) have recently been shown to deliver impressive performance in
+various NLP tasks. To tackle multi-step reasoning tasks, few-shot chain-of-thought (CoT)
+prompting includes a few manually crafted step-by-step reasoning demonstrations which enable LLMs
+to explicitly generate reasoning steps and improve their reasoning task accuracy. To eliminate
+the manual effort, Zero-shot-CoT concatenates the target problem statement with &#x27;Let&#x27;s think
+step by step&#x27; as an input prompt to LLMs. Despite the success of Zero-shot-CoT, it still suffers
+from three pitfalls: calculation errors, missing-step errors, and semantic misunderstanding
+errors. To address the missing-step errors, we propose Plan-and-Solve (PS) Prompting. It consists
+of two components: first, devising a plan to divide the entire task into smaller subtasks, and
+then carrying out the subtasks according to the plan. To address the calculation errors and
+improve the quality of generated reasoning steps, we extend PS prompting with more detailed
+instructions and derive PS+ prompting. We evaluate our proposed prompting strategy on ten datasets
+across three reasoning problems. The experimental results over GPT-3 show that our proposed
+zero-shot prompting consistently outperforms Zero-shot-CoT across all datasets by a large margin,
+is comparable to or exceeds Zero-shot-Program-of-Thought Prompting, and has comparable
+performance with 8-shot CoT prompting on the math reasoning problem.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. Plan-and-Solve (PS) prompting is a two-stage zero-shot
+prompting technique designed to fix the missing-step error mode of Zero-shot-CoT. The PS prompt
+literally instructs the model to &quot;first devise a plan to solve the problem, then carry out the
+plan.&quot; The PS+ variant adds more detailed instructions per stage to also reduce calculation
+errors. Together, they bring zero-shot performance close to 8-shot CoT on math reasoning while
+requiring no in-context examples.
+
+The PS structure is a **two-level granularity hierarchy** — plan (global) and solve (atomic-ish) —
+which makes it the closest published analogue to the project&#x27;s scope-aware (A) condition. The
+project&#x27;s three-level schema is a strict refinement: PS&#x27;s &quot;plan&quot; maps to global, PS&#x27;s &quot;solve&quot; maps
+to subtask + atomic.
+
+For the project, PS is the **canonical scope-unaware (B) baseline** for Phase 2: it is widely
+known, has reference implementations in LangChain core, and represents the current best
+prompt-only approach to multi-step reasoning that *does not* condition on explicit granularity
+tags.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, the
+PS prompt template is:
+
+```
+Q: &lt;problem&gt;
+A: Let&#x27;s first understand the problem and devise a plan to solve the problem.
+   Then, let&#x27;s carry out the plan and solve the problem step by step.
+```
+
+The PS+ variant adds more detailed instructions:
+
+```
+Q: &lt;problem&gt;
+A: Let&#x27;s first understand the problem, extract relevant variables and their
+   corresponding numerals, and make and devise a complete plan. Then, let&#x27;s
+   carry out the plan, calculate intermediate variables (pay attention to
+   correct numerical calculation and commonsense), solve the problem step
+   by step, and show the answer.
+```
+
+Models evaluated: **GPT-3 text-davinci-003** primarily, with comparisons to ChatGPT and Codex on
+some datasets. Datasets cover three reasoning categories: arithmetic (GSM8K, SVAMP, AQuA,
+AddSub, MultiArith, SingleEq), commonsense (CommonsenseQA, StrategyQA), and symbolic (Last
+Letter Concatenation, Coin Flip). All ten datasets are evaluated zero-shot.
+
+#### Results
+
+* **Consistent gains over Zero-shot-CoT** across all 10 datasets — every dataset shows a
+  positive delta
+* **PS+ on GSM8K reaches ~58%** with text-davinci-003 zero-shot, vs. **~57%** for 8-shot
+  manual CoT — comparable performance with no exemplars
+* **PS+ exceeds Zero-shot-Program-of-Thought** on math datasets where PoT was previously
+  state-of-the-art for zero-shot
+* **Reduces missing-step errors** specifically — the targeted error mode the technique was
+  designed to address
+* **Reduces calculation errors** in PS+ via the explicit &quot;pay attention to correct numerical
+  calculation&quot; instruction
+* **Available in LangChain core** as `Plan-and-Execute` — production-ready
+
+#### Innovations
+
+##### Two-Stage Prompting With Explicit Plan Step
+
+PS is the first widely-cited zero-shot prompting technique to *force* the model into an explicit
+plan-then-execute structure. Prior work either chained reasoning (CoT) or asked for a plan
+separately; PS does both in a single pass.
+
+##### Targeted Error-Mode Reduction
+
+The paper diagnoses Zero-shot-CoT&#x27;s failure modes (calculation, missing-step, semantic) and
+designs PS specifically to reduce one of them. PS+ extends to the others. This error-driven
+design is rare for prompting papers.
+
+##### Zero-Shot Parity With Few-Shot CoT
+
+Achieving comparable performance to 8-shot manual CoT *without any exemplars* is a substantial
+practical result — it eliminates the manual exemplar-curation cost that is often a hidden burden
+in CoT deployments.
+
+#### Datasets
+
+* **Arithmetic**: GSM8K, SVAMP, AQuA, AddSub, MultiArith, SingleEq.
+* **Commonsense**: CommonsenseQA, StrategyQA.
+* **Symbolic**: Last Letter Concatenation, Coin Flip.
+
+All ten datasets are public benchmarks in standard NLP repositories.
+
+#### Main Ideas
+
+* Adopt PS+ as the canonical scope-unaware (B) baseline for Phase 2. It is the strongest
+  published prompt-only method that does not condition on explicit granularity tags.
+* The two-stage structure means a successful PS run produces both a &quot;plan&quot; (global-level text)
+  and a &quot;solve&quot; (subtask + atomic execution). Logging both segments lets the project measure
+  scope effects even within the B condition by post-hoc tagging.
+* Reuse the LangChain `Plan-and-Execute` implementation rather than reimplementing PS from
+  scratch — saves engineering time and inherits compatibility with LangChain&#x27;s tool-use
+  infrastructure.
+
+#### Summary
+
+Plan-and-Solve (PS) prompting is a zero-shot prompting technique that explicitly forces a
+language model to first produce a plan, then execute the plan step by step. The motivation is
+that Zero-shot-CoT — while a powerful zero-shot baseline — exhibits three error modes:
+calculation errors, missing-step errors, and semantic-misunderstanding errors. PS targets the
+missing-step mode by demanding an explicit plan; PS+ extends to calculation errors via additional
+in-prompt instructions to &quot;pay attention to correct numerical calculation.&quot;
+
+Methodologically, PS is a single-prompt template that instructs the model to plan-then-solve.
+Evaluation covers ten datasets across arithmetic, commonsense, and symbolic reasoning, all in
+zero-shot mode with GPT-3 text-davinci-003 as the primary model. PS+ adds more detailed per-stage
+instructions.
+
+The headline outcome is **consistent improvement over Zero-shot-CoT across all 10 datasets**,
+with PS+ achieving **comparable performance to 8-shot manual CoT** on GSM8K (≈58% vs ≈57%) — a
+strong zero-shot result that eliminates the manual exemplar-curation cost. PS+ is available in
+LangChain core as Plan-and-Execute and has been adopted in production agent systems.
+
+For the granularity-aware hierarchical agents project, PS is the canonical scope-unaware (B)
+baseline for Phase 2. Its two-stage plan-then-solve structure is the closest published analogue
+to the project&#x27;s scope-aware (A) condition without the explicit granularity tags. The project
+should reuse LangChain&#x27;s Plan-and-Execute implementation, log both stages separately, and
+measure how much of PS&#x27;s gain over CoT comes from the plan-execute separation alone — that
+delta is the lower bound for the scope-aware (A) condition&#x27;s expected gain.
+
+## Reflexion: Language Agents with Verbal Reinforcement Learning
+ID: 10.48550_arXiv.2303.11366
+Year: 2023
+Authors: Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath, Karthik Narasimhan, Shunyu Yao
+Venue: NeurIPS 2023
+Venue type: conference
+DOI: 10.48550/arXiv.2303.11366
+URL: https://arxiv.org/abs/2303.11366
+Categories: hierarchical-planning, granularity-conditioning
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2023
+* **Authors**: Noah Shinn 🇺🇸, Federico Cassano 🇺🇸, Edward Berman 🇺🇸, Ashwin Gopinath 🇺🇸,
+  Karthik Narasimhan 🇺🇸, Shunyu Yao 🇺🇸
+* **Venue**: NeurIPS 2023
+* **DOI**: `10.48550/arXiv.2303.11366`
+
+#### Abstract
+
+Large language models (LLMs) have been increasingly used to interact with external environments
+(e.g., games, compilers, APIs) as goal-driven agents. However, it remains challenging for these
+language agents to quickly and efficiently learn from trial-and-error as traditional
+reinforcement learning methods require extensive training samples and expensive model
+fine-tuning. We propose Reflexion, a novel framework to reinforce language agents not by updating
+weights, but instead through linguistic feedback. Concretely, Reflexion agents verbally reflect
+on task feedback signals, then maintain their own reflective text in an episodic memory buffer to
+induce better decision-making in subsequent trials. Reflexion is flexible enough to incorporate
+various types (scalar values or free-form language) and sources (external or internally
+simulated) of feedback signals, and obtains significant improvements over a baseline agent
+across diverse tasks (sequential decision-making, coding, language reasoning). For example,
+Reflexion achieves a 91% pass@1 accuracy on the HumanEval coding benchmark, surpassing the
+previous state-of-the-art GPT-4 that achieves 80%. We also conduct ablation and analysis studies
+using different feedback signals, feedback incorporation methods, and agent types, and provide
+insights into how they affect performance.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. Reflexion extends ReAct-style prompting agents [Yao2022]
+with a **verbal self-reflection** loop across trials. After each failed trial, the agent writes
+a natural-language critique of its own behavior, stores the critique in an episodic memory
+buffer, and uses the buffer as additional context for the next trial. No model weights are
+updated — the &quot;learning&quot; is entirely linguistic.
+
+The architecture is hierarchical in a way directly relevant to the project: the per-trial
+execution agent operates at one granularity (atomic action / subtask), while the reflector
+operates at a higher granularity (global / strategic). This naturally maps onto the project&#x27;s
+global/subtask/atomic schema and is a strong template for the scope-aware (A) condition&#x27;s
+between-trial component.
+
+For the project, Reflexion is best treated as a **Phase 3 ablation** rather than a Phase 2
+baseline: the project should first establish whether scope conditioning helps without cross-trial
+memory, then test whether Reflexion-style memory adds further gains.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, the
+Reflexion architecture is:
+
+```
+For trial t = 1, 2, ..., T:
+    [actor] runs ReAct-style policy on the task, producing trajectory τ_t
+    [evaluator] grades τ_t and produces a feedback signal f_t
+    [reflector] reads (τ_t, f_t) and writes a natural-language critique r_t
+    Store r_t in the episodic memory buffer M
+    For trial t+1, prepend M to the actor&#x27;s prompt
+```
+
+The **actor** is typically a ReAct agent (Thought/Action/Observation). The **evaluator** can be
+external (test runner, environment reward) or internally simulated (LLM judge). The **reflector**
+is the same LLM in a different prompt mode that produces a free-form critique.
+
+Datasets evaluated:
+* **HumanEval** (Python coding) — Reflexion + GPT-4 reaches **91% pass@1**, vs. **80%** for
+  vanilla GPT-4
+* **AlfWorld** — significant gains over ReAct baseline
+* **HotpotQA** — significant gains via reflection on QA failures
+
+The paper&#x27;s key ablations: feedback type (scalar vs. free-form text), feedback source (external
+vs. internal), reflection horizon (last trial vs. all trials).
+
+#### Results
+
+* **91% pass@1 on HumanEval** with Reflexion + GPT-4 — **+11 absolute** over vanilla GPT-4 (80%)
+* Significant gains on **AlfWorld** sequential decision-making
+* Significant gains on **HotpotQA** language reasoning
+* **No weight updates** — pure prompting + memory buffer
+* **Free-form text feedback outperforms scalar feedback** across most tasks
+* **Internally simulated feedback** (LLM judge) is nearly as effective as external feedback for
+  some tasks
+* **Last-trial reflection** is often as effective as all-trials reflection, suggesting most of
+  the gain comes from one-shot self-correction
+
+#### Innovations
+
+##### Verbal Reinforcement Learning Without Weight Updates
+
+Reflexion is the first framework to deliver substantial multi-trial improvements via natural-
+language self-reflection alone. This is a meaningful complement to RLHF, which requires expensive
+gradient updates.
+
+##### Three-Component Architecture
+
+Splitting the agent into actor, evaluator, and reflector — each potentially a different prompt
+mode of the same model — is a clean architectural pattern that has been adopted by many later
+agent systems.
+
+##### Episodic Memory as Linguistic State
+
+The episodic memory buffer is the agent&#x27;s &quot;learned policy&quot; expressed as natural language. This
+makes the policy human-readable and editable, which is a significant departure from RL-trained
+policies.
+
+#### Datasets
+
+* **HumanEval** — 164 hand-written Python coding problems with unit tests.
+* **AlfWorld** — text-based simulated household tasks.
+* **HotpotQA** — multi-hop QA with Wikipedia.
+
+All three are public benchmarks. AlfWorld requires the simulator runtime.
+
+#### Main Ideas
+
+* Reflexion&#x27;s actor/evaluator/reflector decomposition naturally aligns with the project&#x27;s
+  global/subtask/atomic schema. The reflector operates at the global granularity; the actor
+  operates at subtask + atomic granularity.
+* **Defer Reflexion to Phase 3 ablation**, not Phase 2 baseline. Including cross-trial memory in
+  Phase 2 would conflate scope conditioning with episodic memory; the project&#x27;s main hypothesis
+  is about scope alone.
+* The free-form-text-feedback finding (text &gt; scalar) suggests that the project&#x27;s Metric 2
+  (overconfident error rate) should also be expressed as free-form rationale at evaluation time,
+  not just a numeric score.
+
+#### Summary
+
+Reflexion is a language-agent framework that adds a verbal self-reflection loop on top of
+ReAct-style prompting agents. After each trial, the agent writes a free-form natural-language
+critique of its own behavior, stores the critique in an episodic memory buffer, and uses the
+buffer as additional context for the next trial. No model weights are updated — the learning is
+entirely linguistic.
+
+Methodologically, Reflexion has three components: an actor (ReAct policy), an evaluator (scalar
+or free-form feedback), and a reflector (LLM in critique mode). The architecture is evaluated
+on HumanEval coding, AlfWorld sequential decision-making, and HotpotQA reasoning, with ablations
+on feedback type, feedback source, and reflection horizon.
+
+The headline result is **91% pass@1 on HumanEval** with GPT-4 + Reflexion, an **+11 absolute**
+gain over vanilla GPT-4 (80%) without any weight updates. Free-form text feedback outperforms
+scalar feedback; internally simulated feedback is nearly as effective as external feedback;
+last-trial reflection captures most of the gain.
+
+For the granularity-aware hierarchical agents project, Reflexion&#x27;s actor/evaluator/reflector
+decomposition aligns with the global/subtask/atomic schema and is a strong template for the
+scope-aware (A) condition&#x27;s between-trial component. However, including cross-trial memory in
+Phase 2 would conflate scope conditioning with episodic memory; Reflexion should be treated as a
+Phase 3 ablation that tests whether memory adds gains *on top of* scope conditioning, not as the
+Phase 2 baseline.
+
+## ReAct: Synergizing Reasoning and Acting in Language Models
+ID: 10.48550_arXiv.2210.03629
+Year: 2023
+Authors: Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan Cao
+Venue: ICLR 2023
+Venue type: conference
+DOI: 10.48550/arXiv.2210.03629
+URL: https://arxiv.org/abs/2210.03629
+Categories: granularity-conditioning, hierarchical-planning
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2022 (arXiv); 2023 (ICLR)
+* **Authors**: Shunyu Yao 🇺🇸, Jeffrey Zhao 🇺🇸, Dian Yu 🇺🇸, Nan Du 🇺🇸, Izhak Shafran 🇺🇸,
+  Karthik Narasimhan 🇺🇸, Yuan Cao 🇺🇸
+* **Venue**: ICLR 2023
+* **DOI**: `10.48550/arXiv.2210.03629`
+
+#### Abstract
+
+While large language models (LLMs) have demonstrated impressive capabilities across tasks in
+language understanding and interactive decision making, their abilities for reasoning (e.g.
+chain-of-thought prompting) and acting (e.g. action plan generation) have primarily been studied
+as separate topics. In this paper, we explore the use of LLMs to generate both reasoning traces
+and task-specific actions in an interleaved manner, allowing for greater synergy between the
+two: reasoning traces help the model induce, track, and update action plans as well as handle
+exceptions, while actions allow it to interface with external sources, such as knowledge bases or
+environments, to gather additional information. We apply our approach, named ReAct, to a diverse
+set of language and decision making tasks and demonstrate its effectiveness over state-of-the-art
+baselines, alongside improved human interpretability and trustworthiness over methods without
+reasoning or acting components. Concretely, on question answering (HotpotQA) and fact verification
+(Fever), ReAct overcomes issues of hallucination and error propagation prevalent in chain-of-
+thought reasoning by interacting with a simple Wikipedia API, and generates human-like task-
+solving trajectories that are more interpretable than baselines without reasoning traces. On two
+interactive decision making benchmarks (ALFWorld and WebShop), ReAct outperforms imitation and
+reinforcement learning methods by an absolute success rate of 34% and 10% respectively, while
+being prompted with only one or two in-context examples.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. ReAct introduces an agent paradigm where the language model
+**alternates** between two kinds of tokens at each decision point: **Thought:** tokens (free-form
+reasoning) and **Action:** tokens (calls to external tools or environments). This interleaving
+prevents two failure modes that pure chain-of-thought suffers from: hallucinated facts (because
+the agent can fetch real information via Action) and error propagation (because the next Thought
+can revise the plan based on the Action&#x27;s Observation).
+
+The think-vs-act split that ReAct introduces is the **direct conceptual ancestor** of the
+project&#x27;s three-level granularity schema. ReAct uses two levels (think, act); the project&#x27;s
+schema refines this to three (global, subtask, atomic). The implementation and prompting patterns
+in ReAct are therefore highly relevant: the project&#x27;s scope-aware (A) condition can be viewed as
+ReAct extended with an explicit per-token granularity tag.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources,
+ReAct&#x27;s prompting template is:
+
+```
+Thought 1: &lt;reasoning&gt;
+Action 1: &lt;tool_call&gt;
+Observation 1: &lt;tool_response&gt;
+Thought 2: &lt;reasoning&gt;
+Action 2: &lt;tool_call&gt;
+Observation 2: &lt;tool_response&gt;
+...
+Thought N: I now know the answer.
+Action N: Finish[&lt;answer&gt;]
+```
+
+Each `Thought` is free-form natural-language reasoning; each `Action` is a structured tool call
+(`Search[query]`, `Lookup[entity]`, `Finish[answer]`, etc.); each `Observation` is the tool&#x27;s
+response. The model is prompted with **one or two complete trajectories** as in-context examples
+and then runs autoregressively until it emits a `Finish[]` action.
+
+Models evaluated include **PaLM-540B** and **GPT-3** at various sizes. Tasks include question
+answering (HotpotQA), fact verification (Fever), interactive decision-making in a simulated
+household (ALFWorld), and online shopping (WebShop). The paper does not fine-tune any model — all
+gains come from prompting alone.
+
+#### Results
+
+* **+34 absolute** success rate over imitation and RL baselines on **ALFWorld**
+* **+10 absolute** success rate over imitation and RL baselines on **WebShop**
+* On **HotpotQA**, ReAct overcomes hallucination and error-propagation issues that affect pure
+  chain-of-thought
+* On **Fever**, ReAct improves fact-verification accuracy via Wikipedia API access
+* Only **one or two in-context examples** are needed — ReAct is a prompting technique, not a
+  fine-tuned model
+* Trajectories are **more interpretable** than baselines because the Thought tokens are
+  human-readable
+
+#### Innovations
+
+##### Interleaved Thought-Action Prompting
+
+Before ReAct, agent prompting typically separated reasoning from acting (chain-of-thought for
+reasoning, prompt-and-execute for action). ReAct&#x27;s interleaved structure lets the model use each
+modality where it is strongest: reasoning for plan tracking, action for fact retrieval.
+
+##### Hallucination Reduction via Tool Grounding
+
+By giving the model the option to fetch information from a knowledge base or environment, ReAct
+substantially reduces the rate at which the model invents facts. This is the practical foundation
+for all later retrieval-augmented and tool-augmented agent architectures.
+
+##### Trajectory Interpretability
+
+Because Thought tokens are natural language, a human can read a ReAct trajectory and understand
+why the agent made each decision. This is a significant departure from RL-trained agents where
+intermediate states are opaque vectors.
+
+#### Datasets
+
+* **HotpotQA** — multi-hop question answering with Wikipedia.
+* **Fever** — fact verification.
+* **ALFWorld** — interactive simulated household tasks.
+* **WebShop** — online shopping environment with product search and purchase actions.
+
+All four datasets are public; ALFWorld and WebShop require a custom simulator runtime.
+
+#### Main Ideas
+
+* ReAct&#x27;s think-vs-act split is the direct conceptual ancestor of the project&#x27;s
+  global/subtask/atomic schema. The project&#x27;s scope-aware (A) condition can be implemented as
+  ReAct extended with an explicit per-token granularity tag.
+* The +34 absolute gain on ALFWorld is the strongest published evidence that prompt-only
+  agent improvements can produce double-digit absolute effect sizes on multi-step decision tasks.
+  The project&#x27;s Phase 2 effect-size targets (+5 to +15 abs) are conservative against this
+  reference.
+* Trajectory interpretability is a side benefit worth preserving. The project should ensure
+  scope-aware (A) trajectories remain human-readable and avoid opaque tool-call wrappers that
+  would defeat ReAct&#x27;s interpretability gain.
+
+#### Summary
+
+ReAct introduces an agent prompting paradigm where the language model alternates between Thought
+tokens (free-form reasoning) and Action tokens (calls to external tools or environments). The
+motivation is that prior work treated reasoning (chain-of-thought) and acting (tool-use) as
+separate problems, missing the synergy where reasoning helps the agent track and update its plan
+while acting lets the agent ground its reasoning in real information.
+
+Methodologically, ReAct uses one or two in-context examples to teach the model the
+Thought/Action/Observation pattern, then runs autoregressively until the model emits a Finish
+action. No fine-tuning is required. The paper evaluates on HotpotQA, Fever (knowledge tasks) and
+ALFWorld, WebShop (interactive decision-making tasks).
+
+The headline result is **+34 absolute** success-rate improvement on ALFWorld and **+10
+absolute** on WebShop, both compared to imitation and reinforcement-learning baselines. ReAct
+also reduces hallucination on HotpotQA and improves fact-verification on Fever via Wikipedia API
+grounding, with the bonus of producing human-interpretable trajectories.
+
+For the granularity-aware hierarchical agents project, ReAct is the conceptual ancestor of the
+three-level granularity schema. The project&#x27;s scope-aware (A) condition can be implemented as a
+ReAct extension with explicit per-token granularity tags, preserving ReAct&#x27;s interpretability
+while adding scope discipline. The +34 ALFWorld gain is the strongest published evidence that
+prompt-only agent improvements can produce large absolute effect sizes — the project&#x27;s
++5-to-+15 abs targets are conservative against this benchmark.
+
+## Least-to-Most Prompting Enables Complex Reasoning in Large Language Models
+ID: 10.48550_arXiv.2205.10625
+Year: 2022
+Authors: Denny Zhou, Nathanael Schärli, Le Hou, Jason Wei, Nathan Scales, Xuezhi Wang, Dale Schuurmans, Claire Cui, Olivier Bousquet, Quoc Le, Ed Chi
+Venue: ICLR 2023
+Venue type: conference
+DOI: 10.48550/arXiv.2205.10625
+URL: https://arxiv.org/abs/2205.10625
+Categories: hierarchical-planning, granularity-conditioning
+Added by task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+#### Metadata
+
+* **File**: Download failed (PDF deferred to future task; abstract used)
+* **Published**: 2022 (arXiv); 2023 (ICLR)
+* **Authors**: Denny Zhou 🇺🇸, Nathanael Schärli 🇺🇸, Le Hou 🇺🇸, Jason Wei 🇺🇸,
+  Nathan Scales 🇺🇸, Xuezhi Wang 🇺🇸, Dale Schuurmans 🇺🇸, Claire Cui 🇺🇸,
+  Olivier Bousquet 🇺🇸, Quoc Le 🇺🇸, Ed Chi 🇺🇸
+* **Venue**: ICLR 2023
+* **DOI**: `10.48550/arXiv.2205.10625`
+
+#### Abstract
+
+Chain-of-thought prompting has demonstrated remarkable performance on various natural language
+reasoning tasks. However, it tends to perform poorly on tasks which requires solving problems
+harder than the exemplars shown in the prompts. To overcome this challenge of easy-to-hard
+generalization, we propose a novel prompting strategy, least-to-most prompting. The key idea in
+this strategy is to break down a complex problem into a series of simpler subproblems and then
+solve them in sequence. Solving each subproblem is facilitated by the answers to previously
+solved subproblems. Our experimental results on tasks related to symbolic manipulation,
+compositional generalization, and math reasoning reveal that least-to-most prompting is capable
+of generalizing to more difficult problems than those seen in the prompts. A notable finding is
+that when the GPT-3 code-davinci-002 model is used with least-to-most prompting, it can solve the
+compositional generalization benchmark SCAN in any split (including length split) with an
+accuracy of at least 99% using just 14 exemplars, compared to only 16% accuracy with chain-of-
+thought prompting.
+
+#### Overview
+
+This summary is based on the abstract and publicly available information only; the full paper
+could not be downloaded for this task. Least-to-Most (LtM) prompting is a two-stage prompting
+technique that addresses chain-of-thought&#x27;s *easy-to-hard generalization gap*: CoT works well
+when test problems are similar in difficulty to the in-context exemplars but degrades sharply on
+harder problems. LtM splits the prompt into (a) a **decomposition** stage where the model lists
+the subproblems in increasing-difficulty order, and (b) a **sequential solving** stage where each
+subproblem is solved using the answers to previously solved subproblems.
+
+The empirical headline is striking: on the SCAN compositional generalization benchmark length
+split, LtM with `code-davinci-002` reaches **&gt;=99% accuracy** with **just 14 exemplars**, versus
+**16% with vanilla chain-of-thought** — a **+83 absolute** gain. This is the strongest
+single-paper evidence that explicit decomposition produces large effect sizes on hierarchical
+tasks.
+
+For the project, LtM provides the **strongest empirical anchor** for the scope-aware (A)
+condition&#x27;s expected effect size. The +83 absolute gain on SCAN sets an aspirational ceiling;
+the project&#x27;s +5 to +15 absolute target on the four-source composite is conservative against
+this anchor.
+
+#### Architecture, Models and Methods
+
+Full methodology not available — paper not downloaded. From the abstract and public sources, LtM
+prompting has two stages:
+
+**Stage 1 — Decomposition**:
+```
+Q: &lt;complex problem&gt;
+A: To solve &quot;&lt;problem&gt;&quot;, we need to first solve:
+   1. &lt;subproblem 1 (easiest)&gt;
+   2. &lt;subproblem 2&gt;
+   ...
+   k. &lt;subproblem k (hardest)&gt;
+```
+
+**Stage 2 — Sequential Solving**:
+```
+Q: &lt;subproblem 1&gt;
+A: &lt;solution 1&gt;
+
+Q: &lt;subproblem 2 with subproblem 1&#x27;s solution as context&gt;
+A: &lt;solution 2&gt;
+
+...
+
+Q: &lt;subproblem k with all prior solutions as context&gt;
+A: &lt;final answer&gt;
+```
+
+Models evaluated: **GPT-3 code-davinci-002** primarily, with comparisons to other GPT-3 variants.
+Tasks: SCAN (compositional generalization), GSM8K (math), MultiArith (math), DROP (reading
+comprehension with reasoning), Last Letter Concatenation (symbolic).
+
+#### Results
+
+* **&gt;=99% accuracy on SCAN length-split** with `code-davinci-002` + LtM, vs. **16% with
+  vanilla chain-of-thought** — a **+83 absolute** gain
+* **14 exemplars** are sufficient — a substantial improvement over the 15,000+ training examples
+  that prior neural-symbolic models needed for SCAN
+* **GSM8K math reasoning** also improves with LtM, though gains are smaller (single-digit
+  absolute)
+* **Last Letter Concatenation** (symbolic) shows similar large gains to SCAN
+* **DROP reading comprehension** shows moderate gains
+* The improvement comes specifically from **easy-to-hard generalization** — LtM&#x27;s gain over CoT
+  scales with how much harder the test problems are than the exemplars
+
+#### Innovations
+
+##### Two-Stage Decomposition Then Sequential Solving
+
+Before LtM, prompting techniques either reasoned linearly (CoT) or planned-then-executed (PS).
+LtM is the first to require both an *explicit ordering* of subproblems by difficulty and the
+*reuse of earlier subproblems&#x27; solutions* in later subproblems&#x27; contexts.
+
+##### Easy-to-Hard Generalization as a Design Goal
+
+LtM is explicitly designed for the case where test problems are *harder* than training/in-context
+exemplars. This is the right characterization for the project&#x27;s evaluation regime: the four
+roadmap benchmarks include problems substantially harder than any in-context examples we can
+realistically provide.
+
+##### Evidence That Prompting Alone Beats Specialized Architectures
+
+The SCAN result demonstrates that prompting can match or exceed specialized neural-symbolic
+architectures (which need 15,000+ training examples) using just 14 in-context exemplars. This is
+a major argument for inference-time prompting strategies — exactly the methodological commitment
+of this project.
+
+#### Datasets
+
+* **SCAN** — compositional generalization, command-to-action mapping. Key splits: simple,
+  length, around-right, jump.
+* **GSM8K** — grade-school math word problems.
+* **MultiArith** — arithmetic word problems.
+* **DROP** — reading comprehension with discrete reasoning.
+* **Last Letter Concatenation** — symbolic manipulation.
+
+#### Main Ideas
+
+* The **+83 absolute gain on SCAN length-split** is the strongest published evidence that
+  explicit decomposition produces large effect sizes on hierarchical tasks. The project&#x27;s
+  scope-aware (A) condition is conceptually similar to LtM (decompose first, then solve);
+  achieving even **10-20% of LtM&#x27;s relative gain** would be a strong Phase 2 outcome.
+* **Sequential solution-reuse** (each subproblem uses prior solutions in its context) is a
+  detail worth replicating in the project&#x27;s scope-aware (A) implementation. Pure decomposition
+  without solution-reuse is weaker.
+* **Easy-to-hard generalization** is the right framing for the project&#x27;s evaluation regime —
+  the four benchmarks cover a wide difficulty range and any positive scope-conditioning effect
+  must generalize beyond the in-context exemplars.
+
+#### Summary
+
+Least-to-Most (LtM) prompting is a two-stage prompting technique designed to overcome chain-of-
+thought&#x27;s easy-to-hard generalization gap. The first stage decomposes a complex problem into a
+sequence of simpler subproblems ordered by difficulty; the second stage solves each subproblem
+using the answers to previously solved subproblems as additional context. The motivation is that
+CoT performs well on test problems similar to in-context exemplars but degrades sharply when
+test problems are harder.
+
+Methodologically, LtM uses the same model (GPT-3 code-davinci-002 in the headline experiments)
+in two prompting modes: decomposition and sequential solving. Evaluation covers SCAN
+(compositional generalization), GSM8K (math), MultiArith (math), DROP (reading comprehension),
+and Last Letter Concatenation (symbolic).
+
+The headline result is **&gt;=99% accuracy on SCAN length-split** with **just 14 exemplars**, vs.
+**16% with vanilla chain-of-thought** — a **+83 absolute** gain. Other tasks show smaller but
+consistent gains, with the improvement scaling with the easy-to-hard difficulty gap between
+exemplars and test problems.
+
+For the granularity-aware hierarchical agents project, LtM is the strongest empirical anchor for
+the scope-aware (A) condition&#x27;s expected effect size on hierarchical tasks. The +83 absolute SCAN
+gain sets the aspirational ceiling; the project&#x27;s +5-to-+15 abs target on the four-source
+composite is conservative against this anchor. Solution-reuse — each subproblem using prior
+solutions in its context — is a detail worth replicating in scope-aware (A); pure decomposition
+without solution-reuse loses much of LtM&#x27;s gain.
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>
