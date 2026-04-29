@@ -5,10 +5,10 @@
   "name": "Hierarchical annotation pilot v1: audit and conform existing 115 rows",
   "short_description": "Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [],
   "start_time": "2026-04-29T19:35:28Z",
-  "end_time": null,
+  "end_time": "2026-04-29T20:14:30Z",
   "expected_assets": {
     "dataset": 1
   },

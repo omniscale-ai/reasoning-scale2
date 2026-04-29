@@ -1,0 +1,7 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1/tasks/t0005_hierarchical_annotation_pilot_v1
+
+[33m[1mWARNINGS:[0m
+[33m  FD-W002 warning: logs/searches/ is empty (no search queries were logged)[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
