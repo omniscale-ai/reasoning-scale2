@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0003_download_benchmark_subsets",
+  "command": "uv run --active python -u -m arf.scripts.aggregators.aggregate_task_types --format json",
+  "exit_code": 0,
+  "duration_seconds": 0.07,
+  "started_at": "2026-04-29T14:32:29Z",
+  "completed_at": "2026-04-29T14:32:29Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0003_download_benchmark_subsets",
+  "stdout_file": "001_20260429T143229Z_uv-run-active.stdout.txt",
+  "stderr_file": "001_20260429T143229Z_uv-run-active.stderr.txt",
+  "stdout_lines": 284,
+  "stderr_lines": 0,
+  "truncated": false
+}
