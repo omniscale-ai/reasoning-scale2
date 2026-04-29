@@ -1,0 +1,9 @@
+{
+  "task_id": "t0009_hierarchical_annotation_v2",
+  "checked_at": "2026-04-29T23:28:09Z",
+  "result": "passed",
+  "dependencies": [],
+  "errors": 0,
+  "warnings": 0,
+  "note": "Task has no upstream dependencies. v1 dataset asset from t0005 is read as input but not declared as a dependency per task.json."
+}
