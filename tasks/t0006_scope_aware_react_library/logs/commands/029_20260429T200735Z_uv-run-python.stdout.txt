@@ -1,0 +1,2 @@
+Captured 0 session transcript(s) into /Users/anaderi/git/reasoning-scale2-worktrees/t0006_scope_aware_react_library/tasks/t0006_scope_aware_react_library/logs/sessions.
+Wrote capture report to /Users/anaderi/git/reasoning-scale2-worktrees/t0006_scope_aware_react_library/tasks/t0006_scope_aware_react_library/logs/sessions/capture_report.json.
