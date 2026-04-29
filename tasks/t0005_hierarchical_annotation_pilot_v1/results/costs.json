@@ -1,0 +1,16 @@
+{
+  "total_cost_usd": 0.0598,
+  "breakdown": {
+    "anthropic_api": 0.0598
+  },
+  "service_breakdown": {
+    "anthropic_api": {
+      "claude-haiku-4-5-20251001": {
+        "calls": 12,
+        "estimated_cost_usd": 0.0598,
+        "note": "Spend estimated from local-CLI input/output token counts using $1/Mtok input + $5/Mtok output. Calls executed via the local `claude` CLI under the user's existing Claude Code subscription, so actual subscription cost is bundled."
+      }
+    }
+  },
+  "note": "Token counts are CLI-reported; cost is an upper-bound estimate using published Haiku pricing. Total well under the $5 task cap and the $10 default per-task limit."
+}
