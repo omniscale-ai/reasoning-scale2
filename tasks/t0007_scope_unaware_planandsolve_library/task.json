@@ -5,10 +5,10 @@
   "name": "Scope-unaware Plan-and-Solve library: condition B baseline",
   "short_description": "Write-library adapting LangChain Plan-and-Execute as the canonical scope-unaware (B) baseline.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [],
   "start_time": "2026-04-29T19:35:48Z",
-  "end_time": null,
+  "end_time": "2026-04-29T20:01:00Z",
   "expected_assets": {
     "library": 1
   },
