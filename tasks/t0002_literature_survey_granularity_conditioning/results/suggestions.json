@@ -1,0 +1,105 @@
+{
+  "spec_version": "1",
+  "suggestions": [
+    {
+      "id": "S-0002-01",
+      "title": "Register pass^k as a project metric for reliability reporting",
+      "description": "tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "10.48550_arXiv.2406.12045",
+      "categories": ["agent-evaluation", "benchmark-taubench"]
+    },
+    {
+      "id": "S-0002-02",
+      "title": "Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2",
+      "description": "Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that 3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to this protocol for Metric 2 (overconfident error rate). This task would specify the human-inspired confidence prompt template (low/medium/high + brief justification), implement the self-consistency aggregator, and validate calibration on a small held-out set before Phase 2 launches.",
+      "kind": "library",
+      "priority": "high",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "10.48550_arXiv.2306.13063",
+      "categories": ["uncertainty-calibration", "agent-evaluation"]
+    },
+    {
+      "id": "S-0002-03",
+      "title": "Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++",
+      "description": "Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow developer instance and the BrowserGym Python harness. This is a substantial infrastructure task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1 annotation begins.",
+      "kind": "library",
+      "priority": "high",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "10.48550_arXiv.2407.05291",
+      "categories": ["benchmark-workarena", "agent-evaluation"]
+    },
+    {
+      "id": "S-0002-04",
+      "title": "Negotiate FrontierMath access via Epoch AI evaluation pipeline",
+      "description": "FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch AI's evaluation pipeline; the raw problems are not publicly downloadable. The project needs an explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.",
+      "kind": "dataset",
+      "priority": "high",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "10.48550_arXiv.2411.04872",
+      "categories": ["benchmark-frontierscience"]
+    },
+    {
+      "id": "S-0002-05",
+      "title": "Build the SWE-bench Verified Docker harness",
+      "description": "SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).",
+      "kind": "dataset",
+      "priority": "high",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "no-doi_OpenAI2024_swe-bench-verified",
+      "categories": ["benchmark-swebench"]
+    },
+    {
+      "id": "S-0002-06",
+      "title": "Implement Plan-and-Solve as the canonical scope-unaware (B) baseline",
+      "description": "Plan-and-Solve [Wang2023] is the strongest published prompt-only baseline that does not condition on explicit granularity tags. The project should reuse LangChain's Plan-and-Execute implementation rather than reimplementing from scratch. This task would adapt the LangChain implementation to the project's task harness, log both stages (plan and solve) separately, and produce a 10-instance validation run on the composite benchmark to confirm the baseline beats vanilla Zero-shot-CoT.",
+      "kind": "technique",
+      "priority": "high",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "10.48550_arXiv.2305.04091",
+      "categories": ["granularity-conditioning", "hierarchical-planning"]
+    },
+    {
+      "id": "S-0002-07",
+      "title": "Implement scope-aware (A) as ReAct extended with explicit granularity tags",
+      "description": "The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token granularity tag from the set {global, subtask, atomic}. This task would specify the prompt template per granularity, the tagging logic that decides which granularity is active at each LLM call, and a logging schema that records the active granularity for every action so post-hoc per-granularity analysis is possible. Replicate Least-to-Most's solution-reuse pattern [Zhou2022] inside the implementation.",
+      "kind": "technique",
+      "priority": "high",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "10.48550_arXiv.2210.03629",
+      "categories": ["granularity-conditioning", "hierarchical-planning"]
+    },
+    {
+      "id": "S-0002-08",
+      "title": "Run a Phase 1 pilot annotation on 20 tasks before scaling to 100",
+      "description": "The project's success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "10.48550_arXiv.2407.05291",
+      "categories": ["benchmark-annotation", "hierarchical-planning"]
+    },
+    {
+      "id": "S-0002-09",
+      "title": "Re-fetch the 11 paper PDFs with git LFS enabled",
+      "description": "All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset's files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.",
+      "kind": "library",
+      "priority": "medium",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0002-10",
+      "title": "Defer Reflexion-style episodic memory to a Phase 3 ablation",
+      "description": "Reflexion [Shinn2023] adds verbal self-reflection across trials and reaches 91% pass@1 on HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would conflate scope conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether Reflexion-style memory adds further gains on top of the scope-aware (A) condition established in Phase 2.",
+      "kind": "experiment",
+      "priority": "low",
+      "source_task": "t0002_literature_survey_granularity_conditioning",
+      "source_paper": "10.48550_arXiv.2303.11366",
+      "categories": ["granularity-conditioning", "hierarchical-planning"]
+    }
+  ]
+}

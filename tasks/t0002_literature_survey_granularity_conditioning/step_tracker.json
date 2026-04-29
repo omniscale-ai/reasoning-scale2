@@ -122,8 +122,8 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up suggestions for Phase 2 baseline experiment design and benchmark choices.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T14:24:59Z",
       "completed_at": null,
       "log_file": "logs/steps/014_suggestions/"
     },
