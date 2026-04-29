@@ -104,8 +104,8 @@
       "step": 12,
       "name": "results",
       "description": "Write per-benchmark access status, sample counts, and subset decisions in results files.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T14:54:03Z",
       "completed_at": null,
       "log_file": "logs/steps/012_results/"
     },

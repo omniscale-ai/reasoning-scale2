@@ -1,0 +1,5 @@
+{
+  "total_cost_usd": 0,
+  "breakdown": {},
+  "note": "No paid APIs, no GPU, no third-party paid services. All four downloads use public HuggingFace and GitHub raw URLs."
+}
