@@ -1,0 +1,21 @@
+You identified that you are missing information to proceed with your plan. Based on the gaps you described, revise your plan to address them.
+
+Missing information identified:
+{missing_information}
+
+Produce a revised plan that accounts for these gaps. The revised plan should:
+- Add steps to obtain the missing information
+- Keep steps that are still valid
+- Remove or modify steps that depended on the missing information
+
+Output ONLY valid JSON, no other text:
+{{
+  "steps": [
+    {{
+      "number": 1,
+      "action": "brief description of what to do",
+      "needs": ["list of required inputs or prior results"],
+      "produces": ["list of outputs this step yields"]
+    }}
+  ]
+}}

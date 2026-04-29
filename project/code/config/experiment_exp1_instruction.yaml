@@ -1,0 +1,32 @@
+experiment:
+  name: "exp1_instruction_suppression"
+  seed: 42
+  use_cli: true
+
+benchmark:
+  source: "frontierscience"
+  track: "olympiad"
+  subjects: ["physics", "chemistry"]
+  sample_per_subject: 5
+
+models:
+  test_subjects:
+    - id: "claude-sonnet-4-6"
+      provider: "anthropic"
+  simulator:
+    id: "claude-sonnet-4-6"
+    provider: "anthropic"
+  judge:
+    id: "claude-sonnet-4-6"
+    provider: "anthropic"
+
+pipeline:
+  simulation_modes: ["misleading"]
+  probe_at_steps: [2, 3]
+  context_modes: ["inhibit_soft", "inhibit_hard"]
+  max_plan_steps: 6
+  min_plan_steps: 2
+
+costs:
+  budget_usd: 0.0
+  warn_at_usd: 0.0

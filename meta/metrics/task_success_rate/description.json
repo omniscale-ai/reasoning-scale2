@@ -1,0 +1,9 @@
+{
+  "spec_version": 1,
+  "name": "Task Success Rate",
+  "description": "Project Metric 1: normalized fraction of fully solved tasks (or binary success on the full task) on the composite annotated benchmark, reported per condition (A scope-aware, B scope-unaware, C scope-mismatched).",
+  "unit": "accuracy",
+  "value_type": "float",
+  "higher_is_better": true,
+  "is_key": true
+}

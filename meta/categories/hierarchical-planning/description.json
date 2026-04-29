@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "Hierarchical Planning",
+  "short_description": "Decomposition of tasks into global plan, subtask, and atomic execution levels.",
+  "detailed_description": "Tags work concerned with the three-level hierarchy (strategic / subtask / execution) that all tasks in this project must respect. Covers annotation schemas, plan trees, gold-action enumeration at each level, and any analysis that depends on the hierarchical structure rather than on the conditioning label."
+}

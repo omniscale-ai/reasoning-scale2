@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "Uncertainty Calibration",
+  "short_description": "Confidence reporting, overconfident error analysis, and calibration of agent action probabilities.",
+  "detailed_description": "Tags assets and tasks that measure or improve the agent's calibration. Covers the overconfident-error-rate metric (Metric 2), confidence-elicitation prompts, and any analysis that relates predicted confidence to action correctness. Use this category for ablations that vary how confidence is requested or scored."
+}

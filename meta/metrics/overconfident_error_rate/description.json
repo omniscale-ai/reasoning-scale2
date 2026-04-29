@@ -1,0 +1,8 @@
+{
+  "spec_version": 1,
+  "name": "Overconfident Error Rate",
+  "description": "Project Metric 2: fraction of incorrect actions taken with high model-reported confidence on the composite annotated benchmark, reported per condition (A scope-aware, B scope-unaware, C scope-mismatched). Lower values indicate better calibration.",
+  "unit": "ratio",
+  "value_type": "float",
+  "higher_is_better": false
+}

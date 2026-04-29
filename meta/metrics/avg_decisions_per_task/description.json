@@ -1,0 +1,8 @@
+{
+  "spec_version": 1,
+  "name": "Average Decisions per Task",
+  "description": "Mean number of agent decisions executed per task in a run, reported per condition. Informational diagnostic that exposes replanning behavior and depth of execution; not a leaderboard metric.",
+  "unit": "count",
+  "value_type": "float",
+  "higher_is_better": false
+}

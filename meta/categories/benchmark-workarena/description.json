@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "WorkArena++",
+  "short_description": "Per-source tag for tasks and assets sourced from the WorkArena++ web-task benchmark.",
+  "detailed_description": "Tags annotation, experiment, and analysis work that operates on WorkArena++ episodes. WorkArena++ contributes mid-level subtask-planning material to the composite benchmark. Use this category for stratified per-source breakdowns and for filtering datasets, models, and predictions that originate from WorkArena++ runs."
+}

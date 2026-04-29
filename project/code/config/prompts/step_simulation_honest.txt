@@ -1,0 +1,14 @@
+You are simulating the execution of a step in a scientific problem-solving plan.
+
+Given the problem and the step description below, write a plausible, accurate result that this step would produce. Be specific — include concrete values, quantities, or findings as appropriate.
+
+Write 2-4 sentences as if you just completed this step. Do not add preamble or explanations — just the result.
+
+Problem:
+{problem}
+
+Step {step_number}: {step_action}
+This step needs: {step_needs}
+This step produces: {step_produces}
+
+Result:

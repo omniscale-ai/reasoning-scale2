@@ -1,0 +1,6 @@
+{
+  "spec_version": 1,
+  "name": "Granularity Conditioning",
+  "short_description": "Work that explicitly conditions an agent on its current operating granularity (global, subtask, atomic).",
+  "detailed_description": "Tags assets and tasks that study the effect of telling the agent which level of the hierarchy it is currently operating at. Covers the three project conditions: scope-aware (A), scope-unaware (B), and scope-mismatched (C). Use this category for prompt designs, ablations, and analyses that turn the granularity label on or off."
+}
