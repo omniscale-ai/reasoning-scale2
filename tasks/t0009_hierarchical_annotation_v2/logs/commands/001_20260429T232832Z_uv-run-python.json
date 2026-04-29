@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0009_hierarchical_annotation_v2",
+  "command": "uv run python -m arf.scripts.utils.init_task_folders t0009_hierarchical_annotation_v2 --step-log-dir tasks/t0009_hierarchical_annotation_v2/logs/steps/003_init-folders/",
+  "exit_code": 0,
+  "duration_seconds": 0.054,
+  "started_at": "2026-04-29T23:28:32Z",
+  "completed_at": "2026-04-29T23:28:32Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0009_hierarchical_annotation_v2",
+  "stdout_file": "001_20260429T232832Z_uv-run-python.stdout.txt",
+  "stderr_file": "001_20260429T232832Z_uv-run-python.stderr.txt",
+  "stdout_lines": 16,
+  "stderr_lines": 0,
+  "truncated": false
+}
