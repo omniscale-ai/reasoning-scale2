@@ -6,7 +6,7 @@ subtask, atomic).
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (4)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (9)](../suggestions/by-category/granularity-conditioning.md) | [Libraries
+[Suggestions (10)](../suggestions/by-category/granularity-conditioning.md) | [Libraries
 (2)](../libraries/by-category/granularity-conditioning.md)
 
 ---
@@ -190,7 +190,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (7 open, 2 closed)
+## Suggestions (8 open, 2 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
@@ -204,6 +204,19 @@ HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would 
 conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether
 Reflexion-style memory adds further gains on top of the scope-aware (A) condition established
 in Phase 2.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
+experiments</strong> (S-0005-06)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
+that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
+prompts (B vs G/S/A from the project's research questions).
 
 </details>
 

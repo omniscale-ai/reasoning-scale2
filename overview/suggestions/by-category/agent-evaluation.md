@@ -1,7 +1,7 @@
 # Suggestions: `agent-evaluation`
 
-10 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**10 open** (7 high, 3 medium).
+12 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
+**12 open** (8 high, 3 medium, 1 low).
 
 [Back to all suggestions](../README.md)
 
@@ -161,6 +161,25 @@ annotation begins.
 
 </details>
 
+<details>
+<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
+experiments</strong> (S-0005-06)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-06` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
+that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
+prompts (B vs G/S/A from the project's research questions).
+
+</details>
+
 ## Medium Priority
 
 <details>
@@ -223,5 +242,27 @@ both libraries' TRAJECTORY_RECORD_FIELDS tuples and asserts they are identical, 
 test that runs both libraries on the same toy problem and verifies the trajectory JSON shapes
 round-trip through a single Pydantic loader. If they diverge, file a correction in the
 later-merged task. This is the cheapest insurance against silent schema drift.
+
+</details>
+
+## Low Priority
+
+<details>
+<summary>📊 <strong>Multi-judge disagreement study on hierarchical
+annotation</strong> (S-0005-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-05` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-sonnet-4-6)
+and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept
+rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality
+estimate. Estimated cost: ~$0.30 per run.
 
 </details>

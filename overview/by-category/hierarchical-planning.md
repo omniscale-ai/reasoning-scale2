@@ -5,7 +5,8 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (5)](../papers/by-category/hierarchical-planning.md) | [Suggestions
-(9)](../suggestions/by-category/hierarchical-planning.md) | [Libraries
+(11)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
+(1)](../datasets/by-category/hierarchical-planning.md) | [Libraries
 (1)](../libraries/by-category/hierarchical-planning.md)
 
 ---
@@ -232,7 +233,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (6 open, 3 closed)
+## Suggestions (8 open, 3 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
@@ -260,6 +261,35 @@ FrontierScience-Olympiad pilot rows currently lack per-instance step graphs beca
 solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
 problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
 apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+<details>
+<summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
+review</strong> (S-0005-01)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter
+retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
+a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
+Cohen's kappa) between the human rater and the LLM annotator.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Reconcile WorkArena++ flat-action sequences with the three-level
+schema</strong> (S-0005-03)</summary>
+
+**Kind**: technique | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The judge rejected all three WorkArena++ rows because the upstream annotation lacks
+`conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the
+WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be
+detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows
+as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
 
 </details>
 

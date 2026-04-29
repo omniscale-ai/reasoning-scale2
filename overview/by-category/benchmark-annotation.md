@@ -5,7 +5,8 @@ Manual or LLM-assisted gold-action annotation across the three granularity level
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-annotation.md) | [Suggestions
-(2)](../suggestions/by-category/benchmark-annotation.md)
+(5)](../suggestions/by-category/benchmark-annotation.md) | [Datasets
+(1)](../datasets/by-category/benchmark-annotation.md)
 
 ---
 
@@ -62,7 +63,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (1 open, 1 closed)
+## Suggestions (4 open, 1 closed)
 
 <details>
 <summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
@@ -75,5 +76,48 @@ FrontierScience-Olympiad pilot rows currently lack per-instance step graphs beca
 solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
 problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
 apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+<details>
+<summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
+review</strong> (S-0005-01)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter
+retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
+a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
+Cohen's kappa) between the human rater and the LLM annotator.
+
+</details>
+
+<details>
+<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
+truncation)</strong> (S-0005-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
+verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
+excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
+and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
+on FrontierScience-Olympiad.
+
+</details>
+
+<details>
+<summary>📂 <strong>Remediate proxy benchmark naming and task_id
+non-uniqueness</strong> (S-0005-04)</summary>
+
+**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The pilot file uses tau-bench and WorkArena++ as proxies but task_id prefixes are still `he_*`
+(HumanEval) and `m2w_*` (Mind2Web) from earlier drafts; additionally 14 of 115 task_ids are
+duplicated. Re-key the source data with synthetic per-row UUIDs and align task_id prefixes
+with the actual benchmark slugs (`tau_*`, `wa_*`).
 
 </details>

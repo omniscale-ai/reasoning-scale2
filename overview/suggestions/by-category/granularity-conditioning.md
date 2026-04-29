@@ -1,7 +1,7 @@
 # Suggestions: `granularity-conditioning`
 
-9 suggestion(s) in category
-[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **7 open** (3
+10 suggestion(s) in category
+[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **8 open** (4
 high, 2 medium, 2 low), **2 closed**.
 
 [Back to all suggestions](../README.md)
@@ -72,6 +72,25 @@ libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate
 overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
 size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
 anchor.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
+experiments</strong> (S-0005-06)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-06` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
+that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
+prompts (B vs G/S/A from the project's research questions).
 
 </details>
 

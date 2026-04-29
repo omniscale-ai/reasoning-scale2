@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-29T20:09:42Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-29T20:16:06Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>18860</char_count>
-    <byte_count>18860</byte_count>
-    <estimated_tokens>4715</estimated_tokens>
+    <char_count>22830</char_count>
+    <byte_count>22830</byte_count>
+    <estimated_tokens>5707</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -32,6 +32,12 @@
         <id>S-0003-03</id>
         <id>S-0003-04</id>
         <id>S-0003-05</id>
+        <id>S-0005-01</id>
+        <id>S-0005-02</id>
+        <id>S-0005-03</id>
+        <id>S-0005-04</id>
+        <id>S-0005-05</id>
+        <id>S-0005-06</id>
         <id>S-0006-01</id>
         <id>S-0006-02</id>
         <id>S-0006-03</id>
@@ -43,7 +49,7 @@
         <id>S-0007-04</id>
       </source_ids>
       <content>
-Suggestions: 24
+Suggestions: 30
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -220,6 +226,76 @@ Source task: t0003_download_benchmark_subsets
 Date added: 2026-04-29
 
 This task wrote the `code/dataset_asset.py` helper inline, but the same DatasetDetails / write_dataset_asset helpers will be needed by every future download-dataset task. Promote this code to a registered library asset (under a future task) so subsequent tasks can import the helpers via `assets/library/` rather than re-implementing them.
+
+## Hierarchical annotation v2: scale to &gt;=200 rows with full human review
+ID: S-0005-01
+Status: active
+Priority: high
+Kind: dataset
+Source task: t0005_hierarchical_annotation_pilot_v1
+Categories: benchmark-annotation, hierarchical-planning
+Date added: 2026-04-29
+
+Extend the v1 pilot to &gt;=200 rows by re-running the upstream pilot pipeline with a stricter retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform a full human-rater review of every row. Compute inter-rater agreement (Krippendorff&#x27;s alpha or Cohen&#x27;s kappa) between the human rater and the LLM annotator.
+
+## Re-run LLM-as-judge with full problem text (no truncation)
+ID: S-0005-02
+Status: active
+Priority: high
+Kind: evaluation
+Source task: t0005_hierarchical_annotation_pilot_v1
+Source paper: 10.48550_arXiv.2306.13063
+Categories: uncertainty-calibration, benchmark-annotation
+Date added: 2026-04-29
+
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated excerpt. Re-run the audit using the full problem text (or a structured per-section summary) and compare accept rates. Predict an absolute accept-rate increase of &gt;=15 percentage points on FrontierScience-Olympiad.
+
+## Reconcile WorkArena++ flat-action sequences with the three-level schema
+ID: S-0005-03
+Status: active
+Priority: medium
+Kind: technique
+Source task: t0005_hierarchical_annotation_pilot_v1
+Source paper: 10.48550_arXiv.2407.05291
+Categories: hierarchical-planning, benchmark-workarena
+Date added: 2026-04-29
+
+The judge rejected all three WorkArena++ rows because the upstream annotation lacks `conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
+
+## Remediate proxy benchmark naming and task_id non-uniqueness
+ID: S-0005-04
+Status: active
+Priority: medium
+Kind: dataset
+Source task: t0005_hierarchical_annotation_pilot_v1
+Categories: benchmark-annotation
+Date added: 2026-04-29
+
+The pilot file uses tau-bench and WorkArena++ as proxies but task_id prefixes are still `he_*` (HumanEval) and `m2w_*` (Mind2Web) from earlier drafts; additionally 14 of 115 task_ids are duplicated. Re-key the source data with synthetic per-row UUIDs and align task_id prefixes with the actual benchmark slugs (`tau_*`, `wa_*`).
+
+## Multi-judge disagreement study on hierarchical annotation
+ID: S-0005-05
+Status: active
+Priority: low
+Kind: evaluation
+Source task: t0005_hierarchical_annotation_pilot_v1
+Source paper: 10.48550_arXiv.2306.13063
+Categories: uncertainty-calibration, agent-evaluation
+Date added: 2026-04-29
+
+Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-sonnet-4-6) and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality estimate. Estimated cost: ~$0.30 per run.
+
+## Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning experiments
+ID: S-0005-06
+Status: active
+Priority: high
+Kind: experiment
+Source task: t0005_hierarchical_annotation_pilot_v1
+Source paper: 10.48550_arXiv.2305.04091
+Categories: granularity-conditioning, agent-evaluation
+Date added: 2026-04-29
+
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent prompts (B vs G/S/A from the project&#x27;s research questions).
 
 ## Build benchmark-specific tool registries for the four roadmap benchmarks
 ID: S-0006-01

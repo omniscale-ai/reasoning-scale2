@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="papers/"><img src="https://img.shields.io/badge/Papers-11-4169E1" alt="Papers"></a>
-  <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-4-2E8B57" alt="Datasets"></a>
+  <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-5-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-0-9370DB" alt="Predictions"></a>
   <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-2-20B2AA" alt="Libraries"></a>
@@ -12,10 +12,10 @@
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-7-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-24-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-30-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
-  <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-0-DC143C" alt="Results"></a>
+  <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-1-DC143C" alt="Results"></a>
   <a href="task-types/"><img src="https://img.shields.io/badge/Task%20Types-18-708090" alt="Task%20Types"></a>
 </p>
 
@@ -29,16 +29,16 @@
 [hierarchical-planning](by-category/hierarchical-planning.md) |
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
-**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (3K) |
-[full](llm-context/full.xml) (22K) | [roadmap](llm-context/roadmap.xml) (8K) |
-[results](llm-context/results-deep-dive.xml) (17K) |
-[assets](llm-context/literature-and-assets.xml) (7K)
+**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (4K) |
+[full](llm-context/full.xml) (25K) | [roadmap](llm-context/roadmap.xml) (8K) |
+[results](llm-context/results-deep-dive.xml) (21K) |
+[assets](llm-context/literature-and-assets.xml) (8K)
 
-*Last updated: 2026-04-29 20:09 UTC*
+*Last updated: 2026-04-29 20:16 UTC*
 
 * **Budget**: **$0** spent of $100
 * **Remaining**: **$100**
-* **Usage**: `░░░░░░░░░░░░░░░░░░░░` 0.0%
+* **Usage**: `░░░░░░░░░░░░░░░░░░░░` 0.1%
 
 ---
 
@@ -48,11 +48,9 @@ No daily news yet.
 
 ---
 
-## [In Progress (1)](tasks/by-status/in_progress.md)
+## [In Progress (0)](tasks/by-status/in_progress.md)
 
-| # | Task | Started |
-|---|------|---------|
-| 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | 2026-04-29 19:35 |
+No tasks in progress.
 
 ---
 
@@ -68,10 +66,11 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (6 total)](tasks/by-status/completed.md)
+## [Recently Completed (7 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`results`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/results_detailed.md) | 2026-04-29 20:14 |
 | 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`results`](../tasks/t0006_scope_aware_react_library/results/results_detailed.md) | 2026-04-29 20:07 |
 | 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
 | 0004 | [Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries](../overview/tasks/task_pages/t0004_brainstorm_results_2.md) | [`results`](../tasks/t0004_brainstorm_results_2/results/results_detailed.md) | 2026-04-29 15:30 |
@@ -81,7 +80,7 @@ No blocked tasks.
 
 ---
 
-## [Recent Suggestions (21 open)](suggestions/)
+## [Recent Suggestions (27 open)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -235,11 +234,11 @@ experiments.
 
 </details>
 
-*11 more open suggestions → [open suggestions](suggestions/)*
+*17 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (11)](suggestions/)
+## [High Priority Suggestions (14)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -349,54 +348,48 @@ fallback.
 </details>
 
 <details>
-<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
-benchmarks</strong> (S-0006-01)</summary>
+<summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
+review</strong> (S-0005-01)</summary>
 
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0006_scope_aware_react_library](../tasks/t0006_scope_aware_react_library/)
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
 
-scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
-registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
-(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
-git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
-write-library task that imports scope_aware_react_v1 and registers a registry with consistent
-naming conventions.
+Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter
+retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
+a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
+Cohen's kappa) between the human rater and the LLM annotator.
 
 </details>
 
 <details>
-<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
-subset</strong> (S-0006-03)</summary>
+<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
+truncation)</strong> (S-0005-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
+verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
+excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
+and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
+on FrontierScience-Olympiad.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
+experiments</strong> (S-0005-06)</summary>
 
 **Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0006_scope_aware_react_library](../tasks/t0006_scope_aware_react_library/)
+[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
 
-scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
-as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
-libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
-overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
-size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
-anchor.
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
+that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
+prompts (B vs G/S/A from the project's research questions).
 
 </details>
 
-<details>
-<summary>📚 <strong>Implement matched-mismatch (C) library on top of
-scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0007_scope_unaware_planandsolve_library](../tasks/t0007_scope_unaware_planandsolve_library/)
-
-Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
-scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
-producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
-this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
-schema. The classifier should be a small fine-tuned model or heuristic so the task is
-local-only and deterministic.
-
-</details>
-
-*1 more high-priority suggestion → [high-priority suggestions](suggestions/)*
+*4 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 
@@ -831,13 +824,14 @@ the planning step must address.
 
 ---
 
-## [Latest Datasets (4 total)](datasets/)
+## [Latest Datasets (5 total)](datasets/)
 
 | Name | Size | Source | Added |
 |------|------|--------|-------|
 | [tau-bench subset (4-8 actions)](../tasks/t0003_download_benchmark_subsets/assets/dataset/taubench-subset/description.md) | 87 tasks filtered from 665 upstream tau-bench tasks (kept iff gold action sequence has between 4 and 8 actions) | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
 | [WorkArena++ compositional task manifest](../tasks/t0003_download_benchmark_subsets/assets/dataset/workarena-plus-plus-subset/description.md) | 42 compositional task class lists from the upstream curriculum manifest. Task instances are not enumerated (requires live ServiceNow + gated HF). | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
 | [SWE-bench Verified subset (4-8 hunks)](../tasks/t0003_download_benchmark_subsets/assets/dataset/swebench-verified-subset/description.md) | 60 instances filtered from 500 SWE-bench Verified instances (kept iff gold patch has between 4 and 8 `@@` hunks) | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
+| [Hierarchical Annotation v1 (115-row pilot audit)](../tasks/t0005_hierarchical_annotation_pilot_v1/assets/dataset/hierarchical-annotation-v1/description.md) | 115 rows total (FrontierScience-Olympiad=40, SWE-bench Verified=23, WorkArena++=26, tau-bench=26); each row carries a global / subtask / atomic hierarchy and gold-action triple. Twelve rows (three per benchmark) carry an LLM-as-judge verdict. | [5](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | 2026-04-29 |
 | [FrontierScience-Olympiad subset (pilot v0)](../tasks/t0003_download_benchmark_subsets/assets/dataset/frontierscience-olympiad-subset/description.md) | 40 Olympiad-style problems (physics, chemistry, biology) packaged from the project pilot annotation run; per-domain: biology=15, chemistry=10, physics=15 | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
 
 ---
@@ -863,6 +857,8 @@ No predictions yet.
 
 ---
 
-## [Cost Leaders (0 tasks with spend)](costs/)
+## [Cost Leaders (1 tasks with spend)](costs/)
 
-No tasks with non-zero spend.
+| Task | Cost | Date |
+|------|------|------|
+| [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`$0.06`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/costs.json) | 2026-04-29 20:14 |

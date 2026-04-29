@@ -1,6 +1,6 @@
 # ✅ Tasks: Completed
 
-6 tasks. ✅ **6 completed**.
+7 tasks. ✅ **7 completed**.
 
 [Back to all tasks](../README.md)
 
@@ -250,6 +250,140 @@ S-0002-07 — "Implement scope-aware (A) as ReAct extended with explicit granula
 > * **Public entry points**: **6** (`ScopeAwareReactAgent`, `ScriptedModel`,
 >   `TrajectoryRecord`,
 > `Action`, `AgentResult`, `MalformedActionError`).
+
+</details>
+
+<details>
+<summary>✅ 0005 — <strong>Hierarchical annotation pilot v1: audit and conform
+existing 115 rows</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0005_hierarchical_annotation_pilot_v1` |
+| **Status** | completed |
+| **Effective date** | 2026-04-29 |
+| **Dependencies** | — |
+| **Expected assets** | 1 dataset |
+| **Source suggestion** | `S-0002-08` |
+| **Task types** | [`hierarchical-annotation`](../../../meta/task_types/hierarchical-annotation/) |
+| **Start time** | 2026-04-29T19:35:28Z |
+| **End time** | 2026-04-29T20:14:30Z |
+| **Step progress** | 9/15 |
+| **Task page** | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Task folder** | [`t0005_hierarchical_annotation_pilot_v1/`](../../../tasks/t0005_hierarchical_annotation_pilot_v1/) |
+| **Detailed report** | [results_detailed.md](../../../tasks/t0005_hierarchical_annotation_pilot_v1/results/results_detailed.md) |
+
+# Hierarchical Annotation Pilot v1
+
+## Motivation
+
+Phase 1 of the project's roadmap requires ≥100 tasks fully annotated with gold actions at
+three granularity levels (global / subtask / atomic). The imported
+`project/data/annotation_pilot/ tasks_annotated.jsonl` already contains 115 LLM-annotated
+rows, but the rows have not been verified to conform to the project's three-level schema and
+there is no human or LLM-as-judge spot-check pass on record. This task closes that gap in v1
+form: keep the existing 115 rows in place, audit their structure, and produce a canonical
+dataset asset that downstream Phase 2 / 3 experiments can consume. Implements suggestion
+S-0002-08.
+
+## Scope
+
+* Read `project/data/annotation_pilot/tasks_annotated.jsonl` and inspect the `steps` field on
+  each row to determine whether it carries explicit global / subtask / atomic granularity
+  labels or whether the granularity must be inferred.
+* If labels are missing, write a deterministic mapper that derives the three-level structure
+  from the existing `steps` and adds an explicit `hierarchy: {global, subtask, atomic}` block
+  per row.
+* Run an LLM-as-judge spot-check on at least 10% of rows (≥12 rows) to estimate hierarchy
+  quality. Use `claude-haiku-4-5-20251001` for the judge to keep cost low.
+* Produce one consolidated `dataset` asset under `assets/dataset/hierarchical_annotation_v1/`
+  with rows of shape `{task_id, benchmark, difficulty, problem, hierarchy: {global, subtask,
+  atomic}, gold_actions: {global, subtask, atomic}, annotation_model, judge_verdict,
+  judge_notes}`.
+
+Out of scope for v1: replacing the HumanEval and Mind2Web proxies, expanding beyond 115 rows,
+human review, inter-rater agreement studies. All deferred to follow-up tasks.
+
+## Approach
+
+1. Load the 115-row pilot file. For each row, compute the inferred or stated hierarchy and
+   emit the canonical schema record.
+2. Sample at least 12 rows stratified across the four benchmarks (FrontierScience-Olympiad,
+   SWE-bench Verified, HumanEval-proxy, Mind2Web-proxy). Send each to the LLM judge with the
+   row's problem text and proposed hierarchy; capture verdict ("acceptable" / "needs
+   revision") plus a one-sentence justification.
+3. Persist the consolidated dataset asset with `details.json` (source URL = the imported pilot
+   path, version = "v1", license = inherited from each upstream benchmark, sample count = 115)
+   and `files/hierarchical_annotation_v1.jsonl`.
+4. Report distribution stats in `results/results_detailed.md` (per-benchmark counts,
+   per-domain counts, hierarchy-completeness rate, judge accept rate).
+
+## Expected Outputs
+
+* `assets/dataset/hierarchical_annotation_v1/` with `details.json`, `files/`, and a
+  `description.md`.
+* `results/results_summary.md` with per-benchmark completeness and judge accept rate.
+* `results/results_detailed.md` with the full audit table and any rows that failed the judge.
+* `results/metrics.json` reporting `avg_decisions_per_task` (the registered diagnostic
+  metric).
+* Follow-up suggestions for: extension to ≥200 rows, full human-review pass, and proxy
+  benchmark remediation.
+
+## Compute and Budget
+
+No GPU. Anthropic API only. Estimated cost: under 3 USD for 12-15 LLM-as-judge calls on
+`claude-haiku-4-5-20251001`. Per-task cap: 5 USD.
+
+## Dependencies and Cross-References
+
+* No task dependencies.
+* Reads `project/data/annotation_pilot/tasks_annotated.jsonl` (115 rows).
+* Reads `project/code/scripts/collect_and_annotate.py` and `project/code/src/` modules — wrap
+  as black-box utilities, never modify in place.
+* References the four benchmark dataset assets produced by `t0003_download_benchmark_subsets`.
+
+## Source Suggestion
+
+S-0002-08 — "Run a Phase 1 pilot annotation on 20 tasks before scaling to 100." This task
+implements that idea in v1 form, leveraging the existing 115 rows rather than re-annotating
+from scratch.
+
+## Key Questions
+
+1. Do the existing 115 rows already carry a global / subtask / atomic decomposition, or must
+   one be inferred?
+2. What is the per-benchmark hierarchy-completeness rate?
+3. What is the LLM-as-judge accept rate? Does it differ across benchmarks?
+4. Are there systematic patterns in rejected rows (e.g., one benchmark consistently failing)?
+
+**Results summary:**
+
+> **Results Summary: Hierarchical Annotation Pilot v1**
+>
+> **Summary**
+>
+> Audited the 115-row pilot annotation file, projected each row's `steps.nodes` graph onto the
+> project's three-level global / subtask / atomic schema with a deterministic Python mapper,
+> ran an
+> LLM-as-judge spot-check on a 12-row stratified sample using `claude-haiku-4-5-20251001` via
+> the
+> local `claude` CLI, and produced a single canonical `hierarchical-annotation-v1` dataset
+> asset (115
+> rows). The asset passes the dataset verificator with 0 errors and 1 warning.
+>
+> **Metrics**
+>
+> * **Rows in dataset**: **115** (FrontierScience-Olympiad **40**, SWE-bench Verified **23**,
+> tau-bench **26**, WorkArena++ **26**)
+> * **Overall hierarchy completeness**: **88.7%** (102 / 115 rows have a non-null `global` and
+>   a
+> non-empty `atomic` list)
+> * **Per-benchmark completeness**: FrontierScience-Olympiad **70.0%** (28/40), SWE-bench
+>   Verified
+> **100.0%** (23/23), tau-bench **96.2%** (25/26), WorkArena++ **100.0%** (26/26)
+> * **LLM-as-judge accept rate (overall)**: **33.3%** (4/12 rows accepted)
+> * **Per-benchmark judge accept rate**: FrontierScience-Olympiad **0.0%** (0/3), SWE-bench
+>   Verified
 
 </details>
 
