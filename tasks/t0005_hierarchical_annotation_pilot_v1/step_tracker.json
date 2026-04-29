@@ -59,9 +59,9 @@
       "step": 7,
       "name": "planning",
       "description": "Plan: deterministic mapper from steps.nodes -> {global, subtask, atomic}; LLM-as-judge spot-check on >=12 stratified rows.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T19:48:57Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T19:51:17Z",
       "log_file": "logs/steps/007_planning/"
     },
     {
