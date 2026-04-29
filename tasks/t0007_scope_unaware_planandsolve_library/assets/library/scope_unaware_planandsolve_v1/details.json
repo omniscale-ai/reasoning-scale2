@@ -1,0 +1,60 @@
+{
+  "spec_version": "2",
+  "library_id": "scope_unaware_planandsolve_v1",
+  "name": "Scope-Unaware Plan-and-Solve Agent (v1)",
+  "version": "0.1.0",
+  "short_description": "Scope-unaware Plan-and-Solve agent adapting LangChain Plan-and-Execute as the canonical condition-B baseline for the project's A-vs-B-vs-C comparison.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/planandsolve.py"
+  ],
+  "entry_points": [
+    {
+      "name": "PlanAndSolveAgent",
+      "kind": "class",
+      "module": "code/planandsolve.py",
+      "description": "Plan-then-execute agent that produces trajectory records with granularity='unspecified'."
+    },
+    {
+      "name": "ScriptedModel",
+      "kind": "class",
+      "module": "code/planandsolve.py",
+      "description": "Deterministic-test fake model returning pre-recorded responses in order."
+    },
+    {
+      "name": "TrajectoryRecord",
+      "kind": "class",
+      "module": "code/planandsolve.py",
+      "description": "Frozen dataclass for one step of a trajectory; schema shared with t0006's scope_aware_react_v1."
+    },
+    {
+      "name": "AgentResult",
+      "kind": "class",
+      "module": "code/planandsolve.py",
+      "description": "Aggregate output of one PlanAndSolveAgent.run call: final_answer, trajectory, plan."
+    },
+    {
+      "name": "MalformedPlanError",
+      "kind": "class",
+      "module": "code/planandsolve.py",
+      "description": "Raised when the planner output yields zero numbered steps."
+    },
+    {
+      "name": "parse_plan",
+      "kind": "function",
+      "module": "code/planandsolve.py",
+      "description": "Parse a free-form numbered plan into an ordered list of step strings."
+    }
+  ],
+  "dependencies": [],
+  "test_paths": [
+    "code/test_planandsolve.py"
+  ],
+  "categories": [
+    "hierarchical-planning",
+    "granularity-conditioning",
+    "agent-evaluation"
+  ],
+  "created_by_task": "t0007_scope_unaware_planandsolve_library",
+  "date_created": "2026-04-29"
+}
