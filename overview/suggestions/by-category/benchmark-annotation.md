@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-annotation`
 
 5 suggestion(s) in category
-[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **4 open** (2 high, 2
-medium), **1 closed**.
+[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **3 open** (1 high, 2
+medium), **2 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -27,27 +27,6 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
-truncation)</strong> (S-0005-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0005-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) |
-
-The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
-verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
-excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
-and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
-on FrontierScience-Olympiad.
 
 </details>
 
@@ -94,6 +73,29 @@ with the actual benchmark slugs (`tau_*`, `wa_*`).
 </details>
 
 ## Closed
+
+<details>
+<summary>✅ <s>Re-run LLM-as-judge with full problem text (no truncation)</s> —
+covered by <a
+href="../../../tasks/t0009_hierarchical_annotation_v2/"><code>t0009_hierarchical_annotation_v2</code></a>
+(S-0005-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) |
+
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
+verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
+excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
+and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
+on FrontierScience-Olympiad.
+
+</details>
 
 <details>
 <summary>✅ <s>Run a Phase 1 pilot annotation on 20 tasks before scaling to 100</s> —

@@ -190,7 +190,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (8 open, 2 closed)
+## Suggestions (6 open, 4 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
@@ -221,22 +221,6 @@ prompts (B vs G/S/A from the project's research questions).
 </details>
 
 <details>
-<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
-subset</strong> (S-0006-03)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
-
-scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
-as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
-libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
-overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
-size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
-anchor.
-
-</details>
-
-<details>
 <summary>📊 <strong>Measure the missing-tag fallback rate against real LLMs</strong>
 (S-0006-04)</summary>
 
@@ -263,22 +247,6 @@ extension is to let the agent emit a granularity transition (e.g., start global,
 subtask once a plan is established, drop to atomic during execution). Add a model-driven mode
 where the parser also accepts <transition_to:subtask> markers and the agent updates the active
 granularity per turn. This is a research extension worth Phase 2 ablation.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement matched-mismatch (C) library on top of
-scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
-
-Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
-scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
-producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
-this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
-schema. The classifier should be a small fine-tuned model or heuristic so the task is
-local-only and deterministic.
 
 </details>
 

@@ -1,6 +1,6 @@
 # Research Suggestions Backlog
 
-30 suggestions **27 open** (14 high, 8 medium, 5 low), **3 closed**.
+30 suggestions **23 open** (10 high, 8 medium, 5 low), **7 closed**.
 
 **Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
 [`benchmark-annotation`](by-category/benchmark-annotation.md),
@@ -76,50 +76,6 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement matched-mismatch (C) library on top of
-scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0007-01` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0007_scope_unaware_planandsolve_library`](../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-
-Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
-scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
-producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
-this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
-schema. The classifier should be a small fine-tuned model or heuristic so the task is
-local-only and deterministic.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement verbalized-confidence + 3-sample self-consistency
-aggregator for Metric 2</strong> (S-0002-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0002-02` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-
-Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that
-3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to
-this protocol for Metric 2 (overconfident error rate). This task would specify the
-human-inspired confidence prompt template (low/medium/high + brief justification), implement
-the self-consistency aggregator, and validate calibration on a small held-out set before Phase
-2 launches.
 
 </details>
 
@@ -209,27 +165,6 @@ fallback.
 </details>
 
 <details>
-<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
-truncation)</strong> (S-0005-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0005-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/) |
-
-The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
-verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
-excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
-and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
-on FrontierScience-Olympiad.
-
-</details>
-
-<details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
 reporting</strong> (S-0002-01)</summary>
 
@@ -248,28 +183,6 @@ demonstrates that single-rollout pass@1 systematically overstates agent reliabil
 project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
 task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
 luck.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
-subset</strong> (S-0006-03)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0006-03` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0006_scope_aware_react_library`](../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
-| **Source paper** | [`10.48550_arXiv.2210.03629`](../../tasks/t0006_scope_aware_react_library/assets/paper/10.48550_arXiv.2210.03629/) |
-| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
-
-scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
-as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
-libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
-overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
-size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
-anchor.
 
 </details>
 
@@ -589,6 +502,30 @@ verbatim. If it diverges, file a correction.
 ## Closed
 
 <details>
+<summary>✅ <s>Implement matched-mismatch (C) library on top of
+scope_unaware_planandsolve_v1</s> — covered by <a
+href="../../tasks/t0010_matched_mismatch_library/"><code>t0010_matched_mismatch_library</code></a>
+(S-0007-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0007-01` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0007_scope_unaware_planandsolve_library`](../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
+scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
+producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
+this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
+schema. The classifier should be a small fine-tuned model or heuristic so the task is
+local-only and deterministic.
+
+</details>
+
+<details>
 <summary>✅ <s>Implement Plan-and-Solve as the canonical scope-unaware (B)
 baseline</s> — covered by <a
 href="../../tasks/t0007_scope_unaware_planandsolve_library/"><code>t0007_scope_unaware_planandsolve_library</code></a>
@@ -637,6 +574,53 @@ pattern [Zhou2022] inside the implementation.
 </details>
 
 <details>
+<summary>✅ <s>Implement verbalized-confidence + 3-sample self-consistency aggregator
+for Metric 2</s> — covered by <a
+href="../../tasks/t0011_metric2_calibration_aggregator/"><code>t0011_metric2_calibration_aggregator</code></a>
+(S-0002-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0002-02` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that
+3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to
+this protocol for Metric 2 (overconfident error rate). This task would specify the
+human-inspired confidence prompt template (low/medium/high + brief justification), implement
+the self-consistency aggregator, and validate calibration on a small held-out set before Phase
+2 launches.
+
+</details>
+
+<details>
+<summary>✅ <s>Re-run LLM-as-judge with full problem text (no truncation)</s> —
+covered by <a
+href="../../tasks/t0009_hierarchical_annotation_v2/"><code>t0009_hierarchical_annotation_v2</code></a>
+(S-0005-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0005-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../tasks/t0005_hierarchical_annotation_pilot_v1/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/) |
+
+The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
+verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
+excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
+and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
+on FrontierScience-Olympiad.
+
+</details>
+
+<details>
 <summary>✅ <s>Run a Phase 1 pilot annotation on 20 tasks before scaling to 100</s> —
 covered by <a
 href="../../tasks/t0005_hierarchical_annotation_pilot_v1/"><code>t0005_hierarchical_annotation_pilot_v1</code></a>
@@ -656,5 +640,29 @@ scaling, run a 20-task pilot to validate the annotation schema, measure inter-an
 agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest
 atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold
 atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+</details>
+
+<details>
+<summary>✅ <s>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
+subset</s> — covered by <a
+href="../../tasks/t0012_phase2_abc_smoke_frontierscience/"><code>t0012_phase2_abc_smoke_frontierscience</code></a>
+(S-0006-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | [`10.48550_arXiv.2210.03629`](../../tasks/t0006_scope_aware_react_library/assets/paper/10.48550_arXiv.2210.03629/) |
+| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
+
+scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
+as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
+libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
+overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
+size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
+anchor.
 
 </details>

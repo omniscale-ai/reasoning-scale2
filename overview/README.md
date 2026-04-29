@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-7-4682B4" alt="Tasks"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-12-4682B4" alt="Tasks"></a>
   <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-30-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (4K) |
-[full](llm-context/full.xml) (25K) | [roadmap](llm-context/roadmap.xml) (8K) |
-[results](llm-context/results-deep-dive.xml) (21K) |
+[full](llm-context/full.xml) (32K) | [roadmap](llm-context/roadmap.xml) (14K) |
+[results](llm-context/results-deep-dive.xml) (22K) |
 [assets](llm-context/literature-and-assets.xml) (8K)
 
-*Last updated: 2026-04-29 20:16 UTC*
+*Last updated: 2026-04-29 23:24 UTC*
 
 * **Budget**: **$0** spent of $100
 * **Remaining**: **$100**
@@ -54,22 +54,29 @@ No tasks in progress.
 
 ---
 
-## [Ready to Start (0)](tasks/by-status/not_started.md)
+## [Ready to Start (3)](tasks/by-status/not_started.md)
 
-No tasks ready to start.
-
----
-
-## [Blocked Tasks (0)](tasks/)
-
-No blocked tasks.
+| # | Task | Description | Date Added |
+|---|------|-------------|------------|
+| 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`description`](../tasks/t0009_hierarchical_annotation_v2/task_description.md) | 2026-04-30 |
+| 0010 | [Matched-mismatch library: condition C with deliberately wrong granularity tags](../overview/tasks/task_pages/t0010_matched_mismatch_library.md) | [`description`](../tasks/t0010_matched_mismatch_library/task_description.md) | 2026-04-30 |
+| 0011 | [Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) | [`description`](../tasks/t0011_metric2_calibration_aggregator/task_description.md) | 2026-04-30 |
 
 ---
 
-## [Recently Completed (7 total)](tasks/by-status/completed.md)
+## [Blocked Tasks (1)](tasks/)
+
+| # | Task | Blocked By |
+|---|------|------------|
+| 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`t0009_hierarchical_annotation_v2`](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md), [`t0010_matched_mismatch_library`](../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0011_metric2_calibration_aggregator`](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
+
+---
+
+## [Recently Completed (8 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0008 | [Brainstorm session 3: insert v2 re-annotation, plan Phase 2 smoke](../overview/tasks/task_pages/t0008_brainstorm_results_3.md) | [`results`](../tasks/t0008_brainstorm_results_3/results/results_detailed.md) | 2026-04-30 00:00 |
 | 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`results`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/results_detailed.md) | 2026-04-29 20:14 |
 | 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`results`](../tasks/t0006_scope_aware_react_library/results/results_detailed.md) | 2026-04-29 20:07 |
 | 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
@@ -80,7 +87,7 @@ No blocked tasks.
 
 ---
 
-## [Recent Suggestions (27 open)](suggestions/)
+## [Recent Suggestions (23 open)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -95,22 +102,6 @@ demonstrates that single-rollout pass@1 systematically overstates agent reliabil
 project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
 task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
 luck.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement verbalized-confidence + 3-sample self-consistency
-aggregator for Metric 2</strong> (S-0002-02)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that
-3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to
-this protocol for Metric 2 (overconfident error rate). This task would specify the
-human-inspired confidence prompt template (low/medium/high + brief justification), implement
-the self-consistency aggregator, and validate calibration on a small held-out set before Phase
-2 launches.
 
 </details>
 
@@ -234,11 +225,25 @@ experiments.
 
 </details>
 
-*17 more open suggestions → [open suggestions](suggestions/)*
+<details>
+<summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
+(S-0003-04)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
+
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad
+solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
+problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
+apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+*13 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (14)](suggestions/)
+## [High Priority Suggestions (10)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -253,22 +258,6 @@ demonstrates that single-rollout pass@1 systematically overstates agent reliabil
 project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
 task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
 luck.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement verbalized-confidence + 3-sample self-consistency
-aggregator for Metric 2</strong> (S-0002-02)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that
-3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to
-this protocol for Metric 2 (overconfident error rate). This task would specify the
-human-inspired confidence prompt template (low/medium/high + brief justification), implement
-the self-consistency aggregator, and validate calibration on a small held-out set before Phase
-2 launches.
 
 </details>
 
@@ -362,21 +351,6 @@ Cohen's kappa) between the human rater and the LLM annotator.
 </details>
 
 <details>
-<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
-truncation)</strong> (S-0005-02)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
-verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
-excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
-and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
-on FrontierScience-Olympiad.
-
-</details>
-
-<details>
 <summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
 experiments</strong> (S-0005-06)</summary>
 
@@ -389,7 +363,36 @@ prompts (B vs G/S/A from the project's research questions).
 
 </details>
 
-*4 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+<details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0006_scope_aware_react_library](../tasks/t0006_scope_aware_react_library/)
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../tasks/t0007_scope_unaware_planandsolve_library/)
+
+Build the experiment harness that runs all three libraries (scope_aware_react_v1,
+scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
+slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
+computing the registered metrics task_success_rate, avg_decisions_per_task, and
+overconfident_error_rate per condition. The harness must depend on this library only via the
+trajectory schema, never via internal helpers, to preserve isolation.
+
+</details>
 
 ---
 

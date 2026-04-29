@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-frontierscience`
 
 5 suggestion(s) in category
-[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **5 open**
-(4 high, 1 medium).
+[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **4 open**
+(3 high, 1 medium), **1 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -74,28 +74,6 @@ explicit access conversation with Epoch AI, plus a fallback to public Olympiad b
 
 </details>
 
-<details>
-<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
-subset</strong> (S-0006-03)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0006-03` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
-| **Source paper** | [`10.48550_arXiv.2210.03629`](../../../tasks/t0006_scope_aware_react_library/assets/paper/10.48550_arXiv.2210.03629/) |
-| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
-
-scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
-as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
-libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
-overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
-size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
-anchor.
-
-</details>
-
 ## Medium Priority
 
 <details>
@@ -115,5 +93,31 @@ FrontierScience-Olympiad pilot rows currently lack per-instance step graphs beca
 solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
 problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
 apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+## Closed
+
+<details>
+<summary>✅ <s>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
+subset</s> — covered by <a
+href="../../../tasks/t0012_phase2_abc_smoke_frontierscience/"><code>t0012_phase2_abc_smoke_frontierscience</code></a>
+(S-0006-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | [`10.48550_arXiv.2210.03629`](../../../tasks/t0006_scope_aware_react_library/assets/paper/10.48550_arXiv.2210.03629/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
+as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
+libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
+overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
+size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
+anchor.
 
 </details>

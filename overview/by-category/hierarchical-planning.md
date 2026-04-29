@@ -233,7 +233,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (8 open, 3 closed)
+## Suggestions (7 open, 4 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
@@ -305,22 +305,6 @@ extension is to let the agent emit a granularity transition (e.g., start global,
 subtask once a plan is established, drop to atomic during execution). Add a model-driven mode
 where the parser also accepts <transition_to:subtask> markers and the agent updates the active
 granularity per turn. This is a research extension worth Phase 2 ablation.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement matched-mismatch (C) library on top of
-scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
-
-Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
-scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
-producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
-this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
-schema. The classifier should be a small fine-tuned model or heuristic so the task is
-local-only and deterministic.
 
 </details>
 
