@@ -1,0 +1,12 @@
+{
+  "spec_version": 2,
+  "name": "Hierarchical Annotation",
+  "short_description": "Decompose benchmark tasks into a three-level hierarchy and label gold actions at each level.",
+  "detailed_description": "Tasks of this type produce hierarchical annotations of benchmark problems with gold actions at the global-planning, subtask-planning, and atomic-execution levels. The work combines manual review with LLM-assisted suggestion, validates an annotation schema, and outputs a dataset asset whose rows feed Phase 2 and Phase 3 scope-conditioning experiments. This type is distinct from data-analysis because it produces new labelled assets rather than analysing existing ones, and from download-dataset because the gold-action labels do not exist before the task runs.",
+  "optional_steps": [
+    "research-papers",
+    "planning",
+    "creative-thinking"
+  ],
+  "has_external_costs": true
+}
