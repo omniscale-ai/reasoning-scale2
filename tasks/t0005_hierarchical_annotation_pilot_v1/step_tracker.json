@@ -77,9 +77,9 @@
       "step": 9,
       "name": "implementation",
       "description": "Build mapper + judge pipeline; produce hierarchical_annotation_v1 dataset asset (115 rows).",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T19:51:23Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T20:08:39Z",
       "log_file": "logs/steps/009_implementation/"
     },
     {
