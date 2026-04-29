@@ -104,9 +104,9 @@
       "step": 12,
       "name": "results",
       "description": "Write results files documenting API surface, test pass count, and verification.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T19:56:33Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T19:58:39Z",
       "log_file": "logs/steps/012_results/"
     },
     {
