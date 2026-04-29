@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Plan API surface, trajectory schema, prompt template, deterministic-test mode, and tests.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T19:48:44Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
