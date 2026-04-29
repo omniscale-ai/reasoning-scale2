@@ -1,0 +1,57 @@
+{
+  "spec_version": "2",
+  "dataset_id": "taubench-subset",
+  "name": "tau-bench subset (4-8 actions)",
+  "version": "github-main",
+  "short_description": "tau-bench subset: 87 tool-agent-user interaction tasks across airline and retail domains, filtered to 4-8 gold actions per task.",
+  "description_path": "description.md",
+  "source_paper_id": "10.48550_arXiv.2406.12045",
+  "url": "https://arxiv.org/abs/2406.12045",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Shunyu Yao",
+      "country": "US",
+      "institution": "Sierra Research",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Sierra Research",
+      "country": "US"
+    }
+  ],
+  "license": "MIT",
+  "access_kind": "public",
+  "size_description": "87 tasks filtered from 665 upstream tau-bench tasks (kept iff gold action sequence has between 4 and 8 actions)",
+  "files": [
+    {
+      "path": "files/taubench-subset.jsonl",
+      "description": "Filtered subset: 87 tau-bench tasks (4-8 actions). Each row has domain, split, instruction, action names, and action count.",
+      "format": "jsonl"
+    },
+    {
+      "path": "files/upstream/airline__tasks_test.py",
+      "description": "Verbatim upstream tau-bench task definitions for airline/tasks_test.",
+      "format": "py"
+    },
+    {
+      "path": "files/upstream/retail__tasks_test.py",
+      "description": "Verbatim upstream tau-bench task definitions for retail/tasks_test.",
+      "format": "py"
+    },
+    {
+      "path": "files/upstream/retail__tasks_train.py",
+      "description": "Verbatim upstream tau-bench task definitions for retail/tasks_train.",
+      "format": "py"
+    }
+  ],
+  "categories": [
+    "benchmark-taubench"
+  ],
+  "download_url": "https://raw.githubusercontent.com/sierra-research/tau-bench/main",
+  "date_published": "2024-06-17",
+  "download_status": "success",
+  "download_failure_reason": null
+}

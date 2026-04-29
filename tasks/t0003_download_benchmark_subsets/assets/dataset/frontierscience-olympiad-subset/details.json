@@ -1,0 +1,42 @@
+{
+  "spec_version": "2",
+  "dataset_id": "frontierscience-olympiad-subset",
+  "name": "FrontierScience-Olympiad subset (pilot v0)",
+  "version": "v0",
+  "short_description": "FrontierScience-Olympiad pilot v0 subset: 40 Olympiad problems across physics, chemistry, biology with gold solutions, packaged for Phase 2 experiments.",
+  "description_path": "description.md",
+  "source_paper_id": "10.48550_arXiv.2411.04872",
+  "url": "https://arxiv.org/abs/2411.04872",
+  "year": 2026,
+  "authors": [
+    {
+      "name": "Glite ARF reasoning-scale project",
+      "country": "LU",
+      "institution": "Constructor",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Constructor",
+      "country": "LU"
+    }
+  ],
+  "license": "research-only",
+  "access_kind": "public",
+  "size_description": "40 Olympiad-style problems (physics, chemistry, biology) packaged from the project pilot annotation run; per-domain: biology=15, chemistry=10, physics=15",
+  "files": [
+    {
+      "path": "files/frontierscience-olympiad-subset.jsonl",
+      "description": "Pilot annotation rows for FrontierScience-Olympiad: 40 problems across physics, chemistry, biology.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "benchmark-frontierscience"
+  ],
+  "download_url": null,
+  "date_published": "2026-04-29",
+  "download_status": "success",
+  "download_failure_reason": null
+}

@@ -1,0 +1,57 @@
+{
+  "spec_version": "2",
+  "dataset_id": "workarena-plus-plus-subset",
+  "name": "WorkArena++ compositional task manifest",
+  "version": "github-main",
+  "short_description": "WorkArena++ compositional task class manifest (42 task class lists) extracted from upstream curriculum.py; end-to-end execution remains gated.",
+  "description_path": "description.md",
+  "source_paper_id": "10.48550_arXiv.2407.05291",
+  "url": "https://arxiv.org/abs/2407.05291",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "L\u00e9o Boisvert",
+      "country": "CA",
+      "institution": "ServiceNow Research",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "ServiceNow Research",
+      "country": "CA"
+    }
+  ],
+  "license": "Apache-2.0",
+  "access_kind": "restricted",
+  "size_description": "42 compositional task class lists from the upstream curriculum manifest. Task instances are not enumerated (requires live ServiceNow + gated HF).",
+  "files": [
+    {
+      "path": "files/workarena-plus-plus-subset-task-manifest.json",
+      "description": "WorkArena++ compositional task class manifest extracted from upstream curriculum.py. 42 task class lists, no instances.",
+      "format": "json"
+    },
+    {
+      "path": "files/upstream/curriculum.py",
+      "description": "Verbatim upstream curriculum.py source.",
+      "format": "py"
+    },
+    {
+      "path": "files/upstream/compositional__init__.py",
+      "description": "Verbatim upstream tasks/compositional/__init__.py source defining ALL_COMPOSITIONAL_TASKS, level-2 and level-3 specializations.",
+      "format": "py"
+    },
+    {
+      "path": "files/upstream/README.md",
+      "description": "Verbatim upstream WorkArena README documenting access requirements.",
+      "format": "md"
+    }
+  ],
+  "categories": [
+    "benchmark-workarena"
+  ],
+  "download_url": "https://raw.githubusercontent.com/ServiceNow/WorkArena/main",
+  "date_published": "2024-07-07",
+  "download_status": "success",
+  "download_failure_reason": null
+}

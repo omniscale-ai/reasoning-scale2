@@ -1,0 +1,19 @@
+{
+  "dataset_id": "taubench-subset",
+  "download_status": "success",
+  "sample_count": 87,
+  "total_upstream_tasks": 665,
+  "subset_rule": "keep iff gold action sequence has between 4 and 8 actions",
+  "domain_split_counts": {
+    "airline/test": 13,
+    "retail/test": 50,
+    "retail/train": 24
+  },
+  "action_distribution": {
+    "4": 24,
+    "5": 24,
+    "6": 23,
+    "7": 13,
+    "8": 3
+  }
+}

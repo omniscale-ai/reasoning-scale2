@@ -1,0 +1,64 @@
+=== Building frontierscience-olympiad-subset ===
+{
+  "dataset_id": "frontierscience-olympiad-subset",
+  "download_status": "success",
+  "sample_count": 40,
+  "subset_rule": "All FrontierScience-Olympiad rows from pilot JSONL; domain-stratified across physics, chemistry, biology",
+  "domain_counts": {
+    "physics": 15,
+    "chemistry": 10,
+    "biology": 15
+  }
+}
+=== Building workarena-plus-plus-subset ===
+{
+  "dataset_id": "workarena-plus-plus-subset",
+  "download_status": "success",
+  "sample_count": 42,
+  "subset_rule": "all compositional task class lists from upstream curriculum.py; instance-level filter deferred to a follow-up task",
+  "task_lists_sample": [
+    "DASH_AND_ORDER",
+    "DASH_COMPUTE_MEAN_AND_ORDER",
+    "DASH_COMPUTE_MEDIAN_AND_ORDER",
+    "DASH_COMPUTE_MODE_AND_ORDER",
+    "DASH_AND_CREATE_INCIDENT",
+    "DASH_COMPUTE_AND_CREATE_INCIDENT",
+    "DASH_AND_CREATE_PROBLEM",
+    "DASH_COMPUTE_AND_CREATE_PROBLEM"
+  ],
+  "note": "Task-class manifest extracted; per-instance enumeration is gated on live ServiceNow + HF access and remains a follow-up task."
+}
+=== Building swebench-verified-subset ===
+{
+  "dataset_id": "swebench-verified-subset",
+  "download_status": "success",
+  "sample_count": 60,
+  "total_verified": 500,
+  "subset_rule": "keep iff gold patch has between 4 and 8 `@@ -` hunks",
+  "hunks_distribution": {
+    "4": 24,
+    "5": 12,
+    "6": 14,
+    "7": 7,
+    "8": 3
+  }
+}
+=== Building taubench-subset ===
+{
+  "dataset_id": "taubench-subset",
+  "download_status": "success",
+  "sample_count": 13,
+  "total_upstream_tasks": 50,
+  "subset_rule": "keep iff gold action sequence has between 4 and 8 actions",
+  "domain_split_counts": {
+    "airline/test": 13
+  },
+  "action_distribution": {
+    "4": 3,
+    "5": 5,
+    "6": 2,
+    "7": 2,
+    "8": 1
+  }
+}
+=== Building access-status manifest ===

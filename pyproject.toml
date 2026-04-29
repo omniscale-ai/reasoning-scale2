@@ -41,6 +41,7 @@ dependencies = [
     "types-tqdm>=4.67.3.20260303",
     "pymupdf>=1.27.2.2",
     "vastai>=1.0.1",
+    "pyarrow>=24.0.0",
 ]
 
 [project.urls]
