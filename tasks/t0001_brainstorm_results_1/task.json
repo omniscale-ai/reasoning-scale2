@@ -1,0 +1,15 @@
+{
+  "spec_version": 4,
+  "task_id": "t0001_brainstorm_results_1",
+  "task_index": 1,
+  "name": "Brainstorm session 1: plan first project tasks",
+  "short_description": "Plan first tasks for the granularity-aware hierarchical agents project: literature survey and benchmark dataset download.",
+  "long_description_file": "task_description.md",
+  "status": "completed",
+  "dependencies": [],
+  "start_time": "2026-04-29T00:00:00Z",
+  "end_time": "2026-04-29T00:00:00Z",
+  "expected_assets": {},
+  "task_types": ["brainstorming"],
+  "source_suggestion": null
+}
