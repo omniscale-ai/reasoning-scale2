@@ -23,9 +23,9 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create mandatory task folder structure including assets/library/.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T23:29:24Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T23:29:57Z",
       "log_file": "logs/steps/003_init-folders/"
     },
     {
