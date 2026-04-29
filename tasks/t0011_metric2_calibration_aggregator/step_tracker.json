@@ -32,10 +32,10 @@
       "step": 4,
       "name": "research-papers",
       "description": "Read Xiong2024 paper summary to ground prompt template and threshold default.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-29T23:29:54Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/004_research-papers/"
     },
     {
       "step": 5,
