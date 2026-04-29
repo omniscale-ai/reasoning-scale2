@@ -5,7 +5,8 @@ Per-source tag for tasks and assets sourced from the WorkArena++ web-task benchm
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/benchmark-workarena.md) | [Suggestions
-(1)](../suggestions/by-category/benchmark-workarena.md)
+(2)](../suggestions/by-category/benchmark-workarena.md) | [Datasets
+(1)](../datasets/by-category/benchmark-workarena.md)
 
 ---
 
@@ -106,7 +107,7 @@ the planning step must address.
 
 No answers in this category.
 
-## Suggestions (1 open, 0 closed)
+## Suggestions (2 open, 0 closed)
 
 <details>
 <summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
@@ -120,5 +121,21 @@ developer instance and the BrowserGym Python harness. This is a substantial infr
 task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
 any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
 annotation begins.
+
+</details>
+
+<details>
+<summary>📂 <strong>Provision a ServiceNow developer instance for WorkArena++ live
+evaluation</strong> (S-0003-02)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../../tasks/t0003_download_benchmark_subsets/)
+
+WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to
+the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the
+upstream task-class manifest. Provision a free ServiceNow developer instance, request HF
+access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
+decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
+fallback.
 
 </details>

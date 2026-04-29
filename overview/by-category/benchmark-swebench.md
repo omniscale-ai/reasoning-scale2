@@ -5,7 +5,8 @@ Per-source tag for tasks and assets sourced from the SWE-bench Verified benchmar
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/benchmark-swebench.md) | [Suggestions
-(1)](../suggestions/by-category/benchmark-swebench.md)
+(2)](../suggestions/by-category/benchmark-swebench.md) | [Datasets
+(1)](../datasets/by-category/benchmark-swebench.md)
 
 ---
 
@@ -104,7 +105,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (1 open, 0 closed)
+## Suggestions (2 open, 0 closed)
 
 <details>
 <summary>📂 <strong>Build the SWE-bench Verified Docker harness</strong> (S-0002-05)</summary>
@@ -117,5 +118,20 @@ composite. Its evaluation harness uses Docker per repository to isolate test run
 would download the Verified problem set, pull the Docker images, and run a 10-instance smoke
 test to confirm the harness reproduces published baseline numbers (e.g., one of the early
 Claude or GPT scores).
+
+</details>
+
+<details>
+<summary>📊 <strong>Sensitivity-check the SWE-bench Verified 4-8-hunks subset against
+[3, 12]</strong> (S-0003-03)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../../tasks/t0003_download_benchmark_subsets/)
+
+The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks.
+The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by
+re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo
+distributions; this informs whether the 4-8 boundary is too narrow for Phase 2's atomic-edit
+experiments.
 
 </details>

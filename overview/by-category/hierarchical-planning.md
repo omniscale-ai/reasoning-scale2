@@ -5,7 +5,7 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (5)](../papers/by-category/hierarchical-planning.md) | [Suggestions
-(4)](../suggestions/by-category/hierarchical-planning.md)
+(5)](../suggestions/by-category/hierarchical-planning.md)
 
 ---
 
@@ -231,7 +231,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (4 open, 0 closed)
+## Suggestions (5 open, 0 closed)
 
 <details>
 <summary>🔧 <strong>Implement Plan-and-Solve as the canonical scope-unaware (B)
@@ -292,5 +292,19 @@ HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would 
 conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether
 Reflexion-style memory adds further gains on top of the scope-aware (A) condition established
 in Phase 2.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
+(S-0003-04)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../../tasks/t0003_download_benchmark_subsets/)
+
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad
+solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
+problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
+apply the canonical 4-8 decisions filter consistently across all four benchmarks.
 
 </details>

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="papers/"><img src="https://img.shields.io/badge/Papers-11-4169E1" alt="Papers"></a>
-  <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-0-2E8B57" alt="Datasets"></a>
+  <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-4-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-0-9370DB" alt="Predictions"></a>
   <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-0-20B2AA" alt="Libraries"></a>
@@ -12,7 +12,7 @@
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-3-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-10-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-15-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-0-DC143C" alt="Results"></a>
@@ -29,12 +29,12 @@
 [hierarchical-planning](by-category/hierarchical-planning.md) |
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
-**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (2K) |
-[full](llm-context/full.xml) (10K) | [roadmap](llm-context/roadmap.xml) (5K) |
-[results](llm-context/results-deep-dive.xml) (6K) |
-[assets](llm-context/literature-and-assets.xml) (5K)
+**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (3K) |
+[full](llm-context/full.xml) (13K) | [roadmap](llm-context/roadmap.xml) (5K) |
+[results](llm-context/results-deep-dive.xml) (9K) |
+[assets](llm-context/literature-and-assets.xml) (6K)
 
-*Last updated: 2026-04-29 14:29 UTC*
+*Last updated: 2026-04-29 15:00 UTC*
 
 * **Budget**: **$0** spent of $100
 * **Remaining**: **$100**
@@ -54,11 +54,9 @@ No tasks in progress.
 
 ---
 
-## [Ready to Start (1)](tasks/by-status/not_started.md)
+## [Ready to Start (0)](tasks/by-status/not_started.md)
 
-| # | Task | Description | Date Added |
-|---|------|-------------|------------|
-| 0003 | [Download benchmark subsets for the four roadmap sources](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | [`description`](../tasks/t0003_download_benchmark_subsets/task_description.md) | 2026-04-29 |
+No tasks ready to start.
 
 ---
 
@@ -68,16 +66,17 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (2 total)](tasks/by-status/completed.md)
+## [Recently Completed (3 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0003 | [Download benchmark subsets for the four roadmap sources](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | [`results`](../tasks/t0003_download_benchmark_subsets/results/results_detailed.md) | 2026-04-29 14:58 |
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | [`results`](../tasks/t0002_literature_survey_granularity_conditioning/results/results_detailed.md) | 2026-04-29 14:26 |
 | 0001 | [Brainstorm session 1: plan first project tasks](../overview/tasks/task_pages/t0001_brainstorm_results_1.md) | [`results`](../tasks/t0001_brainstorm_results_1/results/results_detailed.md) | 2026-04-29 00:00 |
 
 ---
 
-## [Recent Suggestions (10 open)](suggestions/)
+## [Recent Suggestions (15 open)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -232,9 +231,11 @@ in Phase 2.
 
 </details>
 
+*5 more open suggestions → [open suggestions](suggestions/)*
+
 ---
 
-## [High Priority Suggestions (7)](suggestions/)
+## [High Priority Suggestions (9)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -341,6 +342,37 @@ template per granularity, the tagging logic that decides which granularity is ac
 LLM call, and a logging schema that records the active granularity for every action so
 post-hoc per-granularity analysis is possible. Replicate Least-to-Most's solution-reuse
 pattern [Zhou2022] inside the implementation.
+
+</details>
+
+<details>
+<summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
+benchmark</strong> (S-0003-01)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
+
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to
+FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses
+40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research
+access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per
+the t0002 fallback plan.
+
+</details>
+
+<details>
+<summary>📂 <strong>Provision a ServiceNow developer instance for WorkArena++ live
+evaluation</strong> (S-0003-02)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
+
+WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to
+the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the
+upstream task-class manifest. Provision a free ServiceNow developer instance, request HF
+access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
+decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
+fallback.
 
 </details>
 
@@ -777,9 +809,14 @@ the planning step must address.
 
 ---
 
-## [Latest Datasets (0 total)](datasets/)
+## [Latest Datasets (4 total)](datasets/)
 
-No datasets yet.
+| Name | Size | Source | Added |
+|------|------|--------|-------|
+| [tau-bench subset (4-8 actions)](../tasks/t0003_download_benchmark_subsets/assets/dataset/taubench-subset/description.md) | 87 tasks filtered from 665 upstream tau-bench tasks (kept iff gold action sequence has between 4 and 8 actions) | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
+| [WorkArena++ compositional task manifest](../tasks/t0003_download_benchmark_subsets/assets/dataset/workarena-plus-plus-subset/description.md) | 42 compositional task class lists from the upstream curriculum manifest. Task instances are not enumerated (requires live ServiceNow + gated HF). | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
+| [SWE-bench Verified subset (4-8 hunks)](../tasks/t0003_download_benchmark_subsets/assets/dataset/swebench-verified-subset/description.md) | 60 instances filtered from 500 SWE-bench Verified instances (kept iff gold patch has between 4 and 8 `@@` hunks) | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
+| [FrontierScience-Olympiad subset (pilot v0)](../tasks/t0003_download_benchmark_subsets/assets/dataset/frontierscience-olympiad-subset/description.md) | 40 Olympiad-style problems (physics, chemistry, biology) packaged from the project pilot annotation run; per-domain: biology=15, chemistry=10, physics=15 | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
 
 ---
 
