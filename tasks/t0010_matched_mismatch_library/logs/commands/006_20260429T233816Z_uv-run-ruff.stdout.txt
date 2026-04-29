@@ -1,0 +1,23 @@
+E501 Line too long (101 > 100)
+   --> tasks/t0010_matched_mismatch_library/code/matched_mismatch.py:352:101
+    |
+350 |     """Plan-and-Solve-style prompt for one phase.
+351 |
+352 |     Reuses t0007's :data:`PLAN_PROMPT_TEMPLATE`/:data:`EXECUTE_PROMPT_TEMPLATE` shape but specialises
+    |                                                                                                     ^
+353 |     for one phase at a time — the wrapper itself drives the v2-hierarchy walk in lieu of calling
+354 |     the delegate's planner.
+    |
+
+E501 Line too long (102 > 100)
+   --> tasks/t0010_matched_mismatch_library/code/test_matched_mismatch.py:227:101
+    |
+225 |     # First seven phases run a no-op tool; the eighth (global_atomic) emits FINAL_ANSWER.
+226 |     add_responses: list[str] = [
+227 |         _planandsolve_action_response(tool="add", args="1,1") for _ in range(expected_phase_count - 1)
+    |                                                                                                     ^^
+228 |     ]
+229 |     final_response: str = "FINAL_ANSWER: 2\n"
+    |
+
+Found 4 errors (2 fixed, 2 remaining).
