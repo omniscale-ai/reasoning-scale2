@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-annotation`
 
 2 suggestion(s) in category
-[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **2 open** (2
-medium).
+[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **1 open** (1
+medium), **1 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -30,9 +30,13 @@ apply the canonical 4-8 decisions filter consistently across all four benchmarks
 
 </details>
 
+## Closed
+
 <details>
-<summary>🧪 <strong>Run a Phase 1 pilot annotation on 20 tasks before scaling to
-100</strong> (S-0002-08)</summary>
+<summary>✅ <s>Run a Phase 1 pilot annotation on 20 tasks before scaling to 100</s> —
+covered by <a
+href="../../../tasks/t0005_hierarchical_annotation_pilot_v1/"><code>t0005_hierarchical_annotation_pilot_v1</code></a>
+(S-0002-08)</summary>
 
 | Field | Value |
 |---|---|

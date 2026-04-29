@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T15:00:39Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T19:34:39Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>25277</char_count>
-    <byte_count>25359</byte_count>
-    <estimated_tokens>6319</estimated_tokens>
+    <char_count>43243</char_count>
+    <byte_count>43357</byte_count>
+    <estimated_tokens>10810</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -20,9 +20,13 @@
         <id>t0001_brainstorm_results_1</id>
         <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
+        <id>t0004_brainstorm_results_2</id>
+        <id>t0005_hierarchical_annotation_pilot_v1</id>
+        <id>t0006_scope_aware_react_library</id>
+        <id>t0007_scope_unaware_planandsolve_library</id>
       </source_ids>
       <content>
-Total tasks: 3
+Total tasks: 7
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -451,6 +455,351 @@ Phase 2 fallback. All four dataset assets pass `verify_dataset_asset` with zero 
 * `verify_task_dependencies` — PASSED (no dependencies).
 * `ruff check` and `ruff format --check` on `tasks/t0003_download_benchmark_subsets/code/` — PASSED.
 * `mypy -p tasks.t0003_download_benchmark_subsets.code` — PASSED.
+
+## Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries
+ID: t0004_brainstorm_results_2
+Status: completed
+Effective date: 2026-04-29
+Short description: Brainstorm 2: plan annotation pilot v1 plus the A/B baseline libraries (ReAct+tags and Plan-and-Solve).
+Dependencies: t0001_brainstorm_results_1, t0002_literature_survey_granularity_conditioning, t0003_download_benchmark_subsets
+Task types: brainstorming
+Start time: 2026-04-29T15:30:00Z
+End time: 2026-04-29T15:30:00Z
+
+#### Context
+
+Second brainstorm session. The first wave (t0001 brainstorm + t0002 literature survey + t0003
+benchmark download) completed at $0 cost. Three completed tasks have produced 11 paper assets, 4
+dataset assets, and 15 uncovered follow-up suggestions.
+
+Key findings carried into this session:
+
+* **Literature survey (t0002)** identified Plan-and-Solve [Wang2023] as the canonical scope-unaware
+  (B) baseline, ReAct [Yao2022] as the foundation for the scope-aware (A) condition, and Xiong2024
+  as the calibration protocol for Metric 2.
+* **Benchmark download (t0003)** confirmed FrontierMath (gated by Epoch AI) and WorkArena++ (gated
+  by ServiceNow + HF) cannot be unblocked by infrastructure work in the current session. Pilot
+  proxies are frozen as fallback. SWE-bench Verified and tau-bench are accessible.
+* The deferred T3 candidate from session 1 (`hierarchical_annotation_pilot`) is now appropriate to
+  schedule, but in a smaller v1 form: audit and conform the existing 115 pilot rows rather than
+  attempt a full re-annotation.
+
+#### Decisions
+
+Three new tasks created, all `not_started`, no inter-task dependencies (parallel-safe):
+
+* `t0005_hierarchical_annotation_pilot_v1` (covers `S-0002-08`) — audit &amp; conform the existing pilot
+  annotations to the global / subtask / atomic schema.
+* `t0006_scope_aware_react_library` (covers `S-0002-07`) — write-library: ReAct extended with
+  granularity tags. Implements the A condition.
+* `t0007_scope_unaware_planandsolve_library` (covers `S-0002-06`) — write-library: Plan-and-Solve
+  adapted from LangChain. Implements the B condition.
+
+#### Why this wave
+
+t0005 unblocks Phase 1 (annotation deliverable). t0006 + t0007 are the two libraries the Phase 2
+baseline experiment will consume. Once all three are merged, the Phase 2 smoke-test experiment
+(deferred T4 from session 1) becomes practical to schedule.
+
+#### Out of scope this session
+
+* Round 2 suggestion cleanup (rejecting S-0003-01 and S-0003-02 as duplicates of S-0002-04 and
+  S-0002-03) is intentionally deferred to a follow-up session.
+* SWE-bench Docker harness (S-0002-05) is deferred until experiment tasks need it.
+* FrontierMath (S-0002-04 / S-0003-01) and ServiceNow (S-0002-03 / S-0003-02) access remain open
+  high-priority blockers but not on the path to first Phase 2 results.
+
+### Results Summary
+
+#### Summary
+
+Second brainstorm produced three new not-started tasks for parallel execution: a v1 hierarchical
+annotation pilot and two baseline libraries (ReAct+tags for the A condition, Plan-and-Solve for the
+B condition). Round 2 suggestion cleanup deferred to a follow-up session.
+
+#### Session Overview
+
+* **Date**: 2026-04-29
+* **Context**: Triggered after t0001-t0003 wave completed at $0 spend, with 15 uncovered suggestions
+  queued.
+* **Prompt**: Plan Phase 1 annotation deliverable and the libraries Phase 2 baseline experiment will
+  need.
+
+#### Decisions
+
+1. **Create `t0005_hierarchical_annotation_pilot_v1`** (covers `S-0002-08`,
+   `hierarchical-annotation`). Audit and conform the 115 existing pilot rows to the global / subtask
+   / atomic schema with at least a 10% LLM-as-judge spot-check. Output one `dataset` asset.
+2. **Create `t0006_scope_aware_react_library`** (covers `S-0002-07`, `write-library`). Implement the
+   A condition as ReAct extended with `{global, subtask, atomic}` granularity tags. No external
+   cost.
+3. **Create `t0007_scope_unaware_planandsolve_library`** (covers `S-0002-06`, `write-library`).
+   Adapt LangChain Plan-and-Execute as the canonical B baseline. No external cost.
+4. **Defer Round 2 suggestion cleanup**. Duplicates identified (S-0003-01 ≈ S-0002-04 for
+   FrontierMath, S-0003-02 ≈ S-0002-03 for ServiceNow) but rejection corrections were not authorised
+   in this session.
+5. **Defer SWE-bench Docker harness (S-0002-05)** until experiment tasks need it.
+
+#### Metrics
+
+| Item | Count |
+| --- | --- |
+| New tasks created | 3 |
+| Suggestions covered by new tasks | 3 |
+| Suggestions rejected | 0 |
+| Suggestions reprioritized | 0 |
+| Corrections written | 0 |
+| Answer assets produced | 0 |
+
+#### Verification
+
+* `verify_task_file` — t0004, t0005, t0006, t0007 PASSED.
+* `verify_corrections` — t0004 PASSED (no corrections).
+* `verify_suggestions` — t0004 PASSED.
+* `verify_logs` — t0004 PASSED (LG-W005, LG-W007, LG-W008 acceptable for a planning task).
+
+#### Next Steps
+
+t0005, t0006, t0007 are independent and parallel-safe. Spawn three parallel `/execute-task`
+background agents immediately after this PR merges. After all three land, hold a Round-2-only
+brainstorm to clean up duplicate suggestions and propose the Phase 2 smoke-test experiment.
+
+## Hierarchical annotation pilot v1: audit and conform existing 115 rows
+ID: t0005_hierarchical_annotation_pilot_v1
+Status: not_started
+Effective date: 2026-04-29
+Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
+Task types: hierarchical-annotation
+Source suggestion: S-0002-08
+
+#### Motivation
+
+Phase 1 of the project&#x27;s roadmap requires ≥100 tasks fully annotated with gold actions at three
+granularity levels (global / subtask / atomic). The imported
+`project/data/annotation_pilot/ tasks_annotated.jsonl` already contains 115 LLM-annotated rows, but
+the rows have not been verified to conform to the project&#x27;s three-level schema and there is no human
+or LLM-as-judge spot-check pass on record. This task closes that gap in v1 form: keep the existing
+115 rows in place, audit their structure, and produce a canonical dataset asset that downstream
+Phase 2 / 3 experiments can consume. Implements suggestion S-0002-08.
+
+#### Scope
+
+* Read `project/data/annotation_pilot/tasks_annotated.jsonl` and inspect the `steps` field on each
+  row to determine whether it carries explicit global / subtask / atomic granularity labels or
+  whether the granularity must be inferred.
+* If labels are missing, write a deterministic mapper that derives the three-level structure from
+  the existing `steps` and adds an explicit `hierarchy: {global, subtask, atomic}` block per row.
+* Run an LLM-as-judge spot-check on at least 10% of rows (≥12 rows) to estimate hierarchy quality.
+  Use `claude-haiku-4-5-20251001` for the judge to keep cost low.
+* Produce one consolidated `dataset` asset under `assets/dataset/hierarchical_annotation_v1/` with
+  rows of shape
+  `{task_id, benchmark, difficulty, problem, hierarchy: {global, subtask, atomic}, gold_actions: {global, subtask, atomic}, annotation_model, judge_verdict, judge_notes}`.
+
+Out of scope for v1: replacing the HumanEval and Mind2Web proxies, expanding beyond 115 rows, human
+review, inter-rater agreement studies. All deferred to follow-up tasks.
+
+#### Approach
+
+1. Load the 115-row pilot file. For each row, compute the inferred or stated hierarchy and emit the
+   canonical schema record.
+2. Sample at least 12 rows stratified across the four benchmarks (FrontierScience-Olympiad,
+   SWE-bench Verified, HumanEval-proxy, Mind2Web-proxy). Send each to the LLM judge with the row&#x27;s
+   problem text and proposed hierarchy; capture verdict (&quot;acceptable&quot; / &quot;needs revision&quot;) plus a
+   one-sentence justification.
+3. Persist the consolidated dataset asset with `details.json` (source URL = the imported pilot path,
+   version = &quot;v1&quot;, license = inherited from each upstream benchmark, sample count = 115) and
+   `files/hierarchical_annotation_v1.jsonl`.
+4. Report distribution stats in `results/results_detailed.md` (per-benchmark counts, per-domain
+   counts, hierarchy-completeness rate, judge accept rate).
+
+#### Expected Outputs
+
+* `assets/dataset/hierarchical_annotation_v1/` with `details.json`, `files/`, and a
+  `description.md`.
+* `results/results_summary.md` with per-benchmark completeness and judge accept rate.
+* `results/results_detailed.md` with the full audit table and any rows that failed the judge.
+* `results/metrics.json` reporting `avg_decisions_per_task` (the registered diagnostic metric).
+* Follow-up suggestions for: extension to ≥200 rows, full human-review pass, and proxy benchmark
+  remediation.
+
+#### Compute and Budget
+
+No GPU. Anthropic API only. Estimated cost: under 3 USD for 12-15 LLM-as-judge calls on
+`claude-haiku-4-5-20251001`. Per-task cap: 5 USD.
+
+#### Dependencies and Cross-References
+
+* No task dependencies.
+* Reads `project/data/annotation_pilot/tasks_annotated.jsonl` (115 rows).
+* Reads `project/code/scripts/collect_and_annotate.py` and `project/code/src/` modules — wrap as
+  black-box utilities, never modify in place.
+* References the four benchmark dataset assets produced by `t0003_download_benchmark_subsets`.
+
+#### Source Suggestion
+
+S-0002-08 — &quot;Run a Phase 1 pilot annotation on 20 tasks before scaling to 100.&quot; This task implements
+that idea in v1 form, leveraging the existing 115 rows rather than re-annotating from scratch.
+
+#### Key Questions
+
+1. Do the existing 115 rows already carry a global / subtask / atomic decomposition, or must one be
+   inferred?
+2. What is the per-benchmark hierarchy-completeness rate?
+3. What is the LLM-as-judge accept rate? Does it differ across benchmarks?
+4. Are there systematic patterns in rejected rows (e.g., one benchmark consistently failing)?
+
+## Scope-aware ReAct library: condition A with explicit granularity tags
+ID: t0006_scope_aware_react_library
+Status: not_started
+Effective date: 2026-04-29
+Short description: Write-library implementing ReAct extended with explicit granularity tags ({global, subtask, atomic}) for the A condition.
+Task types: write-library
+Source suggestion: S-0002-07
+
+#### Motivation
+
+The project&#x27;s main hypothesis is that explicit granularity conditioning improves agent performance.
+The literature survey in t0002 identified ReAct (Yao2022) as the canonical foundation for the
+scope-aware (A) condition. This task produces a self-contained library that extends ReAct with a
+`{global, subtask, atomic}` granularity tag emitted at every Thought / Action turn, plus a logging
+hook that records the active tag alongside the model&#x27;s confidence. The library is the substrate
+every Phase 2 A-condition experiment will import. Implements suggestion S-0002-07.
+
+#### Scope
+
+* Implement a library asset under `assets/library/scope_aware_react_v1/` exposing a
+  `ScopeAwareReactAgent` class that:
+  * Accepts a problem statement, a fixed `granularity` argument (`&quot;global&quot; | &quot;subtask&quot; | &quot;atomic&quot;`),
+    a tool registry, and a model-call callable.
+  * Loops Thought / Action / Observation steps, prepending the active granularity tag to every
+    Thought emission, and parses Action JSON until the agent emits a `Finish` action.
+  * Logs every step&#x27;s `{turn_index, granularity, thought, action, observation, confidence}` to a
+    JSONL trajectory file the experiment harness can replay.
+  * Supports a deterministic-test mode that accepts pre-recorded model outputs.
+* Provide pytest coverage at `tasks/t0006_scope_aware_react_library/code/test_scope_aware_react.py`
+  covering: tag injection, action parsing, finish detection, error recovery on malformed JSON, and
+  trajectory logging integrity.
+
+Out of scope: the actual A-vs-B-vs-C experiment (a separate experiment-run task), benchmark-
+specific tool registries (also a separate task), and any remote-execution wiring.
+
+#### Approach
+
+1. Read t0002&#x27;s `research/research_papers.md` and the Yao2022 paper summary to ground the prompt
+   format. Reuse LangChain&#x27;s ReAct prompt where appropriate; the project licence is Apache 2.0.
+2. Implement the library in `tasks/t0006_scope_aware_react_library/code/scope_aware_react.py` and
+   re-export the public API from a `library/__init__.py` shim under
+   `assets/library/ scope_aware_react_v1/`.
+3. Write the asset&#x27;s `details.json`, `description.md`, and `files/` directory with the runnable
+   source.
+4. Write tests as deterministic unit tests; no live API calls.
+5. Run `verify_library_asset` and the test suite.
+
+#### Expected Outputs
+
+* `assets/library/scope_aware_react_v1/` with `details.json`, `description.md`, and `files/`.
+* `tasks/t0006_scope_aware_react_library/code/scope_aware_react.py` and matching test file.
+* `results/results_summary.md` with API surface description and test summary.
+* Follow-up suggestion for benchmark-specific tool registries.
+
+#### Compute and Budget
+
+No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
+
+#### Dependencies and Cross-References
+
+* No task dependencies.
+* References Yao2022 paper asset (`10.48550_arXiv.2210.03629`) from t0002.
+* Sister task `t0007_scope_unaware_planandsolve_library` produces the matched B baseline; both must
+  follow the same trajectory-logging schema so a Phase 2 experiment can consume both.
+
+#### Source Suggestion
+
+S-0002-07 — &quot;Implement scope-aware (A) as ReAct extended with explicit granularity tags.&quot;
+
+#### Key Questions
+
+1. What is the minimal extension to ReAct&#x27;s prompt template that reliably elicits a granularity tag
+   on every Thought emission?
+2. How should the library handle a model that refuses to emit a tag (back off, abort, or default to
+   `atomic`)?
+3. What schema for the trajectory log lets t0007 emit identical-shape records?
+
+## Scope-unaware Plan-and-Solve library: condition B baseline
+ID: t0007_scope_unaware_planandsolve_library
+Status: not_started
+Effective date: 2026-04-29
+Short description: Write-library adapting LangChain Plan-and-Execute as the canonical scope-unaware (B) baseline.
+Task types: write-library
+Source suggestion: S-0002-06
+
+#### Motivation
+
+The literature survey in t0002 identified Plan-and-Solve (Wang2023) as the strongest published
+prompt-only baseline that does not condition on explicit granularity tags. It is therefore the
+canonical scope-unaware (B) baseline for the project&#x27;s A-vs-B-vs-C comparison. This task produces
+the matching library asset, sharing the trajectory-log schema with t0006 so a Phase 2 experiment can
+run both libraries against the same harness without bespoke glue. Implements suggestion S-0002-06.
+
+#### Scope
+
+* Implement a library asset under `assets/library/scope_unaware_planandsolve_v1/` exposing a
+  `PlanAndSolveAgent` class that:
+  * Accepts a problem statement, a tool registry, and a model-call callable.
+  * Generates a free-form numbered plan, then executes each step sequentially through a
+    Plan-and-Execute loop.
+  * Emits trajectory records in the same schema as `scope_aware_react_v1` so both libraries are
+    drop-in interchangeable. The `granularity` field in the schema is filled with the literal string
+    `&quot;unspecified&quot;` to mark the B condition.
+  * Logs every step&#x27;s `{turn_index, granularity, thought, action, observation, confidence}`.
+  * Supports a deterministic-test mode that accepts pre-recorded model outputs.
+* Adapt LangChain&#x27;s `Plan-and-Execute` reference implementation rather than re-implementing from
+  scratch. License is Apache 2.0; record attribution in `description.md`.
+* Provide pytest coverage at
+  `tasks/t0007_scope_unaware_planandsolve_library/code/test_planandsolve.py` covering: plan parsing,
+  sequential execution, trajectory schema parity with t0006, finish detection, and error recovery on
+  malformed model output.
+
+Out of scope: actual A-vs-B-vs-C experiment, benchmark-specific tool registries, remote execution.
+
+#### Approach
+
+1. Read t0002&#x27;s Wang2023 paper summary and the LangChain Plan-and-Execute source to ground the
+   prompt template and execution loop.
+2. Implement the library in `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py`
+   and re-export the public API from `assets/library/scope_unaware_planandsolve_v1/library/`.
+3. Reuse the trajectory log schema defined in t0006 by reading t0006&#x27;s library when it lands; if
+   t0006 has not landed yet, define the schema here and document that t0006 must conform.
+4. Write `details.json`, `description.md`, and `files/` for the asset.
+5. Run `verify_library_asset` and the test suite.
+
+#### Expected Outputs
+
+* `assets/library/scope_unaware_planandsolve_v1/` with `details.json`, `description.md`, `files/`.
+* `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` and tests.
+* `results/results_summary.md` with API surface description and test summary.
+* Follow-up suggestion for the matched mismatch (C) library.
+
+#### Compute and Budget
+
+No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
+
+#### Dependencies and Cross-References
+
+* No task dependencies. May reference t0006&#x27;s library if it merges first; otherwise this task
+  defines the trajectory schema and t0006 must conform.
+* References Wang2023 paper asset (`10.48550_arXiv.2305.04091`) from t0002.
+
+#### Source Suggestion
+
+S-0002-06 — &quot;Implement Plan-and-Solve as the canonical scope-unaware (B) baseline.&quot;
+
+#### Key Questions
+
+1. What plan format does Plan-and-Solve produce, and how should it be parsed deterministically?
+2. How should the library mark the absence of a granularity tag in the trajectory record?
+3. What is the minimal API surface that lets a Phase 2 harness swap between this and t0006&#x27;s library
+   by changing only one line?
       </content>
     </section>
   </sections>

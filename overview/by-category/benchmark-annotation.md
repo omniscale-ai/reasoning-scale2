@@ -62,22 +62,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (2 open, 0 closed)
-
-<details>
-<summary>🧪 <strong>Run a Phase 1 pilot annotation on 20 tasks before scaling to
-100</strong> (S-0002-08)</summary>
-
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
-
-The project's success criteria require 100 tasks annotated at three granularity levels. Before
-scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator
-agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest
-atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold
-atomic actions, leaving manual annotation effort focused on global and subtask levels.
-
-</details>
+## Suggestions (1 open, 1 closed)
 
 <details>
 <summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
