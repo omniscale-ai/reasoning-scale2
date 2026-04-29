@@ -14,9 +14,9 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify task has no dependencies (independent of T1).",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T14:35:33Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T14:35:54Z",
       "log_file": "logs/steps/002_check-deps/"
     },
     {
