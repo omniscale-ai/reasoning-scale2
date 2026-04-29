@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T23:24:02Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T23:45:04Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>78731</char_count>
-    <byte_count>78977</byte_count>
-    <estimated_tokens>19682</estimated_tokens>
+    <char_count>80822</char_count>
+    <byte_count>81087</byte_count>
+    <estimated_tokens>20205</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -1064,11 +1064,12 @@ to expand the v2 dataset or move to a tool-using benchmark next.
 
 ## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
 ID: t0009_hierarchical_annotation_v2
-Status: not_started
-Effective date: 2026-04-30
+Status: in_progress
+Effective date: 2026-04-29
 Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
 Task types: hierarchical-annotation
 Source suggestion: S-0005-02
+Start time: 2026-04-29T23:24:52Z
 
 #### Motivation
 
@@ -1189,11 +1190,12 @@ S-0005-01 (annotation v2 schema) and the schema-gap finding from brainstorm 3.
 
 ## Matched-mismatch library: condition C with deliberately wrong granularity tags
 ID: t0010_matched_mismatch_library
-Status: not_started
-Effective date: 2026-04-30
+Status: in_progress
+Effective date: 2026-04-29
 Short description: Write-library implementing condition C: wrap scope_unaware_planandsolve_v1 with a tag-classifier that assigns deliberately incorrect granularity tags.
 Task types: write-library
 Source suggestion: S-0007-01
+Start time: 2026-04-29T23:25:02Z
 
 #### Motivation
 
@@ -1277,11 +1279,13 @@ S-0007-01 — &quot;Implement matched-mismatch (C) library on top of scope_unawa
 
 ## Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency
 ID: t0011_metric2_calibration_aggregator
-Status: not_started
-Effective date: 2026-04-30
+Status: completed
+Effective date: 2026-04-29
 Short description: Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.
 Task types: write-library
 Source suggestion: S-0002-02
+Start time: 2026-04-29T23:25:12Z
+End time: 2026-04-29T23:43:00Z
 
 #### Motivation
 
@@ -1362,6 +1366,41 @@ S-0002-02 — &quot;Implement verbalized-confidence + 3-sample self-consistency 
    highest-confidence sample.
 3. What is the expected output schema for compute_overconfident_error_rate so Phase 2 results can
    include it in `metrics.json` directly?
+
+### Results Summary
+
+#### Summary
+
+Implemented the metric2_calibration_aggregator_v1 library that operationalizes the project&#x27;s Metric
+2 (`overconfident_error_rate`) using the Xiong2024 §3.2 black-box calibration protocol. The library
+exposes `ConfidencePromptTemplate`, `ConfidenceJudge`, `elicit_confidence`,
+`compute_overconfident_error_rate`, and `CalibrationRecord` plus a trajectory-record adapter, with a
+single overridable threshold default (`HIGH_CONFIDENCE_THRESHOLD = 0.75`) and the canonical
+low/medium/high → 0.25/0.5/0.9 numeric mapping.
+
+#### Metrics
+
+* **Tests run**: 25 — all passed in 0.03 s
+  (`uv run pytest tasks/t0011_metric2_calibration_aggregator/code/`).
+* **Code lines written**: ~340 in `code/calibration.py`, ~125 in `code/constants.py`, ~40 in
+  `code/paths.py`, ~370 in `code/test_calibration.py` (test count includes the `ScriptedModel`
+  fake).
+* **Public API surface**: 5 entry points required by the task description plus 1 helper
+  (`calibration_record_from_trajectory`); 6 entry points listed in `details.json`.
+* **External cost**: $0 — deterministic tests, no live API calls.
+* **Type-checked source files**: 21 (mypy on the parent task package, zero errors).
+* **Quality gates passed**: ruff check, ruff format, mypy, pytest, library asset verificator.
+
+#### Verification
+
+* `uv run ruff check tasks/t0011_metric2_calibration_aggregator/code/` → All checks passed.
+* `uv run ruff format tasks/t0011_metric2_calibration_aggregator/code/` → no changes.
+* `uv run mypy -p tasks.t0011_metric2_calibration_aggregator` → Success: no issues found in 21
+  source files.
+* `uv run pytest tasks/t0011_metric2_calibration_aggregator/code/ -v` → 25 passed in 0.03s.
+* `uv run python -m meta.asset_types.library.verificator --task-id t0011_metric2_calibration_aggregator metric2_calibration_aggregator_v1`
+  → PASSED, no errors or warnings.
+* `verify_research_papers`, `verify_plan` → both pass with zero errors and zero warnings.
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience

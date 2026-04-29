@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-04-29T23:24:02Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-04-29T23:45:04Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>1428</char_count>
-    <byte_count>1428</byte_count>
-    <estimated_tokens>357</estimated_tokens>
+    <char_count>1474</char_count>
+    <byte_count>1474</byte_count>
+    <estimated_tokens>368</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -40,6 +40,7 @@ Spent: 0.1%
 * t0006_scope_aware_react_library: $0.00
 * t0007_scope_unaware_planandsolve_library: $0.00
 * t0008_brainstorm_results_3: $0.00
+* t0011_metric2_calibration_aggregator: $0.00
       </content>
     </section>
   </sections>

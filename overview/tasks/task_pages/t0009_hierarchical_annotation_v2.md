@@ -1,4 +1,4 @@
-# ⏹ Hierarchical annotation v2: tree schema with subtask-to-atomic edges
+# ⏳ Hierarchical annotation v2: tree schema with subtask-to-atomic edges
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0009_hierarchical_annotation_v2` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-04-29T23:24:52Z |
 | **Source suggestion** | `S-0005-02` |
 | **Task types** | `hierarchical-annotation` |
 | **Expected assets** | 1 dataset |

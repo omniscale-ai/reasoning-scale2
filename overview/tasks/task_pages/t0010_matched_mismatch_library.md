@@ -1,4 +1,4 @@
-# ⏹ Matched-mismatch library: condition C with deliberately wrong granularity tags
+# ⏳ Matched-mismatch library: condition C with deliberately wrong granularity tags
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0010_matched_mismatch_library` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-04-29T23:25:02Z |
 | **Source suggestion** | `S-0007-01` |
 | **Task types** | `write-library` |
 | **Expected assets** | 1 library |
