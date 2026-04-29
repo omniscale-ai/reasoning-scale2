@@ -1,0 +1,32 @@
+{
+  "total_rows": 115,
+  "rows_per_benchmark": {
+    "FrontierScience-Olympiad": 40,
+    "SWE-bench Verified": 23,
+    "tau-bench": 26,
+    "WorkArena++": 26
+  },
+  "rows_with_errors": 14,
+  "rows_with_null_steps": 11,
+  "rows_with_explicit_hierarchy": 0,
+  "node_type_counts": {
+    "strategic": 117,
+    "conceptual": 284,
+    "computational": 526,
+    "verification": 136
+  },
+  "keys_observed": [
+    "annotated_at",
+    "annotation_model",
+    "benchmark",
+    "difficulty",
+    "domain",
+    "errors",
+    "metadata",
+    "problem",
+    "solution",
+    "steps",
+    "task_id",
+    "token_usage"
+  ]
+}

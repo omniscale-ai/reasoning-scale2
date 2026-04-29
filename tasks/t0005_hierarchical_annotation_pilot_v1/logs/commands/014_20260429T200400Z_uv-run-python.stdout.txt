@@ -1,0 +1,2 @@
+Selected 12 rows -> /Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1/tasks/t0005_hierarchical_annotation_pilot_v1/code/_outputs/judge_sample.jsonl
+Per-benchmark counts: {'FrontierScience-Olympiad': 3, 'SWE-bench Verified': 3, 'tau-bench': 3, 'WorkArena++': 3}

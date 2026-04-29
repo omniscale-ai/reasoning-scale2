@@ -1,0 +1,15 @@
+[1/12] fs_7e32b7a6-9340-4a41-8c1f-89a0a91a6d3f (idx 20) -> verdict=needs revision cost=0.0074 running_total=0.0074
+[2/12] fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c (idx 24) -> verdict=needs revision cost=0.0092 running_total=0.0165
+[3/12] swe_astropy__astropy-8707 (idx 40) -> verdict=acceptable cost=0.0057 running_total=0.0223
+[4/12] swe_sphinx-doc__sphinx-8120 (idx 42) -> verdict=acceptable cost=0.0046 running_total=0.0269
+[5/12] swe_pytest-dev__pytest-8399 (idx 46) -> verdict=needs revision cost=0.0049 running_total=0.0318
+[6/12] he_HumanEval_144 (idx 49) -> verdict=acceptable cost=0.0046 running_total=0.0364
+[7/12] he_HumanEval_88 (idx 50) -> verdict=needs revision cost=0.0026 running_total=0.0390
+[8/12] he_HumanEval_135 (idx 68) -> verdict=acceptable cost=0.0069 running_total=0.0459
+[9/12] m2w_8d9e09e1-c31a-420b-ace8-079204db551a (idx 86) -> verdict=needs revision cost=0.0034 running_total=0.0494
+[10/12] m2w_84d8a4df-0bba-45f9-b4c8-f5d455de451c (idx 87) -> verdict=needs revision cost=0.0045 running_total=0.0539
+[11/12] m2w_73cf6eec-cae6-4d5b-9b8e-e44359311565 (idx 88) -> verdict=needs revision cost=0.0030 running_total=0.0569
+[12/12] fs_1eca2503-b141-4f9f-ab10-e27d272c93b0 (idx 107) -> verdict=needs revision cost=0.0030 running_total=0.0598
+Wrote /Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1/tasks/t0005_hierarchical_annotation_pilot_v1/code/_outputs/mapped_with_judge.jsonl
+Wrote /Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1/tasks/t0005_hierarchical_annotation_pilot_v1/code/_outputs/judge_costs.json
+Total cost: $0.0598

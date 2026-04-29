@@ -1,0 +1,3 @@
+Wrote /Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1/tasks/t0005_hierarchical_annotation_pilot_v1/code/_outputs/stats.json
+Wrote /Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1/tasks/t0005_hierarchical_annotation_pilot_v1/results/images/per_benchmark_completeness.png
+Wrote /Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1/tasks/t0005_hierarchical_annotation_pilot_v1/results/images/atomic_lengths.png

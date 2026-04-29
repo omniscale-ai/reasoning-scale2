@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0005_hierarchical_annotation_pilot_v1",
+  "command": "uv run python -u -m tasks.t0005_hierarchical_annotation_pilot_v1.code.run_mapper",
+  "exit_code": 0,
+  "duration_seconds": 0.054,
+  "started_at": "2026-04-29T19:57:46Z",
+  "completed_at": "2026-04-29T19:57:46Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1",
+  "stdout_file": "007_20260429T195746Z_uv-run-python.stdout.txt",
+  "stderr_file": "007_20260429T195746Z_uv-run-python.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

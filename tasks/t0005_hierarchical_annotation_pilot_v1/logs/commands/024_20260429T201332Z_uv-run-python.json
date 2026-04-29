@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0005_hierarchical_annotation_pilot_v1",
+  "command": "uv run python -m arf.scripts.verificators.verify_suggestions t0005_hierarchical_annotation_pilot_v1",
+  "exit_code": 0,
+  "duration_seconds": 0.051,
+  "started_at": "2026-04-29T20:13:32Z",
+  "completed_at": "2026-04-29T20:13:32Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0005_hierarchical_annotation_pilot_v1",
+  "stdout_file": "024_20260429T201332Z_uv-run-python.stdout.txt",
+  "stderr_file": "024_20260429T201332Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}

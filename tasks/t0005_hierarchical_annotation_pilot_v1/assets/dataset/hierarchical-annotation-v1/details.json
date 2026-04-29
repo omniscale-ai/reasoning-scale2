@@ -1,0 +1,37 @@
+{
+  "spec_version": "2",
+  "dataset_id": "hierarchical-annotation-v1",
+  "name": "Hierarchical Annotation v1 (115-row pilot audit)",
+  "version": "v1",
+  "short_description": "Three-level (global / subtask / atomic) hierarchical annotation of 115 benchmark tasks drawn from FrontierScience-Olympiad, SWE-bench Verified, tau-bench, and WorkArena++. Includes a 12-row LLM-as-judge spot-check.",
+  "description_path": "description.md",
+  "source_paper_id": null,
+  "url": null,
+  "download_url": null,
+  "year": 2026,
+  "date_published": "2026-04-29",
+  "authors": [
+    {
+      "name": "Glite ARF reasoning-scale project",
+      "country": null,
+      "institution": null,
+      "orcid": null
+    }
+  ],
+  "institutions": [],
+  "license": "inherited-per-row",
+  "access_kind": "restricted",
+  "size_description": "115 rows total (FrontierScience-Olympiad=40, SWE-bench Verified=23, WorkArena++=26, tau-bench=26); each row carries a global / subtask / atomic hierarchy and gold-action triple. Twelve rows (three per benchmark) carry an LLM-as-judge verdict.",
+  "files": [
+    {
+      "path": "files/hierarchical_annotation_v1.jsonl",
+      "description": "115-row JSONL with the canonical hierarchical annotation schema and judge verdicts merged in for the 12 sampled rows.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "hierarchical-planning",
+    "benchmark-annotation",
+    "agent-evaluation"
+  ]
+}
