@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-04-29T20:16:06Z">
+<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-04-29T23:24:02Z">
   <archive_summary>
     <title>Results Deep Dive</title>
     <description>Completed-task result summaries plus all detailed results reports.</description>
     <use_case>Performance analysis, experiment comparison, and result interpretation.</use_case>
-    <section_count>11</section_count>
-    <char_count>84094</char_count>
-    <byte_count>84363</byte_count>
-    <estimated_tokens>21023</estimated_tokens>
+    <section_count>12</section_count>
+    <char_count>89559</char_count>
+    <byte_count>89846</byte_count>
+    <estimated_tokens>22389</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -134,9 +134,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0005_hierarchical_annotation_pilot_v1</id>
         <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
+        <id>t0008_brainstorm_results_3</id>
       </source_ids>
       <content>
-Completed tasks: 7
+Completed tasks: 8
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -179,13 +180,50 @@ ID: t0007_scope_unaware_planandsolve_library
 Completed: 2026-04-29
 Short description: Write-library adapting LangChain Plan-and-Execute as the canonical scope-unaware (B) baseline.
 Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0007_scope_unaware_planandsolve_library&quot; date_completed: &quot;2026-04-29&quot; --- Results Summary — t0007_scope_unaware_planandsolve_library Summary Produced one library asset, `scope_unaware_planandsolve_v1`, that adapts LangChain&#x27;s Plan-and-Execute reference implementation of Wang et al.&#x27;s Plan-and-Solve prompting (arXiv 2305.04091) as the canonical scope-unaware (B) baseline for the project. The library passes its asset verificator and a 14-case pytest suite, all without any paid API calls. Metrics * **Library tests passing**: **14 / 14** (zero failures) * **Ruff errors on task code**: **0** * **Mypy errors on task code**: **0** * **Library asset verificator...
+
+## Brainstorm session 3: insert v2 re-annotation, plan Phase 2 smoke
+ID: t0008_brainstorm_results_3
+Completed: 2026-04-30
+Short description: Brainstorm 3: insert v2 tree-schema re-annotation as the new ASAP task; preserve original wave 3 (matched-mismatch lib, Metric 2 lib, A/B/C smoke harness).
+Result summary: Brainstorm Session 3 — Results Summary Summary Third brainstorm produced four new not-started tasks. The v1 annotation schema was found to lack subtask-to-atomic edges; a v2 re-annotation task was inserted ASAP as t0009. The original wave 3 plan (matched-mismatch library, Metric 2 calibration, A/B/C smoke harness) was preserved and renumbered to t0010-t0012, with t0012 gated on the other three. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after wave 2 (t0004-t0007) merged at $0.06 spend, with 27 uncovered suggestions and the v2 schema gap surfaced during prompt-modelling discussion of the `is_bored` annotation. * **Prompt**: Plan the first Phase 2 result on a real...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0009_hierarchical_annotation_v2</id>
+        <id>t0010_matched_mismatch_library</id>
+        <id>t0011_metric2_calibration_aggregator</id>
+        <id>t0012_phase2_abc_smoke_frontierscience</id>
+      </source_ids>
       <content>
-Planned or active tasks: 0
+Planned or active tasks: 4
+
+## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
+ID: t0009_hierarchical_annotation_v2
+Status: not_started
+Effective date: 2026-04-30
+Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
+
+## Matched-mismatch library: condition C with deliberately wrong granularity tags
+ID: t0010_matched_mismatch_library
+Status: not_started
+Effective date: 2026-04-30
+Short description: Write-library implementing condition C: wrap scope_unaware_planandsolve_v1 with a tag-classifier that assigns deliberately incorrect granularity tags.
+
+## Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency
+ID: t0011_metric2_calibration_aggregator
+Status: not_started
+Effective date: 2026-04-30
+Short description: Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.
+
+## Phase 2 A/B/C smoke harness on FrontierScience subset
+ID: t0012_phase2_abc_smoke_frontierscience
+Status: not_started
+Effective date: 2026-04-30
+Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
+Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -1350,6 +1388,71 @@ The operative task text from `task.json` and `task_description.md`:
 * **Out-of-scope items** (A-vs-B-vs-C experiment, benchmark-specific tool registries, remote
   execution): **Confirmed out of scope**. None of these were implemented in this task; they are
   Phase 2 deliverables.
+      </content>
+    </section>
+    <section id="t0008_brainstorm_results_3-results-detailed" source_kind="file">
+      <title>t0008_brainstorm_results_3 — Brainstorm session 3: insert v2 re-annotation, plan Phase 2 smoke — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0008_brainstorm_results_3</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0008_brainstorm_results_3/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+#### Summary
+
+Four new not-started tasks created (t0009-t0012). The v2 re-annotation task was inserted ASAP based
+on a schema gap discovered during prompt-modelling discussion. Round 2 cleanup and multi-provider
+replication were explicitly deferred.
+
+#### Methodology
+
+1. Aggregated tasks, suggestions, and costs. 7 completed tasks, 27 uncovered suggestions, $0.06
+   spent.
+2. Read full descriptions of high-priority suggestions. Identified consolidation opportunities
+   (S-0006-03 + S-0007-02 + S-0005-06 = same headline experiment).
+3. Proposed three-task wave 3 (matched-mismatch + Metric 2 + smoke harness on v1 dataset).
+4. Researcher requested concrete prompt models for A/B/C conditions on a random row from the pilot
+   dataset.
+5. Modelled prompts on `he_HumanEval_91` (`is_bored` problem). Discovered the v1 hierarchy schema is
+   flat (`subtask: list[str]`, `atomic: list[str]`) with no subtask-to-atomic edges.
+6. Researcher decided to redo annotation under a tree schema ASAP, then return to wave 3.
+7. Inserted t0009 (v2 re-annotation) as the new ASAP task; renumbered the original three tasks to
+   t0010-t0012.
+8. Researcher confirmation: &quot;confirm&quot;.
+9. Created the brainstorm task folder and four child task folders.
+
+#### Metrics
+
+| Item | Count |
+| --- | --- |
+| New tasks created | 4 |
+| Suggestions covered by new tasks | 8 |
+| Suggestions rejected | 0 |
+| Suggestions reprioritized | 0 |
+| Corrections written | 0 |
+| Answer assets produced | 0 |
+
+#### Limitations
+
+Planning task; no experiments run. Round 2 cleanup deferred — uncovered suggestion count of 27
+remains after this session.
+
+#### Files Created
+
+* `tasks/t0008_brainstorm_results_3/` — full brainstorm-results task folder.
+* `tasks/t0009_hierarchical_annotation_v2/{task.json,task_description.md}`.
+* `tasks/t0010_matched_mismatch_library/{task.json,task_description.md}`.
+* `tasks/t0011_metric2_calibration_aggregator/{task.json,task_description.md}`.
+* `tasks/t0012_phase2_abc_smoke_frontierscience/{task.json,task_description.md}`.
+
+#### Verification
+
+* `verify_task_file` — t0008, t0009, t0010, t0011, t0012: PASSED.
+* `verify_corrections` — t0008: PASSED (no corrections).
+* `verify_suggestions` — t0008: PASSED.
+* `verify_logs` — t0008: PASSED.
       </content>
     </section>
   </sections>

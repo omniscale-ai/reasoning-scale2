@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
 11 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **8 open** (3 high,
-2 medium, 3 low), **3 closed**.
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **7 open** (2 high,
+2 medium, 3 low), **4 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -27,28 +27,6 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement matched-mismatch (C) library on top of
-scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0007-01` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0007_scope_unaware_planandsolve_library`](../../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
-scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
-producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
-this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
-schema. The classifier should be a small fine-tuned model or heuristic so the task is
-local-only and deterministic.
 
 </details>
 
@@ -182,6 +160,30 @@ verbatim. If it diverges, file a correction.
 </details>
 
 ## Closed
+
+<details>
+<summary>✅ <s>Implement matched-mismatch (C) library on top of
+scope_unaware_planandsolve_v1</s> — covered by <a
+href="../../../tasks/t0010_matched_mismatch_library/"><code>t0010_matched_mismatch_library</code></a>
+(S-0007-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0007-01` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0007_scope_unaware_planandsolve_library`](../../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
+scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
+producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
+this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
+schema. The classifier should be a small fine-tuned model or heuristic so the task is
+local-only and deterministic.
+
+</details>
 
 <details>
 <summary>✅ <s>Implement Plan-and-Solve as the canonical scope-unaware (B)

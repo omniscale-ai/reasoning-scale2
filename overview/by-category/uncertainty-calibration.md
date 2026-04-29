@@ -65,38 +65,7 @@ condition's confidence elicitation.
 
 No answers in this category.
 
-## Suggestions (3 open, 0 closed)
-
-<details>
-<summary>📚 <strong>Implement verbalized-confidence + 3-sample self-consistency
-aggregator for Metric 2</strong> (S-0002-02)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that
-3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to
-this protocol for Metric 2 (overconfident error rate). This task would specify the
-human-inspired confidence prompt template (low/medium/high + brief justification), implement
-the self-consistency aggregator, and validate calibration on a small held-out set before Phase
-2 launches.
-
-</details>
-
-<details>
-<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
-truncation)</strong> (S-0005-02)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
-verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
-excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
-and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
-on FrontierScience-Olympiad.
-
-</details>
+## Suggestions (1 open, 2 closed)
 
 <details>
 <summary>📊 <strong>Multi-judge disagreement study on hierarchical

@@ -318,7 +318,7 @@ scope-conditioning gains must be robust to single-rollout luck.
 
 No answers in this category.
 
-## Suggestions (12 open, 0 closed)
+## Suggestions (9 open, 3 closed)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -333,22 +333,6 @@ demonstrates that single-rollout pass@1 systematically overstates agent reliabil
 project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
 task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
 luck.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement verbalized-confidence + 3-sample self-consistency
-aggregator for Metric 2</strong> (S-0002-02)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that
-3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to
-this protocol for Metric 2 (overconfident error rate). This task would specify the
-human-inspired confidence prompt template (low/medium/high + brief justification), implement
-the self-consistency aggregator, and validate calibration on a small held-out set before Phase
-2 launches.
 
 </details>
 
@@ -426,22 +410,6 @@ AsyncScriptedModel mirroring the sync helper.
 </details>
 
 <details>
-<summary>🧪 <strong>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience
-subset</strong> (S-0006-03)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
-
-scope_aware_react_v1 (A) and the in-progress scope_unaware_planandsolve_v1 (B) are now ready
-as substrates. Run a controlled experiment on the t0003 FrontierScience subset with both
-libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate,
-overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
-size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
-anchor.
-
-</details>
-
-<details>
 <summary>📊 <strong>Measure the missing-tag fallback rate against real LLMs</strong>
 (S-0006-04)</summary>
 
@@ -453,22 +421,6 @@ tag_missing_defaulted_to_atomic warning observation. The deterministic tests cov
 path but the fallback rate against real LLMs (GPT-4o, Claude 3.7 Sonnet, Llama-3.1-70B) is
 unknown. Build an evaluation task that runs each library at each granularity over N=20
 problems per benchmark and reports the fallback rate alongside task success.
-
-</details>
-
-<details>
-<summary>📚 <strong>Implement matched-mismatch (C) library on top of
-scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
-
-Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
-scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
-producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
-this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
-schema. The classifier should be a small fine-tuned model or heuristic so the task is
-local-only and deterministic.
 
 </details>
 

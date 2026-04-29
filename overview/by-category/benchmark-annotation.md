@@ -63,7 +63,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (4 open, 1 closed)
+## Suggestions (3 open, 2 closed)
 
 <details>
 <summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
@@ -90,21 +90,6 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>📊 <strong>Re-run LLM-as-judge with full problem text (no
-truncation)</strong> (S-0005-02)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision
-verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated
-excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
-and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
-on FrontierScience-Olympiad.
 
 </details>
 

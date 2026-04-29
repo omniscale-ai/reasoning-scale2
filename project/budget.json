@@ -4,7 +4,8 @@
   "per_task_default_limit": 10.00,
   "available_services": [
     "anthropic_api",
-    "openai_api"
+    "openai_api",
+    "google_api"
   ],
   "alerts": {
     "warn_at_percent": 80,

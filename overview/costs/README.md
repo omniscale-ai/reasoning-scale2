@@ -15,9 +15,9 @@ threshold.
 | Warn threshold | 80% ($80.00) |
 | Stop threshold | 100% ($100.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 7 |
+| Tasks with cost records | 8 |
 | Tasks with non-zero spend | 1 |
-| Skipped tasks | 0 |
+| Skipped tasks | 4 |
 
 ## Service Totals
 
@@ -31,10 +31,19 @@ threshold.
 |-----|------------|
 | `anthropic_api` | $0.06 |
 
-6 task cost record(s) are zero-cost and omitted from the main spend table.
+7 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 
 | Task | Status | Total (USD) | Limit (USD) | Over limit |
 |------|--------|-------------|-------------|------------|
 | [`t0005_hierarchical_annotation_pilot_v1`](../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | completed | $0.06 | $10.00 | no |
+
+## Skipped Tasks
+
+| Task ID | Reason |
+|---------|--------|
+| `t0009_hierarchical_annotation_v2` | results/costs.json is missing or invalid |
+| `t0010_matched_mismatch_library` | results/costs.json is missing or invalid |
+| `t0011_metric2_calibration_aggregator` | results/costs.json is missing or invalid |
+| `t0012_phase2_abc_smoke_frontierscience` | results/costs.json is missing or invalid |
