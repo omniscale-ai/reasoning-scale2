@@ -5,13 +5,15 @@
   "name": "Scope-aware ReAct library: condition A with explicit granularity tags",
   "short_description": "Write-library implementing ReAct extended with explicit granularity tags ({global, subtask, atomic}) for the A condition.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [],
-  "start_time": null,
+  "start_time": "2026-04-29T19:35:38Z",
   "end_time": null,
   "expected_assets": {
     "library": 1
   },
-  "task_types": ["write-library"],
+  "task_types": [
+    "write-library"
+  ],
   "source_suggestion": "S-0002-07"
 }
