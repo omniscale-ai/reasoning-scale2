@@ -1,4 +1,4 @@
-# ⏹ Hierarchical annotation pilot v1: audit and conform existing 115 rows
+# ⏳ Hierarchical annotation pilot v1: audit and conform existing 115 rows
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0005_hierarchical_annotation_pilot_v1` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-04-29T19:35:28Z |
 | **Source suggestion** | `S-0002-08` |
 | **Task types** | `hierarchical-annotation` |
 | **Expected assets** | 1 dataset |

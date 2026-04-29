@@ -5,14 +5,14 @@
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-4-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-0-9370DB" alt="Predictions"></a>
-  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-0-20B2AA" alt="Libraries"></a>
+  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-1-20B2AA" alt="Libraries"></a>
   <a href="answers/"><img src="https://img.shields.io/badge/Answers-0-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-7-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-15-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-19-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-0-DC143C" alt="Results"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (3K) |
-[full](llm-context/full.xml) (17K) | [roadmap](llm-context/roadmap.xml) (8K) |
-[results](llm-context/results-deep-dive.xml) (11K) |
+[full](llm-context/full.xml) (20K) | [roadmap](llm-context/roadmap.xml) (8K) |
+[results](llm-context/results-deep-dive.xml) (14K) |
 [assets](llm-context/literature-and-assets.xml) (7K)
 
-*Last updated: 2026-04-29 19:34 UTC*
+*Last updated: 2026-04-29 20:02 UTC*
 
 * **Budget**: **$0** spent of $100
 * **Remaining**: **$100**
@@ -48,19 +48,18 @@ No daily news yet.
 
 ---
 
-## [In Progress (0)](tasks/by-status/in_progress.md)
+## [In Progress (2)](tasks/by-status/in_progress.md)
 
-No tasks in progress.
+| # | Task | Started |
+|---|------|---------|
+| 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | 2026-04-29 19:35 |
+| 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | 2026-04-29 19:35 |
 
 ---
 
-## [Ready to Start (3)](tasks/by-status/not_started.md)
+## [Ready to Start (0)](tasks/by-status/not_started.md)
 
-| # | Task | Description | Date Added |
-|---|------|-------------|------------|
-| 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`description`](../tasks/t0005_hierarchical_annotation_pilot_v1/task_description.md) | 2026-04-29 |
-| 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`description`](../tasks/t0006_scope_aware_react_library/task_description.md) | 2026-04-29 |
-| 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`description`](../tasks/t0007_scope_unaware_planandsolve_library/task_description.md) | 2026-04-29 |
+No tasks ready to start.
 
 ---
 
@@ -70,10 +69,11 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (4 total)](tasks/by-status/completed.md)
+## [Recently Completed (5 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
 | 0004 | [Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries](../overview/tasks/task_pages/t0004_brainstorm_results_2.md) | [`results`](../tasks/t0004_brainstorm_results_2/results/results_detailed.md) | 2026-04-29 15:30 |
 | 0003 | [Download benchmark subsets for the four roadmap sources](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | [`results`](../tasks/t0003_download_benchmark_subsets/results/results_detailed.md) | 2026-04-29 14:58 |
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | [`results`](../tasks/t0002_literature_survey_granularity_conditioning/results/results_detailed.md) | 2026-04-29 14:26 |
@@ -81,7 +81,7 @@ No blocked tasks.
 
 ---
 
-## [Recent Suggestions (12 open)](suggestions/)
+## [Recent Suggestions (16 open)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -235,11 +235,11 @@ experiments.
 
 </details>
 
-*2 more open suggestions → [open suggestions](suggestions/)*
+*6 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (7)](suggestions/)
+## [High Priority Suggestions (9)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -345,6 +345,37 @@ upstream task-class manifest. Provision a free ServiceNow developer instance, re
 access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
 fallback.
+
+</details>
+
+<details>
+<summary>📚 <strong>Implement matched-mismatch (C) library on top of
+scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../tasks/t0007_scope_unaware_planandsolve_library/)
+
+Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
+scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
+producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
+this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
+schema. The classifier should be a small fine-tuned model or heuristic so the task is
+local-only and deterministic.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../tasks/t0007_scope_unaware_planandsolve_library/)
+
+Build the experiment harness that runs all three libraries (scope_aware_react_v1,
+scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
+slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
+computing the registered metrics task_success_rate, avg_decisions_per_task, and
+overconfident_error_rate per condition. The harness must depend on this library only via the
+trajectory schema, never via internal helpers, to preserve isolation.
 
 </details>
 
@@ -804,9 +835,11 @@ No predictions yet.
 
 ---
 
-## [Latest Libraries (0 total)](libraries/)
+## [Latest Libraries (1 total)](libraries/)
 
-No libraries yet.
+| Name | Source | Created |
+|------|--------|---------|
+| [Scope-Unaware Plan-and-Solve Agent (v1)](../tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md) | [7](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | 2026-04-29 |
 
 ---
 

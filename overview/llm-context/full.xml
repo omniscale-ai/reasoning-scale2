@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="full" generated_at_utc="2026-04-29T19:34:39Z">
+<llm_context_archive preset_id="full" generated_at_utc="2026-04-29T20:02:35Z">
   <archive_summary>
     <title>Full Project Context</title>
     <description>Largest preset with detailed completed-task reports and the full project knowledge base.</description>
     <use_case>Deep project review, comprehensive planning, and long-context synthesis.</use_case>
-    <section_count>12</section_count>
-    <char_count>68198</char_count>
-    <byte_count>68358</byte_count>
-    <estimated_tokens>17049</estimated_tokens>
+    <section_count>13</section_count>
+    <char_count>78067</char_count>
+    <byte_count>78261</byte_count>
+    <estimated_tokens>19516</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -135,9 +135,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
         <id>t0004_brainstorm_results_2</id>
+        <id>t0007_scope_unaware_planandsolve_library</id>
       </source_ids>
       <content>
-Completed tasks: 4
+Completed tasks: 5
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -162,6 +163,12 @@ ID: t0004_brainstorm_results_2
 Completed: 2026-04-29
 Short description: Brainstorm 2: plan annotation pilot v1 plus the A/B baseline libraries (ReAct+tags and Plan-and-Solve).
 Result summary: Brainstorm Session 2 — Results Summary Summary Second brainstorm produced three new not-started tasks for parallel execution: a v1 hierarchical annotation pilot and two baseline libraries (ReAct+tags for the A condition, Plan-and-Solve for the B condition). Round 2 suggestion cleanup deferred to a follow-up session. Session Overview * **Date**: 2026-04-29 * **Context**: Triggered after t0001-t0003 wave completed at $0 spend, with 15 uncovered suggestions queued. * **Prompt**: Plan Phase 1 annotation deliverable and the libraries Phase 2 baseline experiment will need. Decisions 1. **Create `t0005_hierarchical_annotation_pilot_v1`** (covers `S-0002-08`, `hierarchical-annotation`). Audit and...
+
+## Scope-unaware Plan-and-Solve library: condition B baseline
+ID: t0007_scope_unaware_planandsolve_library
+Completed: 2026-04-29
+Short description: Write-library adapting LangChain Plan-and-Execute as the canonical scope-unaware (B) baseline.
+Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0007_scope_unaware_planandsolve_library&quot; date_completed: &quot;2026-04-29&quot; --- Results Summary — t0007_scope_unaware_planandsolve_library Summary Produced one library asset, `scope_unaware_planandsolve_v1`, that adapts LangChain&#x27;s Plan-and-Execute reference implementation of Wang et al.&#x27;s Plan-and-Solve prompting (arXiv 2305.04091) as the canonical scope-unaware (B) baseline for the project. The library passes its asset verificator and a 14-case pytest suite, all without any paid API calls. Metrics * **Library tests passing**: **14 / 14** (zero failures) * **Ruff errors on task code**: **0** * **Mypy errors on task code**: **0** * **Library asset verificator...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -170,14 +177,13 @@ Result summary: Brainstorm Session 2 — Results Summary Summary Second brainsto
       <source_ids>
         <id>t0005_hierarchical_annotation_pilot_v1</id>
         <id>t0006_scope_aware_react_library</id>
-        <id>t0007_scope_unaware_planandsolve_library</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## Hierarchical annotation pilot v1: audit and conform existing 115 rows
 ID: t0005_hierarchical_annotation_pilot_v1
-Status: not_started
+Status: in_progress
 Effective date: 2026-04-29
 Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
 
@@ -259,7 +265,7 @@ that idea in v1 form, leveraging the existing 115 rows rather than re-annotating
 
 ## Scope-aware ReAct library: condition A with explicit granularity tags
 ID: t0006_scope_aware_react_library
-Status: not_started
+Status: in_progress
 Effective date: 2026-04-29
 Short description: Write-library implementing ReAct extended with explicit granularity tags ({global, subtask, atomic}) for the A condition.
 
@@ -331,80 +337,6 @@ S-0002-07 — &quot;Implement scope-aware (A) as ReAct extended with explicit gr
 2. How should the library handle a model that refuses to emit a tag (back off, abort, or default to
    `atomic`)?
 3. What schema for the trajectory log lets t0007 emit identical-shape records?
-
-## Scope-unaware Plan-and-Solve library: condition B baseline
-ID: t0007_scope_unaware_planandsolve_library
-Status: not_started
-Effective date: 2026-04-29
-Short description: Write-library adapting LangChain Plan-and-Execute as the canonical scope-unaware (B) baseline.
-
-#### Motivation
-
-The literature survey in t0002 identified Plan-and-Solve (Wang2023) as the strongest published
-prompt-only baseline that does not condition on explicit granularity tags. It is therefore the
-canonical scope-unaware (B) baseline for the project&#x27;s A-vs-B-vs-C comparison. This task produces
-the matching library asset, sharing the trajectory-log schema with t0006 so a Phase 2 experiment can
-run both libraries against the same harness without bespoke glue. Implements suggestion S-0002-06.
-
-#### Scope
-
-* Implement a library asset under `assets/library/scope_unaware_planandsolve_v1/` exposing a
-  `PlanAndSolveAgent` class that:
-  * Accepts a problem statement, a tool registry, and a model-call callable.
-  * Generates a free-form numbered plan, then executes each step sequentially through a
-    Plan-and-Execute loop.
-  * Emits trajectory records in the same schema as `scope_aware_react_v1` so both libraries are
-    drop-in interchangeable. The `granularity` field in the schema is filled with the literal string
-    `&quot;unspecified&quot;` to mark the B condition.
-  * Logs every step&#x27;s `{turn_index, granularity, thought, action, observation, confidence}`.
-  * Supports a deterministic-test mode that accepts pre-recorded model outputs.
-* Adapt LangChain&#x27;s `Plan-and-Execute` reference implementation rather than re-implementing from
-  scratch. License is Apache 2.0; record attribution in `description.md`.
-* Provide pytest coverage at
-  `tasks/t0007_scope_unaware_planandsolve_library/code/test_planandsolve.py` covering: plan parsing,
-  sequential execution, trajectory schema parity with t0006, finish detection, and error recovery on
-  malformed model output.
-
-Out of scope: actual A-vs-B-vs-C experiment, benchmark-specific tool registries, remote execution.
-
-#### Approach
-
-1. Read t0002&#x27;s Wang2023 paper summary and the LangChain Plan-and-Execute source to ground the
-   prompt template and execution loop.
-2. Implement the library in `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py`
-   and re-export the public API from `assets/library/scope_unaware_planandsolve_v1/library/`.
-3. Reuse the trajectory log schema defined in t0006 by reading t0006&#x27;s library when it lands; if
-   t0006 has not landed yet, define the schema here and document that t0006 must conform.
-4. Write `details.json`, `description.md`, and `files/` for the asset.
-5. Run `verify_library_asset` and the test suite.
-
-#### Expected Outputs
-
-* `assets/library/scope_unaware_planandsolve_v1/` with `details.json`, `description.md`, `files/`.
-* `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` and tests.
-* `results/results_summary.md` with API surface description and test summary.
-* Follow-up suggestion for the matched mismatch (C) library.
-
-#### Compute and Budget
-
-No GPU. No paid API calls (deterministic tests only). Estimated cost: USD 0.
-
-#### Dependencies and Cross-References
-
-* No task dependencies. May reference t0006&#x27;s library if it merges first; otherwise this task
-  defines the trajectory schema and t0006 must conform.
-* References Wang2023 paper asset (`10.48550_arXiv.2305.04091`) from t0002.
-
-#### Source Suggestion
-
-S-0002-06 — &quot;Implement Plan-and-Solve as the canonical scope-unaware (B) baseline.&quot;
-
-#### Key Questions
-
-1. What plan format does Plan-and-Solve produce, and how should it be parsed deterministically?
-2. How should the library mark the absence of a granularity tag in the trajectory record?
-3. What is the minimal API surface that lets a Phase 2 harness swap between this and t0006&#x27;s library
-   by changing only one line?
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -559,8 +491,18 @@ This dataset asset packages the WorkArena++ compositional task class manifest (4
     <section id="libraries" source_kind="aggregator">
       <title>Libraries</title>
       <source_name>aggregate_libraries_full</source_name>
+      <source_ids>
+        <id>scope_unaware_planandsolve_v1</id>
+      </source_ids>
       <content>
-Libraries: 0
+Libraries: 1
+
+## Scope-Unaware Plan-and-Solve Agent (v1)
+ID: scope_unaware_planandsolve_v1
+Version: 0.1.0
+Created by task: t0007_scope_unaware_planandsolve_library
+Module paths: tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py
+This library provides a deterministic, fully-testable Python implementation of the scope-unaware (B) Plan-and-Solve baseline for the project&#x27;s A-vs-B-vs-C comparison. It exposes a single top-level class, `PlanAndSolveAgent`, that drives a planner-then-executor loop using a swappable `model_call` callable. The trajectory record schema is identical to the schema produced by sister task t0006&#x27;s scope-aware library, so a...
       </content>
     </section>
     <section id="metrics" source_kind="aggregator">
@@ -1108,6 +1050,224 @@ high after this session.
 * `verify_corrections` — t0004: PASSED (no corrections).
 * `verify_suggestions` — t0004: PASSED.
 * `verify_logs` — t0004: PASSED.
+      </content>
+    </section>
+    <section id="t0007_scope_unaware_planandsolve_library-results-detailed" source_kind="file">
+      <title>t0007_scope_unaware_planandsolve_library — Scope-unaware Plan-and-Solve library: condition B baseline — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0007_scope_unaware_planandsolve_library</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0007_scope_unaware_planandsolve_library&quot;
+date_completed: &quot;2026-04-29&quot;
+---
+### Results — t0007_scope_unaware_planandsolve_library
+
+#### Summary
+
+This task produced the canonical scope-unaware (B) baseline library `scope_unaware_planandsolve_v1`
+for the project&#x27;s A-vs-B-vs-C comparison. The library adapts the LangChain
+`langchain_experimental.plan_and_execute` reference implementation of Wang et al.&#x27;s Plan-and-Solve
+(PS+) prompting (arXiv 2305.04091, ACL 2023) and exposes a `PlanAndSolveAgent` class whose
+trajectory record schema is byte-for-byte interchangeable with sister task t0006&#x27;s forthcoming
+`scope_aware_react_v1`. Every trajectory record sets `granularity = &quot;unspecified&quot;`, which is the
+operational definition of the B condition. All 14 tests pass; the library asset verificator reports
+zero errors and zero warnings.
+
+#### Methodology
+
+* **Compute**: local-only. All work ran inside the worktree at
+  `/Users/anaderi/git/reasoning-scale2-worktrees/t0007_scope_unaware_planandsolve_library` on a
+  macOS Darwin 25.3.0 host, Python 3.13.11, with no GPU and no network access required for tests.
+* **Runtime**: `pytest` reports the 14-case suite at **0.02 s**. End-to-end task wall-clock from the
+  resumed `create-branch` step to the final commit was approximately one hour.
+* **Timestamps**: task `start_time = 2026-04-29T19:35:48Z`; `end_time` is set in `task.json` at the
+  close of the `reporting` step.
+* **Tools**: `uv` 0.5.x for environment management; `ruff` and `mypy` for linting; `pytest` for
+  testing; `flowmark` for markdown formatting. All command invocations were wrapped in
+  `arf.scripts.utils.run_with_logs` per project rule.
+
+#### Verification
+
+| Verificator / quality gate | Result |
+| --- | --- |
+| `verify_research_papers` | PASSED — 0 errors, 0 warnings |
+| `verify_plan` | PASSED — 0 errors, 0 warnings |
+| `meta.asset_types.library.verificator` (scope_unaware_planandsolve_v1) | PASSED — 0 errors, 0 warnings |
+| `uv run pytest tasks/t0007_scope_unaware_planandsolve_library/code/` | 14 passed |
+| `uv run mypy -p tasks.t0007_scope_unaware_planandsolve_library.code` | Success: no issues found in 1 source file |
+| `uv run ruff check tasks/t0007_scope_unaware_planandsolve_library/code/` | All checks passed |
+
+The remaining required verificators (`verify_task_file`, `verify_task_dependencies`,
+`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
+`verify_logs`) run during the `reporting` step.
+
+#### Limitations
+
+* **Schema dependency on t0006**: this task defines the trajectory schema rather than reusing one.
+  Sister task t0006 (running in parallel) must conform when its branch reaches implementation. The
+  schema is documented at length in `description.md` `## Trajectory Schema` and exposed as
+  `TRAJECTORY_RECORD_FIELDS`. If t0006 lands a different schema, a follow-up correction task will be
+  required (see `suggestions.json`).
+* **PS+ prompt provenance**: the verbatim PS+ instruction text was sourced from the t0002 Wang2023
+  paper summary, which itself was grounded in the abstract because the paper PDF download failed in
+  t0002. A Phase 2 evaluation should re-download the paper to confirm the prompt text against the
+  published version.
+* **Tool registry shape**: the executor expects a flat `dict[str, Callable[[str], str]]` registry.
+  Hierarchical tool registries are out of scope for this library and will need a follow-up.
+* **Error surfacing**: tool errors and unknown-tool conditions are written to the trajectory&#x27;s
+  `observation` field rather than raised as exceptions. Callers that want hard-failure semantics
+  must inspect observation strings for the `&quot;ERROR:&quot;` prefix.
+* **No live LLM exercise**: the test suite is fully deterministic. The library has been exercised
+  against `ScriptedModel` only; no live LLM wiring exists yet — that is a Phase 2 task.
+
+#### Examples
+
+The deliverable is a library, not predictions or LLM completions. Two concrete behaviours of the
+library are reproduced below to make the API surface tangible.
+
+##### Example 1: Successful end-to-end run with one tool call
+
+Input — the planner&#x27;s pre-recorded response, the executor&#x27;s two pre-recorded responses, and the
+problem statement:
+
+```text
+Planner response (1):
+1. Add the numbers two and three.
+2. Report the result as the final answer.
+
+Executor response (turn 1):
+Action: add | Args: 2,3
+
+Executor response (turn 2):
+FINAL_ANSWER: 5
+
+problem = &quot;What is two plus three?&quot;
+tool_registry = {&quot;add&quot;: lambda args: str(sum(int(x) for x in args.split(&quot;,&quot;)))}
+```
+
+Output — `agent.run(problem)` returns:
+
+```text
+AgentResult(
+  final_answer=&quot;5&quot;,
+  plan=[&quot;Add the numbers two and three.&quot;, &quot;Report the result as the final answer.&quot;],
+  trajectory=[
+    TrajectoryRecord(turn_index=0, granularity=&quot;unspecified&quot;, thought=&quot;&quot;,
+                     action=&quot;add(2,3)&quot;, observation=&quot;5&quot;, confidence=None),
+    TrajectoryRecord(turn_index=1, granularity=&quot;unspecified&quot;, thought=&quot;&quot;,
+                     action=&quot;finish&quot;, observation=&quot;5&quot;, confidence=None),
+  ],
+)
+```
+
+##### Example 2: Malformed planner output raises `MalformedPlanError`
+
+Input — the planner returns prose with no numbered steps:
+
+```text
+Planner response (1):
+I refuse to make a plan.
+
+problem = &quot;Anything.&quot;
+tool_registry = {}
+```
+
+Output — `agent.run(problem)` raises:
+
+```text
+MalformedPlanError: No numbered plan steps were found in the planner output.
+Expected lines starting with &#x27;1.&#x27; or &#x27;1)&#x27;.
+```
+
+The full set of 14 deterministic test cases is in
+`tasks/t0007_scope_unaware_planandsolve_library/code/test_planandsolve.py` and exercises every
+behaviour referenced in this section.
+
+#### Files Created
+
+* `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` — library implementation
+  (about 290 lines).
+* `tasks/t0007_scope_unaware_planandsolve_library/code/test_planandsolve.py` — 14-case deterministic
+  pytest suite (about 220 lines).
+* `tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/details.json`
+  — library asset metadata.
+* `tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md`
+  — library description with all 8 mandatory sections plus `## Trajectory Schema` and
+  `## License &amp; Attribution`.
+* `tasks/t0007_scope_unaware_planandsolve_library/research/research_papers.md` — paper review
+  grounded in the t0002 Wang2023 summary.
+* `tasks/t0007_scope_unaware_planandsolve_library/plan/plan.md` — eight-step plan with nine `REQ-*`
+  items.
+* `tasks/t0007_scope_unaware_planandsolve_library/results/results_summary.md`,
+  `results_detailed.md`, `metrics.json`, `costs.json`, `remote_machines_used.json`,
+  `suggestions.json`.
+
+#### Task Requirement Coverage
+
+The operative task text from `task.json` and `task_description.md`:
+
+&gt; Scope-unaware Plan-and-Solve library: condition B baseline. Write-library adapting LangChain
+&gt; Plan-and-Execute as the canonical scope-unaware (B) baseline.
+&gt;
+&gt; Implement a library asset under `assets/library/scope_unaware_planandsolve_v1/` exposing a
+&gt; `PlanAndSolveAgent` class that: accepts a problem statement, a tool registry, and a model-call
+&gt; callable; generates a free-form numbered plan, then executes each step sequentially through a
+&gt; Plan-and-Execute loop; emits trajectory records in the same schema as `scope_aware_react_v1` so
+&gt; both libraries are drop-in interchangeable; the `granularity` field in the schema is filled with
+&gt; the literal string `&quot;unspecified&quot;` to mark the B condition; logs every step&#x27;s
+&gt; `{turn_index, granularity, thought, action, observation, confidence}`; supports a
+&gt; deterministic-test mode that accepts pre-recorded model outputs.
+&gt;
+&gt; Adapt LangChain&#x27;s `Plan-and-Execute` reference implementation rather than re-implementing from
+&gt; scratch. License is Apache 2.0; record attribution in `description.md`.
+&gt;
+&gt; Provide pytest coverage at `tasks/t0007_.../code/test_planandsolve.py` covering: plan parsing,
+&gt; sequential execution, trajectory schema parity with t0006, finish detection, and error recovery on
+&gt; malformed model output.
+
+* **REQ-1** (library asset folder under `assets/library/scope_unaware_planandsolve_v1/`): **Done**.
+  Asset exists with `details.json`, `description.md`, and `module_paths` pointing at
+  `code/planandsolve.py`. Evidence:
+  `tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/details.json`;
+  asset verificator passes.
+* **REQ-2** (`PlanAndSolveAgent` accepts problem, tool registry, and model-call callable): **Done**.
+  `PlanAndSolveAgent.__init__(model_call, tool_registry, max_steps, granularity_label)` and
+  `.run(problem)`. Evidence: `code/planandsolve.py` lines 230-265.
+* **REQ-3** (numbered plan generation + sequential per-step execution): **Done**. The `run()` method
+  calls the planner, parses the plan with `parse_plan`, then iterates over plan steps calling the
+  executor. Evidence: `test_sequential_execution` passes; `code/planandsolve.py` `run` method.
+* **REQ-4** (trajectory schema matching `scope_aware_react_v1`): **Done**. `TrajectoryRecord` with
+  the canonical six fields plus `TRAJECTORY_RECORD_FIELDS` exposed at module scope. Evidence:
+  `test_trajectory_schema_parity` and `test_trajectory_record_fields_match_canonical_tuple` pass;
+  the `## Trajectory Schema` block in `assets/library/scope_unaware_planandsolve_v1/description.md`.
+* **REQ-5** (`granularity == &quot;unspecified&quot;` on every B record): **Done**. The default
+  `granularity_label` is `&quot;unspecified&quot;`. Evidence: `test_granularity_unspecified` passes.
+* **REQ-6** (deterministic-test mode with pre-recorded outputs): **Done**. `ScriptedModel` class.
+  Evidence: `test_scripted_model_round_trip` passes; the entire 14-case suite runs without LLM
+  calls.
+* **REQ-7** (LangChain Apache-2.0 attribution): **Done**. `## License &amp; Attribution` block in
+  `description.md` plus a license note in the module docstring. Evidence:
+  `assets/library/scope_unaware_planandsolve_v1/description.md` `## License &amp; Attribution`.
+* **REQ-8** (pytest coverage for plan parsing, sequential execution, schema parity, finish
+  detection, malformed output): **Done**. 14 named test cases including `test_parse_plan_simple`,
+  `test_parse_plan_continuation`, `test_parse_plan_paren_separator`,
+  `test_parse_plan_malformed_raises`, `test_sequential_execution`, `test_trajectory_schema_parity`,
+  `test_finish_detection_final_answer`, `test_malformed_planner_output_propagates`. Evidence:
+  `pytest` reports 14 passed.
+* **REQ-9** (trajectory schema documented for sister task t0006): **Done**. The
+  `## Trajectory Schema` block in `description.md` provides a field table, JSON example, and Python
+  assertion snippet; `TRAJECTORY_RECORD_FIELDS` is exported as the canonical tuple. Evidence:
+  `assets/library/scope_unaware_planandsolve_v1/description.md` `## Trajectory Schema`.
+* **Out-of-scope items** (A-vs-B-vs-C experiment, benchmark-specific tool registries, remote
+  execution): **Confirmed out of scope**. None of these were implemented in this task; they are
+  Phase 2 deliverables.
       </content>
     </section>
   </sections>

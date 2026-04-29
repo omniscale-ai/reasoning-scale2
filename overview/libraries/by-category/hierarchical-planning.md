@@ -1,11 +1,8 @@
-# Libraries (1)
+# Libraries: `hierarchical-planning`
 
 1 librar(y/ies).
 
-**Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
-[`granularity-conditioning`](by-category/granularity-conditioning.md),
-[`hierarchical-planning`](by-category/hierarchical-planning.md); [By date
-added](by-date-added/README.md)
+[Back to all libraries](../README.md)
 
 ---
 
@@ -20,9 +17,9 @@ added](by-date-added/README.md)
 | **Modules** | `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` |
 | **Dependencies** | — |
 | **Date created** | 2026-04-29 |
-| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-| **Created by** | [`t0007_scope_unaware_planandsolve_library`](../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
-| **Documentation** | [`description.md`](../../tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md) |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+| **Created by** | [`t0007_scope_unaware_planandsolve_library`](../../../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) |
+| **Documentation** | [`description.md`](../../../tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md) |
 
 **Entry points:**
 

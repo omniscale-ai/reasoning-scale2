@@ -5,7 +5,8 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (5)](../papers/by-category/hierarchical-planning.md) | [Suggestions
-(5)](../suggestions/by-category/hierarchical-planning.md)
+(8)](../suggestions/by-category/hierarchical-planning.md) | [Libraries
+(1)](../libraries/by-category/hierarchical-planning.md)
 
 ---
 
@@ -231,7 +232,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (2 open, 3 closed)
+## Suggestions (5 open, 3 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
@@ -259,5 +260,51 @@ FrontierScience-Olympiad pilot rows currently lack per-instance step graphs beca
 solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
 problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
 apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+<details>
+<summary>📚 <strong>Implement matched-mismatch (C) library on top of
+scope_unaware_planandsolve_v1</strong> (S-0007-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
+
+Create a third agent library that wraps scope_unaware_planandsolve_v1 (or
+scope_aware_react_v1) with a tag-classifier that retroactively labels each step's granularity,
+producing the matched-mismatch (C) condition for the project's A-vs-B-vs-C comparison. Reuse
+this task's TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory
+schema. The classifier should be a small fine-tuned model or heuristic so the task is
+local-only and deterministic.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
+
+Build the experiment harness that runs all three libraries (scope_aware_react_v1,
+scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
+slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
+computing the registered metrics task_success_rate, avg_decisions_per_task, and
+overconfident_error_rate per condition. The harness must depend on this library only via the
+trajectory schema, never via internal helpers, to preserve isolation.
+
+</details>
+
+<details>
+<summary>📊 <strong>Re-download Wang2023 PDF and verify the verbatim PS+ prompt
+text</strong> (S-0007-04)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../../tasks/t0007_scope_unaware_planandsolve_library/)
+
+The PS+ instruction string in scope_unaware_planandsolve_v1 was sourced through the t0002
+paper summary, which was itself grounded only in the abstract because the PDF download failed
+in t0002. A small download-paper task should re-attempt the download against arXiv:2305.04091
+and verify that the prompt text in code/planandsolve.py matches the published version
+verbatim. If it diverges, file a correction.
 
 </details>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T19:34:39Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T20:02:35Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>43243</char_count>
-    <byte_count>43357</byte_count>
-    <estimated_tokens>10810</estimated_tokens>
+    <char_count>44687</char_count>
+    <byte_count>44813</byte_count>
+    <estimated_tokens>11171</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -566,11 +566,12 @@ brainstorm to clean up duplicate suggestions and propose the Phase 2 smoke-test 
 
 ## Hierarchical annotation pilot v1: audit and conform existing 115 rows
 ID: t0005_hierarchical_annotation_pilot_v1
-Status: not_started
+Status: in_progress
 Effective date: 2026-04-29
 Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
 Task types: hierarchical-annotation
 Source suggestion: S-0002-08
+Start time: 2026-04-29T19:35:28Z
 
 #### Motivation
 
@@ -650,11 +651,12 @@ that idea in v1 form, leveraging the existing 115 rows rather than re-annotating
 
 ## Scope-aware ReAct library: condition A with explicit granularity tags
 ID: t0006_scope_aware_react_library
-Status: not_started
+Status: in_progress
 Effective date: 2026-04-29
 Short description: Write-library implementing ReAct extended with explicit granularity tags ({global, subtask, atomic}) for the A condition.
 Task types: write-library
 Source suggestion: S-0002-07
+Start time: 2026-04-29T19:35:38Z
 
 #### Motivation
 
@@ -727,11 +729,13 @@ S-0002-07 — &quot;Implement scope-aware (A) as ReAct extended with explicit gr
 
 ## Scope-unaware Plan-and-Solve library: condition B baseline
 ID: t0007_scope_unaware_planandsolve_library
-Status: not_started
+Status: completed
 Effective date: 2026-04-29
 Short description: Write-library adapting LangChain Plan-and-Execute as the canonical scope-unaware (B) baseline.
 Task types: write-library
 Source suggestion: S-0002-06
+Start time: 2026-04-29T19:35:48Z
+End time: 2026-04-29T20:01:00Z
 
 #### Motivation
 
@@ -800,6 +804,38 @@ S-0002-06 — &quot;Implement Plan-and-Solve as the canonical scope-unaware (B) 
 2. How should the library mark the absence of a granularity tag in the trajectory record?
 3. What is the minimal API surface that lets a Phase 2 harness swap between this and t0006&#x27;s library
    by changing only one line?
+
+### Results Summary
+
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0007_scope_unaware_planandsolve_library&quot;
+date_completed: &quot;2026-04-29&quot;
+---
+### Results Summary — t0007_scope_unaware_planandsolve_library
+
+#### Summary
+
+Produced one library asset, `scope_unaware_planandsolve_v1`, that adapts LangChain&#x27;s
+Plan-and-Execute reference implementation of Wang et al.&#x27;s Plan-and-Solve prompting (arXiv
+2305.04091) as the canonical scope-unaware (B) baseline for the project. The library passes its
+asset verificator and a 14-case pytest suite, all without any paid API calls.
+
+#### Metrics
+
+* **Library tests passing**: **14 / 14** (zero failures)
+* **Ruff errors on task code**: **0**
+* **Mypy errors on task code**: **0**
+* **Library asset verificator errors / warnings**: **0 / 0**
+* **API spend**: **$0.00** (deterministic-test mode, no LLM calls)
+
+#### Verification
+
+* `uv run pytest tasks/t0007_scope_unaware_planandsolve_library/code/` — 14 passed in 0.02s
+* `uv run mypy -p tasks.t0007_scope_unaware_planandsolve_library.code` — Success: no issues
+* `uv run ruff check tasks/t0007_scope_unaware_planandsolve_library/code/` — All checks passed
+* `uv run python -m meta.asset_types.library.verificator --task-id t0007_scope_unaware_planandsolve_library`
+  — PASSED — no errors or warnings
       </content>
     </section>
   </sections>
