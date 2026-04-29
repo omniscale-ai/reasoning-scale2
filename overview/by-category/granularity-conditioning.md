@@ -189,39 +189,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (3 open, 0 closed)
-
-<details>
-<summary>🔧 <strong>Implement Plan-and-Solve as the canonical scope-unaware (B)
-baseline</strong> (S-0002-06)</summary>
-
-**Kind**: technique | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Plan-and-Solve [Wang2023] is the strongest published prompt-only baseline that does not
-condition on explicit granularity tags. The project should reuse LangChain's Plan-and-Execute
-implementation rather than reimplementing from scratch. This task would adapt the LangChain
-implementation to the project's task harness, log both stages (plan and solve) separately, and
-produce a 10-instance validation run on the composite benchmark to confirm the baseline beats
-vanilla Zero-shot-CoT.
-
-</details>
-
-<details>
-<summary>🔧 <strong>Implement scope-aware (A) as ReAct extended with explicit
-granularity tags</strong> (S-0002-07)</summary>
-
-**Kind**: technique | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
-
-The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token
-granularity tag from the set {global, subtask, atomic}. This task would specify the prompt
-template per granularity, the tagging logic that decides which granularity is active at each
-LLM call, and a logging schema that records the active granularity for every action so
-post-hoc per-granularity analysis is possible. Replicate Least-to-Most's solution-reuse
-pattern [Zhou2022] inside the implementation.
-
-</details>
+## Suggestions (1 open, 2 closed)
 
 <details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3

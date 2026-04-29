@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-3-4682B4" alt="Tasks"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-7-4682B4" alt="Tasks"></a>
   <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-15-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (3K) |
-[full](llm-context/full.xml) (13K) | [roadmap](llm-context/roadmap.xml) (5K) |
-[results](llm-context/results-deep-dive.xml) (9K) |
-[assets](llm-context/literature-and-assets.xml) (6K)
+[full](llm-context/full.xml) (17K) | [roadmap](llm-context/roadmap.xml) (8K) |
+[results](llm-context/results-deep-dive.xml) (11K) |
+[assets](llm-context/literature-and-assets.xml) (7K)
 
-*Last updated: 2026-04-29 15:00 UTC*
+*Last updated: 2026-04-29 19:34 UTC*
 
 * **Budget**: **$0** spent of $100
 * **Remaining**: **$100**
@@ -54,9 +54,13 @@ No tasks in progress.
 
 ---
 
-## [Ready to Start (0)](tasks/by-status/not_started.md)
+## [Ready to Start (3)](tasks/by-status/not_started.md)
 
-No tasks ready to start.
+| # | Task | Description | Date Added |
+|---|------|-------------|------------|
+| 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`description`](../tasks/t0005_hierarchical_annotation_pilot_v1/task_description.md) | 2026-04-29 |
+| 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`description`](../tasks/t0006_scope_aware_react_library/task_description.md) | 2026-04-29 |
+| 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`description`](../tasks/t0007_scope_unaware_planandsolve_library/task_description.md) | 2026-04-29 |
 
 ---
 
@@ -66,17 +70,18 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (3 total)](tasks/by-status/completed.md)
+## [Recently Completed (4 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0004 | [Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries](../overview/tasks/task_pages/t0004_brainstorm_results_2.md) | [`results`](../tasks/t0004_brainstorm_results_2/results/results_detailed.md) | 2026-04-29 15:30 |
 | 0003 | [Download benchmark subsets for the four roadmap sources](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | [`results`](../tasks/t0003_download_benchmark_subsets/results/results_detailed.md) | 2026-04-29 14:58 |
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | [`results`](../tasks/t0002_literature_survey_granularity_conditioning/results/results_detailed.md) | 2026-04-29 14:26 |
 | 0001 | [Brainstorm session 1: plan first project tasks](../overview/tasks/task_pages/t0001_brainstorm_results_1.md) | [`results`](../tasks/t0001_brainstorm_results_1/results/results_detailed.md) | 2026-04-29 00:00 |
 
 ---
 
-## [Recent Suggestions (15 open)](suggestions/)
+## [Recent Suggestions (12 open)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -151,53 +156,6 @@ composite. Its evaluation harness uses Docker per repository to isolate test run
 would download the Verified problem set, pull the Docker images, and run a 10-instance smoke
 test to confirm the harness reproduces published baseline numbers (e.g., one of the early
 Claude or GPT scores).
-
-</details>
-
-<details>
-<summary>🔧 <strong>Implement Plan-and-Solve as the canonical scope-unaware (B)
-baseline</strong> (S-0002-06)</summary>
-
-**Kind**: technique | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Plan-and-Solve [Wang2023] is the strongest published prompt-only baseline that does not
-condition on explicit granularity tags. The project should reuse LangChain's Plan-and-Execute
-implementation rather than reimplementing from scratch. This task would adapt the LangChain
-implementation to the project's task harness, log both stages (plan and solve) separately, and
-produce a 10-instance validation run on the composite benchmark to confirm the baseline beats
-vanilla Zero-shot-CoT.
-
-</details>
-
-<details>
-<summary>🔧 <strong>Implement scope-aware (A) as ReAct extended with explicit
-granularity tags</strong> (S-0002-07)</summary>
-
-**Kind**: technique | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token
-granularity tag from the set {global, subtask, atomic}. This task would specify the prompt
-template per granularity, the tagging logic that decides which granularity is active at each
-LLM call, and a logging schema that records the active granularity for every action so
-post-hoc per-granularity analysis is possible. Replicate Least-to-Most's solution-reuse
-pattern [Zhou2022] inside the implementation.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Run a Phase 1 pilot annotation on 20 tasks before scaling to
-100</strong> (S-0002-08)</summary>
-
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-The project's success criteria require 100 tasks annotated at three granularity levels. Before
-scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator
-agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest
-atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold
-atomic actions, leaving manual annotation effort focused on global and subtask levels.
 
 </details>
 
@@ -231,11 +189,57 @@ in Phase 2.
 
 </details>
 
-*5 more open suggestions → [open suggestions](suggestions/)*
+<details>
+<summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
+benchmark</strong> (S-0003-01)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
+
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to
+FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses
+40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research
+access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per
+the t0002 fallback plan.
+
+</details>
+
+<details>
+<summary>📂 <strong>Provision a ServiceNow developer instance for WorkArena++ live
+evaluation</strong> (S-0003-02)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
+
+WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to
+the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the
+upstream task-class manifest. Provision a free ServiceNow developer instance, request HF
+access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
+decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
+fallback.
+
+</details>
+
+<details>
+<summary>📊 <strong>Sensitivity-check the SWE-bench Verified 4-8-hunks subset against
+[3, 12]</strong> (S-0003-03)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
+
+The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks.
+The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by
+re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo
+distributions; this informs whether the 4-8 boundary is too narrow for Phase 2's atomic-edit
+experiments.
+
+</details>
+
+*2 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (9)](suggestions/)
+## [High Priority Suggestions (7)](suggestions/)
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
@@ -310,38 +314,6 @@ composite. Its evaluation harness uses Docker per repository to isolate test run
 would download the Verified problem set, pull the Docker images, and run a 10-instance smoke
 test to confirm the harness reproduces published baseline numbers (e.g., one of the early
 Claude or GPT scores).
-
-</details>
-
-<details>
-<summary>🔧 <strong>Implement Plan-and-Solve as the canonical scope-unaware (B)
-baseline</strong> (S-0002-06)</summary>
-
-**Kind**: technique | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Plan-and-Solve [Wang2023] is the strongest published prompt-only baseline that does not
-condition on explicit granularity tags. The project should reuse LangChain's Plan-and-Execute
-implementation rather than reimplementing from scratch. This task would adapt the LangChain
-implementation to the project's task harness, log both stages (plan and solve) separately, and
-produce a 10-instance validation run on the composite benchmark to confirm the baseline beats
-vanilla Zero-shot-CoT.
-
-</details>
-
-<details>
-<summary>🔧 <strong>Implement scope-aware (A) as ReAct extended with explicit
-granularity tags</strong> (S-0002-07)</summary>
-
-**Kind**: technique | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token
-granularity tag from the set {global, subtask, atomic}. This task would specify the prompt
-template per granularity, the tagging logic that decides which granularity is active at each
-LLM call, and a logging schema that records the active granularity for every action so
-post-hoc per-granularity analysis is possible. Replicate Least-to-Most's solution-reuse
-pattern [Zhou2022] inside the implementation.
 
 </details>
 

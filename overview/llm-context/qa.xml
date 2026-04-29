@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="qa" generated_at_utc="2026-04-29T15:00:39Z">
+<llm_context_archive preset_id="qa" generated_at_utc="2026-04-29T19:34:39Z">
   <archive_summary>
     <title>Questions and Answers</title>
     <description>Question-centric preset with the full answer corpus and compact project state.</description>
     <use_case>Answer review, follow-up questioning, and project knowledge-base chats.</use_case>
     <section_count>4</section_count>
-    <char_count>10286</char_count>
-    <byte_count>10318</byte_count>
-    <estimated_tokens>2571</estimated_tokens>
+    <char_count>12373</char_count>
+    <byte_count>12407</byte_count>
+    <estimated_tokens>3093</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -129,9 +129,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0001_brainstorm_results_1</id>
         <id>t0002_literature_survey_granularity_conditioning</id>
         <id>t0003_download_benchmark_subsets</id>
+        <id>t0004_brainstorm_results_2</id>
       </source_ids>
       <content>
-Completed tasks: 3
+Completed tasks: 4
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -150,13 +151,42 @@ ID: t0003_download_benchmark_subsets
 Completed: 2026-04-29
 Short description: Wire up access to FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, and tau-bench subsets at 4-8 decisions per task.
 Result summary: Results Summary: Download Benchmark Subsets Summary Acquired four benchmark subsets covering the project&#x27;s roadmap sources (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). Three were downloaded directly from public sources; WorkArena++ instance enumeration is gated on a live ServiceNow developer instance, so its asset captures the upstream curriculum manifest only and freezes the Mind2Web pilot proxy as the de-facto Phase 2 fallback. All four dataset assets pass `verify_dataset_asset` with zero errors. Metrics * **4 of 4** dataset assets created and passing `verify_dataset_asset` (zero errors, zero warnings). * **FrontierScience-Olympiad subset**: **40** problems (15...
+
+## Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries
+ID: t0004_brainstorm_results_2
+Completed: 2026-04-29
+Short description: Brainstorm 2: plan annotation pilot v1 plus the A/B baseline libraries (ReAct+tags and Plan-and-Solve).
+Result summary: Brainstorm Session 2 — Results Summary Summary Second brainstorm produced three new not-started tasks for parallel execution: a v1 hierarchical annotation pilot and two baseline libraries (ReAct+tags for the A condition, Plan-and-Solve for the B condition). Round 2 suggestion cleanup deferred to a follow-up session. Session Overview * **Date**: 2026-04-29 * **Context**: Triggered after t0001-t0003 wave completed at $0 spend, with 15 uncovered suggestions queued. * **Prompt**: Plan Phase 1 annotation deliverable and the libraries Phase 2 baseline experiment will need. Decisions 1. **Create `t0005_hierarchical_annotation_pilot_v1`** (covers `S-0002-08`, `hierarchical-annotation`). Audit and...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0005_hierarchical_annotation_pilot_v1</id>
+        <id>t0006_scope_aware_react_library</id>
+        <id>t0007_scope_unaware_planandsolve_library</id>
+      </source_ids>
       <content>
-Planned or active tasks: 0
+Planned or active tasks: 3
+
+## Hierarchical annotation pilot v1: audit and conform existing 115 rows
+ID: t0005_hierarchical_annotation_pilot_v1
+Status: not_started
+Effective date: 2026-04-29
+Short description: Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.
+
+## Scope-aware ReAct library: condition A with explicit granularity tags
+ID: t0006_scope_aware_react_library
+Status: not_started
+Effective date: 2026-04-29
+Short description: Write-library implementing ReAct extended with explicit granularity tags ({global, subtask, atomic}) for the A condition.
+
+## Scope-unaware Plan-and-Solve library: condition B baseline
+ID: t0007_scope_unaware_planandsolve_library
+Status: not_started
+Effective date: 2026-04-29
+Short description: Write-library adapting LangChain Plan-and-Execute as the canonical scope-unaware (B) baseline.
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
