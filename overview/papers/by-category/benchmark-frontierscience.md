@@ -1,19 +1,16 @@
-# Category: FrontierScience-Olympiad
+# Papers: `benchmark-frontierscience` (1)
 
-Per-source tag for tasks and assets sourced from the FrontierScience-Olympiad benchmark.
+1 papers across 1 year(s).
 
-[Back to Dashboard](../README.md)
-
-**Detail pages**: [Papers (1)](../papers/by-category/benchmark-frontierscience.md) |
-[Suggestions (1)](../suggestions/by-category/benchmark-frontierscience.md)
+[Back to all papers](../README.md)
 
 ---
 
-## Papers (1)
+## 2024 (1)
 
 <details>
-<summary>📝 <strong>FrontierMath: A Benchmark for Evaluating Advanced Mathematical
-Reasoning in AI</strong> — Glazer et al., 2024</summary>
+<summary>📝 FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning
+in AI — Glazer et al., 2024</summary>
 
 | Field | Value |
 |---|---|
@@ -23,9 +20,9 @@ Reasoning in AI</strong> — Glazer et al., 2024</summary>
 | **DOI** | `10.48550/arXiv.2411.04872` |
 | **URL** | https://arxiv.org/abs/2411.04872 |
 | **Date added** | 2026-04-29 |
-| **Categories** | [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-| **Added by** | [`t0002_literature_survey_granularity_conditioning`](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Full summary** | [`summary.md`](../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2411.04872/summary.md) |
+| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+| **Added by** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Full summary** | [`summary.md`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2411.04872/summary.md) |
 
 The paper introduces FrontierMath, a research-mathematician-grade math reasoning benchmark
 designed to evaluate frontier LLMs on problems that require hours to days of human expert
@@ -49,32 +46,5 @@ baseline means the benchmark contributes mainly to the failure tail of the compo
 benchmark, and any per-condition (scope-aware vs. scope-unaware) effect must be measured
 against a near-zero floor — which makes per-source stratification mandatory. Access via Epoch
 AI's evaluation pipeline is a known operational risk for the t0003 download-dataset task.
-
-</details>
-
-## Tasks (1)
-
-| # | Task | Status | Completed |
-|---|------|--------|-----------|
-| 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
-
-## Answers (0)
-
-No answers in this category.
-
-## Suggestions (1 open, 0 closed)
-
-<details>
-<summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
-pipeline</strong> (S-0002-04)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
-
-FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch
-AI's evaluation pipeline; the raw problems are not publicly downloadable. The project needs an
-explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
-(MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
-1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
 
 </details>

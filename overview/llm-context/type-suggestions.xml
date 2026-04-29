@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-29T14:29:11Z">
+  <archive_summary>
+    <title>All Suggestions</title>
+    <description>Complete suggestion list with full descriptions, priority, and status.</description>
+    <section_count>1</section_count>
+    <char_count>8617</char_count>
+    <byte_count>8617</byte_count>
+    <estimated_tokens>2154</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>all suggestions with full descriptions</item>
+  </included_content>
+  <sections>
+    <section id="full-suggestions" source_kind="aggregator">
+      <title>All Suggestions (Full Detail)</title>
+      <source_name>aggregate_suggestions_full</source_name>
+      <source_ids>
+        <id>S-0002-01</id>
+        <id>S-0002-02</id>
+        <id>S-0002-03</id>
+        <id>S-0002-04</id>
+        <id>S-0002-05</id>
+        <id>S-0002-06</id>
+        <id>S-0002-07</id>
+        <id>S-0002-08</id>
+        <id>S-0002-09</id>
+        <id>S-0002-10</id>
+      </source_ids>
+      <content>
+Suggestions: 10
+
+## Register pass^k as a project metric for reliability reporting
+ID: S-0002-01
+Status: active
+Priority: high
+Kind: evaluation
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: 10.48550_arXiv.2406.12045
+Categories: agent-evaluation, benchmark-taubench
+Date added: 2026-04-29
+
+tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.
+
+## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
+ID: S-0002-02
+Status: active
+Priority: high
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: 10.48550_arXiv.2306.13063
+Categories: uncertainty-calibration, agent-evaluation
+Date added: 2026-04-29
+
+Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that 3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to this protocol for Metric 2 (overconfident error rate). This task would specify the human-inspired confidence prompt template (low/medium/high + brief justification), implement the self-consistency aggregator, and validate calibration on a small held-out set before Phase 2 launches.
+
+## Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++
+ID: S-0002-03
+Status: active
+Priority: high
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: 10.48550_arXiv.2407.05291
+Categories: benchmark-workarena, agent-evaluation
+Date added: 2026-04-29
+
+Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow developer instance and the BrowserGym Python harness. This is a substantial infrastructure task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1 annotation begins.
+
+## Negotiate FrontierMath access via Epoch AI evaluation pipeline
+ID: S-0002-04
+Status: active
+Priority: high
+Kind: dataset
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: 10.48550_arXiv.2411.04872
+Categories: benchmark-frontierscience
+Date added: 2026-04-29
+
+FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch AI&#x27;s evaluation pipeline; the raw problems are not publicly downloadable. The project needs an explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
+
+## Build the SWE-bench Verified Docker harness
+ID: S-0002-05
+Status: active
+Priority: high
+Kind: dataset
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: no-doi_OpenAI2024_swe-bench-verified
+Categories: benchmark-swebench
+Date added: 2026-04-29
+
+SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
+
+## Implement Plan-and-Solve as the canonical scope-unaware (B) baseline
+ID: S-0002-06
+Status: active
+Priority: high
+Kind: technique
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: 10.48550_arXiv.2305.04091
+Categories: granularity-conditioning, hierarchical-planning
+Date added: 2026-04-29
+
+Plan-and-Solve [Wang2023] is the strongest published prompt-only baseline that does not condition on explicit granularity tags. The project should reuse LangChain&#x27;s Plan-and-Execute implementation rather than reimplementing from scratch. This task would adapt the LangChain implementation to the project&#x27;s task harness, log both stages (plan and solve) separately, and produce a 10-instance validation run on the composite benchmark to confirm the baseline beats vanilla Zero-shot-CoT.
+
+## Implement scope-aware (A) as ReAct extended with explicit granularity tags
+ID: S-0002-07
+Status: active
+Priority: high
+Kind: technique
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: 10.48550_arXiv.2210.03629
+Categories: granularity-conditioning, hierarchical-planning
+Date added: 2026-04-29
+
+The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token granularity tag from the set {global, subtask, atomic}. This task would specify the prompt template per granularity, the tagging logic that decides which granularity is active at each LLM call, and a logging schema that records the active granularity for every action so post-hoc per-granularity analysis is possible. Replicate Least-to-Most&#x27;s solution-reuse pattern [Zhou2022] inside the implementation.
+
+## Run a Phase 1 pilot annotation on 20 tasks before scaling to 100
+ID: S-0002-08
+Status: active
+Priority: medium
+Kind: experiment
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: 10.48550_arXiv.2407.05291
+Categories: benchmark-annotation, hierarchical-planning
+Date added: 2026-04-29
+
+The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+## Re-fetch the 11 paper PDFs with git LFS enabled
+ID: S-0002-09
+Status: active
+Priority: medium
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+Date added: 2026-04-29
+
+All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset&#x27;s files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.
+
+## Defer Reflexion-style episodic memory to a Phase 3 ablation
+ID: S-0002-10
+Status: active
+Priority: low
+Kind: experiment
+Source task: t0002_literature_survey_granularity_conditioning
+Source paper: 10.48550_arXiv.2303.11366
+Categories: granularity-conditioning, hierarchical-planning
+Date added: 2026-04-29
+
+Reflexion [Shinn2023] adds verbal self-reflection across trials and reaches 91% pass@1 on HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would conflate scope conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether Reflexion-style memory adds further gains on top of the scope-aware (A) condition established in Phase 2.
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>

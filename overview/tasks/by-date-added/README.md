@@ -96,21 +96,27 @@ Estimated cost: USD 0.
 
 </details>
 
+## ✅ Completed
+
 <details>
-<summary>⏹ 0002 — <strong>Literature survey: granularity conditioning and
+<summary>✅ 0002 — <strong>Literature survey: granularity conditioning and
 hierarchical agents</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0002_literature_survey_granularity_conditioning` |
-| **Status** | not_started |
+| **Status** | completed |
 | **Effective date** | 2026-04-29 |
 | **Dependencies** | — |
 | **Expected assets** | 10 paper |
 | **Source suggestion** | — |
 | **Task types** | [`literature-survey`](../../../meta/task_types/literature-survey/) |
+| **Start time** | 2026-04-29T13:50:47Z |
+| **End time** | 2026-04-29T14:26:49Z |
+| **Step progress** | 11/15 |
 | **Task page** | [Literature survey: granularity conditioning and hierarchical agents](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
 | **Task folder** | [`t0002_literature_survey_granularity_conditioning/`](../../../tasks/t0002_literature_survey_granularity_conditioning/) |
+| **Detailed report** | [results_detailed.md](../../../tasks/t0002_literature_survey_granularity_conditioning/results/results_detailed.md) |
 
 # Literature Survey: Granularity Conditioning and Hierarchical Agents
 
@@ -192,9 +198,35 @@ an API key is provided). Estimated cost: under 5 USD for paper summarisation thr
 4. Are the WorkArena++ and tau-bench benchmarks truly inaccessible (as the existing pilot data
    suggests), or are there standard distribution channels we missed?
 
-</details>
+**Results summary:**
 
-## ✅ Completed
+> **Results Summary: Literature Survey on Granularity Conditioning and Hierarchical Agents**
+>
+> **Summary**
+>
+> Completed a literature survey of 11 papers covering granularity / scope conditioning of LLM
+> agents,
+> hierarchical task decomposition, uncertainty calibration, and the four roadmap benchmarks
+> (FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, tau-bench). All 11 paper assets
+> pass the
+> v3 paper-asset verificator and are tagged with project categories.
+>
+> **Metrics**
+>
+> * **11 paper assets created** out of a 10-paper minimum target — exceeds REQ-1 by one paper.
+> * **4 of 4 survey threads covered** with at least 2 papers each: granularity / hierarchical
+> prompting (Yao2022, Wang2023, Shinn2023, Zhou2022, Wei2022 noted but not added in this round
+> — 4
+> added), four roadmap benchmarks (Glazer2024, Drouin2024, Boisvert2024, Jimenez2024,
+> OpenAI2024,
+> Yao2024 — 6 added), calibration (Xiong2024 — 1 added).
+> * **0 errors** across 11 verificator runs; 1 minor warning (PA-W007 missing-country) on the
+>   first
+> paper, fixed by adding country codes.
+>
+> **Verification**
+
+</details>
 
 <details>
 <summary>✅ 0001 — <strong>Brainstorm session 1: plan first project tasks</strong></summary>

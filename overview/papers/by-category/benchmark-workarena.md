@@ -1,19 +1,16 @@
-# Category: WorkArena++
+# Papers: `benchmark-workarena` (2)
 
-Per-source tag for tasks and assets sourced from the WorkArena++ web-task benchmark.
+2 papers across 1 year(s).
 
-[Back to Dashboard](../README.md)
-
-**Detail pages**: [Papers (2)](../papers/by-category/benchmark-workarena.md) | [Suggestions
-(1)](../suggestions/by-category/benchmark-workarena.md)
+[Back to all papers](../README.md)
 
 ---
 
-## Papers (2)
+## 2024 (2)
 
 <details>
-<summary>🏤 <strong>WorkArena++: Towards Compositional Planning and Reasoning-based
-Common Knowledge Work Tasks</strong> — Boisvert et al., 2024</summary>
+<summary>🏤 WorkArena++: Towards Compositional Planning and Reasoning-based Common
+Knowledge Work Tasks — Boisvert et al., 2024</summary>
 
 | Field | Value |
 |---|---|
@@ -23,9 +20,9 @@ Common Knowledge Work Tasks</strong> — Boisvert et al., 2024</summary>
 | **DOI** | `10.48550/arXiv.2407.05291` |
 | **URL** | https://arxiv.org/abs/2407.05291 |
 | **Date added** | 2026-04-29 |
-| **Categories** | [`benchmark-workarena`](../../meta/categories/benchmark-workarena/), [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-| **Added by** | [`t0002_literature_survey_granularity_conditioning`](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Full summary** | [`summary.md`](../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2407.05291/summary.md) |
+| **Categories** | [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+| **Added by** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Full summary** | [`summary.md`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2407.05291/summary.md) |
 
 WorkArena++ extends the 33 atomic WorkArena task families into 682 compositional
 knowledge-work tasks evaluated on the same ServiceNow + BrowserGym substrate. The motivation
@@ -55,8 +52,8 @@ analysis.
 </details>
 
 <details>
-<summary>🏤 <strong>WorkArena: How Capable Are Web Agents at Solving Common Knowledge
-Work Tasks?</strong> — Drouin et al., 2024</summary>
+<summary>🏤 WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work
+Tasks? — Drouin et al., 2024</summary>
 
 | Field | Value |
 |---|---|
@@ -66,9 +63,9 @@ Work Tasks?</strong> — Drouin et al., 2024</summary>
 | **DOI** | `10.48550/arXiv.2403.07718` |
 | **URL** | https://arxiv.org/abs/2403.07718 |
 | **Date added** | 2026-04-29 |
-| **Categories** | [`benchmark-workarena`](../../meta/categories/benchmark-workarena/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-| **Added by** | [`t0002_literature_survey_granularity_conditioning`](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Full summary** | [`summary.md`](../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2403.07718/summary.md) |
+| **Categories** | [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+| **Added by** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Full summary** | [`summary.md`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2403.07718/summary.md) |
 
 WorkArena introduces a remote-hosted benchmark of 33 enterprise-grade web tasks built on the
 ServiceNow platform, accompanied by BrowserGym — a reusable Python environment for web-agent
@@ -93,32 +90,5 @@ tasks as sanity-check material rather than primary evaluation, and prefer GPT-4-
 for the Phase 2 baseline. The open-vs-closed-source gap is large enough that mixing model
 classes in the composite benchmark would conflate model effects with prompt effects — a hazard
 the planning step must address.
-
-</details>
-
-## Tasks (1)
-
-| # | Task | Status | Completed |
-|---|------|--------|-----------|
-| 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
-
-## Answers (0)
-
-No answers in this category.
-
-## Suggestions (1 open, 0 closed)
-
-<details>
-<summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
-WorkArena++</strong> (S-0002-03)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow
-developer instance and the BrowserGym Python harness. This is a substantial infrastructure
-task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
-any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
-annotation begins.
 
 </details>
