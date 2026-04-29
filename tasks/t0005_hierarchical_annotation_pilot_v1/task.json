@@ -1,0 +1,17 @@
+{
+  "spec_version": 4,
+  "task_id": "t0005_hierarchical_annotation_pilot_v1",
+  "task_index": 5,
+  "name": "Hierarchical annotation pilot v1: audit and conform existing 115 rows",
+  "short_description": "Audit and conform the 115 existing pilot annotations to the global/subtask/atomic schema; produce one dataset asset.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "dataset": 1
+  },
+  "task_types": ["hierarchical-annotation"],
+  "source_suggestion": "S-0002-08"
+}
