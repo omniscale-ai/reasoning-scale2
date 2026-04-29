@@ -5,13 +5,15 @@
   "name": "Matched-mismatch library: condition C with deliberately wrong granularity tags",
   "short_description": "Write-library implementing condition C: wrap scope_unaware_planandsolve_v1 with a tag-classifier that assigns deliberately incorrect granularity tags.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [],
-  "start_time": null,
+  "start_time": "2026-04-29T23:25:02Z",
   "end_time": null,
   "expected_assets": {
     "library": 1
   },
-  "task_types": ["write-library"],
+  "task_types": [
+    "write-library"
+  ],
   "source_suggestion": "S-0007-01"
 }
