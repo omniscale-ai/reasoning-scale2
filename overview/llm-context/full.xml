@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive preset_id="full" generated_at_utc="2026-04-29T13:44:19Z">
+  <archive_summary>
+    <title>Full Project Context</title>
+    <description>Largest preset with detailed completed-task reports and the full project knowledge base.</description>
+    <use_case>Deep project review, comprehensive planning, and long-context synthesis.</use_case>
+    <section_count>9</section_count>
+    <char_count>21825</char_count>
+    <byte_count>21889</byte_count>
+    <estimated_tokens>5456</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>project description</item>
+    <item>completed task summaries</item>
+    <item>planned tasks with long descriptions</item>
+    <item>full answer coverage</item>
+    <item>paper summaries</item>
+    <item>datasets</item>
+    <item>libraries</item>
+    <item>metrics</item>
+    <item>results_detailed.md for each completed task</item>
+  </included_content>
+  <sections>
+    <section id="project-description" source_kind="file">
+      <title>Project Description</title>
+      <source_name>project/description.md</source_name>
+      <repo_paths>
+        <path>project/description.md</path>
+      </repo_paths>
+      <content>
+# Granularity-Aware Hierarchical Agents
+
+## Goal
+
+Investigate whether explicitly specifying an agent&#x27;s current operating granularity — global
+planning, subtask planning, or atomic execution — improves action quality, uncertainty calibration,
+and final task success in hierarchical problem solving. The project measures the effect of scope
+labelling on a composite multi-step benchmark and produces a paper-ready confirm/refute verdict on
+the main hypothesis with effect sizes and stratified breakdowns.
+
+## Scope
+
+### In Scope
+
+* Inference-time prompting strategies that condition an LLM agent on an explicit granularity label
+  (global / subtask / atomic).
+* Three experimental conditions: scope-aware (A), scope-unaware (B), scope-mismatched (C).
+* Three evaluation metrics: normalized final task success, overconfident error rate, and
+  can-execute-now vs. must-request-information accuracy.
+* A composite benchmark drawn from FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, and
+  τ-bench, restricted to multi-step tasks of 4-8 decisions per task.
+* Manual + LLM-assisted hierarchical annotation of gold actions at three granularity levels.
+* Statistical testing across at least 100 tasks per condition with stratification by difficulty and
+  granularity.
+
+### Out of Scope
+
+* Non-English benchmarks.
+* RL or any gradient-based agent training (inference-time prompting only).
+* Production deployment, latency engineering, and cost optimisation of the agent itself.
+* Custom benchmark construction beyond the four named sources.
+
+## Research Questions
+
+1. Does explicit granularity conditioning yield higher final task success than an otherwise
+   identical scope-unaware agent on the composite benchmark?
+2. Does explicit granularity conditioning reduce the overconfident error rate, i.e. the fraction of
+   incorrect actions taken with high confidence?
+3. On low-level tasks, does granularity conditioning improve accuracy in distinguishing &quot;can execute
+   now&quot; from &quot;must request information&quot;?
+4. Are gains concentrated in states where local execution requires information not needed for
+   higher-level planning (sub-hypothesis 1)?
+5. Do scope-mismatched agents perform strictly worse than both scope-aware and scope-unaware
+   baselines (sub-hypothesis 2)?
+
+## Success Criteria
+
+* At least 100 tasks fully annotated with gold actions at each of the three granularity levels
+  (Phase 1 deliverable).
+* Statistically significant difference between scope-aware (A) and scope-unaware (B) on at least two
+  of the three metrics at the chosen significance threshold (Phase 2 deliverable).
+* Scope-mismatched (C) ranks worst on Metric 1 (task success) and Metric 2 (overconfident error
+  rate) relative to A and B (Phase 3 deliverable).
+* Clear confirm/refute verdict on the main hypothesis with reported effect sizes and a stratified
+  breakdown by task family and difficulty (Phase 4 deliverable).
+
+## Key References
+
+* FrontierScience-Olympiad — composite reasoning benchmark used for top-of-hierarchy strategic
+  planning tasks.
+* WorkArena++ — web-task benchmark used for mid-level subtask planning.
+* SWE-bench Verified — repository-grounded software engineering benchmark used for atomic execution
+  cases.
+* τ-bench — tool-use benchmark contributing fine-grained execution decisions and request-vs-act
+  branching.
+
+## Current Phase
+
+Phase 1 (task decomposition and annotation) is in progress: hierarchical annotation schema is being
+finalised and the pilot annotation set is being expanded. Phase 2 (baseline scope-aware vs.
+scope-unaware experiment) is queued and depends on completion of Phase 1.
+
+## Pre-Existing Data and Code
+
+The following prior assets were imported from the source `reasoning-scale-` project tree on
+2026-04-29:
+
+* `code/scripts/` — experiment runners and analysis scripts including `collect_and_annotate.py`,
+  `run_experiment.py`, `run_diploma_experiments.py`, `run_synthesis.py`, and `analyze_results.py`.
+  These drive Phase 1 annotation and Phase 2-3 experiment execution.
+* `code/src/` — Python package with `runner.py`, `pipeline/`, `benchmarks/`, `models/`, `analysis/`,
+  and `storage/` modules backing the scripts. Provides the agent-execution pipeline, benchmark
+  adapters, and result storage layer.
+* `code/config/` — experiment YAML configurations (`experiment_exp1_instruction.yaml`,
+  `experiment_exp2_depth.yaml`, `experiment_exp3_mismatch.yaml`, `experiment_full.yaml`,
+  `experiment_mock.yaml`, plus prompt templates under `prompts/`). Define the scope-aware,
+  scope-unaware, and scope-mismatched conditions referenced in the research questions.
+* `data/annotation_pilot/` — pilot hierarchical annotations of benchmark tasks at three granularity
+  levels. Seed material for the Phase 1 ≥100-task target.
+* `data/scale_awareness/` — earlier scale-awareness experiment outputs and intermediate artefacts
+  used as exploratory baseline material.
+* `data/original_roadmap.md` — the source research roadmap that drove this project description.
+
+These assets connect to research questions 1-5: the scripts and pipeline run the A/B/C conditions
+and compute Metrics 1-3, the configs realise the scope conditioning variants, and the pilot
+annotations bootstrap the gold-action set required by all three metrics.
+      </content>
+    </section>
+    <section id="completed-task-summaries" source_kind="aggregator">
+      <title>Completed Tasks and Results</title>
+      <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0001_brainstorm_results_1</id>
+      </source_ids>
+      <content>
+Completed tasks: 1
+
+## Brainstorm session 1: plan first project tasks
+ID: t0001_brainstorm_results_1
+Completed: 2026-04-29
+Short description: Plan first tasks for the granularity-aware hierarchical agents project: literature survey and benchmark dataset download.
+Result summary: Brainstorm Session 1 — Results Summary Summary The first brainstorm session for the granularity-aware hierarchical agents project produced two new not-started tasks (literature survey and benchmark download) and deferred two further candidates pending the literature-survey output. No suggestions, corrections, or answer assets were produced; the project is brand new and the suggestion backlog is empty. Session Overview * **Date**: 2026-04-29 * **Context**: Inline brainstorm executed by `/setup-project` immediately after `meta/` was populated. Project repository was a fresh fork of the Glite ARF template. * **Prompt**: Translate the project description and four-phase roadmap into concrete...
+      </content>
+    </section>
+    <section id="planned-tasks" source_kind="aggregator">
+      <title>Planned Tasks</title>
+      <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0002_literature_survey_granularity_conditioning</id>
+        <id>t0003_download_benchmark_subsets</id>
+      </source_ids>
+      <content>
+Planned or active tasks: 2
+
+## Literature survey: granularity conditioning and hierarchical agents
+ID: t0002_literature_survey_granularity_conditioning
+Status: not_started
+Effective date: 2026-04-29
+Short description: Survey literature on granularity/scope conditioning, hierarchical task decomposition, and uncertainty calibration for LLM agents.
+
+#### Motivation
+
+The project&#x27;s central hypothesis is that explicitly conditioning an LLM agent on its current
+operating granularity (global / subtask / atomic) improves task success, calibration, and
+request-vs-act discrimination. Before designing the Phase 2 baseline experiment we need literature
+grounding on three threads: how prior work has framed and operationalised &quot;granularity&quot; or &quot;scope&quot;
+labels for hierarchical agents, what hierarchical task decomposition schemas exist in the four
+benchmark sources, and which uncertainty-calibration metrics have been used in agent settings (in
+particular, definitions and prior measurements of the overconfident error rate). The survey output
+anchors every later planning decision and lets us cite prior work in the Phase 4 paper-ready report.
+
+#### Scope
+
+* Granularity / scope / scale conditioning in LLM agents and prompt engineering. Include any work
+  that varies the level of abstraction at which an agent receives its instructions, even if the
+  authors do not use the word &quot;granularity&quot;.
+* Hierarchical task decomposition: papers proposing two-, three-, or n-level decompositions for
+  benchmarks similar to those in this project (FrontierScience-Olympiad, WorkArena++, SWE-bench
+  Verified, tau-bench).
+* Uncertainty calibration in LLM agents: confidence elicitation methods, definitions of
+  overconfident error rate, calibration plots and metrics, and prior reports on how calibration
+  changes with prompt design.
+* The four roadmap benchmarks themselves: their official task structures, scoring conventions, and
+  any published results that bracket what counts as competitive performance.
+
+Out of scope: training-time techniques (RL, gradient-based fine-tuning), non-English benchmarks,
+production deployment papers — all consistent with the project&#x27;s Out of Scope section.
+
+#### Approach
+
+1. Run the standard `/research-papers` and `/research-internet` stages with the three thread queries
+   above. Use the `download-paper` skill for any candidate paper found via search.
+2. Produce paper assets under `assets/paper/` for at least 10 highly relevant papers, each with a
+   summary that conforms to the paper asset specification.
+3. Aggregate findings into `research/research_papers.md` with a section per thread: granularity
+   conditioning, hierarchical decomposition, calibration metrics, benchmark grounding.
+4. Connect each thread back to the project&#x27;s research questions and explicitly flag (a) any prior
+   work that already answers a research question, (b) any methodological choices the survey resolves
+   for Phase 2, and (c) any open questions to surface as suggestions.
+
+#### Expected Outputs
+
+* At least 10 paper assets under `assets/paper/&lt;paper_id&gt;/` with `details.json`, summary, and PDF or
+  markdown file.
+* `research/research_papers.md` and `research/research_internet.md` synthesising the survey.
+* `results/results_summary.md` with a thread-by-thread takeaway and explicit follow-up suggestions
+  for the next brainstorm session (typically: which benchmarks to deprioritise, which conditioning
+  prompts to adopt, which calibration metric to register as a project metric).
+* `results/suggestions.json` with concrete follow-up ideas surfaced by the survey.
+
+#### Compute and Budget
+
+No GPU. Anthropic API only (the project&#x27;s `available_services` list dropped `openai_api` until an
+API key is provided). Estimated cost: under 5 USD for paper summarisation through Claude.
+
+#### Dependencies and Cross-References
+
+* No task dependencies. Independent of T2.
+* Reads `project/description.md` for research questions and success criteria.
+* The project&#x27;s pre-existing `project/data/annotation_pilot/tasks_annotated.jsonl` should be
+  inspected during the survey to ground discussion of benchmark coverage.
+
+#### Key Questions
+
+1. What prior work explicitly compares scope-aware vs. scope-unaware vs. scope-mismatched LLM agents
+   on multi-step benchmarks, and what effect sizes did they report?
+2. What definitions of &quot;overconfident error rate&quot; exist in the agent calibration literature, and
+   which is most appropriate for our Metric 2 specification?
+3. What hierarchical decomposition schemas are already published for FrontierScience-Olympiad,
+   WorkArena++, SWE-bench Verified, and tau-bench, and how do they map to our global / subtask /
+   atomic split?
+4. Are the WorkArena++ and tau-bench benchmarks truly inaccessible (as the existing pilot data
+   suggests), or are there standard distribution channels we missed?
+
+## Download benchmark subsets for the four roadmap sources
+ID: t0003_download_benchmark_subsets
+Status: not_started
+Effective date: 2026-04-29
+Short description: Wire up access to FrontierScience-Olympiad, WorkArena++, SWE-bench Verified, and tau-bench subsets at 4-8 decisions per task.
+
+#### Motivation
+
+Phase 1 (annotation) and Phase 2 (baseline scope-aware vs. scope-unaware experiment) both depend on
+having local, reproducible subsets of the four roadmap benchmarks. The existing pilot annotation
+data uses HumanEval and Mind2Web proxies for tau-bench and WorkArena++ because the real benchmarks
+were &quot;unavailable on HF&quot; at original-annotation time. This task either resolves that gap by
+acquiring the real benchmarks or, if access is genuinely unavailable, documents the decision to keep
+proxies and freezes the choice for Phase 2.
+
+#### Scope
+
+Acquire four benchmark subsets, each targeted at multi-step tasks of 4-8 decisions per task to match
+the project&#x27;s stated difficulty range:
+
+* FrontierScience-Olympiad — full official distribution path; subset by domain to match the pilot&#x27;s
+  physics / chemistry / biology focus.
+* WorkArena++ — official distribution. If genuinely inaccessible (gated, retired, dataset moved),
+  document the access attempt and keep the Mind2Web proxy already present in the pilot.
+* SWE-bench Verified — official Princeton/HF distribution; subset to instances that map cleanly onto
+  the project&#x27;s three-level hierarchy.
+* tau-bench — official distribution. If genuinely inaccessible, keep the HumanEval proxy with
+  documented justification.
+
+Out of scope: full benchmark execution harnesses (those belong in later experiment-run tasks),
+custom annotation (that belongs in T3 hierarchical-annotation pilot), and modifications of benchmark
+data (subsetting only, no relabelling).
+
+#### Approach
+
+1. For each benchmark, attempt the official distribution path documented in its source paper or
+   GitHub README. Cache successful downloads under the task&#x27;s `assets/dataset/&lt;slug&gt;/files/`.
+2. Subset to 4-8 decisions per task using whatever per-instance step or step-count metadata the
+   benchmark provides. If no such metadata exists, sample uniformly and document the sampling seed.
+3. Produce one dataset asset per benchmark with `details.json` describing source URL, version,
+   license, sample count, and subset selection criteria.
+4. If a benchmark is inaccessible, write the access attempt log to the dataset asset&#x27;s
+   `details.json` with `download_status: &quot;failed&quot;` and a clear `download_failure_reason`. The
+   project&#x27;s policy in this case is to keep the existing pilot proxy and not block on access.
+5. Emit follow-up suggestions for any benchmark whose access pathway is non-obvious or whose
+   subsetting choice deserves a Phase 2 sensitivity check.
+
+#### Expected Outputs
+
+* Four dataset assets under
+  `assets/dataset/{frontierscience,workarena_plus_plus,swebench_verified, taubench}/` with
+  `details.json` and `files/` directories (or empty `files/` plus a clear failed status if
+  inaccessible).
+* `results/results_summary.md` with a per-benchmark access status, sample count, and any subset
+  decisions.
+* `results/suggestions.json` flagging any benchmarks where the proxy choice is now permanent.
+
+#### Compute and Budget
+
+No GPU. No paid API calls anticipated. All work is local downloads and metadata writing. Estimated
+cost: USD 0.
+
+#### Dependencies and Cross-References
+
+* No task dependencies. Independent of T1.
+* Cross-references: existing pilot annotation data at
+  `project/data/annotation_pilot/tasks_annotated.jsonl` documents the proxy decisions this task must
+  either resolve or formalise.
+      </content>
+    </section>
+    <section id="questions-and-answers" source_kind="aggregator">
+      <title>Questions and Answers</title>
+      <source_name>aggregate_answers_full</source_name>
+      <content>
+Answers: 0
+      </content>
+    </section>
+    <section id="paper-summaries" source_kind="aggregator">
+      <title>Paper Summaries</title>
+      <source_name>aggregate_papers_full</source_name>
+      <content>
+Papers: 0
+      </content>
+    </section>
+    <section id="datasets" source_kind="aggregator">
+      <title>Datasets</title>
+      <source_name>aggregate_datasets_full</source_name>
+      <content>
+Datasets: 0
+      </content>
+    </section>
+    <section id="libraries" source_kind="aggregator">
+      <title>Libraries</title>
+      <source_name>aggregate_libraries_full</source_name>
+      <content>
+Libraries: 0
+      </content>
+    </section>
+    <section id="metrics" source_kind="aggregator">
+      <title>Metrics</title>
+      <source_name>aggregate_metrics_full</source_name>
+      <source_ids>
+        <id>avg_decisions_per_task</id>
+        <id>overconfident_error_rate</id>
+        <id>task_success_rate</id>
+      </source_ids>
+      <content>
+Metrics: 3
+
+## Average Decisions per Task
+Key: avg_decisions_per_task
+Unit: count
+Value type: float
+Mean number of agent decisions executed per task in a run, reported per condition. Informational diagnostic that exposes replanning behavior and depth of execution; not a leaderboard metric.
+
+## Overconfident Error Rate
+Key: overconfident_error_rate
+Unit: ratio
+Value type: float
+Project Metric 2: fraction of incorrect actions taken with high model-reported confidence on the composite annotated benchmark, reported per condition (A scope-aware, B scope-unaware, C scope-mismatched). Lower values indicate better calibration.
+
+## Task Success Rate
+Key: task_success_rate
+Unit: accuracy
+Value type: float
+Project Metric 1: normalized fraction of fully solved tasks (or binary success on the full task) on the composite annotated benchmark, reported per condition (A scope-aware, B scope-unaware, C scope-mismatched).
+      </content>
+    </section>
+    <section id="t0001_brainstorm_results_1-results-detailed" source_kind="file">
+      <title>t0001_brainstorm_results_1 — Brainstorm session 1: plan first project tasks — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0001_brainstorm_results_1</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0001_brainstorm_results_1/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+#### Summary
+
+The session produced two new not-started tasks and deferred two further candidates. The project&#x27;s
+state at the time of the session was a fresh fork: no completed tasks, no suggestions, no answer
+assets, and zero project costs incurred.
+
+#### Methodology
+
+1. Loaded the project state. All aggregators returned empty result sets, so the standard Phase 1
+   project-state presentation (completed tasks, suggestion priorities, answer findings) was skipped.
+   The session went straight to Round 1 task proposal.
+2. Drafted four candidate tasks aligned to the project description and roadmap:
+   * T1 — literature survey on granularity conditioning, hierarchical planning, calibration.
+   * T2 — download benchmark subsets for the four roadmap benchmarks.
+   * T3 — hierarchical annotation pilot extension and proxy-row remediation.
+   * T4 — smoke-test baseline experiment on the pilot annotated set.
+3. Researcher reviewed the four candidates and accepted T1 and T2; deferred T3 and T4 pending T1
+   output.
+4. Created child task folders for the two accepted tasks via inline scaffolding (since the project
+   is on a fresh branch, `/create-task` was applied inline rather than as a separate skill call).
+5. Wrote the brainstorm-results task folder, ran verificators, and prepared the merge.
+
+#### Metrics
+
+| Item | Count |
+| --- | --- |
+| New tasks created | 2 |
+| Suggestions covered by new tasks | 0 |
+| Suggestions rejected | 0 |
+| Suggestions reprioritized | 0 |
+| Corrections written | 0 |
+| Answer assets produced | 0 |
+
+#### Limitations
+
+Planning task; no experiments run. Researcher decisions reflect best judgement at session time
+without literature grounding — T1 is intended to fill that gap.
+
+#### Files Created
+
+* `tasks/t0001_brainstorm_results_1/` — full brainstorm-results task folder (this task).
+* `tasks/t0002_literature_survey_granularity_conditioning/task.json`,
+  `tasks/t0002_literature_survey_granularity_conditioning/task_description.md`.
+* `tasks/t0003_download_benchmark_subsets/task.json`,
+  `tasks/t0003_download_benchmark_subsets/task_description.md`.
+
+#### Verification
+
+* `verify_task_file` — t0001, t0002, t0003: PASSED.
+* `verify_corrections` — t0001: PASSED (no corrections).
+* `verify_suggestions` — t0001: PASSED.
+* `verify_logs` — t0001: PASSED.
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>

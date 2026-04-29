@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive type_id="categories" generated_at_utc="2026-04-29T13:44:19Z">
+  <archive_summary>
+    <title>All Categories</title>
+    <description>Complete category definitions with full detailed descriptions.</description>
+    <section_count>1</section_count>
+    <char_count>4763</char_count>
+    <byte_count>4765</byte_count>
+    <estimated_tokens>1190</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>all categories with detailed descriptions</item>
+  </included_content>
+  <sections>
+    <section id="full-categories" source_kind="aggregator">
+      <title>All Categories (Full Detail)</title>
+      <source_name>aggregate_categories</source_name>
+      <source_ids>
+        <id>agent-evaluation</id>
+        <id>benchmark-annotation</id>
+        <id>benchmark-frontierscience</id>
+        <id>benchmark-swebench</id>
+        <id>benchmark-taubench</id>
+        <id>benchmark-workarena</id>
+        <id>granularity-conditioning</id>
+        <id>hierarchical-planning</id>
+        <id>uncertainty-calibration</id>
+      </source_ids>
+      <content>
+Categories: 9
+
+## Agent Evaluation
+ID: agent-evaluation
+Version: 1
+
+Tags experimental tasks that execute scope-aware, scope-unaware, or scope-mismatched agents on the annotated benchmark and report Metric 1 (task success), Metric 2 (overconfident error rate), and Metric 3 (can-execute-now vs. must-request accuracy). Covers significance testing and stratified breakdowns by difficulty and granularity.
+
+## Benchmark Annotation
+ID: benchmark-annotation
+Version: 1
+
+Tags Phase 1 work that decomposes benchmark tasks into hierarchical solutions and labels gold actions at the global, subtask, and execution levels. Covers annotation schemas, inter-annotator agreement studies, and the construction of the ≥100-task annotated set required by the project&#x27;s success criteria.
+
+## FrontierScience-Olympiad
+ID: benchmark-frontierscience
+Version: 1
+
+Tags any annotation, experiment, or analysis that operates on FrontierScience-Olympiad problems. FrontierScience-Olympiad supplies the project&#x27;s top-of-hierarchy strategic-planning material. Use this category for stratified per-source breakdowns and for filtering paper or dataset assets that originate from this benchmark.
+
+## SWE-bench Verified
+ID: benchmark-swebench
+Version: 1
+
+Tags annotation, experiment, and analysis work that operates on SWE-bench Verified instances. SWE-bench Verified supplies repository-grounded software engineering problems used for atomic-execution evaluation. Use this category for stratified per-source breakdowns and for filtering datasets, models, and predictions that originate from SWE-bench Verified.
+
+## tau-bench
+ID: benchmark-taubench
+Version: 1
+
+Tags annotation, experiment, and analysis work that operates on tau-bench dialogues. tau-bench supplies fine-grained tool-use and request-vs-act decisions used in low-level execution evaluation. Use this category for stratified per-source breakdowns and for filtering datasets, models, and predictions that originate from tau-bench runs.
+
+## WorkArena++
+ID: benchmark-workarena
+Version: 1
+
+Tags annotation, experiment, and analysis work that operates on WorkArena++ episodes. WorkArena++ contributes mid-level subtask-planning material to the composite benchmark. Use this category for stratified per-source breakdowns and for filtering datasets, models, and predictions that originate from WorkArena++ runs.
+
+## Granularity Conditioning
+ID: granularity-conditioning
+Version: 1
+
+Tags assets and tasks that study the effect of telling the agent which level of the hierarchy it is currently operating at. Covers the three project conditions: scope-aware (A), scope-unaware (B), and scope-mismatched (C). Use this category for prompt designs, ablations, and analyses that turn the granularity label on or off.
+
+## Hierarchical Planning
+ID: hierarchical-planning
+Version: 1
+
+Tags work concerned with the three-level hierarchy (strategic / subtask / execution) that all tasks in this project must respect. Covers annotation schemas, plan trees, gold-action enumeration at each level, and any analysis that depends on the hierarchical structure rather than on the conditioning label.
+
+## Uncertainty Calibration
+ID: uncertainty-calibration
+Version: 1
+
+Tags assets and tasks that measure or improve the agent&#x27;s calibration. Covers the overconfident-error-rate metric (Metric 2), confidence-elicitation prompts, and any analysis that relates predicted confidence to action correctness. Use this category for ablations that vary how confidence is requested or scored.
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>
