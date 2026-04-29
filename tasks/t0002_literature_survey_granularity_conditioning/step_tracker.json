@@ -77,9 +77,9 @@
       "step": 9,
       "name": "implementation",
       "description": "Spawn /add-paper subagents for >=10 discovered papers, producing properly structured paper assets.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-29T14:07:43Z",
-      "completed_at": null,
+      "completed_at": "2026-04-29T14:22:06Z",
       "log_file": "logs/steps/009_implementation/"
     },
     {
