@@ -14,9 +14,9 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0009, t0010, t0011 are completed and assets are available.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-30T01:00:13Z",
-      "completed_at": null,
+      "completed_at": "2026-04-30T01:00:56Z",
       "log_file": "logs/steps/002_check-deps/"
     },
     {
