@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0012_phase2_abc_smoke_frontierscience",
+  "command": "uv run python -m arf.scripts.verificators.verify_plan t0012_phase2_abc_smoke_frontierscience",
+  "exit_code": 0,
+  "duration_seconds": 0.051,
+  "started_at": "2026-04-30T01:09:14Z",
+  "completed_at": "2026-04-30T01:09:14Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0012_phase2_abc_smoke_frontierscience",
+  "stdout_file": "006_20260430T010914Z_uv-run-python.stdout.txt",
+  "stderr_file": "006_20260430T010914Z_uv-run-python.stderr.txt",
+  "stdout_lines": 8,
+  "stderr_lines": 0,
+  "truncated": false
+}
