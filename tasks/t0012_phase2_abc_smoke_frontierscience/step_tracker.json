@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0006/t0007/t0010/t0011 library APIs and the v2 dataset schema.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-30T01:04:49Z",
-      "completed_at": null,
+      "completed_at": "2026-04-30T01:06:53Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
