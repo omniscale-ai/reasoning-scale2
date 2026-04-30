@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0016-03",
+  "correcting_task": "t0016_brainstorm_results_5",
+  "target_task": "t0014_v2_annotator_sonnet_rerun",
+  "target_kind": "suggestion",
+  "target_id": "S-0014-04",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Adopting a haiku-default annotation policy is a project-level standing decision, not an experiment or asset to produce. t0014 has already established the empirical basis (model swap = -1pp, schema swap = +57pp); the policy is implicit in current task plans. No dedicated task is warranted."
+}

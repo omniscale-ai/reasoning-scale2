@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0016-06",
+  "correcting_task": "t0016_brainstorm_results_5",
+  "target_task": "t0006_scope_aware_react_library",
+  "target_kind": "suggestion",
+  "target_id": "S-0006-02",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "rationale": "Async/streaming variant of ScopeAwareReactAgent is an engineering optimization, not on the critical path for the active research questions (annotation quality, calibration, schema deconfound). Demoted from medium to low until throughput becomes a measured bottleneck."
+}
