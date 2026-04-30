@@ -1,0 +1,24 @@
+{
+  "dataset_count": 1,
+  "datasets": [
+    {
+      "dataset_id": "hierarchical-annotation-v2",
+      "name": "Hierarchical Annotation v2 (115-row pilot, tree schema)",
+      "version": "v2",
+      "year": 2026,
+      "authors": [
+        "Glite ARF reasoning-scale2 project"
+      ],
+      "access_kind": "restricted",
+      "categories": [
+        "hierarchical-planning",
+        "benchmark-annotation",
+        "agent-evaluation",
+        "granularity-conditioning"
+      ],
+      "size_description": "115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision).",
+      "added_by_task": "t0009_hierarchical_annotation_v2",
+      "date_added": "2026-04-30"
+    }
+  ]
+}

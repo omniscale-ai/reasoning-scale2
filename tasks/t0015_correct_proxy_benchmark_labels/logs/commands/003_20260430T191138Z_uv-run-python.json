@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0015_correct_proxy_benchmark_labels",
+  "command": "uv run python -u -m arf.scripts.aggregators.aggregate_libraries --format json --detail short",
+  "exit_code": 0,
+  "duration_seconds": 0.484,
+  "started_at": "2026-04-30T19:11:38Z",
+  "completed_at": "2026-04-30T19:11:39Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0015_correct_proxy_benchmark_labels",
+  "stdout_file": "003_20260430T191138Z_uv-run-python.stdout.txt",
+  "stderr_file": "003_20260430T191138Z_uv-run-python.stderr.txt",
+  "stdout_lines": 54,
+  "stderr_lines": 0,
+  "truncated": false
+}

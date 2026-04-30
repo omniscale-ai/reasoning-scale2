@@ -5,12 +5,12 @@
   "name": "Correct proxy-benchmark labels in t0009 v2 dataset",
   "short_description": "Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0009_hierarchical_annotation_v2"
   ],
   "start_time": "2026-04-30T19:08:28Z",
-  "end_time": null,
+  "end_time": "2026-04-30T19:32:45Z",
   "expected_assets": {},
   "task_types": [
     "correction"

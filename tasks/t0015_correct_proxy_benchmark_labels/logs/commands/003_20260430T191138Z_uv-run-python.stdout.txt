@@ -1,0 +1,54 @@
+{
+  "library_count": 4,
+  "libraries": [
+    {
+      "library_id": "scope_aware_react_v1",
+      "name": "Scope-Aware ReAct Agent",
+      "version": "0.1.0",
+      "categories": [
+        "granularity-conditioning",
+        "agent-evaluation"
+      ],
+      "short_description": "ReAct agent extended with explicit {global, subtask, atomic} granularity tags and a JSONL trajectory writer.",
+      "created_by_task": "t0006_scope_aware_react_library",
+      "date_created": "2026-04-29"
+    },
+    {
+      "library_id": "scope_unaware_planandsolve_v1",
+      "name": "Scope-Unaware Plan-and-Solve Agent (v1)",
+      "version": "0.1.0",
+      "categories": [
+        "hierarchical-planning",
+        "granularity-conditioning",
+        "agent-evaluation"
+      ],
+      "short_description": "Scope-unaware Plan-and-Solve agent adapting LangChain Plan-and-Execute as the canonical condition-B baseline for the project's A-vs-B-vs-C comparison.",
+      "created_by_task": "t0007_scope_unaware_planandsolve_library",
+      "date_created": "2026-04-29"
+    },
+    {
+      "library_id": "matched_mismatch_v1",
+      "name": "Matched-Mismatch Agent (v1)",
+      "version": "0.1.0",
+      "categories": [
+        "granularity-conditioning",
+        "hierarchical-planning",
+        "agent-evaluation"
+      ],
+      "short_description": "Condition-C wrapper that walks the v2 hierarchy in phase order and substitutes deliberately incorrect granularity tags around either the t0006 ReAct delegate or the t0007 Plan-and-Solve delegate.",
+      "created_by_task": "t0010_matched_mismatch_library",
+      "date_created": "2026-04-29"
+    },
+    {
+      "library_id": "metric2_calibration_aggregator_v1",
+      "name": "Metric 2 Calibration Aggregator",
+      "version": "0.1.0",
+      "categories": [
+        "uncertainty-calibration"
+      ],
+      "short_description": "Verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate per the Xiong2024 protocol.",
+      "created_by_task": "t0011_metric2_calibration_aggregator",
+      "date_created": "2026-04-29"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+branch: task/t0015_correct_proxy_benchmark_labels
+base_branch: main
+base_commit: bb4a55d5567ff0c2571da458b57e4dd2991b8390
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0015_correct_proxy_benchmark_labels
+created_at: 2026-04-30T19:08:43Z

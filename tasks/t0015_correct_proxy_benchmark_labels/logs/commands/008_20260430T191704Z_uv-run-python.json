@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0015_correct_proxy_benchmark_labels",
+  "command": "uv run python -m arf.scripts.verificators.verify_research_code --task-id t0015_correct_proxy_benchmark_labels",
+  "exit_code": 2,
+  "duration_seconds": 0.228,
+  "started_at": "2026-04-30T19:17:04Z",
+  "completed_at": "2026-04-30T19:17:05Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0015_correct_proxy_benchmark_labels",
+  "stdout_file": "008_20260430T191704Z_uv-run-python.stdout.txt",
+  "stderr_file": "008_20260430T191704Z_uv-run-python.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 2,
+  "truncated": false
+}

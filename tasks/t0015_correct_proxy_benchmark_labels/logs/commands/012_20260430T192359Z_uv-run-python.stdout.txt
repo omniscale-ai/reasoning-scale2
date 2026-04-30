@@ -1,0 +1,45 @@
+{
+  "dataset_count": 1,
+  "datasets": [
+    {
+      "dataset_id": "hierarchical-annotation-v2",
+      "name": "Hierarchical Annotation v2 (115-row pilot, tree schema)",
+      "version": "v2",
+      "short_description": "Tree-shaped (global / subtasks-with-atomics / global_atomics) hierarchical annotation of 115 benchmark tasks from FrontierScience-Olympiad, SWE-bench Verified, Mind2Web (proxy for WorkArena++), and HumanEval (proxy for tau-bench). Re-annotates the v1 pilot under a v2 schema with explicit subtask-to-atomic edges and full problem text. Includes a 23-row LLM-as-judge spot-check.",
+      "source_paper_id": null,
+      "url": null,
+      "download_url": null,
+      "date_published": "2026-04-30",
+      "year": 2026,
+      "authors": [
+        {
+          "name": "Glite ARF reasoning-scale2 project",
+          "country": null,
+          "institution": null
+        }
+      ],
+      "institutions": [],
+      "license": "inherited-per-row",
+      "access_kind": "restricted",
+      "size_description": "115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). Per-row benchmark labels: 40 FrontierScience-Olympiad, 23 SWE-bench Verified, 26 Mind2Web (proxy for WorkArena++), 26 HumanEval (proxy for tau-bench).",
+      "files": [
+        {
+          "path": "tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/files/hierarchical_annotation_v2_relabeled.jsonl",
+          "description": "115-row JSONL with the v2 tree schema and judge verdicts; benchmark labels corrected to Mind2Web and HumanEval where the original asset used the WorkArena++ and tau-bench proxy-target names.",
+          "format": "jsonl"
+        }
+      ],
+      "categories": [
+        "hierarchical-planning",
+        "benchmark-annotation",
+        "agent-evaluation",
+        "granularity-conditioning"
+      ],
+      "added_by_task": "t0009_hierarchical_annotation_v2",
+      "date_added": "2026-04-30",
+      "description_path": "tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/description.md",
+      "description_summary": "Hierarchical Annotation v2 is the canonical input dataset for the project's Phase 2 experiments on\nscope-conditioned agents. It re-annotates the same 115 benchmark rows the v1 pilot covered but\nencodes a tree-shaped hierarchy with explicit subtask-to-atomic edges and a separate\n`global_atomics` bucket for cross-cutting steps. Both the annotator and the judge see the full\nproblem text, fixing the dominant v1 truncation failure mode.\n\nFor this project, v2 is the preferred input over v1 wherever the experiment harness requires the\nparent-child edges (Phase 2 onward). The v1 dataset remains useful only for the historical v2-vs-v1\nschema comparison documented in [t0009]'s results. The known model-substitution confound\n(haiku-for-sonnet, driven by Claude Code CLI cost overhead) limits the apples-to-apples strength of\nthat comparison; a v3 follow-up task is queued to address it.\n\nThe relabeled overlay corrects a long-standing provenance mistake. The 26 rows now labeled\n`Mind2Web` and the 26 rows now labeled `HumanEval` were always Mind2Web and HumanEval data — they\nwere chosen during [t0003] as drop-in proxies for the gated `WorkArena++` and `tau-bench` splits,\nbut the row-level `benchmark` field kept the proxy-target name. Downstream consumers that read this\ndataset through the dataset aggregator (e.g., [t0012]) now see the corrected labels and can report\nper-benchmark numbers without misattribution.\n\nCompared to alternatives — there is no published hierarchical annotation of these specific benchmark\ncomposites; v1 and v2 are bespoke project assets. The tree-shaped annotation schema adopted by v2 is\ninspired by the upstream WorkArena++ paper (Boisvert 2024), which provides a similar tree structure\nfor its own (gated) subset.",
+      "full_description": null
+    }
+  ]
+}
