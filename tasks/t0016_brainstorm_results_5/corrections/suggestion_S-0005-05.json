@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0016-02",
+  "correcting_task": "t0016_brainstorm_results_5",
+  "target_task": "t0005_hierarchical_annotation_pilot_v1",
+  "target_kind": "suggestion",
+  "target_id": "S-0005-05",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Duplicate of S-0009-03, which proposes the same multi-judge agreement study with more current scope (post-v2 annotation, post-relabel). Keeping a single canonical suggestion avoids backlog drift; the v1-era version is rejected in favor of the v2 successor."
+}

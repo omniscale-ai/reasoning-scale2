@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0016-07",
+  "correcting_task": "t0016_brainstorm_results_5",
+  "target_task": "t0011_metric2_calibration_aggregator",
+  "target_kind": "suggestion",
+  "target_id": "S-0011-02",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "rationale": "Provider-specific calibration prompt variants are downstream of having stable v2-annotator results across the full proxy benchmark. With t0012 still in-progress and the schema/truncation deconfound (S-0009-04) now higher priority, this is sequenced behind upstream work. Demoted from medium to low."
+}

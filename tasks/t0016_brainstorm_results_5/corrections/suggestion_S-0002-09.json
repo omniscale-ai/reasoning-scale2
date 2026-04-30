@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0016-05",
+  "correcting_task": "t0016_brainstorm_results_5",
+  "target_task": "t0002_literature_survey_granularity_conditioning",
+  "target_kind": "suggestion",
+  "target_id": "S-0002-09",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "rationale": "Re-fetching paper PDFs through git LFS is project hygiene, not a research-question-advancing task. Current annotation/eval work does not depend on full PDF availability — abstracts and existing summaries cover all active research lines. Demoted from medium to low."
+}

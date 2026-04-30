@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0016-04",
+  "correcting_task": "t0016_brainstorm_results_5",
+  "target_task": "t0009_hierarchical_annotation_v2",
+  "target_kind": "suggestion",
+  "target_id": "S-0009-04",
+  "action": "update",
+  "changes": {
+    "priority": "high"
+  },
+  "rationale": "t0014's per-benchmark deltas (+100pp on long-input benchmarks vs +13-17pp on short ones) are exactly the pattern the truncation hypothesis predicts, making the truncation/schema deconfound load-bearing for interpreting the v1->v2 headline. Promoted from medium to high so it surfaces in the next chooser run."
+}

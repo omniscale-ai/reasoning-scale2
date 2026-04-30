@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0016-01",
+  "correcting_task": "t0016_brainstorm_results_5",
+  "target_task": "t0005_hierarchical_annotation_pilot_v1",
+  "target_kind": "suggestion",
+  "target_id": "S-0005-04",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Superseded by t0015_correct_proxy_benchmark_labels, which already corrected the 52 mislabeled proxy-benchmark rows via the corrections-overlay mechanism. The remaining naming/task_id concerns are cosmetic and aggregator-side work that no longer warrants a dedicated task."
+}
