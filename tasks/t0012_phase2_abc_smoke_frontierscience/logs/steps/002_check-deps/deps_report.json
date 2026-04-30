@@ -1,0 +1,12 @@
+{
+  "task_id": "t0012_phase2_abc_smoke_frontierscience",
+  "checked_at": "2026-04-30T01:00:13Z",
+  "result": "passed",
+  "dependencies": [
+    {"task_id": "t0009_hierarchical_annotation_v2", "status": "completed", "satisfied": true},
+    {"task_id": "t0010_matched_mismatch_library", "status": "completed", "satisfied": true},
+    {"task_id": "t0011_metric2_calibration_aggregator", "status": "completed", "satisfied": true}
+  ],
+  "errors": 0,
+  "warnings": 0
+}
