@@ -5,9 +5,9 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0012_phase2_abc_smoke_frontierscience branch from main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-30T00:55:21Z",
-      "completed_at": null,
+      "completed_at": "2026-04-30T00:59:49Z",
       "log_file": "logs/steps/001_create-branch/"
     },
     {
@@ -76,7 +76,7 @@
     {
       "step": 9,
       "name": "implementation",
-      "description": "Build phase2_smoke_harness_v1, run all rows × 3 conditions, compute metrics.",
+      "description": "Build phase2_smoke_harness_v1, run all rows \u00d7 3 conditions, compute metrics.",
       "status": "pending",
       "started_at": null,
       "completed_at": null,
