@@ -5,12 +5,12 @@
   "name": "v2 annotator Sonnet rerun: deconfound schema vs model",
   "short_description": "Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009's +58 pp delta.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0009_hierarchical_annotation_v2"
   ],
   "start_time": "2026-04-30T19:07:28Z",
-  "end_time": null,
+  "end_time": "2026-04-30T23:59:00Z",
   "expected_assets": {
     "dataset": 1
   },

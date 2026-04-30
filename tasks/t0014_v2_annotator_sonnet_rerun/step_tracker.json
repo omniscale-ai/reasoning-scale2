@@ -69,9 +69,9 @@
       "name": "setup-machines",
       "description": "Skipped: API-only task, no remote compute required.",
       "status": "skipped",
-      "started_at": null,
-      "completed_at": null,
-      "log_file": null
+      "started_at": "2026-04-30T19:27:00Z",
+      "completed_at": "2026-04-30T19:27:00Z",
+      "log_file": "logs/steps/008_setup-machines/"
     },
     {
       "step": 9,
@@ -87,9 +87,9 @@
       "name": "teardown",
       "description": "Skipped: no machines were provisioned.",
       "status": "skipped",
-      "started_at": null,
-      "completed_at": null,
-      "log_file": null
+      "started_at": "2026-04-30T23:30:00Z",
+      "completed_at": "2026-04-30T23:30:00Z",
+      "log_file": "logs/steps/010_teardown/"
     },
     {
       "step": 11,
@@ -131,10 +131,10 @@
       "step": 15,
       "name": "reporting",
       "description": "Run all verificators, capture sessions, mark task completed, push branch and prepare PR.",
-      "status": "pending",
-      "started_at": null,
-      "completed_at": null,
-      "log_file": null
+      "status": "completed",
+      "started_at": "2026-04-30T23:55:00Z",
+      "completed_at": "2026-04-30T23:59:00Z",
+      "log_file": "logs/steps/015_reporting/"
     }
   ]
 }
