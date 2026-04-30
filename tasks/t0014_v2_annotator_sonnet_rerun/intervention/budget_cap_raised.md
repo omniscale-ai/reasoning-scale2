@@ -33,7 +33,14 @@ User authorized raising `ANNOTATOR_BUDGET_CAP_USD` to **$25.00** to finish the r
 
 ## Implementation
 
-* `code/constants.py` — `ANNOTATOR_BUDGET_CAP_USD: float = 25.00` (was 10.00).
+* The annotator's `RunStats.total_cost_usd` resets to 0 on each invocation, so the
+  `ANNOTATOR_BUDGET_CAP_USD` constant is the **per-run** headroom, not the cumulative cap.
+* To enforce a cumulative cap of $25, the constant is set to `$25 - $10.9175 = $14.08` (rounded
+  down) for the resume run. Expected resume cost at $0.195/row × 52 rows ≈ $10.14 fits comfortably;
+  if a single row spikes well above the average, the script will halt at $14.08 in-run and we will
+  revisit.
+* `code/constants.py` — `ANNOTATOR_BUDGET_CAP_USD: float = 14.08` (was 10.00 originally; the raise
+  to $25 cumulative is realised through this resume-run cap).
 * The annotator script restarts and resumes from the JSONL it left at row 52 (idempotent on
   `_pilot_row_index`).
 
