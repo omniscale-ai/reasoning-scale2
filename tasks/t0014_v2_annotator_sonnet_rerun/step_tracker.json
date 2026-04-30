@@ -122,10 +122,10 @@
       "step": 14,
       "name": "suggestions",
       "description": "Write suggestions.json with follow-ups (e.g. v3 schema iteration if schema component small, sonnet-default policy if model component dominates).",
-      "status": "pending",
-      "started_at": null,
-      "completed_at": null,
-      "log_file": null
+      "status": "completed",
+      "started_at": "2026-04-30T23:48:00Z",
+      "completed_at": "2026-04-30T23:55:00Z",
+      "log_file": "logs/steps/014_suggestions/"
     },
     {
       "step": 15,
