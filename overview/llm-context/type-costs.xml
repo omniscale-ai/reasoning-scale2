@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-04-30T19:35:36Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-04-30T21:46:21Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>1692</char_count>
-    <byte_count>1692</byte_count>
-    <estimated_tokens>423</estimated_tokens>
+    <char_count>1767</char_count>
+    <byte_count>1767</byte_count>
+    <estimated_tokens>441</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -18,14 +18,15 @@
       <source_name>aggregate_costs_full</source_name>
       <content>
 Total budget: $100.00
-Total spent: $9.16
-Budget remaining: $90.84
-Spent: 9.2%
+Total spent: $30.32
+Budget remaining: $69.68
+Spent: 30.3%
 
 ### Cost Breakdown by Category
 
+* annotator_sonnet_4_6: $19.77
 * annotator_haiku_4_5: $7.42
-* judge_haiku_4_5: $1.68
+* judge_haiku_4_5: $3.08
 * anthropic_api: $0.06
 
 ### Cost Breakdown by Service
@@ -46,6 +47,7 @@ Spent: 9.2%
 * t0010_matched_mismatch_library: $0.00
 * t0011_metric2_calibration_aggregator: $0.00
 * t0013_brainstorm_results_4: $0.00
+* t0014_v2_annotator_sonnet_rerun: $21.16
 * t0015_correct_proxy_benchmark_labels: $0.00
       </content>
     </section>

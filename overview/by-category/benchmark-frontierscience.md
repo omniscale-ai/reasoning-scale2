@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the FrontierScience-Olympiad be
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-frontierscience.md) |
-[Suggestions (5)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
+[Suggestions (6)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
 (1)](../datasets/by-category/benchmark-frontierscience.md)
 
 ---
@@ -63,7 +63,25 @@ AI's evaluation pipeline is a known operational risk for the t0003 download-data
 
 No answers in this category.
 
-## Suggestions (4 open, 1 closed)
+## Suggestions (5 open, 1 closed)
+
+<details>
+<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
+longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
+CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
+reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
+delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
+the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
+Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
+aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
+credible. Cost <$1.
+
+</details>
 
 <details>
 <summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation

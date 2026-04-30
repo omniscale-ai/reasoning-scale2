@@ -1,14 +1,63 @@
 # Suggestions by Date Added
 
-44 suggestion(s) grouped by derived added date.
+49 suggestion(s) grouped by derived added date.
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## 2026-04-30 (8)
+## 2026-04-30 (13)
 
 ## High Priority
+
+<details>
+<summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
+is not justified</strong> (S-0014-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-04` |
+| **Kind** | technique |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Under the t0014 measurement, haiku and sonnet annotators produce statistically
+indistinguishable accept rates under the v2 tree schema (90% sonnet vs 91% haiku, CIs overlap
+completely). Sonnet annotation costs ~$0.20 per call vs haiku ~$0.02 per call (10x via Claude
+Code CLI; 7-8x via direct API). For Phase 2 ABC/main-experiment annotation budgets in the
+$50-200 range, the cost differential dominates: a 200-row sonnet annotation pass would cost
+$40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
+annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
+judge bias.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
+hypothesis on the model-only delta</strong> (S-0014-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The model-only delta of -1 pp sits below Xiong2024's lower edge (0 pp). Xiong2024 documents
+that judges trained on the same model family as the annotator show a small positive familial
+bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which
+means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row
+v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of
+haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the
+haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near
+zero, sonnet really does provide no annotator-quality lift on this composite. Cost ~$2 with
+sonnet judge on 43 rows.
+
+</details>
 
 <details>
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
@@ -29,6 +78,31 @@ stratified sample (or all 115 rows for higher precision) and emit acceptable/nee
 verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
 +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
 estimate: 4-6 hours of human review time at $50/hour = $200-300.
+
+</details>
+
+<details>
+<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
+substantive judge</strong> (S-0014-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
+published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
+partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
+than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
+critic prompt that simulates execution ('verify each atomic, executed in order, would actually
+solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
+v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
+judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
+is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
 
@@ -103,6 +177,30 @@ rate, ~$5-6 added cost. Inherits S-0005-01.
 </details>
 
 <details>
+<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
+longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
+CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
+reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
+delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
+the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
+Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
+aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
+credible. Cost <$1.
+
+</details>
+
+<details>
 <summary>📂 <strong>Replace Mind2Web/HumanEval proxy rows with native WorkArena++
 and tau-bench data</strong> (S-0015-01)</summary>
 
@@ -125,6 +223,31 @@ re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator
 t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against
 hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any
 change to the FrontierScience-Olympiad or SWE-bench Verified rows.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Scope a v3 schema iteration motivated by per-benchmark
+schema-only deltas, not aggregate</strong> (S-0014-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) |
+
+The aggregate schema-only delta is +57 pp (90% v2-sonnet vs 33% v1-sonnet) but the
+per-benchmark split is bimodal: FrontierScience-Olympiad and WorkArena++ are at +100 pp (0% ->
+100%), while SWE-bench Verified and tau-bench are at +13-17 pp (67% -> 80-83%). The +100 pp
+cells suggest the v2 tree schema converts unsolvable v1 outputs into acceptable v2 outputs,
+but this is potentially confounded with the truncation fix bundled into v2 (S-0009-04). The
++13-17 pp cells suggest a real but modest schema improvement on benchmarks where v1 was
+already adequate. A v3 schema should target SWE/tau-style structured-action tasks specifically
+— e.g., add explicit precondition/postcondition fields to atomics, since the SWE/tau cells
+already saturate the high-level subtask abstraction.
 
 </details>
 

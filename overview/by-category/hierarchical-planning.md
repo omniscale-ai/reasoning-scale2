@@ -5,8 +5,8 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (5)](../papers/by-category/hierarchical-planning.md) | [Suggestions
-(17)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
-(3)](../datasets/by-category/hierarchical-planning.md) | [Libraries
+(19)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
+(4)](../datasets/by-category/hierarchical-planning.md) | [Libraries
 (2)](../libraries/by-category/hierarchical-planning.md)
 
 ---
@@ -233,7 +233,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (12 open, 5 closed)
+## Suggestions (14 open, 5 closed)
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -298,6 +298,44 @@ AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expa
 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
 smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
 rate, ~$5-6 added cost. Inherits S-0005-01.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Scope a v3 schema iteration motivated by per-benchmark
+schema-only deltas, not aggregate</strong> (S-0014-01)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+The aggregate schema-only delta is +57 pp (90% v2-sonnet vs 33% v1-sonnet) but the
+per-benchmark split is bimodal: FrontierScience-Olympiad and WorkArena++ are at +100 pp (0% ->
+100%), while SWE-bench Verified and tau-bench are at +13-17 pp (67% -> 80-83%). The +100 pp
+cells suggest the v2 tree schema converts unsolvable v1 outputs into acceptable v2 outputs,
+but this is potentially confounded with the truncation fix bundled into v2 (S-0009-04). The
++13-17 pp cells suggest a real but modest schema improvement on benchmarks where v1 was
+already adequate. A v3 schema should target SWE/tau-style structured-action tasks specifically
+— e.g., add explicit precondition/postcondition fields to atomics, since the SWE/tau cells
+already saturate the high-level subtask abstraction.
+
+</details>
+
+<details>
+<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
+substantive judge</strong> (S-0014-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
+published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
+partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
+than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
+critic prompt that simulates execution ('verify each atomic, executed in order, would actually
+solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
+v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
+judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
+is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
 

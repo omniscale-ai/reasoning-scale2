@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-17 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **12 open** (3
-high, 6 medium, 3 low), **5 closed**.
+19 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **14 open** (4
+high, 7 medium, 3 low), **5 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -70,6 +70,31 @@ stratified sample (or all 115 rows for higher precision) and emit acceptable/nee
 verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
 +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
 estimate: 4-6 hours of human review time at $50/hour = $200-300.
+
+</details>
+
+<details>
+<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
+substantive judge</strong> (S-0014-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
+published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
+partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
+than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
+critic prompt that simulates execution ('verify each atomic, executed in order, would actually
+solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
+v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
+judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
+is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
 
@@ -207,6 +232,31 @@ re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator
 t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against
 hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any
 change to the FrontierScience-Olympiad or SWE-bench Verified rows.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Scope a v3 schema iteration motivated by per-benchmark
+schema-only deltas, not aggregate</strong> (S-0014-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) |
+
+The aggregate schema-only delta is +57 pp (90% v2-sonnet vs 33% v1-sonnet) but the
+per-benchmark split is bimodal: FrontierScience-Olympiad and WorkArena++ are at +100 pp (0% ->
+100%), while SWE-bench Verified and tau-bench are at +13-17 pp (67% -> 80-83%). The +100 pp
+cells suggest the v2 tree schema converts unsolvable v1 outputs into acceptable v2 outputs,
+but this is potentially confounded with the truncation fix bundled into v2 (S-0009-04). The
++13-17 pp cells suggest a real but modest schema improvement on benchmarks where v1 was
+already adequate. A v3 schema should target SWE/tau-style structured-action tasks specifically
+— e.g., add explicit precondition/postcondition fields to atomics, since the SWE/tau cells
+already saturate the high-level subtask abstraction.
 
 </details>
 

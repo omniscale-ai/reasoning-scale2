@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-frontierscience`
 
-5 suggestion(s) in category
-[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **4 open**
-(2 high, 2 medium), **1 closed**.
+6 suggestion(s) in category
+[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **5 open**
+(2 high, 3 medium), **1 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -93,6 +93,30 @@ FrontierScience-Olympiad pilot rows currently lack per-instance step graphs beca
 solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each
 problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can
 apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
+longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
+CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
+reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
+delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
+the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
+Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
+aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
+credible. Cost <$1.
 
 </details>
 

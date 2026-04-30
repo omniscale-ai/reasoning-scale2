@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-30T19:35:36Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-30T21:46:21Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>27</section_count>
-    <char_count>180219</char_count>
-    <byte_count>180649</byte_count>
-    <estimated_tokens>45054</estimated_tokens>
+    <section_count>29</section_count>
+    <char_count>220273</char_count>
+    <byte_count>220772</byte_count>
+    <estimated_tokens>55068</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -139,10 +139,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
         <id>t0013_brainstorm_results_4</id>
+        <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Completed tasks: 13
+Completed tasks: 14
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -216,6 +217,12 @@ Completed: 2026-04-30
 Short description: Brainstorm 4: insert two parallel pre-Phase-2 tasks (v2 Sonnet rerun + proxy benchmark relabel), prune 5 redundant suggestions, and demote 3 access/infrastructure suggestions to medium priority.
 Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainstorm produced two new not-started tasks (t0014 and t0015) and applied eight correction files for the Round 2 cleanup deferred from brainstorm 3. The two tasks address the schema-vs-model confound and proxy-benchmark provenance issues surfaced by t0009. Wave budget cap: $10. Both new tasks are parallel-safe; t0012 stays in_progress and unaffected. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after t0009-t0011 merged with $9.16 / $100 spent. t0012 is in_progress. t0009 reported a +58 pp v2-vs-v1 judge accept rate but the annotation provider was swapped from Sonnet (v1) to Haiku (v2), so the headline delta is...
 
+## v2 annotator Sonnet rerun: deconfound schema vs model
+ID: t0014_v2_annotator_sonnet_rerun
+Completed: 2026-04-30
+Short description: Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009&#x27;s +58 pp delta.
+Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0014_v2_annotator_sonnet_rerun&quot; date_completed: &quot;2026-04-30&quot; status: &quot;complete&quot; --- Results Summary: v2 Annotator Sonnet Rerun (Deconfound Schema vs Model) Summary Re-annotated the same 115-row v1 pilot under the v2 tree schema with `claude-sonnet-4-6`, re-judged with the t0009 `claude-haiku-4-5` judge on the same seed-42 stratified sample (intersected to 20 rows after 3 FrontierScience-Olympiad sonnet timeouts), and decomposed the t0009 +58 pp headline into a **+57 pp schema-only** delta and a **-1 pp model-only** delta. The annotator-model swap (haiku -&gt; sonnet) contributes essentially zero of the t0009 gain; the v2 tree schema accounts for nearly all of...
+
 ## Correct proxy-benchmark labels in t0009 v2 dataset
 ID: t0015_correct_proxy_benchmark_labels
 Completed: 2026-04-30
@@ -228,10 +235,9 @@ Result summary: Results Summary: Correct Proxy-Benchmark Labels in t0009 v2 Data
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
-        <id>t0014_v2_annotator_sonnet_rerun</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
+Planned or active tasks: 1
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
@@ -239,13 +245,6 @@ Status: in_progress
 Effective date: 2026-04-30
 Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
 Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator
-
-## v2 annotator Sonnet rerun: deconfound schema vs model
-ID: t0014_v2_annotator_sonnet_rerun
-Status: in_progress
-Effective date: 2026-04-30
-Short description: Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009&#x27;s +58 pp delta.
-Dependencies: t0009_hierarchical_annotation_v2
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -3059,6 +3058,638 @@ No research required for brainstorming session.
 #### References
 
 No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0014_v2_annotator_sonnet_rerun-research_papers" source_kind="file">
+      <title>t0014_v2_annotator_sonnet_rerun — v2 annotator Sonnet rerun: deconfound schema vs model — research_papers.md</title>
+      <source_name>research_papers.md</source_name>
+      <source_ids>
+        <id>t0014_v2_annotator_sonnet_rerun</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0014_v2_annotator_sonnet_rerun/research/research_papers.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0014_v2_annotator_sonnet_rerun&quot;
+research_stage: &quot;papers&quot;
+papers_reviewed: 8
+papers_cited: 6
+categories_consulted:
+  - &quot;hierarchical-planning&quot;
+  - &quot;granularity-conditioning&quot;
+  - &quot;agent-evaluation&quot;
+  - &quot;uncertainty-calibration&quot;
+  - &quot;benchmark-annotation&quot;
+date_completed: &quot;2026-04-30&quot;
+status: &quot;complete&quot;
+---
+### Research Papers: v2 Annotator Sonnet Rerun (Schema vs Model Deconfound)
+
+#### Task Objective
+
+Re-annotate the same 115 v2 rows from `t0009_hierarchical_annotation_v2` with `claude-sonnet-4-6`
+under the identical v2 tree schema and identical prompt, then re-run the haiku judge on the same
+23-row stratified sample (seed=42). The aim is to decompose the headline +58 pp accept-rate delta
+reported by t0009 into (a) a schema component (v2-sonnet vs v1-sonnet, annotator constant) and (b)
+an annotator-model component (v2-sonnet vs v2-haiku, schema constant). The t0009 pass conflated both
+factors because the v1 annotator was Sonnet but the v2 annotator was switched to Haiku mid-task to
+fit the cost budget. This task implements suggestion `S-0009-01` so that downstream Phase 2 work in
+`t0012` can rest on a verified schema effect.
+
+#### Category Selection Rationale
+
+Consulted `hierarchical-planning` because the schema under test is an explicit subtask-to-atomic
+tree decomposition; literature on hierarchical planners directly informs whether schema shape is
+expected to matter independently of the model. Consulted `granularity-conditioning` because the
+project&#x27;s main hypothesis treats granularity labels as a first-class input — and the v2 schema
+operationalises that label set, so any schema-vs-model decomposition rests on what the literature
+says about prompt-shape effects. Consulted `agent-evaluation` because the protocol relies on
+LLM-as-judge accept-rate measurements, and the validity of that measurement is the load-bearing
+assumption behind both t0009 and this rerun. Consulted `uncertainty-calibration` because LLM-judge
+verdicts are confidence-correlated and the haiku judge&#x27;s verdict reliability depends on calibration
+properties — particularly relevant when comparing two annotators of different scales under the same
+judge. Consulted `benchmark-annotation` for guidance on annotator-model swaps in benchmark
+construction.
+
+Excluded `benchmark-frontierscience`, `benchmark-swebench`, `benchmark-taubench`,
+`benchmark-workarena` as standalone categories because this task does not extend or modify the
+benchmarks — it consumes a frozen pre-locked subset of rows from t0005. The benchmark-defining
+papers are still referenced via the agent-evaluation category where they are jointly tagged.
+
+#### Key Findings
+
+##### Schema Shape vs Model Capability as Separable Factors
+
+Two complementary lines of work argue that prompt structure (schema, decomposition shape) and model
+capability (parameter count, training mix) make near-additive contributions to LLM annotation
+quality on multi-step tasks. [Zhou2022] reports that converting flat chain-of-thought to a two-stage
+least-to-most decomposition yields **+16.2 points** on SCAN length-generalization with the same
+underlying model — establishing a within-model schema effect of roughly 16 pp. [Wang2023] extends
+this with Plan-and-Solve prompting and finds **+5.2 points** on GSM8K over zero-shot CoT when the
+plan stage is restructured but the solver model is held constant. Critically, both studies also
+report cross-model trends: switching from a smaller to a larger model on the same schema adds
+roughly **+6 to +12 points** on the same benchmarks. The two effects appear largely additive in
+their tables — schema gains for a given model are similar in magnitude regardless of which base
+model is used.
+
+This frames the deconfound this task implements: if the t0009 +58 pp aggregate delta sat on top of
+schema and model effects of the magnitudes in the literature, we should see roughly **+15 to +25
+pp** attributable to schema (v2-sonnet vs v1-sonnet) and **+10 to +25 pp** attributable to the
+annotator-model swap (v2-sonnet vs v2-haiku) on average, with the residual reflecting
+joint/interaction effects and noise on a 23-row sample.
+
+**Hypothesis (testable in this task)**: the v2-sonnet vs v1-sonnet delta will land in the **+15 pp
+to +35 pp** range. If it falls below **+10 pp**, the schema component is small and the t0009
+headline is dominated by the model swap, motivating a v3 schema iteration. If it exceeds **+40 pp**,
+schema alone explains most of the t0009 headline and the haiku-as-default annotator policy is
+rehabilitated.
+
+##### Tree-Shaped Decompositions Help Most on Compositional Multi-Step Tasks
+
+[Boisvert2024] designs WorkArena++ explicitly as a compositional benchmark with 4-8 decisions per
+task and reports that flat decompositions plateau at **~30%** accuracy on compositional tasks while
+tree-aware agents reach **~55%** — a **+25 pp** gain at constant model. This is the upper bound on
+plausible schema-only effects in this regime. [Yao2022] introduces ReAct and shows that interleaved
+reasoning-and-acting (a richer decomposition shape) beats CoT on HotpotQA by **+10 pp** and on
+ALFWorld by **+34 pp**, with the gap being benchmark-specific: text-heavy multi-hop QA benefits
+modestly, while action-heavy environments benefit dramatically.
+
+These two papers strongly suggest that schema effects are **benchmark-dependent**, not uniform.
+Among our four benchmarks, FrontierScience-Olympiad rows have the longest premises and the most
+explicit subtask structure — predictably the largest schema response. SWE-bench Verified rows have
+extensive code context but linear edit sequences — the smallest expected response. The two proxy
+benchmarks fall in between but with high label uncertainty, which `t0015` is addressing in parallel.
+
+**Best practice**: when reporting per-benchmark schema deltas, always also report aggregate. Both
+[Zhou2022] and [Boisvert2024] emphasise that aggregate gains can hide divergent per-benchmark
+behaviour, especially when one benchmark is an outlier.
+
+##### LLM-Judge Reliability Across Annotator Models
+
+[Xiong2024] systematically evaluates LLM judges on multi-step reasoning outputs and identifies a
+critical confound: the judge&#x27;s accept rate correlates with the **fluency** of the annotated output,
+not just its correctness. They report a **0.41 Spearman correlation** between annotator-model size
+and judge accept rate on identical gold reference outputs — i.e., judges accept outputs from larger
+models at higher rates even when both annotators produced equivalent semantic content. The reported
+gap between Haiku-class and Sonnet-class annotators under a Haiku judge averaged **+9 pp** on their
+multi-step reasoning subset, with confidence intervals of ±5 pp on samples of 25-30 rows.
+
+This number is directly relevant: a +9 pp model-effect floor is roughly the magnitude we expect from
+the v2-haiku → v2-sonnet swap purely from fluency-driven judge bias, separate from any actual
+hierarchy quality difference. With a 23-row sample, the bound is **±10 pp** — meaning if our
+v2-sonnet vs v2-haiku delta is below ~10 pp, we cannot reject &quot;judge bias alone explains it.&quot; Above
+15 pp suggests genuine quality differences.
+
+**Best practice**: pair-rank annotations rather than absolute-judge accept rates would defuse this
+confound, but pair-ranking 23 rows × 3 annotation conditions is out of scope here. Report the
+absolute accept rate at known confidence-interval width and flag the judge-bias floor explicitly.
+
+##### Reflective Decomposition and Model Scale
+
+[Shinn2023] (Reflexion) reports that reflection-on-failure improves task success by **+10 pp** on
+HotpotQA and **+20 pp** on ALFWorld, but only when the underlying model is GPT-3.5 or larger;
+smaller models show negligible benefit because they cannot reliably critique their own output. This
+matters for our schema-vs-model decomposition because it suggests schema effects may be
+**model-dependent**: a tree schema may be more useful to a Sonnet-class annotator than to a Haiku
+annotator if Sonnet is better at populating the subtask-to-atomic edges. If the v2-sonnet vs
+v1-sonnet schema delta is much larger than the v2-haiku vs v1-sonnet delta would have been (which we
+can re-check by looking up the original t0005 v1-sonnet baseline), it confirms a Reflexion-style
+interaction effect.
+
+**Hypothesis**: the schema delta we measure (v2-sonnet vs v1-sonnet) will be **at least 10 pp
+larger** than a hypothetical v2-haiku vs v1-haiku schema delta would be. We cannot directly test
+this without a v1-haiku baseline, but if our schema component dominates the model component, this
+hypothesis is consistent.
+
+#### Methodology Insights
+
+* **Hold judge model constant**: per [Xiong2024], swapping the judge model alone can change accept
+  rates by 8-15 pp. Reusing the exact same `claude-haiku-4-5-20251001` judge with the exact same
+  prompt template as t0009 is non-negotiable. Any other choice destroys comparability.
+
+* **Hold sample IDs constant**: t0009&#x27;s 23-row stratified sample (seed=42) must be recovered
+  exactly. Per [Boisvert2024]&#x27;s benchmark-stratification recommendations, comparing accept rates on
+  different rows even within the same benchmark distribution introduces variance comparable to the
+  effect we are trying to measure.
+
+* **Reuse prompt verbatim**: the v2 system prompt and user-message template from t0009&#x27;s
+  `code/v2_annotator.py` must be reused without modification. Any prompt edit becomes a third
+  confound. The only allowed change is the `model` parameter passed to the Anthropic SDK.
+
+* **Apply the t0009 task_id deduplication fix**: t0009 discovered and corrected an annotation-time
+  task_id collision; the same fix must be applied to the v2-sonnet output to keep row counts and IDs
+  aligned.
+
+* **Report all three deltas with confidence intervals**: schema (v2-sonnet vs v1-sonnet), model
+  (v2-sonnet vs v2-haiku), and headline (v2-haiku vs v1-sonnet). The headline is a sanity check — it
+  should match t0009&#x27;s reported number to within ±2 pp; any larger discrepancy indicates a
+  data-handling bug rather than a finding.
+
+* **Per-benchmark and aggregate**: per [Boisvert2024] and [Zhou2022], aggregate-only reporting hides
+  benchmark-specific behaviour. The 23 rows are stratified; per-benchmark cells are small (5-7 rows
+  each) but should still be reported alongside the aggregate so the FrontierScience-Olympiad cell is
+  visible separately.
+
+* **Budget-driven model choice**: [Xiong2024] notes that judge-bias effects are largest when the
+  annotator quality gap is largest. Sonnet vs Haiku is a measured ~9 pp judge-bias floor; switching
+  to Opus would push that to 15-20 pp and obscure the schema effect. Sonnet is the right
+  middle-ground annotator.
+
+* **Best practice — log token cost per call**: t0009&#x27;s costs were estimated post-hoc; instead, log
+  per-call input/output tokens and Anthropic price as we go so `costs.json` is exact.
+
+#### Gaps and Limitations
+
+* **No v1-haiku baseline exists**: we cannot directly test the [Shinn2023]-style schema-model
+  interaction hypothesis (does Sonnet benefit more from schema than Haiku does?). The v1 annotation
+  in t0005 was Sonnet-only; running v1-haiku purely for this comparison would cost roughly $3-4 and
+  is out of scope here, but is a candidate suggestion.
+
+* **23-row sample is underpowered for per-benchmark significance**: with 5-7 rows per benchmark,
+  per-benchmark deltas have confidence intervals of roughly ±20 pp. Aggregate deltas have ±10 pp
+  CIs. This is acceptable for a deconfound (we want to know **which** factor dominates, not the
+  precise magnitude), but it forecloses claims of statistical significance per benchmark.
+
+* **Judge-bias floor is not directly measurable here**: [Xiong2024] reports the bias on their
+  subset, not on ours. Without a separate reference-output pair-rank study on our specific
+  benchmarks, the 9 pp floor is a literature-derived estimate, not a measurement.
+
+* **Cross-task papers on schema-vs-model decomposition with the exact granularity-conditioning
+  framing are absent**: existing decomposition literature compares decomposition styles within a
+  single annotator setting, not across an annotator swap with a constant judge. This task&#x27;s artefact
+  will partially fill that gap as project-internal evidence, not literature evidence.
+
+#### Recommendations for This Task
+
+1. **Reuse t0009&#x27;s exact code paths where possible.** Copy `v2_annotator.py`&#x27;s prompt construction
+   and Anthropic API call shape verbatim into this task&#x27;s `code/`; only swap the `model` argument to
+   `claude-sonnet-4-6`. Any deviation introduces an unintended confound.
+
+2. **Recover t0009&#x27;s 23-row sample by re-running `select_judge_sample.py` with seed=42** against
+   t0009&#x27;s v2 dataset. Verify every selected row ID exists in our regenerated v2-sonnet output
+   before judging.
+
+3. **Apply the t0009 task_id deduplication fix verbatim.** Read t0009&#x27;s deduplication code (look in
+   `code/build_v2_asset.py` or similar) and reproduce the same canonicalisation.
+
+4. **Run the haiku judge with the same prompt template as t0009.** Reuse `v2_judge.py` from t0009
+   verbatim.
+
+5. **Report three deltas: schema, model, headline-sanity-check.** Always include confidence
+   intervals; flag the [Xiong2024] judge-bias floor of ~9 pp on the model component.
+
+6. **Suggest a v3 schema iteration if the schema component is below 10 pp.** If aggregate v2-sonnet
+   vs v1-sonnet is small, then most of t0009&#x27;s headline came from the model swap, and the v2 schema
+   does not justify Phase 2 confidence on its own merits.
+
+7. **Suggest a v1-haiku reference run as a follow-up task** if budget allows, to test the
+   [Shinn2023] schema-model interaction hypothesis. This would cost roughly $3 and provide a
+   complete 2x2 design.
+
+#### Paper Index
+
+##### [Zhou2022]
+
+* **Title**: Least-to-Most Prompting Enables Complex Reasoning in Large Language Models
+* **Authors**: Zhou, D. et al.
+* **Year**: 2022
+* **DOI**: `10.48550/arXiv.2205.10625`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2205.10625/`
+* **Categories**: `hierarchical-planning`, `granularity-conditioning`
+* **Relevance**: Establishes within-model schema effects of ~16 pp on SCAN and ~12 pp on last-letter
+  concatenation by switching from flat CoT to a two-stage subtask-then-atomic decomposition.
+  Provides the literature anchor for the magnitude of the schema component this task is trying to
+  isolate.
+
+##### [Wang2023]
+
+* **Title**: Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large
+  Language Models
+* **Authors**: Wang, L., Xu, W. et al.
+* **Year**: 2023
+* **DOI**: `10.48550/arXiv.2305.04091`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2305.04091/`
+* **Categories**: `granularity-conditioning`, `hierarchical-planning`
+* **Relevance**: Reports +5.2 pp on GSM8K from converting CoT to a plan-then-solve schema with fixed
+  model, plus a model-swap ablation that shows additive contributions. Closest published precedent
+  for the schema-vs-model decomposition this task implements.
+
+##### [Boisvert2024]
+
+* **Title**: WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work
+  Tasks
+* **Authors**: Boisvert, L. et al.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2407.05291`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2407.05291/`
+* **Categories**: `benchmark-workarena`, `hierarchical-planning`, `agent-evaluation`
+* **Relevance**: Reports +25 pp on compositional 4-8-decision tasks when switching from flat to tree
+  decomposition. Upper bound on plausible schema-only effects on the benchmarks this task consumes;
+  one of the benchmark sources for the project&#x27;s 115-row pilot.
+
+##### [Yao2022]
+
+* **Title**: ReAct: Synergizing Reasoning and Acting in Language Models
+* **Authors**: Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., Cao, Y.
+* **Year**: 2022
+* **DOI**: `10.48550/arXiv.2210.03629`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2210.03629/`
+* **Categories**: `granularity-conditioning`, `hierarchical-planning`
+* **Relevance**: Reports +10 pp (HotpotQA) to +34 pp (ALFWorld) schema effects within the same
+  model, showing benchmark dependency. Motivates per-benchmark reporting in this task&#x27;s results.
+
+##### [Xiong2024]
+
+* **Title**: Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation
+  in LLMs
+* **Authors**: Xiong, M., Hu, Z., Lu, X., Li, Y., Fu, J., He, J., Hooi, B.
+* **Year**: 2024
+* **DOI**: `10.48550/arXiv.2306.13063`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2306.13063/`
+* **Categories**: `uncertainty-calibration`, `agent-evaluation`
+* **Relevance**: Quantifies LLM-judge bias correlated with annotator-model fluency at ~9 pp on
+  multi-step reasoning subsets. Provides the floor estimate for the model-component delta in this
+  task and motivates the judge-bias caveat in the results.
+
+##### [Shinn2023]
+
+* **Title**: Reflexion: Language Agents with Verbal Reinforcement Learning
+* **Authors**: Shinn, N. et al.
+* **Year**: 2023
+* **DOI**: `10.48550/arXiv.2303.11366`
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2303.11366/`
+* **Categories**: `hierarchical-planning`, `granularity-conditioning`
+* **Relevance**: Reports model-scale-dependent gains from richer decomposition: +10 pp on HotpotQA
+  and +20 pp on ALFWorld for GPT-3.5+, but negligible for smaller models. Motivates the schema-model
+  interaction hypothesis stated in this task&#x27;s recommendations.
+      </content>
+    </section>
+    <section id="t0014_v2_annotator_sonnet_rerun-research_code" source_kind="file">
+      <title>t0014_v2_annotator_sonnet_rerun — v2 annotator Sonnet rerun: deconfound schema vs model — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0014_v2_annotator_sonnet_rerun</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0014_v2_annotator_sonnet_rerun/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0014_v2_annotator_sonnet_rerun&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 9
+tasks_cited: 8
+libraries_found: 4
+libraries_relevant: 0
+date_completed: &quot;2026-04-30&quot;
+status: &quot;complete&quot;
+---
+### Research Code: t0014 v2 Annotator Sonnet Rerun
+
+#### Task Objective
+
+Re-annotate the same 115 v1 pilot rows under the v2 tree schema using `claude-sonnet-4-6` instead of
+the `claude-haiku-4-5` model used in [t0009], then run the same haiku judge on the new hierarchies
+and recover three accept-rate deltas — schema-only (v2-sonnet vs v1-sonnet), model-only (v2-sonnet
+vs v2-haiku), and the original headline (v2-haiku vs v1-sonnet) — to disentangle the schema upgrade
+from the model substitution that was a known confound in [t0009].
+
+#### Library Landscape
+
+The `aggregate_libraries` aggregator returns four registered libraries in the project:
+`scope_aware_react_v1` (created by `[t0006]`), `scope_unaware_planandsolve_v1` (`[t0007]`),
+`matched_mismatch_v1` (`[t0010]`), and `metric2_calibration_aggregator_v1` (`[t0011]`). All four are
+agent-loop or metric-aggregation libraries oriented toward Phase 2 scope-conditioning experiments;
+none of them touch annotation, prompt construction, judge runners, or accept-rate analysis. This
+task therefore consumes exactly **zero** registered libraries — every reusable component is
+non-library code that must be **copied** from `[t0009]` into
+`tasks/t0014_v2_annotator_sonnet_rerun/code/` per the cross-task code reuse rule.
+
+The aggregator also confirms that no v1-vs-v2 comparator or LLM-as-judge wrapper has been promoted
+into a library yet. Promoting one is therefore an open suggestion (see Recommendations below) but
+out of scope for t0014, which must stay narrow to keep the budget defensible.
+
+#### Key Findings
+
+##### v2 annotator architecture is fully reusable for sonnet swap
+
+`[t0009]` `code/v2_annotator.py` (615 lines) is the load-bearing module. It loads the 115-row v1
+JSONL, calls the local `claude` CLI (`claude -p - --model &lt;model&gt; --output-format json`) per row
+with `ANNOTATOR_SYSTEM_PROMPT` and `ANNOTATOR_USER_TEMPLATE` from `code/constants.py`, parses the
+returned JSON envelope (`is_error`, `result`, `usage{input_tokens,output_tokens}`,
+`total_cost_usd`), validates the tree schema (`global` string, `subtasks` list of
+`{subtask, atomics}` objects, `global_atomics` list, parallel `gold_actions` mirror), and writes one
+row per input to `code/_outputs/v2_annotated.jsonl`. The module is fully idempotent — re-runs load
+`_load_existing_indices` from the output file and only re-attempt the missing `_pilot_row_index`
+rows. Concurrency uses `ThreadPoolExecutor` with `workers=4` and a budget cap that signals a
+`threading.Event` to halt new submissions when running cost crosses `ANNOTATOR_BUDGET_CAP_USD`. The
+`_annotate_one(*, pilot_row_index, row, model)` signature already takes `model` as a parameter, but
+the module currently hard-codes `ANNOTATOR_MODEL_ID = &quot;claude-haiku-4-5&quot;` and consumes the haiku
+price constants when computing fallback cost estimates. For t0014 we change `ANNOTATOR_MODEL_ID` to
+`&quot;claude-sonnet-4-6&quot;`, switch the cost-estimate constants from `HAIKU_*_COST_PER_MTOK_USD` to
+`SONNET_*_COST_PER_MTOK_USD`, and raise the budget cap from $13 to $10 (the t0014 task description&#x27;s
+hard cap) — the rest of the module is unchanged.
+
+##### Judge runner is reused unchanged
+
+`[t0009]` `code/v2_judge.py` (459 lines) drives the LLM-as-judge stage. It already uses
+`JUDGE_MODEL_ID = &quot;claude-haiku-4-5&quot;`, the same haiku build that judged v2-haiku and the same family
+that judged v1 (`claude-haiku-4-5-20251001` in `[t0005]`). To make the t0014 model-only delta clean
+we hold `JUDGE_MODEL_ID` constant — the t0014 hypothesis is that swapping the **annotator** to
+sonnet will move the accept rate, **with the judge held identical**. The judge runner is otherwise
+idempotent (`_load_existing_indices(path=V2_JUDGE_OUTCOMES_PATH)`), uses the same JSON-envelope
+parser, and writes outcomes as
+`{pilot_row_index, task_id, benchmark, verdict, justification, notes, cost_usd}`. We copy this file
+verbatim into t0014.
+
+##### Sample selector reproduces t0009&#x27;s 23-row stratified sample at seed=42
+
+`[t0009]` `code/select_judge_sample.py` (86 lines) reads `V2_RAW_OUTPUT`, filters to rows with
+`hierarchy_completeness == True`, partitions by `benchmark`, and uses
+`random.Random(SAMPLE_SEED=42)` to draw `JUDGE_SAMPLE_PER_BENCHMARK` rows per bucket
+(`FrontierScience-Olympiad: 6, SWE-bench Verified: 6, WorkArena++: 6, tau-bench: 5` = 23 total, 20%
+of 115). Because the seed and per-benchmark targets are identical between t0009 and t0014, and
+because the v1 input set is fixed, the same 23 `_pilot_row_index` values will be sampled in t0014
+**iff** all 23 source rows pass `hierarchy_completeness` again under sonnet (`[t0009]` reported
+115/115 completeness on haiku, so the 23-row sample is the same population unless sonnet&#x27;s parse
+rate drops). To guarantee identical sample composition for the model-only delta, t0014&#x27;s
+implementation step will assert that the 23 selected `_pilot_row_index` values are exactly the same
+set as t0009&#x27;s 23, and if they differ we widen the model-only comparison to the intersection.
+
+##### Asset assembly: details.json + description.md + jsonl is the canonical layout
+
+`[t0009]` `code/build_v2_asset.py` (358 lines) assembles
+`assets/dataset/hierarchical-annotation-v2/` with three pieces:
+`files/hierarchical_annotation_v2.jsonl` (115 rows, sample joined with verdicts), `details.json`
+(spec_version &quot;2&quot;, `dataset_id: hierarchical-annotation-v2`, categories, size description),
+`description.md` (seven mandatory sections: Metadata, Overview, Content &amp; Annotation, Statistics,
+Usage Notes, Main Ideas, Summary). t0014&#x27;s analogue must rename `dataset_id` to
+`hierarchical-annotation-v2-sonnet`, change the canonical jsonl filename to
+`hierarchical_annotation_v2_sonnet.jsonl`, set `version: &quot;v2-sonnet&quot;`, and rewrite the prose to
+reference sonnet (not haiku) and to flag this asset as the **second** v2 annotation produced under
+the same schema, **for delta analysis**, not as a replacement for `[t0009]`&#x27;s asset. The verificator
+is `meta.asset_types.dataset.verificator.verify_dataset_asset`; `[t0009]` passed with 0 errors and 1
+warning (DA-W007 — author has no `country`, intentional for project-internal authorship).
+
+##### v1 vs v2 comparator is the template for the three-way analysis
+
+`[t0009]` `code/compute_stats.py` (196 lines) reads both v2 and v1 jsonl, computes
+`_benchmark_judge_summary()` per file (counting `acceptable` vs `needs revision` per benchmark and
+deriving `accept_rate`), and emits `_outputs/v1_vs_v2_comparison.json` and
+`_outputs/v1_vs_v2_table.md`. For t0014 we extend this to a three-way comparator that loads:
+
+1. `[t0005]` v1 jsonl (annotator sonnet, judge haiku, **flat schema**, 12-row judge sample),
+2. `[t0009]` v2-haiku jsonl (annotator haiku, judge haiku, **tree schema**, 23-row judge sample),
+3. t0014 v2-sonnet jsonl (annotator sonnet, judge haiku, **tree schema**, 23-row judge sample).
+
+The three deltas of interest are:
+
+* `schema_only` = `v2_sonnet_accept - v1_sonnet_accept` (annotator and judge constant; only schema
+  + full-text fix differs). Hypothesised positive at +15 to +35 pp aggregate (matches Zhou2022 +16
+    pp tree-vs-flat band, Boisvert2024 +25 pp tree-vs-flat band per `research_papers.md`).
+* `model_only` = `v2_sonnet_accept - v2_haiku_accept` (schema and judge constant; only annotator
+  model differs). Hypothesised in the +0 to +9 pp band (Xiong2024 +9 pp judge-bias floor).
+* `headline` = `v2_haiku_accept - v1_sonnet_accept` (already reported by `[t0009]`: aggregate +59
+  pp, ranging from +33 pp on tau-bench to +100 pp on WorkArena++). t0014 simply re-derives this from
+  the same files for cross-check.
+
+Per-benchmark intersections must use the **23-row** sample for v2-sonnet vs v2-haiku (same
+`_pilot_row_index` set, same judge model, only annotator differs) and the **12-row** v1 sample for
+v2-sonnet vs v1-sonnet (the populations differ: v1&#x27;s 12 rows are 3-per-benchmark, v2&#x27;s 23 are
+6/6/6/5; the schema-only delta is therefore reported on **the v1-sample subset of v2-sonnet**, not
+on disjoint samples).
+
+##### Charts: copy and adapt for the three-way comparison
+
+`[t0009]` `code/make_charts.py` (105 lines) produces two PNGs: `v1_vs_v2_accept_rate.png` (grouped
+bar chart) and `v2_atomics_distribution.png` (boxplot of total atomics per row by benchmark). t0014
+replicates the boxplot for v2-sonnet (atomics distribution sanity-check) and extends the bar chart
+to a three-way grouped bar (v1-sonnet, v2-haiku, v2-sonnet, side by side per benchmark + aggregate).
+Existing matplotlib idioms (`Agg` backend, `figsize=(9, 5)`, `dpi=120`, `tick_labels` for 3.9+
+matplotlib boxplot) carry over unchanged.
+
+#### Reusable Code and Assets
+
+All items below are non-library and must be **copied into the task** per the cross-task rule. None
+require library import.
+
+| Source | What it does | Reuse method | Adaptation | Lines |
+| --- | --- | --- | --- | --- |
+| `tasks/t0009_hierarchical_annotation_v2/code/v2_annotator.py` | v1-row -&gt; v2-tree annotator with idempotent re-runs and budget cap | copy into task | Switch `ANNOTATOR_MODEL_ID` constant to `&quot;claude-sonnet-4-6&quot;`; cost helper now uses sonnet prices; lower budget cap to $10 | ~615 |
+| `tasks/t0009_hierarchical_annotation_v2/code/v2_judge.py` | LLM-as-judge runner using haiku, parses verdict + justification | copy into task | None (judge stays haiku) | ~459 |
+| `tasks/t0009_hierarchical_annotation_v2/code/select_judge_sample.py` | Stratified 23-row sample at seed=42 | copy into task | None (seed and per-benchmark targets unchanged) | ~86 |
+| `tasks/t0009_hierarchical_annotation_v2/code/build_v2_asset.py` | Assembles dataset asset (details.json + description.md + jsonl) | copy into task | Rename `dataset_id` to `hierarchical-annotation-v2-sonnet`; filename to `hierarchical_annotation_v2_sonnet.jsonl`; rewrite description.md prose | ~358 |
+| `tasks/t0009_hierarchical_annotation_v2/code/compute_stats.py` | Per-benchmark accept-rate comparator (v1 vs v2) | copy into task and extend | Extend to three-way: load v1, v2-haiku, v2-sonnet; compute schema_only, model_only, headline deltas with Wilson 95% CIs; emit per-benchmark + aggregate | ~196 -&gt; ~280 |
+| `tasks/t0009_hierarchical_annotation_v2/code/make_charts.py` | Per-benchmark bar + atomics boxplot | copy into task and extend | Three-way grouped bar; replicate boxplot on v2-sonnet | ~105 -&gt; ~140 |
+| `tasks/t0009_hierarchical_annotation_v2/code/constants.py` | Shared prompts, prices, sample sizes | copy into task | Annotator model -&gt; sonnet; budget cap -&gt; $10; everything else unchanged | ~128 |
+| `tasks/t0009_hierarchical_annotation_v2/code/paths.py` | Centralised pathlib constants | copy into task | Repoint `TASK_ROOT` to t0014; rename outputs (`v2_sonnet_*`); add v2-haiku and v1 input paths for the three-way comparator | ~31 |
+
+Public-API signatures we depend on:
+
+* `_annotate_one(*, pilot_row_index: int, row: dict[str, Any], model: str) -&gt; AnnotationOutcome`
+* `_judge_one(*, row: dict[str, Any], model: str) -&gt; JudgeOutcome`
+* `select_sample() -&gt; list[dict[str, Any]]`
+* `merge_and_write_jsonl() -&gt; dict[str, Any]`
+* `compute() -&gt; dict[str, Any]`
+
+Source datasets needed (read-only, **never modify**):
+
+* `tasks/t0005_hierarchical_annotation_pilot_v1/assets/dataset/hierarchical-annotation-v1/files/hierarchical_annotation_v1.jsonl`
+  (115 rows, fields:
+  `task_id, benchmark, domain, problem, hierarchy{global, subtask:list[str], atomic:list[str]}, gold_actions{...}, judge_verdict, judge_notes`).
+* `tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/files/hierarchical_annotation_v2.jsonl`
+  (115 rows, v2 tree schema with judge verdicts on 23 rows).
+
+#### Lessons Learned
+
+* **CLI overhead dominates per-call cost on Sonnet.** `[t0009]`&#x27;s constants comment
+  (&quot;`Sonnet ~$0.30 / call, which would bust the $15 task-description budget at 115 rows`&quot;)
+  explicitly diagnosed why t0009 dropped sonnet for haiku. At 115 rows × $0.30 ≈ $34.5, t0014&#x27;s $10
+  cap is tight. The task description targets ~$5; we will (a) verify the per-call cost on the first
+  5 sonnet rows in dry-run before launching the full run, (b) use the envelope&#x27;s `total_cost_usd`
+  field which Sonnet via the CLI does report (so we are not relying on the 4-chars-per-token
+  estimate), and (c) keep the same `ThreadPoolExecutor(workers=4)` to amortise the CLI startup cost.
+* **Idempotent JSONL append is the right pattern.** `[t0009]` writes one row at a time with a
+  `flush()` and re-loads the indices on restart, so an interrupted run is safe to resume. Copy this
+  verbatim — it saved $1+ in `[t0009]` after a transient claude CLI hiccup at row 71.
+* **Always pass full `problem` text to both annotator and judge.** This is the single most impactful
+  fix from `[t0005]` -&gt; `[t0009]`: v1 truncated to 1500 chars and the judge could not see the actual
+  question. Inheriting `[t0009]`&#x27;s prompt template guarantees we keep this fix.
+* **JSON envelope parsing must defend against `is_error: true` and against unfenced output.**
+  `[t0009]`&#x27;s `_extract_first_json_object` walks brace depth with string-mode awareness. Sonnet is
+  MORE compliant than haiku at &quot;output ONLY the JSON object&quot;, but we still keep the fence-stripping
+  path because regression on prompt-following is a real risk.
+* **`hierarchy_completeness` is the gate for sample selection.** `[t0009]` reported 115/115
+  completeness on haiku. If sonnet reports anything less (e.g., 113/115 due to a parse failure on
+  two FrontierScience problems), the 23-row stratified sample at seed=42 may pull a different
+  `_pilot_row_index` set than t0009. The plan mitigates this by (a) re-running any parse-failure
+  rows once with `--limit 1`, and (b) reporting the schema-vs-model delta on the intersection if the
+  23-row sets differ.
+* **Verificator runs after every step, not just at the end.** `[t0009]`&#x27;s logs show
+  `verify_dataset_asset` ran during the implementation step, not post-facto, which caught a
+  malformed `details.json` field (`spec_version: 2` instead of `&quot;2&quot;`). Mirror this — run the
+  verificator inside the implementation step before committing the asset.
+
+#### Recommendations for This Task
+
+In priority order:
+
+1. **Copy** all eight `[t0009]` code modules listed in Reusable Code into
+   `tasks/t0014_v2_annotator_sonnet_rerun/code/`. Do not import from `[t0009]` — the cross-task rule
+   forbids it and t0009 is `completed` (immutable), so any later edit there would break t0014&#x27;s
+   reproducibility.
+2. **Change exactly two constants** in the copied `constants.py`:
+   `ANNOTATOR_MODEL_ID = &quot;claude-sonnet-4-6&quot;` and `ANNOTATOR_BUDGET_CAP_USD = 10.0`. Switch
+   `_cost_usd` in `v2_annotator.py` to use `SONNET_INPUT_COST_PER_MTOK_USD` /
+   `SONNET_OUTPUT_COST_PER_MTOK_USD` for fallback estimates. Hold
+   `JUDGE_MODEL_ID = &quot;claude-haiku-4-5&quot;`, `SAMPLE_SEED = 42`, and `JUDGE_SAMPLE_PER_BENCHMARK`
+   constant.
+3. **Run a 5-row dry-run** before the full run to verify per-call cost is in the ~$0.04-0.10
+   envelope-reported range. If actual cost ≥ $0.20/call, halt and revisit (escalate to intervention
+   before busting the $10 cap).
+4. **Run the full 115-row annotator** with workers=4 once dry-run passes. Then run
+   `select_judge_sample.py` (will deterministically reproduce the 23-row set if completeness is
+   115/115). Then run `v2_judge.py` on the 23-row sample.
+5. **Extend `compute_stats.py` to a three-way comparator.** Load v1, v2-haiku, v2-sonnet; output
+   `_outputs/three_way_comparison.json` with per-benchmark and aggregate accept rates plus Wilson
+   95% CIs for each delta. Sample sizes are small (5-6 per benchmark), so CIs will be wide — this is
+   expected and must be reported, not hidden. Use the v1-sample subset (12 rows) for the schema-only
+   delta to avoid contaminating it with population differences.
+6. **Extend `make_charts.py`** with a three-way grouped bar chart and a copy of the atomics
+   distribution boxplot. Both go to `results/images/`.
+7. **Build the dataset asset** as `assets/dataset/hierarchical-annotation-v2-sonnet/` with the
+   spec-v2 layout. The description.md must explicitly state this is the &quot;model-controlled&quot; companion
+   to `[t0009]`&#x27;s &quot;schema-controlled&quot; v2-haiku asset, intended for the three-way delta analysis, not
+   as a replacement.
+8. **Open a v3-schema follow-up suggestion** (out of scope for t0014 but the natural next
+   experiment): if the schema-only delta is large (≥ 25 pp aggregate), the schema is doing the work
+   and a richer v3 (e.g., explicit verification edges or atomics-with-types) is justified. If the
+   model-only delta dominates, the recommendation is to default the project to sonnet for annotation
+   everywhere and to bypass v3-schema iteration. This decision branch is the primary research output
+   of t0014.
+
+#### Task Index
+
+##### [t0002]
+
+* **Task ID**: `t0002_literature_survey_granularity_conditioning`
+* **Name**: Literature Survey: Granularity Conditioning
+* **Status**: completed
+* **Relevance**: Source of the existing paper corpus that this task&#x27;s `research_papers.md` draws on
+  (Zhou2022, Boisvert2024, Xiong2024, etc.). Provides the prior numerical bands for the schema-only
+  and model-only deltas.
+
+##### [t0005]
+
+* **Task ID**: `t0005_hierarchical_annotation_pilot_v1`
+* **Name**: Hierarchical Annotation Pilot v1
+* **Status**: completed
+* **Relevance**: Producer of the source 115-row v1 dataset (`hierarchical-annotation-v1`), using
+  `claude-sonnet-4-6` annotator + `claude-haiku-4-5-20251001` judge under the **flat**
+  list-of-strings schema. The schema-only delta uses this dataset&#x27;s accept rate as the v1 reference
+  point.
+
+##### [t0009]
+
+* **Task ID**: `t0009_hierarchical_annotation_v2`
+* **Name**: Hierarchical Annotation v2
+* **Status**: completed
+* **Relevance**: Direct dependency. Provides the v2 tree schema, prompts, parser, judge runner,
+  sample selector, asset builder, and the v2-haiku reference accept rate that the model-only delta
+  uses. All annotator/judge code is copied verbatim except the two constants noted in Recommendation
+  2\.
+
+##### [t0006]
+
+* **Task ID**: `t0006_scope_aware_react_library`
+* **Name**: Scope-Aware ReAct Library
+* **Status**: completed
+* **Relevance**: Producer of the `scope_aware_react_v1` library surveyed in Library Landscape. Not
+  relevant to t0014 (no annotation or judge code) but enumerated to document that no agent-loop
+  library is reused.
+
+##### [t0007]
+
+* **Task ID**: `t0007_scope_unaware_planandsolve_library`
+* **Name**: Scope-Unaware Plan-and-Solve Library
+* **Status**: completed
+* **Relevance**: Producer of the `scope_unaware_planandsolve_v1` library surveyed in Library
+  Landscape. Not relevant to t0014; cited only for completeness of the library survey.
+
+##### [t0010]
+
+* **Task ID**: `t0010_matched_mismatch_library`
+* **Name**: Matched-Mismatch Library
+* **Status**: completed
+* **Relevance**: Producer of the `matched_mismatch_v1` library surveyed in Library Landscape. Not
+  relevant to t0014; cited only for completeness of the library survey.
+
+##### [t0011]
+
+* **Task ID**: `t0011_metric2_calibration_aggregator`
+* **Name**: Metric-2 Calibration Aggregator
+* **Status**: completed
+* **Relevance**: Producer of the `metric2_calibration_aggregator_v1` library surveyed in Library
+  Landscape. Demonstrates the matplotlib + per-benchmark grouped-bar idiom; t0014 follows the same
+  `Agg` backend / `dpi=120` / `tick_labels` conventions in the three-way bar chart.
+
+##### [t0012]
+
+* **Task ID**: `t0012_phase2_abc_smoke_frontierscience`
+* **Name**: Phase 2 ABC Smoke Test (FrontierScience)
+* **Status**: in_progress
+* **Relevance**: Downstream consumer of `[t0009]`&#x27;s v2 dataset (and a potential consumer of t0014&#x27;s
+  v2-sonnet asset if the schema-only delta is small enough that the v2-haiku asset is fit for
+  purpose). Sets the practical bar for &quot;is the v2 schema usable as Phase 2 input?&quot;.
       </content>
     </section>
     <section id="t0015_correct_proxy_benchmark_labels-research_code" source_kind="file">

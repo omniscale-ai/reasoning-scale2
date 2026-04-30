@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="papers/"><img src="https://img.shields.io/badge/Papers-11-4169E1" alt="Papers"></a>
-  <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-7-2E8B57" alt="Datasets"></a>
+  <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-8-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-0-9370DB" alt="Predictions"></a>
   <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-4-20B2AA" alt="Libraries"></a>
@@ -12,7 +12,7 @@
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-15-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-44-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-49-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-1-DC143C" alt="Results"></a>
@@ -29,16 +29,16 @@
 [hierarchical-planning](by-category/hierarchical-planning.md) |
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
-**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (5K) |
-[full](llm-context/full.xml) (48K) | [roadmap](llm-context/roadmap.xml) (15K) |
-[results](llm-context/results-deep-dive.xml) (40K) |
+**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (6K) |
+[full](llm-context/full.xml) (53K) | [roadmap](llm-context/roadmap.xml) (15K) |
+[results](llm-context/results-deep-dive.xml) (46K) |
 [assets](llm-context/literature-and-assets.xml) (11K)
 
-*Last updated: 2026-04-30 19:35 UTC*
+*Last updated: 2026-04-30 21:46 UTC*
 
-* **Budget**: **$9** spent of $100
-* **Remaining**: **$91**
-* **Usage**: `██░░░░░░░░░░░░░░░░░░` 9.2%
+* **Budget**: **$30** spent of $100
+* **Remaining**: **$70**
+* **Usage**: `██████░░░░░░░░░░░░░░` 30.3%
 
 ---
 
@@ -48,11 +48,10 @@ No daily news yet.
 
 ---
 
-## [In Progress (2)](tasks/by-status/in_progress.md)
+## [In Progress (1)](tasks/by-status/in_progress.md)
 
 | # | Task | Started |
 |---|------|---------|
-| 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | 2026-04-30 19:07 |
 | 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-04-30 00:55 |
 
 ---
@@ -69,10 +68,11 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (13 total)](tasks/by-status/completed.md)
+## [Recently Completed (14 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`results`](../tasks/t0014_v2_annotator_sonnet_rerun/results/results_detailed.md) | 2026-04-30 23:59 |
 | 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`results`](../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) | 2026-04-30 19:32 |
 | 0013 | [Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels](../overview/tasks/task_pages/t0013_brainstorm_results_4.md) | [`results`](../tasks/t0013_brainstorm_results_4/results/results_detailed.md) | 2026-04-30 18:00 |
 | 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`results`](../tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md) | 2026-04-30 00:53 |
@@ -82,13 +82,12 @@ No blocked tasks.
 | 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`results`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/results_detailed.md) | 2026-04-29 20:14 |
 | 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`results`](../tasks/t0006_scope_aware_react_library/results/results_detailed.md) | 2026-04-29 20:07 |
 | 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
-| 0004 | [Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries](../overview/tasks/task_pages/t0004_brainstorm_results_2.md) | [`results`](../tasks/t0004_brainstorm_results_2/results/results_detailed.md) | 2026-04-29 15:30 |
 
-*3 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*4 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
-## [Recent Suggestions (35 open)](suggestions/)
+## [Recent Suggestions (40 open)](suggestions/)
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -157,6 +156,99 @@ rate, ~$5-6 added cost. Inherits S-0005-01.
 </details>
 
 <details>
+<summary>🧪 <strong>Scope a v3 schema iteration motivated by per-benchmark
+schema-only deltas, not aggregate</strong> (S-0014-01)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+The aggregate schema-only delta is +57 pp (90% v2-sonnet vs 33% v1-sonnet) but the
+per-benchmark split is bimodal: FrontierScience-Olympiad and WorkArena++ are at +100 pp (0% ->
+100%), while SWE-bench Verified and tau-bench are at +13-17 pp (67% -> 80-83%). The +100 pp
+cells suggest the v2 tree schema converts unsolvable v1 outputs into acceptable v2 outputs,
+but this is potentially confounded with the truncation fix bundled into v2 (S-0009-04). The
++13-17 pp cells suggest a real but modest schema improvement on benchmarks where v1 was
+already adequate. A v3 schema should target SWE/tau-style structured-action tasks specifically
+— e.g., add explicit precondition/postcondition fields to atomics, since the SWE/tau cells
+already saturate the high-level subtask abstraction.
+
+</details>
+
+<details>
+<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
+substantive judge</strong> (S-0014-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
+published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
+partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
+than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
+critic prompt that simulates execution ('verify each atomic, executed in order, would actually
+solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
+v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
+judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
+is doing real work. Cost ~$3 with sonnet judge.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
+hypothesis on the model-only delta</strong> (S-0014-03)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+The model-only delta of -1 pp sits below Xiong2024's lower edge (0 pp). Xiong2024 documents
+that judges trained on the same model family as the annotator show a small positive familial
+bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which
+means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row
+v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of
+haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the
+haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near
+zero, sonnet really does provide no annotator-quality lift on this composite. Cost ~$2 with
+sonnet judge on 43 rows.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
+is not justified</strong> (S-0014-04)</summary>
+
+**Kind**: technique | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+Under the t0014 measurement, haiku and sonnet annotators produce statistically
+indistinguishable accept rates under the v2 tree schema (90% sonnet vs 91% haiku, CIs overlap
+completely). Sonnet annotation costs ~$0.20 per call vs haiku ~$0.02 per call (10x via Claude
+Code CLI; 7-8x via direct API). For Phase 2 ABC/main-experiment annotation budgets in the
+$50-200 range, the cost differential dominates: a 200-row sonnet annotation pass would cost
+$40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
+annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
+judge bias.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
+longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
+CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
+reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
+delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
+the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
+Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
+aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
+credible. Cost <$1.
+
+</details>
+
+<details>
 <summary>📂 <strong>Replace Mind2Web/HumanEval proxy rows with native WorkArena++
 and tau-bench data</strong> (S-0015-01)</summary>
 
@@ -176,91 +268,11 @@ change to the FrontierScience-Olympiad or SWE-bench Verified rows.
 
 </details>
 
-<details>
-<summary>📊 <strong>Add a row-level original_benchmark provenance field to future
-relabel corrections</strong> (S-0015-02)</summary>
-
-**Kind**: evaluation | **Priority**: low | **Date**: 2026-04-30 | **Source**:
-[t0015_correct_proxy_benchmark_labels](../tasks/t0015_correct_proxy_benchmark_labels/)
-
-The t0015 overlay rewrites the per-row benchmark string but does not preserve the original
-proxy label inside the row. A reader inspecting only the effective JSONL cannot tell that the
-row was previously labeled differently — provenance lives only in the corrections overlay's
-description.md. For future relabel corrections, the framework would benefit from a soft
-convention where the corrected row carries an original_benchmark field (or, more generally,
-original_<field> for any field rewritten by a corrections overlay). This makes per-row
-provenance auditable without round-tripping through the corrections file. The task should: (1)
-propose the convention as a small extension to the corrections specification, (2) update the
-dataset-asset verificator to surface a warning when an overlay rewrites a per-row field
-without preserving the original, and (3) backfill the convention into the t0015 overlay.
-
-</details>
-
-<details>
-<summary>📊 <strong>Register pass^k as a project metric for reliability
-reporting</strong> (S-0002-01)</summary>
-
-**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across
-k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail
-demonstrates that single-rollout pass@1 systematically overstates agent reliability. The
-project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
-task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
-luck.
-
-</details>
-
-<details>
-<summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
-WorkArena++</strong> (S-0002-03)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow
-developer instance and the BrowserGym Python harness. This is a substantial infrastructure
-task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
-any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
-annotation begins.
-
-</details>
-
-<details>
-<summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
-pipeline</strong> (S-0002-04)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch
-AI's evaluation pipeline; the raw problems are not publicly downloadable. The project needs an
-explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
-(MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
-1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
-
-</details>
-
-<details>
-<summary>📂 <strong>Build the SWE-bench Verified Docker harness</strong> (S-0002-05)</summary>
-
-**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source
-composite. Its evaluation harness uses Docker per repository to isolate test runs. This task
-would download the Verified problem set, pull the Docker images, and run a 10-instance smoke
-test to confirm the harness reproduces published baseline numbers (e.g., one of the early
-Claude or GPT scores).
-
-</details>
-
-*25 more open suggestions → [open suggestions](suggestions/)*
+*30 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (9)](suggestions/)
+## [High Priority Suggestions (12)](suggestions/)
 
 <details>
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
@@ -275,6 +287,62 @@ stratified sample (or all 115 rows for higher precision) and emit acceptable/nee
 verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
 +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
 estimate: 4-6 hours of human review time at $50/hour = $200-300.
+
+</details>
+
+<details>
+<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
+substantive judge</strong> (S-0014-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
+published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
+partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
+than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
+critic prompt that simulates execution ('verify each atomic, executed in order, would actually
+solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
+v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
+judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
+is doing real work. Cost ~$3 with sonnet judge.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
+hypothesis on the model-only delta</strong> (S-0014-03)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+The model-only delta of -1 pp sits below Xiong2024's lower edge (0 pp). Xiong2024 documents
+that judges trained on the same model family as the annotator show a small positive familial
+bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which
+means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row
+v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of
+haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the
+haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near
+zero, sonnet really does provide no annotator-quality lift on this composite. Cost ~$2 with
+sonnet judge on 43 rows.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
+is not justified</strong> (S-0014-04)</summary>
+
+**Kind**: technique | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+Under the t0014 measurement, haiku and sonnet annotators produce statistically
+indistinguishable accept rates under the v2 tree schema (90% sonnet vs 91% haiku, CIs overlap
+completely). Sonnet annotation costs ~$0.20 per call vs haiku ~$0.02 per call (10x via Claude
+Code CLI; 7-8x via direct API). For Phase 2 ABC/main-experiment annotation budgets in the
+$50-200 range, the cost differential dominates: a 200-row sonnet annotation pass would cost
+$40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
+annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
+judge bias.
 
 </details>
 
@@ -366,37 +434,7 @@ prompts (B vs G/S/A from the project's research questions).
 
 </details>
 
-<details>
-<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0007_scope_unaware_planandsolve_library](../tasks/t0007_scope_unaware_planandsolve_library/)
-
-Build the experiment harness that runs all three libraries (scope_aware_react_v1,
-scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
-slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
-computing the registered metrics task_success_rate, avg_decisions_per_task, and
-overconfident_error_rate per condition. The harness must depend on this library only via the
-trajectory schema, never via internal helpers, to preserve isolation.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
-t0012</strong> (S-0010-01)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0010_matched_mismatch_library](../tasks/t0010_matched_mismatch_library/)
-
-When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
-and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
-with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
-v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
-'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
-preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
-effect (see research_papers.md, Wang2023 and Zhou2022).
-
-</details>
+*2 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 
@@ -831,10 +869,11 @@ the planning step must address.
 
 ---
 
-## [Latest Datasets (7 total)](datasets/)
+## [Latest Datasets (8 total)](datasets/)
 
 | Name | Size | Source | Added |
 |------|------|--------|-------|
+| [Hierarchical Annotation v2-sonnet (115-row pilot, tree schema, sonnet annotator)](../tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet/description.md) | 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree, generated by claude-sonnet-4-6. 100 rows passed the v2 hierarchy_completeness check. 20 rows received an LLM-as-judge verdict from claude-haiku-4-5 (18 acceptable, 2 needs revision). | [14](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | 2026-04-30 |
 | [Hierarchical Annotation v2 (115-row pilot, tree schema, relabeled)](../tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/description.md) | 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). Per-row benchmark labels: 40 FrontierScience-Olympiad, 23 SWE-bench Verified, 26 Mind2Web (proxy for WorkArena++), 26 HumanEval (proxy for tau-bench). | [15](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | 2026-04-30 |
 | [Hierarchical Annotation v2 (115-row pilot, tree schema)](../tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/description.md) | 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). Per-row benchmark labels: 40 FrontierScience-Olympiad, 23 SWE-bench Verified, 26 Mind2Web (proxy for WorkArena++), 26 HumanEval (proxy for tau-bench). | [9](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | 2026-04-30 |
 | [tau-bench subset (4-8 actions)](../tasks/t0003_download_benchmark_subsets/assets/dataset/taubench-subset/description.md) | 87 tasks filtered from 665 upstream tau-bench tasks (kept iff gold action sequence has between 4 and 8 actions) | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
@@ -868,9 +907,10 @@ No predictions yet.
 
 ---
 
-## [Cost Leaders (2 tasks with spend)](costs/)
+## [Cost Leaders (3 tasks with spend)](costs/)
 
 | Task | Cost | Date |
 |------|------|------|
+| [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`$21.16`](../tasks/t0014_v2_annotator_sonnet_rerun/results/costs.json) | 2026-04-30 23:59 |
 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`$9.10`](../tasks/t0009_hierarchical_annotation_v2/results/costs.json) | 2026-04-30 00:53 |
 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`$0.06`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/costs.json) | 2026-04-29 20:14 |

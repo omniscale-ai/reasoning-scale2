@@ -1,7 +1,7 @@
 # Suggestions: `agent-evaluation`
 
-19 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**14 open** (5 high, 7 medium, 2 low), **5 closed**.
+22 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
+**17 open** (8 high, 7 medium, 2 low), **5 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -33,6 +33,30 @@ effect (see research_papers.md, Wang2023 and Zhou2022).
 </details>
 
 <details>
+<summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
+is not justified</strong> (S-0014-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-04` |
+| **Kind** | technique |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Under the t0014 measurement, haiku and sonnet annotators produce statistically
+indistinguishable accept rates under the v2 tree schema (90% sonnet vs 91% haiku, CIs overlap
+completely). Sonnet annotation costs ~$0.20 per call vs haiku ~$0.02 per call (10x via Claude
+Code CLI; 7-8x via direct API). For Phase 2 ABC/main-experiment annotation budgets in the
+$50-200 range, the cost differential dominates: a 200-row sonnet annotation pass would cost
+$40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
+annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
+judge bias.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
 
 | Field | Value |
@@ -50,6 +74,31 @@ slice with a single shared LLM provider, recording trajectory_records.jsonl per 
 computing the registered metrics task_success_rate, avg_decisions_per_task, and
 overconfident_error_rate per condition. The harness must depend on this library only via the
 trajectory schema, never via internal helpers, to preserve isolation.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
+hypothesis on the model-only delta</strong> (S-0014-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The model-only delta of -1 pp sits below Xiong2024's lower edge (0 pp). Xiong2024 documents
+that judges trained on the same model family as the annotator show a small positive familial
+bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which
+means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row
+v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of
+haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the
+haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near
+zero, sonnet really does provide no annotator-quality lift on this composite. Cost ~$2 with
+sonnet judge on 43 rows.
 
 </details>
 
@@ -93,6 +142,31 @@ developer instance and the BrowserGym Python harness. This is a substantial infr
 task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
 any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
 annotation begins.
+
+</details>
+
+<details>
+<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
+substantive judge</strong> (S-0014-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
+published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
+partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
+than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
+critic prompt that simulates execution ('verify each atomic, executed in order, would actually
+solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
+v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
+judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
+is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
 
