@@ -104,8 +104,8 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md (before/after label distribution) and results_detailed.md (rationale and follow-up suggestion); write metrics.json/costs.json/remote_machines_used.json.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-30T19:28:26Z",
       "completed_at": null,
       "log_file": "logs/steps/012_results/"
     },
