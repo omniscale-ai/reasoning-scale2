@@ -1,0 +1,52 @@
+{
+  "query": "halophytic crops Andean pathogens salt-tolerant plant diseases",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01TfXAGGLnMXYgD5mM9rdh5x",
+      "content": [
+        {
+          "title": "Halo-tolerant plant growth-promoting bacteria-mediated plant salt resistance and microbiome-based solutions for sustainable agriculture in saline soils | FEMS Microbiology Ecology | Oxford Academic",
+          "url": "https://academic.oup.com/femsec/article/101/5/fiaf037/8107893"
+        },
+        {
+          "title": "Frontiers | Mining Halophytes for Plant Growth-Promoting Halotolerant Bacteria to Enhance the Salinity Tolerance of Non-halophytic Crops",
+          "url": "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2018.00148/full"
+        },
+        {
+          "title": "Frontiers | Halophytes as new model plant species for salt tolerance strategies",
+          "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2023.1137211/full"
+        },
+        {
+          "title": "Halophyte - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Halophyte"
+        },
+        {
+          "title": "Salt Adaptation Mechanisms of Halophytes: Improvement of Salt Tolerance in Crop Plants | Springer Nature Link",
+          "url": "https://link.springer.com/chapter/10.1007/978-1-4939-2540-7_9"
+        },
+        {
+          "title": "Halophyte - an overview | ScienceDirect Topics",
+          "url": "https://www.sciencedirect.com/topics/biochemistry-genetics-and-molecular-biology/halophyte"
+        },
+        {
+          "title": "Frontiers | Salt-Tolerant Plant Growth Promoting Rhizobacteria for Enhancing Crop Productivity of Saline Soils",
+          "url": "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2019.02791/full"
+        },
+        {
+          "title": "Screening halotolerant bacteria for their potential as plant growth-promoting and coal-solubilizing agents | Scientific Reports",
+          "url": "https://www.nature.com/articles/s41598-025-98005-z"
+        },
+        {
+          "title": "Salinity tolerance in halophytes* - Flowers - 2008 - New Phytologist - Wiley Online Library",
+          "url": "https://nph.onlinelibrary.wiley.com/doi/10.1111/j.1469-8137.2008.02531.x"
+        },
+        {
+          "title": "Halophilic Plant-Associated Bacteria with Plant-Growth-Promoting Potential - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10745547/"
+        }
+      ]
+    },
+    "I've completed the web search for your query on halophytic crops, Andean pathogens, and salt-tolerant plant diseases. Here's a summary of the key findings:\n\n## Key Findings:\n\n**Halophytic Crops and Salt Tolerance:**\nHalophytes are generally defined as plants able to survive and complete their life cycle in highly saline environments of at least 200-500 mM of salt solution. Halophytes have evolved mechanisms, such as ion homeostasis through ion extrusion and compartmentalization, osmotic adjustments, and antioxidant production for adaptation to salinity.\n\n**Salt-Tolerant Bacteria for Disease Management:**\nStrains B. halotolerans Ps9 and B. pumilus Ps19, which were isolated from the halophyte P. strombulifera, exhibited protease activity and inhibited the growth of the phytopathogenic fungus Alternaria sp. by more than 50%. Additionally, a halotolerant PGPR Pseudomonas sp. strain isolated from the halophyte Suaeda salsa suppressed the growth of the phytopathogenic fungi Fusarium oxysporum f. sp. cucumerinum and F. oxysporum f. sp. conglutinans.\n\n**Relationship Between Salinity and Plant Disease:**\nSoil salinity increases plant susceptibility to pathogens. This highlights the importance of developing salt-tolerant varieties that can resist diseases in saline environments.\n\nThe search results primarily focus on halophytes from various regions and their associated halotolerant bacteria, though specific information about Andean pathogens was not prominently featured in these results."
+  ],
+  "durationSeconds": 7.064977083
+}

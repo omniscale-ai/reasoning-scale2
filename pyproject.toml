@@ -43,6 +43,7 @@ dependencies = [
     "vastai>=1.0.1",
     "pyarrow>=24.0.0",
     "matplotlib>=3.8",
+    "anthropic>=0.40",
 ]
 
 [project.urls]
