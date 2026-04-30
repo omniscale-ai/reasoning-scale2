@@ -1,0 +1,9 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0015_correct_proxy_benchmark_labels/tasks/t0015_correct_proxy_benchmark_labels
+
+[33m[1mWARNINGS:[0m
+[33m  FD-W002 warning: logs/searches/ is empty (no search queries were logged)[0m
+[33m  FD-W005 warning: corrections/ contains files but task status is not completed[0m
+
+[33m[1mPASSED[0m — 0 error(s), 2 warning(s)
+

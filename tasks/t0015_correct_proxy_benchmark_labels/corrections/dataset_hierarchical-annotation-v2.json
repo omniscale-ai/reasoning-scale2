@@ -1,0 +1,28 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0015-01",
+  "correcting_task": "t0015_correct_proxy_benchmark_labels",
+  "target_task": "t0009_hierarchical_annotation_v2",
+  "target_kind": "dataset",
+  "target_id": "hierarchical-annotation-v2",
+  "action": "update",
+  "changes": {
+    "short_description": "Tree-shaped (global / subtasks-with-atomics / global_atomics) hierarchical annotation of 115 benchmark tasks from FrontierScience-Olympiad, SWE-bench Verified, Mind2Web (proxy for WorkArena++), and HumanEval (proxy for tau-bench). Re-annotates the v1 pilot under a v2 schema with explicit subtask-to-atomic edges and full problem text. Includes a 23-row LLM-as-judge spot-check.",
+    "size_description": "115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). Per-row benchmark labels: 40 FrontierScience-Olympiad, 23 SWE-bench Verified, 26 Mind2Web (proxy for WorkArena++), 26 HumanEval (proxy for tau-bench)."
+  },
+  "file_changes": {
+    "description.md": {
+      "action": "replace",
+      "replacement_task": "t0015_correct_proxy_benchmark_labels",
+      "replacement_id": "hierarchical-annotation-v2-relabeled",
+      "replacement_path": "description.md"
+    },
+    "files/hierarchical_annotation_v2.jsonl": {
+      "action": "replace",
+      "replacement_task": "t0015_correct_proxy_benchmark_labels",
+      "replacement_id": "hierarchical-annotation-v2-relabeled",
+      "replacement_path": "files/hierarchical_annotation_v2_relabeled.jsonl"
+    }
+  },
+  "rationale": "The v2 hierarchical-annotation dataset produced by t0009 inherited a row-level mislabel from the upstream pipeline. During t0003 (benchmark download), the project chose Mind2Web as a drop-in proxy for the gated WorkArena++ split and HumanEval as a drop-in proxy for the gated tau-bench split, but the row-level `benchmark` field was never rewritten to reflect the actual data source. t0005's v1 pilot reused the slices verbatim, and t0009's v2 re-annotation copied v1's `benchmark` field unchanged, propagating the mislabel through three tasks. This correction overlays the dataset description and the JSONL: 26 rows whose `task_id` starts with `m2w_` are relabeled WorkArena++ -> Mind2Web, and 26 rows whose `task_id` starts with `he_` are relabeled tau-bench -> HumanEval. The other 63 rows (40 FrontierScience-Olympiad, 23 SWE-bench Verified) are byte-identical to the source. Variant a of suggestion S-0009-06 (replace the proxy rows with native WorkArena++/tau-bench data) remains an open follow-up."
+}
