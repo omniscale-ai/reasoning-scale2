@@ -1,0 +1,22 @@
+{
+  "spec_version": 4,
+  "task_id": "t0014_v2_annotator_sonnet_rerun",
+  "task_index": 14,
+  "name": "v2 annotator Sonnet rerun: deconfound schema vs model",
+  "short_description": "Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009's +58 pp delta.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [
+    "t0009_hierarchical_annotation_v2"
+  ],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "dataset": 1
+  },
+  "task_types": [
+    "hierarchical-annotation",
+    "comparative-analysis"
+  ],
+  "source_suggestion": "S-0009-01"
+}
