@@ -5,9 +5,9 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0014_v2_annotator_sonnet_rerun branch from main and record base commit.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-30T19:07:48Z",
-      "completed_at": null,
+      "completed_at": "2026-04-30T19:09:27Z",
       "log_file": "logs/steps/001_create-branch/"
     },
     {
