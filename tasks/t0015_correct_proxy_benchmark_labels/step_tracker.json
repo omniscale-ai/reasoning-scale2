@@ -122,8 +122,8 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up suggestions, including S-0009-06 variant a (replace proxy rows with native WorkArena++/tau-bench data).",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-30T19:31:07Z",
       "completed_at": null,
       "log_file": "logs/steps/014_suggestions/"
     },
