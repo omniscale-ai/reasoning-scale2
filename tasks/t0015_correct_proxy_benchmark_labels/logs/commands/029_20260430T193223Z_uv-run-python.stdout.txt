@@ -1,0 +1,14 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0015_correct_proxy_benchmark_labels/tasks/t0015_correct_proxy_benchmark_labels/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 008_20260430T191704Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 013_20260430T192416Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 015_20260430T192816Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 016_20260430T192823Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 022_20260430T193155Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 7 warning(s)
+
