@@ -1,0 +1,9 @@
+{
+  "total_cost_usd": 9.0994,
+  "currency": "USD",
+  "breakdown": {
+    "annotator_haiku_4_5": 7.4154,
+    "judge_haiku_4_5": 1.6840
+  },
+  "note": "All costs are per-call total_cost_usd values returned by the local Claude Code CLI envelope (claude --output-format json), not modelled estimates. The annotator made 115 calls and the judge made 23 calls, all using claude-haiku-4-5. Sonnet was attempted in a 3-row dry-run but switched to Haiku because the CLI's per-invocation system-prompt cache creation drove Sonnet per-call cost to ~$0.30 (>$15 budget at 115 rows)."
+}

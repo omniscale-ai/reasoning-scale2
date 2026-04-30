@@ -1,0 +1,885 @@
+{
+  "model": "claude-haiku-4-5",
+  "rows_annotated": 97,
+  "rows_skipped": 21,
+  "rows_with_parse_failure": 0,
+  "rows_with_call_failure": 0,
+  "rows_with_complete_hierarchy": 97,
+  "total_cost_usd": 7.4154173,
+  "budget_cap_usd": 13.0,
+  "per_call": [
+    {
+      "pilot_row_index": 0,
+      "task_id": "fs_af50243e-3a60-4460-9536-f9a02c4f8eb8",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 12829,
+      "cost_usd": 0.12616835,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 1,
+      "task_id": "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 21370,
+      "cost_usd": 0.16046245,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 2,
+      "task_id": "fs_1e2f4cbe-4a38-4dd3-9378-14df40f7599f",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 5959,
+      "cost_usd": 0.08353295,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 23,
+      "task_id": "fs_f7b49518-6e84-44e3-9480-4cf91d149702",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 3122,
+      "cost_usd": 0.069104,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 24,
+      "task_id": "fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 5783,
+      "cost_usd": 0.08245675,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 25,
+      "task_id": "fs_dcfa830a-3f87-43eb-9ec7-6649fcdd0473",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 3735,
+      "cost_usd": 0.07285225000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 22,
+      "task_id": "fs_676e50c1-cea4-4361-81e1-d4409a23422c",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 8073,
+      "cost_usd": 0.09418225000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 26,
+      "task_id": "swe_scikit-learn__scikit-learn-13779",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 4589,
+      "cost_usd": 0.07623175,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 21,
+      "task_id": "fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 9311,
+      "cost_usd": 0.055223900000000006,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 28,
+      "task_id": "swe_matplotlib__matplotlib-22719",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 3351,
+      "cost_usd": 0.070915,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 30,
+      "task_id": "swe_scikit-learn__scikit-learn-12585",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2164,
+      "cost_usd": 0.06454375,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 27,
+      "task_id": "swe_sphinx-doc__sphinx-11510",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 5433,
+      "cost_usd": 0.08156075,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 29,
+      "task_id": "swe_pydata__xarray-6744",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 3739,
+      "cost_usd": 0.07264575,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 32,
+      "task_id": "swe_django__django-9296",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2039,
+      "cost_usd": 0.063319,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 31,
+      "task_id": "swe_django__django-13212",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 3268,
+      "cost_usd": 0.069435,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 35,
+      "task_id": "swe_pylint-dev__pylint-4970",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2256,
+      "cost_usd": 0.06450025,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 33,
+      "task_id": "swe_mwaskom__seaborn-3187",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 4646,
+      "cost_usd": 0.07709775,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 34,
+      "task_id": "swe_sympy__sympy-20438",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 4673,
+      "cost_usd": 0.07735425,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 37,
+      "task_id": "swe_pydata__xarray-4629",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2041,
+      "cost_usd": 0.06482650000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 36,
+      "task_id": "swe_sympy__sympy-16792",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 4079,
+      "cost_usd": 0.07442299999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 38,
+      "task_id": "swe_astropy__astropy-7606",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2785,
+      "cost_usd": 0.06749175,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 39,
+      "task_id": "swe_matplotlib__matplotlib-24627",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 4315,
+      "cost_usd": 0.074808,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 40,
+      "task_id": "swe_astropy__astropy-8707",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2750,
+      "cost_usd": 0.0673695,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 41,
+      "task_id": "swe_pylint-dev__pylint-8898",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2335,
+      "cost_usd": 0.0660065,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 42,
+      "task_id": "swe_sphinx-doc__sphinx-8120",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 4112,
+      "cost_usd": 0.07466025,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 43,
+      "task_id": "swe_pytest-dev__pytest-7521",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 3217,
+      "cost_usd": 0.07048475,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 45,
+      "task_id": "swe_mwaskom__seaborn-3069",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 4736,
+      "cost_usd": 0.077167,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 46,
+      "task_id": "swe_pytest-dev__pytest-8399",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2913,
+      "cost_usd": 0.0680515,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 44,
+      "task_id": "swe_psf__requests-1724",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 5485,
+      "cost_usd": 0.08183075,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 47,
+      "task_id": "swe_psf__requests-1766",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2790,
+      "cost_usd": 0.06735325,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 48,
+      "task_id": "swe_pallets__flask-5014",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2817,
+      "cost_usd": 0.067064,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 49,
+      "task_id": "he_HumanEval_144",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3485,
+      "cost_usd": 0.0706775,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 51,
+      "task_id": "he_HumanEval_93",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 4191,
+      "cost_usd": 0.0741465,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 50,
+      "task_id": "he_HumanEval_88",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 5902,
+      "cost_usd": 0.0828795,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 53,
+      "task_id": "he_HumanEval_33",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3730,
+      "cost_usd": 0.07188725,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 54,
+      "task_id": "he_HumanEval_161",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3651,
+      "cost_usd": 0.07140275,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 55,
+      "task_id": "he_HumanEval_71",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3614,
+      "cost_usd": 0.07122975000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 56,
+      "task_id": "he_HumanEval_91",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3770,
+      "cost_usd": 0.072019,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 57,
+      "task_id": "he_HumanEval_61",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2264,
+      "cost_usd": 0.06441,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 58,
+      "task_id": "he_HumanEval_64",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3376,
+      "cost_usd": 0.070092,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 52,
+      "task_id": "he_HumanEval_65",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 10589,
+      "cost_usd": 0.10602424999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 60,
+      "task_id": "he_HumanEval_3",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 4426,
+      "cost_usd": 0.0752935,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 62,
+      "task_id": "he_HumanEval_114",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2849,
+      "cost_usd": 0.0673215,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 61,
+      "task_id": "he_HumanEval_148",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2028,
+      "cost_usd": 0.0635095,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 65,
+      "task_id": "he_HumanEval_101",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2213,
+      "cost_usd": 0.06421574999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 59,
+      "task_id": "he_HumanEval_81",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 8808,
+      "cost_usd": 0.09758774999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 64,
+      "task_id": "he_HumanEval_48",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3000,
+      "cost_usd": 0.0680635,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 63,
+      "task_id": "he_HumanEval_128",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 4859,
+      "cost_usd": 0.07747525,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 67,
+      "task_id": "he_HumanEval_136",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2530,
+      "cost_usd": 0.065858,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 66,
+      "task_id": "he_HumanEval_30",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3390,
+      "cost_usd": 0.07009175000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 68,
+      "task_id": "he_HumanEval_135",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 4745,
+      "cost_usd": 0.07683349999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 69,
+      "task_id": "he_HumanEval_87",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3767,
+      "cost_usd": 0.07236349999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 70,
+      "task_id": "he_HumanEval_43",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 3737,
+      "cost_usd": 0.07198075,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 71,
+      "task_id": "he_HumanEval_76",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 4529,
+      "cost_usd": 0.075875,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 72,
+      "task_id": "he_HumanEval_22",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2596,
+      "cost_usd": 0.06608,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 73,
+      "task_id": "he_HumanEval_62",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 4980,
+      "cost_usd": 0.07803049999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 74,
+      "task_id": "he_HumanEval_160",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 4319,
+      "cost_usd": 0.07500275,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 75,
+      "task_id": "m2w_f385156c-4f2e-410f-bc73-7ec6d0f44448",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 3438,
+      "cost_usd": 0.07007925000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 77,
+      "task_id": "m2w_0790c8be-6e6d-4e2a-9c13-43ac9367da4c",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2584,
+      "cost_usd": 0.06583900000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 76,
+      "task_id": "m2w_e437082b-8383-4322-aa58-a6a683113970",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 5937,
+      "cost_usd": 0.08266525,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 78,
+      "task_id": "m2w_e832e1f9-3a9d-440e-a96f-8cbbf241e4af",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 4250,
+      "cost_usd": 0.07427349999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 79,
+      "task_id": "m2w_f17fa68b-27dd-4b9c-bc11-7a5dbe206741",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 5014,
+      "cost_usd": 0.078009,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 80,
+      "task_id": "m2w_694f3b5c-8ee4-45c1-bb7c-b5377c366096",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 3214,
+      "cost_usd": 0.0690395,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 81,
+      "task_id": "m2w_2b29b7d1-bd80-4d2c-a491-9dfc89827e84",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 4076,
+      "cost_usd": 0.0733175,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 84,
+      "task_id": "m2w_17fffbee-e41b-46e4-ab75-675b263ca7b7",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2629,
+      "cost_usd": 0.06608175,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 82,
+      "task_id": "m2w_4b2030ff-b83c-445f-bf87-9c8fbc68498b",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 3750,
+      "cost_usd": 0.07167174999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 85,
+      "task_id": "m2w_86897828-35e8-4002-a98a-4e1dd26c6edb",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2426,
+      "cost_usd": 0.06507925,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 87,
+      "task_id": "m2w_84d8a4df-0bba-45f9-b4c8-f5d455de451c",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 1921,
+      "cost_usd": 0.06250874999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 86,
+      "task_id": "m2w_8d9e09e1-c31a-420b-ace8-079204db551a",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2834,
+      "cost_usd": 0.06707825,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 83,
+      "task_id": "m2w_e344b89e-767a-4618-ba82-4b81cdcba280",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 8167,
+      "cost_usd": 0.09377575,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 88,
+      "task_id": "m2w_73cf6eec-cae6-4d5b-9b8e-e44359311565",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 1655,
+      "cost_usd": 0.061167,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 91,
+      "task_id": "m2w_fe6b5531-ce29-4ba1-8e98-43b5fecf57fa",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 3188,
+      "cost_usd": 0.06887175,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 90,
+      "task_id": "m2w_a88676d0-c252-408f-b796-93c95f6b71fc",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 3348,
+      "cost_usd": 0.06962199999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 92,
+      "task_id": "m2w_b73503a7-e4e1-43f7-bfc0-866e7003615f",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 3114,
+      "cost_usd": 0.06856575,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 89,
+      "task_id": "m2w_4c578076-b877-4097-bf67-e231e349d56f",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 4702,
+      "cost_usd": 0.07641774999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 94,
+      "task_id": "m2w_4ff347e6-e911-4af5-8151-7805a9e91b28",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2000,
+      "cost_usd": 0.0631625,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 93,
+      "task_id": "m2w_d7c3103a-c195-4503-ab20-ecae4d4ce419",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2141,
+      "cost_usd": 0.06363275,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 96,
+      "task_id": "m2w_8eef04e2-3d51-4a0e-84f2-db017a69050b",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2522,
+      "cost_usd": 0.06553725,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 95,
+      "task_id": "m2w_e48f848d-62b8-441e-aafb-c76aeb2c4f84",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 3577,
+      "cost_usd": 0.070846,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 97,
+      "task_id": "m2w_4f208b8b-6d5c-4d3f-8df0-cab24d29edda",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2805,
+      "cost_usd": 0.06696725,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 98,
+      "task_id": "m2w_b2c18588-b115-4937-b69f-8feeab22c387",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2860,
+      "cost_usd": 0.06722449999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 99,
+      "task_id": "m2w_1a35becb-e07b-4235-8cd3-fc2a29f8dd6f",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 3540,
+      "cost_usd": 0.07062275,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 100,
+      "task_id": "m2w_3e0d115f-9da7-4211-9d99-122912890b40",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 4476,
+      "cost_usd": 0.07553974999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 101,
+      "task_id": "fs_af50243e-3a60-4460-9536-f9a02c4f8eb8",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 4804,
+      "cost_usd": 0.078665,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 102,
+      "task_id": "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 5450,
+      "cost_usd": 0.08060400000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 104,
+      "task_id": "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 9109,
+      "cost_usd": 0.09882200000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 103,
+      "task_id": "fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 10955,
+      "cost_usd": 0.10988675,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 106,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 8242,
+      "cost_usd": 0.0499712,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 105,
+      "task_id": "fs_ecb58594-7fd9-4a94-b799-0f1c13acb752",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 15322,
+      "cost_usd": 0.12990049999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 110,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 7455,
+      "cost_usd": 0.04603120000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 107,
+      "task_id": "fs_1eca2503-b141-4f9f-ab10-e27d272c93b0",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 19502,
+      "cost_usd": 0.15078925,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 109,
+      "task_id": "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 18371,
+      "cost_usd": 0.10047059999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 108,
+      "task_id": "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 25105,
+      "cost_usd": 0.1341908,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 112,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 7520,
+      "cost_usd": 0.04635620000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 113,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 7688,
+      "cost_usd": 0.04719620000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 114,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 9493,
+      "cost_usd": 0.056221200000000006,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 111,
+      "task_id": "fs_1eca2503-b141-4f9f-ab10-e27d272c93b0",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 20341,
+      "cost_usd": 0.155243,
+      "notes": "ok"
+    }
+  ]
+}

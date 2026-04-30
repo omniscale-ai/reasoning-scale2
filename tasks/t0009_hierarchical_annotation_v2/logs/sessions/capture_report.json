@@ -1,0 +1,900 @@
+{
+  "spec_version": "1",
+  "task_id": "t0009_hierarchical_annotation_v2",
+  "captured_at": "2026-04-30T00:50:57Z",
+  "checked_roots": [
+    {
+      "source_kind": "codex",
+      "root_path": "/Users/anaderi/.codex/sessions",
+      "exists": false,
+      "candidate_file_count": 0,
+      "matched_file_count": 0
+    },
+    {
+      "source_kind": "claude_code",
+      "root_path": "/Users/anaderi/.claude/projects",
+      "exists": true,
+      "candidate_file_count": 873,
+      "matched_file_count": 146
+    }
+  ],
+  "copied_sessions": [
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/0262070f-c26e-455c-a023-3e3f77e3386c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__0262070f-c26e-455c-a023-3e3f77e3386c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/0346d1af-a0d9-4c66-b92f-02c47e37ff38.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__0346d1af-a0d9-4c66-b92f-02c47e37ff38.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/07a5bb97-4d42-4ba6-8688-9abed3955428.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__07a5bb97-4d42-4ba6-8688-9abed3955428.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/091444ec-73fc-4821-b704-de0a456ce144.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__091444ec-73fc-4821-b704-de0a456ce144.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/0a521184-08ce-4b85-8d3f-6a60b53e1c98.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__0a521184-08ce-4b85-8d3f-6a60b53e1c98.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/0aa69b45-0341-4660-89e8-faa8b715198c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__0aa69b45-0341-4660-89e8-faa8b715198c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/0ae495a7-17e1-48d6-8d42-f957d2b9657b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__0ae495a7-17e1-48d6-8d42-f957d2b9657b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/0b022270-64d4-4d15-a4f9-86d157bcdbbd.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__0b022270-64d4-4d15-a4f9-86d157bcdbbd.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/0e05a61f-dcc0-4618-acb8-9122f13c2e91.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__0e05a61f-dcc0-4618-acb8-9122f13c2e91.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/0e4587da-4c01-4a30-af8a-38d54485ad57.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__0e4587da-4c01-4a30-af8a-38d54485ad57.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/1095d391-e86b-4df5-8dbb-aef6024c406b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__1095d391-e86b-4df5-8dbb-aef6024c406b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/13815092-b641-43eb-a9e4-9f9cbfdfdb1c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__13815092-b641-43eb-a9e4-9f9cbfdfdb1c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/14fe81a2-a9eb-478c-9e5c-0964f119e884.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__14fe81a2-a9eb-478c-9e5c-0964f119e884.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/152f29c5-37a0-4d05-b2a2-bc04793e03fa.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__152f29c5-37a0-4d05-b2a2-bc04793e03fa.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/16735084-bc45-408f-a420-ce58005aa374.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__16735084-bc45-408f-a420-ce58005aa374.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/16dede2b-79f9-45be-90ef-92571bb51e6d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__16dede2b-79f9-45be-90ef-92571bb51e6d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/19b6593e-db17-467c-aeec-8aad5a7d25c8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__19b6593e-db17-467c-aeec-8aad5a7d25c8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/19bf092b-b17b-49e8-990b-9aba13c837aa.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__19bf092b-b17b-49e8-990b-9aba13c837aa.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/1b0099e1-4f07-4f9f-a953-8dc870feda14.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__1b0099e1-4f07-4f9f-a953-8dc870feda14.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/1db066a2-d504-4e45-8183-c940fe155e0c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__1db066a2-d504-4e45-8183-c940fe155e0c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/1e6a42ac-1def-4cf7-8e6a-ac37b8ef6ddf.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__1e6a42ac-1def-4cf7-8e6a-ac37b8ef6ddf.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/1f2af502-c29a-4e8b-9599-73431f8dff4e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__1f2af502-c29a-4e8b-9599-73431f8dff4e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/1f58a593-0c4a-47bc-892d-fd0d0cb899d9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__1f58a593-0c4a-47bc-892d-fd0d0cb899d9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/23286aff-c60a-468f-add9-c1abfb72fef7.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__23286aff-c60a-468f-add9-c1abfb72fef7.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/23c8bbab-6170-417a-ad9b-ef1ee4d3ae2f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__23c8bbab-6170-417a-ad9b-ef1ee4d3ae2f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/272996e5-75f3-4c9b-99d5-361e22b4b209.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__272996e5-75f3-4c9b-99d5-361e22b4b209.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/283ac0a0-1125-4e2a-a6e3-000c8d4596d6.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__283ac0a0-1125-4e2a-a6e3-000c8d4596d6.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/2965308f-62c8-436c-a259-22b2908264f3.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__2965308f-62c8-436c-a259-22b2908264f3.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/2b5d8be2-a72a-4e17-888a-9541978f8f52.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__2b5d8be2-a72a-4e17-888a-9541978f8f52.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/2da801bd-f5b7-4f12-91fe-f0122fb52b60.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__2da801bd-f5b7-4f12-91fe-f0122fb52b60.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/2e52bdac-8eb2-491a-abdd-a572832ba1d8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__2e52bdac-8eb2-491a-abdd-a572832ba1d8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/2fc7a3ce-9834-4e91-923e-68264184d0c5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__2fc7a3ce-9834-4e91-923e-68264184d0c5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/33e6b236-f9ce-4195-9af2-f9dd931b4b04.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__33e6b236-f9ce-4195-9af2-f9dd931b4b04.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/33f1f5d8-2682-4f14-a97b-ca74705b693d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__33f1f5d8-2682-4f14-a97b-ca74705b693d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/36120f46-8bd3-4dc8-84f9-b22e2b120261.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__36120f46-8bd3-4dc8-84f9-b22e2b120261.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/37037a3b-79d4-49e2-8259-a3260ff68f13.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__37037a3b-79d4-49e2-8259-a3260ff68f13.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/387f18f8-3519-4e82-9d57-ebd911341f5a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__387f18f8-3519-4e82-9d57-ebd911341f5a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/39c73fbd-9fbc-48b3-9d01-e9930dad328e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__39c73fbd-9fbc-48b3-9d01-e9930dad328e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/3db7ce61-8e20-4581-ba14-82d35edebe8d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__3db7ce61-8e20-4581-ba14-82d35edebe8d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/3f18f01f-0d07-4d67-82cd-c7f22299d1ec.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__3f18f01f-0d07-4d67-82cd-c7f22299d1ec.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/4181a819-815f-4b1d-9bab-d43ed5fc9df9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__4181a819-815f-4b1d-9bab-d43ed5fc9df9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/440c81cd-7229-49b5-8d96-68ec44cb92b8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__440c81cd-7229-49b5-8d96-68ec44cb92b8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/470ab617-9537-4cf5-a421-6879ec013e70.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__470ab617-9537-4cf5-a421-6879ec013e70.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/48438888-d848-4c6e-bdd3-a2030ac11c7b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__48438888-d848-4c6e-bdd3-a2030ac11c7b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/531f0078-6dc7-4314-9476-8b7075a7301a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__531f0078-6dc7-4314-9476-8b7075a7301a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/54f2d3ce-2796-4eef-b595-b3f37df0ff8c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__54f2d3ce-2796-4eef-b595-b3f37df0ff8c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/551e1040-90b8-4846-bb14-0f8f077433b2.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__551e1040-90b8-4846-bb14-0f8f077433b2.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/552229c7-eaf0-4171-b020-a2ce8732d09e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__552229c7-eaf0-4171-b020-a2ce8732d09e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/56017dca-561f-4748-8c53-18638a9e06a3.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__56017dca-561f-4748-8c53-18638a9e06a3.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/57461910-57da-46b0-bddf-2f9deb78881f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__57461910-57da-46b0-bddf-2f9deb78881f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/58ef8fda-c6bf-44eb-9128-8a813c55552a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__58ef8fda-c6bf-44eb-9128-8a813c55552a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/5a75d38d-360d-4d8c-b814-8b1d766d5a59.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__5a75d38d-360d-4d8c-b814-8b1d766d5a59.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/5d52114f-396f-4e44-853f-cbf918ac2558.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__5d52114f-396f-4e44-853f-cbf918ac2558.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/5d81efd6-a2cc-480b-a44e-72a442a73d42.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__5d81efd6-a2cc-480b-a44e-72a442a73d42.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/5f866069-0b77-437f-aa26-22ffe7e922c5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__5f866069-0b77-437f-aa26-22ffe7e922c5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/5fc2b9cf-e364-45a4-92b8-60d65a2fbb04.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__5fc2b9cf-e364-45a4-92b8-60d65a2fbb04.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/6ab7f66e-c4da-457c-b127-df77ed972d5d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__6ab7f66e-c4da-457c-b127-df77ed972d5d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/6af0d624-720b-4c69-8b0a-5922bebd6534.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__6af0d624-720b-4c69-8b0a-5922bebd6534.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/6b019421-ae2b-4649-9469-e782d0e8f8a9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__6b019421-ae2b-4649-9469-e782d0e8f8a9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/6c488e70-0e67-4aa9-9f2b-aff6bd5dd7ae.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__6c488e70-0e67-4aa9-9f2b-aff6bd5dd7ae.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/6cc4407c-9170-4dbe-b3a7-8da9f53b8068.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__6cc4407c-9170-4dbe-b3a7-8da9f53b8068.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/6e4b6f78-bc18-4cff-9d1e-dfe702f721d9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__6e4b6f78-bc18-4cff-9d1e-dfe702f721d9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/6fb994ba-91a0-4830-9de0-dd1ae4a69c7b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__6fb994ba-91a0-4830-9de0-dd1ae4a69c7b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/70585c26-6901-48a1-8f5c-25d990f229c7.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__70585c26-6901-48a1-8f5c-25d990f229c7.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/728fc2d3-a11b-4187-9f47-ea6affb0eb48.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__728fc2d3-a11b-4187-9f47-ea6affb0eb48.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/74f0a164-ed47-4477-8557-ef549080110c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__74f0a164-ed47-4477-8557-ef549080110c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/750e17d5-284b-442b-8e8e-01fa592ee12a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__750e17d5-284b-442b-8e8e-01fa592ee12a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/75f4863b-1c10-46c9-8c00-f204196d509f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__75f4863b-1c10-46c9-8c00-f204196d509f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/75f7859b-9b4f-4503-a26f-6cb2ca583fad.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__75f7859b-9b4f-4503-a26f-6cb2ca583fad.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/783d206b-75d7-442c-8952-8b74d1ca7bc3.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__783d206b-75d7-442c-8952-8b74d1ca7bc3.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/784a43a4-3181-44a5-90c9-efda9262760a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__784a43a4-3181-44a5-90c9-efda9262760a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/78a99c7c-529b-4e37-9e7b-452d44d07590.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__78a99c7c-529b-4e37-9e7b-452d44d07590.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/796fc078-369f-4d5f-8358-6bc21856f65a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__796fc078-369f-4d5f-8358-6bc21856f65a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/7a9ed2d8-a89c-4293-b196-880b7a26218b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__7a9ed2d8-a89c-4293-b196-880b7a26218b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/7c1b1fcb-3353-4108-9275-9c84cccbd57a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__7c1b1fcb-3353-4108-9275-9c84cccbd57a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/7e6b2dd6-4179-427c-8aeb-71fd0da6f046.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__7e6b2dd6-4179-427c-8aeb-71fd0da6f046.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/7ffae1fb-e19c-4a9c-aa45-3f3a0fd970b5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__7ffae1fb-e19c-4a9c-aa45-3f3a0fd970b5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/83c2d7b4-0807-467f-850c-cc59d84729c4.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__83c2d7b4-0807-467f-850c-cc59d84729c4.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/8501f16b-5154-4e79-9116-c608bd303d88.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__8501f16b-5154-4e79-9116-c608bd303d88.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/8784ecd9-83b7-413b-9542-5705d9bb5bd5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__8784ecd9-83b7-413b-9542-5705d9bb5bd5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/894cbaec-770a-4a47-bfb5-10299d4c1a3f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__894cbaec-770a-4a47-bfb5-10299d4c1a3f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/89bb455f-872b-43be-945f-076378cf3e46.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__89bb455f-872b-43be-945f-076378cf3e46.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/8b1f35ba-66b6-4ef5-abb4-ec9ce3ff2680.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__8b1f35ba-66b6-4ef5-abb4-ec9ce3ff2680.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/90c7b871-cf84-458d-ba18-a744f5ec3af0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__90c7b871-cf84-458d-ba18-a744f5ec3af0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/92a744e2-5c7a-40cc-ab7b-65dcc37e1ada.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__92a744e2-5c7a-40cc-ab7b-65dcc37e1ada.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/964fc28b-cedd-4973-b976-2151974dbd2c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__964fc28b-cedd-4973-b976-2151974dbd2c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/9c7ed581-5b10-45ec-95d2-7f285506fd1b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__9c7ed581-5b10-45ec-95d2-7f285506fd1b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/9dfd6357-14dc-4c90-944d-32d425e30e8a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__9dfd6357-14dc-4c90-944d-32d425e30e8a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/9eb807d5-37b2-45e0-b371-8eeda96f2b65.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__9eb807d5-37b2-45e0-b371-8eeda96f2b65.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/9ef4991d-818b-41a3-b6a7-d51322affa18.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__9ef4991d-818b-41a3-b6a7-d51322affa18.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/a09fcff7-c95e-4a3c-b02f-c4c93be59f3f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__a09fcff7-c95e-4a3c-b02f-c4c93be59f3f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/a24811e2-4965-4948-9806-4de4b6034072.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__a24811e2-4965-4948-9806-4de4b6034072.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/a819a2d1-f90d-4206-94c5-eae3df291a20.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__a819a2d1-f90d-4206-94c5-eae3df291a20.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/a85b9f83-2b7e-4751-83af-b7ac04468df2.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__a85b9f83-2b7e-4751-83af-b7ac04468df2.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/a9a2a2e0-dedd-490e-9577-18693529b15e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__a9a2a2e0-dedd-490e-9577-18693529b15e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/a9b5aa3a-b420-482b-af96-497595e896c8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__a9b5aa3a-b420-482b-af96-497595e896c8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/aa05339b-50d2-4344-af1a-6fe4d78c5ea4.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__aa05339b-50d2-4344-af1a-6fe4d78c5ea4.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/aa1fb8fe-d514-44b6-bfcd-5104b090f44b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__aa1fb8fe-d514-44b6-bfcd-5104b090f44b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/acc4e8cc-46dd-48d0-b18f-165107b2dc95.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__acc4e8cc-46dd-48d0-b18f-165107b2dc95.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/ad1078fc-fbb7-4c72-ab05-f3352d7ab782.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__ad1078fc-fbb7-4c72-ab05-f3352d7ab782.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/ad2f46bf-8d09-4e30-8ae2-be48d8cae1c3.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__ad2f46bf-8d09-4e30-8ae2-be48d8cae1c3.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/b3f375bd-4a05-4c7e-b871-da05cccfc2fa.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__b3f375bd-4a05-4c7e-b871-da05cccfc2fa.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/b411ae13-1ea0-423d-9423-18f1826daaae.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__b411ae13-1ea0-423d-9423-18f1826daaae.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/b62bfa12-cad2-4314-9af7-8258d47cfe54.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__b62bfa12-cad2-4314-9af7-8258d47cfe54.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/b72f0f47-841e-4a65-a63e-1426bdd582a8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__b72f0f47-841e-4a65-a63e-1426bdd582a8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/b767cf2d-4e43-4bc1-b66c-46c11297f407.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__b767cf2d-4e43-4bc1-b66c-46c11297f407.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/b7aaa968-43ff-46fe-9cb9-0c0342c35483.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__b7aaa968-43ff-46fe-9cb9-0c0342c35483.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/b7cf8e00-bde8-4292-a8df-df441fa781aa.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__b7cf8e00-bde8-4292-a8df-df441fa781aa.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/bb4f54a5-b1aa-4a1d-9904-b8a3b8e5ac04.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__bb4f54a5-b1aa-4a1d-9904-b8a3b8e5ac04.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/bcd26860-2e23-4e3b-a143-f25e7c6e9dc9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__bcd26860-2e23-4e3b-a143-f25e7c6e9dc9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/bdbd31d9-01dd-4954-8d46-2bcb9e1e8fdb.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__bdbd31d9-01dd-4954-8d46-2bcb9e1e8fdb.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/be171598-2706-4cfb-9ad9-729ae7f24ba9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__be171598-2706-4cfb-9ad9-729ae7f24ba9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/be6d196f-e4c2-4330-8964-d74327d23691.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__be6d196f-e4c2-4330-8964-d74327d23691.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/c06d879b-57ad-4680-8c21-437633e6ccaf.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__c06d879b-57ad-4680-8c21-437633e6ccaf.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/ca5604e6-bf9e-4d69-9a8d-7acc2bccc851.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__ca5604e6-bf9e-4d69-9a8d-7acc2bccc851.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/cc4b32d1-a1b5-4ec3-9300-42c193e84c42.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__cc4b32d1-a1b5-4ec3-9300-42c193e84c42.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/cc66c4dc-2b72-4101-8604-acf013baeef8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__cc66c4dc-2b72-4101-8604-acf013baeef8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/cdbf5ac1-0e1c-44a4-ad8a-4b4ff490b893.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__cdbf5ac1-0e1c-44a4-ad8a-4b4ff490b893.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/cf2ac6a1-fa14-40b8-8e50-62bcd2da18c6.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__cf2ac6a1-fa14-40b8-8e50-62bcd2da18c6.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/d093ade6-b2dc-48c1-b9ad-4c66a6d194ea.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__d093ade6-b2dc-48c1-b9ad-4c66a6d194ea.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/d170e3dd-b638-4da3-b85e-f1f735c21338.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__d170e3dd-b638-4da3-b85e-f1f735c21338.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/d5d45da3-0550-46bc-a172-d93eb9c8c155.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__d5d45da3-0550-46bc-a172-d93eb9c8c155.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/d5dd0851-8e85-4b05-b529-48d12e71b7a5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__d5dd0851-8e85-4b05-b529-48d12e71b7a5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/d61bc8f3-27db-4cb8-a295-b662bc002f28.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__d61bc8f3-27db-4cb8-a295-b662bc002f28.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/d99c0d69-b794-44d7-8bd8-8be058b4deed.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__d99c0d69-b794-44d7-8bd8-8be058b4deed.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/dabd48f4-ae69-4158-a7b8-e9397f021966.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__dabd48f4-ae69-4158-a7b8-e9397f021966.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/dabf1d91-e60a-48d7-814b-656f1e5e357f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__dabf1d91-e60a-48d7-814b-656f1e5e357f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/dc1d3320-47d6-49ec-8549-ba298e161ab2.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__dc1d3320-47d6-49ec-8549-ba298e161ab2.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/dfe0b921-8b35-4ce2-9cdc-58909583d3cb.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__dfe0b921-8b35-4ce2-9cdc-58909583d3cb.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/e19d765b-9559-4462-ab7e-8837c0b6ae4a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__e19d765b-9559-4462-ab7e-8837c0b6ae4a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/e4237757-5a2d-4265-abfc-8a638ab56181.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__e4237757-5a2d-4265-abfc-8a638ab56181.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/e615bd79-71f1-44a3-9e4b-654eb329a12f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__e615bd79-71f1-44a3-9e4b-654eb329a12f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/e64870a9-623c-4fd0-aa1e-ce3d1bbba13a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__e64870a9-623c-4fd0-aa1e-ce3d1bbba13a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/e6e876ee-4edd-421e-abc6-b1308bfe60e1.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__e6e876ee-4edd-421e-abc6-b1308bfe60e1.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/eb4512e9-cea8-4e02-b666-a0838d86fc98.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__eb4512e9-cea8-4e02-b666-a0838d86fc98.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/ed30f81c-7309-48e2-aab6-d2f2010e872f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__ed30f81c-7309-48e2-aab6-d2f2010e872f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/eee1f81c-0b2d-4642-85d8-46d079798390.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__eee1f81c-0b2d-4642-85d8-46d079798390.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/ef1c0452-183f-4509-a02b-31f936b87b2e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__ef1c0452-183f-4509-a02b-31f936b87b2e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/efad14ec-f6d0-4cb9-8476-cd66d162ffea.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__efad14ec-f6d0-4cb9-8476-cd66d162ffea.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/f07abfbc-6191-4ec9-9fa8-758f39cd818d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__f07abfbc-6191-4ec9-9fa8-758f39cd818d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/f44a9893-cbc2-447b-ab93-9203ea666656.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__f44a9893-cbc2-447b-ab93-9203ea666656.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/f835b78f-0654-4635-9781-6e2e3208fd1c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__f835b78f-0654-4635-9781-6e2e3208fd1c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/fcbd1f21-df3a-4068-a747-af70dada2ab4.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__fcbd1f21-df3a-4068-a747-af70dada2ab4.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/fe6b348c-8b1b-4c01-946b-34f878ffdb4d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__fe6b348c-8b1b-4c01-946b-34f878ffdb4d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/ff0536f4-3fa7-45e6-9067-39cc21ee7fda.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__ff0536f4-3fa7-45e6-9067-39cc21ee7fda.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/anaderi/.claude/projects/-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2/ffb76164-a9d9-4b4b-97f5-334e38f82f7d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-anaderi-git-reasoning-scale2-worktrees-t0009-hierarchical-annotation-v2__ffb76164-a9d9-4b4b-97f5-334e38f82f7d.jsonl",
+      "matched_by": "task_id_content"
+    }
+  ],
+  "errors": []
+}

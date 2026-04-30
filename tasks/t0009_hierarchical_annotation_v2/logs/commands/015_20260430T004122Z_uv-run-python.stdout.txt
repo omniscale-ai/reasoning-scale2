@@ -1,0 +1,2 @@
+Wrote tasks/t0009_hierarchical_annotation_v2/code/_outputs/v1_vs_v2_comparison.json and tasks/t0009_hierarchical_annotation_v2/code/_outputs/v1_vs_v2_table.md
+  v2_total_rows=115, n_complete=115, mean_atomics=16.38, global_atomics_fraction=0.136

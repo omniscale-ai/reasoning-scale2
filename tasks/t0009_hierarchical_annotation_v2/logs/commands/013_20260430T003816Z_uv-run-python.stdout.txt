@@ -1,0 +1,25 @@
+[idx=1 of 23] FrontierScience-Olympiad task_id=fs_4225f097-0cee-4e43-b5b9-6ef verdict=acceptable cost=$0.0721 running=$0.0721
+[idx=7 of 23] FrontierScience-Olympiad task_id=fs_d3acd2cb-8477-4630-b8bb-b4b verdict=acceptable cost=$0.0832 running=$0.1553
+[idx=17 of 23] FrontierScience-Olympiad task_id=fs_eec8840a-2d00-4e70-b043-0da verdict=needs revision cost=$0.0874 running=$0.2427
+[idx=15 of 23] FrontierScience-Olympiad task_id=fs_0f13c295-7991-43dc-a79f-d8f verdict=acceptable cost=$0.0892 running=$0.3319
+[idx=47 of 23] SWE-bench Verified task_id=swe_psf__requests-1766 verdict=acceptable cost=$0.0657 running=$0.3976
+[idx=8 of 23] FrontierScience-Olympiad task_id=fs_422512ca-5a0c-4a23-b987-7fa verdict=acceptable cost=$0.0777 running=$0.4753
+[idx=27 of 23] SWE-bench Verified task_id=swe_sphinx-doc__sphinx-11510 verdict=acceptable cost=$0.0794 running=$0.5547
+[idx=14 of 23] FrontierScience-Olympiad task_id=fs_5ef8b29d-7665-45e6-a26a-bd4 verdict=needs revision cost=$0.1055 running=$0.6602
+[idx=43 of 23] SWE-bench Verified task_id=swe_pytest-dev__pytest-7521 verdict=acceptable cost=$0.0773 running=$0.7375
+[idx=30 of 23] SWE-bench Verified task_id=swe_scikit-learn__scikit-learn verdict=acceptable cost=$0.0752 running=$0.8126
+[idx=77 of 23] WorkArena++ task_id=m2w_0790c8be-6e6d-4e2a-9c13-43 verdict=acceptable cost=$0.0615 running=$0.8741
+[idx=39 of 23] SWE-bench Verified task_id=swe_matplotlib__matplotlib-246 verdict=acceptable cost=$0.0664 running=$0.9405
+[idx=45 of 23] SWE-bench Verified task_id=swe_mwaskom__seaborn-3069 verdict=acceptable cost=$0.0855 running=$1.0260
+[idx=81 of 23] WorkArena++ task_id=m2w_2b29b7d1-bd80-4d2c-a491-9d verdict=acceptable cost=$0.0615 running=$1.0875
+[idx=76 of 23] WorkArena++ task_id=m2w_e437082b-8383-4322-aa58-a6 verdict=acceptable cost=$0.0653 running=$1.1528
+[idx=75 of 23] WorkArena++ task_id=m2w_f385156c-4f2e-410f-bc73-7e verdict=acceptable cost=$0.0740 running=$1.2268
+[idx=84 of 23] WorkArena++ task_id=m2w_17fffbee-e41b-46e4-ab75-67 verdict=acceptable cost=$0.0618 running=$1.2886
+[idx=68 of 23] tau-bench task_id=he_HumanEval_135 verdict=acceptable cost=$0.0614 running=$1.3500
+[idx=49 of 23] tau-bench task_id=he_HumanEval_144 verdict=acceptable cost=$0.0594 running=$1.4094
+[idx=67 of 23] tau-bench task_id=he_HumanEval_136 verdict=acceptable cost=$0.0590 running=$1.4685
+[idx=92 of 23] WorkArena++ task_id=m2w_b73503a7-e4e1-43f7-bfc0-86 verdict=acceptable cost=$0.0790 running=$1.5474
+[idx=56 of 23] tau-bench task_id=he_HumanEval_91 verdict=acceptable cost=$0.0665 running=$1.6139
+[idx=71 of 23] tau-bench task_id=he_HumanEval_76 verdict=acceptable cost=$0.0701 running=$1.6840
+Wrote tasks/t0009_hierarchical_annotation_v2/code/_outputs/v2_judge_costs.json (running_total=$1.6840, acceptable=21, needs_revision=2)
+DONE. judged=23, skipped=0, acceptable=21, needs_revision=2, parse_failures=0, call_failures=0, total_cost=$1.6840

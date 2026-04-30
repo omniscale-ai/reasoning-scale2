@@ -1,0 +1,2 @@
+Captured 146 session transcript(s) into /Users/anaderi/git/reasoning-scale2-worktrees/t0009_hierarchical_annotation_v2/tasks/t0009_hierarchical_annotation_v2/logs/sessions.
+Wrote capture report to /Users/anaderi/git/reasoning-scale2-worktrees/t0009_hierarchical_annotation_v2/tasks/t0009_hierarchical_annotation_v2/logs/sessions/capture_report.json.

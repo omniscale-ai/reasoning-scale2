@@ -1,0 +1,2 @@
+Wrote tasks/t0009_hierarchical_annotation_v2/results/images/v1_vs_v2_accept_rate.png
+Wrote tasks/t0009_hierarchical_annotation_v2/results/images/v2_atomics_distribution.png
