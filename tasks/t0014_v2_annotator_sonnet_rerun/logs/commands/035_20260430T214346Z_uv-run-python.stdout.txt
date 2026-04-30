@@ -1,0 +1,17 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun/tasks/t0014_v2_annotator_sonnet_rerun/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 006_20260430T191958Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 007_20260430T192027Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 014_20260430T192757Z_python-m-arf-scripts-utils-poststep.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 015_20260430T192800Z_python-m-arf-scripts-utils-poststep.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 016_20260430T192803Z_python-m-arf-scripts-utils-poststep.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 017_20260430T192818Z_python-m-arf-scripts-utils-poststep.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 024_20260430T212210Z_python-u-m.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 025_20260430T212218Z_python-u-m.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 032_20260430T214227Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 033_20260430T214337Z_uv-run-python.json has non-zero exit code: 2[0m
+
+[33m[1mPASSED[0m — 0 error(s), 10 warning(s)
+

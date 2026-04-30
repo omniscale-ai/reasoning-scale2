@@ -1,0 +1,5 @@
+branch: task/t0014_v2_annotator_sonnet_rerun
+base_branch: main
+base_commit: 318ee55e81467e507292f81dc8fc1fef2470ed23
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun
+created_at: 2026-04-30T19:07:48Z

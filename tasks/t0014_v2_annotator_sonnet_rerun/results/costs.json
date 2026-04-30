@@ -1,0 +1,9 @@
+{
+  "total_cost_usd": 21.1632,
+  "currency": "USD",
+  "breakdown": {
+    "annotator_sonnet_4_6": 19.7667,
+    "judge_haiku_4_5": 1.3965
+  },
+  "note": "All costs are envelope-reported per-call total_cost_usd values returned by the local Claude Code CLI (claude --output-format json), not modelled estimates. The annotator made 96 successful sonnet calls plus 1 parse-failure (charged) and 14 call-failures (3 unique FrontierScience-Olympiad row indices that consistently timed out at the 300 s CLI ceiling on long-context Olympiad problems). The judge made 20 haiku calls on the v2-sonnet completeness intersection set (23 t0009 sample rows minus 3 sonnet timeouts). Annotator overrun ($19.77 vs $5 estimate) was driven by the Claude Code CLI's per-invocation system-prompt cache creation overhead on the long v2 system prompt; the user-authorised cumulative cap raise from $10 to $25 (intervention/budget_cap_raised.md) absorbed the overrun cleanly with $3.84 of headroom remaining."
+}

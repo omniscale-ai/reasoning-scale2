@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v2_annotator_sonnet_rerun",
+  "command": "python -u -m meta.asset_types.dataset.verificator tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet",
+  "exit_code": 1,
+  "duration_seconds": 0.045,
+  "started_at": "2026-04-30T21:22:18Z",
+  "completed_at": "2026-04-30T21:22:19Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun",
+  "stdout_file": "025_20260430T212218Z_python-u-m.stdout.txt",
+  "stderr_file": "025_20260430T212218Z_python-u-m.stderr.txt",
+  "stdout_lines": 10,
+  "stderr_lines": 0,
+  "truncated": false
+}

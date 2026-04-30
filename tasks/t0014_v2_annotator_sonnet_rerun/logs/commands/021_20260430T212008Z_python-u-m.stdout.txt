@@ -1,0 +1,6 @@
+Wrote tasks/t0014_v2_annotator_sonnet_rerun/code/_outputs/v2_sonnet_judge_sample.jsonl with 20 rows (target=23, missing=0, incomplete=3).
+  FrontierScience-Olympiad: 3
+  SWE-bench Verified: 6
+  WorkArena++: 6
+  tau-bench: 5
+  incomplete v2-sonnet hierarchies (call-failures): [7, 14, 8]

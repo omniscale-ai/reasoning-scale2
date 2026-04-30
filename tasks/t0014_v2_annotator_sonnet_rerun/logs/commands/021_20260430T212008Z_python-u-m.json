@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v2_annotator_sonnet_rerun",
+  "command": "python -u -m tasks.t0014_v2_annotator_sonnet_rerun.code.select_judge_sample",
+  "exit_code": 0,
+  "duration_seconds": 0.034,
+  "started_at": "2026-04-30T21:20:08Z",
+  "completed_at": "2026-04-30T21:20:08Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun",
+  "stdout_file": "021_20260430T212008Z_python-u-m.stdout.txt",
+  "stderr_file": "021_20260430T212008Z_python-u-m.stderr.txt",
+  "stdout_lines": 6,
+  "stderr_lines": 0,
+  "truncated": false
+}

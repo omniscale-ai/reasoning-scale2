@@ -1,0 +1,840 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v2_annotator_sonnet_rerun",
+  "captured_at": "2026-04-30T21:43:42Z",
+  "checked_roots": [
+    {
+      "source_kind": "codex",
+      "root_path": "/Users/lysaniuk/.codex/sessions",
+      "exists": true,
+      "candidate_file_count": 0,
+      "matched_file_count": 0
+    },
+    {
+      "source_kind": "claude_code",
+      "root_path": "/Users/lysaniuk/.claude/projects",
+      "exists": true,
+      "candidate_file_count": 9787,
+      "matched_file_count": 136
+    }
+  ],
+  "copied_sessions": [
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/025c1f47-b035-41c7-a616-b84958a32dc8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__025c1f47-b035-41c7-a616-b84958a32dc8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/0411d963-7e89-4ef7-8302-16694b577404.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__0411d963-7e89-4ef7-8302-16694b577404.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/0526ee43-0c7c-4a5c-bb73-a4ce796200e0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__0526ee43-0c7c-4a5c-bb73-a4ce796200e0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/0d1ab511-2fc7-403d-9bce-7ed7c528851b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__0d1ab511-2fc7-403d-9bce-7ed7c528851b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/0e0be72b-5561-4892-a4c2-231f0ad0222f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__0e0be72b-5561-4892-a4c2-231f0ad0222f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/0ea079c9-e3c3-4165-84f9-7705b534c1ba.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__0ea079c9-e3c3-4165-84f9-7705b534c1ba.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/0ff9ca9c-75b2-4166-8760-f94efd315f02.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__0ff9ca9c-75b2-4166-8760-f94efd315f02.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/102194f8-36d4-4ea4-993a-1b115e597eef.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__102194f8-36d4-4ea4-993a-1b115e597eef.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/1179060e-e599-48c8-8bd8-ad63aebe5a88.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__1179060e-e599-48c8-8bd8-ad63aebe5a88.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/11d1b8a9-5949-4fcc-a2a0-a70692ac12a8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__11d1b8a9-5949-4fcc-a2a0-a70692ac12a8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/124db0e6-d9b1-4641-a8e0-e33638b24f3b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__124db0e6-d9b1-4641-a8e0-e33638b24f3b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/12cde6ac-01d6-43bd-8948-5a98c07089f3.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__12cde6ac-01d6-43bd-8948-5a98c07089f3.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/13bc4026-c82d-48f7-8b39-4cb5f3e2ef4b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__13bc4026-c82d-48f7-8b39-4cb5f3e2ef4b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/14e52268-dfae-42b3-be71-96e039502022.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__14e52268-dfae-42b3-be71-96e039502022.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/187c01cc-3a41-473d-a937-e7069c070e4c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__187c01cc-3a41-473d-a937-e7069c070e4c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/18dcecba-3216-49f7-93a9-cb6752f843c2.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__18dcecba-3216-49f7-93a9-cb6752f843c2.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/1997dfdc-c082-42f8-8089-6be2dde520fb.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__1997dfdc-c082-42f8-8089-6be2dde520fb.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/1b038e24-f7fd-436f-bdd5-0c5aee1f0c24.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__1b038e24-f7fd-436f-bdd5-0c5aee1f0c24.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/1c357a0b-43be-4172-af5d-74b6b88b169c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__1c357a0b-43be-4172-af5d-74b6b88b169c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/1ca16763-11e8-4723-83a0-bbb64afb75b5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__1ca16763-11e8-4723-83a0-bbb64afb75b5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/1d3d1561-d84c-42c4-8fa3-8f201f515085.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__1d3d1561-d84c-42c4-8fa3-8f201f515085.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/1ff43d7c-7d0a-4d3e-9466-426ceb0747db.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__1ff43d7c-7d0a-4d3e-9466-426ceb0747db.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/20aae3b1-332f-41b9-9339-953bda64f50b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__20aae3b1-332f-41b9-9339-953bda64f50b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/2180c03b-114b-47e0-88be-e7f68afc2c2c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__2180c03b-114b-47e0-88be-e7f68afc2c2c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/22938aca-5aef-493a-88e9-80fb7871365f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__22938aca-5aef-493a-88e9-80fb7871365f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/23ae33cd-7242-4e87-b294-00ec5c1e27bc.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__23ae33cd-7242-4e87-b294-00ec5c1e27bc.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/2954275c-7bc0-4f3f-8a89-e9bd1f29079a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__2954275c-7bc0-4f3f-8a89-e9bd1f29079a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/2a0f803d-9682-432e-98e9-f8ac278a02e1.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__2a0f803d-9682-432e-98e9-f8ac278a02e1.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/2bac5031-cad6-4594-b2fc-9e44896926d2.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__2bac5031-cad6-4594-b2fc-9e44896926d2.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/30f9fc9e-1bc6-49cf-a0f4-7d8a99033101.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__30f9fc9e-1bc6-49cf-a0f4-7d8a99033101.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/34876b1e-bb95-4f9e-ad85-f34b563db868.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__34876b1e-bb95-4f9e-ad85-f34b563db868.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/3a8889e7-d3f6-42b0-a446-afc19e719ec2.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__3a8889e7-d3f6-42b0-a446-afc19e719ec2.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/3a9691e8-1684-428a-82ec-1e81ecb7a568.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__3a9691e8-1684-428a-82ec-1e81ecb7a568.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/3b5f07c7-18aa-4cb1-a04d-cc9c483063a4.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__3b5f07c7-18aa-4cb1-a04d-cc9c483063a4.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/3cb0be18-2d3b-4616-8dfc-612487224985.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__3cb0be18-2d3b-4616-8dfc-612487224985.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/3dd8c41f-c7fb-4931-8450-041c2dc2cbea.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__3dd8c41f-c7fb-4931-8450-041c2dc2cbea.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/403c9ad9-1716-48f0-89e4-572c137105b8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__403c9ad9-1716-48f0-89e4-572c137105b8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/41538c66-f63b-40b7-81bf-b69136ff2227.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__41538c66-f63b-40b7-81bf-b69136ff2227.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/41e73149-7efb-46ce-876e-8e726457ca67.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__41e73149-7efb-46ce-876e-8e726457ca67.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/44284fb9-729f-4858-93d2-204baf84d1d1.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__44284fb9-729f-4858-93d2-204baf84d1d1.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/4527e3d4-cfe5-44c1-a9a0-a2c2e1e8f1f9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__4527e3d4-cfe5-44c1-a9a0-a2c2e1e8f1f9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/47c9efef-e944-4693-b7cf-7a8ea07b774e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__47c9efef-e944-4693-b7cf-7a8ea07b774e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/47fcc462-f013-4f37-bdad-bfce95456d19.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__47fcc462-f013-4f37-bdad-bfce95456d19.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/48291f47-ff9b-44c3-8420-a16449300ed3.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__48291f47-ff9b-44c3-8420-a16449300ed3.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/498eed53-922e-4a94-a20f-8846fe6601fe.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__498eed53-922e-4a94-a20f-8846fe6601fe.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/4e1c4b21-289c-4314-a886-3b307e53f0fa.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__4e1c4b21-289c-4314-a886-3b307e53f0fa.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/4ed90c58-8911-4a1f-990d-2daf8a27d1f4.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__4ed90c58-8911-4a1f-990d-2daf8a27d1f4.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/4f48812d-31d7-498c-a0e8-264e0c5fdeca.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__4f48812d-31d7-498c-a0e8-264e0c5fdeca.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/506b73d4-1898-4040-a1a9-c8392eb1ec97.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__506b73d4-1898-4040-a1a9-c8392eb1ec97.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/522348c9-2a9d-417a-a20b-0fe5653ded90.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__522348c9-2a9d-417a-a20b-0fe5653ded90.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/53788bcb-a830-4496-b4be-5d8295580f53.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__53788bcb-a830-4496-b4be-5d8295580f53.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/5b3b3ed8-039c-4742-b76c-8700fa946c3a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__5b3b3ed8-039c-4742-b76c-8700fa946c3a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/5c006003-2102-483d-a70a-ead431e166a0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__5c006003-2102-483d-a70a-ead431e166a0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/5dfc7b7d-2dcc-4673-9eca-d62715bdf870.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__5dfc7b7d-2dcc-4673-9eca-d62715bdf870.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/64afa996-7463-437f-8884-316479c769dc.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__64afa996-7463-437f-8884-316479c769dc.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/66471cdc-7ee9-4b49-8fdc-f59a0c8c4867.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__66471cdc-7ee9-4b49-8fdc-f59a0c8c4867.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/6bb9fa94-9ba4-482e-b13a-c85a3ac3747f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__6bb9fa94-9ba4-482e-b13a-c85a3ac3747f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/6c821f43-c0ce-4dee-9433-a3642578b37a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__6c821f43-c0ce-4dee-9433-a3642578b37a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/6f8cbf83-316f-4c05-b689-1d600cad0b7e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__6f8cbf83-316f-4c05-b689-1d600cad0b7e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/74965f79-9712-454d-9edc-ddd3d7086f0c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__74965f79-9712-454d-9edc-ddd3d7086f0c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/74f76328-6d3d-41c1-8305-fbe465c2bdc6.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__74f76328-6d3d-41c1-8305-fbe465c2bdc6.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/76408f76-6973-4630-86a5-ee393a1ffc45.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__76408f76-6973-4630-86a5-ee393a1ffc45.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/7679c7a0-90c3-48a3-b47b-0e129d273584.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__7679c7a0-90c3-48a3-b47b-0e129d273584.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/7ab8bf2c-bda4-4bca-bd39-b9634094a705.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__7ab8bf2c-bda4-4bca-bd39-b9634094a705.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/849b6378-1b2c-455e-8854-12898ef19d31.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__849b6378-1b2c-455e-8854-12898ef19d31.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/856fded0-46dc-4634-a0e6-110641e42845.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__856fded0-46dc-4634-a0e6-110641e42845.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/859b86ec-d765-4e9a-a421-b6196b1092fc.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__859b86ec-d765-4e9a-a421-b6196b1092fc.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/85a3569e-313a-4952-8eb3-d91d3fe1a961.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__85a3569e-313a-4952-8eb3-d91d3fe1a961.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/8691711c-a485-4a4b-a5a5-c9f9a677a637.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__8691711c-a485-4a4b-a5a5-c9f9a677a637.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/8dd9b7fa-4cab-4c0b-b368-9f148faa3d0c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__8dd9b7fa-4cab-4c0b-b368-9f148faa3d0c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/912a9c2e-a557-43dc-ba48-91bda9c4c95c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__912a9c2e-a557-43dc-ba48-91bda9c4c95c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/93884008-a0ed-4b20-a990-daf9c747a9bb.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__93884008-a0ed-4b20-a990-daf9c747a9bb.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/941c7bea-7576-46b2-8b43-3f8d29475f26.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__941c7bea-7576-46b2-8b43-3f8d29475f26.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/94b9417a-1ba7-471a-8cf0-dfd4fac07810.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__94b9417a-1ba7-471a-8cf0-dfd4fac07810.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/99e1ef0d-45eb-4e0b-a473-63e49d4c3464.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__99e1ef0d-45eb-4e0b-a473-63e49d4c3464.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/a01205a4-5565-4aaa-a73d-d590052ad477.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__a01205a4-5565-4aaa-a73d-d590052ad477.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/a134cb1a-58fb-4828-b9d6-0c5b3184faed.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__a134cb1a-58fb-4828-b9d6-0c5b3184faed.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/a1a08158-b32e-470b-bd3d-9c199328c4b1.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__a1a08158-b32e-470b-bd3d-9c199328c4b1.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/a559133b-a580-49b3-83b9-dca4e9764605.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__a559133b-a580-49b3-83b9-dca4e9764605.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/a747ab65-8c3d-444a-8634-491f0f63eb41.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__a747ab65-8c3d-444a-8634-491f0f63eb41.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/a810ffb8-dce8-4534-a80a-3a49008335b0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__a810ffb8-dce8-4534-a80a-3a49008335b0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/aad9d0a0-4f96-4150-b9d7-cf3c41d6406d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__aad9d0a0-4f96-4150-b9d7-cf3c41d6406d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ab611d52-3e44-4fac-84dd-b6c345d88893.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ab611d52-3e44-4fac-84dd-b6c345d88893.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/aced1b6f-d8f9-4154-b9a7-15b8d634c99e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__aced1b6f-d8f9-4154-b9a7-15b8d634c99e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/acffeb83-13de-4d19-bc03-c7f4a78d9dbd.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__acffeb83-13de-4d19-bc03-c7f4a78d9dbd.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ae6f4684-6b98-4fb7-abbd-d77aafbe35ef.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ae6f4684-6b98-4fb7-abbd-d77aafbe35ef.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ae98589a-c386-4755-994b-b9cad383f130.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ae98589a-c386-4755-994b-b9cad383f130.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/b042f170-0242-4c11-8fcf-79e519d65c18.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__b042f170-0242-4c11-8fcf-79e519d65c18.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/b0f4040f-df78-4811-b423-8734d5303582.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__b0f4040f-df78-4811-b423-8734d5303582.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/b1763295-b833-4a52-92e8-91d1cd20a685.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__b1763295-b833-4a52-92e8-91d1cd20a685.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/b234f5cb-6e25-4c7c-8b9a-d849b25174b2.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__b234f5cb-6e25-4c7c-8b9a-d849b25174b2.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/b37585ba-e2f8-4569-b9f2-f2e6c1b9e8c3.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__b37585ba-e2f8-4569-b9f2-f2e6c1b9e8c3.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/b7ada3c8-c3a7-4013-b76b-ecb4bc5149be.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__b7ada3c8-c3a7-4013-b76b-ecb4bc5149be.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ba696859-1924-48fd-b327-a4a973c262b0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ba696859-1924-48fd-b327-a4a973c262b0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ba6a134b-d126-471d-9430-41c4addf234e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ba6a134b-d126-471d-9430-41c4addf234e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/bac571d9-9a60-4927-9a15-a642c66d9c5b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__bac571d9-9a60-4927-9a15-a642c66d9c5b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/bbc454cb-ddab-4fd4-bd5f-93aade844f91.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__bbc454cb-ddab-4fd4-bd5f-93aade844f91.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/bc2d81ea-8fe5-40c4-a46c-781c82054bf9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__bc2d81ea-8fe5-40c4-a46c-781c82054bf9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/c1760a3d-b55f-4d7e-95fd-3953a1afb2a2.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__c1760a3d-b55f-4d7e-95fd-3953a1afb2a2.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/c252a590-b73d-4529-81f3-69af9cbe6581.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__c252a590-b73d-4529-81f3-69af9cbe6581.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/c2958f06-a32f-47c4-9203-e9060a12dd0c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__c2958f06-a32f-47c4-9203-e9060a12dd0c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/c404e756-44f0-44d8-ba40-6c818f97811c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__c404e756-44f0-44d8-ba40-6c818f97811c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/c71a3799-910a-48ca-9727-6a12420c709a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__c71a3799-910a-48ca-9727-6a12420c709a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/c7f9bd1a-fc5b-449c-a8d2-15bf65222687.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__c7f9bd1a-fc5b-449c-a8d2-15bf65222687.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/c81bb079-df2f-4661-bd24-2bd7afb19dce.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__c81bb079-df2f-4661-bd24-2bd7afb19dce.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/c938144d-8879-4ab1-ae73-026920768dc1.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__c938144d-8879-4ab1-ae73-026920768dc1.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/cbec5c00-d8d3-42ee-9f89-f8d2be635700.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__cbec5c00-d8d3-42ee-9f89-f8d2be635700.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/cc4ee6ce-4b47-485c-b203-cf7dcfb1d80d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__cc4ee6ce-4b47-485c-b203-cf7dcfb1d80d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/cdcc8693-1f7a-4e16-af0a-984a46b8841c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__cdcc8693-1f7a-4e16-af0a-984a46b8841c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/cdfe6e79-53c7-4f51-812c-ea53bd51a6f8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__cdfe6e79-53c7-4f51-812c-ea53bd51a6f8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ce8cb3d6-10dc-4247-b2d0-67e4c4250e67.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ce8cb3d6-10dc-4247-b2d0-67e4c4250e67.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/d277654d-6528-447f-800c-1bee88a59368.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__d277654d-6528-447f-800c-1bee88a59368.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/d4dcefe9-51cb-4b17-af8f-2d598e55f9f7.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__d4dcefe9-51cb-4b17-af8f-2d598e55f9f7.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/d58600a0-1ed0-405d-bc2f-58af586a36b0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__d58600a0-1ed0-405d-bc2f-58af586a36b0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/d68c834d-84a6-4ea4-89f1-3689dafa9957.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__d68c834d-84a6-4ea4-89f1-3689dafa9957.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/d6e30945-1cb5-415e-9635-1f3055c1f322.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__d6e30945-1cb5-415e-9635-1f3055c1f322.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/d9f318d3-1aa7-46db-a5b4-5baf2951c059.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__d9f318d3-1aa7-46db-a5b4-5baf2951c059.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/d9fd4584-3b3c-43a5-be86-afbb52585806.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__d9fd4584-3b3c-43a5-be86-afbb52585806.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ded7c3d4-5446-4ff2-b8d0-28d4bb69d454.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ded7c3d4-5446-4ff2-b8d0-28d4bb69d454.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/e1b065a0-4b67-486a-92c7-0f8884ee27a8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__e1b065a0-4b67-486a-92c7-0f8884ee27a8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/e3cdfe6f-6d8d-4e40-afd7-4b9faec8149a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__e3cdfe6f-6d8d-4e40-afd7-4b9faec8149a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/e82b4427-ffec-4cd0-81fd-1b6b1bdf23c9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__e82b4427-ffec-4cd0-81fd-1b6b1bdf23c9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/e8b3e3de-632d-4a07-9b8b-8e4e62ad2f60.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__e8b3e3de-632d-4a07-9b8b-8e4e62ad2f60.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/e90b9a30-f1af-4885-b559-a6d6121a6516.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__e90b9a30-f1af-4885-b559-a6d6121a6516.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/eb1b930b-6b83-4338-a10b-48229a5a5430.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__eb1b930b-6b83-4338-a10b-48229a5a5430.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/eb345a4d-9953-4ae3-b63b-e78d76c28752.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__eb345a4d-9953-4ae3-b63b-e78d76c28752.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/eb620e3b-f81b-44db-bb7a-b00533e68ddb.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__eb620e3b-f81b-44db-bb7a-b00533e68ddb.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ec0c3983-589d-48f4-8608-2c3ad186364a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ec0c3983-589d-48f4-8608-2c3ad186364a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/ef6f2858-e1da-400e-a813-9540f72015cf.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__ef6f2858-e1da-400e-a813-9540f72015cf.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/f0341b93-8143-47fa-b3ad-f5b66d575ebd.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__f0341b93-8143-47fa-b3ad-f5b66d575ebd.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/f3ae4657-e539-42dd-ac91-a338fc697bb9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__f3ae4657-e539-42dd-ac91-a338fc697bb9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/f57b6227-7bb0-4098-b7a9-1c1a28ccfe4d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__f57b6227-7bb0-4098-b7a9-1c1a28ccfe4d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/f910743f-34e3-4fd4-8aff-d7ac71acfca5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__f910743f-34e3-4fd4-8aff-d7ac71acfca5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/fcdaa8a2-f799-4a9b-9646-401fea0cdb33.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__fcdaa8a2-f799-4a9b-9646-401fea0cdb33.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/fd95ead9-d6cf-4e0a-ab0b-bdb7438a5daf.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__fd95ead9-d6cf-4e0a-ab0b-bdb7438a5daf.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun/fee101e6-d57d-4c2d-9136-7e07fc13c23a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0014-v2-annotator-sonnet-rerun__fee101e6-d57d-4c2d-9136-7e07fc13c23a.jsonl",
+      "matched_by": "task_id_content"
+    }
+  ],
+  "errors": []
+}

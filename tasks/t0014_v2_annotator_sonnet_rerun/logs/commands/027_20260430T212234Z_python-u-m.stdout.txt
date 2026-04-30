@@ -1,0 +1,3 @@
+Wrote tasks/t0014_v2_annotator_sonnet_rerun/code/_outputs/three_way_comparison.json and tasks/t0014_v2_annotator_sonnet_rerun/code/_outputs/three_way_table.md
+  v2_sonnet_total_rows=115, n_complete=100
+  Aggregate: schema-only Δ=+57%, model-only Δ=-1%, headline Δ=+58%
