@@ -113,10 +113,10 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Compare the schema vs model decomposition against published findings on schema effects in LLM annotation.",
-      "status": "pending",
-      "started_at": null,
-      "completed_at": null,
-      "log_file": null
+      "status": "completed",
+      "started_at": "2026-04-30T23:40:00Z",
+      "completed_at": "2026-04-30T23:48:00Z",
+      "log_file": "logs/steps/013_compare-literature/"
     },
     {
       "step": 14,
