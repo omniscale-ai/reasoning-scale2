@@ -164,6 +164,7 @@ def main() -> int:
             problem = extract_problem_text(row)
             gold = extract_gold_answer(row)
             t0 = time.monotonic()
+            agent_refused = False
             try:
                 if cond_key == "A":
                     final, traj = run_condition_a(
@@ -184,9 +185,22 @@ def main() -> int:
                         plansolve_tool_registry=plansolve_registry,
                     )
             except Exception as exc:  # noqa: BLE001
+                exc_msg = str(exc)
+                # Detect content-filter refusals: API rejects with "Usage Policy" or similar.
+                refusal_markers = (
+                    "Usage Policy",
+                    "usage policy",
+                    "violates",
+                    "I cannot help",
+                    "I can't help",
+                    "I'm not able to",
+                    "content_filter",
+                )
+                agent_refused = any(m in exc_msg for m in refusal_markers)
+                tag = "REFUSED" if agent_refused else "ERRORED"
                 print(
-                    f"  [{cond_key}] row {idx}/{len(rows)} {task_id} ERRORED: "
-                    f"{type(exc).__name__}: {str(exc)[:200]}",
+                    f"  [{cond_key}] row {idx}/{len(rows)} {task_id} {tag}: "
+                    f"{type(exc).__name__}: {exc_msg[:200]}",
                     flush=True,
                 )
                 final = None
@@ -208,6 +222,7 @@ def main() -> int:
                 decision_count=len(traj),
                 final_confidence=confidence,
                 trajectory=traj,
+                agent_refused=agent_refused,
             )
             outcomes.append(outcome)
             elapsed = time.monotonic() - t0

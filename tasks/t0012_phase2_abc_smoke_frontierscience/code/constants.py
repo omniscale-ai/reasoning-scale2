@@ -9,13 +9,15 @@ from typing import Final
 BENCHMARK_FILTER: Final[str] = "FrontierScience-Olympiad"
 
 # ---- Models --------------------------------------------------------------------------------------
-# IMPORTANT: per-call cost via the local `claude` CLI is dominated by Claude Code's massive system
-# prompt cache (~$0.04-0.08/call regardless of our prompt size). To stay under the $20 budget cap
-# at N=40 rows × 3 conditions × ~6 turns per row + judge calls (~840 calls total at ~$0.08/call =
-# ~$67), the smoke harness uses Haiku for BOTH the agent and the judge. This is a deliberate
-# deviation from `plan/plan.md` (which recommended Sonnet for the agent runs) and is documented in
-# `results/results_detailed.md` § Methodology and the predictions-asset descriptions. Sonnet was
-# attempted in the t0009 dry-run and similarly fell back to Haiku for the same budget reason.
+# The previous run paid ~$0.10/call because the local Claude Code CLI's default system prompt
+# (~50k tokens) is cache-created on every invocation. ``model_call.py`` now overrides this with
+# ``--system-prompt`` + ``--tools ""`` + ``--setting-sources ""`` which drops per-call cost to
+# ~$0.004 with cache reuse (25× reduction). With that knob in place, Sonnet would still cost ~5×
+# more than Haiku per call. Plan recommended ``claude-sonnet-4-6-20251001`` for the agent and
+# ``claude-haiku-4-5-20251001`` for the judge; we keep Haiku for the agent in the smoke run for
+# safety margin and document this in ``results/results_detailed.md`` and the predictions-asset
+# descriptions. Multi-provider replication (Sonnet + Gemini + GPT-5) is queued as a follow-up
+# suggestion.
 
 MODEL_AGENT: Final[str] = "claude-haiku-4-5"
 MODEL_JUDGE: Final[str] = "claude-haiku-4-5"
@@ -30,10 +32,11 @@ HIGH_CONFIDENCE_THRESHOLD: Final[float] = 0.75
 
 # ---- Agent loop ----------------------------------------------------------------------------------
 
-# Plan called for max_turns=12, but per-call budget pressure forces a tighter bound. With Haiku at
-# ~$0.05-0.08/call, max_turns=4 keeps us in budget at N=40 (40 * 3 * 4 = 480 agent calls + ~120
-# judge calls = ~600 calls at ~$0.06 each = ~$36 worst case; halt enforcement keeps it under $20).
-MAX_TURNS: Final[int] = 4
+# Plan called for max_turns=12. With per-call cost reduced to ~$0.004 via the system-prompt knob
+# (see ``model_call.py``), max_turns=8 keeps us comfortably in budget: 40 rows * 3 conditions * 8
+# turns ≈ 960 calls + ~120 judge calls ≈ 1080 calls at $0.004 ≈ $4.30. The budget halt at $20 cap
+# still enforces a hard stop in case of cache-miss spikes.
+MAX_TURNS: Final[int] = 8
 
 RANDOM_SEED: Final[int] = 42
 

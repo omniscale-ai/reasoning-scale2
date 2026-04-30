@@ -83,6 +83,7 @@ class RowOutcome:
     decision_count: int
     final_confidence: float | None
     trajectory: list[dict[str, Any]]
+    agent_refused: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -426,6 +427,7 @@ def write_predictions_jsonl(
                 PRED_FIELD_DECISION_COUNT: outcome.decision_count,
                 PRED_FIELD_FINAL_CONFIDENCE: outcome.final_confidence,
                 PRED_FIELD_TRAJECTORY: outcome.trajectory,
+                "agent_refused": outcome.agent_refused,
             }
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
@@ -450,6 +452,7 @@ def jsonable_to_outcomes(items: list[dict[str, Any]]) -> list[RowOutcome]:
                     None if it.get("final_confidence") is None else float(it["final_confidence"])
                 ),
                 trajectory=list(it.get("trajectory", [])),
+                agent_refused=bool(it.get("agent_refused", False)),
             )
         )
     return out

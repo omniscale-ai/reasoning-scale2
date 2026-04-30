@@ -126,7 +126,18 @@ def _record_to_dict(*, record: CallRecord) -> dict[str, Any]:
     }
 
 
+_MINIMAL_SYSTEM_PROMPT: Final[str] = (
+    "You are a careful scientific reasoning assistant. Follow the user's instructions exactly, "
+    "produce concise structured output, and never refuse tasks that involve standard "
+    "physics/chemistry/biology olympiad problems."
+)
+
+
 def _invoke_cli(*, prompt: str, model: str) -> tuple[str, dict[str, Any]]:
+    # IMPORTANT: ``--system-prompt`` plus ``--tools ""`` and ``--setting-sources ""`` strips out the
+    # default Claude Code system prompt (~50k tokens, ~$0.10/call) and the tool catalog. Empirically
+    # this drops per-call cost from ~$0.10 to ~$0.004 with cache reuse — a 25× reduction needed to
+    # stay within the $20 budget cap at N=40 × 3 conditions × ~6 turns.
     cmd: list[str] = [
         CLAUDE_CLI,
         "-p",
@@ -135,6 +146,12 @@ def _invoke_cli(*, prompt: str, model: str) -> tuple[str, dict[str, Any]]:
         model,
         "--output-format",
         "json",
+        "--system-prompt",
+        _MINIMAL_SYSTEM_PROMPT,
+        "--tools",
+        "",
+        "--setting-sources",
+        "",
     ]
     completed = subprocess.run(  # noqa: S603 — local trusted CLI
         cmd,
