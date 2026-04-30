@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun/tasks/t0014_v2_annotator_sonnet_rerun/research/research_code.md
+
+[31m[1mERRORS:[0m
+[31m  RC-E006 error: Inline citation [t0014] has no matching Task Index entry[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+

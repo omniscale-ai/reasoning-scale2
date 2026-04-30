@@ -50,10 +50,10 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0009 v2 annotator/judge code, t0005 v1 dataset asset, and prior libraries to plan the re-run.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-30T19:14:10Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/006_research-code/"
     },
     {
       "step": 7,
