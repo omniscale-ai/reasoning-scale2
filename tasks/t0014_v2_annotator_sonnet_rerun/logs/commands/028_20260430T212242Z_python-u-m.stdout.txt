@@ -1,0 +1,3 @@
+Wrote tasks/t0014_v2_annotator_sonnet_rerun/results/images/three_way_accept_rate.png
+Wrote tasks/t0014_v2_annotator_sonnet_rerun/results/images/aggregate_decomposition.png
+Wrote tasks/t0014_v2_annotator_sonnet_rerun/results/images/v2_sonnet_atomics_distribution.png

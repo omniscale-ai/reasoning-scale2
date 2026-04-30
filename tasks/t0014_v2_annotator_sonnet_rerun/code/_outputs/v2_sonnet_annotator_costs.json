@@ -1,0 +1,1011 @@
+{
+  "model": "claude-sonnet-4-6",
+  "rows_annotated": 96,
+  "rows_skipped": 67,
+  "rows_with_parse_failure": 1,
+  "rows_with_call_failure": 14,
+  "rows_with_complete_hierarchy": 96,
+  "total_cost_usd": 19.766702799999997,
+  "budget_cap_usd": 14.08,
+  "per_call": [
+    {
+      "pilot_row_index": 5,
+      "task_id": "fs_1dba0086-bca8-4b25-8843-e6e428f9284d",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 1643,
+      "cost_usd": 0.1899742,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 6,
+      "task_id": "fs_27c865e6-1c87-489b-b7ea-b197fe3356ba",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 3537,
+      "cost_usd": 0.21738695000000002,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 9,
+      "task_id": "fs_ecb58594-7fd9-4a94-b799-0f1c13acb752",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 7583,
+      "cost_usd": 0.2763952,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 10,
+      "task_id": "fs_1875e781-bd89-4528-8bc3-94b7b436402f",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 6779,
+      "cost_usd": 0.2647377,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 4,
+      "task_id": "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 300 seconds"
+    },
+    {
+      "pilot_row_index": 7,
+      "task_id": "fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 300 seconds"
+    },
+    {
+      "pilot_row_index": 8,
+      "task_id": "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 300 seconds"
+    },
+    {
+      "pilot_row_index": 11,
+      "task_id": "fs_7c94f50a-0896-450f-8d55-00c98aca5158",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 6478,
+      "cost_usd": 0.26103195,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 12,
+      "task_id": "fs_b75893ef-5c56-4d43-9ae1-8c9caaf32ee2",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 5313,
+      "cost_usd": 0.24226445000000002,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 15,
+      "task_id": "fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 3963,
+      "cost_usd": 0.2234432,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 13,
+      "task_id": "fs_a74ccc5b-fd37-49fa-b784-871dbcc41e9e",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 8959,
+      "cost_usd": 0.29666919999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 18,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: claude CLI exited 1: (no stderr)"
+    },
+    {
+      "pilot_row_index": 17,
+      "task_id": "fs_eec8840a-2d00-4e70-b043-0da51bd1b288",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 3482,
+      "cost_usd": 0.2154352,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 16,
+      "task_id": "fs_f12a8706-3ddd-4255-9234-0655babceb8e",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 10577,
+      "cost_usd": 0.3221892,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 20,
+      "task_id": "fs_7e32b7a6-9340-4a41-8c1f-89a0a91a6d3f",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 9903,
+      "cost_usd": 0.31320394999999995,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 14,
+      "task_id": "fs_5ef8b29d-7665-45e6-a26a-bd4a27f450ad",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 300 seconds"
+    },
+    {
+      "pilot_row_index": 21,
+      "task_id": "fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 6812,
+      "cost_usd": 0.26518220000000003,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 23,
+      "task_id": "fs_f7b49518-6e84-44e3-9480-4cf91d149702",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 2259,
+      "cost_usd": 0.19706745,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 22,
+      "task_id": "fs_676e50c1-cea4-4361-81e1-d4409a23422c",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 5208,
+      "cost_usd": 0.2419532,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 24,
+      "task_id": "fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 3479,
+      "cost_usd": 0.2154477,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 26,
+      "task_id": "swe_scikit-learn__scikit-learn-13779",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1691,
+      "cost_usd": 0.1881377,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 19,
+      "task_id": "fs_1eca2503-b141-4f9f-ab10-e27d272c93b0",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 300 seconds"
+    },
+    {
+      "pilot_row_index": 28,
+      "task_id": "swe_matplotlib__matplotlib-22719",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1718,
+      "cost_usd": 0.19032845,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 27,
+      "task_id": "swe_sphinx-doc__sphinx-11510",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 2658,
+      "cost_usd": 0.20494169999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 29,
+      "task_id": "swe_pydata__xarray-6744",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1629,
+      "cost_usd": 0.1885717,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 30,
+      "task_id": "swe_scikit-learn__scikit-learn-12585",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1375,
+      "cost_usd": 0.1843097,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 25,
+      "task_id": "fs_dcfa830a-3f87-43eb-9ec7-6649fcdd0473",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 6062,
+      "cost_usd": 0.25496195,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 32,
+      "task_id": "swe_django__django-9296",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 888,
+      "cost_usd": 0.17572745,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 31,
+      "task_id": "swe_django__django-13212",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 2106,
+      "cost_usd": 0.19395845000000003,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 35,
+      "task_id": "swe_pylint-dev__pylint-4970",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1534,
+      "cost_usd": 0.18563619999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 33,
+      "task_id": "swe_mwaskom__seaborn-3187",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 2264,
+      "cost_usd": 0.19795369999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 34,
+      "task_id": "swe_sympy__sympy-20438",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 2962,
+      "cost_usd": 0.20867519999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 37,
+      "task_id": "swe_pydata__xarray-4629",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 999,
+      "cost_usd": 0.18002369999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 36,
+      "task_id": "swe_sympy__sympy-16792",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 2085,
+      "cost_usd": 0.19559645,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 38,
+      "task_id": "swe_astropy__astropy-7606",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1244,
+      "cost_usd": 0.1819927,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 40,
+      "task_id": "swe_astropy__astropy-8707",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1399,
+      "cost_usd": 0.1838917,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 39,
+      "task_id": "swe_matplotlib__matplotlib-24627",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 2413,
+      "cost_usd": 0.19882145,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 42,
+      "task_id": "swe_sphinx-doc__sphinx-8120",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1686,
+      "cost_usd": 0.1897912,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 41,
+      "task_id": "swe_pylint-dev__pylint-8898",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 2214,
+      "cost_usd": 0.19814995,
+      "notes": "parse-failure: Invalid \\escape: line 49 column 99 (char 3384)"
+    },
+    {
+      "pilot_row_index": 43,
+      "task_id": "swe_pytest-dev__pytest-7521",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1826,
+      "cost_usd": 0.19250069999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 44,
+      "task_id": "swe_psf__requests-1724",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1673,
+      "cost_usd": 0.19016169999999996,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 47,
+      "task_id": "swe_psf__requests-1766",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1065,
+      "cost_usd": 0.1789092,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 46,
+      "task_id": "swe_pytest-dev__pytest-8399",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1732,
+      "cost_usd": 0.18917495,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 48,
+      "task_id": "swe_pallets__flask-5014",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1105,
+      "cost_usd": 0.17868245,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 45,
+      "task_id": "swe_mwaskom__seaborn-3069",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 3,
+      "output_tokens": 1974,
+      "cost_usd": 0.19280045,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 49,
+      "task_id": "he_HumanEval_144",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1007,
+      "cost_usd": 0.17780595,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 50,
+      "task_id": "he_HumanEval_88",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 829,
+      "cost_usd": 0.17537795,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 54,
+      "task_id": "he_HumanEval_161",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 963,
+      "cost_usd": 0.17691869999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 52,
+      "task_id": "he_HumanEval_65",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1656,
+      "cost_usd": 0.18717019999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 51,
+      "task_id": "he_HumanEval_93",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1948,
+      "cost_usd": 0.19177495,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 53,
+      "task_id": "he_HumanEval_33",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1873,
+      "cost_usd": 0.19074819999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 55,
+      "task_id": "he_HumanEval_71",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 623,
+      "cost_usd": 0.1718607,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 57,
+      "task_id": "he_HumanEval_61",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 643,
+      "cost_usd": 0.17200845,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 56,
+      "task_id": "he_HumanEval_91",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 783,
+      "cost_usd": 0.17423745000000002,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 58,
+      "task_id": "he_HumanEval_64",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1505,
+      "cost_usd": 0.18520045000000002,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 60,
+      "task_id": "he_HumanEval_3",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 825,
+      "cost_usd": 0.17487195,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 62,
+      "task_id": "he_HumanEval_114",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 984,
+      "cost_usd": 0.17709495,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 61,
+      "task_id": "he_HumanEval_148",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 2135,
+      "cost_usd": 0.19497295,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 59,
+      "task_id": "he_HumanEval_81",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 2537,
+      "cost_usd": 0.20137370000000002,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 66,
+      "task_id": "he_HumanEval_30",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 698,
+      "cost_usd": 0.17343394999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 64,
+      "task_id": "he_HumanEval_48",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 761,
+      "cost_usd": 0.1742182,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 65,
+      "task_id": "he_HumanEval_101",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 635,
+      "cost_usd": 0.17252794999999996,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 63,
+      "task_id": "he_HumanEval_128",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1061,
+      "cost_usd": 0.17894745,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 67,
+      "task_id": "he_HumanEval_136",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 844,
+      "cost_usd": 0.17576769999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 68,
+      "task_id": "he_HumanEval_135",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1077,
+      "cost_usd": 0.17905819999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 70,
+      "task_id": "he_HumanEval_43",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1236,
+      "cost_usd": 0.18181795,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 71,
+      "task_id": "he_HumanEval_76",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1057,
+      "cost_usd": 0.1789997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 69,
+      "task_id": "he_HumanEval_87",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 2016,
+      "cost_usd": 0.1939882,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 72,
+      "task_id": "he_HumanEval_22",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1022,
+      "cost_usd": 0.17819469999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 73,
+      "task_id": "he_HumanEval_62",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1159,
+      "cost_usd": 0.1803252,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 75,
+      "task_id": "m2w_f385156c-4f2e-410f-bc73-7ec6d0f44448",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1114,
+      "cost_usd": 0.17915145,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 74,
+      "task_id": "he_HumanEval_160",
+      "benchmark": "tau-bench",
+      "input_tokens": 3,
+      "output_tokens": 1770,
+      "cost_usd": 0.19006995,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 77,
+      "task_id": "m2w_0790c8be-6e6d-4e2a-9c13-43ac9367da4c",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1192,
+      "cost_usd": 0.1804037,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 76,
+      "task_id": "m2w_e437082b-8383-4322-aa58-a6a683113970",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 2795,
+      "cost_usd": 0.20446245,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 78,
+      "task_id": "m2w_e832e1f9-3a9d-440e-a96f-8cbbf241e4af",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1652,
+      "cost_usd": 0.18749320000000003,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 79,
+      "task_id": "m2w_f17fa68b-27dd-4b9c-bc11-7a5dbe206741",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1810,
+      "cost_usd": 0.1896687,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 80,
+      "task_id": "m2w_694f3b5c-8ee4-45c1-bb7c-b5377c366096",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1703,
+      "cost_usd": 0.18814419999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 81,
+      "task_id": "m2w_2b29b7d1-bd80-4d2c-a491-9dfc89827e84",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1120,
+      "cost_usd": 0.17937219999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 82,
+      "task_id": "m2w_4b2030ff-b83c-445f-bf87-9c8fbc68498b",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1091,
+      "cost_usd": 0.17885895000000002,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 83,
+      "task_id": "m2w_e344b89e-767a-4618-ba82-4b81cdcba280",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1303,
+      "cost_usd": 0.18206794999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 84,
+      "task_id": "m2w_17fffbee-e41b-46e4-ab75-675b263ca7b7",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 995,
+      "cost_usd": 0.17743395,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 85,
+      "task_id": "m2w_86897828-35e8-4002-a98a-4e1dd26c6edb",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1194,
+      "cost_usd": 0.18047145,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 86,
+      "task_id": "m2w_8d9e09e1-c31a-420b-ace8-079204db551a",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1106,
+      "cost_usd": 0.17905545,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 87,
+      "task_id": "m2w_84d8a4df-0bba-45f9-b4c8-f5d455de451c",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 937,
+      "cost_usd": 0.17650594999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 88,
+      "task_id": "m2w_73cf6eec-cae6-4d5b-9b8e-e44359311565",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1037,
+      "cost_usd": 0.1779917,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 89,
+      "task_id": "m2w_4c578076-b877-4097-bf67-e231e349d56f",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1116,
+      "cost_usd": 0.17920994999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 90,
+      "task_id": "m2w_a88676d0-c252-408f-b796-93c95f6b71fc",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1123,
+      "cost_usd": 0.17929170000000003,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 91,
+      "task_id": "m2w_fe6b5531-ce29-4ba1-8e98-43b5fecf57fa",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1440,
+      "cost_usd": 0.18410395,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 92,
+      "task_id": "m2w_b73503a7-e4e1-43f7-bfc0-866e7003615f",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1536,
+      "cost_usd": 0.18567295,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 93,
+      "task_id": "m2w_d7c3103a-c195-4503-ab20-ecae4d4ce419",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1131,
+      "cost_usd": 0.17945494999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 94,
+      "task_id": "m2w_4ff347e6-e911-4af5-8151-7805a9e91b28",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1091,
+      "cost_usd": 0.17882594999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 95,
+      "task_id": "m2w_e48f848d-62b8-441e-aafb-c76aeb2c4f84",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1217,
+      "cost_usd": 0.1808207,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 96,
+      "task_id": "m2w_8eef04e2-3d51-4a0e-84f2-db017a69050b",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1173,
+      "cost_usd": 0.18008944999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 97,
+      "task_id": "m2w_4f208b8b-6d5c-4d3f-8df0-cab24d29edda",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1031,
+      "cost_usd": 0.17796945,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 98,
+      "task_id": "m2w_b2c18588-b115-4937-b69f-8feeab22c387",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 955,
+      "cost_usd": 0.17682419999999996,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 100,
+      "task_id": "m2w_3e0d115f-9da7-4211-9d99-122912890b40",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1224,
+      "cost_usd": 0.1808107,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 99,
+      "task_id": "m2w_1a35becb-e07b-4235-8cd3-fc2a29f8dd6f",
+      "benchmark": "WorkArena++",
+      "input_tokens": 3,
+      "output_tokens": 1600,
+      "cost_usd": 0.18647495,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 101,
+      "task_id": "fs_af50243e-3a60-4460-9536-f9a02c4f8eb8",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 10696,
+      "cost_usd": 0.3265497,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 105,
+      "task_id": "fs_ecb58594-7fd9-4a94-b799-0f1c13acb752",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 4836,
+      "cost_usd": 0.2357802,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 106,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: claude CLI exited 1: (no stderr)"
+    },
+    {
+      "pilot_row_index": 102,
+      "task_id": "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 300 seconds"
+    },
+    {
+      "pilot_row_index": 103,
+      "task_id": "fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 300 seconds"
+    },
+    {
+      "pilot_row_index": 104,
+      "task_id": "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 300 seconds"
+    },
+    {
+      "pilot_row_index": 110,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: claude CLI exited 1: (no stderr)"
+    },
+    {
+      "pilot_row_index": 107,
+      "task_id": "fs_1eca2503-b141-4f9f-ab10-e27d272c93b0",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 4,
+      "output_tokens": 20120,
+      "cost_usd": 0.5492269,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 112,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: claude CLI exited 1: (no stderr)"
+    },
+    {
+      "pilot_row_index": 113,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: claude CLI exited 1: (no stderr)"
+    },
+    {
+      "pilot_row_index": 114,
+      "task_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "notes": "call-failure: claude CLI exited 1: (no stderr)"
+    },
+    {
+      "pilot_row_index": 108,
+      "task_id": "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 15023,
+      "cost_usd": 0.24265949999999997,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 109,
+      "task_id": "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 3,
+      "output_tokens": 11942,
+      "cost_usd": 0.19638789999999998,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 111,
+      "task_id": "fs_1eca2503-b141-4f9f-ab10-e27d272c93b0",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 4,
+      "output_tokens": 20573,
+      "cost_usd": 0.41062215,
+      "notes": "ok"
+    }
+  ]
+}

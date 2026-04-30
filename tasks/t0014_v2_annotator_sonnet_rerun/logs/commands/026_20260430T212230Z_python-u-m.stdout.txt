@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun/tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet
+
+[33m[1mWARNINGS:[0m
+[33m  DA-W007 warning: No author has a non-null country field[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
+

@@ -1,24 +1,26 @@
 """Stratified judge sample selector.
 
-Reads the v2-annotated jsonl, partitions by `benchmark`, and uses a fixed-seeded random.Random
-to draw `JUDGE_SAMPLE_PER_BENCHMARK[bench]` rows from each bucket without replacement. Only rows
-with `hierarchy_completeness == True` are sampled (incomplete rows would distort the judge view).
+Per the t0014 plan REQ-4, the model-only delta requires the SAME 23 ``_pilot_row_index`` values
+that t0009 used. We therefore load t0009's persisted sample directly and intersect it with the
+v2-sonnet rows that have complete hierarchies. Random reproduction by seed is unreliable here:
+when a sonnet call-failure drops a FrontierScience row from the eligible bucket, ``random.sample``
+draws a *different* set on the same seed, breaking the same-sample guarantee.
+
+If a sample row is missing from v2-sonnet (e.g. the sonnet annotator failed on it), we drop that
+row and log the divergence. Downstream (compute_stats.py) ingests the v2-sonnet judge outcomes for
+whichever indices we managed to judge; the model-only delta is reported on the intersection.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import random
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from tasks.t0014_v2_annotator_sonnet_rerun.code.constants import (
-    JUDGE_SAMPLE_PER_BENCHMARK,
-    SAMPLE_SEED,
-)
 from tasks.t0014_v2_annotator_sonnet_rerun.code.paths import (
+    V2_HAIKU_JUDGE_SAMPLE_PATH,
     V2_SONNET_JUDGE_SAMPLE_OUTPUT,
     V2_SONNET_RAW_OUTPUT,
 )
@@ -44,34 +46,41 @@ def _write_jsonl(*, path: Path, rows: list[dict[str, Any]]) -> None:
 
 
 def select_sample() -> list[dict[str, Any]]:
-    rows = _load_jsonl(path=V2_SONNET_RAW_OUTPUT)
-    by_benchmark: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for row in rows:
-        if not row.get("hierarchy_completeness"):
-            continue
-        by_benchmark[row.get("benchmark", "")].append(row)
+    sonnet_rows = _load_jsonl(path=V2_SONNET_RAW_OUTPUT)
+    sonnet_by_index: dict[int, dict[str, Any]] = {
+        int(r["_pilot_row_index"]): r for r in sonnet_rows
+    }
 
-    rng = random.Random(SAMPLE_SEED)  # noqa: S311 - reproducible sample, not crypto
+    haiku_sample_rows = _load_jsonl(path=V2_HAIKU_JUDGE_SAMPLE_PATH)
+    target_indices: list[int] = [int(r["_pilot_row_index"]) for r in haiku_sample_rows]
+
     sample: list[dict[str, Any]] = []
-    for benchmark, target in JUDGE_SAMPLE_PER_BENCHMARK.items():
-        bucket = by_benchmark.get(benchmark, [])
-        if len(bucket) < target:
-            print(
-                f"WARN: benchmark {benchmark!r} has only {len(bucket)} complete rows "
-                f"(need {target}); using all of them."
-            )
-            sample.extend(bucket)
+    missing: list[int] = []
+    incomplete: list[int] = []
+    for idx in target_indices:
+        sonnet_row = sonnet_by_index.get(idx)
+        if sonnet_row is None:
+            missing.append(idx)
             continue
-        chosen = rng.sample(bucket, target)
-        sample.extend(chosen)
+        if not sonnet_row.get("hierarchy_completeness"):
+            incomplete.append(idx)
+            continue
+        sample.append(sonnet_row)
 
     _write_jsonl(path=V2_SONNET_JUDGE_SAMPLE_OUTPUT, rows=sample)
-    print(f"Wrote {V2_SONNET_JUDGE_SAMPLE_OUTPUT} with {len(sample)} rows.")
+    print(
+        f"Wrote {V2_SONNET_JUDGE_SAMPLE_OUTPUT} with {len(sample)} rows "
+        f"(target={len(target_indices)}, missing={len(missing)}, incomplete={len(incomplete)})."
+    )
     counts: dict[str, int] = defaultdict(int)
     for row in sample:
         counts[row.get("benchmark", "")] += 1
     for bench, count in sorted(counts.items()):
         print(f"  {bench}: {count}")
+    if missing:
+        print(f"  missing _pilot_row_index in v2-sonnet: {missing}")
+    if incomplete:
+        print(f"  incomplete v2-sonnet hierarchies (call-failures): {incomplete}")
     return sample
 
 

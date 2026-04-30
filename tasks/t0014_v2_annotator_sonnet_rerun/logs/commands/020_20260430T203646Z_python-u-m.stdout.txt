@@ -1,0 +1,56 @@
+Loaded 115 rows from tasks/t0005_hierarchical_annotation_pilot_v1/assets/dataset/hierarchical-annotation-v1/files/hierarchical_annotation_v1.jsonl
+Found 63 already-annotated rows in tasks/t0014_v2_annotator_sonnet_rerun/code/_outputs/v2_sonnet_annotated.jsonl; skipping those.
+[idx=66 of 52] tau-bench task_id=he_HumanEval_30 notes=ok cost=$0.1734 running=$0.1734
+[idx=64 of 52] tau-bench task_id=he_HumanEval_48 notes=ok cost=$0.1742 running=$0.3477
+[idx=65 of 52] tau-bench task_id=he_HumanEval_101 notes=ok cost=$0.1725 running=$0.5202
+[idx=63 of 52] tau-bench task_id=he_HumanEval_128 notes=ok cost=$0.1789 running=$0.6991
+[idx=67 of 52] tau-bench task_id=he_HumanEval_136 notes=ok cost=$0.1758 running=$0.8749
+[idx=68 of 52] tau-bench task_id=he_HumanEval_135 notes=ok cost=$0.1791 running=$1.0540
+[idx=70 of 52] tau-bench task_id=he_HumanEval_43 notes=ok cost=$0.1818 running=$1.2358
+[idx=71 of 52] tau-bench task_id=he_HumanEval_76 notes=ok cost=$0.1790 running=$1.4148
+[idx=69 of 52] tau-bench task_id=he_HumanEval_87 notes=ok cost=$0.1940 running=$1.6088
+[idx=72 of 52] tau-bench task_id=he_HumanEval_22 notes=ok cost=$0.1782 running=$1.7870
+[idx=73 of 52] tau-bench task_id=he_HumanEval_62 notes=ok cost=$0.1803 running=$1.9673
+[idx=75 of 52] WorkArena++ task_id=m2w_f385156c-4f2e-410f-bc73-7e notes=ok cost=$0.1792 running=$2.1464
+[idx=74 of 52] tau-bench task_id=he_HumanEval_160 notes=ok cost=$0.1901 running=$2.3365
+[idx=77 of 52] WorkArena++ task_id=m2w_0790c8be-6e6d-4e2a-9c13-43 notes=ok cost=$0.1804 running=$2.5169
+[idx=76 of 52] WorkArena++ task_id=m2w_e437082b-8383-4322-aa58-a6 notes=ok cost=$0.2045 running=$2.7214
+[idx=78 of 52] WorkArena++ task_id=m2w_e832e1f9-3a9d-440e-a96f-8c notes=ok cost=$0.1875 running=$2.9089
+[idx=79 of 52] WorkArena++ task_id=m2w_f17fa68b-27dd-4b9c-bc11-7a notes=ok cost=$0.1897 running=$3.0985
+[idx=80 of 52] WorkArena++ task_id=m2w_694f3b5c-8ee4-45c1-bb7c-b5 notes=ok cost=$0.1881 running=$3.2867
+[idx=81 of 52] WorkArena++ task_id=m2w_2b29b7d1-bd80-4d2c-a491-9d notes=ok cost=$0.1794 running=$3.4660
+[idx=82 of 52] WorkArena++ task_id=m2w_4b2030ff-b83c-445f-bf87-9c notes=ok cost=$0.1789 running=$3.6449
+[idx=83 of 52] WorkArena++ task_id=m2w_e344b89e-767a-4618-ba82-4b notes=ok cost=$0.1821 running=$3.8270
+[idx=84 of 52] WorkArena++ task_id=m2w_17fffbee-e41b-46e4-ab75-67 notes=ok cost=$0.1774 running=$4.0044
+[idx=85 of 52] WorkArena++ task_id=m2w_86897828-35e8-4002-a98a-4e notes=ok cost=$0.1805 running=$4.1849
+[idx=86 of 52] WorkArena++ task_id=m2w_8d9e09e1-c31a-420b-ace8-07 notes=ok cost=$0.1791 running=$4.3639
+[idx=87 of 52] WorkArena++ task_id=m2w_84d8a4df-0bba-45f9-b4c8-f5 notes=ok cost=$0.1765 running=$4.5404
+[idx=88 of 52] WorkArena++ task_id=m2w_73cf6eec-cae6-4d5b-9b8e-e4 notes=ok cost=$0.1780 running=$4.7184
+[idx=89 of 52] WorkArena++ task_id=m2w_4c578076-b877-4097-bf67-e2 notes=ok cost=$0.1792 running=$4.8976
+[idx=90 of 52] WorkArena++ task_id=m2w_a88676d0-c252-408f-b796-93 notes=ok cost=$0.1793 running=$5.0769
+[idx=91 of 52] WorkArena++ task_id=m2w_fe6b5531-ce29-4ba1-8e98-43 notes=ok cost=$0.1841 running=$5.2610
+[idx=92 of 52] WorkArena++ task_id=m2w_b73503a7-e4e1-43f7-bfc0-86 notes=ok cost=$0.1857 running=$5.4467
+[idx=93 of 52] WorkArena++ task_id=m2w_d7c3103a-c195-4503-ab20-ec notes=ok cost=$0.1795 running=$5.6262
+[idx=94 of 52] WorkArena++ task_id=m2w_4ff347e6-e911-4af5-8151-78 notes=ok cost=$0.1788 running=$5.8050
+[idx=95 of 52] WorkArena++ task_id=m2w_e48f848d-62b8-441e-aafb-c7 notes=ok cost=$0.1808 running=$5.9858
+[idx=96 of 52] WorkArena++ task_id=m2w_8eef04e2-3d51-4a0e-84f2-db notes=ok cost=$0.1801 running=$6.1659
+[idx=97 of 52] WorkArena++ task_id=m2w_4f208b8b-6d5c-4d3f-8df0-ca notes=ok cost=$0.1780 running=$6.3439
+[idx=98 of 52] WorkArena++ task_id=m2w_b2c18588-b115-4937-b69f-8f notes=ok cost=$0.1768 running=$6.5207
+[idx=100 of 52] WorkArena++ task_id=m2w_3e0d115f-9da7-4211-9d99-12 notes=ok cost=$0.1808 running=$6.7015
+[idx=99 of 52] WorkArena++ task_id=m2w_1a35becb-e07b-4235-8cd3-fc notes=ok cost=$0.1865 running=$6.8880
+[idx=101 of 52] FrontierScience-Olympiad task_id=fs_af50243e-3a60-4460-9536-f9a notes=ok cost=$0.3265 running=$7.2145
+[idx=105 of 52] FrontierScience-Olympiad task_id=fs_ecb58594-7fd9-4a94-b799-0f1 notes=ok cost=$0.2358 running=$7.4503
+[idx=106 of 52] FrontierScience-Olympiad task_id=fs_0b946e4d-8fc8-4f65-85dc-8fb notes=call-failure: claude CLI exite cost=$0.0000 running=$7.4503
+[idx=102 of 52] FrontierScience-Olympiad task_id=fs_f3ba1aae-2fc3-4d9b-a5a3-42b notes=call-failure: Command '['claud cost=$0.0000 running=$7.4503
+[idx=103 of 52] FrontierScience-Olympiad task_id=fs_d3acd2cb-8477-4630-b8bb-b4b notes=call-failure: Command '['claud cost=$0.0000 running=$7.4503
+[idx=104 of 52] FrontierScience-Olympiad task_id=fs_422512ca-5a0c-4a23-b987-7fa notes=call-failure: Command '['claud cost=$0.0000 running=$7.4503
+[idx=110 of 52] FrontierScience-Olympiad task_id=fs_0b946e4d-8fc8-4f65-85dc-8fb notes=call-failure: claude CLI exite cost=$0.0000 running=$7.4503
+[idx=107 of 52] FrontierScience-Olympiad task_id=fs_1eca2503-b141-4f9f-ab10-e27 notes=ok cost=$0.5492 running=$7.9995
+[idx=112 of 52] FrontierScience-Olympiad task_id=fs_0b946e4d-8fc8-4f65-85dc-8fb notes=call-failure: claude CLI exite cost=$0.0000 running=$7.9995
+[idx=113 of 52] FrontierScience-Olympiad task_id=fs_0b946e4d-8fc8-4f65-85dc-8fb notes=call-failure: claude CLI exite cost=$0.0000 running=$7.9995
+[idx=114 of 52] FrontierScience-Olympiad task_id=fs_0b946e4d-8fc8-4f65-85dc-8fb notes=call-failure: claude CLI exite cost=$0.0000 running=$7.9995
+[idx=108 of 52] FrontierScience-Olympiad task_id=fs_f3ba1aae-2fc3-4d9b-a5a3-42b notes=ok cost=$0.2427 running=$8.2422
+[idx=109 of 52] FrontierScience-Olympiad task_id=fs_422512ca-5a0c-4a23-b987-7fa notes=ok cost=$0.1964 running=$8.4386
+[idx=111 of 52] FrontierScience-Olympiad task_id=fs_1eca2503-b141-4f9f-ab10-e27 notes=ok cost=$0.4106 running=$8.8492
+Wrote tasks/t0014_v2_annotator_sonnet_rerun/code/_outputs/v2_sonnet_annotator_costs.json (running_total=$19.7667, complete_rows=96)
+DONE. annotated=44, skipped=63, parse_failures=0, call_failures=8, complete_hierarchy=44, total_cost=$8.8492

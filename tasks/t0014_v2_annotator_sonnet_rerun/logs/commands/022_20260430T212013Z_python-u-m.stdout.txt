@@ -1,0 +1,22 @@
+[idx=17 of 20] FrontierScience-Olympiad task_id=fs_eec8840a-2d00-4e70-b043-0da verdict=acceptable cost=$0.0701 running=$0.0701
+[idx=15 of 20] FrontierScience-Olympiad task_id=fs_0f13c295-7991-43dc-a79f-d8f verdict=acceptable cost=$0.0728 running=$0.1429
+[idx=27 of 20] SWE-bench Verified task_id=swe_sphinx-doc__sphinx-11510 verdict=acceptable cost=$0.0764 running=$0.2194
+[idx=43 of 20] SWE-bench Verified task_id=swe_pytest-dev__pytest-7521 verdict=acceptable cost=$0.0687 running=$0.2881
+[idx=47 of 20] SWE-bench Verified task_id=swe_psf__requests-1766 verdict=acceptable cost=$0.0692 running=$0.3572
+[idx=1 of 20] FrontierScience-Olympiad task_id=fs_4225f097-0cee-4e43-b5b9-6ef verdict=acceptable cost=$0.0913 running=$0.4485
+[idx=30 of 20] SWE-bench Verified task_id=swe_scikit-learn__scikit-learn verdict=acceptable cost=$0.0695 running=$0.5180
+[idx=77 of 20] WorkArena++ task_id=m2w_0790c8be-6e6d-4e2a-9c13-43 verdict=acceptable cost=$0.0626 running=$0.5806
+[idx=75 of 20] WorkArena++ task_id=m2w_f385156c-4f2e-410f-bc73-7e verdict=acceptable cost=$0.0633 running=$0.6439
+[idx=45 of 20] SWE-bench Verified task_id=swe_mwaskom__seaborn-3069 verdict=acceptable cost=$0.0727 running=$0.7166
+[idx=76 of 20] WorkArena++ task_id=m2w_e437082b-8383-4322-aa58-a6 verdict=acceptable cost=$0.0632 running=$0.7798
+[idx=81 of 20] WorkArena++ task_id=m2w_2b29b7d1-bd80-4d2c-a491-9d verdict=acceptable cost=$0.0637 running=$0.8435
+[idx=39 of 20] SWE-bench Verified task_id=swe_matplotlib__matplotlib-246 verdict=needs revision cost=$0.0780 running=$0.9215
+[idx=84 of 20] WorkArena++ task_id=m2w_17fffbee-e41b-46e4-ab75-67 verdict=acceptable cost=$0.0659 running=$0.9874
+[idx=68 of 20] tau-bench task_id=he_HumanEval_135 verdict=acceptable cost=$0.0634 running=$1.0507
+[idx=92 of 20] WorkArena++ task_id=m2w_b73503a7-e4e1-43f7-bfc0-86 verdict=acceptable cost=$0.0682 running=$1.1189
+[idx=67 of 20] tau-bench task_id=he_HumanEval_136 verdict=acceptable cost=$0.0634 running=$1.1822
+[idx=71 of 20] tau-bench task_id=he_HumanEval_76 verdict=acceptable cost=$0.0621 running=$1.2443
+[idx=56 of 20] tau-bench task_id=he_HumanEval_91 verdict=acceptable cost=$0.0699 running=$1.3142
+[idx=49 of 20] tau-bench task_id=he_HumanEval_144 verdict=needs revision cost=$0.0823 running=$1.3965
+Wrote tasks/t0014_v2_annotator_sonnet_rerun/code/_outputs/v2_sonnet_judge_costs.json (running_total=$1.3965, acceptable=18, needs_revision=2)
+DONE. judged=20, skipped=0, acceptable=18, needs_revision=2, parse_failures=0, call_failures=0, total_cost=$1.3965

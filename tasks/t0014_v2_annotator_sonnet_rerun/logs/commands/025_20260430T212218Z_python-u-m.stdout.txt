@@ -1,0 +1,10 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun/assets/dataset/tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet
+
+[31m[1mERRORS:[0m
+[31m  DA-E003 error: files/ directory does not exist: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun/assets/dataset/tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet/files[0m
+[31m  DA-E001 error: details.json does not exist: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun/assets/dataset/tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet/details.json[0m
+[31m  DA-E002 error: description.md does not exist: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0014_v2_annotator_sonnet_rerun/assets/dataset/tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet/description.md[0m
+
+[31m[1mFAILED[0m — 3 error(s), 0 warning(s)
+
