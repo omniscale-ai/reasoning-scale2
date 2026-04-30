@@ -1,14 +1,13 @@
 # Suggestions: `benchmark-swebench`
 
 3 suggestion(s) in category
-[`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) **3 open** (2 high, 1
-medium).
+[`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) **3 open** (3 medium).
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## High Priority
+## Medium Priority
 
 <details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
@@ -51,8 +50,6 @@ test to confirm the harness reproduces published baseline numbers (e.g., one of 
 Claude or GPT scores).
 
 </details>
-
-## Medium Priority
 
 <details>
 <summary>📊 <strong>Sensitivity-check the SWE-bench Verified 4-8-hunks subset against

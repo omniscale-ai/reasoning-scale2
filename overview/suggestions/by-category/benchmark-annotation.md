@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-annotation`
 
 11 suggestion(s) in category
-[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **9 open** (4 high, 5
-medium), **2 closed**.
+[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **7 open** (2 high, 5
+medium), **4 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -27,52 +27,6 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
-disentangle schema vs model effect</strong> (S-0009-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-01` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
-Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
--> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
-using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
-~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
-v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
-contributions.
-
-</details>
-
-<details>
-<summary>📂 <strong>Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy
-rows with the actual benchmark data</strong> (S-0009-06)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-06` |
-| **Kind** | dataset |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | — |
-| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-Inspecting the v1 (and now v2) rows shows the 'WorkArena++' rows are actually Mind2Web proxy
-data and the 'tau-bench' rows are HumanEval proxy data — neither benchmark is loaded directly
-because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance
-matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a)
-acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the
-benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream
-consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
 
 </details>
 
@@ -230,6 +184,56 @@ verdicts on FrontierScience-Olympiad rows complain about content not present in 
 excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
 and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
 on FrontierScience-Olympiad.
+
+</details>
+
+<details>
+<summary>✅ <s>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
+disentangle schema vs model effect</s> — covered by <a
+href="../../../tasks/t0014_v2_annotator_sonnet_rerun/"><code>t0014_v2_annotator_sonnet_rerun</code></a>
+(S-0009-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
+Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
+-> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
+using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
+~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
+v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
+contributions.
+
+</details>
+
+<details>
+<summary>✅ <s>Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy rows
+with the actual benchmark data</s> — covered by <a
+href="../../../tasks/t0015_correct_proxy_benchmark_labels/"><code>t0015_correct_proxy_benchmark_labels</code></a>
+(S-0009-06)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-06` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Inspecting the v1 (and now v2) rows shows the 'WorkArena++' rows are actually Mind2Web proxy
+data and the 'tau-bench' rows are HumanEval proxy data — neither benchmark is loaded directly
+because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance
+matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a)
+acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the
+benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream
+consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
 
 </details>
 

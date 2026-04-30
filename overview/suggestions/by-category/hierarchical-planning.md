@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
 16 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **12 open** (4
-high, 5 medium, 3 low), **4 closed**.
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **11 open** (3
+high, 5 medium, 3 low), **5 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -48,29 +48,6 @@ slice with a single shared LLM provider, recording trajectory_records.jsonl per 
 computing the registered metrics task_success_rate, avg_decisions_per_task, and
 overconfident_error_rate per condition. The harness must depend on this library only via the
 trajectory schema, never via internal helpers, to preserve isolation.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
-disentangle schema vs model effect</strong> (S-0009-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-01` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
-Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
--> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
-using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
-~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
-v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
-contributions.
 
 </details>
 
@@ -343,6 +320,31 @@ template per granularity, the tagging logic that decides which granularity is ac
 LLM call, and a logging schema that records the active granularity for every action so
 post-hoc per-granularity analysis is possible. Replicate Least-to-Most's solution-reuse
 pattern [Zhou2022] inside the implementation.
+
+</details>
+
+<details>
+<summary>✅ <s>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
+disentangle schema vs model effect</s> — covered by <a
+href="../../../tasks/t0014_v2_annotator_sonnet_rerun/"><code>t0014_v2_annotator_sonnet_rerun</code></a>
+(S-0009-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
+Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
+-> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
+using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
+~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
+v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
+contributions.
 
 </details>
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-30T00:53:35Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-30T18:10:33Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>34015</char_count>
-    <byte_count>34017</byte_count>
-    <estimated_tokens>8503</estimated_tokens>
+    <char_count>34031</char_count>
+    <byte_count>34033</byte_count>
+    <estimated_tokens>8507</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -66,7 +66,7 @@ Suggestions: 42
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
 Status: active
-Priority: high
+Priority: medium
 Kind: evaluation
 Source task: t0002_literature_survey_granularity_conditioning
 Source paper: 10.48550_arXiv.2406.12045
@@ -101,7 +101,7 @@ Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted
 
 ## Negotiate FrontierMath access via Epoch AI evaluation pipeline
 ID: S-0002-04
-Status: active
+Status: rejected
 Priority: high
 Kind: dataset
 Source task: t0002_literature_survey_granularity_conditioning
@@ -114,7 +114,7 @@ FrontierMath [Glazer2024] uses contamination-resistant unpublished problems host
 ## Build the SWE-bench Verified Docker harness
 ID: S-0002-05
 Status: active
-Priority: high
+Priority: medium
 Kind: dataset
 Source task: t0002_literature_survey_granularity_conditioning
 Source paper: no-doi_OpenAI2024_swe-bench-verified
@@ -195,7 +195,7 @@ FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to Fron
 
 ## Provision a ServiceNow developer instance for WorkArena++ live evaluation
 ID: S-0003-02
-Status: active
+Status: rejected
 Priority: high
 Kind: dataset
 Source task: t0003_download_benchmark_subsets
@@ -241,7 +241,7 @@ This task wrote the `code/dataset_asset.py` helper inline, but the same DatasetD
 
 ## Hierarchical annotation v2: scale to &gt;=200 rows with full human review
 ID: S-0005-01
-Status: active
+Status: rejected
 Priority: high
 Kind: dataset
 Source task: t0005_hierarchical_annotation_pilot_v1
@@ -299,7 +299,7 @@ Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-
 
 ## Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning experiments
 ID: S-0005-06
-Status: active
+Status: rejected
 Priority: high
 Kind: experiment
 Source task: t0005_hierarchical_annotation_pilot_v1
@@ -312,7 +312,7 @@ The dataset asset is now ready for downstream consumption. Plan a baseline-evalu
 ## Build benchmark-specific tool registries for the four roadmap benchmarks
 ID: S-0006-01
 Status: active
-Priority: high
+Priority: medium
 Kind: library
 Source task: t0006_scope_aware_react_library
 Categories: agent-evaluation, benchmark-frontierscience, benchmark-workarena, benchmark-swebench, benchmark-taubench
@@ -378,7 +378,7 @@ Create a third agent library that wraps scope_unaware_planandsolve_v1 (or scope_
 
 ## Phase 2 A-vs-B-vs-C evaluation harness
 ID: S-0007-02
-Status: active
+Status: rejected
 Priority: high
 Kind: experiment
 Source task: t0007_scope_unaware_planandsolve_library

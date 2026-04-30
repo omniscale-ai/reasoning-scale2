@@ -1,25 +1,29 @@
-# ⏳ Phase 2 A/B/C smoke harness on FrontierScience subset
+# ⏳ Tasks: In Progress
+
+1 tasks. ⏳ **1 in_progress**.
 
 [Back to all tasks](../README.md)
 
-## Overview
+---
+
+## ⏳ In Progress
+
+<details>
+<summary>⏳ 0012 — <strong>Phase 2 A/B/C smoke harness on FrontierScience
+subset</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0012_phase2_abc_smoke_frontierscience` |
-| **Status** | ⏳ in_progress |
-| **Started** | 2026-04-30T00:55:11Z |
+| **Status** | in_progress |
+| **Effective date** | 2026-04-30 |
 | **Dependencies** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md), [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0011_metric2_calibration_aggregator`](../../../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
-| **Source suggestion** | `S-0006-03` |
-| **Task types** | `experiment-run`, `baseline-evaluation` |
 | **Expected assets** | 3 predictions, 1 library |
+| **Source suggestion** | `S-0006-03` |
+| **Task types** | [`experiment-run`](../../../meta/task_types/experiment-run/), [`baseline-evaluation`](../../../meta/task_types/baseline-evaluation/) |
+| **Start time** | 2026-04-30T00:55:11Z |
+| **Task page** | [Phase 2 A/B/C smoke harness on FrontierScience subset](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
 | **Task folder** | [`t0012_phase2_abc_smoke_frontierscience/`](../../../tasks/t0012_phase2_abc_smoke_frontierscience/) |
-
-<details>
-<summary><strong>Task Description</strong></summary>
-
-*Source:
-[`task_description.md`](../../../tasks/t0012_phase2_abc_smoke_frontierscience/task_description.md)*
 
 # Phase 2 A/B/C Smoke Harness on FrontierScience Subset
 

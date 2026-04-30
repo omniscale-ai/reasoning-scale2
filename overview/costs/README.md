@@ -15,9 +15,9 @@ threshold.
 | Warn threshold | 80% ($80.00) |
 | Stop threshold | 100% ($100.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 11 |
+| Tasks with cost records | 12 |
 | Tasks with non-zero spend | 2 |
-| Skipped tasks | 1 |
+| Skipped tasks | 3 |
 
 ## Service Totals
 
@@ -33,7 +33,7 @@ threshold.
 | `judge_haiku_4_5` | $1.68 |
 | `anthropic_api` | $0.06 |
 
-9 task cost record(s) are zero-cost and omitted from the main spend table.
+10 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 
@@ -47,3 +47,5 @@ threshold.
 | Task ID | Reason |
 |---------|--------|
 | `t0012_phase2_abc_smoke_frontierscience` | results/costs.json is missing or invalid |
+| `t0014_v2_annotator_sonnet_rerun` | results/costs.json is missing or invalid |
+| `t0015_correct_proxy_benchmark_labels` | results/costs.json is missing or invalid |
