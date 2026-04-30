@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-04-30T00:53:35Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-04-30T18:10:33Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>1610</char_count>
-    <byte_count>1610</byte_count>
-    <estimated_tokens>402</estimated_tokens>
+    <char_count>1646</char_count>
+    <byte_count>1646</byte_count>
+    <estimated_tokens>411</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -45,6 +45,7 @@ Spent: 9.2%
 * t0009_hierarchical_annotation_v2: $9.10
 * t0010_matched_mismatch_library: $0.00
 * t0011_metric2_calibration_aggregator: $0.00
+* t0013_brainstorm_results_4: $0.00
       </content>
     </section>
   </sections>

@@ -63,24 +63,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (9 open, 2 closed)
-
-<details>
-<summary>🧪 <strong>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
-disentangle schema vs model effect</strong> (S-0009-01)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
-
-The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
-Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
--> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
-using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
-~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
-v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
-contributions.
-
-</details>
+## Suggestions (7 open, 4 closed)
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -145,23 +128,6 @@ AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expa
 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
 smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
 rate, ~$5-6 added cost. Inherits S-0005-01.
-
-</details>
-
-<details>
-<summary>📂 <strong>Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy
-rows with the actual benchmark data</strong> (S-0009-06)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
-
-Inspecting the v1 (and now v2) rows shows the 'WorkArena++' rows are actually Mind2Web proxy
-data and the 'tau-bench' rows are HumanEval proxy data — neither benchmark is loaded directly
-because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance
-matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a)
-acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the
-benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream
-consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
 
 </details>
 

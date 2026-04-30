@@ -159,7 +159,7 @@ as a distinct hierarchy_kind. Document the chosen approach and update the mapper
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
 benchmarks</strong> (S-0006-01)</summary>
 
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: library | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
 [t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
 
 scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs

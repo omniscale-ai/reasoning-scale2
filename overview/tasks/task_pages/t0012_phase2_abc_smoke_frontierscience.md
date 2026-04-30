@@ -1,4 +1,4 @@
-# ⏹ Phase 2 A/B/C smoke harness on FrontierScience subset
+# ⏳ Phase 2 A/B/C smoke harness on FrontierScience subset
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0012_phase2_abc_smoke_frontierscience` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-04-30T00:55:11Z |
 | **Dependencies** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md), [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0011_metric2_calibration_aggregator`](../../../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
 | **Source suggestion** | `S-0006-03` |
 | **Task types** | `experiment-run`, `baseline-evaluation` |

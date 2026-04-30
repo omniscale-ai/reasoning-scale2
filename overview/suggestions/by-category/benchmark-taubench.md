@@ -1,13 +1,13 @@
 # Suggestions: `benchmark-taubench`
 
 2 suggestion(s) in category
-[`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) **2 open** (2 high).
+[`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) **2 open** (2 medium).
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## High Priority
+## Medium Priority
 
 <details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap

@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0013-01",
+  "correcting_task": "t0013_brainstorm_results_4",
+  "target_task": "t0002_literature_survey_granularity_conditioning",
+  "target_kind": "suggestion",
+  "target_id": "S-0002-04",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Duplicate of S-0003-01 (FrontierMath access negotiation). Both suggestions cover the same external-data acquisition step — keep S-0003-01 as the canonical record because it sits in the benchmark-download task that owns the access decision; reject S-0002-04 to clear the duplicate from the high-priority backlog. Reversible via a future correction if the access-negotiation framing diverges from S-0003-01."
+}

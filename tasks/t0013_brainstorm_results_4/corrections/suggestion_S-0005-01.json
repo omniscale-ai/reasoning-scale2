@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0013-05",
+  "correcting_task": "t0013_brainstorm_results_4",
+  "target_task": "t0005_hierarchical_annotation_pilot_v1",
+  "target_kind": "suggestion",
+  "target_id": "S-0005-01",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Superseded by S-0009-03 (v2 row-count expansion) and S-0009-05 (v2 human review pass). The v1-era 'row-count expansion' framing of S-0005-01 is stale now that the v2 schema is the canonical annotation foundation; the scaling and human-review tracks are owned end-to-end by the S-0009-03 / S-0009-05 follow-ups."
+}

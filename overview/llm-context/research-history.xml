@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-30T00:53:35Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-30T18:10:33Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>23</section_count>
-    <char_count>164687</char_count>
-    <byte_count>165061</byte_count>
-    <estimated_tokens>41171</estimated_tokens>
+    <section_count>26</section_count>
+    <char_count>169517</char_count>
+    <byte_count>169905</byte_count>
+    <estimated_tokens>42379</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -138,9 +138,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0009_hierarchical_annotation_v2</id>
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
+        <id>t0013_brainstorm_results_4</id>
       </source_ids>
       <content>
-Completed tasks: 11
+Completed tasks: 12
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -207,6 +208,12 @@ ID: t0011_metric2_calibration_aggregator
 Completed: 2026-04-29
 Short description: Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.
 Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Implemented the metric2_calibration_aggregator_v1 library that operationalizes the project&#x27;s Metric 2 (`overconfident_error_rate`) using the Xiong2024 §3.2 black-box calibration protocol. The library exposes `ConfidencePromptTemplate`, `ConfidenceJudge`, `elicit_confidence`, `compute_overconfident_error_rate`, and `CalibrationRecord` plus a trajectory-record adapter, with a single overridable threshold default (`HIGH_CONFIDENCE_THRESHOLD = 0.75`) and the canonical low/medium/high → 0.25/0.5/0.9 numeric mapping. Metrics * **Tests run**: 25 — all passed in 0.03 s (`uv run pytest tasks/t0011_metric2_calibration_aggregator/code/`). *...
+
+## Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels
+ID: t0013_brainstorm_results_4
+Completed: 2026-04-30
+Short description: Brainstorm 4: insert two parallel pre-Phase-2 tasks (v2 Sonnet rerun + proxy benchmark relabel), prune 5 redundant suggestions, and demote 3 access/infrastructure suggestions to medium priority.
+Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainstorm produced two new not-started tasks (t0014 and t0015) and applied eight correction files for the Round 2 cleanup deferred from brainstorm 3. The two tasks address the schema-vs-model confound and proxy-benchmark provenance issues surfaced by t0009. Wave budget cap: $10. Both new tasks are parallel-safe; t0012 stays in_progress and unaffected. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after t0009-t0011 merged with $9.16 / $100 spent. t0012 is in_progress. t0009 reported a +58 pp v2-vs-v1 judge accept rate but the annotation provider was swapped from Sonnet (v1) to Haiku (v2), so the headline delta is...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -214,16 +221,32 @@ Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Impl
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
+        <id>t0014_v2_annotator_sonnet_rerun</id>
+        <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Planned or active tasks: 1
+Planned or active tasks: 3
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
-Status: not_started
+Status: in_progress
 Effective date: 2026-04-30
 Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
 Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator
+
+## v2 annotator Sonnet rerun: deconfound schema vs model
+ID: t0014_v2_annotator_sonnet_rerun
+Status: not_started
+Effective date: unknown
+Short description: Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009&#x27;s +58 pp delta.
+Dependencies: t0009_hierarchical_annotation_v2
+
+## Correct proxy-benchmark labels in t0009 v2 dataset
+ID: t0015_correct_proxy_benchmark_labels
+Status: not_started
+Effective date: unknown
+Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
+Dependencies: t0009_hierarchical_annotation_v2
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -2932,6 +2955,111 @@ surface the model&#x27;s most-confident wrong answer (matching the metric&#x27;s
   / 0.5 / 0.9), the 3-sample self-consistency aggregation rule, and the high-confidence bucket
   boundary that this library implements verbatim. Sole source for the prompt template and threshold
   default.
+      </content>
+    </section>
+    <section id="t0013_brainstorm_results_4-research_papers" source_kind="file">
+      <title>t0013_brainstorm_results_4 — Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels — research_papers.md</title>
+      <source_name>research_papers.md</source_name>
+      <source_ids>
+        <id>t0013_brainstorm_results_4</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0013_brainstorm_results_4/research/research_papers.md</path>
+      </repo_paths>
+      <content>
+#### Objective
+
+No research required for brainstorming session.
+
+#### Background
+
+No research required for brainstorming session.
+
+#### Methodology Review
+
+No research required for brainstorming session.
+
+#### Key Findings
+
+No research required for brainstorming session.
+
+#### Recommended Approach
+
+No research required for brainstorming session.
+
+#### References
+
+No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0013_brainstorm_results_4-research_internet" source_kind="file">
+      <title>t0013_brainstorm_results_4 — Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels — research_internet.md</title>
+      <source_name>research_internet.md</source_name>
+      <source_ids>
+        <id>t0013_brainstorm_results_4</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0013_brainstorm_results_4/research/research_internet.md</path>
+      </repo_paths>
+      <content>
+#### Objective
+
+No research required for brainstorming session.
+
+#### Background
+
+No research required for brainstorming session.
+
+#### Methodology Review
+
+No research required for brainstorming session.
+
+#### Key Findings
+
+No research required for brainstorming session.
+
+#### Recommended Approach
+
+No research required for brainstorming session.
+
+#### References
+
+No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0013_brainstorm_results_4-research_code" source_kind="file">
+      <title>t0013_brainstorm_results_4 — Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0013_brainstorm_results_4</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0013_brainstorm_results_4/research/research_code.md</path>
+      </repo_paths>
+      <content>
+#### Objective
+
+No research required for brainstorming session.
+
+#### Background
+
+No research required for brainstorming session.
+
+#### Methodology Review
+
+No research required for brainstorming session.
+
+#### Key Findings
+
+No research required for brainstorming session.
+
+#### Recommended Approach
+
+No research required for brainstorming session.
+
+#### References
+
+No research required for brainstorming session.
       </content>
     </section>
   </sections>

@@ -233,24 +233,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (12 open, 4 closed)
-
-<details>
-<summary>🧪 <strong>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
-disentangle schema vs model effect</strong> (S-0009-01)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
-
-The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
-Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
--> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
-using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
-~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
-v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
-contributions.
-
-</details>
+## Suggestions (11 open, 5 closed)
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty

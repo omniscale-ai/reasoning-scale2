@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-12-4682B4" alt="Tasks"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-15-4682B4" alt="Tasks"></a>
   <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-42-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (5K) |
-[full](llm-context/full.xml) (40K) | [roadmap](llm-context/roadmap.xml) (14K) |
-[results](llm-context/results-deep-dive.xml) (34K) |
+[full](llm-context/full.xml) (45K) | [roadmap](llm-context/roadmap.xml) (16K) |
+[results](llm-context/results-deep-dive.xml) (36K) |
 [assets](llm-context/literature-and-assets.xml) (10K)
 
-*Last updated: 2026-04-30 00:53 UTC*
+*Last updated: 2026-04-30 18:10 UTC*
 
 * **Budget**: **$9** spent of $100
 * **Remaining**: **$91**
@@ -48,17 +48,20 @@ No daily news yet.
 
 ---
 
-## [In Progress (0)](tasks/by-status/in_progress.md)
+## [In Progress (1)](tasks/by-status/in_progress.md)
 
-No tasks in progress.
+| # | Task | Started |
+|---|------|---------|
+| 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-04-30 00:55 |
 
 ---
 
-## [Ready to Start (1)](tasks/by-status/not_started.md)
+## [Ready to Start (2)](tasks/by-status/not_started.md)
 
 | # | Task | Description | Date Added |
 |---|------|-------------|------------|
-| 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`description`](../tasks/t0012_phase2_abc_smoke_frontierscience/task_description.md) | 2026-04-30 |
+| 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`description`](../tasks/t0014_v2_annotator_sonnet_rerun/task_description.md) | — |
+| 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`description`](../tasks/t0015_correct_proxy_benchmark_labels/task_description.md) | — |
 
 ---
 
@@ -68,10 +71,11 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (11 total)](tasks/by-status/completed.md)
+## [Recently Completed (12 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0013 | [Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels](../overview/tasks/task_pages/t0013_brainstorm_results_4.md) | [`results`](../tasks/t0013_brainstorm_results_4/results/results_detailed.md) | 2026-04-30 18:00 |
 | 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`results`](../tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md) | 2026-04-30 00:53 |
 | 0008 | [Brainstorm session 3: insert v2 re-annotation, plan Phase 2 smoke](../overview/tasks/task_pages/t0008_brainstorm_results_3.md) | [`results`](../tasks/t0008_brainstorm_results_3/results/results_detailed.md) | 2026-04-30 00:00 |
 | 0010 | [Matched-mismatch library: condition C with deliberately wrong granularity tags](../overview/tasks/task_pages/t0010_matched_mismatch_library.md) | [`results`](../tasks/t0010_matched_mismatch_library/results/results_detailed.md) | 2026-04-29 23:46 |
@@ -81,30 +85,12 @@ No blocked tasks.
 | 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
 | 0004 | [Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries](../overview/tasks/task_pages/t0004_brainstorm_results_2.md) | [`results`](../tasks/t0004_brainstorm_results_2/results/results_detailed.md) | 2026-04-29 15:30 |
 | 0003 | [Download benchmark subsets for the four roadmap sources](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | [`results`](../tasks/t0003_download_benchmark_subsets/results/results_detailed.md) | 2026-04-29 14:58 |
-| 0002 | [Literature survey: granularity conditioning and hierarchical agents](../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | [`results`](../tasks/t0002_literature_survey_granularity_conditioning/results/results_detailed.md) | 2026-04-29 14:26 |
 
-*1 more completed task → [completed tasks](tasks/by-status/completed.md)*
+*2 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
-## [Recent Suggestions (35 open)](suggestions/)
-
-<details>
-<summary>🧪 <strong>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
-disentangle schema vs model effect</strong> (S-0009-01)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
-
-The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
-Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
--> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
-using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
-~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
-v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
-contributions.
-
-</details>
+## [Recent Suggestions (33 open)](suggestions/)
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -173,27 +159,10 @@ rate, ~$5-6 added cost. Inherits S-0005-01.
 </details>
 
 <details>
-<summary>📂 <strong>Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy
-rows with the actual benchmark data</strong> (S-0009-06)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
-
-Inspecting the v1 (and now v2) rows shows the 'WorkArena++' rows are actually Mind2Web proxy
-data and the 'tau-bench' rows are HumanEval proxy data — neither benchmark is loaded directly
-because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance
-matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a)
-acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the
-benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream
-consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
-
-</details>
-
-<details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
 reporting</strong> (S-0002-01)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
 [t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
 
 tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across
@@ -238,7 +207,7 @@ explicit access conversation with Epoch AI, plus a fallback to public Olympiad b
 <details>
 <summary>📂 <strong>Build the SWE-bench Verified Docker harness</strong> (S-0002-05)</summary>
 
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
 [t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
 
 SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source
@@ -249,28 +218,41 @@ Claude or GPT scores).
 
 </details>
 
-*25 more open suggestions → [open suggestions](suggestions/)*
+<details>
+<summary>📚 <strong>Re-fetch the 11 paper PDFs with git LFS enabled</strong>
+(S-0002-09)</summary>
+
+**Kind**: library | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
+
+All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to
+a future task that enables git LFS. Once LFS is configured, run a download-paper task per
+asset that fetches the PDF (or markdown conversion) into the asset's files/ directory and
+updates download_status to success. This will let later tasks (especially compare-literature)
+cite specific page numbers and tables from the source PDFs.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
+ablation</strong> (S-0002-10)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-04-29 | **Source**:
+[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
+
+Reflexion [Shinn2023] adds verbal self-reflection across trials and reaches 91% pass@1 on
+HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would conflate scope
+conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether
+Reflexion-style memory adds further gains on top of the scope-aware (A) condition established
+in Phase 2.
+
+</details>
+
+*23 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (14)](suggestions/)
-
-<details>
-<summary>🧪 <strong>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
-disentangle schema vs model effect</strong> (S-0009-01)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
-
-The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
-Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
--> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
-using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
-~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
-v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
-contributions.
-
-</details>
+## [High Priority Suggestions (9)](suggestions/)
 
 <details>
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
@@ -289,39 +271,6 @@ estimate: 4-6 hours of human review time at $50/hour = $200-300.
 </details>
 
 <details>
-<summary>📂 <strong>Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy
-rows with the actual benchmark data</strong> (S-0009-06)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
-
-Inspecting the v1 (and now v2) rows shows the 'WorkArena++' rows are actually Mind2Web proxy
-data and the 'tau-bench' rows are HumanEval proxy data — neither benchmark is loaded directly
-because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance
-matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a)
-acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the
-benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream
-consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
-
-</details>
-
-<details>
-<summary>📊 <strong>Register pass^k as a project metric for reliability
-reporting</strong> (S-0002-01)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across
-k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail
-demonstrates that single-rollout pass@1 systematically overstates agent reliability. The
-project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
-task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
-luck.
-
-</details>
-
-<details>
 <summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
 WorkArena++</strong> (S-0002-03)</summary>
 
@@ -348,20 +297,6 @@ AI's evaluation pipeline; the raw problems are not publicly downloadable. The pr
 explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
 (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
-
-</details>
-
-<details>
-<summary>📂 <strong>Build the SWE-bench Verified Docker harness</strong> (S-0002-05)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source
-composite. Its evaluation harness uses Docker per repository to isolate test runs. This task
-would download the Verified problem set, pull the Docker images, and run a 10-instance smoke
-test to confirm the harness reproduces published baseline numbers (e.g., one of the early
-Claude or GPT scores).
 
 </details>
 
@@ -410,7 +345,50 @@ Cohen's kappa) between the human rater and the LLM annotator.
 
 </details>
 
-*4 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+<details>
+<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
+experiments</strong> (S-0005-06)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
+that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
+prompts (B vs G/S/A from the project's research questions).
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0007_scope_unaware_planandsolve_library](../tasks/t0007_scope_unaware_planandsolve_library/)
+
+Build the experiment harness that runs all three libraries (scope_aware_react_v1,
+scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
+slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
+computing the registered metrics task_success_rate, avg_decisions_per_task, and
+overconfident_error_rate per condition. The harness must depend on this library only via the
+trajectory schema, never via internal helpers, to preserve isolation.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
+t0012</strong> (S-0010-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0010_matched_mismatch_library](../tasks/t0010_matched_mismatch_library/)
+
+When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
+and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
+with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
+v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
+'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
+preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
+effect (see research_papers.md, Wang2023 and Zhou2022).
+
+</details>
 
 ---
 

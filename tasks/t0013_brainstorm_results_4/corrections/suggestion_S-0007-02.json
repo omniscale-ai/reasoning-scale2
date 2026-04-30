@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0013-04",
+  "correcting_task": "t0013_brainstorm_results_4",
+  "target_task": "t0007_scope_unaware_planandsolve_library",
+  "target_kind": "suggestion",
+  "target_id": "S-0007-02",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Already covered by t0012_phase2_abc_smoke_frontierscience, which exercises the matched-mismatch C condition (built in t0010) against the same A/B harness. Keeping S-0007-02 active in the backlog after the task that exercises it has launched would only generate duplicate suggestion-chooser hits."
+}

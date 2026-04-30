@@ -71,7 +71,7 @@ No answers in this category.
 <summary>📊 <strong>Register pass^k as a project metric for reliability
 reporting</strong> (S-0002-01)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
 [t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
 
 tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across
@@ -87,7 +87,7 @@ luck.
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
 benchmarks</strong> (S-0006-01)</summary>
 
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: library | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
 [t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
 
 scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs

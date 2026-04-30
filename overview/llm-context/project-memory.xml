@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-30T00:53:35Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-30T18:10:33Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>52193</char_count>
-    <byte_count>52264</byte_count>
-    <estimated_tokens>13048</estimated_tokens>
+    <char_count>54065</char_count>
+    <byte_count>54138</byte_count>
+    <estimated_tokens>13516</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -142,9 +142,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0009_hierarchical_annotation_v2</id>
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
+        <id>t0013_brainstorm_results_4</id>
       </source_ids>
       <content>
-Completed tasks: 11
+Completed tasks: 12
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -211,6 +212,12 @@ ID: t0011_metric2_calibration_aggregator
 Completed: 2026-04-29
 Short description: Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.
 Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Implemented the metric2_calibration_aggregator_v1 library that operationalizes the project&#x27;s Metric 2 (`overconfident_error_rate`) using the Xiong2024 §3.2 black-box calibration protocol. The library exposes `ConfidencePromptTemplate`, `ConfidenceJudge`, `elicit_confidence`, `compute_overconfident_error_rate`, and `CalibrationRecord` plus a trajectory-record adapter, with a single overridable threshold default (`HIGH_CONFIDENCE_THRESHOLD = 0.75`) and the canonical low/medium/high → 0.25/0.5/0.9 numeric mapping. Metrics * **Tests run**: 25 — all passed in 0.03 s (`uv run pytest tasks/t0011_metric2_calibration_aggregator/code/`). *...
+
+## Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels
+ID: t0013_brainstorm_results_4
+Completed: 2026-04-30
+Short description: Brainstorm 4: insert two parallel pre-Phase-2 tasks (v2 Sonnet rerun + proxy benchmark relabel), prune 5 redundant suggestions, and demote 3 access/infrastructure suggestions to medium priority.
+Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainstorm produced two new not-started tasks (t0014 and t0015) and applied eight correction files for the Round 2 cleanup deferred from brainstorm 3. The two tasks address the schema-vs-model confound and proxy-benchmark provenance issues surfaced by t0009. Wave budget cap: $10. Both new tasks are parallel-safe; t0012 stays in_progress and unaffected. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after t0009-t0011 merged with $9.16 / $100 spent. t0012 is in_progress. t0009 reported a +58 pp v2-vs-v1 judge accept rate but the annotation provider was swapped from Sonnet (v1) to Haiku (v2), so the headline delta is...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -218,16 +225,32 @@ Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Impl
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
+        <id>t0014_v2_annotator_sonnet_rerun</id>
+        <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Planned or active tasks: 1
+Planned or active tasks: 3
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
-Status: not_started
+Status: in_progress
 Effective date: 2026-04-30
 Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
 Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator
+
+## v2 annotator Sonnet rerun: deconfound schema vs model
+ID: t0014_v2_annotator_sonnet_rerun
+Status: not_started
+Effective date: unknown
+Short description: Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009&#x27;s +58 pp delta.
+Dependencies: t0009_hierarchical_annotation_v2
+
+## Correct proxy-benchmark labels in t0009 v2 dataset
+ID: t0015_correct_proxy_benchmark_labels
+Status: not_started
+Effective date: unknown
+Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
+Dependencies: t0009_hierarchical_annotation_v2
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -241,36 +264,29 @@ Answers: 0
       <title>Open Suggestions</title>
       <source_name>aggregate_suggestions_full</source_name>
       <source_ids>
-        <id>S-0002-01</id>
         <id>S-0002-02</id>
         <id>S-0002-03</id>
-        <id>S-0002-04</id>
-        <id>S-0002-05</id>
         <id>S-0002-06</id>
         <id>S-0002-07</id>
         <id>S-0003-01</id>
-        <id>S-0003-02</id>
-        <id>S-0005-01</id>
         <id>S-0005-02</id>
-        <id>S-0005-06</id>
-        <id>S-0006-01</id>
         <id>S-0006-03</id>
         <id>S-0007-01</id>
-        <id>S-0007-02</id>
         <id>S-0010-01</id>
         <id>S-0009-01</id>
         <id>S-0009-03</id>
         <id>S-0009-06</id>
+        <id>S-0002-01</id>
+        <id>S-0002-05</id>
+        <id>S-0002-08</id>
+        <id>S-0002-09</id>
+        <id>S-0003-03</id>
+        <id>S-0003-04</id>
+        <id>S-0005-03</id>
+        <id>S-0005-04</id>
       </source_ids>
       <content>
 Open suggestions: 20
-
-## Register pass^k as a project metric for reliability reporting
-ID: S-0002-01
-Priority: high
-Kind: evaluation
-Source task: t0002_literature_survey_granularity_conditioning
-tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -285,20 +301,6 @@ Priority: high
 Kind: library
 Source task: t0002_literature_survey_granularity_conditioning
 Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow developer instance and the BrowserGym Python harness. This is a substantial infrastructure task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1 annotation begins.
-
-## Negotiate FrontierMath access via Epoch AI evaluation pipeline
-ID: S-0002-04
-Priority: high
-Kind: dataset
-Source task: t0002_literature_survey_granularity_conditioning
-FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch AI&#x27;s evaluation pipeline; the raw problems are not publicly downloadable. The project needs an explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
-
-## Build the SWE-bench Verified Docker harness
-ID: S-0002-05
-Priority: high
-Kind: dataset
-Source task: t0002_literature_survey_granularity_conditioning
-SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
 
 ## Implement Plan-and-Solve as the canonical scope-unaware (B) baseline
 ID: S-0002-06
@@ -321,40 +323,12 @@ Kind: dataset
 Source task: t0003_download_benchmark_subsets
 FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses 40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per the t0002 fallback plan.
 
-## Provision a ServiceNow developer instance for WorkArena++ live evaluation
-ID: S-0003-02
-Priority: high
-Kind: dataset
-Source task: t0003_download_benchmark_subsets
-WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the upstream task-class manifest. Provision a free ServiceNow developer instance, request HF access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2 fallback.
-
-## Hierarchical annotation v2: scale to &gt;=200 rows with full human review
-ID: S-0005-01
-Priority: high
-Kind: dataset
-Source task: t0005_hierarchical_annotation_pilot_v1
-Extend the v1 pilot to &gt;=200 rows by re-running the upstream pilot pipeline with a stricter retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform a full human-rater review of every row. Compute inter-rater agreement (Krippendorff&#x27;s alpha or Cohen&#x27;s kappa) between the human rater and the LLM annotator.
-
 ## Re-run LLM-as-judge with full problem text (no truncation)
 ID: S-0005-02
 Priority: high
 Kind: evaluation
 Source task: t0005_hierarchical_annotation_pilot_v1
 The v1 judge sees only the first 1500 chars of each problem. Three of four needs-revision verdicts on FrontierScience-Olympiad rows complain about content not present in the truncated excerpt. Re-run the audit using the full problem text (or a structured per-section summary) and compare accept rates. Predict an absolute accept-rate increase of &gt;=15 percentage points on FrontierScience-Olympiad.
-
-## Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning experiments
-ID: S-0005-06
-Priority: high
-Kind: experiment
-Source task: t0005_hierarchical_annotation_pilot_v1
-The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent prompts (B vs G/S/A from the project&#x27;s research questions).
-
-## Build benchmark-specific tool registries for the four roadmap benchmarks
-ID: S-0006-01
-Priority: high
-Kind: library
-Source task: t0006_scope_aware_react_library
-scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++ (browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests, git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own write-library task that imports scope_aware_react_v1 and registers a registry with consistent naming conventions.
 
 ## Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience subset
 ID: S-0006-03
@@ -369,13 +343,6 @@ Priority: high
 Kind: library
 Source task: t0007_scope_unaware_planandsolve_library
 Create a third agent library that wraps scope_unaware_planandsolve_v1 (or scope_aware_react_v1) with a tag-classifier that retroactively labels each step&#x27;s granularity, producing the matched-mismatch (C) condition for the project&#x27;s A-vs-B-vs-C comparison. Reuse this task&#x27;s TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory schema. The classifier should be a small fine-tuned model or heuristic so the task is local-only and deterministic.
-
-## Phase 2 A-vs-B-vs-C evaluation harness
-ID: S-0007-02
-Priority: high
-Kind: experiment
-Source task: t0007_scope_unaware_planandsolve_library
-Build the experiment harness that runs all three libraries (scope_aware_react_v1, scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and computing the registered metrics task_success_rate, avg_decisions_per_task, and overconfident_error_rate per condition. The harness must depend on this library only via the trajectory schema, never via internal helpers, to preserve isolation.
 
 ## Add a uniform-random vs. adversarial vs. matched ablation to t0012
 ID: S-0010-01
@@ -404,6 +371,62 @@ Priority: high
 Kind: dataset
 Source task: t0009_hierarchical_annotation_v2
 Inspecting the v1 (and now v2) rows shows the &#x27;WorkArena++&#x27; rows are actually Mind2Web proxy data and the &#x27;tau-bench&#x27; rows are HumanEval proxy data — neither benchmark is loaded directly because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a) acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
+
+## Register pass^k as a project metric for reliability reporting
+ID: S-0002-01
+Priority: medium
+Kind: evaluation
+Source task: t0002_literature_survey_granularity_conditioning
+tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.
+
+## Build the SWE-bench Verified Docker harness
+ID: S-0002-05
+Priority: medium
+Kind: dataset
+Source task: t0002_literature_survey_granularity_conditioning
+SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
+
+## Run a Phase 1 pilot annotation on 20 tasks before scaling to 100
+ID: S-0002-08
+Priority: medium
+Kind: experiment
+Source task: t0002_literature_survey_granularity_conditioning
+The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+## Re-fetch the 11 paper PDFs with git LFS enabled
+ID: S-0002-09
+Priority: medium
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset&#x27;s files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.
+
+## Sensitivity-check the SWE-bench Verified 4-8-hunks subset against [3, 12]
+ID: S-0003-03
+Priority: medium
+Kind: evaluation
+Source task: t0003_download_benchmark_subsets
+The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks. The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo distributions; this informs whether the 4-8 boundary is too narrow for Phase 2&#x27;s atomic-edit experiments.
+
+## Derive step graphs for FrontierScience-Olympiad rows
+ID: S-0003-04
+Priority: medium
+Kind: experiment
+Source task: t0003_download_benchmark_subsets
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.
+
+## Reconcile WorkArena++ flat-action sequences with the three-level schema
+ID: S-0005-03
+Priority: medium
+Kind: technique
+Source task: t0005_hierarchical_annotation_pilot_v1
+The judge rejected all three WorkArena++ rows because the upstream annotation lacks `conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
+
+## Remediate proxy benchmark naming and task_id non-uniqueness
+ID: S-0005-04
+Priority: medium
+Kind: dataset
+Source task: t0005_hierarchical_annotation_pilot_v1
+The pilot file uses tau-bench and WorkArena++ as proxies but task_id prefixes are still `he_*` (HumanEval) and `m2w_*` (Mind2Web) from earlier drafts; additionally 14 of 115 task_ids are duplicated. Re-key the source data with synthetic per-row UUIDs and align task_id prefixes with the actual benchmark slugs (`tau_*`, `wa_*`).
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">

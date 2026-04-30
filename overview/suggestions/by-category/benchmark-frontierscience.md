@@ -2,35 +2,13 @@
 
 5 suggestion(s) in category
 [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **4 open**
-(3 high, 1 medium), **1 closed**.
+(2 high, 2 medium), **1 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
-
-<details>
-<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
-benchmarks</strong> (S-0006-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0006-01` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/), [`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) |
-
-scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
-registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
-(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
-git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
-write-library task that imports scope_aware_react_v1 and registers a registry with consistent
-naming conventions.
-
-</details>
 
 <details>
 <summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
@@ -75,6 +53,28 @@ explicit access conversation with Epoch AI, plus a fallback to public Olympiad b
 </details>
 
 ## Medium Priority
+
+<details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-01` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/), [`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) |
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>

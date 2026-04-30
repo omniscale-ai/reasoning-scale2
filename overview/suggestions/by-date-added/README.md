@@ -11,52 +11,6 @@
 ## High Priority
 
 <details>
-<summary>🧪 <strong>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
-disentangle schema vs model effect</strong> (S-0009-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-01` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
-Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
--> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
-using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
-~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
-v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
-contributions.
-
-</details>
-
-<details>
-<summary>📂 <strong>Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy
-rows with the actual benchmark data</strong> (S-0009-06)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-06` |
-| **Kind** | dataset |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | — |
-| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-Inspecting the v1 (and now v2) rows shows the 'WorkArena++' rows are actually Mind2Web proxy
-data and the 'tau-bench' rows are HumanEval proxy data — neither benchmark is loaded directly
-because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance
-matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a)
-acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the
-benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream
-consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
-
-</details>
-
-<details>
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
 report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
 
@@ -148,6 +102,58 @@ rate, ~$5-6 added cost. Inherits S-0005-01.
 
 </details>
 
+## Closed
+
+<details>
+<summary>✅ <s>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
+disentangle schema vs model effect</s> — covered by <a
+href="../../../tasks/t0014_v2_annotator_sonnet_rerun/"><code>t0014_v2_annotator_sonnet_rerun</code></a>
+(S-0009-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
+Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
+-> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
+using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
+~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
+v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
+contributions.
+
+</details>
+
+<details>
+<summary>✅ <s>Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy rows
+with the actual benchmark data</s> — covered by <a
+href="../../../tasks/t0015_correct_proxy_benchmark_labels/"><code>t0015_correct_proxy_benchmark_labels</code></a>
+(S-0009-06)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-06` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Inspecting the v1 (and now v2) rows shows the 'WorkArena++' rows are actually Mind2Web proxy
+data and the 'tau-bench' rows are HumanEval proxy data — neither benchmark is loaded directly
+because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance
+matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a)
+acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the
+benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream
+consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
+
+</details>
+
 ## 2026-04-29 (36)
 
 ## High Priority
@@ -172,48 +178,6 @@ v2 hierarchy with the correct tag). The three-way ablation decomposes the C-cond
 'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
 preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
 effect (see research_papers.md, Wang2023 and Zhou2022).
-
-</details>
-
-<details>
-<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
-benchmarks</strong> (S-0006-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0006-01` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/), [`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) |
-
-scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
-registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
-(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
-git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
-write-library task that imports scope_aware_react_v1 and registers a registry with consistent
-naming conventions.
-
-</details>
-
-<details>
-<summary>📂 <strong>Build the SWE-bench Verified Docker harness</strong> (S-0002-05)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0002-05` |
-| **Kind** | dataset |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Source paper** | [`no-doi_OpenAI2024_swe-bench-verified`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/no-doi_OpenAI2024_swe-bench-verified/) |
-| **Categories** | [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) |
-
-SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source
-composite. Its evaluation harness uses Docker per repository to isolate test runs. This task
-would download the Verified problem set, pull the Docker images, and run a 10-instance smoke
-test to confirm the harness reproduces published baseline numbers (e.g., one of the early
-Claude or GPT scores).
 
 </details>
 
@@ -319,28 +283,6 @@ upstream task-class manifest. Provision a free ServiceNow developer instance, re
 access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
 decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
 fallback.
-
-</details>
-
-<details>
-<summary>📊 <strong>Register pass^k as a project metric for reliability
-reporting</strong> (S-0002-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0002-01` |
-| **Kind** | evaluation |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Source paper** | [`10.48550_arXiv.2406.12045`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2406.12045/) |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) |
-
-tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across
-k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail
-demonstrates that single-rollout pass@1 systematically overstates agent reliability. The
-project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
-task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
-luck.
 
 </details>
 
@@ -458,6 +400,48 @@ as the obvious next sweep.
 </details>
 
 <details>
+<summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
+benchmarks</strong> (S-0006-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-01` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/), [`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) |
+
+scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs
+registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++
+(browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests,
+git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own
+write-library task that imports scope_aware_react_v1 and registers a registry with consistent
+naming conventions.
+
+</details>
+
+<details>
+<summary>📂 <strong>Build the SWE-bench Verified Docker harness</strong> (S-0002-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0002-05` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Source paper** | [`no-doi_OpenAI2024_swe-bench-verified`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/no-doi_OpenAI2024_swe-bench-verified/) |
+| **Categories** | [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) |
+
+SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source
+composite. Its evaluation harness uses Docker per repository to isolate test runs. This task
+would download the Verified problem set, pull the Docker images, and run a 10-instance smoke
+test to confirm the harness reproduces published baseline numbers (e.g., one of the early
+Claude or GPT scores).
+
+</details>
+
+<details>
 <summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
 (S-0003-04)</summary>
 
@@ -559,6 +543,28 @@ The judge rejected all three WorkArena++ rows because the upstream annotation la
 WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be
 detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows
 as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
+
+</details>
+
+<details>
+<summary>📊 <strong>Register pass^k as a project metric for reliability
+reporting</strong> (S-0002-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0002-01` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Source paper** | [`10.48550_arXiv.2406.12045`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2406.12045/) |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) |
+
+tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across
+k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail
+demonstrates that single-rollout pass@1 systematically overstates agent reliability. The
+project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
+task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
+luck.
 
 </details>
 
