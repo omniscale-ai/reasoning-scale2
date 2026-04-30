@@ -1,0 +1,38 @@
+{
+  "spec_version": "2",
+  "dataset_id": "hierarchical-annotation-v2",
+  "name": "Hierarchical Annotation v2 (115-row pilot, tree schema)",
+  "version": "v2",
+  "short_description": "Tree-shaped (global / subtasks-with-atomics / global_atomics) hierarchical annotation of 115 benchmark tasks from FrontierScience-Olympiad, SWE-bench Verified, WorkArena++, and tau-bench. Re-annotates the v1 pilot under a v2 schema with explicit subtask-to-atomic edges and full problem text. Includes a 23-row LLM-as-judge spot-check.",
+  "description_path": "description.md",
+  "source_paper_id": null,
+  "url": null,
+  "download_url": null,
+  "year": 2026,
+  "date_published": "2026-04-30",
+  "authors": [
+    {
+      "name": "Glite ARF reasoning-scale2 project",
+      "country": null,
+      "institution": null,
+      "orcid": null
+    }
+  ],
+  "institutions": [],
+  "license": "inherited-per-row",
+  "access_kind": "restricted",
+  "size_description": "115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision).",
+  "files": [
+    {
+      "path": "files/hierarchical_annotation_v2.jsonl",
+      "description": "115-row JSONL with the v2 tree schema and judge verdicts merged into the sampled rows.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "hierarchical-planning",
+    "benchmark-annotation",
+    "agent-evaluation",
+    "granularity-conditioning"
+  ]
+}

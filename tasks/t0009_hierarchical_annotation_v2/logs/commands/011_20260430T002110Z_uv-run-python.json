@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0009_hierarchical_annotation_v2",
+  "command": "uv run python -m tasks.t0009_hierarchical_annotation_v2.code.v2_annotator --workers 4",
+  "exit_code": 0,
+  "duration_seconds": 940.677,
+  "started_at": "2026-04-30T00:21:10Z",
+  "completed_at": "2026-04-30T00:36:51Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0009_hierarchical_annotation_v2",
+  "stdout_file": "011_20260430T002110Z_uv-run-python.stdout.txt",
+  "stderr_file": "011_20260430T002110Z_uv-run-python.stderr.txt",
+  "stdout_lines": 98,
+  "stderr_lines": 0,
+  "truncated": false
+}

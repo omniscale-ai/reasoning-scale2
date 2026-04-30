@@ -1,0 +1,5 @@
+Wrote tasks/t0009_hierarchical_annotation_v2/code/_outputs/v2_judge_sample.jsonl with 23 rows.
+  FrontierScience-Olympiad: 6
+  SWE-bench Verified: 6
+  WorkArena++: 6
+  tau-bench: 5

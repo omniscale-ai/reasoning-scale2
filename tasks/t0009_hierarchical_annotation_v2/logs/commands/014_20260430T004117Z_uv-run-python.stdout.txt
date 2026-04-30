@@ -1,0 +1,2 @@
+Wrote tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/files/hierarchical_annotation_v2.jsonl, tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/details.json, tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/description.md
+  rows_total=115, rows_complete=115, rows_judged=23, acceptable=21, needs_revision=2

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0009_hierarchical_annotation_v2",
+  "command": "uv run python -m meta.asset_types.dataset.verificator --task-id t0009_hierarchical_annotation_v2 hierarchical-annotation-v2",
+  "exit_code": 0,
+  "duration_seconds": 0.058,
+  "started_at": "2026-04-30T00:41:53Z",
+  "completed_at": "2026-04-30T00:41:53Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0009_hierarchical_annotation_v2",
+  "stdout_file": "017_20260430T004153Z_uv-run-python.stdout.txt",
+  "stderr_file": "017_20260430T004153Z_uv-run-python.stderr.txt",
+  "stdout_lines": 8,
+  "stderr_lines": 0,
+  "truncated": false
+}

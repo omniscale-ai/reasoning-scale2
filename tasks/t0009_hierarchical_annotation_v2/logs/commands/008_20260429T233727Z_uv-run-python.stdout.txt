@@ -1,0 +1,6 @@
+Loaded 115 rows from tasks/t0005_hierarchical_annotation_pilot_v1/assets/dataset/hierarchical-annotation-v1/files/hierarchical_annotation_v1.jsonl
+[1/3] FrontierScience-Olympiad task_id=fs_af50243e-3a60-4460-9536-f9a notes=call-failure: claude CLI exite cost=$0.0000 running=$0.0000
+[2/3] FrontierScience-Olympiad task_id=fs_4225f097-0cee-4e43-b5b9-6ef notes=call-failure: claude CLI exite cost=$0.0000 running=$0.0000
+[3/3] FrontierScience-Olympiad task_id=fs_1e2f4cbe-4a38-4dd3-9378-14d notes=call-failure: claude CLI exite cost=$0.0000 running=$0.0000
+Wrote tasks/t0009_hierarchical_annotation_v2/code/_outputs/v2_annotator_costs.json (running_total=$0.0000, complete_rows=0)
+DONE. annotated=0, skipped=0, parse_failures=0, call_failures=3, complete_hierarchy=0, total_cost=$0.0000
