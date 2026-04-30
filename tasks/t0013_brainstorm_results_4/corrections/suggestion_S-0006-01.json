@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0013-08",
+  "correcting_task": "t0013_brainstorm_results_4",
+  "target_task": "t0006_scope_aware_react_library",
+  "target_kind": "suggestion",
+  "target_id": "S-0006-01",
+  "action": "update",
+  "changes": {
+    "priority": "medium"
+  },
+  "rationale": "Demote tool-registry instrumentation from high to medium. Tool registries become load-bearing once we move into the tool-using-agent benchmark wave (post-FrontierScience), but they sit off the immediate Phase 2 path. Keeping at high distorts the suggestion-chooser ranking until t0012 produces the headline."
+}

@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0013-06",
+  "correcting_task": "t0013_brainstorm_results_4",
+  "target_task": "t0002_literature_survey_granularity_conditioning",
+  "target_kind": "suggestion",
+  "target_id": "S-0002-01",
+  "action": "update",
+  "changes": {
+    "priority": "medium"
+  },
+  "rationale": "Demote pass^k from high to medium. pass^k is replication-infrastructure work that becomes load-bearing only after the Phase 2 A/B/C smoke produces a directional headline. Until t0012 lands, this suggestion sits off the headline path; keeping it at high distorts the suggestion-chooser ranking."
+}

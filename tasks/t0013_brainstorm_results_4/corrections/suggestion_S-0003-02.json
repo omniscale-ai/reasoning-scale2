@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0013-02",
+  "correcting_task": "t0013_brainstorm_results_4",
+  "target_task": "t0003_download_benchmark_subsets",
+  "target_kind": "suggestion",
+  "target_id": "S-0003-02",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Duplicate of S-0002-03 (ServiceNow lab provisioning). Both target the same WorkArena++ environment provisioning step — keep S-0002-03 as canonical and reject S-0003-02 to clear the duplicate from the high-priority backlog. The proxy-benchmark relabel handled by t0015 unblocks the immediate Phase 2 reporting need; native WorkArena++ provisioning remains tracked under S-0002-03."
+}

@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0013-07",
+  "correcting_task": "t0013_brainstorm_results_4",
+  "target_task": "t0002_literature_survey_granularity_conditioning",
+  "target_kind": "suggestion",
+  "target_id": "S-0002-05",
+  "action": "update",
+  "changes": {
+    "priority": "medium"
+  },
+  "rationale": "Demote SWE-bench Docker harness from high to medium. The Docker harness is compute-infrastructure work whose payoff depends on the Phase 2 smoke producing a SWE-bench-relevant signal worth scaling. Off the headline path until t0012 lands; keeping it at high distorts the suggestion-chooser ranking."
+}

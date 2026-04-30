@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0013-03",
+  "correcting_task": "t0013_brainstorm_results_4",
+  "target_task": "t0005_hierarchical_annotation_pilot_v1",
+  "target_kind": "suggestion",
+  "target_id": "S-0005-06",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Already covered by t0012_phase2_abc_smoke_frontierscience, which is the in-progress Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset. Keeping S-0005-06 active in the backlog after the task that implements it has launched would only generate duplicate suggestion-chooser hits."
+}
