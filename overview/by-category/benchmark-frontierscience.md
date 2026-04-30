@@ -69,7 +69,7 @@ No answers in this category.
 <summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
 longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-04-30 | **Source**:
 [t0014_v2_annotator_sonnet_rerun](../../tasks/t0014_v2_annotator_sonnet_rerun/)
 
 Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code

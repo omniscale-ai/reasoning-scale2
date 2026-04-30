@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-overview" generated_at_utc="2026-04-30T21:46:21Z">
+<llm_context_archive preset_id="project-overview" generated_at_utc="2026-04-30T22:03:04Z">
   <archive_summary>
     <title>Project Overview</title>
     <description>Compact starter context for general project chats.</description>
     <use_case>General orientation, quick status questions, and lightweight strategy chats.</use_case>
     <section_count>4</section_count>
-    <char_count>22597</char_count>
-    <byte_count>22646</byte_count>
-    <estimated_tokens>5649</estimated_tokens>
+    <char_count>23627</char_count>
+    <byte_count>23678</byte_count>
+    <estimated_tokens>5906</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -140,9 +140,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0013_brainstorm_results_4</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
+        <id>t0016_brainstorm_results_5</id>
       </source_ids>
       <content>
-Completed tasks: 14
+Completed tasks: 15
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -227,6 +228,12 @@ ID: t0015_correct_proxy_benchmark_labels
 Completed: 2026-04-30
 Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
 Result summary: Results Summary: Correct Proxy-Benchmark Labels in t0009 v2 Dataset Summary Wrote a single corrections-overlay file (`corrections/dataset_hierarchical-annotation-v2.json`) that relabels the **52** rows in the t0009 v2 hierarchical-annotation dataset whose `benchmark` field referred to a gated proxy-target benchmark instead of the actual data source: **26** `m2w_*` rows move from `WorkArena++` to `Mind2Web`, and **26** `he_*` rows move from `tau-bench` to `HumanEval`. The `aggregate_datasets` overlay applies cleanly: the effective JSONL now carries the corrected labels and the dataset metadata prose no longer mentions the wrong benchmark names. Metrics * **Rows relabeled, total**: **52** of...
+
+## Brainstorm session 5: prune backlog after t0014 deconfound
+ID: t0016_brainstorm_results_5
+Completed: 2026-04-30
+Short description: Brainstorm 5: pure backlog cleanup after t0014 schema-vs-model deconfound — reject 3 redundant suggestions, reprioritize 5; no new tasks.
+Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm session 5 was a pure backlog cleanup pass after t0014 (v2 sonnet rerun deconfound) and t0015 (proxy benchmark relabel) merged. Eight corrections were issued: three rejections, five priority changes. No new tasks were created and no existing tasks were modified. Session Overview * **Session number**: 5 * **Date**: 2026-04-30 * **Duration**: ~30 minutes * **Mode**: Pure cleanup (no new tasks, no task updates) * **Researcher budget envelope**: &lt; $5 total (no API spend; planning only) Decisions Rejections (3) | Suggestion | Source task | Rationale | | --- | --- | --- | | S-0005-04 | t0005 | Superseded by t0015 proxy-relabel...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">

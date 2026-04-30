@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-30T21:46:21Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-30T22:03:04Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>60666</char_count>
-    <byte_count>60774</byte_count>
-    <estimated_tokens>15166</estimated_tokens>
+    <char_count>59824</char_count>
+    <byte_count>59934</byte_count>
+    <estimated_tokens>14956</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -141,9 +141,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0013_brainstorm_results_4</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
+        <id>t0016_brainstorm_results_5</id>
       </source_ids>
       <content>
-Completed tasks: 14
+Completed tasks: 15
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -228,6 +229,12 @@ ID: t0015_correct_proxy_benchmark_labels
 Completed: 2026-04-30
 Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
 Result summary: Results Summary: Correct Proxy-Benchmark Labels in t0009 v2 Dataset Summary Wrote a single corrections-overlay file (`corrections/dataset_hierarchical-annotation-v2.json`) that relabels the **52** rows in the t0009 v2 hierarchical-annotation dataset whose `benchmark` field referred to a gated proxy-target benchmark instead of the actual data source: **26** `m2w_*` rows move from `WorkArena++` to `Mind2Web`, and **26** `he_*` rows move from `tau-bench` to `HumanEval`. The `aggregate_datasets` overlay applies cleanly: the effective JSONL now carries the corrected labels and the dataset metadata prose no longer mentions the wrong benchmark names. Metrics * **Rows relabeled, total**: **52** of...
+
+## Brainstorm session 5: prune backlog after t0014 deconfound
+ID: t0016_brainstorm_results_5
+Completed: 2026-04-30
+Short description: Brainstorm 5: pure backlog cleanup after t0014 schema-vs-model deconfound — reject 3 redundant suggestions, reprioritize 5; no new tasks.
+Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm session 5 was a pure backlog cleanup pass after t0014 (v2 sonnet rerun deconfound) and t0015 (proxy benchmark relabel) merged. Eight corrections were issued: three rejections, five priority changes. No new tasks were created and no existing tasks were modified. Session Overview * **Session number**: 5 * **Date**: 2026-04-30 * **Duration**: ~30 minutes * **Mode**: Pure cleanup (no new tasks, no task updates) * **Researcher budget envelope**: &lt; $5 total (no API spend; planning only) Decisions Rejections (3) | Suggestion | Source task | Rationale | | --- | --- | --- | | S-0005-04 | t0005 | Superseded by t0015 proxy-relabel...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -379,42 +386,39 @@ Answers: 0
         <id>S-0010-01</id>
         <id>S-0009-01</id>
         <id>S-0009-03</id>
+        <id>S-0009-04</id>
         <id>S-0009-06</id>
         <id>S-0014-02</id>
         <id>S-0014-03</id>
-        <id>S-0014-04</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
-        <id>S-0002-09</id>
         <id>S-0003-03</id>
         <id>S-0003-04</id>
         <id>S-0005-03</id>
-        <id>S-0005-04</id>
         <id>S-0006-01</id>
-        <id>S-0006-02</id>
         <id>S-0006-04</id>
         <id>S-0007-03</id>
         <id>S-0010-02</id>
         <id>S-0011-01</id>
-        <id>S-0011-02</id>
         <id>S-0009-02</id>
-        <id>S-0009-04</id>
         <id>S-0009-05</id>
         <id>S-0014-01</id>
-        <id>S-0014-05</id>
         <id>S-0015-01</id>
+        <id>S-0002-09</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
-        <id>S-0005-05</id>
+        <id>S-0006-02</id>
         <id>S-0006-05</id>
         <id>S-0007-04</id>
         <id>S-0010-03</id>
+        <id>S-0011-02</id>
         <id>S-0011-03</id>
+        <id>S-0014-05</id>
         <id>S-0015-02</id>
       </source_ids>
       <content>
-Open suggestions: 44
+Open suggestions: 41
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -493,6 +497,13 @@ Kind: evaluation
 Source task: t0009_hierarchical_annotation_v2
 v2 is judged only by a single LLM call per row. The dataset is &#x27;LLM-judge-acceptable&#x27; but not &#x27;human-validated&#x27;. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision verdicts. Compute Cohen&#x27;s kappa between human and the haiku judge to estimate how much of the +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget estimate: 4-6 hours of human review time at $50/hour = $200-300.
 
+## Add an ablation: tree-schema-with-truncated-text to isolate the truncation fix from the schema upgrade
+ID: S-0009-04
+Priority: high
+Kind: experiment
+Source task: t0009_hierarchical_annotation_v2
+v2 changed two things at once: schema (flat -&gt; tree) and text completeness (truncated 1500 chars -&gt; full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be entirely from the truncation fix (Xiong2024&#x27;s prediction) or entirely from the schema upgrade. Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the annotator and judge prompts. If accept rate drops materially below v2-full-text on FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
 ## Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy rows with the actual benchmark data
 ID: S-0009-06
 Priority: high
@@ -513,13 +524,6 @@ Priority: high
 Kind: experiment
 Source task: t0014_v2_annotator_sonnet_rerun
 The model-only delta of -1 pp sits below Xiong2024&#x27;s lower edge (0 pp). Xiong2024 documents that judges trained on the same model family as the annotator show a small positive familial bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near zero, sonnet really does provide no annotator-quality...
-
-## Adopt a haiku-default annotation policy for Phase 2: model swap is not justified
-ID: S-0014-04
-Priority: high
-Kind: technique
-Source task: t0014_v2_annotator_sonnet_rerun
-Under the t0014 measurement, haiku and sonnet annotators produce statistically indistinguishable accept rates under the v2 tree schema (90% sonnet vs 91% haiku, CIs overlap completely). Sonnet annotation costs ~$0.20 per call vs haiku ~$0.02 per call (10x via Claude Code CLI; 7-8x via direct API). For Phase 2 ABC/main-experiment annotation budgets in the $50-200 range, the cost differential dominates: a 200-row sonnet annotation pass would cost $40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by judge bias.
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -542,13 +546,6 @@ Kind: experiment
 Source task: t0002_literature_survey_granularity_conditioning
 The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
 
-## Re-fetch the 11 paper PDFs with git LFS enabled
-ID: S-0002-09
-Priority: medium
-Kind: library
-Source task: t0002_literature_survey_granularity_conditioning
-All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset&#x27;s files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.
-
 ## Sensitivity-check the SWE-bench Verified 4-8-hunks subset against [3, 12]
 ID: S-0003-03
 Priority: medium
@@ -570,26 +567,12 @@ Kind: technique
 Source task: t0005_hierarchical_annotation_pilot_v1
 The judge rejected all three WorkArena++ rows because the upstream annotation lacks `conceptual` nodes, causing the mapper to emit empty subtask lists. Investigate whether the WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
 
-## Remediate proxy benchmark naming and task_id non-uniqueness
-ID: S-0005-04
-Priority: medium
-Kind: dataset
-Source task: t0005_hierarchical_annotation_pilot_v1
-The pilot file uses tau-bench and WorkArena++ as proxies but task_id prefixes are still `he_*` (HumanEval) and `m2w_*` (Mind2Web) from earlier drafts; additionally 14 of 115 task_ids are duplicated. Re-key the source data with synthetic per-row UUIDs and align task_id prefixes with the actual benchmark slugs (`tau_*`, `wa_*`).
-
 ## Build benchmark-specific tool registries for the four roadmap benchmarks
 ID: S-0006-01
 Priority: medium
 Kind: library
 Source task: t0006_scope_aware_react_library
 scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 needs registries for FrontierScience-Olympiad (calculator, search, paper lookup), WorkArena++ (browser, form filler, table lookup), SWE-bench Verified (file read, file write, run tests, git diff), and tau-bench (DB query, API call, customer-action stubs). Each should be its own write-library task that imports scope_aware_react_v1 and registers a registry with consistent naming conventions.
-
-## Add an async ScopeAwareReactAgent variant for streaming and parallel tool calls
-ID: S-0006-02
-Priority: medium
-Kind: library
-Source task: t0006_scope_aware_react_library
-The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming model output and from issuing multiple independent tool calls concurrently within a single Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an async model_call signature and asyncio.gather over Action lists. Tests should use AsyncScriptedModel mirroring the sync helper.
 
 ## Measure the missing-tag fallback rate against real LLMs
 ID: S-0006-04
@@ -619,26 +602,12 @@ Kind: library
 Source task: t0011_metric2_calibration_aggregator
 Extend the metric2_calibration_aggregator_v1 library (or add a sibling library) with Expected Calibration Error (ECE) computation using the standard 10-bucket binning and produce per-bucket calibration plots. Xiong2024 reports ECE as the primary headline metric; the current library reports only the binary overconfident_error_rate. Adding ECE gives Phase 2 a richer calibration signal and lets t0012&#x27;s results display the bucket where overconfidence concentrates rather than just a single number. Should be a small follow-up: bucket each CalibrationRecord by predicted_confidence, compute |accuracy - mean_confidence| within each bucket, weight by bucket size. Output should be both a scalar ECE...
 
-## Add provider-specific calibration prompt variants for instruction-tuned vs reasoning models
-ID: S-0011-02
-Priority: medium
-Kind: experiment
-Source task: t0011_metric2_calibration_aggregator
-The current ConfidencePromptTemplate uses a single Xiong2024 human-inspired prompt. Reasoning-focused models (e.g., o-series, Claude 4.5+ thinking models) often produce a chain-of-thought before stating confidence, which the current parser handles but which Xiong2024&#x27;s own results show can hurt calibration in some configurations. Build a small library of named prompt variants (instruction_tuned, reasoning_with_cot, reasoning_no_cot) and benchmark them on a held-out 50-problem set during Phase 2. Goal: identify which variant minimizes overconfident_error_rate per provider and ship that as the default mapping in t0012&#x27;s experiment harness. Out of scope for this task per task_description.md but...
-
 ## Add a gold_actions structural-mirror validator for non-empty global_atomics
 ID: S-0009-02
 Priority: medium
 Kind: technique
 Source task: t0009_hierarchical_annotation_v2
 The two needs-revision rows on FrontierScience-Olympiad both failed for the same reason: the annotator emitted hierarchy.global_atomics correctly but produced gold_actions.global_atomics empty or merged into a subtask. This is a structural-mirror inconsistency, not a content error. Add a post-parse validator to v2_annotator.py that detects this pattern, re-prompts the model on just the gold_actions block (or rejects the row to the parse-failure bucket), and logs the rate. This should bring the FrontierScience-Olympiad accept rate from 67% to ~100% with zero additional model cost on the happy path.
-
-## Add an ablation: tree-schema-with-truncated-text to isolate the truncation fix from the schema upgrade
-ID: S-0009-04
-Priority: medium
-Kind: experiment
-Source task: t0009_hierarchical_annotation_v2
-v2 changed two things at once: schema (flat -&gt; tree) and text completeness (truncated 1500 chars -&gt; full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be entirely from the truncation fix (Xiong2024&#x27;s prediction) or entirely from the schema upgrade. Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the annotator and judge prompts. If accept rate drops materially below v2-full-text on FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text levels, the schema is the dominant cause. Cost ~$2 with haiku.
 
 ## Expand the v2 dataset from 115 rows to &gt;=200 rows by sampling additional benchmark instances
 ID: S-0009-05
@@ -654,19 +623,19 @@ Kind: experiment
 Source task: t0014_v2_annotator_sonnet_rerun
 The aggregate schema-only delta is +57 pp (90% v2-sonnet vs 33% v1-sonnet) but the per-benchmark split is bimodal: FrontierScience-Olympiad and WorkArena++ are at +100 pp (0% -&gt; 100%), while SWE-bench Verified and tau-bench are at +13-17 pp (67% -&gt; 80-83%). The +100 pp cells suggest the v2 tree schema converts unsolvable v1 outputs into acceptable v2 outputs, but this is potentially confounded with the truncation fix bundled into v2 (S-0009-04). The +13-17 pp cells suggest a real but modest schema improvement on benchmarks where v1 was already adequate. A v3 schema should target SWE/tau-style structured-action tasks specifically — e.g., add explicit precondition/postcondition fields to...
 
-## Re-run the three FrontierScience-Olympiad sonnet timeouts under a longer CLI timeout to recover the missing rows
-ID: S-0014-05
-Priority: medium
-Kind: experiment
-Source task: t0014_v2_annotator_sonnet_rerun
-Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample, reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more credible. Cost &lt;$1.
-
 ## Replace Mind2Web/HumanEval proxy rows with native WorkArena++ and tau-bench data
 ID: S-0015-01
 Priority: medium
 Kind: dataset
 Source task: t0015_correct_proxy_benchmark_labels
 Variant a of S-0009-06 (now folded into this follow-up). The 26 m2w_* rows in the v2 hierarchical-annotation dataset are Mind2Web data used as a proxy for the gated WorkArena++ split, and the 26 he_* rows are HumanEval data used as a proxy for the gated tau-bench split. t0015 corrected the labels but did not replace the underlying data. This task should (1) obtain access to a real WorkArena++ split and a real tau-bench split (both currently gated; expect a registration / agreement step that must be tracked as an intervention), (2) re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator and judge as t0009 to keep variant b apples-to-apples, and (3) issue a...
+
+## Re-fetch the 11 paper PDFs with git LFS enabled
+ID: S-0002-09
+Priority: low
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset&#x27;s files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.
 
 ## Defer Reflexion-style episodic memory to a Phase 3 ablation
 ID: S-0002-10
@@ -682,12 +651,12 @@ Kind: library
 Source task: t0003_download_benchmark_subsets
 This task wrote the `code/dataset_asset.py` helper inline, but the same DatasetDetails / write_dataset_asset helpers will be needed by every future download-dataset task. Promote this code to a registered library asset (under a future task) so subsequent tasks can import the helpers via `assets/library/` rather than re-implementing them.
 
-## Multi-judge disagreement study on hierarchical annotation
-ID: S-0005-05
+## Add an async ScopeAwareReactAgent variant for streaming and parallel tool calls
+ID: S-0006-02
 Priority: low
-Kind: evaluation
-Source task: t0005_hierarchical_annotation_pilot_v1
-Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-sonnet-4-6) and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality estimate. Estimated cost: ~$0.30 per run.
+Kind: library
+Source task: t0006_scope_aware_react_library
+The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming model output and from issuing multiple independent tool calls concurrently within a single Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an async model_call signature and asyncio.gather over Action lists. Tests should use AsyncScriptedModel mirroring the sync helper.
 
 ## Extend the library to support a granularity that varies within a single run
 ID: S-0006-05
@@ -710,12 +679,26 @@ Kind: evaluation
 Source task: t0010_matched_mismatch_library
 ADVERSARIAL_MAP currently pins &#x27;subtask -&gt; atomic&#x27; because subtask is equidistant from global and atomic. Run a small ablation in t0012 with both &#x27;subtask -&gt; atomic&#x27; and &#x27;subtask -&gt; global&#x27; adversarial maps and report the per-step contribution. If the two choices differ materially, document the chosen direction and the empirical justification in matched_mismatch_v1&#x27;s description.md. If they do not differ, lock the current choice and remove the ambiguity note.
 
+## Add provider-specific calibration prompt variants for instruction-tuned vs reasoning models
+ID: S-0011-02
+Priority: low
+Kind: experiment
+Source task: t0011_metric2_calibration_aggregator
+The current ConfidencePromptTemplate uses a single Xiong2024 human-inspired prompt. Reasoning-focused models (e.g., o-series, Claude 4.5+ thinking models) often produce a chain-of-thought before stating confidence, which the current parser handles but which Xiong2024&#x27;s own results show can hurt calibration in some configurations. Build a small library of named prompt variants (instruction_tuned, reasoning_with_cot, reasoning_no_cot) and benchmark them on a held-out 50-problem set during Phase 2. Goal: identify which variant minimizes overconfident_error_rate per provider and ship that as the default mapping in t0012&#x27;s experiment harness. Out of scope for this task per task_description.md but...
+
 ## Sweep HIGH_CONFIDENCE_THRESHOLD to find the operating point that maximizes signal in t0012
 ID: S-0011-03
 Priority: low
 Kind: evaluation
 Source task: t0011_metric2_calibration_aggregator
 The current default HIGH_CONFIDENCE_THRESHOLD = 0.75 sits between the verbalized medium (0.5) and high (0.9) numeric anchor points and matches Xiong2024&#x27;s high-bucket boundary. The threshold is exposed as a module constant for sweeps. After t0012 runs, sweep the threshold over {0.5, 0.6, 0.7, 0.75, 0.8, 0.9} and report overconfident_error_rate at each operating point. The best threshold for the project&#x27;s hierarchical agents may differ from Xiong2024&#x27;s QA setting because the project judges actions at trajectory steps, not final answers. Output: a small chart and a recommended threshold for downstream tasks.
+
+## Re-run the three FrontierScience-Olympiad sonnet timeouts under a longer CLI timeout to recover the missing rows
+ID: S-0014-05
+Priority: low
+Kind: experiment
+Source task: t0014_v2_annotator_sonnet_rerun
+Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample, reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more credible. Cost &lt;$1.
 
 ## Add a row-level original_benchmark provenance field to future relabel corrections
 ID: S-0015-02

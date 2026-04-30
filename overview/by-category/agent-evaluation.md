@@ -506,7 +506,7 @@ naming conventions.
 <summary>📚 <strong>Add an async ScopeAwareReactAgent variant for streaming and
 parallel tool calls</strong> (S-0006-02)</summary>
 
-**Kind**: library | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+**Kind**: library | **Priority**: low | **Date**: 2026-04-29 | **Source**:
 [t0006_scope_aware_react_library](../../tasks/t0006_scope_aware_react_library/)
 
 The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming

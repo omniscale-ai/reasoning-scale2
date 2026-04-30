@@ -11,6 +11,29 @@
 ## High Priority
 
 <details>
+<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
+truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
+chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
+entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
+Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
+annotator and judge prompts. If accept rate drops materially below v2-full-text on
+FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
+levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
+</details>
+
+<details>
 <summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
 is not justified</strong> (S-0014-04)</summary>
 
@@ -132,29 +155,6 @@ with zero additional model cost on the happy path.
 </details>
 
 <details>
-<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
-truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-04` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
-
-v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
-chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
-entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
-Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
-annotator and judge prompts. If accept rate drops materially below v2-full-text on
-FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
-levels, the schema is the dominant cause. Cost ~$2 with haiku.
-
-</details>
-
-<details>
 <summary>📂 <strong>Expand the v2 dataset from 115 rows to >=200 rows by sampling
 additional benchmark instances</strong> (S-0009-05)</summary>
 
@@ -173,30 +173,6 @@ AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expa
 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
 smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
 rate, ~$5-6 added cost. Inherits S-0005-01.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
-longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0014-05` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
-| **Source paper** | — |
-| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
-
-Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
-CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
-reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
-delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
-the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
-Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
-aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
-credible. Cost <$1.
 
 </details>
 
@@ -276,6 +252,30 @@ provenance auditable without round-tripping through the corrections file. The ta
 propose the convention as a small extension to the corrections specification, (2) update the
 dataset-asset verificator to surface a warning when an overlay rewrites a per-row field
 without preserving the original, and (3) backfill the convention into the t0015 overlay.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
+longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
+CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
+reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
+delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
+the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
+Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
+aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
+credible. Cost <$1.
 
 </details>
 
@@ -506,27 +506,6 @@ prompts (B vs G/S/A from the project's research questions).
 ## Medium Priority
 
 <details>
-<summary>📚 <strong>Add an async ScopeAwareReactAgent variant for streaming and
-parallel tool calls</strong> (S-0006-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0006-02` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming
-model output and from issuing multiple independent tool calls concurrently within a single
-Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an
-async model_call signature and asyncio.gather over Action lists. Tests should use
-AsyncScriptedModel mirroring the sync helper.
-
-</details>
-
-<details>
 <summary>📚 <strong>Add Expected Calibration Error (ECE) computation alongside
 overconfident_error_rate</strong> (S-0011-01)</summary>
 
@@ -548,31 +527,6 @@ concentrates rather than just a single number. Should be a small follow-up: buck
 CalibrationRecord by predicted_confidence, compute |accuracy - mean_confidence| within each
 bucket, weight by bucket size. Output should be both a scalar ECE value and a list of
 (bucket_lower, bucket_upper, accuracy, mean_confidence, count) tuples for plotting.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Add provider-specific calibration prompt variants for
-instruction-tuned vs reasoning models</strong> (S-0011-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0011-02` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0011_metric2_calibration_aggregator`](../../../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0011_metric2_calibration_aggregator/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
-
-The current ConfidencePromptTemplate uses a single Xiong2024 human-inspired prompt.
-Reasoning-focused models (e.g., o-series, Claude 4.5+ thinking models) often produce a
-chain-of-thought before stating confidence, which the current parser handles but which
-Xiong2024's own results show can hurt calibration in some configurations. Build a small
-library of named prompt variants (instruction_tuned, reasoning_with_cot, reasoning_no_cot) and
-benchmark them on a held-out 50-problem set during Phase 2. Goal: identify which variant
-minimizes overconfident_error_rate per provider and ship that as the default mapping in
-t0012's experiment harness. Out of scope for this task per task_description.md but identified
-as the obvious next sweep.
 
 </details>
 
@@ -678,27 +632,6 @@ else). This decomposes the C-condition gap by phase kind and supports follow-up 
 which structural slots are most sensitive to tag mismatch. Should be additive: the existing
 uniform-strategy API stays the default. Keep the trajectory schema unchanged; the override is
 constructor-side only.
-
-</details>
-
-<details>
-<summary>📚 <strong>Re-fetch the 11 paper PDFs with git LFS enabled</strong>
-(S-0002-09)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0002-09` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Source paper** | — |
-| **Categories** | — |
-
-All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to
-a future task that enables git LFS. Once LFS is configured, run a download-paper task per
-asset that fetches the PDF (or markdown conversion) into the asset's files/ directory and
-updates download_status to success. This will let later tasks (especially compare-literature)
-cite specific page numbers and tables from the source PDFs.
 
 </details>
 
@@ -830,6 +763,52 @@ helpers via `assets/library/` rather than re-implementing them.
 </details>
 
 <details>
+<summary>📚 <strong>Add an async ScopeAwareReactAgent variant for streaming and
+parallel tool calls</strong> (S-0006-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-02` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming
+model output and from issuing multiple independent tool calls concurrently within a single
+Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an
+async model_call signature and asyncio.gather over Action lists. Tests should use
+AsyncScriptedModel mirroring the sync helper.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Add provider-specific calibration prompt variants for
+instruction-tuned vs reasoning models</strong> (S-0011-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0011-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0011_metric2_calibration_aggregator`](../../../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0011_metric2_calibration_aggregator/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+The current ConfidencePromptTemplate uses a single Xiong2024 human-inspired prompt.
+Reasoning-focused models (e.g., o-series, Claude 4.5+ thinking models) often produce a
+chain-of-thought before stating confidence, which the current parser handles but which
+Xiong2024's own results show can hurt calibration in some configurations. Build a small
+library of named prompt variants (instruction_tuned, reasoning_with_cot, reasoning_no_cot) and
+benchmark them on a held-out 50-problem set during Phase 2. Goal: identify which variant
+minimizes overconfident_error_rate per provider and ship that as the default mapping in
+t0012's experiment harness. Out of scope for this task per task_description.md but identified
+as the obvious next sweep.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
 ablation</strong> (S-0002-10)</summary>
 
@@ -909,6 +888,27 @@ paper summary, which was itself grounded only in the abstract because the PDF do
 in t0002. A small download-paper task should re-attempt the download against arXiv:2305.04091
 and verify that the prompt text in code/planandsolve.py matches the published version
 verbatim. If it diverges, file a correction.
+
+</details>
+
+<details>
+<summary>📚 <strong>Re-fetch the 11 paper PDFs with git LFS enabled</strong>
+(S-0002-09)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0002-09` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Source paper** | — |
+| **Categories** | — |
+
+All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to
+a future task that enables git LFS. Once LFS is configured, run a download-paper task per
+asset that fetches the PDF (or markdown conversion) into the asset's files/ directory and
+updates download_status to success. This will let later tasks (especially compare-literature)
+cite specific page numbers and tables from the source PDFs.
 
 </details>
 

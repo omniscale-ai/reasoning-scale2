@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-30T21:46:21Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-30T22:03:04Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>41675</char_count>
-    <byte_count>41681</byte_count>
-    <estimated_tokens>10418</estimated_tokens>
+    <char_count>41667</char_count>
+    <byte_count>41673</byte_count>
+    <estimated_tokens>10416</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -169,7 +169,7 @@ The project&#x27;s success criteria require 100 tasks annotated at three granula
 ## Re-fetch the 11 paper PDFs with git LFS enabled
 ID: S-0002-09
 Status: active
-Priority: medium
+Priority: low
 Kind: library
 Source task: t0002_literature_survey_granularity_conditioning
 Date added: 2026-04-29
@@ -283,7 +283,7 @@ The judge rejected all three WorkArena++ rows because the upstream annotation la
 
 ## Remediate proxy benchmark naming and task_id non-uniqueness
 ID: S-0005-04
-Status: active
+Status: rejected
 Priority: medium
 Kind: dataset
 Source task: t0005_hierarchical_annotation_pilot_v1
@@ -294,7 +294,7 @@ The pilot file uses tau-bench and WorkArena++ as proxies but task_id prefixes ar
 
 ## Multi-judge disagreement study on hierarchical annotation
 ID: S-0005-05
-Status: active
+Status: rejected
 Priority: low
 Kind: evaluation
 Source task: t0005_hierarchical_annotation_pilot_v1
@@ -330,7 +330,7 @@ scope_aware_react_v1 accepts an arbitrary tool_registry but ships none. Phase 2 
 ## Add an async ScopeAwareReactAgent variant for streaming and parallel tool calls
 ID: S-0006-02
 Status: active
-Priority: medium
+Priority: low
 Kind: library
 Source task: t0006_scope_aware_react_library
 Categories: agent-evaluation
@@ -467,7 +467,7 @@ Extend the metric2_calibration_aggregator_v1 library (or add a sibling library) 
 ## Add provider-specific calibration prompt variants for instruction-tuned vs reasoning models
 ID: S-0011-02
 Status: active
-Priority: medium
+Priority: low
 Kind: experiment
 Source task: t0011_metric2_calibration_aggregator
 Source paper: 10.48550_arXiv.2306.13063
@@ -524,7 +524,7 @@ v2 is judged only by a single LLM call per row. The dataset is &#x27;LLM-judge-a
 ## Add an ablation: tree-schema-with-truncated-text to isolate the truncation fix from the schema upgrade
 ID: S-0009-04
 Status: active
-Priority: medium
+Priority: high
 Kind: experiment
 Source task: t0009_hierarchical_annotation_v2
 Source paper: 10.48550_arXiv.2306.13063
@@ -590,7 +590,7 @@ The model-only delta of -1 pp sits below Xiong2024&#x27;s lower edge (0 pp). Xio
 
 ## Adopt a haiku-default annotation policy for Phase 2: model swap is not justified
 ID: S-0014-04
-Status: active
+Status: rejected
 Priority: high
 Kind: technique
 Source task: t0014_v2_annotator_sonnet_rerun
@@ -602,7 +602,7 @@ Under the t0014 measurement, haiku and sonnet annotators produce statistically i
 ## Re-run the three FrontierScience-Olympiad sonnet timeouts under a longer CLI timeout to recover the missing rows
 ID: S-0014-05
 Status: active
-Priority: medium
+Priority: low
 Kind: experiment
 Source task: t0014_v2_annotator_sonnet_rerun
 Categories: benchmark-annotation, benchmark-frontierscience

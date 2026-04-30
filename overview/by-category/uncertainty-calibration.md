@@ -72,7 +72,7 @@ No answers in this category.
 <summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
 truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
 [t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
 
 v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
@@ -122,7 +122,7 @@ bucket, weight by bucket size. Output should be both a scalar ECE value and a li
 <summary>🧪 <strong>Add provider-specific calibration prompt variants for
 instruction-tuned vs reasoning models</strong> (S-0011-02)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-04-29 | **Source**:
 [t0011_metric2_calibration_aggregator](../../tasks/t0011_metric2_calibration_aggregator/)
 
 The current ConfidencePromptTemplate uses a single Xiong2024 human-inspired prompt.

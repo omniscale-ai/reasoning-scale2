@@ -2,7 +2,7 @@
 
 6 suggestion(s) in category
 [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **5 open**
-(2 high, 3 medium), **1 closed**.
+(2 high, 2 medium, 1 low), **1 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -95,6 +95,8 @@ problem into global / subtask / atomic steps with gold actions at each level, so
 apply the canonical 4-8 decisions filter consistently across all four benchmarks.
 
 </details>
+
+## Low Priority
 
 <details>
 <summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a

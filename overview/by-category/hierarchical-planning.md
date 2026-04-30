@@ -272,7 +272,7 @@ estimate: 4-6 hours of human review time at $50/hour = $200-300.
 <summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
 truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
 [t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
 
 v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500

@@ -1,7 +1,7 @@
 # Suggestions: `agent-evaluation`
 
 22 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**17 open** (8 high, 7 medium, 2 low), **5 closed**.
+**17 open** (8 high, 6 medium, 3 low), **5 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -192,27 +192,6 @@ prompts (B vs G/S/A from the project's research questions).
 ## Medium Priority
 
 <details>
-<summary>📚 <strong>Add an async ScopeAwareReactAgent variant for streaming and
-parallel tool calls</strong> (S-0006-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0006-02` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming
-model output and from issuing multiple independent tool calls concurrently within a single
-Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an
-async model_call signature and asyncio.gather over Action lists. Tests should use
-AsyncScriptedModel mirroring the sync helper.
-
-</details>
-
-<details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
 benchmarks</strong> (S-0006-01)</summary>
 
@@ -347,6 +326,27 @@ later-merged task. This is the cheapest insurance against silent schema drift.
 </details>
 
 ## Low Priority
+
+<details>
+<summary>📚 <strong>Add an async ScopeAwareReactAgent variant for streaming and
+parallel tool calls</strong> (S-0006-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0006-02` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0006_scope_aware_react_library`](../../../overview/tasks/task_pages/t0006_scope_aware_react_library.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The current agent is synchronous. Phase 2 experiments at scale will benefit from streaming
+model output and from issuing multiple independent tool calls concurrently within a single
+Thought block. Build async_scope_aware_react.py exposing AsyncScopeAwareReactAgent with an
+async model_call signature and asyncio.gather over Action lists. Tests should use
+AsyncScriptedModel mirroring the sync helper.
+
+</details>
 
 <details>
 <summary>📊 <strong>Multi-judge disagreement study on hierarchical

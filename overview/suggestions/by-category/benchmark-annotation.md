@@ -1,14 +1,37 @@
 # Suggestions: `benchmark-annotation`
 
 18 suggestion(s) in category
-[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **14 open** (5 high,
-8 medium, 1 low), **4 closed**.
+[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **14 open** (6 high,
+6 medium, 2 low), **4 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
+
+<details>
+<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
+truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
+chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
+entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
+Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
+annotator and judge prompts. If accept rate drops materially below v2-full-text on
+FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
+levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
+</details>
 
 <details>
 <summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
@@ -152,29 +175,6 @@ with zero additional model cost on the happy path.
 </details>
 
 <details>
-<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
-truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-04` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
-
-v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
-chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
-entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
-Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
-annotator and judge prompts. If accept rate drops materially below v2-full-text on
-FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
-levels, the schema is the dominant cause. Cost ~$2 with haiku.
-
-</details>
-
-<details>
 <summary>🧪 <strong>Derive step graphs for FrontierScience-Olympiad rows</strong>
 (S-0003-04)</summary>
 
@@ -213,30 +213,6 @@ AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expa
 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
 smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
 rate, ~$5-6 added cost. Inherits S-0005-01.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
-longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0014-05` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
-| **Source paper** | — |
-| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
-
-Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
-CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
-reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
-delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
-the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
-Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
-aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
-credible. Cost <$1.
 
 </details>
 
@@ -336,6 +312,30 @@ provenance auditable without round-tripping through the corrections file. The ta
 propose the convention as a small extension to the corrections specification, (2) update the
 dataset-asset verificator to surface a warning when an overlay rewrites a per-row field
 without preserving the original, and (3) backfill the convention into the t0015 overlay.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
+longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
+CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
+reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
+delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
+the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
+Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
+aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
+credible. Cost <$1.
 
 </details>
 

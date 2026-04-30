@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-30T21:46:21Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-30T22:03:04Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>58663</char_count>
-    <byte_count>58736</byte_count>
-    <estimated_tokens>14665</estimated_tokens>
+    <char_count>59615</char_count>
+    <byte_count>59690</byte_count>
+    <estimated_tokens>14903</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -145,9 +145,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0013_brainstorm_results_4</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
+        <id>t0016_brainstorm_results_5</id>
       </source_ids>
       <content>
-Completed tasks: 14
+Completed tasks: 15
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -232,6 +233,12 @@ ID: t0015_correct_proxy_benchmark_labels
 Completed: 2026-04-30
 Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
 Result summary: Results Summary: Correct Proxy-Benchmark Labels in t0009 v2 Dataset Summary Wrote a single corrections-overlay file (`corrections/dataset_hierarchical-annotation-v2.json`) that relabels the **52** rows in the t0009 v2 hierarchical-annotation dataset whose `benchmark` field referred to a gated proxy-target benchmark instead of the actual data source: **26** `m2w_*` rows move from `WorkArena++` to `Mind2Web`, and **26** `he_*` rows move from `tau-bench` to `HumanEval`. The `aggregate_datasets` overlay applies cleanly: the effective JSONL now carries the corrected labels and the dataset metadata prose no longer mentions the wrong benchmark names. Metrics * **Rows relabeled, total**: **52** of...
+
+## Brainstorm session 5: prune backlog after t0014 deconfound
+ID: t0016_brainstorm_results_5
+Completed: 2026-04-30
+Short description: Brainstorm 5: pure backlog cleanup after t0014 schema-vs-model deconfound — reject 3 redundant suggestions, reprioritize 5; no new tasks.
+Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm session 5 was a pure backlog cleanup pass after t0014 (v2 sonnet rerun deconfound) and t0015 (proxy benchmark relabel) merged. Eight corrections were issued: three rejections, five priority changes. No new tasks were created and no existing tasks were modified. Session Overview * **Session number**: 5 * **Date**: 2026-04-30 * **Duration**: ~30 minutes * **Mode**: Pure cleanup (no new tasks, no task updates) * **Researcher budget envelope**: &lt; $5 total (no API spend; planning only) Decisions Rejections (3) | Suggestion | Source task | Rationale | | --- | --- | --- | | S-0005-04 | t0005 | Superseded by t0015 proxy-relabel...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -273,15 +280,15 @@ Answers: 0
         <id>S-0010-01</id>
         <id>S-0009-01</id>
         <id>S-0009-03</id>
+        <id>S-0009-04</id>
         <id>S-0009-06</id>
         <id>S-0014-02</id>
         <id>S-0014-03</id>
-        <id>S-0014-04</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
-        <id>S-0002-09</id>
         <id>S-0003-03</id>
+        <id>S-0003-04</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -363,6 +370,13 @@ Kind: evaluation
 Source task: t0009_hierarchical_annotation_v2
 v2 is judged only by a single LLM call per row. The dataset is &#x27;LLM-judge-acceptable&#x27; but not &#x27;human-validated&#x27;. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision verdicts. Compute Cohen&#x27;s kappa between human and the haiku judge to estimate how much of the +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget estimate: 4-6 hours of human review time at $50/hour = $200-300.
 
+## Add an ablation: tree-schema-with-truncated-text to isolate the truncation fix from the schema upgrade
+ID: S-0009-04
+Priority: high
+Kind: experiment
+Source task: t0009_hierarchical_annotation_v2
+v2 changed two things at once: schema (flat -&gt; tree) and text completeness (truncated 1500 chars -&gt; full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be entirely from the truncation fix (Xiong2024&#x27;s prediction) or entirely from the schema upgrade. Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the annotator and judge prompts. If accept rate drops materially below v2-full-text on FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
 ## Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy rows with the actual benchmark data
 ID: S-0009-06
 Priority: high
@@ -383,13 +397,6 @@ Priority: high
 Kind: experiment
 Source task: t0014_v2_annotator_sonnet_rerun
 The model-only delta of -1 pp sits below Xiong2024&#x27;s lower edge (0 pp). Xiong2024 documents that judges trained on the same model family as the annotator show a small positive familial bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near zero, sonnet really does provide no annotator-quality...
-
-## Adopt a haiku-default annotation policy for Phase 2: model swap is not justified
-ID: S-0014-04
-Priority: high
-Kind: technique
-Source task: t0014_v2_annotator_sonnet_rerun
-Under the t0014 measurement, haiku and sonnet annotators produce statistically indistinguishable accept rates under the v2 tree schema (90% sonnet vs 91% haiku, CIs overlap completely). Sonnet annotation costs ~$0.20 per call vs haiku ~$0.02 per call (10x via Claude Code CLI; 7-8x via direct API). For Phase 2 ABC/main-experiment annotation budgets in the $50-200 range, the cost differential dominates: a 200-row sonnet annotation pass would cost $40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by judge bias.
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -412,19 +419,19 @@ Kind: experiment
 Source task: t0002_literature_survey_granularity_conditioning
 The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
 
-## Re-fetch the 11 paper PDFs with git LFS enabled
-ID: S-0002-09
-Priority: medium
-Kind: library
-Source task: t0002_literature_survey_granularity_conditioning
-All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to a future task that enables git LFS. Once LFS is configured, run a download-paper task per asset that fetches the PDF (or markdown conversion) into the asset&#x27;s files/ directory and updates download_status to success. This will let later tasks (especially compare-literature) cite specific page numbers and tables from the source PDFs.
-
 ## Sensitivity-check the SWE-bench Verified 4-8-hunks subset against [3, 12]
 ID: S-0003-03
 Priority: medium
 Kind: evaluation
 Source task: t0003_download_benchmark_subsets
 The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks. The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo distributions; this informs whether the 4-8 boundary is too narrow for Phase 2&#x27;s atomic-edit experiments.
+
+## Derive step graphs for FrontierScience-Olympiad rows
+ID: S-0003-04
+Priority: medium
+Kind: experiment
+Source task: t0003_download_benchmark_subsets
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">

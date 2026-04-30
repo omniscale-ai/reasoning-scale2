@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-04-30T21:46:21Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-04-30T22:03:04Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>110065</char_count>
-    <byte_count>110434</byte_count>
-    <estimated_tokens>27516</estimated_tokens>
+    <char_count>116421</char_count>
+    <byte_count>116834</byte_count>
+    <estimated_tokens>29105</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -32,9 +32,10 @@
         <id>t0013_brainstorm_results_4</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
+        <id>t0016_brainstorm_results_5</id>
       </source_ids>
       <content>
-Total tasks: 15
+Total tasks: 16
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -2042,6 +2043,143 @@ labels and the dataset metadata prose no longer mentions the wrong benchmark nam
 * `verify_plan` -&gt; **PASSED** (0 errors, 0 warnings).
 * `verify_task_folder` -&gt; **PASSED** (0 errors, expected warnings about empty `logs/searches/` and
   `corrections/` populated mid-execution).
+
+## Brainstorm session 5: prune backlog after t0014 deconfound
+ID: t0016_brainstorm_results_5
+Status: completed
+Effective date: 2026-04-30
+Short description: Brainstorm 5: pure backlog cleanup after t0014 schema-vs-model deconfound — reject 3 redundant suggestions, reprioritize 5; no new tasks.
+Dependencies: t0001_brainstorm_results_1, t0002_literature_survey_granularity_conditioning, t0003_download_benchmark_subsets, t0004_brainstorm_results_2, t0005_hierarchical_annotation_pilot_v1, t0006_scope_aware_react_library, t0007_scope_unaware_planandsolve_library, t0008_brainstorm_results_3, t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator, t0013_brainstorm_results_4, t0014_v2_annotator_sonnet_rerun, t0015_correct_proxy_benchmark_labels
+Task types: brainstorming
+Start time: 2026-04-30T22:00:00Z
+End time: 2026-04-30T22:30:00Z
+
+#### Context
+
+Session 5 ran on 2026-04-30 immediately after `t0014_v2_annotator_sonnet_rerun` and
+`t0015_correct_proxy_benchmark_labels` merged. `t0012_phase2_abc_smoke_frontierscience` is in
+progress; this session deliberately does not perturb it.
+
+#### Headline Inputs
+
+`t0014` decomposed t0009&#x27;s published +58 pp v2-vs-v1 judge-accept-rate gain into a **+57 pp
+schema-only** delta and a **−1 pp model-only** delta. The annotator-model swap from haiku to sonnet
+contributes essentially zero of the gain; the v2 tree schema accounts for nearly all of it. The +57
+pp schema-only delta also bundles a truncation fix (v1 had a 1500-character `task_excerpt`
+truncation that v2 removed), which `compare_literature.md` flags as a real confound.
+
+`t0015` wrote a single corrections-overlay file relabelling 52 of 115 v2 rows: 26 `m2w_*` rows from
+`WorkArena++` to `Mind2Web`, and 26 `he_*` rows from `tau-bench` to `HumanEval`.
+
+#### Decisions
+
+This session is pure backlog cleanup. No new tasks. No task cancellations. No task updates. Only
+suggestion-status corrections.
+
+##### Reject (3)
+
+* **S-0005-04** — superseded by t0015 (proxy benchmark naming corrected) and by the inline task_id
+  de-duplication fix in t0009.
+* **S-0005-05** — duplicate of S-0009-03 (single-blind human review with Cohen&#x27;s kappa serves the
+  same role).
+* **S-0014-04** — this is a project-level decision, not a task. The +57 pp schema / −1 pp model
+  split already establishes haiku-default as the right policy; recorded as project policy rather
+  than executed as a task.
+
+##### Reprioritize (5)
+
+* **S-0009-04** medium → **high** — the per-benchmark pattern in t0014 (+100 pp on long-input
+  benchmarks vs +13–17 pp on short ones) is exactly what the truncation hypothesis predicts.
+  Splitting the schema-only +57 pp into &quot;tree shape&quot; vs &quot;no truncation&quot; is now load-bearing for the
+  science.
+* **S-0002-09** medium → low — infrastructure chore (re-fetch 11 PDFs with git LFS); low signal for
+  the science.
+* **S-0006-02** medium → low — async ScopeAwareReactAgent is performance optimization, not science;
+  Phase 2 does not need it.
+* **S-0011-02** medium → low — provider-specific calibration prompt variants; Phase 2 currently uses
+  Anthropic only, so variant work is premature.
+* **S-0014-05** medium → low — re-running 3 FrontierScience-Olympiad sonnet timeouts only recovers 3
+  rows; n=20 → 23 does not materially change Wilson CIs on the existing decomposition.
+
+#### Out of Scope
+
+* Creating new tasks (deferred to session 6 once t0012 lands).
+* Modifying t0012&#x27;s in-progress state.
+* Replacing the proxy rows with native WorkArena++ / tau-bench data (S-0015-01 remains active at
+  medium priority for a future session).
+
+#### Outputs
+
+* 8 correction files in `corrections/` against six prior tasks.
+* No new suggestions.
+* No new assets.
+* Updated effective suggestion view: 3 fewer active, 5 with revised priority.
+
+### Results Summary
+
+#### Summary
+
+Brainstorm session 5 was a pure backlog cleanup pass after t0014 (v2 sonnet rerun deconfound) and
+t0015 (proxy benchmark relabel) merged. Eight corrections were issued: three rejections, five
+priority changes. No new tasks were created and no existing tasks were modified.
+
+#### Session Overview
+
+* **Session number**: 5
+* **Date**: 2026-04-30
+* **Duration**: ~30 minutes
+* **Mode**: Pure cleanup (no new tasks, no task updates)
+* **Researcher budget envelope**: &lt; $5 total (no API spend; planning only)
+
+#### Decisions
+
+##### Rejections (3)
+
+| Suggestion | Source task | Rationale |
+| --- | --- | --- |
+| S-0005-04 | t0005 | Superseded by t0015 proxy-relabel; remaining concerns are aggregator cosmetics |
+| S-0005-05 | t0005 | Duplicate of S-0009-03 (multi-judge agreement, post-v2 scope) |
+| S-0014-04 | t0014 | &quot;Adopt haiku-default&quot; is policy, not a task |
+
+##### Reprioritizations (5)
+
+| Suggestion | Source task | From | To | Rationale |
+| --- | --- | --- | --- | --- |
+| S-0009-04 | t0009 | medium | high | t0014 per-benchmark deltas match truncation-hypothesis prediction |
+| S-0002-09 | t0002 | medium | low | LFS re-fetch is hygiene; not on research critical path |
+| S-0006-02 | t0006 | medium | low | Async ReactAgent is engineering optimization |
+| S-0011-02 | t0011 | medium | low | Sequenced behind v2-annotator stability and schema deconfound |
+| S-0014-05 | t0014 | medium | low | Three missing rows do not change headline finding |
+
+#### Metrics
+
+| Metric | Value |
+| --- | --- |
+| Suggestions reviewed | 35 |
+| Suggestions rejected | 3 |
+| Suggestions reprioritized | 5 |
+| New tasks created | 0 |
+| Tasks cancelled | 0 |
+| Tasks updated | 0 |
+| Correction files written | 8 |
+
+#### Verification
+
+* `verify_corrections t0016_brainstorm_results_5` → PASSED, no errors or warnings
+* `verify_task_file t0016_brainstorm_results_5` → see verification log
+* `verify_suggestions t0016_brainstorm_results_5` → see verification log
+* `verify_logs t0016_brainstorm_results_5` → see verification log
+
+#### Next Steps
+
+After merge, the suggestion aggregator overlay will reflect:
+
+* 3 fewer active suggestions (rejected entries)
+* S-0009-04 visible as the highest-priority truncation/schema deconfound experiment
+* 4 fewer medium-priority items (now low)
+
+The next suggestions-chooser run should pick up S-0009-04 as the leading high-priority experiment
+given the truncation confound flagged in t0014&#x27;s compare_literature.
       </content>
     </section>
   </sections>

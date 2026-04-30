@@ -1,14 +1,14 @@
 # Suggestions: `uncertainty-calibration`
 
 7 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **5 open** (3
-medium, 2 low), **2 closed**.
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **5 open** (1
+high, 1 medium, 3 low), **2 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## Medium Priority
+## High Priority
 
 <details>
 <summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
@@ -32,6 +32,8 @@ FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-fu
 levels, the schema is the dominant cause. Cost ~$2 with haiku.
 
 </details>
+
+## Medium Priority
 
 <details>
 <summary>📚 <strong>Add Expected Calibration Error (ECE) computation alongside
@@ -58,6 +60,8 @@ bucket, weight by bucket size. Output should be both a scalar ECE value and a li
 
 </details>
 
+## Low Priority
+
 <details>
 <summary>🧪 <strong>Add provider-specific calibration prompt variants for
 instruction-tuned vs reasoning models</strong> (S-0011-02)</summary>
@@ -82,8 +86,6 @@ t0012's experiment harness. Out of scope for this task per task_description.md b
 as the obvious next sweep.
 
 </details>
-
-## Low Priority
 
 <details>
 <summary>📊 <strong>Multi-judge disagreement study on hierarchical

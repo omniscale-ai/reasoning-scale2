@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-15-4682B4" alt="Tasks"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-16-4682B4" alt="Tasks"></a>
   <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-49-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (6K) |
-[full](llm-context/full.xml) (53K) | [roadmap](llm-context/roadmap.xml) (15K) |
-[results](llm-context/results-deep-dive.xml) (46K) |
+[full](llm-context/full.xml) (55K) | [roadmap](llm-context/roadmap.xml) (15K) |
+[results](llm-context/results-deep-dive.xml) (48K) |
 [assets](llm-context/literature-and-assets.xml) (11K)
 
-*Last updated: 2026-04-30 21:46 UTC*
+*Last updated: 2026-04-30 22:03 UTC*
 
 * **Budget**: **$30** spent of $100
 * **Remaining**: **$70**
@@ -68,11 +68,12 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (14 total)](tasks/by-status/completed.md)
+## [Recently Completed (15 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
 | 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`results`](../tasks/t0014_v2_annotator_sonnet_rerun/results/results_detailed.md) | 2026-04-30 23:59 |
+| 0016 | [Brainstorm session 5: prune backlog after t0014 deconfound](../overview/tasks/task_pages/t0016_brainstorm_results_5.md) | [`results`](../tasks/t0016_brainstorm_results_5/results/results_detailed.md) | 2026-04-30 22:30 |
 | 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`results`](../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) | 2026-04-30 19:32 |
 | 0013 | [Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels](../overview/tasks/task_pages/t0013_brainstorm_results_4.md) | [`results`](../tasks/t0013_brainstorm_results_4/results/results_detailed.md) | 2026-04-30 18:00 |
 | 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`results`](../tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md) | 2026-04-30 00:53 |
@@ -81,9 +82,8 @@ No blocked tasks.
 | 0011 | [Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) | [`results`](../tasks/t0011_metric2_calibration_aggregator/results/results_detailed.md) | 2026-04-29 23:43 |
 | 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`results`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/results_detailed.md) | 2026-04-29 20:14 |
 | 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`results`](../tasks/t0006_scope_aware_react_library/results/results_detailed.md) | 2026-04-29 20:07 |
-| 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
 
-*4 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*5 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -126,7 +126,7 @@ estimate: 4-6 hours of human review time at $50/hour = $200-300.
 <summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
 truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
 [t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
 
 v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
@@ -234,7 +234,7 @@ judge bias.
 <summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
 longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-04-30 | **Source**:
 [t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
 
 Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
@@ -272,7 +272,7 @@ change to the FrontierScience-Olympiad or SWE-bench Verified rows.
 
 ---
 
-## [High Priority Suggestions (12)](suggestions/)
+## [High Priority Suggestions (13)](suggestions/)
 
 <details>
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
@@ -287,6 +287,23 @@ stratified sample (or all 115 rows for higher precision) and emit acceptable/nee
 verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
 +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
 estimate: 4-6 hours of human review time at $50/hour = $200-300.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
+truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
+
+v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
+chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
+entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
+Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
+annotator and judge prompts. If accept rate drops materially below v2-full-text on
+FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
+levels, the schema is the dominant cause. Cost ~$2 with haiku.
 
 </details>
 
@@ -421,20 +438,7 @@ Cohen's kappa) between the human rater and the LLM annotator.
 
 </details>
 
-<details>
-<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
-experiments</strong> (S-0005-06)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
-that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
-prompts (B vs G/S/A from the project's research questions).
-
-</details>
-
-*2 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+*3 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 
