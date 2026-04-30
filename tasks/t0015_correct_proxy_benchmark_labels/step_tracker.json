@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Inspect the t0009 dataset asset, the t0003 download decisions, t0005 v1 annotation labels, and the dataset aggregator's correction-overlay code paths.",
-      "status": "pending",
-      "started_at": null,
-      "completed_at": null,
+      "status": "completed",
+      "started_at": "2026-04-30T19:11:20Z",
+      "completed_at": "2026-04-30T19:25:00Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
