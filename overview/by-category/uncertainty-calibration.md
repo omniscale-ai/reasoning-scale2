@@ -6,7 +6,7 @@ probabilities.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/uncertainty-calibration.md) |
-[Suggestions (6)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
+[Suggestions (7)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
 (1)](../libraries/by-category/uncertainty-calibration.md)
 
 ---
@@ -66,7 +66,24 @@ condition's confidence elicitation.
 
 No answers in this category.
 
-## Suggestions (4 open, 2 closed)
+## Suggestions (5 open, 2 closed)
+
+<details>
+<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
+truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
+
+v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
+chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
+entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
+Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
+annotator and judge prompts. If accept rate drops materially below v2-full-text on
+FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
+levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
+</details>
 
 <details>
 <summary>📊 <strong>Multi-judge disagreement study on hierarchical

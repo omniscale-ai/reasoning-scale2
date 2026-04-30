@@ -6,7 +6,8 @@ subtask, atomic).
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (4)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (13)](../suggestions/by-category/granularity-conditioning.md) | [Libraries
+[Suggestions (13)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
+(1)](../datasets/by-category/granularity-conditioning.md) | [Libraries
 (3)](../libraries/by-category/granularity-conditioning.md)
 
 ---

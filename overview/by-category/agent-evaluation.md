@@ -5,8 +5,8 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (7)](../papers/by-category/agent-evaluation.md) | [Suggestions
-(14)](../suggestions/by-category/agent-evaluation.md) | [Datasets
-(1)](../datasets/by-category/agent-evaluation.md) | [Libraries
+(18)](../suggestions/by-category/agent-evaluation.md) | [Datasets
+(2)](../datasets/by-category/agent-evaluation.md) | [Libraries
 (3)](../libraries/by-category/agent-evaluation.md)
 
 ---
@@ -318,7 +318,73 @@ scope-conditioning gains must be robust to single-rollout luck.
 
 No answers in this category.
 
-## Suggestions (11 open, 3 closed)
+## Suggestions (15 open, 3 closed)
+
+<details>
+<summary>🧪 <strong>Re-run v2 annotator with claude-sonnet-4-6 via direct API to
+disentangle schema vs model effect</strong> (S-0009-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
+
+The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude
+Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat
+-> tree) with a model downgrade (sonnet -> haiku). Re-run all 115 rows on claude-sonnet-4-6
+using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs
+~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and
+v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model
+contributions.
+
+</details>
+
+<details>
+<summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
+report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
+
+v2 is judged only by a single LLM call per row. The dataset is 'LLM-judge-acceptable' but not
+'human-validated'. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row
+stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision
+verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
++58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
+estimate: 4-6 hours of human review time at $50/hour = $200-300.
+
+</details>
+
+<details>
+<summary>📂 <strong>Expand the v2 dataset from 115 rows to >=200 rows by sampling
+additional benchmark instances</strong> (S-0009-05)</summary>
+
+**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
+
+The Phase 1 success criterion is >=100 annotated tasks per condition; v2 is at 115 which is
+just over the threshold. The downstream Phase 2 experiments need stratification by difficulty
+AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expand to >=200
+rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
+smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
+rate, ~$5-6 added cost. Inherits S-0005-01.
+
+</details>
+
+<details>
+<summary>📂 <strong>Replace the WorkArena++ proxy and HumanEval-as-tau-bench-proxy
+rows with the actual benchmark data</strong> (S-0009-06)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
+
+Inspecting the v1 (and now v2) rows shows the 'WorkArena++' rows are actually Mind2Web proxy
+data and the 'tau-bench' rows are HumanEval proxy data — neither benchmark is loaded directly
+because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance
+matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a)
+acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the
+benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream
+consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
+
+</details>
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability

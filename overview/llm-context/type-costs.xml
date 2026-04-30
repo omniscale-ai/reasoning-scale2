@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-04-29T23:47:15Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-04-30T00:53:35Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>1514</char_count>
-    <byte_count>1514</byte_count>
-    <estimated_tokens>378</estimated_tokens>
+    <char_count>1610</char_count>
+    <byte_count>1610</byte_count>
+    <estimated_tokens>402</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -18,12 +18,14 @@
       <source_name>aggregate_costs_full</source_name>
       <content>
 Total budget: $100.00
-Total spent: $0.06
-Budget remaining: $99.94
-Spent: 0.1%
+Total spent: $9.16
+Budget remaining: $90.84
+Spent: 9.2%
 
 ### Cost Breakdown by Category
 
+* annotator_haiku_4_5: $7.42
+* judge_haiku_4_5: $1.68
 * anthropic_api: $0.06
 
 ### Cost Breakdown by Service
@@ -40,6 +42,7 @@ Spent: 0.1%
 * t0006_scope_aware_react_library: $0.00
 * t0007_scope_unaware_planandsolve_library: $0.00
 * t0008_brainstorm_results_3: $0.00
+* t0009_hierarchical_annotation_v2: $9.10
 * t0010_matched_mismatch_library: $0.00
 * t0011_metric2_calibration_aggregator: $0.00
       </content>

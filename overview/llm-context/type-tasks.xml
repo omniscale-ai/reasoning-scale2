@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-04-29T23:47:15Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-04-30T00:53:35Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>82877</char_count>
-    <byte_count>83161</byte_count>
-    <estimated_tokens>20719</estimated_tokens>
+    <char_count>85253</char_count>
+    <byte_count>85541</byte_count>
+    <estimated_tokens>21313</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -1064,12 +1064,13 @@ to expand the v2 dataset or move to a tool-using benchmark next.
 
 ## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
 ID: t0009_hierarchical_annotation_v2
-Status: in_progress
-Effective date: 2026-04-29
+Status: completed
+Effective date: 2026-04-30
 Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
 Task types: hierarchical-annotation
 Source suggestion: S-0005-02
 Start time: 2026-04-29T23:24:52Z
+End time: 2026-04-30T00:53:00Z
 
 #### Motivation
 
@@ -1187,6 +1188,50 @@ S-0005-01 (annotation v2 schema) and the schema-gap finding from brainstorm 3.
 3. Are there rows where the v2 tree decomposition is well-defined but the v1 flat decomposition was
    empty (hierarchy_completeness: false in v1)?
 4. What fraction of atomics fall under `global_atomics` vs assigned to a specific subtask?
+
+### Results Summary
+
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0009_hierarchical_annotation_v2&quot;
+date_completed: &quot;2026-04-30&quot;
+status: &quot;complete&quot;
+---
+### Results Summary: Hierarchical Annotation v2
+
+#### Summary
+
+All 115 rows of the v1 hierarchical-annotation pilot were re-annotated under the v2 tree schema with
+`claude-haiku-4-5` and full problem text, achieving 115/115 hierarchy completeness and a 21/23 (91%)
+judge accept rate on the stratified spot-check. Per-benchmark v2-vs-v1 deltas are uniformly
+positive, ranging from +33% (SWE-bench Verified, tau-bench) to +100% (WorkArena++).
+
+#### Metrics
+
+* **avg_decisions_per_task** = **16.38** atomic actions per row across the 115-row v2 dataset (range
+  4-65, median 14). Tracks plan-length distribution.
+* **Per-benchmark v2 judge accept rate**: FrontierScience-Olympiad **67% (4/6)**, SWE-bench Verified
+  **100% (6/6)**, WorkArena++ **100% (6/6)**, tau-bench **100% (5/5)**.
+* **Per-benchmark v1-vs-v2 delta**: FrontierScience-Olympiad **+67 percentage points** (0% -&gt; 67%),
+  SWE-bench Verified **+33 pp** (67% -&gt; 100%), WorkArena++ **+100 pp** (0% -&gt; 100%), tau-bench **+33
+  pp** (67% -&gt; 100%).
+* **`global_atomics` fraction** = **13.6%** (256 cross-cutting atomics out of 1,884 total). Within
+  the 18-22% range reported by ReAct/Reflexion on HotpotQA, lower-bounded.
+* **Hierarchy completeness**: **115/115 (100%)** rows passed the stricter v2 rule (`global` non-null
+  AND atomics present somewhere in the tree).
+* **Total cost**: **$9.10** (annotator $7.42 + judge $1.68), under the $15 task budget.
+
+#### Verification
+
+* `verify_dataset_asset` (via `meta.asset_types.dataset.verificator`): **PASSED** with 0 errors, 1
+  warning (DA-W007 — author has no `country` field; intentional, project-internal author).
+* `verify_research_papers`: **PASSED** with 0 errors, 0 warnings.
+* `verify_plan`: **PASSED** with 0 errors, 1 warning (PL-W009 — informational, see plan log).
+* `ruff check`, `ruff format`, `mypy -p tasks.t0009_hierarchical_annotation_v2.code`: **PASSED**
+  with no errors.
+* All 115 v2 jsonl rows are valid JSON with the v2 schema fields populated.
+* All 23 judged rows have a non-null `judge_verdict` in `{acceptable, needs revision}`.
+* `_pilot_row_index` values in the v2 jsonl are unique (verified with a Python set check).
 
 ## Matched-mismatch library: condition C with deliberately wrong granularity tags
 ID: t0010_matched_mismatch_library

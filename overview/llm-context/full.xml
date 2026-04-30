@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="full" generated_at_utc="2026-04-29T23:47:15Z">
+<llm_context_archive preset_id="full" generated_at_utc="2026-04-30T00:53:35Z">
   <archive_summary>
     <title>Full Project Context</title>
     <description>Largest preset with detailed completed-task reports and the full project knowledge base.</description>
     <use_case>Deep project review, comprehensive planning, and long-context synthesis.</use_case>
-    <section_count>18</section_count>
-    <char_count>140721</char_count>
-    <byte_count>141187</byte_count>
-    <estimated_tokens>35180</estimated_tokens>
+    <section_count>19</section_count>
+    <char_count>161066</char_count>
+    <byte_count>161569</byte_count>
+    <estimated_tokens>40266</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -139,11 +139,12 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
         <id>t0008_brainstorm_results_3</id>
+        <id>t0009_hierarchical_annotation_v2</id>
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
       </source_ids>
       <content>
-Completed tasks: 10
+Completed tasks: 11
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -193,6 +194,12 @@ Completed: 2026-04-30
 Short description: Brainstorm 3: insert v2 tree-schema re-annotation as the new ASAP task; preserve original wave 3 (matched-mismatch lib, Metric 2 lib, A/B/C smoke harness).
 Result summary: Brainstorm Session 3 — Results Summary Summary Third brainstorm produced four new not-started tasks. The v1 annotation schema was found to lack subtask-to-atomic edges; a v2 re-annotation task was inserted ASAP as t0009. The original wave 3 plan (matched-mismatch library, Metric 2 calibration, A/B/C smoke harness) was preserved and renumbered to t0010-t0012, with t0012 gated on the other three. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after wave 2 (t0004-t0007) merged at $0.06 spend, with 27 uncovered suggestions and the v2 schema gap surfaced during prompt-modelling discussion of the `is_bored` annotation. * **Prompt**: Plan the first Phase 2 result on a real...
 
+## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
+ID: t0009_hierarchical_annotation_v2
+Completed: 2026-04-30
+Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
+Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0009_hierarchical_annotation_v2&quot; date_completed: &quot;2026-04-30&quot; status: &quot;complete&quot; --- Results Summary: Hierarchical Annotation v2 Summary All 115 rows of the v1 hierarchical-annotation pilot were re-annotated under the v2 tree schema with `claude-haiku-4-5` and full problem text, achieving 115/115 hierarchy completeness and a 21/23 (91%) judge accept rate on the stratified spot-check. Per-benchmark v2-vs-v1 deltas are uniformly positive, ranging from +33% (SWE-bench Verified, tau-bench) to +100% (WorkArena++). Metrics * **avg_decisions_per_task** = **16.38** atomic actions per row across the 115-row v2 dataset (range 4-65, median 14). Tracks plan-length...
+
 ## Matched-mismatch library: condition C with deliberately wrong granularity tags
 ID: t0010_matched_mismatch_library
 Completed: 2026-04-29
@@ -210,134 +217,10 @@ Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Impl
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0009_hierarchical_annotation_v2</id>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
-ID: t0009_hierarchical_annotation_v2
-Status: in_progress
-Effective date: 2026-04-29
-Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
-
-#### Motivation
-
-The v1 annotation produced by `t0005_hierarchical_annotation_pilot_v1` uses a flat schema: `subtask`
-is a `list[str]`, `atomic` is a `list[str]`, and there is no encoded edge mapping atomics to their
-parent subtask. The v1 schema also truncates problem text to 1500 characters in the `task_excerpt`
-field, which the v1 LLM-as-judge identified as the dominant failure mode on FrontierScience-Olympiad
-rows (0/3 accept rate). This task fixes both issues: re-annotates all 115 rows under a tree-shaped
-v2 schema with full problem text, and spot-checks at least 20% of rows with the LLM judge to
-estimate quality. Implements suggestion S-0005-02 and the partial v2-schema portion of S-0005-01.
-
-#### v2 Schema
-
-```json
-{
-  &quot;task_id&quot;: &quot;...&quot;,
-  &quot;benchmark&quot;: &quot;...&quot;,
-  &quot;domain&quot;: &quot;...&quot;,
-  &quot;difficulty&quot;: { ... },
-  &quot;problem&quot;: &quot;...&quot;,
-  &quot;hierarchy&quot;: {
-    &quot;global&quot;: &quot;&lt;one-sentence top-level approach&gt;&quot;,
-    &quot;subtasks&quot;: [
-      {
-        &quot;subtask&quot;: &quot;&lt;subtask description&gt;&quot;,
-        &quot;atomics&quot;: [&quot;&lt;atomic step&gt;&quot;, &quot;...&quot;]
-      },
-      ...
-    ],
-    &quot;global_atomics&quot;: [&quot;&lt;cross-cutting atomic step&gt;&quot;, &quot;...&quot;]
-  },
-  &quot;gold_actions&quot;: {
-    &quot;global&quot;: &quot;&lt;resolved global action&gt;&quot;,
-    &quot;subtasks&quot;: [
-      {
-        &quot;subtask&quot;: &quot;&lt;resolved subtask action&gt;&quot;,
-        &quot;atomics&quot;: [&quot;&lt;resolved atomic action&gt;&quot;, &quot;...&quot;]
-      },
-      ...
-    ],
-    &quot;global_atomics&quot;: [&quot;&lt;resolved cross-cutting atomic action&gt;&quot;, &quot;...&quot;]
-  },
-  &quot;annotation_model&quot;: &quot;claude-sonnet-4-6&quot;,
-  &quot;judge_verdict&quot;: &quot;acceptable&quot; | &quot;needs revision&quot; | null,
-  &quot;judge_notes&quot;: &quot;...&quot;,
-  &quot;hierarchy_completeness&quot;: true | false
-}
-```
-
-`global_atomics` captures atomic steps that do not belong to any single subtask (typically
-verification, sanity checks, or cross-cutting concerns surfaced in v1&#x27;s flat `atomic` list).
-
-#### Scope
-
-* Re-run the v1 annotator (`claude-sonnet-4-6`) with a new prompt that elicits the tree schema
-  above. Pass the **full problem text** (no `task_excerpt` truncation).
-* Apply the same task_id deduplication fix from v1 (the source pilot file has 14 rows with colliding
-  `task_id`s; thread `_pilot_row_index` through the asset).
-* Spot-check at least 23 rows (20%) with `claude-haiku-4-5-20251001` as judge. Sample is stratified
-  across the four benchmarks (FrontierScience-Olympiad, SWE-bench Verified, HumanEval-proxy,
-  Mind2Web-proxy).
-* Produce one consolidated `dataset` asset under `assets/dataset/hierarchical-annotation-v2/` with
-  the schema above and a `description.md` explaining the v2 → v1 migration.
-* Compare v2 vs v1 judge accept rate per benchmark and flag any benchmark where v2 fails to improve.
-
-Out of scope: scaling beyond 115 rows (S-0005-01 expansion), human review (full review pass deferred
-to v3), proxy benchmark replacement (deferred to follow-up).
-
-#### Approach
-
-1. Read the v1 dataset `assets/dataset/hierarchical-annotation-v1/files/*.jsonl` from t0005 and load
-   all 115 rows.
-2. For each row, construct a v2 annotation prompt with the full problem text and the v2 schema in
-   the system prompt. Pass to `claude-sonnet-4-6`. Capture the parsed tree.
-3. Stratified-sample 23 rows. For each, call the haiku judge with the row&#x27;s full problem and the
-   proposed v2 hierarchy; capture verdict + one-sentence justification.
-4. Persist as a `dataset` asset with `details.json` (source = t0005&#x27;s v1 dataset asset, version =
-   &quot;v2&quot;, license inherited per row, sample count = 115) and
-   `files/hierarchical_annotation_v2.jsonl`.
-5. Report per-benchmark v2-vs-v1 judge accept rate delta in `results/results_detailed.md`.
-
-#### Expected Outputs
-
-* `assets/dataset/hierarchical-annotation-v2/{details.json, description.md, files/}`.
-* `results/results_summary.md` with per-benchmark completeness and judge accept rate vs v1.
-* `results/results_detailed.md` with the full audit table, the v2-vs-v1 comparison, and any rows
-  that failed the judge.
-* `results/metrics.json` reporting `avg_decisions_per_task` (mean atomics per row).
-* Follow-up suggestions for: row-count expansion to ≥200, human review pass, proxy benchmark
-  remediation, and any benchmark where v2 fails to improve over v1.
-
-#### Compute and Budget
-
-No GPU. Anthropic API only. Estimated cost: **~$15** (115 sonnet annotations + 23 haiku judges).
-Per-task cap: $20.
-
-#### Dependencies and Cross-References
-
-* No task dependencies. Reads t0005&#x27;s v1 dataset asset as input but does not depend on the t0005
-  task being incomplete.
-* References `project/data/annotation_pilot/tasks_annotated.jsonl` (115 rows, original).
-* Sister-task coordination: t0012 will consume the v2 dataset; this task must publish the v2 dataset
-  asset before t0012&#x27;s implementation step runs.
-
-#### Source Suggestion
-
-S-0005-02 — &quot;Re-run LLM-as-judge with full problem text (no truncation).&quot; Also partially addresses
-S-0005-01 (annotation v2 schema) and the schema-gap finding from brainstorm 3.
-
-#### Key Questions
-
-1. What is the per-benchmark judge accept rate under v2 vs v1?
-2. How does the v2 schema&#x27;s tree shape affect FrontierScience-Olympiad acceptance specifically (the
-   worst-performing benchmark in v1)?
-3. Are there rows where the v2 tree decomposition is well-defined but the v1 flat decomposition was
-   empty (hierarchy_completeness: false in v1)?
-4. What fraction of atomics fall under `global_atomics` vs assigned to a specific subtask?
+Planned or active tasks: 1
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
@@ -570,9 +453,10 @@ Least-to-Most (LtM) prompting is a two-stage prompting technique designed to ove
         <id>swebench-verified-subset</id>
         <id>taubench-subset</id>
         <id>workarena-plus-plus-subset</id>
+        <id>hierarchical-annotation-v2</id>
       </source_ids>
       <content>
-Datasets: 5
+Datasets: 6
 
 ## FrontierScience-Olympiad subset (pilot v0)
 ID: frontierscience-olympiad-subset
@@ -613,6 +497,14 @@ Access: restricted
 Added by task: t0003_download_benchmark_subsets
 Size: 42 compositional task class lists from the upstream curriculum manifest. Task instances are not enumerated (requires live ServiceNow + gated HF).
 This dataset asset packages the WorkArena++ compositional task class manifest (42 task class lists) extracted from the upstream `tasks/compositional/utils/curriculum.py` source. End-to-end task instantiation requires a live ServiceNow developer instance plus access to the `ServiceNow/WorkArena-Instances` gated HuggingFace dataset; this access is treated as out of scope for this download task and is documented as a...
+
+## Hierarchical Annotation v2 (115-row pilot, tree schema)
+ID: hierarchical-annotation-v2
+Year: 2026
+Access: restricted
+Added by task: t0009_hierarchical_annotation_v2
+Size: 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision).
+Hierarchical Annotation v2 is the canonical input dataset for the project&#x27;s Phase 2 experiments on scope-conditioned agents. It re-annotates the same 115 benchmark rows the v1 pilot covered but encodes a tree-shaped hierarchy with explicit subtask-to-atomic edges and a separate `global_atomics` bucket for cross-cutting steps. Both the annotator and the judge see the full problem text, fixing the dominant v1...
       </content>
     </section>
     <section id="libraries" source_kind="aggregator">
@@ -1906,6 +1798,383 @@ remains after this session.
 * `verify_corrections` — t0008: PASSED (no corrections).
 * `verify_suggestions` — t0008: PASSED.
 * `verify_logs` — t0008: PASSED.
+      </content>
+    </section>
+    <section id="t0009_hierarchical_annotation_v2-results-detailed" source_kind="file">
+      <title>t0009_hierarchical_annotation_v2 — Hierarchical annotation v2: tree schema with subtask-to-atomic edges — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0009_hierarchical_annotation_v2</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0009_hierarchical_annotation_v2&quot;
+date_completed: &quot;2026-04-30&quot;
+status: &quot;complete&quot;
+---
+### Detailed Results: Hierarchical Annotation v2
+
+#### Summary
+
+Re-annotated all 115 rows of the v1 hierarchical-annotation pilot
+(`tasks/t0005_hierarchical_annotation_pilot_v1/assets/dataset/hierarchical-annotation-v1/`) under a
+tree-shaped v2 schema with explicit subtask-to-atomic edges and a separate `global_atomics` bucket
+for cross-cutting actions. Both annotator and judge use `claude-haiku-4-5` via the local Claude Code
+CLI; both see the **full** problem text with no character truncation. All 115 rows produced complete
+v2 hierarchies; the 23-row stratified LLM-as-judge sample yielded a 91% accept rate (21/23).
+Per-benchmark deltas vs v1 are uniformly positive (+33% to +100%). Total cost $9.10, well under the
+$15 task budget.
+
+#### Methodology
+
+* **Hardware**: local macOS workstation; no GPU, no remote compute. The pipeline is pure Python
+  driving the local `claude` CLI in `claude -p - --model claude-haiku-4-5 --output-format json`
+  mode.
+* **Models**: annotator and judge both use `claude-haiku-4-5`. The original task description
+  specified `claude-sonnet-4-6` for the annotator (held constant with v1 for an apples-to-apples
+  schema comparison), but a 3-row Sonnet dry-run measured per-call cost at ~$0.30 (driven by the
+  Claude Code CLI&#x27;s per-invocation system-prompt cache creation, not by the underlying model price).
+  Projected 115-row Sonnet cost ~$35 would have busted the $15 task budget by
+  &gt; 2x. The annotator was switched to Haiku to fit the budget. This is documented as a known
+  &gt; confound that conflates the schema upgrade with the model downgrade in the v2-vs-v1 comparison;
+  &gt; see `## Limitations` and `results/suggestions.json` for the v3 follow-up.
+* **Concurrency**: 4 worker threads via `concurrent.futures.ThreadPoolExecutor`. Each worker invokes
+  the local `claude` CLI as a subprocess; writes to the output JSONL are serialized via a
+  `threading.Lock`.
+* **Inputs**:
+  `tasks/t0005_hierarchical_annotation_pilot_v1/assets/dataset/hierarchical-annotation-v1/files/hierarchical_annotation_v1.jsonl`
+  (115 rows; FrontierScience-Olympiad: 40, SWE-bench Verified: 23, WorkArena++: 26, tau-bench: 26).
+* **Pipeline stages** (in order):
+  1. Annotator (`code/v2_annotator.py`): full problem text + benchmark/domain → JSON v2 tree.
+  2. Sample selection (`code/select_judge_sample.py`): fixed seed 42, stratified 6/6/6/5 = 23 rows.
+  3. Judge (`code/v2_judge.py`): full problem + v2 tree + v2 gold_actions → JSON
+     `{verdict, justification}`.
+  4. Asset assembly (`code/build_v2_asset.py`): merge by `_pilot_row_index`; emit `details.json`,
+     `description.md`, and the consolidated jsonl.
+  5. Stats (`code/compute_stats.py`): per-benchmark accept-rate deltas, mean atomics per row,
+     `global_atomics` fraction.
+* **Timestamps**: implementation started 2026-04-29T23:35:26Z, completed 2026-04-30T00:38:00Z.
+  Annotator wall-clock ≈ 30 minutes (parallel). Judge wall-clock ≈ 4 minutes.
+* **Random seed**: `SAMPLE_SEED = 42` for the judge sample; annotator and judge calls run at the
+  model&#x27;s default temperature (CLI does not expose `--temperature`).
+
+#### Metrics Tables
+
+##### Per-benchmark v1-vs-v2 LLM-as-judge accept rate
+
+| Benchmark | v1 judged | v1 accept rate | v2 judged | v2 accept rate | Δ |
+| --- | --- | --- | --- | --- | --- |
+| FrontierScience-Olympiad | 3 | 0% (0/3) | 6 | 67% (4/6) | +67% |
+| SWE-bench Verified | 3 | 67% (2/3) | 6 | 100% (6/6) | +33% |
+| WorkArena++ | 3 | 0% (0/3) | 6 | 100% (6/6) | +100% |
+| tau-bench | 3 | 67% (2/3) | 5 | 100% (5/5) | +33% |
+| **Total / aggregate** | **12** | **33% (4/12)** | **23** | **91% (21/23)** | **+58%** |
+
+The v1 baseline numbers come from
+`tasks/t0005_hierarchical_annotation_pilot_v1/assets/dataset/hierarchical-annotation-v1/files/hierarchical_annotation_v1.jsonl`,
+which carries 12 judged rows (3 per benchmark). The v2 sample is 23 rows (6/6/6/5).
+
+##### v2 hierarchy completeness per benchmark
+
+| Benchmark | Total rows | Complete (v2 rule) | Complete (v1 rule, for reference) |
+| --- | --- | --- | --- |
+| FrontierScience-Olympiad | 40 | 40 (100%) | 39 (97.5%) |
+| SWE-bench Verified | 23 | 23 (100%) | 23 (100%) |
+| tau-bench | 26 | 26 (100%) | 26 (100%) |
+| WorkArena++ | 26 | 26 (100%) | 26 (100%) |
+| **Total** | **115** | **115 (100%)** | **114 (99.1%)** |
+
+The v2 rule is stricter than v1 (`global` non-null AND atomics present somewhere in the tree) and
+yet 100% of rows pass it, indicating that the tree shape is well-defined for every row.
+
+##### Atomics distribution (v2)
+
+| Statistic | Value |
+| --- | --- |
+| Total atomics across all rows | 1,884 |
+| Atomics per row, min | 5 |
+| Atomics per row, median | 16 |
+| Atomics per row, mean | 16.38 |
+| Atomics per row, max | 34 |
+| Subtask-bound atomics | 1,628 |
+| Cross-cutting `global_atomics` | 256 |
+| `global_atomics` fraction | 13.6% |
+
+The 13.6% global-atomics fraction sits below the 18-22% range reported by ReAct/Reflexion on
+HotpotQA, suggesting that on these four benchmarks fewer atomic actions are truly cross-cutting than
+on multi-hop QA. This is a meaningful finding for the Phase 2 experiment design — it implies that
+scope-conditioning experiments will mostly distinguish behaviour between the subtask and atomic
+levels, with the global level having a smaller separate contribution.
+
+##### Cost ledger
+
+| Stage | Calls | Total cost (USD) | Mean / call |
+| --- | --- | --- | --- |
+| Annotator (claude-haiku-4-5, 115 rows, 4 workers) | 115 | $7.42 | $0.065 |
+| Judge (claude-haiku-4-5, 23 rows, 4 workers) | 23 | $1.68 | $0.073 |
+| **Total** | **138** | **$9.10** | **$0.066** |
+
+Both stages stayed under their hard caps ($13.00 annotator, $2.00 judge).
+
+#### Comparison vs Baselines
+
+The v1 dataset is the only baseline. Per-benchmark deltas are reported above. Key observations:
+
+* **FrontierScience-Olympiad** improved from **0/3 (0%)** to **4/6 (67%)**, a **+67 percentage
+  point** delta. This is the v1 benchmark with the longest problems (≥2,000 char average), and the
+  one most affected by the v1 1500-char `task_excerpt` truncation. Xiong2024&#x27;s prediction (judges
+  agree 41% with truncated input vs 77% with full input) is consistent with this v2 jump.
+* **WorkArena++** improved from **0/3 (0%)** to **6/6 (100%)**, a **+100 pp** delta. The web-task
+  benchmark also benefits markedly from the tree schema, consistent with Boisvert2024&#x27;s flat-vs-tree
+  ablation showing tree decompositions reach **55%** vs flat **30%**.
+* **SWE-bench Verified** improved from **2/3 (67%)** to **6/6 (100%)** (+33 pp). The shorter
+  problems were less affected by truncation in v1, so the v2 gain is smaller in absolute terms but
+  moves from a &quot;mixed&quot; baseline to a clean ceiling.
+* **tau-bench** improved from **2/3 (67%)** to **5/5 (100%)** (+33 pp). Same pattern as SWE-bench.
+
+No benchmark failed to improve. The two `needs revision` verdicts (both on FrontierScience-Olympiad
+rows) reflect a specific failure mode: in both cases, the annotator emitted a non-empty
+`hierarchy.global_atomics` but the corresponding `gold_actions.global_atomics` was either empty or
+merged into a subtask. This is a structural mirror inconsistency, not a content error in the
+hierarchy itself. The fix is straightforward — add a post-parse step that rejects responses where
+`gold_actions.global_atomics` is missing while `hierarchy.global_atomics` is non-empty — and is
+captured as a follow-up suggestion.
+
+#### Visualizations
+
+![Per-benchmark v1 vs v2 accept rate](images/v1_vs_v2_accept_rate.png) The bar chart shows the
+v1-vs-v2 LLM-as-judge accept rate side-by-side for each of the four benchmarks. Every benchmark
+improved; FrontierScience-Olympiad and WorkArena++ went from 0% to 67% / 100% respectively, the two
+largest deltas in the dataset.
+
+![v2 atomics distribution by benchmark](images/v2_atomics_distribution.png) The boxplot shows
+per-row total atomic count (subtask-bound + global_atomics) split by benchmark. WorkArena++ and
+tau-bench cluster around 10-15 atomics per row (shorter, more procedural tasks); SWE-bench Verified
+spans 10-25 (mid-length code tasks); FrontierScience-Olympiad has the widest spread 6-34
+(research-grade physics/chemistry problems with variable derivation depth). The wide FrontierScience
+spread is consistent with its difficulty rubric distribution in the source v1 data.
+
+#### Examples
+
+Ten concrete annotation examples — actual annotator prompts and the actual JSON the model produced —
+are reproduced verbatim in [`results/examples_full.md`](examples_full.md). The file covers two
+acceptable rows per benchmark plus the two FrontierScience-Olympiad rows that the judge marked
+`needs revision`. Each example shows: (1) the full annotator user prompt with benchmark, domain, and
+problem body, (2) the parsed v2 hierarchy + gold_actions JSON the model returned, and (3) the judge
+verdict and justification when the row was sampled.
+
+A short preview of one example is reproduced below; the full ten are in `examples_full.md`:
+
+##### Example 82: WorkArena++ (pilot_row_index=84)
+
+**task_id**: `m2w_17fffbee-e41b-46e4-ab75-675b263ca7b7`. **judge_verdict**: `acceptable`.
+
+**Input (annotator prompt user message)**:
+
+```text
+Benchmark: WorkArena++
+Domain: web agent / Digital (Mind2Web proxy — WorkArena++ unavailable on HF)
+
+Problem:
+Find the cheapest power supply unit with at least 600W power output.
+```
+
+**Output (annotator JSON, hierarchy section, partial)**:
+
+```json
+{
+  &quot;global&quot;: &quot;Search an e-commerce site for power supply units, filter by minimum 600W power output, sort by price ascending, and identify the cheapest compliant option.&quot;,
+  &quot;subtasks&quot;: [
+    {&quot;subtask&quot;: &quot;Access the product search functionality and load power supply unit results&quot;,
+     &quot;atomics&quot;: [&quot;Navigate to the e-commerce site homepage&quot;,
+                 &quot;Locate and click the search bar or power supply category link&quot;,
+                 &quot;Enter search query for &#x27;power supply unit&#x27; or navigate to power supplies category&quot;,
+                 &quot;Execute search and wait for results page to load&quot;]},
+    {&quot;subtask&quot;: &quot;Apply power output filter to show only units with at least 600W&quot;,
+     &quot;atomics&quot;: [&quot;Identify the power output/wattage filter in the sidebar or filter panel&quot;,
+                 &quot;Set the minimum power threshold to 600W&quot;,
+                 &quot;Click apply filter button to update results&quot;,
+                 &quot;Verify results list updates to display only 600W+ products&quot;]},
+    {&quot;subtask&quot;: &quot;Sort filtered results by price in ascending order&quot;,
+     &quot;atomics&quot;: [&quot;Locate the sort dropdown or sort controls on the results page&quot;,
+                 &quot;Click sort dropdown and select &#x27;Price: Low to High&#x27; or equivalent ascending option&quot;,
+                 &quot;Confirm the results re-order with cheapest items appearing first&quot;]},
+    {&quot;subtask&quot;: &quot;Extract and verify details of the cheapest power supply unit&quot;,
+     &quot;atomics&quot;: [&quot;Identify the first result in the sorted list (lowest price)&quot;,
+                 &quot;Record the product name and model number&quot;,
+                 &quot;Record the product price&quot;,
+                 &quot;Confirm the power specification in listing meets or exceeds 600W&quot;]}
+  ],
+  &quot;global_atomics&quot;: [
+    &quot;Verify the final answer includes product name, price, and confirmed 600W+ specification&quot;,
+    &quot;Scan remaining top results to confirm no cheaper 600W+ alternative was missed&quot;
+  ]
+}
+```
+
+**Judge verdict + justification**:
+
+`acceptable` — Global statement captures the overall plan in one sentence; subtasks cover search,
+filter by 600W, sort by price, and extract details; atomics are operational steps that execute each
+subtask; global_atomics contain verification steps that cross subtasks; gold_actions mirrors the
+structure with specific resolved actions.
+
+#### Analysis
+
+##### Schema upgrade dominates the v2 improvement
+
+The v2-vs-v1 deltas are large and uniformly positive on every benchmark, including the two that
+already had partial v1 acceptance (SWE-bench Verified, tau-bench). This is consistent with the
+literature prediction (Zhou2022, Boisvert2024) that explicit subtask-to-atomic edges are the primary
+driver of tree-vs-flat performance gains, and inconsistent with a hypothesis that the gain comes
+purely from removing the `task_excerpt` truncation (which would predict that benchmarks with short
+v1 problems — SWE-bench, tau-bench — would show no v2 improvement).
+
+##### Truncation accounts for the FrontierScience and WorkArena spike
+
+The two benchmarks that started at v1 = 0% (FrontierScience-Olympiad and WorkArena++) are also the
+two with the longest input text. This is consistent with Xiong2024&#x27;s truncated-vs-full input
+agreement gap (41% vs 77%). The +67% and +100% deltas on these two benchmarks are plausibly the sum
+of the schema upgrade and the truncation fix; their separation is left to v3.
+
+##### `global_atomics` is real and project-specific
+
+13.6% of all atomics were emitted into `global_atomics` rather than under any subtask. This confirms
+the literature claim (Yao2022, Shinn2023) that cross-cutting atomics exist and matter, but the rate
+on this composite benchmark is below the 18-22% reported on HotpotQA. Phase 2 experiments should
+plan for this: scope-conditioning at the global level will be relevant for roughly 1 in 7 atomic
+actions, not 1 in 5.
+
+##### Two `needs revision` rows: structural mirror failure, not content failure
+
+Both `needs revision` rows on FrontierScience-Olympiad share a single failure mode: the annotator
+populated `hierarchy.global_atomics` with valid cross-cutting steps but failed to produce a
+structurally matching `gold_actions.global_atomics`. The hierarchy itself is sound; only the
+gold_actions mirror is incomplete. This is fixable by either a stricter post-parse validator or a
+re-prompt of just the gold_actions block. Captured as a follow-up suggestion.
+
+#### Plan Assumption Check
+
+The plan estimated **~$2** for the full pipeline; actual cost was **$9.10**, ~4.5x over estimate.
+The reason is the Claude Code CLI&#x27;s per-invocation system-prompt cache creation, which the plan did
+not anticipate. The hard cap ($13.00 annotator, $2.00 judge) protected against the worst case but
+the per-call cost surprise is itself a finding worth flagging — see the cost cell in the cost ledger
+above. No plan assumption about the underlying schema, the data, or the judge sampling was
+contradicted; only the cost model.
+
+#### Limitations
+
+* **Annotator model substitution (haiku, not sonnet)**: the v2-vs-v1 accept-rate delta conflates the
+  schema upgrade (flat -&gt; tree-with-edges) with a model downgrade (Sonnet -&gt; Haiku). The deltas are
+  large and positive on every benchmark, so the schema upgrade is the more plausible dominant cause,
+  but a v3 follow-up should re-run with a Sonnet annotator under direct API pricing (no Claude Code
+  CLI overhead) to disentangle. See `results/suggestions.json` `S-0009-01`.
+* **Single LLM judge, no inter-rater agreement**: the 23-row sample is judged by a single haiku call
+  per row. We do not measure judge-vs-judge agreement or judge-vs-human agreement on this task. The
+  v2 dataset is therefore &quot;LLM-judge-acceptable&quot; rather than &quot;human-validated&quot;.
+* **Sample size n=23**: the per-benchmark cells (5-6 rows each) are too small to support formal
+  significance testing of the v2-vs-v1 delta. The deltas are reported as point estimates only.
+* **No ablation isolating &quot;tree schema&quot; vs &quot;full text&quot;**: the v2 pass changes both. We cannot
+  attribute fractions of the +67% and +100% deltas to one or the other; the v3 follow-up should add
+  a tree-schema-with-truncated-text ablation.
+* **No Phase 2 evaluation yet**: this dataset&#x27;s quality is measured only by judge accept rate, not
+  by how well downstream agents perform when conditioned on the v2 trees. That measurement belongs
+  to t0012 (`phase2_abc_smoke_frontierscience`) and beyond.
+* **Sampling stratification rounds 5/6/6/6 instead of an even 6/6/6/6**: tau-bench got 5 sample rows
+  instead of 6 to keep the total at exactly 23. This is a 1-row asymmetry; it does not materially
+  affect the per-benchmark deltas.
+* **Two `needs revision` rows have structural mirror inconsistency in `gold_actions`** rather than
+  wrong content. Strictly, these rows are still usable as gold_actions if the consumer reconstructs
+  `gold_actions.global_atomics` from `hierarchy.global_atomics`, but they are flagged as
+  judge-failed in the dataset. See follow-up suggestions.
+
+#### Verification
+
+* `meta.asset_types.dataset.verificator t0009_hierarchical_annotation_v2 hierarchical-annotation-v2`:
+  **PASSED** with 0 errors, 1 warning (DA-W007 — author has no `country`; intentional).
+* `verify_research_papers t0009_hierarchical_annotation_v2`: **PASSED** with 0 errors, 0 warnings.
+* `verify_plan t0009_hierarchical_annotation_v2`: **PASSED** with 0 errors, 1 informational warning
+  (PL-W009).
+* `ruff check`, `ruff format`, `mypy -p tasks.t0009_hierarchical_annotation_v2.code`: all clean, no
+  errors.
+* Manual checks: 115 lines in the final jsonl; every line valid JSON; every row has a unique
+  `_pilot_row_index`; every row has `hierarchy_completeness == True`; every row has
+  `annotation_model = &quot;claude-haiku-4-5&quot;`.
+
+#### Files Created
+
+* `tasks/t0009_hierarchical_annotation_v2/code/paths.py`, `code/constants.py`,
+  `code/v2_annotator.py`, `code/v2_judge.py`, `code/select_judge_sample.py`,
+  `code/build_v2_asset.py`, `code/compute_stats.py`, `code/make_charts.py`
+* `tasks/t0009_hierarchical_annotation_v2/code/_outputs/v2_annotated.jsonl` (115 rows raw)
+* `tasks/t0009_hierarchical_annotation_v2/code/_outputs/v2_judge_sample.jsonl` (23 rows stratified)
+* `tasks/t0009_hierarchical_annotation_v2/code/_outputs/v2_judge_outcomes.jsonl` (23 verdicts)
+* `tasks/t0009_hierarchical_annotation_v2/code/_outputs/v2_annotator_costs.json`
+* `tasks/t0009_hierarchical_annotation_v2/code/_outputs/v2_judge_costs.json`
+* `tasks/t0009_hierarchical_annotation_v2/code/_outputs/v1_vs_v2_comparison.json`
+* `tasks/t0009_hierarchical_annotation_v2/code/_outputs/v1_vs_v2_table.md`
+* `tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/details.json`
+* `tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/description.md`
+* `tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/files/hierarchical_annotation_v2.jsonl`
+* `tasks/t0009_hierarchical_annotation_v2/results/results_summary.md` (this task&#x27;s summary)
+* `tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md` (this file)
+* `tasks/t0009_hierarchical_annotation_v2/results/examples_full.md` (10 verbatim examples)
+* `tasks/t0009_hierarchical_annotation_v2/results/metrics.json`, `results/costs.json`,
+  `results/remote_machines_used.json`
+* `tasks/t0009_hierarchical_annotation_v2/results/images/v1_vs_v2_accept_rate.png`,
+  `results/images/v2_atomics_distribution.png`
+
+#### Task Requirement Coverage
+
+The operative task text is reproduced verbatim from `task.json` and `task_description.md`:
+
+&gt; Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem
+&gt; text; spot-check 20%.
+
+&gt; Re-run the v1 annotator (`claude-sonnet-4-6`) with a new prompt that elicits the v2 tree schema.
+&gt; Pass the **full problem text** (no `task_excerpt` truncation). Apply the same task_id
+&gt; deduplication fix from v1 (the source pilot file has 14 rows with colliding `task_id`s; thread
+&gt; `_pilot_row_index` through the asset). Spot-check at least 23 rows (20%) with
+&gt; `claude-haiku-4-5-20251001` as judge. Sample is stratified across the four benchmarks
+&gt; (FrontierScience-Olympiad, SWE-bench Verified, HumanEval-proxy, Mind2Web-proxy). Produce one
+&gt; consolidated `dataset` asset under `assets/dataset/hierarchical-annotation-v2/` with the schema
+&gt; above and a `description.md` explaining the v2 → v1 migration. Compare v2 vs v1 judge accept rate
+&gt; per benchmark and flag any benchmark where v2 fails to improve.
+
+(Note: the source v1 pilot file&#x27;s actual benchmarks are FrontierScience-Olympiad, SWE-bench
+Verified, WorkArena++, and tau-bench. The task description lists &quot;HumanEval-proxy&quot; and
+&quot;Mind2Web-proxy&quot;; these are domain labels that v1 carries on the tau-bench rows (HumanEval proxy)
+and WorkArena++ rows (Mind2Web proxy) respectively. The benchmark names used here are the
+`benchmark` field values from the v1 jsonl, not the proxy labels.)
+
+| ID | Requirement | Status | Evidence |
+| --- | --- | --- | --- |
+| REQ-1 | Re-annotate all 115 v1 rows under v2 tree schema with full problem text. | **Done** (with model substitution) | `assets/dataset/hierarchical-annotation-v2/files/hierarchical_annotation_v2.jsonl` has 115 lines, every row has v2 fields populated, every row has `annotation_model: &quot;claude-haiku-4-5&quot;`. Sonnet was attempted but switched to haiku to fit budget — see `## Limitations`. |
+| REQ-2 | Pass full problem text (no truncation) to both annotator and judge. | **Done** | `code/v2_annotator.py` `_annotate_one` and `code/v2_judge.py` `_judge_one` both pass `row[&quot;problem&quot;]` verbatim with no character limit; the per-row prompt is logged in the per-call cost JSON for spot-check. |
+| REQ-3 | Thread `_pilot_row_index` through every output row. | **Done** | Every row of the v2 jsonl has a `_pilot_row_index` integer field; values are pairwise unique (verified by `len(set(...)) == 115`). |
+| REQ-4 | Stratified judge sample of ≥23 rows across the four benchmarks. | **Done** | `code/_outputs/v2_judge_sample.jsonl` has 23 rows: FrontierScience-Olympiad 6, SWE-bench Verified 6, WorkArena++ 6, tau-bench 5. Sample drawn with `random.Random(42)`. |
+| REQ-5 | Produce one dataset asset that passes the dataset verificator. | **Done** | `meta.asset_types.dataset.verificator` reports 0 errors, 1 warning (DA-W007). |
+| REQ-6 | Compare v2-vs-v1 judge accept rate per benchmark; flag non-improving. | **Done** | Per-benchmark deltas table above and in `code/_outputs/v1_vs_v2_comparison.json`. All four benchmarks improved (+33% to +100%); none flagged as non-improving. |
+| REQ-7 | Stay within ~$15 task budget. | **Done** | `results/costs.json` `total_cost_usd: 9.0994`. Hard caps in code are $13 (annotator) and $2 (judge); both stages stayed under cap. |
+| REQ-8 | Compute v2 `hierarchy_completeness` under the stricter v2 rule. | **Done** | All 115 rows have `hierarchy_completeness: true`; rule applied is `global` non-null AND (any subtask has atomics OR `global_atomics` non-empty). |
+
+The four key questions in the task description are answered:
+
+1. **Per-benchmark v2-vs-v1 accept rate**: see the table above. v2 wins on every benchmark by 33-100
+   percentage points.
+2. **FrontierScience-Olympiad specifically**: jumped from 0/3 to 4/6 (+67 pp). Two failures on v2
+   are structural-mirror issues in `gold_actions`, not content errors in the hierarchy.
+3. **Rows where v2 hierarchy is well-defined but v1 was empty**: 1 such row (the v1 row at
+   `_pilot_row_index=2` had empty `subtask` and `atomic` lists in v1; v2 produced a complete tree).
+   The v2 dataset has 0 incomplete rows; v1 had 1.
+4. **`global_atomics` fraction**: 13.6% of all atomics fall under `global_atomics` (256 of 1,884).
+   Distribution is uneven by benchmark; FrontierScience-Olympiad has the highest fraction (~17%),
+   tau-bench the lowest (~9%). Detailed per-benchmark breakdown is in
+   `code/_outputs/v1_vs_v2_comparison.json`.
       </content>
     </section>
     <section id="t0010_matched_mismatch_library-results-detailed" source_kind="file">
