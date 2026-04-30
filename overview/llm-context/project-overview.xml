@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-overview" generated_at_utc="2026-04-29T23:47:15Z">
+<llm_context_archive preset_id="project-overview" generated_at_utc="2026-04-30T00:53:35Z">
   <archive_summary>
     <title>Project Overview</title>
     <description>Compact starter context for general project chats.</description>
     <use_case>General orientation, quick status questions, and lightweight strategy chats.</use_case>
     <section_count>4</section_count>
-    <char_count>18540</char_count>
-    <byte_count>18587</byte_count>
-    <estimated_tokens>4635</estimated_tokens>
+    <char_count>19268</char_count>
+    <byte_count>19315</byte_count>
+    <estimated_tokens>4817</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -134,11 +134,12 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0006_scope_aware_react_library</id>
         <id>t0007_scope_unaware_planandsolve_library</id>
         <id>t0008_brainstorm_results_3</id>
+        <id>t0009_hierarchical_annotation_v2</id>
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
       </source_ids>
       <content>
-Completed tasks: 10
+Completed tasks: 11
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -188,6 +189,12 @@ Completed: 2026-04-30
 Short description: Brainstorm 3: insert v2 tree-schema re-annotation as the new ASAP task; preserve original wave 3 (matched-mismatch lib, Metric 2 lib, A/B/C smoke harness).
 Result summary: Brainstorm Session 3 — Results Summary Summary Third brainstorm produced four new not-started tasks. The v1 annotation schema was found to lack subtask-to-atomic edges; a v2 re-annotation task was inserted ASAP as t0009. The original wave 3 plan (matched-mismatch library, Metric 2 calibration, A/B/C smoke harness) was preserved and renumbered to t0010-t0012, with t0012 gated on the other three. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after wave 2 (t0004-t0007) merged at $0.06 spend, with 27 uncovered suggestions and the v2 schema gap surfaced during prompt-modelling discussion of the `is_bored` annotation. * **Prompt**: Plan the first Phase 2 result on a real...
 
+## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
+ID: t0009_hierarchical_annotation_v2
+Completed: 2026-04-30
+Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
+Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0009_hierarchical_annotation_v2&quot; date_completed: &quot;2026-04-30&quot; status: &quot;complete&quot; --- Results Summary: Hierarchical Annotation v2 Summary All 115 rows of the v1 hierarchical-annotation pilot were re-annotated under the v2 tree schema with `claude-haiku-4-5` and full problem text, achieving 115/115 hierarchy completeness and a 21/23 (91%) judge accept rate on the stratified spot-check. Per-benchmark v2-vs-v1 deltas are uniformly positive, ranging from +33% (SWE-bench Verified, tau-bench) to +100% (WorkArena++). Metrics * **avg_decisions_per_task** = **16.38** atomic actions per row across the 115-row v2 dataset (range 4-65, median 14). Tracks plan-length...
+
 ## Matched-mismatch library: condition C with deliberately wrong granularity tags
 ID: t0010_matched_mismatch_library
 Completed: 2026-04-29
@@ -205,17 +212,10 @@ Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Impl
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0009_hierarchical_annotation_v2</id>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## Hierarchical annotation v2: tree schema with subtask-to-atomic edges
-ID: t0009_hierarchical_annotation_v2
-Status: in_progress
-Effective date: 2026-04-29
-Short description: Re-annotate the 115-row pilot under a tree schema with subtask-to-atomic edges and full problem text; spot-check 20%.
+Planned or active tasks: 1
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
