@@ -28,8 +28,9 @@ HAIKU_OUTPUT_COST_PER_MTOK_USD: float = 4.00
 # Hard caps. Annotator uses Sonnet via the Claude Code CLI; judge uses Haiku.
 # Sonnet pricing on this prompt is empirically uncertain (CLI cache-creation overhead);
 # the dry-run gate in the entry point halts the run if the per-call cost on a 5-row probe
-# is >= $0.20. The $10 cap matches the task budget envelope set by task.json.
-ANNOTATOR_BUDGET_CAP_USD: float = 10.00
+# is >= $0.20. Original cap was $10 per task.json; raised to $25 per
+# intervention/budget_cap_raised.md after the first run hit $10.92 at 52/115 rows.
+ANNOTATOR_BUDGET_CAP_USD: float = 25.00
 JUDGE_BUDGET_CAP_USD: float = 2.00
 
 SAMPLE_SEED: int = 42
