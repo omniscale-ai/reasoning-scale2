@@ -131,9 +131,9 @@
       "step": 15,
       "name": "reporting",
       "description": "Run all verificators, capture sessions, mark task.json status completed, and prepare for PR.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-30T19:32:09Z",
-      "completed_at": null,
+      "completed_at": "2026-04-30T19:33:26Z",
       "log_file": "logs/steps/015_reporting/"
     }
   ]
