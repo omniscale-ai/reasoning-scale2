@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Plan the correction file structure, replacement-asset layout, file_changes overlay paths, and aggregator verification commands.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-30T19:20:13Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
