@@ -5,8 +5,8 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (7)](../papers/by-category/agent-evaluation.md) | [Suggestions
-(18)](../suggestions/by-category/agent-evaluation.md) | [Datasets
-(2)](../datasets/by-category/agent-evaluation.md) | [Libraries
+(19)](../suggestions/by-category/agent-evaluation.md) | [Datasets
+(3)](../datasets/by-category/agent-evaluation.md) | [Libraries
 (3)](../libraries/by-category/agent-evaluation.md)
 
 ---
@@ -318,7 +318,7 @@ scope-conditioning gains must be robust to single-rollout luck.
 
 No answers in this category.
 
-## Suggestions (13 open, 5 closed)
+## Suggestions (14 open, 5 closed)
 
 <details>
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
@@ -349,6 +349,26 @@ AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expa
 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
 smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
 rate, ~$5-6 added cost. Inherits S-0005-01.
+
+</details>
+
+<details>
+<summary>📂 <strong>Replace Mind2Web/HumanEval proxy rows with native WorkArena++
+and tau-bench data</strong> (S-0015-01)</summary>
+
+**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0015_correct_proxy_benchmark_labels](../../tasks/t0015_correct_proxy_benchmark_labels/)
+
+Variant a of S-0009-06 (now folded into this follow-up). The 26 m2w_* rows in the v2
+hierarchical-annotation dataset are Mind2Web data used as a proxy for the gated WorkArena++
+split, and the 26 he_* rows are HumanEval data used as a proxy for the gated tau-bench split.
+t0015 corrected the labels but did not replace the underlying data. This task should (1)
+obtain access to a real WorkArena++ split and a real tau-bench split (both currently gated;
+expect a registration / agreement step that must be tracked as an intervention), (2)
+re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator and judge as
+t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against
+hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any
+change to the FrontierScience-Olympiad or SWE-bench Verified rows.
 
 </details>
 

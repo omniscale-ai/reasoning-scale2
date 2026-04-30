@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-30T18:10:33Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-04-30T19:35:36Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>62137</char_count>
-    <byte_count>62272</byte_count>
-    <estimated_tokens>15534</estimated_tokens>
+    <char_count>60402</char_count>
+    <byte_count>60522</byte_count>
+    <estimated_tokens>15100</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -139,9 +139,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
         <id>t0013_brainstorm_results_4</id>
+        <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Completed tasks: 12
+Completed tasks: 13
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -214,6 +215,12 @@ ID: t0013_brainstorm_results_4
 Completed: 2026-04-30
 Short description: Brainstorm 4: insert two parallel pre-Phase-2 tasks (v2 Sonnet rerun + proxy benchmark relabel), prune 5 redundant suggestions, and demote 3 access/infrastructure suggestions to medium priority.
 Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainstorm produced two new not-started tasks (t0014 and t0015) and applied eight correction files for the Round 2 cleanup deferred from brainstorm 3. The two tasks address the schema-vs-model confound and proxy-benchmark provenance issues surfaced by t0009. Wave budget cap: $10. Both new tasks are parallel-safe; t0012 stays in_progress and unaffected. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after t0009-t0011 merged with $9.16 / $100 spent. t0012 is in_progress. t0009 reported a +58 pp v2-vs-v1 judge accept rate but the annotation provider was swapped from Sonnet (v1) to Haiku (v2), so the headline delta is...
+
+## Correct proxy-benchmark labels in t0009 v2 dataset
+ID: t0015_correct_proxy_benchmark_labels
+Completed: 2026-04-30
+Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
+Result summary: Results Summary: Correct Proxy-Benchmark Labels in t0009 v2 Dataset Summary Wrote a single corrections-overlay file (`corrections/dataset_hierarchical-annotation-v2.json`) that relabels the **52** rows in the t0009 v2 hierarchical-annotation dataset whose `benchmark` field referred to a gated proxy-target benchmark instead of the actual data source: **26** `m2w_*` rows move from `WorkArena++` to `Mind2Web`, and **26** `he_*` rows move from `tau-bench` to `HumanEval`. The `aggregate_datasets` overlay applies cleanly: the effective JSONL now carries the corrected labels and the dataset metadata prose no longer mentions the wrong benchmark names. Metrics * **Rows relabeled, total**: **52** of...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -222,10 +229,9 @@ Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainsto
       <source_ids>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
-        <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
@@ -346,26 +352,25 @@ S-0007-02 and S-0005-06 by consolidation.
 
 ## v2 annotator Sonnet rerun: deconfound schema vs model
 ID: t0014_v2_annotator_sonnet_rerun
-Status: not_started
-Effective date: unknown
+Status: in_progress
+Effective date: 2026-04-30
 Short description: Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009&#x27;s +58 pp delta.
 Dependencies: t0009_hierarchical_annotation_v2
 
 #### Motivation
 
-`t0009_hierarchical_annotation_v2` reports a v2-vs-v1 judge accept-rate delta of approximately
-+58 pp on the stratified haiku-judged sample. The v1 annotator was `claude-sonnet-4-6`; the v2
-annotator was switched to `claude-haiku-4-5-20251001` mid-task to fit the cost budget. The judge
-model was constant (`claude-haiku-4-5-20251001`). The +58 pp number therefore conflates two
-effects:
+`t0009_hierarchical_annotation_v2` reports a v2-vs-v1 judge accept-rate delta of approximately +58
+pp on the stratified haiku-judged sample. The v1 annotator was `claude-sonnet-4-6`; the v2 annotator
+was switched to `claude-haiku-4-5-20251001` mid-task to fit the cost budget. The judge model was
+constant (`claude-haiku-4-5-20251001`). The +58 pp number therefore conflates two effects:
 
 * schema effect: tree decomposition with subtask-to-atomic edges and full problem text;
 * model effect: switching annotator from Sonnet to Haiku.
 
 Without isolating the schema component, the headline claim that &quot;v2 unblocks Phase 2&quot; rests on a
 load-bearing-but-unverified assumption. `t0012` (Phase 2 A/B/C smoke on FrontierScience) is already
-in flight against the v2 dataset, so this deconfound is needed before any per-benchmark numbers
-from t0012 can be reported. Implements `S-0009-01`.
+in flight against the v2 dataset, so this deconfound is needed before any per-benchmark numbers from
+t0012 can be reported. Implements `S-0009-01`.
 
 #### Scope
 
@@ -376,9 +381,8 @@ from t0012 can be reported. Implements `S-0009-01`.
   used in t0009 (same row IDs, same seed=42).
 * Report per-benchmark and aggregate judge accept rate. Compare against v2-haiku and v1-sonnet to
   decompose the +58 pp delta into a schema component and a model component.
-* Persist as a new `dataset` asset under
-  `assets/dataset/hierarchical-annotation-v2-sonnet/` with `details.json`, `description.md`, and
-  `files/hierarchical_annotation_v2_sonnet.jsonl`.
+* Persist as a new `dataset` asset under `assets/dataset/hierarchical-annotation-v2-sonnet/` with
+  `details.json`, `description.md`, and `files/hierarchical_annotation_v2_sonnet.jsonl`.
 
 Out of scope: re-judging on a different sample, re-running v1 (already in t0005), changing the
 schema, expanding row count, fixing the proxy-benchmark labels (handled by `t0015`).
@@ -416,8 +420,8 @@ length as t0009&#x27;s haiku run + 23 haiku judge calls reusing the same protoco
 
 #### Dependencies and Cross-References
 
-* Depends on `t0009_hierarchical_annotation_v2` for the v2 schema, the prompt, the stratified
-  sample IDs, and the v2-haiku baseline accept rates.
+* Depends on `t0009_hierarchical_annotation_v2` for the v2 schema, the prompt, the stratified sample
+  IDs, and the v2-haiku baseline accept rates.
 * Independent of `t0015_correct_proxy_benchmark_labels`. Either order is fine, but if t0015 lands
   first, this task should consume the corrected labels in its per-benchmark breakdown via the
   aggregator&#x27;s correction overlay.
@@ -431,102 +435,12 @@ annotator-model swap.&quot;
 
 #### Key Questions
 
-1. What is the per-benchmark accept-rate delta of v2-sonnet vs v2-haiku (annotator-model
-   component)?
+1. What is the per-benchmark accept-rate delta of v2-sonnet vs v2-haiku (annotator-model component)?
 2. What is the per-benchmark accept-rate delta of v2-sonnet vs v1-sonnet (schema component)?
 3. Does the FrontierScience-Olympiad benchmark — the worst performer in v1 — improve under
    v2-sonnet? By how much vs the t0009 v2-haiku improvement?
 4. If the schema component is small, is there a v3 schema change worth scoping, and should t0012&#x27;s
    smoke be paused until that lands?
-
-## Correct proxy-benchmark labels in t0009 v2 dataset
-ID: t0015_correct_proxy_benchmark_labels
-Status: not_started
-Effective date: unknown
-Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
-Dependencies: t0009_hierarchical_annotation_v2
-
-#### Motivation
-
-The `t0009_hierarchical_annotation_v2` dataset asset labels its four benchmarks as
-`FrontierScience-Olympiad`, `SWE-bench Verified`, `WorkArena++`, and `tau-bench`. The first two are
-accurate. The latter two are mislabelled — the underlying rows are `Mind2Web` and `HumanEval` rows
-used as proxies for browser-using and tool-using agent benchmarks, not actual `WorkArena++` or
-`tau-bench` rows. Once t0012 (Phase 2 A/B/C smoke) reports per-benchmark numbers, naïve consumers
-would attribute results to benchmarks the project does not actually evaluate on.
-
-This task fixes the labels via the corrections-overlay mechanism — no re-annotation, no API spend,
-no change to the t0009 task folder. Implements `S-0009-06` variant b (label correction; variant a
-would have replaced the proxy rows with actual WorkArena++/tau-bench data, which is out of scope
-for this wave).
-
-#### Scope
-
-* Write one correction file per affected benchmark (or one combined correction, depending on the
-  aggregator&#x27;s per-row update support):
-  * `WorkArena++` → `Mind2Web`.
-  * `tau-bench` → `HumanEval`.
-* Action: `update`. The correction overlays `details.json` `description_path` (and any per-row
-  `benchmark` fields exposed by the dataset aggregator) so downstream consumers see the corrected
-  labels.
-* Provide a one-paragraph rationale per correction file referencing the original proxy decision
-  taken in t0003 (benchmark download) and t0005 (v1 annotation pilot).
-* Run `verify_corrections` against the new files.
-
-Out of scope: replacing proxy rows with actual WorkArena++/tau-bench data (a separate dataset task,
-deferred); editing t0009&#x27;s task folder (immutable); changing per-row IDs (only the benchmark
-label).
-
-#### Approach
-
-1. Read t0009&#x27;s `assets/dataset/hierarchical-annotation-v2/details.json` and the dataset aggregator
-   schema to confirm where benchmark labels are exposed (top-level `benchmarks` list, per-row
-   `benchmark` field, or both).
-2. Confirm the dataset aggregator&#x27;s correction-overlay support — if `file_changes` is required,
-   author a replacement description document and (if applicable) replacement JSONL with corrected
-   per-row labels.
-3. Write the correction file(s) under `corrections/dataset_&lt;dataset_id&gt;.json` per
-   `corrections_specification.md` v3.
-4. Re-run the dataset aggregator with the correction overlay applied; confirm the corrected labels
-   are visible in the materialized output.
-
-#### Expected Outputs
-
-* `corrections/dataset_&lt;t0009_dataset_id&gt;.json` (one or more correction files).
-* If `file_changes` is needed: a replacement description document and/or replacement JSONL under
-  this task&#x27;s `assets/dataset/...-relabeled/` folder.
-* `results/results_summary.md` reporting how many rows had their benchmark label corrected and the
-  before/after distribution.
-* `results/results_detailed.md` with the rationale, the correction-file structure, and any
-  follow-up suggestion to actually replace the proxy rows with native WorkArena++/tau-bench data.
-
-#### Compute and Budget
-
-No GPU. No API spend. Estimated cost: **$0**. Per-task cap: $1.
-
-#### Dependencies and Cross-References
-
-* Depends on `t0009_hierarchical_annotation_v2` for the dataset asset whose labels are being
-  corrected.
-* Independent of `t0014_v2_annotator_sonnet_rerun`. Order does not matter; if both land before
-  t0012 finishes, t0012&#x27;s per-benchmark reporting will pick up both overlays through the
-  aggregator.
-* `t0012` (in_progress) reads the t0009 dataset through the aggregator, so the corrected labels
-  flow through automatically once t0015 merges. The FrontierScience filter t0012 uses is
-  unaffected.
-
-#### Source Suggestion
-
-`S-0009-06` variant b — &quot;Relabel the proxy benchmarks WorkArena++→Mind2Web and tau-bench→HumanEval
-in the v2 dataset via a correction file.&quot;
-
-#### Key Questions
-
-1. How many rows are affected by each label correction?
-2. Does the t0009 dataset aggregator support per-row label overlays via `changes`, or is a
-   `file_changes` overlay needed?
-3. Are there any downstream consumers (other than t0012) that already cache the original labels
-   and would need re-aggregation?
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -570,6 +484,7 @@ Answers: 0
         <id>S-0009-02</id>
         <id>S-0009-04</id>
         <id>S-0009-05</id>
+        <id>S-0015-01</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
         <id>S-0005-05</id>
@@ -577,9 +492,10 @@ Answers: 0
         <id>S-0007-04</id>
         <id>S-0010-03</id>
         <id>S-0011-03</id>
+        <id>S-0015-02</id>
       </source_ids>
       <content>
-Open suggestions: 37
+Open suggestions: 39
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -791,6 +707,13 @@ Kind: dataset
 Source task: t0009_hierarchical_annotation_v2
 The Phase 1 success criterion is &gt;=100 annotated tasks per condition; v2 is at 115 which is just over the threshold. The downstream Phase 2 experiments need stratification by difficulty AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expand to &gt;=200 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI rate, ~$5-6 added cost. Inherits S-0005-01.
 
+## Replace Mind2Web/HumanEval proxy rows with native WorkArena++ and tau-bench data
+ID: S-0015-01
+Priority: medium
+Kind: dataset
+Source task: t0015_correct_proxy_benchmark_labels
+Variant a of S-0009-06 (now folded into this follow-up). The 26 m2w_* rows in the v2 hierarchical-annotation dataset are Mind2Web data used as a proxy for the gated WorkArena++ split, and the 26 he_* rows are HumanEval data used as a proxy for the gated tau-bench split. t0015 corrected the labels but did not replace the underlying data. This task should (1) obtain access to a real WorkArena++ split and a real tau-bench split (both currently gated; expect a registration / agreement step that must be tracked as an intervention), (2) re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator and judge as t0009 to keep variant b apples-to-apples, and (3) issue a...
+
 ## Defer Reflexion-style episodic memory to a Phase 3 ablation
 ID: S-0002-10
 Priority: low
@@ -839,6 +762,13 @@ Priority: low
 Kind: evaluation
 Source task: t0011_metric2_calibration_aggregator
 The current default HIGH_CONFIDENCE_THRESHOLD = 0.75 sits between the verbalized medium (0.5) and high (0.9) numeric anchor points and matches Xiong2024&#x27;s high-bucket boundary. The threshold is exposed as a module constant for sweeps. After t0012 runs, sweep the threshold over {0.5, 0.6, 0.7, 0.75, 0.8, 0.9} and report overconfident_error_rate at each operating point. The best threshold for the project&#x27;s hierarchical agents may differ from Xiong2024&#x27;s QA setting because the project judges actions at trajectory steps, not final answers. Output: a small chart and a recommended threshold for downstream tasks.
+
+## Add a row-level original_benchmark provenance field to future relabel corrections
+ID: S-0015-02
+Priority: low
+Kind: evaluation
+Source task: t0015_correct_proxy_benchmark_labels
+The t0015 overlay rewrites the per-row benchmark string but does not preserve the original proxy label inside the row. A reader inspecting only the effective JSONL cannot tell that the row was previously labeled differently — provenance lives only in the corrections overlay&#x27;s description.md. For future relabel corrections, the framework would benefit from a soft convention where the corrected row carries an original_benchmark field (or, more generally, original_&lt;field&gt; for any field rewritten by a corrections overlay). This makes per-row provenance auditable without round-tripping through the corrections file. The task should: (1) propose the convention as a small extension to the...
       </content>
     </section>
   </sections>

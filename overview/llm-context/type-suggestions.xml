@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-30T18:10:33Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-30T19:35:36Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>34031</char_count>
-    <byte_count>34033</byte_count>
-    <estimated_tokens>8507</estimated_tokens>
+    <char_count>36427</char_count>
+    <byte_count>36431</byte_count>
+    <estimated_tokens>9106</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -59,9 +59,11 @@
         <id>S-0009-04</id>
         <id>S-0009-05</id>
         <id>S-0009-06</id>
+        <id>S-0015-01</id>
+        <id>S-0015-02</id>
       </source_ids>
       <content>
-Suggestions: 42
+Suggestions: 44
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -547,6 +549,28 @@ Categories: benchmark-annotation, agent-evaluation
 Date added: 2026-04-30
 
 Inspecting the v1 (and now v2) rows shows the &#x27;WorkArena++&#x27; rows are actually Mind2Web proxy data and the &#x27;tau-bench&#x27; rows are HumanEval proxy data — neither benchmark is loaded directly because of access restrictions noted in the v1 task. For Phase 2 the benchmark provenance matters: agent-evaluation results on Mind2Web do not generalize to WorkArena++. Either (a) acquire WorkArena++ and tau-bench proper and re-annotate those rows, or (b) rename the benchmark fields to match what is actually stored (Mind2Web, HumanEval) and update downstream consumers. This is necessary before any Phase 2 paper claim about WorkArena++ performance.
+
+## Replace Mind2Web/HumanEval proxy rows with native WorkArena++ and tau-bench data
+ID: S-0015-01
+Status: active
+Priority: medium
+Kind: dataset
+Source task: t0015_correct_proxy_benchmark_labels
+Categories: hierarchical-planning, benchmark-annotation, agent-evaluation
+Date added: 2026-04-30
+
+Variant a of S-0009-06 (now folded into this follow-up). The 26 m2w_* rows in the v2 hierarchical-annotation dataset are Mind2Web data used as a proxy for the gated WorkArena++ split, and the 26 he_* rows are HumanEval data used as a proxy for the gated tau-bench split. t0015 corrected the labels but did not replace the underlying data. This task should (1) obtain access to a real WorkArena++ split and a real tau-bench split (both currently gated; expect a registration / agreement step that must be tracked as an intervention), (2) re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator and judge as t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any change to the FrontierScience-Olympiad or SWE-bench Verified rows.
+
+## Add a row-level original_benchmark provenance field to future relabel corrections
+ID: S-0015-02
+Status: active
+Priority: low
+Kind: evaluation
+Source task: t0015_correct_proxy_benchmark_labels
+Categories: benchmark-annotation
+Date added: 2026-04-30
+
+The t0015 overlay rewrites the per-row benchmark string but does not preserve the original proxy label inside the row. A reader inspecting only the effective JSONL cannot tell that the row was previously labeled differently — provenance lives only in the corrections overlay&#x27;s description.md. For future relabel corrections, the framework would benefit from a soft convention where the corrected row carries an original_benchmark field (or, more generally, original_&lt;field&gt; for any field rewritten by a corrections overlay). This makes per-row provenance auditable without round-tripping through the corrections file. The task should: (1) propose the convention as a small extension to the corrections specification, (2) update the dataset-asset verificator to surface a warning when an overlay rewrites a per-row field without preserving the original, and (3) backfill the convention into the t0015 overlay.
       </content>
     </section>
   </sections>

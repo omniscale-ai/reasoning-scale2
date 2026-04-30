@@ -1,4 +1,4 @@
-# ⏹ v2 annotator Sonnet rerun: deconfound schema vs model
+# ⏳ v2 annotator Sonnet rerun: deconfound schema vs model
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0014_v2_annotator_sonnet_rerun` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-04-30T19:07:28Z |
 | **Dependencies** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
 | **Source suggestion** | `S-0009-01` |
 | **Task types** | `hierarchical-annotation`, `comparative-analysis` |

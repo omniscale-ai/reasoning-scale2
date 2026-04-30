@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-04-30T18:10:33Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-04-30T19:35:36Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>40497</char_count>
-    <byte_count>40568</byte_count>
-    <estimated_tokens>10124</estimated_tokens>
+    <char_count>42394</char_count>
+    <byte_count>42465</byte_count>
+    <estimated_tokens>10598</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -142,9 +142,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
         <id>t0013_brainstorm_results_4</id>
+        <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Completed tasks: 12
+Completed tasks: 13
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -217,6 +218,12 @@ ID: t0013_brainstorm_results_4
 Completed: 2026-04-30
 Short description: Brainstorm 4: insert two parallel pre-Phase-2 tasks (v2 Sonnet rerun + proxy benchmark relabel), prune 5 redundant suggestions, and demote 3 access/infrastructure suggestions to medium priority.
 Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainstorm produced two new not-started tasks (t0014 and t0015) and applied eight correction files for the Round 2 cleanup deferred from brainstorm 3. The two tasks address the schema-vs-model confound and proxy-benchmark provenance issues surfaced by t0009. Wave budget cap: $10. Both new tasks are parallel-safe; t0012 stays in_progress and unaffected. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after t0009-t0011 merged with $9.16 / $100 spent. t0012 is in_progress. t0009 reported a +58 pp v2-vs-v1 judge accept rate but the annotation provider was swapped from Sonnet (v1) to Haiku (v2), so the headline delta is...
+
+## Correct proxy-benchmark labels in t0009 v2 dataset
+ID: t0015_correct_proxy_benchmark_labels
+Completed: 2026-04-30
+Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
+Result summary: Results Summary: Correct Proxy-Benchmark Labels in t0009 v2 Dataset Summary Wrote a single corrections-overlay file (`corrections/dataset_hierarchical-annotation-v2.json`) that relabels the **52** rows in the t0009 v2 hierarchical-annotation dataset whose `benchmark` field referred to a gated proxy-target benchmark instead of the actual data source: **26** `m2w_*` rows move from `WorkArena++` to `Mind2Web`, and **26** `he_*` rows move from `tau-bench` to `HumanEval`. The `aggregate_datasets` overlay applies cleanly: the effective JSONL now carries the corrected labels and the dataset metadata prose no longer mentions the wrong benchmark names. Metrics * **Rows relabeled, total**: **52** of...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -225,10 +232,9 @@ Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainsto
       <source_ids>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
-        <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
@@ -239,16 +245,9 @@ Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, 
 
 ## v2 annotator Sonnet rerun: deconfound schema vs model
 ID: t0014_v2_annotator_sonnet_rerun
-Status: not_started
-Effective date: unknown
+Status: in_progress
+Effective date: 2026-04-30
 Short description: Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009&#x27;s +58 pp delta.
-Dependencies: t0009_hierarchical_annotation_v2
-
-## Correct proxy-benchmark labels in t0009 v2 dataset
-ID: t0015_correct_proxy_benchmark_labels
-Status: not_started
-Effective date: unknown
-Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
 Dependencies: t0009_hierarchical_annotation_v2
       </content>
     </section>
@@ -366,9 +365,10 @@ Least-to-Most (LtM) prompting is a two-stage prompting technique designed to ove
         <id>taubench-subset</id>
         <id>workarena-plus-plus-subset</id>
         <id>hierarchical-annotation-v2</id>
+        <id>hierarchical-annotation-v2-relabeled</id>
       </source_ids>
       <content>
-Datasets: 6
+Datasets: 7
 
 ## FrontierScience-Olympiad subset (pilot v0)
 ID: frontierscience-olympiad-subset
@@ -415,7 +415,15 @@ ID: hierarchical-annotation-v2
 Year: 2026
 Access: restricted
 Added by task: t0009_hierarchical_annotation_v2
-Size: 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision).
+Size: 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). Per-row benchmark labels: 40 FrontierScience-Olympiad, 23 SWE-bench Verified, 26 Mind2Web (proxy for WorkArena++), 26 HumanEval (proxy for tau-bench).
+Hierarchical Annotation v2 is the canonical input dataset for the project&#x27;s Phase 2 experiments on scope-conditioned agents. It re-annotates the same 115 benchmark rows the v1 pilot covered but encodes a tree-shaped hierarchy with explicit subtask-to-atomic edges and a separate `global_atomics` bucket for cross-cutting steps. Both the annotator and the judge see the full problem text, fixing the dominant v1...
+
+## Hierarchical Annotation v2 (115-row pilot, tree schema, relabeled)
+ID: hierarchical-annotation-v2-relabeled
+Year: 2026
+Access: restricted
+Added by task: t0015_correct_proxy_benchmark_labels
+Size: 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). Per-row benchmark labels: 40 FrontierScience-Olympiad, 23 SWE-bench Verified, 26 Mind2Web (proxy for WorkArena++), 26 HumanEval (proxy for tau-bench).
 Hierarchical Annotation v2 is the canonical input dataset for the project&#x27;s Phase 2 experiments on scope-conditioned agents. It re-annotates the same 115 benchmark rows the v1 pilot covered but encodes a tree-shaped hierarchy with explicit subtask-to-atomic edges and a separate `global_atomics` bucket for cross-cutting steps. Both the annotator and the judge see the full problem text, fixing the dominant v1...
       </content>
     </section>

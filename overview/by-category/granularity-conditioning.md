@@ -7,7 +7,7 @@ subtask, atomic).
 
 **Detail pages**: [Papers (4)](../papers/by-category/granularity-conditioning.md) |
 [Suggestions (13)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
-(1)](../datasets/by-category/granularity-conditioning.md) | [Libraries
+(2)](../datasets/by-category/granularity-conditioning.md) | [Libraries
 (3)](../libraries/by-category/granularity-conditioning.md)
 
 ---

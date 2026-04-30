@@ -1,12 +1,149 @@
 # ✅ Tasks: Completed
 
-12 tasks. ✅ **12 completed**.
+13 tasks. ✅ **13 completed**.
 
 [Back to all tasks](../README.md)
 
 ---
 
 ## ✅ Completed
+
+<details>
+<summary>✅ 0015 — <strong>Correct proxy-benchmark labels in t0009 v2
+dataset</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0015_correct_proxy_benchmark_labels` |
+| **Status** | completed |
+| **Effective date** | 2026-04-30 |
+| **Dependencies** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Expected assets** | — |
+| **Source suggestion** | `S-0009-06` |
+| **Task types** | [`correction`](../../../meta/task_types/correction/) |
+| **Start time** | 2026-04-30T19:08:28Z |
+| **End time** | 2026-04-30T19:32:45Z |
+| **Step progress** | 9/15 |
+| **Task page** | [Correct proxy-benchmark labels in t0009 v2 dataset](../../../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) |
+| **Task folder** | [`t0015_correct_proxy_benchmark_labels/`](../../../tasks/t0015_correct_proxy_benchmark_labels/) |
+| **Detailed report** | [results_detailed.md](../../../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) |
+
+# Correct Proxy-Benchmark Labels in t0009 v2 Dataset
+
+## Motivation
+
+The `t0009_hierarchical_annotation_v2` dataset asset labels its four benchmarks as
+`FrontierScience-Olympiad`, `SWE-bench Verified`, `WorkArena++`, and `tau-bench`. The first
+two are accurate. The latter two are mislabelled — the underlying rows are `Mind2Web` and
+`HumanEval` rows used as proxies for browser-using and tool-using agent benchmarks, not actual
+`WorkArena++` or `tau-bench` rows. Once t0012 (Phase 2 A/B/C smoke) reports per-benchmark
+numbers, naïve consumers would attribute results to benchmarks the project does not actually
+evaluate on.
+
+This task fixes the labels via the corrections-overlay mechanism — no re-annotation, no API
+spend, no change to the t0009 task folder. Implements `S-0009-06` variant b (label correction;
+variant a would have replaced the proxy rows with actual WorkArena++/tau-bench data, which is
+out of scope for this wave).
+
+## Scope
+
+* Write one correction file per affected benchmark (or one combined correction, depending on
+  the aggregator's per-row update support):
+  * `WorkArena++` → `Mind2Web`.
+  * `tau-bench` → `HumanEval`.
+* Action: `update`. The correction overlays `details.json` `description_path` (and any per-row
+  `benchmark` fields exposed by the dataset aggregator) so downstream consumers see the
+  corrected labels.
+* Provide a one-paragraph rationale per correction file referencing the original proxy
+  decision taken in t0003 (benchmark download) and t0005 (v1 annotation pilot).
+* Run `verify_corrections` against the new files.
+
+Out of scope: replacing proxy rows with actual WorkArena++/tau-bench data (a separate dataset
+task, deferred); editing t0009's task folder (immutable); changing per-row IDs (only the
+benchmark label).
+
+## Approach
+
+1. Read t0009's `assets/dataset/hierarchical-annotation-v2/details.json` and the dataset
+   aggregator schema to confirm where benchmark labels are exposed (top-level `benchmarks`
+   list, per-row `benchmark` field, or both).
+2. Confirm the dataset aggregator's correction-overlay support — if `file_changes` is
+   required, author a replacement description document and (if applicable) replacement JSONL
+   with corrected per-row labels.
+3. Write the correction file(s) under `corrections/dataset_<dataset_id>.json` per
+   `corrections_specification.md` v3.
+4. Re-run the dataset aggregator with the correction overlay applied; confirm the corrected
+   labels are visible in the materialized output.
+
+## Expected Outputs
+
+* `corrections/dataset_<t0009_dataset_id>.json` (one or more correction files).
+* If `file_changes` is needed: a replacement description document and/or replacement JSONL
+  under this task's `assets/dataset/...-relabeled/` folder.
+* `results/results_summary.md` reporting how many rows had their benchmark label corrected and
+  the before/after distribution.
+* `results/results_detailed.md` with the rationale, the correction-file structure, and any
+  follow-up suggestion to actually replace the proxy rows with native WorkArena++/tau-bench
+  data.
+
+## Compute and Budget
+
+No GPU. No API spend. Estimated cost: **$0**. Per-task cap: $1.
+
+## Dependencies and Cross-References
+
+* Depends on `t0009_hierarchical_annotation_v2` for the dataset asset whose labels are being
+  corrected.
+* Independent of `t0014_v2_annotator_sonnet_rerun`. Order does not matter; if both land before
+  t0012 finishes, t0012's per-benchmark reporting will pick up both overlays through the
+  aggregator.
+* `t0012` (in_progress) reads the t0009 dataset through the aggregator, so the corrected
+  labels flow through automatically once t0015 merges. The FrontierScience filter t0012 uses
+  is unaffected.
+
+## Source Suggestion
+
+`S-0009-06` variant b — "Relabel the proxy benchmarks WorkArena++→Mind2Web and
+tau-bench→HumanEval in the v2 dataset via a correction file."
+
+## Key Questions
+
+1. How many rows are affected by each label correction?
+2. Does the t0009 dataset aggregator support per-row label overlays via `changes`, or is a
+   `file_changes` overlay needed?
+3. Are there any downstream consumers (other than t0012) that already cache the original
+   labels and would need re-aggregation?
+
+**Results summary:**
+
+> **Results Summary: Correct Proxy-Benchmark Labels in t0009 v2 Dataset**
+>
+> **Summary**
+>
+> Wrote a single corrections-overlay file
+> (`corrections/dataset_hierarchical-annotation-v2.json`) that
+> relabels the **52** rows in the t0009 v2 hierarchical-annotation dataset whose `benchmark`
+> field
+> referred to a gated proxy-target benchmark instead of the actual data source: **26** `m2w_*`
+> rows
+> move from `WorkArena++` to `Mind2Web`, and **26** `he_*` rows move from `tau-bench` to
+> `HumanEval`.
+> The `aggregate_datasets` overlay applies cleanly: the effective JSONL now carries the
+> corrected
+> labels and the dataset metadata prose no longer mentions the wrong benchmark names.
+>
+> **Metrics**
+>
+> * **Rows relabeled, total**: **52** of 115 (45.2%)
+> * **`WorkArena++` -> `Mind2Web`**: **26** rows (all rows whose `task_id` starts with `m2w_`)
+> * **`tau-bench` -> `HumanEval`**: **26** rows (all rows whose `task_id` starts with `he_`)
+> * **Rows unchanged**: **63** (40 `FrontierScience-Olympiad` + 23 `SWE-bench Verified`)
+> * **Effective JSONL distribution after overlay**: 40 / 23 / 26 / 26
+>   (FrontierScience-Olympiad /
+> SWE-bench Verified / Mind2Web / HumanEval)
+> * **Non-`benchmark` field diffs vs source**: **0**
+
+</details>
 
 <details>
 <summary>✅ 0013 — <strong>Brainstorm session 4: v2 schema-vs-model confound and
@@ -127,12 +264,12 @@ Two follow-ups intentionally **not** corrected:
 > t0009 reported a +58 pp v2-vs-v1 judge accept rate but the annotation provider was swapped
 > from
 > Sonnet (v1) to Haiku (v2), so the headline delta is confounded with the model swap. The v2
-> dataset also labels two proxy benchmarks under their proxy targets' names instead of the
-> true
-> source corpora.
+> dataset
+> also labels two proxy benchmarks under their proxy targets' names instead of the true source
+> corpora.
 > * **Prompt**: Resolve both pre-Phase-2 issues so t0012's headline experiment can rest on a
->   clean
-> v2 foundation, and prune the 17-suggestion high-priority backlog.
+>   clean v2
+> foundation, and prune the 17-suggestion high-priority backlog.
 >
 
 </details>

@@ -5,8 +5,8 @@ Manual or LLM-assisted gold-action annotation across the three granularity level
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-annotation.md) | [Suggestions
-(11)](../suggestions/by-category/benchmark-annotation.md) | [Datasets
-(2)](../datasets/by-category/benchmark-annotation.md)
+(13)](../suggestions/by-category/benchmark-annotation.md) | [Datasets
+(3)](../datasets/by-category/benchmark-annotation.md)
 
 ---
 
@@ -63,7 +63,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (7 open, 4 closed)
+## Suggestions (9 open, 4 closed)
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -128,6 +128,46 @@ AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expa
 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
 smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
 rate, ~$5-6 added cost. Inherits S-0005-01.
+
+</details>
+
+<details>
+<summary>📂 <strong>Replace Mind2Web/HumanEval proxy rows with native WorkArena++
+and tau-bench data</strong> (S-0015-01)</summary>
+
+**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0015_correct_proxy_benchmark_labels](../../tasks/t0015_correct_proxy_benchmark_labels/)
+
+Variant a of S-0009-06 (now folded into this follow-up). The 26 m2w_* rows in the v2
+hierarchical-annotation dataset are Mind2Web data used as a proxy for the gated WorkArena++
+split, and the 26 he_* rows are HumanEval data used as a proxy for the gated tau-bench split.
+t0015 corrected the labels but did not replace the underlying data. This task should (1)
+obtain access to a real WorkArena++ split and a real tau-bench split (both currently gated;
+expect a registration / agreement step that must be tracked as an intervention), (2)
+re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator and judge as
+t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against
+hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any
+change to the FrontierScience-Olympiad or SWE-bench Verified rows.
+
+</details>
+
+<details>
+<summary>📊 <strong>Add a row-level original_benchmark provenance field to future
+relabel corrections</strong> (S-0015-02)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-04-30 | **Source**:
+[t0015_correct_proxy_benchmark_labels](../../tasks/t0015_correct_proxy_benchmark_labels/)
+
+The t0015 overlay rewrites the per-row benchmark string but does not preserve the original
+proxy label inside the row. A reader inspecting only the effective JSONL cannot tell that the
+row was previously labeled differently — provenance lives only in the corrections overlay's
+description.md. For future relabel corrections, the framework would benefit from a soft
+convention where the corrected row carries an original_benchmark field (or, more generally,
+original_<field> for any field rewritten by a corrections overlay). This makes per-row
+provenance auditable without round-tripping through the corrections file. The task should: (1)
+propose the convention as a small extension to the corrections specification, (2) update the
+dataset-asset verificator to surface a warning when an overlay rewrites a per-row field
+without preserving the original, and (3) backfill the convention into the t0015 overlay.
 
 </details>
 

@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-16 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **11 open** (3
-high, 5 medium, 3 low), **5 closed**.
+17 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **12 open** (3
+high, 6 medium, 3 low), **5 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -181,6 +181,32 @@ The judge rejected all three WorkArena++ rows because the upstream annotation la
 WorkArena++ source carries an implicit subtask boundary (e.g., screen transitions) that can be
 detected automatically, or alternatively change the v2 schema to accept flat atomic-only rows
 as a distinct hierarchy_kind. Document the chosen approach and update the mapper.
+
+</details>
+
+<details>
+<summary>📂 <strong>Replace Mind2Web/HumanEval proxy rows with native WorkArena++
+and tau-bench data</strong> (S-0015-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0015-01` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0015_correct_proxy_benchmark_labels`](../../../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Variant a of S-0009-06 (now folded into this follow-up). The 26 m2w_* rows in the v2
+hierarchical-annotation dataset are Mind2Web data used as a proxy for the gated WorkArena++
+split, and the 26 he_* rows are HumanEval data used as a proxy for the gated tau-bench split.
+t0015 corrected the labels but did not replace the underlying data. This task should (1)
+obtain access to a real WorkArena++ split and a real tau-bench split (both currently gated;
+expect a registration / agreement step that must be tracked as an intervention), (2)
+re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator and judge as
+t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against
+hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any
+change to the FrontierScience-Olympiad or SWE-bench Verified rows.
 
 </details>
 

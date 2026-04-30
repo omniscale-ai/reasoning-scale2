@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-30T18:10:33Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-30T19:35:36Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>26</section_count>
-    <char_count>169517</char_count>
-    <byte_count>169905</byte_count>
-    <estimated_tokens>42379</estimated_tokens>
+    <section_count>27</section_count>
+    <char_count>180219</char_count>
+    <byte_count>180649</byte_count>
+    <estimated_tokens>45054</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -139,9 +139,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
         <id>t0013_brainstorm_results_4</id>
+        <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Completed tasks: 12
+Completed tasks: 13
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -214,6 +215,12 @@ ID: t0013_brainstorm_results_4
 Completed: 2026-04-30
 Short description: Brainstorm 4: insert two parallel pre-Phase-2 tasks (v2 Sonnet rerun + proxy benchmark relabel), prune 5 redundant suggestions, and demote 3 access/infrastructure suggestions to medium priority.
 Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainstorm produced two new not-started tasks (t0014 and t0015) and applied eight correction files for the Round 2 cleanup deferred from brainstorm 3. The two tasks address the schema-vs-model confound and proxy-benchmark provenance issues surfaced by t0009. Wave budget cap: $10. Both new tasks are parallel-safe; t0012 stays in_progress and unaffected. Session Overview * **Date**: 2026-04-30 * **Context**: Triggered after t0009-t0011 merged with $9.16 / $100 spent. t0012 is in_progress. t0009 reported a +58 pp v2-vs-v1 judge accept rate but the annotation provider was swapped from Sonnet (v1) to Haiku (v2), so the headline delta is...
+
+## Correct proxy-benchmark labels in t0009 v2 dataset
+ID: t0015_correct_proxy_benchmark_labels
+Completed: 2026-04-30
+Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
+Result summary: Results Summary: Correct Proxy-Benchmark Labels in t0009 v2 Dataset Summary Wrote a single corrections-overlay file (`corrections/dataset_hierarchical-annotation-v2.json`) that relabels the **52** rows in the t0009 v2 hierarchical-annotation dataset whose `benchmark` field referred to a gated proxy-target benchmark instead of the actual data source: **26** `m2w_*` rows move from `WorkArena++` to `Mind2Web`, and **26** `he_*` rows move from `tau-bench` to `HumanEval`. The `aggregate_datasets` overlay applies cleanly: the effective JSONL now carries the corrected labels and the dataset metadata prose no longer mentions the wrong benchmark names. Metrics * **Rows relabeled, total**: **52** of...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -222,10 +229,9 @@ Result summary: Brainstorm Session 4 — Results Summary Summary Fourth brainsto
       <source_ids>
         <id>t0012_phase2_abc_smoke_frontierscience</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
-        <id>t0015_correct_proxy_benchmark_labels</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
@@ -236,16 +242,9 @@ Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, 
 
 ## v2 annotator Sonnet rerun: deconfound schema vs model
 ID: t0014_v2_annotator_sonnet_rerun
-Status: not_started
-Effective date: unknown
+Status: in_progress
+Effective date: 2026-04-30
 Short description: Re-run the v2 tree-schema annotator with claude-sonnet-4-6 on the same 115 rows; reuse the haiku judge on the same stratified sample to isolate the schema component of t0009&#x27;s +58 pp delta.
-Dependencies: t0009_hierarchical_annotation_v2
-
-## Correct proxy-benchmark labels in t0009 v2 dataset
-ID: t0015_correct_proxy_benchmark_labels
-Status: not_started
-Effective date: unknown
-Short description: Write a correction file against the t0009 v2 dataset asset that relabels the WorkArena++ benchmark to Mind2Web and tau-bench to HumanEval, reflecting the actual proxy sources.
 Dependencies: t0009_hierarchical_annotation_v2
       </content>
     </section>
@@ -3060,6 +3059,187 @@ No research required for brainstorming session.
 #### References
 
 No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0015_correct_proxy_benchmark_labels-research_code" source_kind="file">
+      <title>t0015_correct_proxy_benchmark_labels — Correct proxy-benchmark labels in t0009 v2 dataset — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0015_correct_proxy_benchmark_labels</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0015_correct_proxy_benchmark_labels/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0015_correct_proxy_benchmark_labels&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 12
+tasks_cited: 4
+libraries_found: 4
+libraries_relevant: 0
+date_completed: &quot;2026-04-30&quot;
+status: &quot;complete&quot;
+---
+
+### Research Code — t0015_correct_proxy_benchmark_labels
+
+#### Task Objective
+
+This task corrects mislabeled benchmark names in the `hierarchical-annotation-v2` dataset asset
+produced by [t0009]. Two sets of rows carry the wrong `benchmark` field: 26 Mind2Web rows are
+labeled `WorkArena++` and 26 HumanEval rows are labeled `tau-bench`. The fix must be delivered via
+the corrections-overlay mechanism, leaving [t0009]&#x27;s task folder untouched, and must update both the
+JSONL data file and the description metadata mentioning those benchmark names.
+
+#### Library Landscape
+
+The library aggregator returns four registered libraries: `scope_aware_react_v1`,
+`scope_unaware_planandsolve_v1`, `matched_mismatch_v1`, and `metric2_calibration_aggregator_v1`.
+None of them is relevant to this task — they are agent strategy and metric-aggregation libraries for
+downstream evaluation experiments, not data-correction utilities. No correction is recorded against
+any of them. This task is a pure data-overlay correction with no executable code, so no library
+import path is needed.
+
+#### Key Findings
+
+##### Origin of the proxy decision (t0003 → t0005 → t0009)
+
+The proxy benchmark substitution was decided during dataset acquisition in [t0003]. WorkArena++ and
+tau-bench were inaccessible at download time (gated registration, no public split with task
+descriptions) so the project picked Mind2Web and HumanEval as drop-in stand-ins covering the same
+&quot;web-agent&quot; and &quot;code-agent&quot; axes. The substitution was documented in [t0003]&#x27;s
+`results/results_summary.md` but the row-level `benchmark` field in the downloaded slices was never
+rewritten to reflect the swap. Pilot annotation in [t0005] reused those slices verbatim; v2
+re-annotation in [t0009] reused [t0005]&#x27;s row IDs verbatim. The mislabel is therefore preserved
+through three tasks because each downstream task treats `benchmark` as immutable provenance.
+
+##### Evidence from row-level task IDs in v2
+
+The 115-row v2 JSONL at
+`tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/files/hierarchical_annotation_v2.jsonl`
+makes the mislabel auditable from the data alone. Splitting `task_id` by underscore prefix gives
+`fs` (40 rows, all labeled `FrontierScience-Olympiad` — correct), `swe` (23 rows, all labeled
+`SWE-bench Verified` — correct), `m2w` (26 rows, all labeled `WorkArena++` — these are Mind2Web
+rows; mislabel), and `he` (26 rows, all labeled `tau-bench` — these are HumanEval rows; mislabel).
+The prefix-to-source mapping is consistent with the row IDs used in [t0005]&#x27;s v1 JSONL, confirming
+the mislabel originated upstream and was preserved.
+
+##### Dataset overlay mechanics
+
+The dataset aggregator at `meta/asset_types/dataset/aggregator.py` calls
+`_load_effective_dataset_records`, which walks every task&#x27;s `corrections/` folder and applies
+`update` actions to the target dataset. The `changes` block of an `update` correction merges into
+the metadata returned by the aggregator (so overriding `short_description` and `size_description`
+takes effect at read time), and the `file_changes` block lets a correction redirect specific logical
+paths to replacement files in the correcting task&#x27;s own assets. For datasets the logical paths
+exposed are the `description_path` field (currently `description.md`) plus every entry in `files[]`
+(currently `files/hierarchical_annotation_v2.jsonl`). Both must be replaced for the overlay to be
+complete.
+
+##### Schema preservation across v1 and v2
+
+[t0009]&#x27;s v2 schema redefines the per-row hierarchy (global / subtasks-with-atomics / global_atomics
+\+ parallel gold_actions tree) but copies the `benchmark`, `task_id`, and source context fields from
+[t0005]&#x27;s v1 rows without modification. Re-annotation focused on the planning hierarchy, not on
+benchmark provenance, which is why the v1 mislabel survived intact. This is relevant for the
+planning step of t0015: only the `benchmark` field needs to change in the relabeled JSONL — every
+other field can be carried over unchanged from the v2 source file.
+
+#### Reusable Code and Assets
+
+There is no code or library to import or copy for this task — it is a pure data correction delivered
+through the corrections-overlay mechanism. The reusable artifacts are data and specifications, not
+code:
+
+* **Source dataset asset** —
+  `tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/` from [t0009].
+  * What it provides: `details.json`, `description.md`, and `files/hierarchical_annotation_v2.jsonl`
+    (115 rows, one JSON object per line).
+  * Reuse method: **read-only input** — the relabeled JSONL is produced by streaming this file and
+    rewriting only the `benchmark` field for rows whose `task_id` starts with `m2w_` or `he_`.
+  * Adaptation needed: rewrite `benchmark` in 52 rows; leave the remaining 63 rows byte-identical.
+  * Approximate size: 115 lines of JSONL.
+
+* **Corrections specification** — `arf/specifications/corrections_specification.md` v3.
+  * What it provides: schema for `correction_id` (`C-XXXX-NN` derived from the correcting task ID),
+    `target_task`, `target_kind: dataset`, `target_id`, `action: update`, `changes` (metadata
+    overrides), and `file_changes` (per-logical-path replacement). Includes the rule that
+    `file_changes` `replacement_task` must equal the correcting task ID.
+  * Reuse method: **format reference**, no code to copy.
+
+* **Dataset aggregator** — `meta/asset_types/dataset/aggregator.py` and
+  `arf/scripts/common/corrections.py`.
+  * What it provides: the materialization logic that resolves overlays. Used as a black box —
+    `aggregate_datasets --ids hierarchical-annotation-v2 --include-full-description` is the
+    verification command.
+  * Reuse method: **invoke as a CLI**; no Python import required.
+
+#### Lessons Learned
+
+The single most important lesson from prior tasks is that data provenance fields are not
+self-correcting: [t0003] documented the proxy substitution in prose but did not rewrite the
+row-level `benchmark` field, and every downstream task ([t0005], [t0009]) preserved the original
+field rather than the prose. The corrections-overlay mechanism exists exactly for this case — it
+lets a downstream task override both metadata and underlying files without touching the producing
+task&#x27;s folder, which would violate the immutability rule. Another lesson is that `update`
+corrections combine `changes` and `file_changes` cleanly: when description prose mentions the
+mislabeled values, both must be overridden so that aggregator output is internally consistent.
+
+#### Recommendations for This Task
+
+1. **Use a single `update` correction** with both `changes` and `file_changes`. Override
+   `short_description` and `size_description` in `changes` so any aggregator-rendered prose stops
+   mentioning the wrong benchmark names. Use `file_changes` to swap `description.md` and
+   `files/hierarchical_annotation_v2.jsonl` to relabeled copies.
+2. **Author the replacement files inside this task&#x27;s own `assets/dataset/&lt;replacement_id&gt;/`
+   folder.** The correction spec requires `replacement_task` to equal the correcting task ID. Pick
+   `hierarchical-annotation-v2-relabeled` as the replacement asset slug to keep the relationship
+   obvious.
+3. **Rewrite only the `benchmark` field**, in exactly 52 rows. Map `WorkArena++ → Mind2Web` for the
+   26 `m2w_*` rows and `tau-bench → HumanEval` for the 26 `he_*` rows. Leave the 63 remaining rows
+   (40 `fs_*` and 23 `swe_*`) byte-identical to preserve diff readability.
+4. **Verify with `aggregate_datasets --ids hierarchical-annotation-v2 --detail full --format json`**
+   after writing the correction. The materialized record must reflect the new descriptions and the
+   file overlay must point at this task&#x27;s replacement files. Also run `verify_corrections` to
+   enforce schema compliance.
+5. **Do not modify any file under `tasks/t0009_hierarchical_annotation_v2/`.** All edits live in
+   `tasks/t0015_correct_proxy_benchmark_labels/`.
+
+#### Task Index
+
+##### [t0003]
+
+* **Task ID**: `t0003_download_benchmark_subsets`
+* **Name**: Download benchmark subsets
+* **Status**: completed
+* **Relevance**: Origin of the proxy substitution: this task is where Mind2Web was selected as a
+  drop-in stand-in for the gated WorkArena++ split and HumanEval as a stand-in for tau-bench.
+
+##### [t0005]
+
+* **Task ID**: `t0005_hierarchical_annotation_pilot_v1`
+* **Name**: Hierarchical annotation pilot v1
+* **Status**: completed
+* **Relevance**: First task to consume the proxy slices for hierarchical annotation. Preserved the
+  mislabeled `benchmark` field row-for-row, propagating the issue downstream.
+
+##### [t0009]
+
+* **Task ID**: `t0009_hierarchical_annotation_v2`
+* **Name**: Hierarchical annotation v2
+* **Status**: completed
+* **Relevance**: Producer of the dataset asset this task corrects. Re-annotated v1 rows under a v2
+  tree schema but carried the mislabel through unchanged.
+
+##### [t0013]
+
+* **Task ID**: `t0013_brainstorm_results_4`
+* **Name**: Brainstorm results 4
+* **Status**: completed
+* **Relevance**: Source of the suggestion `S-0009-06` that this task implements (variant b — fix
+  labels in the existing rows).
       </content>
     </section>
   </sections>

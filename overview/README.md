@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="papers/"><img src="https://img.shields.io/badge/Papers-11-4169E1" alt="Papers"></a>
-  <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-6-2E8B57" alt="Datasets"></a>
+  <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-7-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-0-9370DB" alt="Predictions"></a>
   <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-4-20B2AA" alt="Libraries"></a>
@@ -12,7 +12,7 @@
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-15-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-42-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-44-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-1-DC143C" alt="Results"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (5K) |
-[full](llm-context/full.xml) (45K) | [roadmap](llm-context/roadmap.xml) (16K) |
-[results](llm-context/results-deep-dive.xml) (36K) |
-[assets](llm-context/literature-and-assets.xml) (10K)
+[full](llm-context/full.xml) (48K) | [roadmap](llm-context/roadmap.xml) (15K) |
+[results](llm-context/results-deep-dive.xml) (40K) |
+[assets](llm-context/literature-and-assets.xml) (11K)
 
-*Last updated: 2026-04-30 18:10 UTC*
+*Last updated: 2026-04-30 19:35 UTC*
 
 * **Budget**: **$9** spent of $100
 * **Remaining**: **$91**
@@ -48,20 +48,18 @@ No daily news yet.
 
 ---
 
-## [In Progress (1)](tasks/by-status/in_progress.md)
+## [In Progress (2)](tasks/by-status/in_progress.md)
 
 | # | Task | Started |
 |---|------|---------|
+| 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | 2026-04-30 19:07 |
 | 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-04-30 00:55 |
 
 ---
 
-## [Ready to Start (2)](tasks/by-status/not_started.md)
+## [Ready to Start (0)](tasks/by-status/not_started.md)
 
-| # | Task | Description | Date Added |
-|---|------|-------------|------------|
-| 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`description`](../tasks/t0014_v2_annotator_sonnet_rerun/task_description.md) | — |
-| 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`description`](../tasks/t0015_correct_proxy_benchmark_labels/task_description.md) | — |
+No tasks ready to start.
 
 ---
 
@@ -71,10 +69,11 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (12 total)](tasks/by-status/completed.md)
+## [Recently Completed (13 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`results`](../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) | 2026-04-30 19:32 |
 | 0013 | [Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels](../overview/tasks/task_pages/t0013_brainstorm_results_4.md) | [`results`](../tasks/t0013_brainstorm_results_4/results/results_detailed.md) | 2026-04-30 18:00 |
 | 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`results`](../tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md) | 2026-04-30 00:53 |
 | 0008 | [Brainstorm session 3: insert v2 re-annotation, plan Phase 2 smoke](../overview/tasks/task_pages/t0008_brainstorm_results_3.md) | [`results`](../tasks/t0008_brainstorm_results_3/results/results_detailed.md) | 2026-04-30 00:00 |
@@ -84,13 +83,12 @@ No blocked tasks.
 | 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`results`](../tasks/t0006_scope_aware_react_library/results/results_detailed.md) | 2026-04-29 20:07 |
 | 0007 | [Scope-unaware Plan-and-Solve library: condition B baseline](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | [`results`](../tasks/t0007_scope_unaware_planandsolve_library/results/results_detailed.md) | 2026-04-29 20:01 |
 | 0004 | [Brainstorm session 2: plan Phase 1 annotation and Phase 2 baseline libraries](../overview/tasks/task_pages/t0004_brainstorm_results_2.md) | [`results`](../tasks/t0004_brainstorm_results_2/results/results_detailed.md) | 2026-04-29 15:30 |
-| 0003 | [Download benchmark subsets for the four roadmap sources](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | [`results`](../tasks/t0003_download_benchmark_subsets/results/results_detailed.md) | 2026-04-29 14:58 |
 
-*2 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*3 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
-## [Recent Suggestions (33 open)](suggestions/)
+## [Recent Suggestions (35 open)](suggestions/)
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -159,6 +157,46 @@ rate, ~$5-6 added cost. Inherits S-0005-01.
 </details>
 
 <details>
+<summary>📂 <strong>Replace Mind2Web/HumanEval proxy rows with native WorkArena++
+and tau-bench data</strong> (S-0015-01)</summary>
+
+**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
+[t0015_correct_proxy_benchmark_labels](../tasks/t0015_correct_proxy_benchmark_labels/)
+
+Variant a of S-0009-06 (now folded into this follow-up). The 26 m2w_* rows in the v2
+hierarchical-annotation dataset are Mind2Web data used as a proxy for the gated WorkArena++
+split, and the 26 he_* rows are HumanEval data used as a proxy for the gated tau-bench split.
+t0015 corrected the labels but did not replace the underlying data. This task should (1)
+obtain access to a real WorkArena++ split and a real tau-bench split (both currently gated;
+expect a registration / agreement step that must be tracked as an intervention), (2)
+re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator and judge as
+t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against
+hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any
+change to the FrontierScience-Olympiad or SWE-bench Verified rows.
+
+</details>
+
+<details>
+<summary>📊 <strong>Add a row-level original_benchmark provenance field to future
+relabel corrections</strong> (S-0015-02)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-04-30 | **Source**:
+[t0015_correct_proxy_benchmark_labels](../tasks/t0015_correct_proxy_benchmark_labels/)
+
+The t0015 overlay rewrites the per-row benchmark string but does not preserve the original
+proxy label inside the row. A reader inspecting only the effective JSONL cannot tell that the
+row was previously labeled differently — provenance lives only in the corrections overlay's
+description.md. For future relabel corrections, the framework would benefit from a soft
+convention where the corrected row carries an original_benchmark field (or, more generally,
+original_<field> for any field rewritten by a corrections overlay). This makes per-row
+provenance auditable without round-tripping through the corrections file. The task should: (1)
+propose the convention as a small extension to the corrections specification, (2) update the
+dataset-asset verificator to surface a warning when an overlay rewrites a per-row field
+without preserving the original, and (3) backfill the convention into the t0015 overlay.
+
+</details>
+
+<details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability
 reporting</strong> (S-0002-01)</summary>
 
@@ -218,37 +256,7 @@ Claude or GPT scores).
 
 </details>
 
-<details>
-<summary>📚 <strong>Re-fetch the 11 paper PDFs with git LFS enabled</strong>
-(S-0002-09)</summary>
-
-**Kind**: library | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-All 11 paper assets in t0002 have download_status: failed because PDF download was deferred to
-a future task that enables git LFS. Once LFS is configured, run a download-paper task per
-asset that fetches the PDF (or markdown conversion) into the asset's files/ directory and
-updates download_status to success. This will let later tasks (especially compare-literature)
-cite specific page numbers and tables from the source PDFs.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Defer Reflexion-style episodic memory to a Phase 3
-ablation</strong> (S-0002-10)</summary>
-
-**Kind**: experiment | **Priority**: low | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Reflexion [Shinn2023] adds verbal self-reflection across trials and reaches 91% pass@1 on
-HumanEval vs. 80% for vanilla GPT-4. Including episodic memory in Phase 2 would conflate scope
-conditioning with cross-trial memory. Schedule a dedicated Phase 3 ablation that tests whether
-Reflexion-style memory adds further gains on top of the scope-aware (A) condition established
-in Phase 2.
-
-</details>
-
-*23 more open suggestions → [open suggestions](suggestions/)*
+*25 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
@@ -823,11 +831,12 @@ the planning step must address.
 
 ---
 
-## [Latest Datasets (6 total)](datasets/)
+## [Latest Datasets (7 total)](datasets/)
 
 | Name | Size | Source | Added |
 |------|------|--------|-------|
-| [Hierarchical Annotation v2 (115-row pilot, tree schema)](../tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/description.md) | 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). | [9](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | 2026-04-30 |
+| [Hierarchical Annotation v2 (115-row pilot, tree schema, relabeled)](../tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/description.md) | 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). Per-row benchmark labels: 40 FrontierScience-Olympiad, 23 SWE-bench Verified, 26 Mind2Web (proxy for WorkArena++), 26 HumanEval (proxy for tau-bench). | [15](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | 2026-04-30 |
+| [Hierarchical Annotation v2 (115-row pilot, tree schema)](../tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/description.md) | 115 rows total; each row carries a tree-shaped hierarchy (global / subtasks-with-atomics / global_atomics) and a parallel gold_actions tree. 115 rows passed the v2 hierarchy_completeness check. 23 rows received an LLM-as-judge verdict (21 acceptable, 2 needs revision). Per-row benchmark labels: 40 FrontierScience-Olympiad, 23 SWE-bench Verified, 26 Mind2Web (proxy for WorkArena++), 26 HumanEval (proxy for tau-bench). | [9](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | 2026-04-30 |
 | [tau-bench subset (4-8 actions)](../tasks/t0003_download_benchmark_subsets/assets/dataset/taubench-subset/description.md) | 87 tasks filtered from 665 upstream tau-bench tasks (kept iff gold action sequence has between 4 and 8 actions) | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
 | [WorkArena++ compositional task manifest](../tasks/t0003_download_benchmark_subsets/assets/dataset/workarena-plus-plus-subset/description.md) | 42 compositional task class lists from the upstream curriculum manifest. Task instances are not enumerated (requires live ServiceNow + gated HF). | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
 | [SWE-bench Verified subset (4-8 hunks)](../tasks/t0003_download_benchmark_subsets/assets/dataset/swebench-verified-subset/description.md) | 60 instances filtered from 500 SWE-bench Verified instances (kept iff gold patch has between 4 and 8 `@@` hunks) | [3](../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) | 2026-04-29 |
