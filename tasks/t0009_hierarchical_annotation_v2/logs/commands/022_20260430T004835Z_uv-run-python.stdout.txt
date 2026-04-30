@@ -1,0 +1,4 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0009_hierarchical_annotation_v2/tasks/t0009_hierarchical_annotation_v2/results/metrics.json
+
+[32m[1mPASSED[0m — no errors or warnings

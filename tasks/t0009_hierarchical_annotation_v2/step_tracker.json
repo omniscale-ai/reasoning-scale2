@@ -104,8 +104,8 @@
       "step": 12,
       "name": "results",
       "description": "Write results files including v2-vs-v1 judge accept rate per benchmark.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-04-30T00:43:34Z",
       "completed_at": null,
       "log_file": "logs/steps/012_results/"
     },
