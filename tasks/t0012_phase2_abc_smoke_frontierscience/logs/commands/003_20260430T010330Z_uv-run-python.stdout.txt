@@ -1,0 +1,15 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0012_phase2_abc_smoke_frontierscience/tasks/t0012_phase2_abc_smoke_frontierscience/research/research_papers.md
+
+[31m[1mERRORS:[0m
+[31m  RP-E006 error: Inline citation [Rein2023] has no matching Paper Index entry[0m
+[31m  RP-E006 error: Inline citation [Wang2023] has no matching Paper Index entry[0m
+[31m  RP-E006 error: Inline citation [Xiong2024] has no matching Paper Index entry[0m
+[31m  RP-E006 error: Inline citation [Yao2022] has no matching Paper Index entry[0m
+[31m  RP-E006 error: Inline citation [t0006-library] has no matching Paper Index entry[0m
+[31m  RP-E006 error: Inline citation [t0007-library] has no matching Paper Index entry[0m
+
+[33m[1mWARNINGS:[0m
+[33m  RP-W007 warning: Paper Index has 0 entries but frontmatter says papers_cited=4[0m
+
+[31m[1mFAILED[0m — 6 error(s), 1 warning(s)
