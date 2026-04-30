@@ -1,0 +1,267 @@
+{
+  "paper_count": 11,
+  "papers": [
+    {
+      "paper_id": "10.48550_arXiv.2205.10625",
+      "title": "Least-to-Most Prompting Enables Complex Reasoning in Large Language Models",
+      "year": 2022,
+      "authors": [
+        "Denny Zhou",
+        "Nathanael Schärli",
+        "Le Hou",
+        "Jason Wei",
+        "Nathan Scales",
+        "Xuezhi Wang",
+        "Dale Schuurmans",
+        "Claire Cui",
+        "Olivier Bousquet",
+        "Quoc Le",
+        "Ed Chi"
+      ],
+      "citation_key": "Zhou2022",
+      "categories": [
+        "hierarchical-planning",
+        "granularity-conditioning"
+      ],
+      "journal": "ICLR 2023",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2210.03629",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "year": 2023,
+      "authors": [
+        "Shunyu Yao",
+        "Jeffrey Zhao",
+        "Dian Yu",
+        "Nan Du",
+        "Izhak Shafran",
+        "Karthik Narasimhan",
+        "Yuan Cao"
+      ],
+      "citation_key": "Yao2022",
+      "categories": [
+        "granularity-conditioning",
+        "hierarchical-planning"
+      ],
+      "journal": "ICLR 2023",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2303.11366",
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "year": 2023,
+      "authors": [
+        "Noah Shinn",
+        "Federico Cassano",
+        "Edward Berman",
+        "Ashwin Gopinath",
+        "Karthik Narasimhan",
+        "Shunyu Yao"
+      ],
+      "citation_key": "Shinn2023",
+      "categories": [
+        "hierarchical-planning",
+        "granularity-conditioning"
+      ],
+      "journal": "NeurIPS 2023",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2305.04091",
+      "title": "Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models",
+      "year": 2023,
+      "authors": [
+        "Lei Wang",
+        "Wanyu Xu",
+        "Yihuai Lan",
+        "Zhiqiang Hu",
+        "Yunshi Lan",
+        "Roy Ka-Wei Lee",
+        "Ee-Peng Lim"
+      ],
+      "citation_key": "Wang2023",
+      "categories": [
+        "granularity-conditioning",
+        "hierarchical-planning"
+      ],
+      "journal": "ACL 2023",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2306.13063",
+      "title": "Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs",
+      "year": 2024,
+      "authors": [
+        "Miao Xiong",
+        "Zhiyuan Hu",
+        "Xinyang Lu",
+        "Yifei Li",
+        "Jie Fu",
+        "Junxian He",
+        "Bryan Hooi"
+      ],
+      "citation_key": "Xiong2024",
+      "categories": [
+        "uncertainty-calibration",
+        "agent-evaluation"
+      ],
+      "journal": "ICLR 2024",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2310.06770",
+      "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "year": 2024,
+      "authors": [
+        "Carlos E. Jimenez",
+        "John Yang",
+        "Alexander Wettig",
+        "Shunyu Yao",
+        "Kexin Pei",
+        "Ofir Press",
+        "Karthik Narasimhan"
+      ],
+      "citation_key": "Jimenez2024",
+      "categories": [
+        "benchmark-swebench",
+        "agent-evaluation"
+      ],
+      "journal": "ICLR 2024 (oral)",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2403.07718",
+      "title": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
+      "year": 2024,
+      "authors": [
+        "Alexandre Drouin",
+        "Maxime Gasse",
+        "Massimo Caccia",
+        "Issam H. Laradji",
+        "Manuel Del Verme",
+        "Tom Marty",
+        "Léo Boisvert",
+        "Megh Thakkar",
+        "Quentin Cappart",
+        "David Vazquez",
+        "Nicolas Chapados",
+        "Alexandre Lacoste"
+      ],
+      "citation_key": "Drouin2024",
+      "categories": [
+        "benchmark-workarena",
+        "agent-evaluation"
+      ],
+      "journal": "ICML 2024",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2406.12045",
+      "title": "tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "year": 2024,
+      "authors": [
+        "Shunyu Yao",
+        "Noah Shinn",
+        "Pedram Razavi",
+        "Karthik Narasimhan"
+      ],
+      "citation_key": "Yao2024",
+      "categories": [
+        "benchmark-taubench",
+        "agent-evaluation"
+      ],
+      "journal": "arXiv preprint",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2407.05291",
+      "title": "WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks",
+      "year": 2024,
+      "authors": [
+        "Léo Boisvert",
+        "Megh Thakkar",
+        "Maxime Gasse",
+        "Massimo Caccia",
+        "Thibault Le Sellier De Chezelles",
+        "Quentin Cappart",
+        "Nicolas Chapados",
+        "Alexandre Lacoste",
+        "Alexandre Drouin"
+      ],
+      "citation_key": "Boisvert2024",
+      "categories": [
+        "benchmark-workarena",
+        "hierarchical-planning",
+        "agent-evaluation"
+      ],
+      "journal": "NeurIPS 2024 Datasets and Benchmarks Track",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2411.04872",
+      "title": "FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI",
+      "year": 2024,
+      "authors": [
+        "Elliot Glazer",
+        "Ege Erdil",
+        "Tamay Besiroglu",
+        "Diego Chicharro",
+        "Evan Chen",
+        "Alex Gunning",
+        "Caroline Falkman Olsson",
+        "Jean-Stanislas Denain",
+        "Anson Ho",
+        "Emily de Oliveira Santos",
+        "Olli Järviniemi",
+        "Matthew Barnett",
+        "Robert Sandler",
+        "Matej Vrzala",
+        "Jaime Sevilla",
+        "Qiuyu Ren",
+        "Elizabeth Pratt",
+        "Lionel Levine",
+        "Grant Barkley",
+        "Natalie Stewart",
+        "Bogdan Grechuk",
+        "Tetiana Grechuk",
+        "Shreepranav Varma Enugandla",
+        "Mark Wildon"
+      ],
+      "citation_key": "Glazer2024",
+      "categories": [
+        "benchmark-frontierscience",
+        "agent-evaluation"
+      ],
+      "journal": "arXiv preprint",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    },
+    {
+      "paper_id": "no-doi_OpenAI2024_swe-bench-verified",
+      "title": "Introducing SWE-bench Verified",
+      "year": 2024,
+      "authors": [
+        "OpenAI Preparedness team"
+      ],
+      "citation_key": "OpenAI2024",
+      "categories": [
+        "benchmark-swebench",
+        "benchmark-annotation",
+        "agent-evaluation"
+      ],
+      "journal": "OpenAI technical card (institutional, not peer-reviewed)",
+      "download_status": "failed",
+      "added_by_task": "t0002_literature_survey_granularity_conditioning"
+    }
+  ]
+}
