@@ -14,9 +14,9 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0009_hierarchical_annotation_v2 is completed and its v2-haiku dataset asset is available.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-30T19:09:32Z",
-      "completed_at": null,
+      "completed_at": "2026-04-30T19:10:02Z",
       "log_file": "logs/steps/002_check-deps/"
     },
     {
