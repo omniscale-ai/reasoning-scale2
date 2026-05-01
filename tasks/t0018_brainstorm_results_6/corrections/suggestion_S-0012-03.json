@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0018-03",
+  "correcting_task": "t0018_brainstorm_results_6",
+  "target_task": "t0012_phase2_abc_smoke_frontierscience",
+  "target_kind": "suggestion",
+  "target_id": "S-0012-03",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "rationale": "Adding tool use to the FrontierScience-Olympiad smoke harness is no longer the chosen route to non-floor A/B/C signal. The confirmatory experiment (t0023) targets SWE-bench Verified with sonnet, where the model can solve a meaningful fraction of instances without tools. FSO+tools remains a future research direction but is no longer on the critical path. Demoted from medium to low."
+}

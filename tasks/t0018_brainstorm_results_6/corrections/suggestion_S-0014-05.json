@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0018-04",
+  "correcting_task": "t0018_brainstorm_results_6",
+  "target_task": "t0014_v2_annotator_sonnet_rerun",
+  "target_kind": "suggestion",
+  "target_id": "S-0014-05",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Re-running the three FrontierScience-Olympiad sonnet timeouts to recover missing rows would not affect the headline finding (schema-only +57 pp dominates, model-only -1 pp within sampling noise), and the new judge-calibration task t0019 reuses the same 20-row v2-sonnet sample without those three rows. The cost of recovery exceeds its informational value. Rejecting after t0016 already demoted to low."
+}
