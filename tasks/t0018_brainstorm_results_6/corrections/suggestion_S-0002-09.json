@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0018-05",
+  "correcting_task": "t0018_brainstorm_results_6",
+  "target_task": "t0002_literature_survey_granularity_conditioning",
+  "target_kind": "suggestion",
+  "target_id": "S-0002-09",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "rationale": "Public-fork LFS upload to omniscale-ai/reasoning-scale2 is denied by GitHub for the project owner account (confirmed during t0017 PR #29 merge). The working pattern is ghostscript /ebook compression of large PDFs, already adopted in t0017 (24.4 MB Li2024 PDF compressed to 3.8 MB). LFS re-fetch is structurally infeasible and superseded; rejecting after t0016 already demoted to low."
+}

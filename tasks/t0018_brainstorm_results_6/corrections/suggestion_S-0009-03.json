@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0018-01",
+  "correcting_task": "t0018_brainstorm_results_6",
+  "target_task": "t0009_hierarchical_annotation_v2",
+  "target_kind": "suggestion",
+  "target_id": "S-0009-03",
+  "action": "update",
+  "changes": {
+    "priority": "medium"
+  },
+  "rationale": "The cheap LLM-only stress tests scheduled for t0019 (substantive sonnet judge + judge-model rotation) directly probe whether the +57 pp schema-only delta survives a stricter judge and whether the model-only -1 pp is masked by haiku-vs-haiku familial bias. Run those first ($5 LLM time vs $200-300 human time) and re-evaluate the human-kappa pass after results return. Demoted from high to medium."
+}

@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0018-02",
+  "correcting_task": "t0018_brainstorm_results_6",
+  "target_task": "t0003_download_benchmark_subsets",
+  "target_kind": "suggestion",
+  "target_id": "S-0003-01",
+  "action": "update",
+  "changes": {
+    "priority": "medium"
+  },
+  "rationale": "t0012's smoke result showed FrontierScience-Olympiad is at the floor for haiku without tools (A: 2.5%, B: 0%, C: 0%). FrontierMath access from Epoch AI does not address the floor problem — model capacity and tool availability matter more than benchmark expansion. Phase 2 confirmatory work (t0023) targets SWE-bench Verified instead. Demoted from high to medium."
+}
