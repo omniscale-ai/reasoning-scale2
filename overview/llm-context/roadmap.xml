@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T14:59:17Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T16:04:55Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>94881</char_count>
-    <byte_count>94951</byte_count>
-    <estimated_tokens>23720</estimated_tokens>
+    <char_count>93537</char_count>
+    <byte_count>93608</byte_count>
+    <estimated_tokens>23384</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -146,9 +146,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 19
+Completed tasks: 20
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -263,6 +264,12 @@ ID: t0020_v2_truncation_vs_schema_ablation
 Completed: 2026-05-01
 Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
 Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the problem text to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree schema explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0); the pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20). Metrics * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%] * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%] *...
+
+## ABC Harness with Progress Rate and EAI Error Taxonomy
+ID: t0022_abc_harness_progress_rate_and_error_taxonomy
+Completed: 2026-05-01
+Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
+Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Summary Built and validated the `abc_harness_metrics` library: Ma2024 AgentBoard discrete-subgoal progress rate plus Li2024 Embodied Agent Interface six-plus-one error taxonomy. The library exposes `compute_progress_rate`, `classify_error`, and the high-level `score_trajectory` entry point, with 26 unit tests passing and a t0012 replay confirming end-to-end correctness on production-shape trajectories. Metrics * **Progress-rate mean across 89 t0012 trajectories**: **0.103** (decision threshold &gt; 0.05) — the library detects intermediate progress on real agent traces, not zero or one. * **Progress-rate standard deviation**...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -271,11 +278,10 @@ Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran th
       <source_ids>
         <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
-        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 4
+Planned or active tasks: 3
 
 ## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 ID: t0019_v2_judge_calibration_sonnet
@@ -517,133 +523,6 @@ None. The library will be reused by t0023.
   end-to-end.
 * Cost in `results/costs.json` is at or below **$1**.
 
-## ABC Harness with Progress Rate and EAI Error Taxonomy
-ID: t0022_abc_harness_progress_rate_and_error_taxonomy
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
-
-#### Motivation
-
-t0012&#x27;s smoke run on FrontierScience-Olympiad with claude-haiku-4-5 hit the floor across all three
-ABC conditions (A: 2.5%, B: 0%, C: 0%). At the floor, **binary task success cannot distinguish**
-scope-aware from scope-unaware behaviour, so RQ1, RQ2, and RQ5 are invisible no matter how big the
-sample.
-
-t0017 surfaced two literature instruments that fix this:
-
-* **AgentBoard progress rate** (Ma2024, NeurIPS 2024 D&amp;B): subgoal coverage scoring with Pearson rho
-  \&gt; 0.95 against humans across 1013 environments. A continuous metric in `[0, 1]` that gives signal
-  even when no run reaches the terminal goal.
-* **Embodied Agent Interface error taxonomy** (Li2024, NeurIPS 2024): a 6-class per-step taxonomy
-  (hallucination, affordance violation, missing step, extra step, wrong-order step,
-  precondition/effect error) that attributes failures to specific modes.
-
-Both instruments must be in place **before** t0023&#x27;s confirmatory N&gt;=157 run, otherwise t0023 risks
-producing the same uninformative floor result that t0012 produced. This task is a zero-API library
-task that builds the two instruments and validates them on the t0012 sample.
-
-This task covers `S-0017-02`.
-
-#### Scope
-
-Build a single library that the existing ABC harness can import and call, exposing two functions:
-
-1. `compute_progress_rate(trajectory, environment_subgoals) -&gt; float`
-   * Implements the Ma2024 protocol: a list of subgoals defined per environment, scored 0/1 by a
-     judge model, averaged over the trajectory. Returns a float in `[0, 1]`.
-2. `classify_error(trajectory_step, environment_state) -&gt; ErrorTaxonomyLabel`
-   * Implements the Li2024 protocol: a strict-output judge call that returns one of six labels
-     (`hallucination`, `affordance`, `missing_step`, `extra_step`, `wrong_order`,
-     `precondition_or_effect`) plus an &quot;ok&quot; sentinel for non-error steps.
-
-Both functions delegate to a judge model (default: claude-haiku-4-5; configurable to sonnet).
-Subgoal definitions for FrontierScience-Olympiad and SWE-bench Verified live in a JSON side-file in
-the library asset&#x27;s `files/` directory. SWE-bench coverage is the priority since t0023 runs there.
-
-The library exposes a single high-level entry point
-`score_trajectory(trajectory, environment) -&gt; TrajectoryScore` that returns:
-
-* `task_success: bool`
-* `progress_rate: float`
-* `step_errors: list[ErrorTaxonomyLabel]`
-* `error_distribution: dict[label, count]`
-
-#### Deliverables
-
-1. **Library asset** (`assets/library/abc_harness_metrics/`) with `details.json`, canonical
-   description document, source code under `files/`, and subgoal-definition JSON for at least
-   FrontierScience-Olympiad and SWE-bench Verified Lite.
-2. **Unit tests** in `tasks/t0022_*/code/test_*.py`:
-   * Progress rate is `0.0` when no subgoal is hit and `1.0` when all subgoals are hit, on a
-     synthetic trajectory.
-   * Each error taxonomy label is producible on a hand-crafted trajectory step.
-   * The high-level entry point composes the two without raising on a known-good t0012 row.
-3. **Validation against t0012**: replay the t0012 smoke trajectories through the new library and
-   report progress rate and error distribution per ABC condition. Save these as a side-by-side table
-   in `results/results_detailed.md`.
-4. **Subgoal-definition JSON** for SWE-bench Verified Lite covering at least 50 instances (the
-   subset t0023 will use). Use the SWE-bench Verified hint annotations as the seed.
-
-#### Implementation Notes
-
-* **Subgoal scoring is a judge call**, not a deterministic check. Cache results to disk keyed by
-  (environment, trajectory hash, subgoal text) so re-runs in t0023 do not re-spend.
-* **Judge prompt** for progress rate: copy the Ma2024 supplementary material §C.2 prompt verbatim
-  where licensing allows; otherwise paraphrase with explicit attribution in the library description
-  document.
-* **Error taxonomy prompt** for `classify_error`: use Li2024&#x27;s appendix A.4 schema. The classifier
-  returns exactly one label; ties default to `precondition_or_effect`.
-* **Subgoal coverage on SWE-bench**: a &quot;subgoal hit&quot; is operationalised as the agent producing an
-  edit that touches the same file as the gold patch hunk; finer-grained subgoals (line ranges, AST
-  nodes) are out of scope here and can land in a follow-up.
-
-#### Cost Estimate
-
-* Validation pass on t0012 smoke trajectories (~40 rows x 3 conditions x ~5 steps each = 600
-  step-classifications + 120 progress-rate scores): **~720 haiku judge calls**.
-* Haiku ~2k tokens in, ~150 tokens out per call: **~1.4M in, ~110k out**.
-* At haiku pricing: **~$1.50**.
-* Reserve: **+$0.50**.
-* Total: **~$2**.
-
-#### Decision Criteria
-
-After this task:
-
-* If progress rate on the t0012 sample produces a non-degenerate distribution (mean &gt; 0.05 and
-  stddev &gt; 0.03), the metric is a viable Metric 1 candidate for t0023. Otherwise, document the
-  calibration problem and propose a different subgoal granularity.
-* If the error taxonomy correctly distinguishes condition C trajectories from condition A
-  trajectories on at least **30% of paired steps**, the taxonomy is doing real work and t0023 can
-  rely on it. Otherwise, flag and recommend tightening the per-environment subgoal lists before
-  t0023.
-
-#### Dependencies
-
-None. Output is consumed by t0023.
-
-#### Source Suggestion
-
-`S-0017-02`.
-
-#### Risks and Fallbacks
-
-* **Judge cost on t0023 explodes**: t0023 with N=157 x 3 conditions x ~5 steps each = ~2400
-  step-classifications. Plan haiku as the default judge; reserve sonnet for spot-check re-grading on
-  a 20-row stratified sample only.
-* **Subgoal definitions miscalibrate**: the SWE-bench JSON has to be reviewed by hand on a
-  10-instance pilot before t0023 ships.
-
-#### Verification Criteria
-
-* Library asset passes `verify_library_asset.py`.
-* Unit tests pass.
-* Subgoal-definition JSON contains entries for at least 50 SWE-bench Verified Lite instances.
-* The t0012 replay produces a per-condition breakdown of progress rate and error distribution in
-  `results/results_detailed.md`.
-* Cost in `results/costs.json` is at or below **$2**.
-
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
 Status: not_started
@@ -841,6 +720,8 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0012-02</id>
         <id>S-0017-01</id>
         <id>S-0020-01</id>
+        <id>S-0022-02</id>
+        <id>S-0022-05</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
@@ -863,6 +744,9 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0017-03</id>
         <id>S-0020-02</id>
         <id>S-0020-03</id>
+        <id>S-0022-01</id>
+        <id>S-0022-03</id>
+        <id>S-0022-04</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
         <id>S-0006-02</id>
@@ -878,7 +762,7 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0020-05</id>
       </source_ids>
       <content>
-Open suggestions: 52
+Open suggestions: 57
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -998,6 +882,20 @@ Priority: high
 Kind: experiment
 Source task: t0020_v2_truncation_vs_schema_ablation
 The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1 judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest possible follow-up that materially improves statistical power.
+
+## Tighten FrontierScience-Olympiad subgoal lists by hand on a 5-task pilot before t0023
+ID: S-0022-02
+Priority: high
+Kind: evaluation
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012 gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored 0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5 verifiable intermediate states each (e.g., &quot;derived intermediate equation X&quot;, &quot;identified relevant principle Y&quot;). If hand-tightening doubles the non-zero rate, roll the recipe out to all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
+
+## Run t0023&#x27;s confirmatory ABC re-run with N&gt;=157 using abc_harness_metrics
+ID: S-0022-05
+Priority: high
+Kind: experiment
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+The whole purpose of t0022 is to make t0023&#x27;s confirmatory N&gt;=157 ABC re-run produce signal at the floor where binary task success failed in t0012. Schedule t0023 to consume abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step error labels into the existing harness output, and report progress-rate means and error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge responses from t0022 to keep marginal cost low. This is the direct downstream consumer this task was built for.
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -1152,6 +1050,27 @@ Priority: medium
 Kind: experiment
 Source task: t0020_v2_truncation_vs_schema_ablation
 The pure-text delta on this run is +5 pp with a CI of [-15, +26] pp at n=20. To resolve whether the true pure-text effect is zero, +5 pp, or larger, the experiment needs n&gt;=80 per condition (Newcombe-Wilson half-width drops to ~10 pp at n=80 vs ~20 pp at n=20). This requires running the v2 annotator and judge on 60 additional matched rows from the same hierarchical-annotation-v1 source dataset, with both truncated and full conditions. Estimated cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a meaningful contributor.
+
+## Tighten budget-guard wrapper to skip-write fallback responses to disk cache
+ID: S-0022-01
+Priority: medium
+Kind: library
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+When the budget guard returns a deterministic fallback (&quot;no&quot; for progress rate, &quot;ok&quot; for error taxonomy), the current wrapper still calls cache_put on the response. As a result the disk cache for t0022 grew to 2592 entries, ~80% of which are fallback strings rather than real judge responses. Add a flag to judge_cache.cache_put that lets the budget-guarded wrapper skip-write fallback values; this keeps the cache useful for t0023 instead of polluting it. Trivially small change in code/judge_cache.py and code/replay_t0012.py; covers a real risk for the t0023 confirmatory ABC re-run.
+
+## Add finer-grained SWE-bench subgoals at the line-range and AST-node level
+ID: S-0022-03
+Priority: medium
+Kind: evaluation
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Current SWE-bench Verified Lite subgoals are file-level (&quot;agent edit touches the same file as a gold patch hunk&quot;). This is a permissive subgoal that may not differentiate scope-aware from scope-unaware agent behaviour as sharply as line-range or AST-node level subgoals would. Implement a second subgoals JSON file with per-hunk line ranges parsed from the gold patch, and a small AST-node helper that maps line ranges to the enclosing function/class. Compare progress-rate distributions on the t0012 sample (or a fresh small SWE-bench eval) between the two granularities. Useful Metric 1 calibration step independent of t0023.
+
+## Spot-check Haiku judge calls against Sonnet on a 20-step stratified sample
+ID: S-0022-04
+Priority: medium
+Kind: evaluation
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Both progress_rate and error_taxonomy judge calls default to claude-haiku-4-5 to keep t0023 cost bounded. Risk: haiku miscalibration could produce systematic bias on the error taxonomy (e.g., over-classifying steps as &quot;ok&quot;). Build a small re-grading script that picks 20 steps stratified by (condition, predicted label) and re-classifies them with claude-sonnet. Report agreement rate per label. If overall agreement &lt; 70% or any label has &lt; 50% agreement, escalate to sonnet for the headline t0023 numbers and document in t0023&#x27;s Limitations.
 
 ## Defer Reflexion-style episodic memory to a Phase 3 ablation
 ID: S-0002-10

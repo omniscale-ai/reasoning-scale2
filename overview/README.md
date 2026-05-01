@@ -5,14 +5,14 @@
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-8-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-4-9370DB" alt="Predictions"></a>
-  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-5-20B2AA" alt="Libraries"></a>
+  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-6-20B2AA" alt="Libraries"></a>
   <a href="answers/"><img src="https://img.shields.io/badge/Answers-1-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-23-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-62-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-67-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-3-DC143C" alt="Results"></a>
@@ -29,16 +29,16 @@
 [hierarchical-planning](by-category/hierarchical-planning.md) |
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
-**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (7K) |
-[full](llm-context/full.xml) (82K) | [roadmap](llm-context/roadmap.xml) (24K) |
-[results](llm-context/results-deep-dive.xml) (66K) |
-[assets](llm-context/literature-and-assets.xml) (15K)
+**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (8K) |
+[full](llm-context/full.xml) (85K) | [roadmap](llm-context/roadmap.xml) (23K) |
+[results](llm-context/results-deep-dive.xml) (70K) |
+[assets](llm-context/literature-and-assets.xml) (16K)
 
-*Last updated: 2026-05-01 14:59 UTC*
+*Last updated: 2026-05-01 16:04 UTC*
 
-* **Budget**: **$52** spent of $100
-* **Remaining**: **$48**
-* **Usage**: `██████████░░░░░░░░░░` 51.6%
+* **Budget**: **$54** spent of $100
+* **Remaining**: **$46**
+* **Usage**: `███████████░░░░░░░░░` 54.0%
 
 ---
 
@@ -48,11 +48,10 @@ No daily news yet.
 
 ---
 
-## [In Progress (3)](tasks/by-status/in_progress.md)
+## [In Progress (2)](tasks/by-status/in_progress.md)
 
 | # | Task | Started |
 |---|------|---------|
-| 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | 2026-05-01 14:04 |
 | 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | 2026-05-01 14:03 |
 | 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | 2026-05-01 14:02 |
 
@@ -68,14 +67,15 @@ No tasks ready to start.
 
 | # | Task | Blocked By |
 |---|------|------------|
-| 0023 | [Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench](../overview/tasks/task_pages/t0023_phase2_abc_confirmatory_sonnet_swebench.md) | [`t0021_plan_and_solve_v2_with_final_confidence`](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md), [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| 0023 | [Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench](../overview/tasks/task_pages/t0023_phase2_abc_confirmatory_sonnet_swebench.md) | [`t0021_plan_and_solve_v2_with_final_confidence`](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
 
 ---
 
-## [Recently Completed (19 total)](tasks/by-status/completed.md)
+## [Recently Completed (20 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`results`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/results_detailed.md) | 2026-05-01 20:40 |
 | 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
 | 0018 | [Brainstorm session 6: paper-driven slate after t0017 literature survey](../overview/tasks/task_pages/t0018_brainstorm_results_6.md) | [`results`](../tasks/t0018_brainstorm_results_6/results/results_detailed.md) | 2026-05-01 13:30 |
 | 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`results`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/results_detailed.md) | 2026-05-01 04:43 |
@@ -85,9 +85,8 @@ No tasks ready to start.
 | 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`results`](../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) | 2026-04-30 19:32 |
 | 0013 | [Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels](../overview/tasks/task_pages/t0013_brainstorm_results_4.md) | [`results`](../tasks/t0013_brainstorm_results_4/results/results_detailed.md) | 2026-04-30 18:00 |
 | 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`results`](../tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md) | 2026-04-30 00:53 |
-| 0008 | [Brainstorm session 3: insert v2 re-annotation, plan Phase 2 smoke](../overview/tasks/task_pages/t0008_brainstorm_results_3.md) | [`results`](../tasks/t0008_brainstorm_results_3/results/results_detailed.md) | 2026-04-30 00:00 |
 
-*9 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*10 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -106,7 +105,7 @@ No tasks ready to start.
 
 ---
 
-## [Recent Suggestions (48 open)](suggestions/)
+## [Recent Suggestions (53 open)](suggestions/)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -275,11 +274,11 @@ harness budget planning.
 
 </details>
 
-*38 more open suggestions → [open suggestions](suggestions/)*
+*43 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (11)](suggestions/)
+## [High Priority Suggestions (13)](suggestions/)
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -314,6 +313,40 @@ judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did no
 extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
 half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
 possible follow-up that materially improves statistical power.
+
+</details>
+
+<details>
+<summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
+5-task pilot before t0023</strong> (S-0022-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012
+gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored
+0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate
+progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5
+verifiable intermediate states each (e.g., "derived intermediate equation X", "identified
+relevant principle Y"). If hand-tightening doubles the non-zero rate, roll the recipe out to
+all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
+abc_harness_metrics</strong> (S-0022-05)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
+the floor where binary task success failed in t0012. Schedule t0023 to consume
+abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
+error labels into the existing harness output, and report progress-rate means and
+error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
+responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
+task was built for.
 
 </details>
 
@@ -414,35 +447,7 @@ Cohen's kappa) between the human rater and the LLM annotator.
 
 </details>
 
-<details>
-<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
-experiments</strong> (S-0005-06)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
-that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
-prompts (B vs G/S/A from the project's research questions).
-
-</details>
-
-<details>
-<summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0007_scope_unaware_planandsolve_library](../tasks/t0007_scope_unaware_planandsolve_library/)
-
-Build the experiment harness that runs all three libraries (scope_aware_react_v1,
-scope_unaware_planandsolve_v1, and the planned matched-mismatch library) on a fixed benchmark
-slice with a single shared LLM provider, recording trajectory_records.jsonl per condition and
-computing the registered metrics task_success_rate, avg_decisions_per_task, and
-overconfident_error_rate per condition. The harness must depend on this library only via the
-trajectory schema, never via internal helpers, to preserve isolation.
-
-</details>
-
-*1 more high-priority suggestion → [high-priority suggestions](suggestions/)*
+*3 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 
@@ -1039,11 +1044,12 @@ No models yet.
 
 ---
 
-## [Latest Libraries (5 total)](libraries/)
+## [Latest Libraries (6 total)](libraries/)
 
 | Name | Source | Created |
 |------|--------|---------|
 | [Phase 2 A/B/C Smoke Harness (v1)](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/library/phase2_smoke_harness_v1/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
+| [ABC Harness Metrics](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/assets/library/abc_harness_metrics/description.md) | [22](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | 2026-05-01 |
 | [Scope-Unaware Plan-and-Solve Agent (v1)](../tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md) | [7](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | 2026-04-29 |
 | [Scope-Aware ReAct Agent](../tasks/t0006_scope_aware_react_library/assets/library/scope_aware_react_v1/description.md) | [6](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | 2026-04-29 |
 | [Metric 2 Calibration Aggregator](../tasks/t0011_metric2_calibration_aggregator/assets/library/metric2_calibration_aggregator_v1/description.md) | [11](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) | 2026-04-29 |
@@ -1051,7 +1057,7 @@ No models yet.
 
 ---
 
-## [Cost Leaders (5 tasks with spend)](costs/)
+## [Cost Leaders (6 tasks with spend)](costs/)
 
 | Task | Cost | Date |
 |------|------|------|
@@ -1059,4 +1065,5 @@ No models yet.
 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`$18.37`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/costs.json) | 2026-05-01 04:43 |
 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`$9.10`](../tasks/t0009_hierarchical_annotation_v2/results/costs.json) | 2026-04-30 00:53 |
 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`$2.93`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/costs.json) | 2026-05-01 14:53 |
+| [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`$2.42`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/costs.json) | 2026-05-01 20:40 |
 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`$0.06`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/costs.json) | 2026-04-29 20:14 |

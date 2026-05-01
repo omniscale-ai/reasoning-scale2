@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T14:59:17Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T16:04:55Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>53516</char_count>
-    <byte_count>53525</byte_count>
-    <estimated_tokens>13379</estimated_tokens>
+    <char_count>58076</char_count>
+    <byte_count>58085</byte_count>
+    <estimated_tokens>14519</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -79,9 +79,14 @@
         <id>S-0020-03</id>
         <id>S-0020-04</id>
         <id>S-0020-05</id>
+        <id>S-0022-01</id>
+        <id>S-0022-02</id>
+        <id>S-0022-03</id>
+        <id>S-0022-04</id>
+        <id>S-0022-05</id>
       </source_ids>
       <content>
-Suggestions: 62
+Suggestions: 67
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -790,6 +795,61 @@ Categories: agent-evaluation, benchmark-annotation
 Date added: 2026-05-01
 
 Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality), v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC harness budget planning.
+
+## Tighten budget-guard wrapper to skip-write fallback responses to disk cache
+ID: S-0022-01
+Status: active
+Priority: medium
+Kind: library
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Categories: agent-evaluation
+Date added: 2026-05-01
+
+When the budget guard returns a deterministic fallback (&quot;no&quot; for progress rate, &quot;ok&quot; for error taxonomy), the current wrapper still calls cache_put on the response. As a result the disk cache for t0022 grew to 2592 entries, ~80% of which are fallback strings rather than real judge responses. Add a flag to judge_cache.cache_put that lets the budget-guarded wrapper skip-write fallback values; this keeps the cache useful for t0023 instead of polluting it. Trivially small change in code/judge_cache.py and code/replay_t0012.py; covers a real risk for the t0023 confirmatory ABC re-run.
+
+## Tighten FrontierScience-Olympiad subgoal lists by hand on a 5-task pilot before t0023
+ID: S-0022-02
+Status: active
+Priority: high
+Kind: evaluation
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Categories: benchmark-frontierscience, agent-evaluation
+Date added: 2026-05-01
+
+Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012 gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored 0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5 verifiable intermediate states each (e.g., &quot;derived intermediate equation X&quot;, &quot;identified relevant principle Y&quot;). If hand-tightening doubles the non-zero rate, roll the recipe out to all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
+
+## Add finer-grained SWE-bench subgoals at the line-range and AST-node level
+ID: S-0022-03
+Status: active
+Priority: medium
+Kind: evaluation
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Categories: benchmark-swebench, agent-evaluation
+Date added: 2026-05-01
+
+Current SWE-bench Verified Lite subgoals are file-level (&quot;agent edit touches the same file as a gold patch hunk&quot;). This is a permissive subgoal that may not differentiate scope-aware from scope-unaware agent behaviour as sharply as line-range or AST-node level subgoals would. Implement a second subgoals JSON file with per-hunk line ranges parsed from the gold patch, and a small AST-node helper that maps line ranges to the enclosing function/class. Compare progress-rate distributions on the t0012 sample (or a fresh small SWE-bench eval) between the two granularities. Useful Metric 1 calibration step independent of t0023.
+
+## Spot-check Haiku judge calls against Sonnet on a 20-step stratified sample
+ID: S-0022-04
+Status: active
+Priority: medium
+Kind: evaluation
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Categories: agent-evaluation
+Date added: 2026-05-01
+
+Both progress_rate and error_taxonomy judge calls default to claude-haiku-4-5 to keep t0023 cost bounded. Risk: haiku miscalibration could produce systematic bias on the error taxonomy (e.g., over-classifying steps as &quot;ok&quot;). Build a small re-grading script that picks 20 steps stratified by (condition, predicted label) and re-classifies them with claude-sonnet. Report agreement rate per label. If overall agreement &lt; 70% or any label has &lt; 50% agreement, escalate to sonnet for the headline t0023 numbers and document in t0023&#x27;s Limitations.
+
+## Run t0023&#x27;s confirmatory ABC re-run with N&gt;=157 using abc_harness_metrics
+ID: S-0022-05
+Status: active
+Priority: high
+Kind: experiment
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Categories: agent-evaluation, granularity-conditioning, hierarchical-planning
+Date added: 2026-05-01
+
+The whole purpose of t0022 is to make t0023&#x27;s confirmatory N&gt;=157 ABC re-run produce signal at the floor where binary task success failed in t0012. Schedule t0023 to consume abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step error labels into the existing harness output, and report progress-rate means and error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge responses from t0022 to keep marginal cost low. This is the direct downstream consumer this task was built for.
       </content>
     </section>
   </sections>

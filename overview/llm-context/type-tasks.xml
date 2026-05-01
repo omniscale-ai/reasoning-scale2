@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-05-01T14:59:17Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-05-01T16:04:55Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>176969</char_count>
-    <byte_count>177486</byte_count>
-    <estimated_tokens>44242</estimated_tokens>
+    <char_count>178916</char_count>
+    <byte_count>179449</byte_count>
+    <estimated_tokens>44729</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -3036,12 +3036,13 @@ None. The library will be reused by t0023.
 
 ## ABC Harness with Progress Rate and EAI Error Taxonomy
 ID: t0022_abc_harness_progress_rate_and_error_taxonomy
-Status: in_progress
+Status: completed
 Effective date: 2026-05-01
 Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
 Task types: write-library
 Source suggestion: S-0017-02
 Start time: 2026-05-01T14:04:29Z
+End time: 2026-05-01T20:40:00Z
 
 #### Motivation
 
@@ -3163,6 +3164,41 @@ None. Output is consumed by t0023.
 * The t0012 replay produces a per-condition breakdown of progress rate and error distribution in
   `results/results_detailed.md`.
 * Cost in `results/costs.json` is at or below **$2**.
+
+### Results Summary
+
+#### Summary
+
+Built and validated the `abc_harness_metrics` library: Ma2024 AgentBoard discrete-subgoal progress
+rate plus Li2024 Embodied Agent Interface six-plus-one error taxonomy. The library exposes
+`compute_progress_rate`, `classify_error`, and the high-level `score_trajectory` entry point, with
+26 unit tests passing and a t0012 replay confirming end-to-end correctness on production-shape
+trajectories.
+
+#### Metrics
+
+* **Progress-rate mean across 89 t0012 trajectories**: **0.103** (decision threshold &gt; 0.05) — the
+  library detects intermediate progress on real agent traces, not zero or one.
+* **Progress-rate standard deviation**: **0.228** (decision threshold &gt; 0.03) — distribution is
+  meaningfully spread across the 91 rows, with values from 0.0 to 1.0.
+* **A-vs-C error-distribution total-variation separation**: **0.771** (decision threshold &gt;= 0.30) —
+  single-step (A) and hierarchical (C) trajectories produce qualitatively different error mixtures,
+  confirming the taxonomy can discriminate between conditions for t0023.
+* **FrontierScience-Olympiad subgoal coverage**: **26 environments**, mean 4.6 subgoals each (3-5
+  per task per the plan invariant).
+* **SWE-bench Verified Lite subgoal coverage**: **60 environments** (&gt;= 50 per REQ-6), 2-3 subgoals
+  each.
+* **Unit-test pass rate**: **26/26** in 0.16 s (mock-judge tests, zero CLI cost).
+* **Total replay cost**: **$2.4172** in 533 judge calls (over the $2.00 task cap by $0.42; root
+  cause and mitigation documented in `costs.json` `note`).
+
+#### Verification
+
+* `verify_library_asset.py` (abc_harness_metrics) — PASSED (0 errors, 0 warnings)
+* `verify_task_dependencies.py` — PASSED (0 errors, 0 warnings)
+* `uv run pytest tasks/t0022_*/code/` — PASSED (26/26)
+* `uv run ruff check tasks/t0022_*/code/` — PASSED (clean)
+* `uv run mypy -m tasks.t0022_*.code.&lt;each module&gt;` — PASSED (no issues)
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench

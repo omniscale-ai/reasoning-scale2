@@ -1,7 +1,7 @@
 # Suggestions: `hierarchical-planning`
 
-22 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **15 open** (3
+23 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **16 open** (4
 high, 9 medium, 3 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
@@ -70,6 +70,29 @@ judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did no
 extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
 half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
 possible follow-up that materially improves statistical power.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
+abc_harness_metrics</strong> (S-0022-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0022-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
+the floor where binary task success failed in t0012. Schedule t0023 to consume
+abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
+error labels into the existing harness output, and report progress-rate means and
+error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
+responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
+task was built for.
 
 </details>
 

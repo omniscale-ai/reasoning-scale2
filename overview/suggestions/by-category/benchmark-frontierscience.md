@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-frontierscience`
 
-8 suggestion(s) in category
-[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **6 open**
-(1 high, 3 medium, 2 low), **2 closed**.
+9 suggestion(s) in category
+[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **7 open**
+(2 high, 3 medium, 2 low), **2 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -28,6 +28,29 @@ AI's evaluation pipeline; the raw problems are not publicly downloadable. The pr
 explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
 (MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
 1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
+
+</details>
+
+<details>
+<summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
+5-task pilot before t0023</strong> (S-0022-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0022-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012
+gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored
+0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate
+progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5
+verifiable intermediate states each (e.g., "derived intermediate equation X", "identified
+relevant principle Y"). If hand-tightening doubles the non-zero rate, roll the recipe out to
+all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
 
 </details>
 

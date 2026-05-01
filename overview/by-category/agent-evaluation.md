@@ -5,9 +5,9 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (14)](../papers/by-category/agent-evaluation.md) | [Suggestions
-(31)](../suggestions/by-category/agent-evaluation.md) | [Datasets
+(36)](../suggestions/by-category/agent-evaluation.md) | [Datasets
 (4)](../datasets/by-category/agent-evaluation.md) | [Libraries
-(4)](../libraries/by-category/agent-evaluation.md) | [Predictions
+(5)](../libraries/by-category/agent-evaluation.md) | [Predictions
 (3)](../predictions/by-category/agent-evaluation.md)
 
 ---
@@ -691,7 +691,7 @@ hierarchical-judge designs are exploring.
 
 No answers in this category.
 
-## Suggestions (22 open, 9 closed)
+## Suggestions (27 open, 9 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -792,6 +792,90 @@ Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would
 communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by
 it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC
 harness budget planning.
+
+</details>
+
+<details>
+<summary>📚 <strong>Tighten budget-guard wrapper to skip-write fallback responses
+to disk cache</strong> (S-0022-01)</summary>
+
+**Kind**: library | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+When the budget guard returns a deterministic fallback ("no" for progress rate, "ok" for error
+taxonomy), the current wrapper still calls cache_put on the response. As a result the disk
+cache for t0022 grew to 2592 entries, ~80% of which are fallback strings rather than real
+judge responses. Add a flag to judge_cache.cache_put that lets the budget-guarded wrapper
+skip-write fallback values; this keeps the cache useful for t0023 instead of polluting it.
+Trivially small change in code/judge_cache.py and code/replay_t0012.py; covers a real risk for
+the t0023 confirmatory ABC re-run.
+
+</details>
+
+<details>
+<summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
+5-task pilot before t0023</strong> (S-0022-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012
+gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored
+0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate
+progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5
+verifiable intermediate states each (e.g., "derived intermediate equation X", "identified
+relevant principle Y"). If hand-tightening doubles the non-zero rate, roll the recipe out to
+all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
+
+</details>
+
+<details>
+<summary>📊 <strong>Add finer-grained SWE-bench subgoals at the line-range and
+AST-node level</strong> (S-0022-03)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+Current SWE-bench Verified Lite subgoals are file-level ("agent edit touches the same file as
+a gold patch hunk"). This is a permissive subgoal that may not differentiate scope-aware from
+scope-unaware agent behaviour as sharply as line-range or AST-node level subgoals would.
+Implement a second subgoals JSON file with per-hunk line ranges parsed from the gold patch,
+and a small AST-node helper that maps line ranges to the enclosing function/class. Compare
+progress-rate distributions on the t0012 sample (or a fresh small SWE-bench eval) between the
+two granularities. Useful Metric 1 calibration step independent of t0023.
+
+</details>
+
+<details>
+<summary>📊 <strong>Spot-check Haiku judge calls against Sonnet on a 20-step
+stratified sample</strong> (S-0022-04)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+Both progress_rate and error_taxonomy judge calls default to claude-haiku-4-5 to keep t0023
+cost bounded. Risk: haiku miscalibration could produce systematic bias on the error taxonomy
+(e.g., over-classifying steps as "ok"). Build a small re-grading script that picks 20 steps
+stratified by (condition, predicted label) and re-classifies them with claude-sonnet. Report
+agreement rate per label. If overall agreement < 70% or any label has < 50% agreement,
+escalate to sonnet for the headline t0023 numbers and document in t0023's Limitations.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
+abc_harness_metrics</strong> (S-0022-05)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
+the floor where binary task success failed in t0012. Schedule t0023 to consume
+abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
+error labels into the existing harness output, and report progress-rate means and
+error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
+responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
+task was built for.
 
 </details>
 

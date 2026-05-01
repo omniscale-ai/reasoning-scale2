@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the FrontierScience-Olympiad be
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-frontierscience.md) |
-[Suggestions (8)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
+[Suggestions (9)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
 (1)](../datasets/by-category/benchmark-frontierscience.md) | [Libraries
 (1)](../libraries/by-category/benchmark-frontierscience.md) | [Predictions
 (3)](../predictions/by-category/benchmark-frontierscience.md)
@@ -65,7 +65,7 @@ AI's evaluation pipeline is a known operational risk for the t0003 download-data
 
 No answers in this category.
 
-## Suggestions (6 open, 2 closed)
+## Suggestions (7 open, 2 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -79,6 +79,23 @@ numerical computation, retrieval, and code execution for most problems. Adding a
 execution tool and a retrieval tool would lift accuracy above the current floor and make
 A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
 confirmatory N would decrease proportionally.
+
+</details>
+
+<details>
+<summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
+5-task pilot before t0023</strong> (S-0022-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012
+gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored
+0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate
+progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5
+verifiable intermediate states each (e.g., "derived intermediate equation X", "identified
+relevant principle Y"). If hand-tightening doubles the non-zero rate, roll the recipe out to
+all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
 
 </details>
 

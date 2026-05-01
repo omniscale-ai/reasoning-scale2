@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the SWE-bench Verified benchmar
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/benchmark-swebench.md) | [Suggestions
-(5)](../suggestions/by-category/benchmark-swebench.md) | [Datasets
+(6)](../suggestions/by-category/benchmark-swebench.md) | [Datasets
 (1)](../datasets/by-category/benchmark-swebench.md)
 
 ---
@@ -105,7 +105,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (4 open, 1 closed)
+## Suggestions (5 open, 1 closed)
 
 <details>
 <summary>🧪 <strong>Truncation-budget sweep to map the marginal value of additional
@@ -120,6 +120,23 @@ SWE-bench-heavy pool would map where the marginal value of additional context dr
 This is a single-condition sweep (v2 schema held constant; only the truncation budget varies)
 so the cost scales linearly with the number of budget points. Estimated cost: 6 budgets x 20
 SWE-bench rows x 2 calls per row x ~$0.07 = ~$17.
+
+</details>
+
+<details>
+<summary>📊 <strong>Add finer-grained SWE-bench subgoals at the line-range and
+AST-node level</strong> (S-0022-03)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+Current SWE-bench Verified Lite subgoals are file-level ("agent edit touches the same file as
+a gold patch hunk"). This is a permissive subgoal that may not differentiate scope-aware from
+scope-unaware agent behaviour as sharply as line-range or AST-node level subgoals would.
+Implement a second subgoals JSON file with per-hunk line ranges parsed from the gold patch,
+and a small AST-node helper that maps line ranges to the enclosing function/class. Compare
+progress-rate distributions on the t0012 sample (or a fresh small SWE-bench eval) between the
+two granularities. Useful Metric 1 calibration step independent of t0023.
 
 </details>
 

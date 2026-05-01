@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-01T14:59:17Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-01T16:04:55Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>75406</char_count>
-    <byte_count>75499</byte_count>
-    <estimated_tokens>18851</estimated_tokens>
+    <char_count>78018</char_count>
+    <byte_count>78117</byte_count>
+    <estimated_tokens>19504</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -150,9 +150,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 19
+Completed tasks: 20
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -267,6 +268,12 @@ ID: t0020_v2_truncation_vs_schema_ablation
 Completed: 2026-05-01
 Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
 Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the problem text to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree schema explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0); the pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20). Metrics * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%] * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%] *...
+
+## ABC Harness with Progress Rate and EAI Error Taxonomy
+ID: t0022_abc_harness_progress_rate_and_error_taxonomy
+Completed: 2026-05-01
+Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
+Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Summary Built and validated the `abc_harness_metrics` library: Ma2024 AgentBoard discrete-subgoal progress rate plus Li2024 Embodied Agent Interface six-plus-one error taxonomy. The library exposes `compute_progress_rate`, `classify_error`, and the high-level `score_trajectory` entry point, with 26 unit tests passing and a t0012 replay confirming end-to-end correctness on production-shape trajectories. Metrics * **Progress-rate mean across 89 t0012 trajectories**: **0.103** (decision threshold &gt; 0.05) — the library detects intermediate progress on real agent traces, not zero or one. * **Progress-rate standard deviation**...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -275,11 +282,10 @@ Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran th
       <source_ids>
         <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
-        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 4
+Planned or active tasks: 3
 
 ## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 ID: t0019_v2_judge_calibration_sonnet
@@ -292,12 +298,6 @@ ID: t0021_plan_and_solve_v2_with_final_confidence
 Status: in_progress
 Effective date: 2026-05-01
 Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
-
-## ABC Harness with Progress Rate and EAI Error Taxonomy
-ID: t0022_abc_harness_progress_rate_and_error_taxonomy
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -346,9 +346,9 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0012-02</id>
         <id>S-0017-01</id>
         <id>S-0020-01</id>
+        <id>S-0022-02</id>
+        <id>S-0022-05</id>
         <id>S-0002-01</id>
-        <id>S-0002-05</id>
-        <id>S-0002-08</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -472,26 +472,26 @@ Kind: experiment
 Source task: t0020_v2_truncation_vs_schema_ablation
 The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1 judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest possible follow-up that materially improves statistical power.
 
+## Tighten FrontierScience-Olympiad subgoal lists by hand on a 5-task pilot before t0023
+ID: S-0022-02
+Priority: high
+Kind: evaluation
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012 gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored 0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5 verifiable intermediate states each (e.g., &quot;derived intermediate equation X&quot;, &quot;identified relevant principle Y&quot;). If hand-tightening doubles the non-zero rate, roll the recipe out to all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
+
+## Run t0023&#x27;s confirmatory ABC re-run with N&gt;=157 using abc_harness_metrics
+ID: S-0022-05
+Priority: high
+Kind: experiment
+Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
+The whole purpose of t0022 is to make t0023&#x27;s confirmatory N&gt;=157 ABC re-run produce signal at the floor where binary task success failed in t0012. Schedule t0023 to consume abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step error labels into the existing harness output, and report progress-rate means and error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge responses from t0022 to keep marginal cost low. This is the direct downstream consumer this task was built for.
+
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
 Priority: medium
 Kind: evaluation
 Source task: t0002_literature_survey_granularity_conditioning
 tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.
-
-## Build the SWE-bench Verified Docker harness
-ID: S-0002-05
-Priority: medium
-Kind: dataset
-Source task: t0002_literature_survey_granularity_conditioning
-SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
-
-## Run a Phase 1 pilot annotation on 20 tasks before scaling to 100
-ID: S-0002-08
-Priority: medium
-Kind: experiment
-Source task: t0002_literature_survey_granularity_conditioning
-The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
@@ -752,10 +752,11 @@ Hierarchical Annotation v2-sonnet is the controlled-rerun companion to t0009&#x2
         <id>metric2_calibration_aggregator_v1</id>
         <id>scope_aware_react_v1</id>
         <id>scope_unaware_planandsolve_v1</id>
+        <id>abc_harness_metrics</id>
         <id>phase2_smoke_harness_v1</id>
       </source_ids>
       <content>
-Libraries: 5
+Libraries: 6
 
 ## Matched-Mismatch Agent (v1)
 ID: matched_mismatch_v1
@@ -784,6 +785,13 @@ Version: 0.1.0
 Created by task: t0007_scope_unaware_planandsolve_library
 Module paths: tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py
 This library provides a deterministic, fully-testable Python implementation of the scope-unaware (B) Plan-and-Solve baseline for the project&#x27;s A-vs-B-vs-C comparison. It exposes a single top-level class, `PlanAndSolveAgent`, that drives a planner-then-executor loop using a swappable `model_call` callable. The trajectory record schema is identical to the schema produced by sister task t0006&#x27;s scope-aware library, so a...
+
+## ABC Harness Metrics
+ID: abc_harness_metrics
+Version: 0.1.0
+Created by task: t0022_abc_harness_progress_rate_and_error_taxonomy
+Module paths: tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/types.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/constants.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/paths.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/judge_cache.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/model_call.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/progress_rate.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/error_taxonomy.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/score_trajectory.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/replay_t0012.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/build_subgoals_frontierscience.py, tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/build_subgoals_swebench.py
+`abc_harness_metrics` is the t0022 deliverable that turns the ABC harness from a single-number correctness benchmark into a trajectory-quality benchmark. Two metrics — Ma2024 discrete-subgoal progress rate and Li2024 6+1 error taxonomy — are exposed via a single high-level `score_trajectory(trajectory, environment) -&gt; TrajectoryScore` entry point, with judge calls abstracted behind a `Callable[[str], str]` so the...
 
 ## Phase 2 A/B/C Smoke Harness (v1)
 ID: phase2_smoke_harness_v1

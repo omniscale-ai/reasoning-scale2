@@ -6,9 +6,9 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 
 **Detail pages**: [Papers (14)](../papers/by-category/hierarchical-planning.md) | [Answers
 (1)](../answers/by-category/hierarchical-planning.md) | [Suggestions
-(22)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
+(23)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
 (4)](../datasets/by-category/hierarchical-planning.md) | [Libraries
-(2)](../libraries/by-category/hierarchical-planning.md) | [Predictions
+(3)](../libraries/by-category/hierarchical-planning.md) | [Predictions
 (1)](../predictions/by-category/hierarchical-planning.md)
 
 ---
@@ -735,7 +735,7 @@ matched pool.
 
 </details>
 
-## Suggestions (15 open, 7 closed)
+## Suggestions (16 open, 7 closed)
 
 <details>
 <summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
@@ -784,6 +784,23 @@ hierarchical-annotation-v1 source dataset, with both truncated and full conditio
 cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would
 either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a
 meaningful contributor.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
+abc_harness_metrics</strong> (S-0022-05)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
+the floor where binary task success failed in t0012. Schedule t0023 to consume
+abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
+error labels into the existing harness output, and report progress-rate means and
+error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
+responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
+task was built for.
 
 </details>
 

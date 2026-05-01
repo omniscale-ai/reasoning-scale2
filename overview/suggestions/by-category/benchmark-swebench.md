@@ -1,7 +1,7 @@
 # Suggestions: `benchmark-swebench`
 
-5 suggestion(s) in category
-[`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) **4 open** (3 medium, 1
+6 suggestion(s) in category
+[`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) **5 open** (4 medium, 1
 low), **1 closed**.
 
 [Back to all suggestions](../README.md)
@@ -9,6 +9,29 @@ low), **1 closed**.
 ---
 
 ## Medium Priority
+
+<details>
+<summary>📊 <strong>Add finer-grained SWE-bench subgoals at the line-range and
+AST-node level</strong> (S-0022-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0022-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Current SWE-bench Verified Lite subgoals are file-level ("agent edit touches the same file as
+a gold patch hunk"). This is a permissive subgoal that may not differentiate scope-aware from
+scope-unaware agent behaviour as sharply as line-range or AST-node level subgoals would.
+Implement a second subgoals JSON file with per-hunk line ranges parsed from the gold patch,
+and a small AST-node helper that maps line ranges to the enclosing function/class. Compare
+progress-rate distributions on the t0012 sample (or a fresh small SWE-bench eval) between the
+two granularities. Useful Metric 1 calibration step independent of t0023.
+
+</details>
 
 <details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap

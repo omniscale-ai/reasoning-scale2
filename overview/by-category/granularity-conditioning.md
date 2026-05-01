@@ -6,9 +6,9 @@ subtask, atomic).
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (6)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (20)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
+[Suggestions (21)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
 (3)](../datasets/by-category/granularity-conditioning.md) | [Libraries
-(4)](../libraries/by-category/granularity-conditioning.md) | [Predictions
+(5)](../libraries/by-category/granularity-conditioning.md) | [Predictions
 (2)](../predictions/by-category/granularity-conditioning.md)
 
 ---
@@ -297,7 +297,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (13 open, 7 closed)
+## Suggestions (14 open, 7 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -361,6 +361,23 @@ prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScienc
 SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family.
 Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope:
 any retraining; this is purely a prompting change.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
+abc_harness_metrics</strong> (S-0022-05)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
+
+The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
+the floor where binary task success failed in t0012. Schedule t0023 to consume
+abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
+error labels into the existing harness output, and report progress-rate means and
+error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
+responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
+task was built for.
 
 </details>
 

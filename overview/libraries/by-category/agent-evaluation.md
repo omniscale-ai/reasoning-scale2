@@ -1,10 +1,45 @@
 # Libraries: `agent-evaluation`
 
-4 librar(y/ies).
+5 librar(y/ies).
 
 [Back to all libraries](../README.md)
 
 ---
+
+<details>
+<summary>📦 <strong>ABC Harness Metrics</strong> (<code>abc_harness_metrics</code>)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `abc_harness_metrics` |
+| **Version** | 0.1.0 |
+| **Modules** | `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/types.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/constants.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/paths.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/judge_cache.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/model_call.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/progress_rate.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/error_taxonomy.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/score_trajectory.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/replay_t0012.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/build_subgoals_frontierscience.py`, `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/build_subgoals_swebench.py` |
+| **Dependencies** | datasets |
+| **Date created** | 2026-05-01 |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+| **Created by** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Documentation** | [`description.md`](../../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/assets/library/abc_harness_metrics/description.md) |
+
+**Entry points:**
+
+* `compute_progress_rate` (function) — Ma2024 AgentBoard discrete-subgoal-coverage progress
+  rate for one trajectory.
+* `classify_error` (function) — Li2024 Embodied Agent Interface error-taxonomy classifier;
+  returns one of seven labels (six error labels plus an ok sentinel).
+* `score_trajectory` (function) — High-level entry point that composes progress rate and
+  per-step error classification into a TrajectoryScore.
+* `TrajectoryScore` (class) — Frozen dataclass with task_success, progress_rate, step_errors
+  tuple, and error_distribution Counter.
+* `ErrorTaxonomyLabel` (class) — StrEnum of the seven error-taxonomy labels (hallucination,
+  affordance, missing_step, extra_step, wrong_order, precondition_or_effect, ok).
+* `make_judge_call` (function) — Construct a judge callable backed by the local Claude Code
+  CLI with cost-tracking and budget cap.
+* `CostTracker` (class) — Process-wide cumulative-spend tracker with cap enforcement.
+
+Adds Ma2024 AgentBoard discrete-subgoal progress rate and Li2024 Embodied Agent Interface
+six-plus-one error taxonomy to the ABC harness used by t0023.
+
+</details>
 
 <details>
 <summary>📦 <strong>Matched-Mismatch Agent (v1)</strong>

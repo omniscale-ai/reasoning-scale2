@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="qa" generated_at_utc="2026-05-01T14:59:17Z">
+<llm_context_archive preset_id="qa" generated_at_utc="2026-05-01T16:04:55Z">
   <archive_summary>
     <title>Questions and Answers</title>
     <description>Question-centric preset with the full answer corpus and compact project state.</description>
     <use_case>Answer review, follow-up questioning, and project knowledge-base chats.</use_case>
     <section_count>4</section_count>
-    <char_count>37068</char_count>
-    <byte_count>37140</byte_count>
-    <estimated_tokens>9267</estimated_tokens>
+    <char_count>37756</char_count>
+    <byte_count>37830</byte_count>
+    <estimated_tokens>9439</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -145,9 +145,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 19
+Completed tasks: 20
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -262,6 +263,12 @@ ID: t0020_v2_truncation_vs_schema_ablation
 Completed: 2026-05-01
 Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
 Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the problem text to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree schema explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0); the pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20). Metrics * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%] * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%] *...
+
+## ABC Harness with Progress Rate and EAI Error Taxonomy
+ID: t0022_abc_harness_progress_rate_and_error_taxonomy
+Completed: 2026-05-01
+Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
+Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Summary Built and validated the `abc_harness_metrics` library: Ma2024 AgentBoard discrete-subgoal progress rate plus Li2024 Embodied Agent Interface six-plus-one error taxonomy. The library exposes `compute_progress_rate`, `classify_error`, and the high-level `score_trajectory` entry point, with 26 unit tests passing and a t0012 replay confirming end-to-end correctness on production-shape trajectories. Metrics * **Progress-rate mean across 89 t0012 trajectories**: **0.103** (decision threshold &gt; 0.05) — the library detects intermediate progress on real agent traces, not zero or one. * **Progress-rate standard deviation**...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -270,11 +277,10 @@ Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran th
       <source_ids>
         <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
-        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 4
+Planned or active tasks: 3
 
 ## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 ID: t0019_v2_judge_calibration_sonnet
@@ -287,12 +293,6 @@ ID: t0021_plan_and_solve_v2_with_final_confidence
 Status: in_progress
 Effective date: 2026-05-01
 Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
-
-## ABC Harness with Progress Rate and EAI Error Taxonomy
-ID: t0022_abc_harness_progress_rate_and_error_taxonomy
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
