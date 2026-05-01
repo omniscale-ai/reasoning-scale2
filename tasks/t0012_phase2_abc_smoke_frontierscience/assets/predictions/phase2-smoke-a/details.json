@@ -1,0 +1,34 @@
+{
+  "spec_version": "2",
+  "predictions_id": "phase2-smoke-a",
+  "name": "Phase 2 smoke condition A (scope-aware ReAct) on FrontierScience-Olympiad",
+  "short_description": "Per-row predictions from the scope-aware ReAct agent (condition A) on FrontierScience-Olympiad rows of the v2 hierarchical-annotation dataset, paired with conditions B and C.",
+  "description_path": "description.md",
+  "model_id": null,
+  "model_description": "claude-haiku-4-5 (Anthropic) accessed via the local Claude Code CLI with a minimal system prompt. Agent library: scope_aware_react_v1 (t0006). Tool registry: minimal calculator + finish only. Granularity tag injected per phase per the v2 hierarchy from t0009.",
+  "dataset_ids": [
+    "hierarchical-annotation-v2"
+  ],
+  "prediction_format": "jsonl",
+  "prediction_schema": "Each line is a JSON object with fields: condition (string), task_id (string), problem (string), gold_answer (string), final_answer (string|null), is_correct (boolean), decision_count (int), final_confidence (float|null), trajectory (string of JSON-serialized list of turn records), agent_refused (boolean).",
+  "instance_count": 40,
+  "metrics_at_creation": {
+    "task_success_rate": 0.025,
+    "overconfident_error_rate": 0.6471,
+    "avg_decisions_per_task": 1.2
+  },
+  "files": [
+    {
+      "path": "files/predictions-frontierscience-olympiad.jsonl",
+      "description": "Per-row predictions for condition A on the 40 FrontierScience-Olympiad hierarchy-complete rows of hierarchical-annotation-v2.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "agent-evaluation",
+    "benchmark-frontierscience",
+    "granularity-conditioning"
+  ],
+  "created_by_task": "t0012_phase2_abc_smoke_frontierscience",
+  "date_created": "2026-05-01"
+}

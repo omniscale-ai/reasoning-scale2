@@ -1,0 +1,9 @@
+Loaded 1 FrontierScience-Olympiad complete rows
+
+=== Condition A (Condition A: scope-aware ReAct) — already done: 0 ===
+  [A] 1/1 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=1 conf=0.92 final='<none>' elapsed=54.9s running_cost=$0.0342
+
+=== Condition B (Condition B: scope-unaware Plan-and-Solve) — already done: 0 ===
+  [B] 1/1 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=8 conf=None final='<none>' elapsed=246.2s running_cost=$0.2413
+
+=== Condition C (Condition C: scope-mismatched (random)) — already done: 0 ===

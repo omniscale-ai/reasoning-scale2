@@ -1,0 +1,52 @@
+{
+  "variants": [
+    {
+      "variant_id": "condition_a_scope_aware",
+      "label": "Condition A: scope-aware ReAct",
+      "dimensions": {
+        "condition": "A",
+        "agent": "scope_aware_react_v1",
+        "delegate": null,
+        "n": 40,
+        "model": "claude-haiku-4-5"
+      },
+      "metrics": {
+        "task_success_rate": 0.025,
+        "overconfident_error_rate": 0.6470588235294118,
+        "avg_decisions_per_task": 1.2
+      }
+    },
+    {
+      "variant_id": "condition_b_scope_unaware",
+      "label": "Condition B: scope-unaware Plan-and-Solve",
+      "dimensions": {
+        "condition": "B",
+        "agent": "scope_unaware_planandsolve_v1",
+        "delegate": null,
+        "n": 40,
+        "model": "claude-haiku-4-5"
+      },
+      "metrics": {
+        "task_success_rate": 0.0,
+        "overconfident_error_rate": 0.0,
+        "avg_decisions_per_task": 6.525
+      }
+    },
+    {
+      "variant_id": "condition_c_scope_mismatched",
+      "label": "Condition C: scope-mismatched (random)",
+      "dimensions": {
+        "condition": "C",
+        "agent": "matched_mismatch_v1",
+        "delegate": "scope_unaware_planandsolve",
+        "n": 11,
+        "model": "claude-haiku-4-5"
+      },
+      "metrics": {
+        "task_success_rate": 0.0,
+        "overconfident_error_rate": 0.0,
+        "avg_decisions_per_task": 26.0
+      }
+    }
+  ]
+}
