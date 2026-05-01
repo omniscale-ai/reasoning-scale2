@@ -23,9 +23,9 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create the standard task folder structure (assets, results, code, plan, research, intervention, corrections).",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:09:27Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:09:39Z",
       "log_file": "logs/steps/003_init-folders/"
     },
     {
