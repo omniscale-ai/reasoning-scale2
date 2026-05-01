@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy/tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/task.json
+
+[33m[1mWARNINGS:[0m
+[33m  TC-W005 warning: No merged PR found for branch 'task/t0022_abc_harness_progress_rate_and_error_taxonomy'[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
+
