@@ -1,0 +1,9 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence/tasks/t0021_plan_and_solve_v2_with_final_confidence/task.json
+
+[31m[1mERRORS:[0m
+[31m  TF-E004 error: status 'in_process' is not one of the allowed values
+    Allowed: cancelled, completed, in_progress, intervention_blocked, not_started, permanently_failed[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+
