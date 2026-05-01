@@ -113,9 +113,9 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Compare A's task_success_rate against published ReAct/FrontierMath performance bands.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T04:42:27Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T04:42:41Z",
       "log_file": "logs/steps/013_compare-literature/"
     },
     {
