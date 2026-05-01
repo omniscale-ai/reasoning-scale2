@@ -5,9 +5,9 @@
   "name": "ABC Harness with Progress Rate and EAI Error Taxonomy",
   "short_description": "Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [],
-  "start_time": null,
+  "start_time": "2026-05-01T14:04:29Z",
   "end_time": null,
   "expected_assets": {
     "library": 1
