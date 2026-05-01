@@ -1,0 +1,81 @@
+{
+  "spec_version": "2",
+  "library_id": "abc_harness_metrics",
+  "name": "ABC Harness Metrics",
+  "version": "0.1.0",
+  "short_description": "Adds Ma2024 AgentBoard discrete-subgoal progress rate and Li2024 Embodied Agent Interface six-plus-one error taxonomy to the ABC harness used by t0023.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/types.py",
+    "code/constants.py",
+    "code/paths.py",
+    "code/judge_cache.py",
+    "code/model_call.py",
+    "code/progress_rate.py",
+    "code/error_taxonomy.py",
+    "code/score_trajectory.py",
+    "code/replay_t0012.py",
+    "code/build_subgoals_frontierscience.py",
+    "code/build_subgoals_swebench.py"
+  ],
+  "entry_points": [
+    {
+      "name": "compute_progress_rate",
+      "kind": "function",
+      "module": "code/progress_rate.py",
+      "description": "Ma2024 AgentBoard discrete-subgoal-coverage progress rate for one trajectory."
+    },
+    {
+      "name": "classify_error",
+      "kind": "function",
+      "module": "code/error_taxonomy.py",
+      "description": "Li2024 Embodied Agent Interface error-taxonomy classifier; returns one of seven labels (six error labels plus an ok sentinel)."
+    },
+    {
+      "name": "score_trajectory",
+      "kind": "function",
+      "module": "code/score_trajectory.py",
+      "description": "High-level entry point that composes progress rate and per-step error classification into a TrajectoryScore."
+    },
+    {
+      "name": "TrajectoryScore",
+      "kind": "class",
+      "module": "code/types.py",
+      "description": "Frozen dataclass with task_success, progress_rate, step_errors tuple, and error_distribution Counter."
+    },
+    {
+      "name": "ErrorTaxonomyLabel",
+      "kind": "class",
+      "module": "code/types.py",
+      "description": "StrEnum of the seven error-taxonomy labels (hallucination, affordance, missing_step, extra_step, wrong_order, precondition_or_effect, ok)."
+    },
+    {
+      "name": "make_judge_call",
+      "kind": "function",
+      "module": "code/model_call.py",
+      "description": "Construct a judge callable backed by the local Claude Code CLI with cost-tracking and budget cap."
+    },
+    {
+      "name": "CostTracker",
+      "kind": "class",
+      "module": "code/model_call.py",
+      "description": "Process-wide cumulative-spend tracker with cap enforcement."
+    }
+  ],
+  "dependencies": [
+    "datasets"
+  ],
+  "test_paths": [
+    "code/test_progress_rate.py",
+    "code/test_error_taxonomy.py",
+    "code/test_score_trajectory.py",
+    "code/test_judge_cache.py"
+  ],
+  "categories": [
+    "agent-evaluation",
+    "granularity-conditioning",
+    "hierarchical-planning"
+  ],
+  "created_by_task": "t0022_abc_harness_progress_rate_and_error_taxonomy",
+  "date_created": "2026-05-01"
+}

@@ -1,0 +1,5 @@
+wrote /tmp/replay_preflight.json
+  processed: 3 rows; skipped: 0
+  progress_rate: mean=0.000 stddev=0.000
+  a_vs_c_separation_rate: 0.000
+  total_cost_usd: 0.0932
