@@ -1,0 +1,35 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0021-01",
+      "title": "Investigate the 31-decision scope-mismatched trajectory at larger sample size",
+      "description": "The n=1 smoke for Condition C (matched-mismatch wrapping scope_unaware_planandsolve_v2) used 31 decisions on a single FrontierScience-Olympiad row, vs 8 for B and 1 for A. At n=1 this is one observation, but it is a strong signal that the matched-mismatch wrapper plus contradictory granularity guidance can trigger a planning loop in the v1 Plan-and-Solve agent. In t0023's larger run, log per-row decision counts and check whether C's distribution is heavy-tailed compared to B; if it is, design a follow-up to root-cause whether the loop comes from the wrapper, the scope mismatch, or the v1 planner itself.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0021_plan_and_solve_v2_with_final_confidence",
+      "source_paper": null,
+      "categories": ["hierarchical-planning", "agent-evaluation"]
+    },
+    {
+      "id": "S-0021-02",
+      "title": "Track final_confidence vs correctness calibration on the t0023 confirmatory run",
+      "description": "The v2 library now emits final_confidence on every trajectory across all three conditions, which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration shifts or just accuracy shifts.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0021_plan_and_solve_v2_with_final_confidence",
+      "source_paper": null,
+      "categories": ["uncertainty-calibration", "agent-evaluation"]
+    },
+    {
+      "id": "S-0021-03",
+      "title": "Add a JSON-mode fallback path to the confidence elicitation if larger runs hit the 20% parse-failure gate",
+      "description": "The smoke parse-failure rate on haiku is 0/3 on n=1 x 3, so the strict regex parser is fine for haiku at this scale. However, if the t0023 sonnet run or any future larger run pushes the parse-failure rate above the documented 20% gate (REQ-10), the library should fall back to JSON-mode output (e.g., a tool-use call returning {confidence: 0.85}) instead of free-form text. Implement this as an opt-in path so the existing two-call protocol stays the default and the JSON fallback only activates when the model demonstrably cannot produce parseable output. Keep the verbalized prompt as the canonical Xiong2024 §3.2 protocol.",
+      "kind": "library",
+      "priority": "low",
+      "source_task": "t0021_plan_and_solve_v2_with_final_confidence",
+      "source_paper": null,
+      "categories": ["uncertainty-calibration", "agent-evaluation"]
+    }
+  ]
+}
