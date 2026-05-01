@@ -113,10 +113,10 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Skipped: this is a library task with no quantitative results comparable to published baselines.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/013_compare-literature/"
     },
     {
       "step": 14,
