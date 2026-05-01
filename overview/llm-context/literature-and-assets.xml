@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-01T04:45:51Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-01T12:08:03Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>46792</char_count>
-    <byte_count>46869</byte_count>
-    <estimated_tokens>11698</estimated_tokens>
+    <char_count>56444</char_count>
+    <byte_count>56531</byte_count>
+    <estimated_tokens>14111</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -146,9 +146,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
+        <id>t0017_literature_hierarchical_agents_and_judges</id>
       </source_ids>
       <content>
-Completed tasks: 16
+Completed tasks: 17
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -245,6 +246,12 @@ ID: t0016_brainstorm_results_5
 Completed: 2026-04-30
 Short description: Brainstorm 5: pure backlog cleanup after t0014 schema-vs-model deconfound — reject 3 redundant suggestions, reprioritize 5; no new tasks.
 Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm session 5 was a pure backlog cleanup pass after t0014 (v2 sonnet rerun deconfound) and t0015 (proxy benchmark relabel) merged. Eight corrections were issued: three rejections, five priority changes. No new tasks were created and no existing tasks were modified. Session Overview * **Session number**: 5 * **Date**: 2026-04-30 * **Duration**: ~30 minutes * **Mode**: Pure cleanup (no new tasks, no task updates) * **Researcher budget envelope**: &lt; $5 total (no API spend; planning only) Decisions Rejections (3) | Suggestion | Source task | Rationale | | --- | --- | --- | | S-0005-04 | t0005 | Superseded by t0015 proxy-relabel...
+
+## Literature: Hierarchical Agents and LLM-as-Judge
+ID: t0017_literature_hierarchical_agents_and_judges
+Completed: 2026-05-01
+Short description: Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.
+Result summary: Results Summary: Literature Survey on Hierarchical Agents and LLM-as-Judge Summary Completed a literature survey of ten papers covering hierarchical / granularity-aware LLM agents, search-and-planning structure, reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology — plus the foundational options-framework paper (Sutton 1999) as a brief theory anchor. All ten paper assets pass the v3 paper-asset verificator with zero errors and zero warnings. The synthesis below groups findings by the five themes defined in `task_description.md` and identifies which backlog suggestions and prior tasks the survey strengthens or weakens. Metrics * **10 paper assets created** out of a...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -265,6 +272,16 @@ Answers: 0
       <title>Paper Summaries</title>
       <source_name>aggregate_papers_full</source_name>
       <source_ids>
+        <id>no-doi_Gao2026_hierarchical-preference-learning-llm-agents</id>
+        <id>10.48550_arXiv.2410.07166</id>
+        <id>10.48550_arXiv.2407.18370</id>
+        <id>10.48550_arXiv.2405.19119</id>
+        <id>10.48550_arXiv.2405.15821</id>
+        <id>10.48550_arXiv.2402.19446</id>
+        <id>10.48550_arXiv.2402.03620</id>
+        <id>10.48550_arXiv.2401.13178</id>
+        <id>10.48550_arXiv.2310.04406</id>
+        <id>no-doi_Sutton1999_options-framework</id>
         <id>no-doi_OpenAI2024_swe-bench-verified</id>
         <id>10.48550_arXiv.2411.04872</id>
         <id>10.48550_arXiv.2407.05291</id>
@@ -278,7 +295,77 @@ Answers: 0
         <id>10.48550_arXiv.2205.10625</id>
       </source_ids>
       <content>
-Papers: 11
+Papers: 21
+
+## Solving the Granularity Mismatch: Hierarchical Preference Learning for Long-Horizon LLM Agents
+ID: no-doi_Gao2026_hierarchical-preference-learning-llm-agents
+Year: 2026
+Authors: Heyang Gao, Zexu Sun, Erxue Min, Hengyi Cai
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Gao et al. tackle a real and well-defined problem in offline alignment of long-horizon LLM agents: trajectory-level DPO is too coarse to attribute failure to a specific sub-task, and step-level DPO is too noisy to capture the value of multi-step behaviour. They name this the granularity mismatch and frame their solution, Hierarchical Preference Learning (HPL), as a multi-resolution loss combined with a structured training schedule, rather than a single new objective. Methodologically, HPL has four moving parts: an LLM-driven segmenter that splits expert...
+
+## Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making
+ID: 10.48550_arXiv.2410.07166
+Year: 2024
+Authors: Manling Li, Shiyu Zhao, Qineng Wang, Kangrui Wang
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Li et al. introduce Embodied Agent Interface (EAI), a unified PDDL/BDDL-grounded evaluation framework for using LLMs as decision-making components in embodied agents. The motivation is the fragmentation of prior work: papers run different LLMs on different simulators with different input-output conventions and report only an end-to-end success rate, so it is impossible to tell which sub-skill — instruction parsing, plan structuring, low-level action choice, or world modeling — is actually limiting performance. EAI fixes the interface and the metrics so...
+
+## Trust or Escalate: LLM Judges with Provable Guarantees for Human Agreement
+ID: 10.48550_arXiv.2407.18370
+Year: 2024
+Authors: Jaehun Jung, Faeze Brahman, Yejin Choi
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Jung, Brahman, and Choi address a central reliability gap in LLM-as-judge evaluation: when used at scale to grade pairs of model generations, even GPT-4-class judges have no provable bound on their agreement with humans, yet downstream leaderboards and benchmarks treat their verdicts as ground truth. The authors reframe evaluation as a **selective classification with risk control** problem, deriving a fixed-sequence multiple-testing procedure that calibrates a confidence threshold lambda on a small human-labeled calibration set and yields an exact...
+
+## Can Graph Learning Improve Planning in LLM-based Agents?
+ID: 10.48550_arXiv.2405.19119
+Year: 2024
+Authors: Xixi Wu, Yifei Shen, Caihua Shan, Kaitao Song
+Added by task: t0017_literature_hierarchical_agents_and_judges
+This paper studies LLM agent planning through the lens of graph learning. The authors observe that breaking a user request into sub-tasks naturally produces a directed graph whose nodes are tools or sub-tasks and whose edges are resource dependencies, and they prove two theoretical limitations of pure LLM planners on this graph: a single-head attention layer cannot retrieve neighbour information from a textually encoded graph, and auto-regressive next-token loss induces spurious correlations between query tokens and node names. These results motivate...
+
+## Reinforcing Language Agents via Policy Optimization with Action Decomposition
+ID: 10.48550_arXiv.2405.15821
+Year: 2024
+Authors: Muning Wen, Ziyu Wan, Weinan Zhang, Jun Wang
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Wen et al. confront a structural tension in RL fine-tuning of LLM agents: action-level methods (GLAM, TWOSOME) must hand-prune the action space and fail to assign credit to specific tokens inside an action, while naive token-level methods that embed token generation into the MDP implicitly assume that later tokens are more important than earlier ones. The paper makes this informal complaint formal by deriving a closed-form expression for the discrepancy between action-level and naive token-level Bellman updates, splitting the discount factor into gamma_a...
+
+## ArCHer: Training Language Model Agents via Hierarchical Multi-Turn RL
+ID: 10.48550_arXiv.2402.19446
+Year: 2024
+Authors: Yifei Zhou, Andrea Zanette, Jiayi Pan, Sergey Levine
+Added by task: t0017_literature_hierarchical_agents_and_judges
+This paper develops ArCHer (Actor-Critic Framework with a Hierarchical Structure), a framework for multi-turn reinforcement learning of language model agents. The motivation is that real LLM agent tasks — web navigation, tool use, customer support, dialogue — involve long horizons, hidden information that has to be acquired across turns, and rewards that arrive only at the end of an episode, but the dominant LLM-RL recipes (PPO over flattened sequences, RLHF-style single-turn optimization) handle none of these well. The authors argue that a hierarchical...
+
+## SELF-DISCOVER: Large Language Models Self-Compose Reasoning Structures
+ID: 10.48550_arXiv.2402.03620
+Year: 2024
+Authors: Pei Zhou, Jay Pujara, Xiang Ren, Xinyun Chen
+Added by task: t0017_literature_hierarchical_agents_and_judges
+SELF-DISCOVER tackles the question of whether LLMs can themselves compose the right reasoning program for a task instead of relying on a fixed prompting template. The authors argue that single-shape methods like CoT and Plan-and-Solve are mismatched to many tasks, and that a task&#x27;s intrinsic reasoning structure is best discovered explicitly. Their framework supplies the LLM with a pool of 39 atomic reasoning modules and three meta-prompts (SELECT, ADAPT, IMPLEMENT) that pick, specialize, and lay out a JSON reasoning structure per task; this structure is...
+
+## AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents
+ID: 10.48550_arXiv.2401.13178
+Year: 2024
+Authors: Chang Ma, Junlei Zhang, Zhihao Zhu, Cheng Yang
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Ma et al. introduce AgentBoard, a NeurIPS 2024 Datasets-and-Benchmarks oral that addresses two fundamental measurement problems in LLM-agent evaluation: incompatible task interfaces across existing benchmarks and the loss of information caused by reporting only end-of-trajectory success rate. The authors argue, with evidence, that current open-weight LLMs cluster at near-zero success on hard agent tasks, so any &quot;progress&quot; between models is invisible. They propose a unified POMDP formulation, nine carefully curated text-only multi-round...
+
+## Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models
+ID: 10.48550_arXiv.2310.04406
+Year: 2024
+Authors: Andy Zhou, Kai Yan, Michal Shlapentokh-Rothman, Haohan Wang
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Zhou et al. introduce LATS, an inference-time framework that unifies LM-based reasoning, acting, and planning by wrapping a ReAct-style agent in a Monte Carlo Tree Search loop. The paper situates itself against a fragmented prior literature -- CoT and self-consistency for reasoning, ReAct and Reflexion for acting, ToT and RAP for planning -- and shows that no existing method combines all of reasoning, acting, planning, self-reflection, and external memory. LATS fills that gap by treating the LM simultaneously as policy, state evaluator, and reflection...
+
+## Between MDPs and semi-MDPs: A framework for temporal abstraction in reinforcement learning
+ID: no-doi_Sutton1999_options-framework
+Year: 1999
+Authors: Richard S. Sutton, Doina Precup, Satinder Singh
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Sutton, Precup, and Singh address a foundational gap in reinforcement learning theory: classical MDPs operate at a single discrete time scale and cannot natively express temporally extended courses of action like &quot;drive to the airport&quot; or &quot;search a room&quot;. They propose the *options framework*, in which an option `&lt;I, pi, beta&gt;` packages an initiation set, an internal closed-loop policy, and a stochastic termination condition. Primitive actions become one-step options, so the framework strictly extends - rather than replaces - the existing MDP formalism...
 
 ## Introducing SWE-bench Verified
 ID: no-doi_OpenAI2024_swe-bench-verified

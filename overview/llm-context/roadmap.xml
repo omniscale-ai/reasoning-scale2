@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T04:45:51Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T12:08:03Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>57377</char_count>
-    <byte_count>57441</byte_count>
-    <estimated_tokens>14344</estimated_tokens>
+    <char_count>61282</char_count>
+    <byte_count>61348</byte_count>
+    <estimated_tokens>15320</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -143,9 +143,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
+        <id>t0017_literature_hierarchical_agents_and_judges</id>
       </source_ids>
       <content>
-Completed tasks: 16
+Completed tasks: 17
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -242,6 +243,12 @@ ID: t0016_brainstorm_results_5
 Completed: 2026-04-30
 Short description: Brainstorm 5: pure backlog cleanup after t0014 schema-vs-model deconfound — reject 3 redundant suggestions, reprioritize 5; no new tasks.
 Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm session 5 was a pure backlog cleanup pass after t0014 (v2 sonnet rerun deconfound) and t0015 (proxy benchmark relabel) merged. Eight corrections were issued: three rejections, five priority changes. No new tasks were created and no existing tasks were modified. Session Overview * **Session number**: 5 * **Date**: 2026-04-30 * **Duration**: ~30 minutes * **Mode**: Pure cleanup (no new tasks, no task updates) * **Researcher budget envelope**: &lt; $5 total (no API spend; planning only) Decisions Rejections (3) | Suggestion | Source task | Rationale | | --- | --- | --- | | S-0005-04 | t0005 | Superseded by t0015 proxy-relabel...
+
+## Literature: Hierarchical Agents and LLM-as-Judge
+ID: t0017_literature_hierarchical_agents_and_judges
+Completed: 2026-05-01
+Short description: Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.
+Result summary: Results Summary: Literature Survey on Hierarchical Agents and LLM-as-Judge Summary Completed a literature survey of ten papers covering hierarchical / granularity-aware LLM agents, search-and-planning structure, reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology — plus the foundational options-framework paper (Sutton 1999) as a brief theory anchor. All ten paper assets pass the v3 paper-asset verificator with zero errors and zero warnings. The synthesis below groups findings by the five themes defined in `task_description.md` and identifies which backlog suggestions and prior tasks the survey strengthens or weakens. Metrics * **10 paper assets created** out of a...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -279,6 +286,7 @@ Answers: 0
         <id>S-0014-03</id>
         <id>S-0012-01</id>
         <id>S-0012-02</id>
+        <id>S-0017-01</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
@@ -296,6 +304,8 @@ Answers: 0
         <id>S-0015-01</id>
         <id>S-0012-03</id>
         <id>S-0012-04</id>
+        <id>S-0017-02</id>
+        <id>S-0017-03</id>
         <id>S-0002-09</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
@@ -310,7 +320,7 @@ Answers: 0
         <id>S-0012-05</id>
       </source_ids>
       <content>
-Open suggestions: 46
+Open suggestions: 49
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -431,6 +441,13 @@ Kind: experiment
 Source task: t0012_phase2_abc_smoke_frontierscience
 The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B: 0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50% accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2) claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from this smoke. This is the highest-priority next experiment for RQ1/RQ5.
 
+## Adopt Trust-or-Escalate selective evaluation for the multi-judge agreement study
+ID: S-0017-01
+Priority: high
+Kind: evaluation
+Source task: t0017_literature_hierarchical_agents_and_judges
+S-0009-03 calls for a multi-judge agreement study; Jung2024 (&quot;Trust or Escalate&quot;, ICLR 2025) provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1) Simulated Annotators on top of the project&#x27;s existing judge LLM to produce ensemble-based confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing (Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor that GPT-4 alone never reaches, so this is also...
+
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
 Priority: medium
@@ -549,6 +566,20 @@ Priority: medium
 Kind: dataset
 Source task: t0012_phase2_abc_smoke_frontierscience
 The hierarchical-annotation-v2 FrontierScience-Olympiad subset has 40 rows but only 26 unique task_ids. Multiple rows share the same task_id (different granularity levels of the same problem), which means the pairing logic treats them as separate predictions for the same task. A deduplication or re-keying correction task should produce a version of the dataset with unique task_ids per row, or document the intended semantics of multi-row task_ids.
+
+## Adopt AgentBoard progress-rate metric and EAI error taxonomy in the next ABC-condition run
+ID: S-0017-02
+Priority: medium
+Kind: evaluation
+Source task: t0017_literature_hierarchical_agents_and_judges
+t0012&#x27;s smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&amp;B) defines a subgoal-coverage &quot;progress rate&quot; with Pearson rho &gt; 0.95 against humans across 1013 environments; Li2024 (Embodied Agent Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance, missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary success, and the EAI taxonomy becomes the per-row diagnostic...
+
+## Use SELF-DISCOVER reasoning scaffolds as the scope-aware (A) condition prompt template
+ID: S-0017-03
+Priority: medium
+Kind: technique
+Source task: t0017_literature_hierarchical_agents_and_judges
+Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning structure -- selected from atomic reasoning modules and composed once per task type, then re-used across instances -- transfers across model families and outperforms CoT-Self-Consistency at 10-40x lower inference cost. The IMPLEMENT step (explicit JSON key-value scaffold) is the largest ablation contributor. This is a near-zero-cost upgrade to our scope-aware (A) condition prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScience-Olympiad, SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family. Predicts a measurable improvement on RQ1/RQ5 even without...
 
 ## Re-fetch the 11 paper PDFs with git LFS enabled
 ID: S-0002-09

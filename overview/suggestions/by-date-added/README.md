@@ -1,14 +1,40 @@
 # Suggestions by Date Added
 
-54 suggestion(s) grouped by derived added date.
+57 suggestion(s) grouped by derived added date.
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## 2026-05-01 (5)
+## 2026-05-01 (8)
 
 ## High Priority
+
+<details>
+<summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
+agreement study</strong> (S-0017-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-01` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2407.18370`](../../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2407.18370/) |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+S-0009-03 calls for a multi-judge agreement study; Jung2024 ("Trust or Escalate", ICLR 2025)
+provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1)
+Simulated Annotators on top of the project's existing judge LLM to produce ensemble-based
+confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing
+(Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free
+guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on
+ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor
+that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
+annotation rerun. Deliverable: a small library that wraps the existing judge call with
+confidence + abstain semantics, exposed to t0009-style annotation tasks.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
@@ -78,6 +104,33 @@ confirmatory N would decrease proportionally.
 </details>
 
 <details>
+<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
+in the next ABC-condition run</strong> (S-0017-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2401.13178`](../../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2401.13178/) |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
+with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
+conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
+with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
+Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
+missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
+specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
+success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
+scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
+confirmatory run) producing legible results. Estimated effort: 1-2 days of
+metric-implementation work.
+
+</details>
+
+<details>
 <summary>📂 <strong>Fix task_id collision in FrontierScience-Olympiad pilot
 dataset</strong> (S-0012-04)</summary>
 
@@ -95,6 +148,31 @@ task_ids. Multiple rows share the same task_id (different granularity levels of 
 problem), which means the pairing logic treats them as separate predictions for the same task.
 A deduplication or re-keying correction task should produce a version of the dataset with
 unique task_ids per row, or document the intended semantics of multi-row task_ids.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Use SELF-DISCOVER reasoning scaffolds as the scope-aware (A)
+condition prompt template</strong> (S-0017-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-03` |
+| **Kind** | technique |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2402.03620`](../../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2402.03620/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning structure --
+selected from atomic reasoning modules and composed once per task type, then re-used across
+instances -- transfers across model families and outperforms CoT-Self-Consistency at 10-40x
+lower inference cost. The IMPLEMENT step (explicit JSON key-value scaffold) is the largest
+ablation contributor. This is a near-zero-cost upgrade to our scope-aware (A) condition
+prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScience-Olympiad,
+SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family.
+Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope:
+any retraining; this is purely a prompting change.
 
 </details>
 

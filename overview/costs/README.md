@@ -15,7 +15,7 @@ threshold.
 | Warn threshold | 80% ($80.00) |
 | Stop threshold | 100% ($100.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 16 |
+| Tasks with cost records | 17 |
 | Tasks with non-zero spend | 4 |
 | Skipped tasks | 0 |
 
@@ -35,7 +35,7 @@ threshold.
 | `judge_haiku_4_5` | $3.08 |
 | `anthropic_api` | $0.06 |
 
-12 task cost record(s) are zero-cost and omitted from the main spend table.
+13 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 

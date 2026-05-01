@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="papers" generated_at_utc="2026-05-01T04:45:51Z">
+<llm_context_archive type_id="papers" generated_at_utc="2026-05-01T12:08:03Z">
   <archive_summary>
     <title>All Papers</title>
     <description>Complete paper corpus with full summaries, metadata, and abstracts.</description>
     <section_count>1</section_count>
-    <char_count>98982</char_count>
-    <byte_count>99685</byte_count>
-    <estimated_tokens>24745</estimated_tokens>
+    <char_count>244954</char_count>
+    <byte_count>246079</byte_count>
+    <estimated_tokens>61238</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -17,6 +17,16 @@
       <title>All Papers (Full Detail)</title>
       <source_name>aggregate_papers_full</source_name>
       <source_ids>
+        <id>no-doi_Gao2026_hierarchical-preference-learning-llm-agents</id>
+        <id>10.48550_arXiv.2410.07166</id>
+        <id>10.48550_arXiv.2407.18370</id>
+        <id>10.48550_arXiv.2405.19119</id>
+        <id>10.48550_arXiv.2405.15821</id>
+        <id>10.48550_arXiv.2402.19446</id>
+        <id>10.48550_arXiv.2402.03620</id>
+        <id>10.48550_arXiv.2401.13178</id>
+        <id>10.48550_arXiv.2310.04406</id>
+        <id>no-doi_Sutton1999_options-framework</id>
         <id>no-doi_OpenAI2024_swe-bench-verified</id>
         <id>10.48550_arXiv.2411.04872</id>
         <id>10.48550_arXiv.2407.05291</id>
@@ -30,7 +40,2168 @@
         <id>10.48550_arXiv.2205.10625</id>
       </source_ids>
       <content>
-Papers: 11
+Papers: 21
+
+## Solving the Granularity Mismatch: Hierarchical Preference Learning for Long-Horizon LLM Agents
+ID: no-doi_Gao2026_hierarchical-preference-learning-llm-agents
+Year: 2026
+Authors: Heyang Gao, Zexu Sun, Erxue Min, Hengyi Cai, Shuaiqiang Wang, Dawei Yin, Xu Chen
+Venue: ICLR 2026
+Venue type: conference
+URL: https://openreview.net/forum?id=s8usvGHYlk
+Categories: hierarchical-planning, granularity-conditioning
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/gao_2026_hierarchical-preference-learning.pdf`
+* **Published**: 2026 (ICLR 2026; arXiv preprint 2025-10-03)
+* **Authors**: Heyang Gao 🇨🇳, Zexu Sun 🇨🇳, Erxue Min 🇨🇳, Hengyi Cai 🇨🇳, Shuaiqiang Wang 🇨🇳, Dawei
+  Yin 🇨🇳, Xu Chen 🇨🇳
+* **Venue**: ICLR 2026 (conference)
+* **arXiv**: `2510.03253`
+* **OpenReview**: `s8usvGHYlk`
+
+#### Abstract
+
+Large Language Models (LLMs) as autonomous agents are increasingly tasked with solving complex,
+long-horizon problems. Aligning these agents via preference-based offline methods like Direct
+Preference Optimization (DPO) is a promising direction, yet it faces a critical granularity
+mismatch. Trajectory-level DPO provides a signal that is too coarse for precise credit assignment,
+while step-level DPO is often too myopic to capture the value of multi-step behaviors. To resolve
+this challenge, we introduce Hierarchical Preference Learning (HPL), a hierarchical framework that
+optimizes LLM agents by leveraging preference signals at multiple, synergistic granularities. While
+HPL incorporates trajectory- and step-level DPO for global and local policy stability, its core
+innovation lies in group-level preference optimization guided by a dual-layer curriculum. Our
+approach first decomposes expert trajectories into semantically coherent action groups and then
+generates contrasting suboptimal groups to enable preference learning at a fine-grained, sub-task
+level. Then, instead of treating all preference pairs equally, HPL introduces a curriculum scheduler
+that organizes the learning process from simple to complex. This curriculum is structured along two
+axes: the group length, representing sub-task complexity, and the sample difficulty, defined by the
+reward gap between preferred and dispreferred action groups. Experiments on three challenging agent
+benchmarks show that HPL outperforms existing state-of-the-art methods. Our analyses demonstrate
+that the hierarchical DPO loss effectively integrates preference signals across multiple
+granularities, while the dual-layer curriculum is crucial for enabling the agent to solve a wide
+range of tasks, from simple behaviors to complex multi-step sequences.
+
+#### Overview
+
+Long-horizon LLM agents must produce dozens of interleaved reasoning and tool-use steps before a
+sparse terminal reward arrives. Two existing offline preference paradigms each fail in distinct
+ways. Trajectory-level DPO compresses an entire rollout into a single preferred-vs-dispreferred
+pair, which yields stable gradients but cannot localise where the trajectory went wrong. Step-level
+DPO prefers a contrasting action at every individual step, which is fine-grained but statistically
+noisy and frequently rewards locally plausible moves that hurt the global plan. The authors call
+this the &quot;granularity mismatch&quot; and frame their contribution as a principled middle ground: a
+group-level DPO loss whose preference unit is a semantically coherent cluster of consecutive actions
+corresponding to a sub-task, paired with full trajectory- and step-level DPO terms for
+multi-resolution stability.
+
+The work goes beyond defining a new loss. The authors construct contrasting suboptimal groups for
+each expert sub-task and show that naively training on all such pairs is suboptimal, motivating a
+dual-layer curriculum that progresses from short, high-margin groups to long, low-margin ones. The
+combination beats the strongest published baselines on three established agent benchmarks (ALFWorld,
+WebShop, InterCode-SQL) for both Qwen2.5-1.5B-Instruct and Qwen2.5-7B-Instruct base policies, and
+the ablations cleanly attribute the gains to the group-level loss and the curriculum.
+
+#### Architecture, Models and Methods
+
+HPL is an offline preference-optimization recipe with four interlocking components. (1) **Action
+group segmentation.** Each expert trajectory of T thought-action-observation steps is partitioned
+into G semantically coherent groups. The paper compares four segmentation strategies: Fixed-N (fixed
+number of groups), Fixed-K (fixed group length), Uncertainty-based (segment boundaries at high
+token-level entropy), and Semantic (GPT-4o is asked to insert sub-task boundaries). The Semantic
+variant is the default. (2) **Suboptimal group construction.** For every expert group the authors
+generate one or more contrasting suboptimal groups by rolling out a behaviour-cloned policy from the
+same prefix; only rollouts whose group-level reward is strictly worse become &quot;dispreferred&quot; and pair
+with the expert group as &quot;preferred&quot;. (3) **Hierarchical DPO loss.** The training objective is a
+weighted sum L = L_traj + lambda_step * L_step + lambda_group * L_group, where L_group applies the
+standard DPO log-sigmoid contrast at the group level (the policy log-ratio is summed only over
+tokens inside the group). The reference is a frozen SFT policy. (4) **Dual-layer curriculum.** Pairs
+are bucketed along two axes: group length (short -&gt; long, a proxy for sub-task complexity) and
+reward gap deltaR between preferred and dispreferred groups (large gap = easy, small gap = hard).
+Training proceeds in three phases: foundational (short groups, large deltaR), expanding (medium
+groups and gaps), full-scale (all pairs).
+
+Base models are Qwen2.5-1.5B-Instruct and Qwen2.5-7B-Instruct. SFT uses learning rate 1e-5, batch
+size 32, 3 epochs. Group-DPO uses learning rate 3e-6 on ALFWorld and 1e-6 on WebShop and
+InterCode-SQL, batch size 32, 1 epoch, beta = 0.3, max sequence length 6000. The paper additionally
+provides Proposition 1, a bias-variance analysis showing that group-level DPO improves estimator
+variance by a factor of order Omega(T / log(1 / epsilon)) over step-level DPO while keeping bias
+bounded.
+
+#### Results
+
+* **Average across 3 benchmarks (Qwen2.5-7B-Instruct):** SFT 61.28, ETO 62.93, IPR 63.84, **HPL
+  (Semantic) 67.81** — a +3.97 absolute gain over the strongest baseline (IPR) and +4.88 over ETO.
+* **ALFWorld seen / unseen (Qwen2.5-7B):** SFT 67.14 / 76.12, ETO 70.00 / 76.87, IPR 72.86 / 77.61,
+  **HPL 83.57 / 86.57** (+10.71 / +8.96 over IPR).
+* **WebShop (Qwen2.5-7B):** SFT 60.53, ETO 61.57, IPR 61.90, **HPL 62.56**.
+* **InterCode-SQL (Qwen2.5-7B):** SFT 66.86, ETO 68.63, IPR 69.19, **HPL 70.63**.
+* **Curriculum ablation (Qwen2.5-1.5B average):** removing the dual-layer curriculum drops HPL from
+  **58.73 to 57.58**; both axes (length and difficulty) contribute positively.
+* **Loss ablation:** the group-level DPO term is the most critical of the three losses; removing it
+  produces the largest drop on every benchmark, confirming it as the source of the headline
+  improvement rather than just adding extra DPO regularisation.
+* **Segmentation ablation:** Semantic (GPT-4o) &gt; Uncertainty &gt; Fixed-K ~ Fixed-N, with the gap
+  between Semantic and Fixed-N around 1-2 average points.
+
+#### Innovations
+
+##### Group-Level DPO with Bias-Variance Guarantee
+
+The headline contribution is a DPO objective whose preference unit is a semantically coherent action
+group rather than the whole trajectory or a single step. Proposition 1 formalises the intuitive
+claim: at fixed sample budget, group-level DPO achieves a variance reduction of order Omega(T /
+log(1 / epsilon)) versus step-level DPO while keeping bias bounded by the group size times the
+per-step bias. This is the first published bias-variance analysis specifically for mid-granularity
+preference learning.
+
+##### Semantic Action Group Segmentation
+
+The default segmentation strategy uses GPT-4o to insert sub-task boundaries inside each expert
+trajectory. The paper compares this to three non-LLM alternatives (Fixed-N, Fixed-K, and
+token-uncertainty-based) and shows the semantic strategy wins. This isolates &quot;what is a sub-task&quot; as
+a quantifiable design choice rather than an implementation detail.
+
+##### Dual-Layer Curriculum on Length and Reward Gap
+
+Curriculum learning for DPO is not new, but ordering pairs along two orthogonal axes — sub-task
+length and reward gap — is. The three-phase schedule (foundational -&gt; expanding -&gt; full-scale) is
+shown to be necessary: the ablation removing it loses ~1 absolute point and the ablation removing
+either single axis loses less but still hurts.
+
+##### Multi-Granularity Loss Composition
+
+HPL is the first paper to combine trajectory-, step-, and group-level DPO losses simultaneously into
+a single training objective. Prior work picked one granularity (e.g. ETO uses trajectory, IPR uses
+step). The composition is empirically shown to be additive: each level contributes and the
+combination is best.
+
+#### Datasets
+
+* **ALFWorld** — 3,553 training scenarios, 140 seen + 134 unseen test scenarios. Embodied household
+  tasks with high-level natural language goals; long horizons (often 30+ actions). Public release;
+  standard agent benchmark.
+* **WebShop** — 200 test tasks over a simulated e-commerce site with ~1.18M products. Web-based
+  product search and purchase task. Public release.
+* **InterCode-SQL (Spider split)** — 200 test tasks over Spider databases. Multi-turn SQL generation
+  with execution feedback. Public release.
+* **Expert demonstrations** — for each benchmark the authors use the publicly released expert
+  trajectories from the ETO and IPR papers; no new human annotation is collected.
+
+The paper does not introduce a new dataset.
+
+#### Main Ideas
+
+* The &quot;granularity mismatch&quot; framing is a useful lens for our project: trajectory-level signals
+  conflate scope-aware and scope-mismatched failures, while step-level signals lose the sub-task
+  context this project&#x27;s hierarchy explicitly tracks.
+* Semantically coherent action groups (i.e. sub-tasks identified by an LLM) are an effective
+  intermediate granularity for both training signal and evaluation; this aligns directly with our
+  three-level (global / subtask / atomic) annotation schema.
+* A curriculum that starts with short, high-margin pairs and progresses to long, low-margin ones
+  produces measurable gains on top of plain DPO. If we ever fine-tune a scope-aware policy, this is
+  the curriculum recipe to copy.
+* HPL&#x27;s experiments on ALFWorld, WebShop, and InterCode-SQL provide strong recent baselines (ETO,
+  IPR, HPL itself) for any agent-training task we may launch downstream.
+* The bias-variance analysis (Proposition 1) gives a principled reason to prefer mid-granularity
+  signals when reward sparsity and trajectory length are large — relevant for our long-horizon
+  benchmarks (FrontierScience-Olympiad, SWE-bench Verified).
+
+#### Summary
+
+Gao et al. tackle a real and well-defined problem in offline alignment of long-horizon LLM agents:
+trajectory-level DPO is too coarse to attribute failure to a specific sub-task, and step-level DPO
+is too noisy to capture the value of multi-step behaviour. They name this the granularity mismatch
+and frame their solution, Hierarchical Preference Learning (HPL), as a multi-resolution loss
+combined with a structured training schedule, rather than a single new objective.
+
+Methodologically, HPL has four moving parts: an LLM-driven segmenter that splits expert trajectories
+into semantically coherent action groups, a procedure that generates contrasting suboptimal groups
+via behaviour-cloned rollouts, a hierarchical DPO loss that sums trajectory-, step-, and group-level
+DPO terms, and a dual-layer curriculum that orders preference pairs by group length and reward gap.
+The curriculum runs in three phases and is shown to be necessary in ablations. A bias-variance
+proposition gives theoretical grounding to the choice of group-level granularity.
+
+The empirical story is unambiguous. On three standard agent benchmarks (ALFWorld, WebShop,
+InterCode-SQL) and two base models (Qwen2.5-1.5B / 7B), HPL beats SFT, ETO, and IPR. The Qwen2.5-7B
+average rises from 63.84 (IPR) to 67.81 (HPL), with the largest gain on ALFWorld seen (+10.71) and
+unseen (+8.96). Ablations cleanly localise the gain: the group-level DPO term is the single most
+important component, the semantic segmenter beats fixed-length alternatives, and the two-axis
+curriculum contributes about a full average point.
+
+For this project, HPL is directly relevant in three ways. First, the granularity-mismatch framing
+maps onto our scope-aware / scope-unaware / scope-mismatched conditions: HPL&#x27;s group level is
+exactly the subtask level in our hierarchy. Second, semantic action-group segmentation is a
+methodology we can borrow when annotating gold actions at the subtask level on
+FrontierScience-Olympiad, WorkArena++, tau-bench, and SWE-bench Verified. Third, HPL provides a
+recent, strong, reproducible baseline if any downstream task in our pipeline trains a scope-aware
+policy. Limitations: HPL relies on GPT-4o for segmentation (cost and licence implications) and on
+the existence of expert demonstrations, neither of which transfers automatically to settings without
+high-quality demos.
+
+## Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making
+ID: 10.48550_arXiv.2410.07166
+Year: 2024
+Authors: Manling Li, Shiyu Zhao, Qineng Wang, Kangrui Wang, Yu Zhou, Sanjana Srivastava, Cem Gokmen, Tony Lee, Li Erran Li, Ruohan Zhang, Weiyu Liu, Percy Liang, Li Fei-Fei, Jiayuan Mao, Jiajun Wu
+Venue: NeurIPS 2024
+Venue type: conference
+DOI: 10.48550/arXiv.2410.07166
+URL: https://arxiv.org/abs/2410.07166
+Categories: agent-evaluation, hierarchical-planning
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/li_2024_embodied-agent-interface.pdf`
+* **Published**: 2024-10-09 (arXiv); NeurIPS 2024 D&amp;B Track (Oral)
+* **Authors**: Manling Li 🇺🇸, Shiyu Zhao 🇺🇸, Qineng Wang 🇺🇸, Kangrui Wang 🇺🇸, Yu Zhou 🇺🇸, Sanjana
+  Srivastava 🇺🇸, Cem Gokmen 🇺🇸, Tony Lee 🇺🇸, Li Erran Li 🇺🇸, Ruohan Zhang 🇺🇸, Weiyu Liu 🇺🇸, Percy
+  Liang 🇺🇸, Li Fei-Fei 🇺🇸, Jiayuan Mao 🇺🇸, Jiajun Wu 🇺🇸
+* **Venue**: NeurIPS 2024 (Datasets and Benchmarks Track, Oral)
+* **DOI**: `10.48550/arXiv.2410.07166`
+
+#### Abstract
+
+We aim to evaluate Large Language Models (LLMs) for embodied decision making. While a significant
+body of work has been leveraging LLMs for decision making in embodied environments, we still lack a
+systematic understanding of their performance because they are usually applied in different domains,
+for different purposes, and built based on different inputs and outputs. Furthermore, existing
+evaluations tend to rely solely on a final success rate, making it difficult to pinpoint what
+ability is missing in LLMs and where the problem lies, which in turn blocks embodied agents from
+leveraging LLMs effectively and selectively. To address these limitations, we propose a generalized
+interface (Embodied Agent Interface) that supports the formalization of various types of tasks and
+input-output specifications of LLM-based modules. Specifically, it allows us to unify
+1. a broad set of embodied decision-making tasks involving both state and temporally extended goals,
+   2\) four commonly-used LLM-based modules for decision making: goal interpretation, subgoal
+   decomposition, action sequencing, and transition modeling, and 3) a collection of fine-grained
+   metrics which break down evaluation into various types of errors, such as hallucination errors,
+   affordance errors, various types of planning errors, etc. Overall, our benchmark offers a
+   comprehensive assessment of LLMs&#x27; performance for different subtasks, pinpointing the strengths
+   and weaknesses in LLM-powered embodied AI systems, and providing insights for effective and
+   selective use of LLMs in embodied decision making.
+
+#### Overview
+
+This paper introduces Embodied Agent Interface (EAI), a unified evaluation framework for Large
+Language Models acting as decision-making components inside embodied agents. The motivation is that
+prior LLM-for-embodied-AI evaluations are heterogeneous: they use different simulators, different
+input-output schemas, different definitions of success, and they typically report only a single
+end-to-end success rate. Such aggregate scores conceal which sub-skill (parsing the instruction,
+proposing a plan, picking individual actions, modeling state changes) actually fails, so it is
+impossible to know whether a new model improves embodied agents because it understands goals better,
+plans more reliably, or simply hallucinates fewer object names.
+
+EAI addresses this by formalizing embodied tasks in the Planning Domain Definition Language (PDDL)
+style — every task is specified as an initial symbolic state plus a goal expressed as a logical
+formula over object states, spatial relations, or temporally extended action goals (LTL). Every LLM
+call is expressed as one of four canonical modules with strict input and output types, so any LLM
+can be plugged in for any module without bespoke prompting glue. The benchmark instantiates this
+interface on two well-known embodied simulators, BEHAVIOR (BDDL, complex household activities) and
+VirtualHome (script-based household tasks), giving researchers a common, decoupled, error-typed
+yardstick rather than a black-box success number.
+
+The authors evaluate eighteen LLMs spanning proprietary frontier models (GPT-4, GPT-4o, o1-preview,
+Claude-3 Opus, Claude-3.5 Sonnet, Gemini 1.5 Pro/Flash) and open-weight models (Llama-3 family,
+Mistral, Cohere, etc.) across all four modules. The headline finding is that o1-preview, the only
+explicitly reasoning-trained model in the lineup at submission time, is best or near-best on every
+module — establishing inference-time reasoning, not raw scale, as the principal driver of embodied
+decision quality.
+
+#### Architecture, Models and Methods
+
+EAI decomposes any embodied decision-making pipeline into four LLM-based modules with formal
+signatures. **Goal interpretation** maps a natural-language instruction plus the current symbolic
+scene to a goal formula over predicates (object states such as `cooked(steak)`, spatial relations
+such as `inside(milk, fridge)`, and temporally extended action goals encoded as LTL formulas).
+**Subgoal decomposition** takes the interpreted goal and produces an ordered sequence of
+intermediate symbolic states. **Action sequencing** generates an executable action plan in the
+simulator&#x27;s API. **Transition modeling** asks the LLM to predict, in PDDL operator form, the
+preconditions and effects of each action so a symbolic planner can use the LLM as a learned world
+model.
+
+Inputs and outputs are strictly typed: domain files give predicates and action schemas, problem
+files give the initial state, and outputs are parsed against PDDL/BDDL grammars. Failures are
+classified before scoring, distinguishing parsing/grammar errors from semantic errors. Parsing
+errors are reported separately so a model that emits malformed JSON does not get conflated with one
+that emits valid but wrong plans.
+
+The benchmark combines two simulators. **VirtualHome** contributes 26 task categories, 338 task
+instructions, 801 goals (340 state, 299 relation, 162 action), 338 reference trajectories of 8.76
+steps on average, and 33 transition models. **BEHAVIOR** contributes 100 tasks, 100 instructions,
+673 goals (153 state, 520 relation), 100 trajectories of 14.6 steps on average, and 30 transition
+models. Eighteen LLMs are evaluated under matched prompts and few-shot exemplars, with
+greedy/temperature-zero decoding and a fixed retry budget for parse failures. Module-level scoring
+uses precision/recall/F1 over predicted goal literals, action-sequencing goal success rate (Goal SR)
+and execution success rate (Exec SR), subgoal decomposition success against ground-truth
+intermediate states, and operator F1 over preconditions and effects for transition modeling. A
+fine-grained error taxonomy — hallucination (predicates or objects that do not exist), affordance
+violations, missing steps, wrong order, additional unnecessary steps, missing preconditions/effects
+— is computed automatically from the symbolic checks.
+
+#### Results
+
+* **Action sequencing on BEHAVIOR**: o1-preview tops the leaderboard with **81.0% goal SR** and
+  **91.0% execution SR**, well above other models; on VirtualHome it reaches **71.1% goal SR**,
+  again the best of the eighteen LLMs evaluated.
+* **Goal interpretation**: best precision on VirtualHome lands in the **35.2%-47.2%** range
+  (o1-preview / Gemini 1.5 Pro), while BEHAVIOR recall climbs much higher to **78.8%-93.4%**,
+  showing that BEHAVIOR&#x27;s mostly-relational goals are easier to recover than VirtualHome&#x27;s mixed
+  state/relation/action goals.
+* **Subgoal decomposition**: o1-preview and Gemini 1.5 Flash lead, hitting roughly **89.4% goal SR**
+  on VirtualHome but only **57.0% execution SR** on BEHAVIOR, exposing a sharp drop when
+  intermediate states must be both correct and executable.
+* **Transition modeling**: Claude-3.5 Sonnet and o1-preview lead, with up to **78.8% F1** on
+  BEHAVIOR object-state effects and **95.3% F1** on object-orientation effects; relational effects
+  are much harder than unary state effects.
+* **Open vs. proprietary gap**: open-weight models (Llama-3-8B, Mistral) suffer materially higher
+  grammar/parsing error rates and visibly lower goal SR on action sequencing across both simulators,
+  especially as plan length grows beyond ~10 steps.
+* **Difficulty scaling**: success rates degrade sharply with the number of goal literals and the
+  length of the reference trajectory; BEHAVIOR&#x27;s longer 14.6-step trajectories drive most of the
+  difficulty gap relative to VirtualHome&#x27;s 8.76-step ones.
+* **Error mix**: hallucinated predicates and affordance violations dominate failures on VirtualHome,
+  while missing-step and wrong-order errors dominate on BEHAVIOR — the same model fails differently
+  on different simulators.
+* **Reasoning-time models win**: o1-preview&#x27;s lead is consistent across all four modules, the first
+  systematic evidence in this domain that test-time reasoning helps embodied planning more than
+  parameter count.
+
+#### Innovations
+
+##### A Unified, Typed Interface for LLM-Based Embodied Modules
+
+Prior benchmarks treat the LLM as a black box ending in a success or failure. EAI defines four
+canonical modules (goal interpretation, subgoal decomposition, action sequencing, transition
+modeling) with strict PDDL/LTL input-output types, so any LLM can be slotted into any module and
+compared apples-to-apples. This decoupling is what makes the rest of the contribution possible.
+
+##### Fine-Grained Symbolic Error Taxonomy
+
+Instead of a single success rate, EAI computes hallucination, affordance, missing-step, wrong-order,
+additional-step, missing-precondition, and missing-effect errors automatically from symbolic checks
+against ground-truth domain and problem files. The same final-success number can hide very different
+failure profiles, and the taxonomy lets practitioners diagnose which sub-skill to fix.
+
+##### Joint Evaluation Across BEHAVIOR and VirtualHome
+
+The benchmark unifies two simulators with very different goal distributions (BEHAVIOR is
+relation-heavy and long-horizon, VirtualHome is state/action-mixed and shorter) under one interface.
+Cross-simulator evaluation exposes that LLM rankings are not stable across goal distributions, which
+is invisible in single-simulator benchmarks.
+
+##### Modular Plug-In Evaluation of Reasoning Models
+
+EAI is the first embodied benchmark to evaluate o1-preview head-to-head against frontier
+non-reasoning models module-by-module, providing the first quantitative evidence that test-time
+reasoning specifically improves embodied planning rather than general language quality.
+
+#### Datasets
+
+* **VirtualHome**: 26 task categories, 338 task instructions, 801 goals (340 state, 299 relation,
+  162 action), 338 reference trajectories averaging 8.76 steps, 33 transition models. Public,
+  research-license; built on top of the VirtualHome simulator (Puig et al.).
+* **BEHAVIOR / BDDL**: 100 tasks, 100 instructions, 673 goals (153 state, 520 relation), 100
+  reference trajectories averaging 14.6 steps, 30 transition models. Public, MIT license; built on
+  top of the BEHAVIOR-1K activity suite from Stanford.
+* The benchmark also packages PDDL/BDDL domain files, problem files, and a fine-grained scoring
+  pipeline as a reproducible toolkit released at
+  &lt;https://github.com/embodied-agent-interface/embodied-agent-interface&gt; alongside a HELM-style
+  leaderboard.
+
+#### Main Ideas
+
+* For this project, EAI&#x27;s four-module decomposition (goal interpretation / subgoal decomposition /
+  action sequencing / transition modeling) is a strong template for our hierarchical-planning
+  agents: it directly maps onto our three-level hierarchy (strategic / subtask / atomic) plus a
+  separate world-modeling head, and gives us a precedent for typed, decoupled module evaluation.
+* The fine-grained error taxonomy (hallucination, affordance, missing/extra/wrong-order steps,
+  precondition/effect errors) is exactly the kind of diagnostic breakdown we want to apply to our
+  scope-aware vs. scope-mismatched conditions — it lets us attribute differences to specific failure
+  modes rather than to overall success rate alone.
+* The single most actionable empirical lesson for our agent design is that test-time reasoning
+  (o1-style) buys substantially more embodied-planning quality than additional parameters, which
+  argues for prioritizing reasoning-trained backends in our scope-aware A condition.
+* BEHAVIOR vs. VirtualHome rankings differ for the same LLMs, so when we choose evaluation
+  benchmarks we must include at least two structurally different sources to avoid optimizing to a
+  single distribution — this validates our multi-source benchmark design (FrontierScience-Olympiad
+  + WorkArena++ + tau-bench + SWE-bench).
+
+#### Summary
+
+Li et al. introduce Embodied Agent Interface (EAI), a unified PDDL/BDDL-grounded evaluation
+framework for using LLMs as decision-making components in embodied agents. The motivation is the
+fragmentation of prior work: papers run different LLMs on different simulators with different
+input-output conventions and report only an end-to-end success rate, so it is impossible to tell
+which sub-skill — instruction parsing, plan structuring, low-level action choice, or world modeling
+— is actually limiting performance. EAI fixes the interface and the metrics so that any LLM can be
+plugged into any of four canonical modules and scored with the same fine-grained error taxonomy
+across two distinct simulators.
+
+Methodologically, the framework formalizes every embodied task as an initial symbolic state plus a
+goal formula over object states, relations, or LTL action sequences, and defines four typed LLM
+modules: goal interpretation, subgoal decomposition, action sequencing, and transition modeling.
+Each module&#x27;s outputs are parsed and checked against ground-truth domains and trajectories, with
+parse errors separated from semantic errors and a seven-way error taxonomy (hallucination,
+affordance, missing-step, wrong-order, additional-step, missing-precondition, missing-effect)
+computed automatically. The benchmark instantiates this interface on VirtualHome (338 tasks, 801
+goals, 8.76-step trajectories) and BEHAVIOR (100 tasks, 673 goals, 14.6-step trajectories) and
+evaluates eighteen LLMs.
+
+The headline finding is that o1-preview, the only test-time reasoning model in the cohort, dominates
+across all four modules — for example, **81.0% goal SR / 91.0% execution SR** on BEHAVIOR action
+sequencing and **71.1% goal SR** on VirtualHome action sequencing — establishing inference-time
+reasoning as the strongest predictor of embodied decision quality. Open-weight models pay a large
+grammar-error tax and lag on long-horizon action sequencing, while transition modeling is a notable
+weakness across the board: even the best models hit only **78.8% F1** on BEHAVIOR object-state
+effects. Failure modes also differ by simulator, with hallucination / affordance errors dominating
+on VirtualHome and missing-step / wrong-order errors on BEHAVIOR.
+
+For our project, EAI is directly relevant on three axes. First, its four-module decomposition is a
+near-isomorphic precedent for our hierarchical-planning agent design and validates the
+scope-conditioned A/B/C ablation: by typing each module&#x27;s inputs and outputs we gain the same
+diagnostic resolution. Second, its symbolic error taxonomy is the right shape for our
+overconfident-error-rate metric and our scope-mismatched failure analysis; we should adopt
+hallucination/affordance/missing-step labels in our annotation schema. Third, EAI&#x27;s evidence that
+test-time reasoning beats raw scale strongly motivates including reasoning-trained backends as our
+default A-condition agent and ensures our judges and predictions cover both reasoning and
+non-reasoning model families.
+
+## Trust or Escalate: LLM Judges with Provable Guarantees for Human Agreement
+ID: 10.48550_arXiv.2407.18370
+Year: 2024
+Authors: Jaehun Jung, Faeze Brahman, Yejin Choi
+Venue: ICLR 2025
+Venue type: conference
+DOI: 10.48550/arXiv.2407.18370
+URL: https://arxiv.org/abs/2407.18370
+Categories: agent-evaluation, uncertainty-calibration
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/jung_2024_trust-or-escalate.pdf`
+* **Published**: 2024-07-25 (arXiv); ICLR 2025 (oral)
+* **Authors**: Jaehun Jung 🇺🇸, Faeze Brahman 🇺🇸, Yejin Choi 🇺🇸
+* **Venue**: ICLR 2025
+* **DOI**: `10.48550/arXiv.2407.18370`
+
+#### Abstract
+
+We present a principled approach to provide LLM-based evaluation with a rigorous guarantee of human
+agreement. We first propose that a reliable evaluation method should not uncritically rely on model
+preferences for pairwise evaluation, but rather assess the confidence of judge models and
+selectively decide when to trust its judgement. We then show that under this selective evaluation
+framework, human agreement can be provably guaranteed--such that the model evaluation aligns with
+that of humans to a user-specified agreement level. As part of our framework, we also introduce
+Simulated Annotators, a novel confidence estimation method that significantly improves judge
+calibration and thus enables high coverage of evaluated instances. Finally, we propose Cascaded
+Selective Evaluation, where we use cheaper models as initial judges and escalate to stronger models
+only when necessary--again, while still providing a provable guarantee of human agreement.
+Experimental results show that Cascaded Selective Evaluation guarantees strong alignment with
+humans, far beyond what LLM judges could achieve without selective evaluation. For example, on a
+subset of Chatbot Arena where GPT-4 almost never achieves 80% human agreement, our method, even
+while employing substantially cost-effective models such as Mistral-7B, guarantees over 80% human
+agreement with almost 80% test coverage.
+
+#### Overview
+
+This paper attacks a foundational reliability gap in LLM-as-judge evaluation: even the strongest
+judges (GPT-4) suffer from systematic biases and over-confidence, yet practitioners routinely trust
+their pairwise verdicts without any provable agreement guarantee. The authors recast judge
+evaluation as a **selective classification** problem: given a user-specified risk tolerance alpha
+and an error level delta, the system either returns a verdict or abstains, with the formal guarantee
+that conditional on non-abstention, the LLM agrees with the human majority label with probability at
+least 1 - alpha (and this property itself holds with probability at least 1 - delta over the
+calibration draw).
+
+The framework has three pieces. First, **threshold calibration via fixed-sequence multiple
+hypothesis testing** on a small held-out set yields an exact upper-confidence bound on selective
+risk, tighter than Bonferroni or marginal conformal alternatives. Second, **Simulated Annotators**
+is a new confidence measure: instead of using predictive probability or verbalized confidence (both
+shown to be miscalibrated), the judge is conditioned on diverse few-shot annotator personas via
+in-context learning, and confidence is the agreement ratio across simulated annotators. Third,
+**Cascaded Selective Evaluation** chains weak-to-strong judges (Mistral-7B to GPT-3.5-turbo to
+GPT-4-turbo): each stage either commits a verdict (if its calibrated confidence threshold is met) or
+escalates to a stronger judge, with risk control proven across the full cascade. The headline
+empirical result is that the cascade meets target agreement levels GPT-4 alone cannot reach, while
+routing the majority of instances to substantially cheaper models.
+
+#### Architecture, Models and Methods
+
+The selective evaluator is a pair (f_LM, c_LM): given an input x = (query, generation_a1,
+generation_a2), it returns the judge label f_LM(x) when c_LM(x) &gt;= lambda, and the abstain symbol
+otherwise. The threshold lambda is chosen by **fixed-sequence testing** (Bauer 1991) on a
+calibration set D_cal of human-annotated preferences (sizes |D_cal| = 500 for TL;DR and ChatArena,
+392 for Auto-J). For each candidate lambda, the empirical risk R_hat(lambda) is the disagreement
+rate over evaluated calibration instances; an exact binomial upper-confidence bound R_hat_plus gives
+a (1 - delta)-valid risk estimate, and the search starts at lambda = 0.999 and decreases until
+R_hat_plus first exceeds alpha. Theorem 1 proves the resulting selector satisfies P(f_LM(x) =
+y_human | c_LM(x) &gt;= lambda_hat) &gt;= 1 - alpha with probability &gt;= 1 - delta.
+
+**Simulated Annotators** estimates c_LM by prompting the same judge model with K different
+in-context demonstrations (K few-shot annotators) and N simulation runs (typical K = N = 5, ablated
+down to N = 1). The &quot;Independent&quot; variant uses per-annotator labels y_i,j; the &quot;Majority&quot; variant
+uses majority labels and varies inputs. Confidence is the cross-simulation agreement ratio.
+
+The **cascade** uses Mistral-7B-instruct-v0.2, GPT-3.5-turbo, and GPT-4-turbo by default. Each judge
+gets its own calibrated threshold lambda_i; a stronger cascade ablation swaps in Mixtral-8x7B.
+Calibration uses delta = 0.1 throughout. Evaluations report Expected Calibration Error (ECE), AUROC,
+AUPRC for the confidence measure, plus Coverage and Guarantee Success Rate (fraction of 1000 random
+calibration/test splits where empirical agreement &gt;= 1 - alpha) for risk-control performance.
+
+#### Results
+
+* On TL;DR with target 1 - alpha = 0.9, **Cascaded Selective Evaluation achieves 90.8% guarantee
+  success rate** at 55.7% coverage, vs. 0.0% for No-Selection, 42.0% for Heuristic Selection, and
+  47.5%-79.0% for Point-Estimate Calibration variants.
+* The TL;DR cascade routes 28.3% of evaluations to Mistral-7B, 28.2% to GPT-3.5-turbo, and only
+  43.5% to GPT-4-turbo at the 1 - alpha = 0.9 level.
+* On ChatArena with target 1 - alpha = 0.85, the cascade achieves **91.0% guarantee success rate**
+  at 63.2% coverage, while GPT-4 alone (No-Selection) hits 0.0% guarantee success rate at 100%
+  coverage and only 77.8% empirical agreement.
+* For ChatArena, the cascade routes 23.7% to Mistral-7B, 58.8% to GPT-3.5-turbo, and just 17.5% to
+  GPT-4-turbo at the 0.85 target.
+* **Simulated Annotators (Independent)** reduces ECE by ~50% relative to Predictive Probability
+  (e.g., 0.095 vs. 0.217 on AlpacaEval with GPT-4-turbo) and improves AUROC by ~13% (0.723 vs.
+  0.642).
+* For weaker judges, Simulated Annotators is even more impactful: Mistral-7B-instruct ECE drops from
+  0.374 (Predictive Probability) to 0.075 on AlpacaEval; accuracy rises from 0.618 to 0.684.
+* **Cost reductions**: at the 1 - alpha = 0.8 ChatArena target, the stronger cascade uses 21.5% of
+  GPT-4-only API cost, and the weaker cascade uses 12.6%, while both clear 90% guarantee success
+  rate.
+* **Abstention is principled, not heuristic**: abstained ChatArena samples have lower human
+  inter-annotator agreement (0.815) than evaluated samples (0.902), but token overlap (0.623 vs.
+  0.592) and length ratio (0.242 vs. 0.245) differ negligibly.
+* Increasing N from 1 to 5 simulated annotators raises coverage from 60.9% to 63.2% on ChatArena
+  while maintaining ~90% guarantee success rate and a 40% cost saving over GPT-4 baseline.
+
+#### Innovations
+
+##### Provable Human-Agreement Guarantee for LLM Judges
+
+The paper is the first to deliver an **exact, conditional** risk bound for LLM-based pairwise
+evaluation: P(judge agrees with human | non-abstention) &gt;= 1 - alpha holds with probability &gt;= 1 -
+delta over the calibration sample. Prior conformal-style works for LLMs (Yadkori et al. 2024; Gui et
+al. 2024) only achieve marginal or approximate control. This reframes &quot;Can I trust this judge?&quot; as a
+calibrated, user-tunable knob rather than a heuristic.
+
+##### Simulated Annotators as an Unsupervised Confidence Measure
+
+By prompting the judge with multiple distinct annotator personas via in-context learning and
+measuring agreement across simulations, Simulated Annotators produces a confidence signal that beats
+predictive probability and verbalized confidence on both calibration (ECE) and failure prediction
+(AUROC/AUPRC), without any external supervision or calibration training data. Crucially, the gain is
+largest for weaker judges (Mistral-7B, GPT-3.5), which is exactly what the cascade needs.
+
+##### Cost-Optimal Judge Cascading with End-to-End Risk Control
+
+Cascaded Selective Evaluation generalizes selective evaluation across a sequence of judges and
+proves that risk control composes across the cascade when each lambda_i is calibrated separately.
+This is the first cascade-of-judges design with formal agreement guarantees, and it operationalizes
+the slogan &quot;trust or escalate&quot;: route easy instances to cheap models, escalate hard instances, and
+abstain when even GPT-4 is uncertain. The mechanism delivers &gt;75% cost savings vs. GPT-4-only
+evaluation at higher empirical agreement.
+
+#### Datasets
+
+* **TL;DR** (Stiennon et al., 2020) -- Reddit summarization preference dataset; multi-annotator
+  labels per instance; used with Simulated Annotators (Independent), |D_cal| = 500.
+* **AlpacaEval** -- pairwise preference dataset over Alpaca-style instruction-following responses;
+  used in calibration tables for confidence-measure evaluation.
+* **Chat(bot) Arena** (Zheng et al. 2023; Li et al. 2024a) -- 5.2k subsampled real-world
+  user-assistant comparison instances; single human annotation per input; used with Simulated
+  Annotators (Majority), |D_cal| = 500.
+* **Auto-J** (Li et al., 2023) -- 392-instance curated benchmark for meta-evaluation of LLM judges,
+  including ties; used with K = N = 3.
+
+All datasets are publicly available preference benchmarks; the cascade uses Mistral-7B-instruct,
+GPT-3.5-turbo, and GPT-4-turbo as judges (with Mixtral-8x7B in cascade ablations). No new dataset is
+introduced; ChatArena human IAA annotations were collected for the abstention-policy analysis.
+
+#### Main Ideas
+
+* **Selective evaluation with calibrated thresholds is the right primitive for trustworthy
+  LLM-as-judge**: any project that uses LLM judges (including agent-as-judge for multi-step trace
+  evaluation) should expose a user-specified risk tolerance and abstain rather than emit unreliable
+  verdicts.
+* **Confidence estimation for judges should be ensemble-based, not single-shot probability**:
+  Simulated Annotators is a drop-in technique that works on top of any judge LLM and is particularly
+  valuable for cheaper models -- which matters when GPT-4 cost is prohibitive.
+* **Judge cascades convert &quot;model choice&quot; into &quot;abstention policy&quot;**: instead of picking one
+  expensive judge, route by confidence and only escalate when needed. This is highly relevant for
+  hierarchical agent evaluation pipelines where most steps are easy and a small minority require
+  expensive scrutiny.
+* The **fixed-sequence testing** calibration recipe (Bauer 1991, Bates et al. 2021) gives tighter
+  bounds than Bonferroni or marginal conformal control and should be the default for selective LLM
+  applications with monotone risk.
+* **Empirical lesson**: Even at 80% human agreement on ChatArena -- a level GPT-4 alone never
+  reaches -- 75% of the work can be handled by Mistral-7B/GPT-3.5, dramatically changing the cost
+  envelope for large-scale benchmarking.
+
+#### Summary
+
+Jung, Brahman, and Choi address a central reliability gap in LLM-as-judge evaluation: when used at
+scale to grade pairs of model generations, even GPT-4-class judges have no provable bound on their
+agreement with humans, yet downstream leaderboards and benchmarks treat their verdicts as ground
+truth. The authors reframe evaluation as a **selective classification with risk control** problem,
+deriving a fixed-sequence multiple-testing procedure that calibrates a confidence threshold lambda
+on a small human-labeled calibration set and yields an exact binomial upper bound on selective
+disagreement risk.
+
+Methodologically, the paper contributes three components. **Selective evaluation** provides the
+formal P(agreement | non-abstention) &gt;= 1 - alpha guarantee; **Simulated Annotators** produces
+high-quality unsupervised confidence estimates by prompting the judge with diverse few-shot
+annotator personas and aggregating cross-simulation agreement; and **Cascaded Selective Evaluation**
+chains weak-to-strong judges so that easy instances are decided cheaply and only hard instances
+escalate, with the risk-control proof composing across cascade stages.
+
+Empirically, on TL;DR, ChatArena, and Auto-J, the cascade achieves 90%+ guarantee success rate at
+target agreement levels (0.85, 0.9) where GPT-4 alone has 0% guarantee success rate. Coverage
+remains in the 55-65% range, but the routing concentrates GPT-4 calls on the hardest 17-44% of
+instances, cutting evaluation cost by 78-87% versus a GPT-4-only baseline. Simulated Annotators
+roughly halves ECE for GPT-4 (0.217 to 0.095 on AlpacaEval) and improves both ECE and accuracy for
+Mistral-7B (ECE 0.374 to 0.075). The abstention policy correlates with human-perceived subjectivity
+(IAA 0.815 abstained vs. 0.902 evaluated) rather than shallow features.
+
+For this project on hierarchical agents and judges, the paper is highly load-bearing. It supplies
+(i) a formal abstention/escalation primitive directly applicable to agent-as-judge evaluation of
+multi-step trajectories, (ii) Simulated Annotators as a strong, cheap baseline confidence measure to
+compare any new uncertainty methods against, and (iii) a worked-out cost-vs-coverage trade-off
+showing that mixed cascades can deliver higher empirical reliability than monolithic GPT-4 judging
+at a fraction of the API cost. Adopting calibrated selective evaluation should be a default for any
+judge-driven metric we report.
+
+## Can Graph Learning Improve Planning in LLM-based Agents?
+ID: 10.48550_arXiv.2405.19119
+Year: 2024
+Authors: Xixi Wu, Yifei Shen, Caihua Shan, Kaitao Song, Siwei Wang, Bohang Zhang, Jiarui Feng, Hong Cheng, Wei Chen, Yun Xiong, Dongsheng Li
+Venue: NeurIPS 2024
+Venue type: conference
+DOI: 10.48550/arXiv.2405.19119
+URL: https://arxiv.org/abs/2405.19119
+Categories: hierarchical-planning, agent-evaluation
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/wu_2024_graph-learning-planning.pdf`
+* **Published**: 2024-05-29
+* **Authors**: Xixi Wu 🇨🇳, Yifei Shen 🇨🇳, Caihua Shan 🇨🇳, Kaitao Song 🇨🇳, Siwei Wang 🇨🇳, Bohang
+  Zhang 🇨🇳, Jiarui Feng 🇺🇸, Hong Cheng 🇭🇰, Wei Chen 🇨🇳, Yun Xiong 🇨🇳, Dongsheng Li 🇨🇳
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2405.19119`
+
+#### Abstract
+
+Task planning in language agents is emerging as an important research topic alongside the
+development of large language models (LLMs). It aims to break down complex user requests in natural
+language into solvable sub-tasks, thereby fulfilling the original requests. In this context, the
+sub-tasks can be naturally viewed as a graph, where the nodes represent the sub-tasks, and the edges
+denote the dependencies among them. Consequently, task planning is a decision-making problem that
+involves selecting a connected path or subgraph within the corresponding graph and invoking it. In
+this paper, we explore graph learning-based methods for task planning, a direction that is
+orthogonal to the prevalent focus on prompt design. Our interest in graph learning stems from a
+theoretical discovery: the biases of attention and auto-regressive loss impede LLMs&#x27; ability to
+effectively navigate decision-making on graphs, which is adeptly addressed by graph neural networks
+(GNNs). This theoretical insight led us to integrate GNNs with LLMs to enhance overall performance.
+Extensive experiments demonstrate that GNN-based methods surpass existing solutions even without
+training, and minimal training can further enhance their performance. The performance gain increases
+with a larger task graph size.
+
+#### Overview
+
+This paper reframes LLM agent task planning as a graph decision-making problem and asks whether
+graph neural networks (GNNs) can compensate for known weaknesses of transformer-based LLMs on graph
+reasoning. The authors model the planning problem as selecting either a connected path (single-step
+tasks) or a connected subgraph (multi-step tasks) over a task graph whose nodes are sub-tasks (e.g.,
+API calls, HuggingFace models) and whose edges encode resource dependencies. They derive two
+theoretical limitations of pure LLM planners and use these to motivate a hybrid LLM+GNN
+architecture.
+
+The first theoretical result shows that with one-layer single-head self-attention, LLMs cannot
+effectively retrieve neighbour information from a graph encoded in text. The second shows that the
+auto-regressive next-token loss creates spurious correlations between user queries and node names
+that have no causal relationship to dependency structure. Both pathologies are exactly the kind of
+inductive bias that message-passing GNNs handle well. Building on this observation, the authors
+propose two integration recipes — a training-free SGC-based path selector and a training-required
+GraphSAGE-based subgraph selector — and validate them on four task-planning datasets (HuggingFace,
+Multimedia, Daily Life, TMDB) plus the UltraTool benchmark. Gains are largest on big graphs and when
+the LLM backbone is weaker.
+
+#### Architecture, Models and Methods
+
+The paper formalises planning as graph decision-making: given a user query and a task graph G = (V,
+E) with node text descriptions, output a path (single-step) or connected subgraph (multi-step) that
+resolves the query. Two integration designs are proposed.
+
+**Training-free design (single-step, path selection).** Each node description and the user query are
+independently embedded with a frozen sentence encoder (e5-mistral-7b-instruct or e5-base 335M). A
+1-hop SGC (Simple Graph Convolution) propagation step h_v = sum_{u in N(v)} (1/sqrt(d_u d_v)) x_u
+aggregates neighbour text features without parameters. The selected path consists of the top-k nodes
+ranked by cosine similarity between query embedding and the SGC-aggregated node embeddings, then
+ordered topologically. No gradient updates are required.
+
+**Training-required design (multi-step, subgraph selection).** A GraphSAGE encoder produces node
+embeddings; a Bayesian Personalised Ranking (BPR) loss trains the GNN to score positive (relevant)
+nodes above negatives. The training set is bootstrapped from LLM annotations on a few hundred
+queries. Inference selects the top-k nodes and reconstructs the induced subgraph from G. Training
+runs in 3-15 minutes on a single GPU versus 10-20 hours for LLM fine-tuning baselines.
+
+LLM backbones evaluated include GPT-4, GPT-4-turbo, GPT-3.5-turbo, Mistral-7B, CodeLlama-13B, and
+Baichuan-13B. Baselines are direct prompting, chain-of-thought (CoT), HuggingGPT (graph-search
+prompt), and GraphSearch variants. Metrics: node F1, edge F1, accuracy, hallucination rate, format
+correctness, and a &quot;longest common subsequence&quot; precision.
+
+#### Results
+
+* On the HuggingFace dataset, GraphSAGE+GPT-4 reaches **node F1 0.7218** vs **0.5147** for direct
+  GPT-4, an absolute gain of **+20.7 F1**.
+* Training-free SGC matches or beats LLM-only chain-of-thought on Multimedia and Daily Life across
+  five LLM backbones, with no parameter updates.
+* On UltraTool&#x27;s plan-correctness metric, hybrid SGC improves GPT-4-turbo by **+9.05%** absolute
+  accuracy and improves the weaker GPT-3.5-turbo backbone by even more.
+* Edge F1 (dependency correctness) gains scale with graph size: smaller graphs (~30 nodes) see ~3 F1
+  gain, while large graphs (TMDB, ~158 nodes) see **+15+ F1**.
+* GNN training takes **3-15 minutes** on a single GPU versus **10-20 hours** to fine-tune the LLM
+  baseline on the same task — a roughly **80x** training-cost reduction.
+* Hallucination rate (selecting non-existent nodes) drops from **24.3%** (GPT-3.5 direct) to under
+  **1%** when the GNN restricts candidates to the actual graph.
+* Open-source backbones (Mistral-7B, CodeLlama-13B) gain more from GNN augmentation than GPT-4 does
+  in absolute terms, narrowing the gap between open and proprietary models on planning tasks.
+* Ablations confirm both contributions matter: removing the GNN loses neighbour-aware retrieval;
+  removing the LLM loses query understanding; both together dominate either alone.
+
+#### Innovations
+
+##### Theoretical Limits of LLM Planners on Graphs
+
+The paper proves two negative results about pure LLM graph reasoning. Theorem 1 shows that a
+one-layer single-head self-attention block cannot implement the neighbour-retrieval operation
+required to follow dependencies in a textually encoded graph. Theorem 2 shows that the
+auto-regressive next-token loss induces spurious correlations between query tokens and node-name
+tokens that ignore graph structure. These results give a principled reason — beyond empirical
+prompt-engineering anecdotes — to introduce a graph-native inductive bias.
+
+##### Training-Free SGC Plug-In for Path Planning
+
+A 1-hop SGC propagation over frozen sentence-encoder embeddings is dropped between the user query
+and the LLM&#x27;s tool selection, requiring zero training and adding millisecond-scale latency. This
+design is the first reported parameter-free GNN augmentation for LLM tool-use that consistently
+beats prompting baselines.
+
+##### GraphSAGE + BPR for Subgraph Selection
+
+For multi-step planning, a small GraphSAGE encoder is trained with a Bayesian Personalised Ranking
+loss on LLM-bootstrapped supervision. Training cost (3-15 minutes) is dominated by GPU warm-up
+rather than optimisation, making the approach practical for new tool catalogues.
+
+##### Empirical Scaling Law With Graph Size
+
+The authors document a clean monotonic relationship between task-graph size and the accuracy gap
+between GNN-augmented and LLM-only planners. Larger graphs (more candidate tools, deeper
+dependencies) widen the gap, predicting that GNN augmentation will become more valuable as agent
+tool catalogues grow.
+
+#### Datasets
+
+The paper evaluates on five datasets covering both single-step (path) and multi-step (subgraph)
+planning:
+
+* **HuggingFace** (TaskBench): 12,217 user queries, 158 HuggingFace models as nodes, dependency
+  graph derived from input/output type compatibility. Multi-step planning.
+* **Multimedia** (TaskBench): 7,866 queries, 40 multimedia API tools.
+* **Daily Life** (TaskBench): 5,265 queries, 40 daily-life APIs (calendar, messaging, etc.).
+* **TMDB** (RestBench): movie-database REST API graph used for path planning, ~158 endpoints.
+* **UltraTool**: 5,824 multi-step user queries with ground-truth tool plans, used to evaluate plan
+  correctness.
+
+All five datasets are publicly released by their original authors. The paper&#x27;s code, evaluation
+scripts, and node embeddings are released at the companion repository linked in the paper.
+
+#### Main Ideas
+
+* Modelling LLM agent planning as graph decision-making (path or subgraph selection) makes the
+  reasons for failure explicit and exposes a clean place to inject graph inductive bias — relevant
+  to any project that hierarchically decomposes work into sub-tasks with dependencies.
+* GNN augmentation is essentially free: a parameter-free 1-hop SGC step over sentence embeddings
+  already beats most prompting baselines, and a small trained GraphSAGE adds another large jump for
+  3-15 minutes of GPU time.
+* The expected gain from graph augmentation scales with the size of the task graph; small flat
+  graphs benefit little, but realistic agent tool catalogues with 100+ nodes show double-digit F1
+  improvements.
+* The biggest absolute wins go to weaker LLMs — open-source 7B/13B backbones gain more than GPT-4
+  does, suggesting GNN+LLM is a way to close the proprietary-vs-open gap on agent benchmarks.
+* Restricting the candidate set to actual graph nodes (the natural side-effect of GNN scoring) drops
+  the hallucination rate from over 20% to under 1%, providing a strong &quot;judge&quot; or guardrail-style
+  signal for hierarchical agents.
+
+#### Summary
+
+This paper studies LLM agent planning through the lens of graph learning. The authors observe that
+breaking a user request into sub-tasks naturally produces a directed graph whose nodes are tools or
+sub-tasks and whose edges are resource dependencies, and they prove two theoretical limitations of
+pure LLM planners on this graph: a single-head attention layer cannot retrieve neighbour information
+from a textually encoded graph, and auto-regressive next-token loss induces spurious correlations
+between query tokens and node names. These results motivate adding a graph-native inductive bias.
+
+Methodologically, the paper introduces two integration recipes. A training-free design uses a 1-hop
+SGC propagation over frozen sentence embeddings to score candidate path nodes by neighbour-aware
+cosine similarity to the user query — no parameters, no fine-tuning. A training-required design
+trains a small GraphSAGE encoder with a Bayesian Personalised Ranking loss on LLM-bootstrapped
+labels, in 3-15 minutes on a single GPU, then selects a connected subgraph for multi-step planning.
+Both designs are evaluated on four TaskBench/RestBench datasets and on UltraTool across six LLM
+backbones from GPT-4 to Mistral-7B.
+
+The headline findings are that GNN augmentation lifts node F1 by up to ~20 absolute points on
+HuggingFace, improves UltraTool plan accuracy by 9.05% on GPT-4-turbo, drops the hallucination rate
+from over 20% to under 1%, and yields larger gains on bigger graphs and weaker LLMs. Training cost
+is roughly 80x lower than fine-tuning the LLM baseline, and the open-source-vs-proprietary gap
+narrows substantially after augmentation.
+
+For our hierarchical-agents project this work is directly relevant. It provides a theoretical
+justification and a cheap, well-tested mechanism for adding a structural verifier or &quot;judge&quot; on top
+of an LLM planner, and it documents a scaling pattern (gain grows with graph size) that argues for
+investing in graph-aware mechanisms as soon as the agent&#x27;s tool or sub-task catalogue is
+non-trivial. The dataset suite (TaskBench + UltraTool) is a strong candidate for our own
+hierarchical-planning evaluations, and the SGC plug-in is a useful zero-cost baseline to include in
+any LLM-judge or LLM-planner ablation we run.
+
+## Reinforcing Language Agents via Policy Optimization with Action Decomposition
+ID: 10.48550_arXiv.2405.15821
+Year: 2024
+Authors: Muning Wen, Ziyu Wan, Weinan Zhang, Jun Wang, Ying Wen
+Venue: NeurIPS 2024
+Venue type: conference
+DOI: 10.48550/arXiv.2405.15821
+URL: https://arxiv.org/abs/2405.15821
+Categories: hierarchical-planning, granularity-conditioning
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/wen_2024_action-decomposition.pdf`
+* **Published**: 2024
+* **Authors**: Muning Wen, Ziyu Wan, Weinan Zhang, Jun Wang, Ying Wen
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2405.15821`
+* **Code**: &lt;https://github.com/morning9393/ADRL&gt;
+
+#### Abstract
+
+Language models as intelligent agents push the boundaries of sequential decision-making agents but
+struggle with limited knowledge of environmental dynamics and exponentially huge action space.
+Recent efforts like GLAM and TWOSOME manually constrain the action space to a restricted subset and
+employ reinforcement learning to align agents&#x27; knowledge with specific environments. However, they
+overlook fine-grained credit assignments for intra-action tokens, which is essential for efficient
+language agent optimization, and rely on human&#x27;s prior knowledge to restrict action space. This
+paper proposes decomposing language agent optimization from the action level to the token level,
+offering finer supervision for each intra-action token and manageable optimization complexity in
+environments with unrestricted action spaces. Beginning with the simplification of flattening all
+actions, we theoretically explore the discrepancies between action-level optimization and this naive
+token-level optimization. We then derive the Bellman backup with Action Decomposition (BAD) to
+integrate credit assignments for both intra-action and inter-action tokens, effectively eliminating
+the discrepancies. Implementing BAD within the PPO algorithm, we introduce Policy Optimization with
+Action Decomposition (POAD). POAD benefits from a finer-grained credit assignment process and lower
+optimization complexity, leading to enhanced learning efficiency and generalization abilities in
+aligning language agents with interactive environments. We validate POAD across diverse testbeds,
+with results affirming the advantages of our approach and the correctness of our theoretical
+analysis.
+
+#### Overview
+
+This paper tackles a core obstacle in fine-tuning LLM-based language agents with reinforcement
+learning: the credit assignment uncertainty that arises when a multi-token textual action is treated
+as a single atomic unit. Action-level methods such as GLAM and TWOSOME multiply per-token
+conditional probabilities into one action probability and update that joint quantity with PPO, which
+hides which tokens within the action actually drove the reward signal. The authors argue that this
+opacity, combined with action-space sizes that grow as |V|^|a|, forces practitioners to hand-prune
+the feasible action set and still leaves training inefficient on long actions.
+
+The natural alternative is naive token-level optimization (NTPO), which embeds the auto-regressive
+token generation process into the MDP and treats every token as a micro-action. The authors prove
+formally that this transformation is *not* equivalent to the original action-level MDP.
+Specifically, splitting the discount factor into intra-action gamma_w and inter-action gamma_a, the
+discrepancy between the two value functions vanishes only when gamma_w = 1 and grows monotonically
+with action length. Intuitively, NTPO assumes &quot;later tokens in a sentence convey more meaning than
+earlier ones,&quot; which is unrealistic for linguistic actions.
+
+The contribution is the Bellman backup with Action Decomposition (BAD), a principled token-level
+backup that sets the intra-action discount to 1 while keeping the inter-action discount strict, and
+the resulting PPO instantiation called POAD. The authors show theoretically that BAD recovers the
+optimal action-level Q and V functions, while empirically POAD trains faster and reaches higher
+returns than TWOSOME and NTPO across Overcooked, VirtualHome, and a newly introduced DataSciCoding
+benchmark with unrestricted action spaces.
+
+#### Architecture, Models and Methods
+
+The paper formalises language-agent RL as a language-augmented POMDP M = (V, S, O, A, T, R, gamma)
+in which actions are token sequences a_t = (w^1_t, ..., w^|a_t|_t). Standard action-level methods
+update Q_pi(o_t, a_t) and V_pi(o_t) via the chain rule pi(a|o) = prod_j pi(w^j|o, w^{1:j-1}), but
+the action space size is |V|^|a|. The authors split the discount factor into gamma_w (intra-action)
+and gamma_a (inter-action) and derive a closed-form expression for the discrepancy between
+action-level Bellman updates (Eqs. 4-5) and naive token-level Bellman updates (Eqs. 9-10). The
+discrepancy is proportional to (1 - gamma_w^{|a_t|-j}) and goes to zero only as gamma_w approaches
+1\.
+
+BAD (Eqs. 13-14) sets the intra-action transition to a deterministic max over the next token with no
+discount, applies the reward and gamma_a only at the action boundary, and is proven equivalent to
+the action-level optimum (Appendix B). This reduces RL complexity from O(|V|^|a|) to O(|a| * |V|),
+making unrestricted action spaces tractable.
+
+POAD plugs BAD into PPO. The critic is trained with a token-level Bellman error split into
+inter-action and intra-action terms (Eq. 15). The actor uses the clipping PPO objective with
+per-token ratios ratio^j_t = pi_phi(w^j_t | o_t, w^{1:j-1}_t) / pi_phi_old(...) and per-token
+advantages estimated with GAE (Eq. 16). Backbones are LLaMA2-7B for Overcooked and VirtualHome and
+CodeLLaMA-7B for DataSciCoding, all fine-tuned with LoRA on a single Nvidia A100. Hyperparameters
+include actor lr 5e-7 to 1e-6, critic lr 1e-5 to 5e-5, batch size 128, PPO clip 0.2, KL threshold
+0.02, gamma_a = 0.95-0.99, with 5 PPO epochs for Overcooked/VirtualHome and 1 for DataSciCoding. An
+sBAD extension supports entropy-regularised SAC-style algorithms (Appendix B.3).
+
+#### Results
+
+* On Overcooked Tomato Salad and Tomato-lettuce Salad, POAD matches or exceeds TWOSOME&#x27;s final
+  episodic return (~1.0) while converging in roughly half the environment steps and with smaller
+  variance across 3 seeds.
+* On VirtualHome Food Preparation and Entertainment (sparse +1 terminal reward), POAD reaches ~0.8
+  episodic return well before TWOSOME and NTPO, with NTPO converging to a clearly lower plateau.
+* On 8 unseen Food Preparation generalisation tasks (cheese, hamburger, apple pie, pizza, washing
+  plate, laundry, etc.), POAD wins 7 of 8: Cheese **0.7553**, Hamburger **0.7602**, Apple Pie
+  **0.7650**, Pizza **0.7625**, Laundry **0.7014**, vs LLaMA2-7B base 0.13-0.17.
+* On DataSciCoding (unrestricted action space, up to 128 tokens per action), POAD-Best beats
+  CAAFE+GPT-4 on every dataset: pharyngitis **0.7282 vs 0.7078**, spaceship-titanic **0.8628 vs
+  0.8405**, airlines **0.664 vs 0.6203**, balance-scale **0.9651 vs 0.882**, breast-w **0.9981 vs
+  0.9809**, health-insurance **0.5939 vs 0.5748**.
+* The performance gap between POAD and NTPO grows with action length: small on Overcooked (~5-10
+  tokens) and much larger on DataSciCoding (up to 128 tokens), consistent with the theoretical
+  prediction that the NTPO discrepancy scales with |a_t|.
+* Ablations on gamma_w in {0.95, 0.9, 0.8, 0.5} show monotonically widening gaps to POAD as gamma_w
+  drops, empirically confirming Insight (i) of Section 4.2.
+* Setting gamma_a = 1.0 collapses both TWOSOME and POAD performance, confirming gamma_a &lt; 1.0 is
+  necessary and that simply unifying gamma_a = gamma_w cannot resolve the discrepancy.
+* Zero-shot evaluation on Language Model Evaluation Harness shows no degradation of base abilities
+  after POAD fine-tuning: ARC_C 0.45 vs 0.44 base, HellaSwag 0.59 vs 0.57, PIQA 0.78 = 0.78, MMLU
+  0.41 = 0.41.
+
+#### Innovations
+
+##### Bellman Backup with Action Decomposition (BAD)
+
+A token-level Bellman backup that is provably consistent with the original action-level MDP. By
+separating gamma into gamma_a (inter-action) and gamma_w (intra-action) and pinning gamma_w = 1, the
+authors recover the action-level optimum while still propagating per-token credit. Appendices A and
+B provide the full derivation of the discrepancy and the proof of optimality, and Appendix B.3
+extends the result to soft Q-functions (sBAD) for SAC-style entropy-regularised RL.
+
+##### POAD: PPO with Per-Token Credit Assignment
+
+POAD is the first PPO instantiation that performs both a per-token actor update with clipped ratios
+and a per-token critic update split into intra-action and inter-action losses (Eq. 15-16). The
+complexity of the RL problem drops from O(|V|^|a|) to O(|a| * |V|), making language agents trainable
+in environments with unrestricted action spaces (up to 128 tokens per action) without
+hand-engineered action masks.
+
+##### DataSciCoding: An Unrestricted-Action-Space Benchmark
+
+The authors construct a new sequential decision-making benchmark covering 6 tabular datasets (3
+Kaggle, 3 OpenML) where the agent emits free-form scikit-learn classifier code, executes it, and
+receives a ROC-AUC reward (or -1 on failure). This is the first benchmark where TWOSOME-style
+action-level baselines are simply inapplicable, exposing where token-level RL is genuinely
+necessary.
+
+##### Empirical Verification of the Length-Discrepancy Law
+
+By varying gamma_w and showing the gap to POAD grows monotonically as gamma_w drops, the paper turns
+the theoretical insight &quot;discrepancy increases with |a_t|&quot; into a measurable, reproducible curve.
+This provides a rare instance where an RL theory prediction is closely tracked by experiments.
+
+#### Datasets
+
+* **Overcooked** (from Tan et al. 2024 / TWOSOME): 7x7 grid kitchen, 2 tasks (Tomato Salad,
+  Tomato-lettuce Salad), ~10 macro-actions per state of 5-10 tokens each. Public.
+* **VirtualHome** (from Tan et al. 2024 / TWOSOME): simulated household, 2 tasks (Food Preparation,
+  Entertainment) plus 8 generalisation variants substituting target objects/appliances. Public.
+* **DataSciCoding** (introduced in this paper): 3 Kaggle datasets - Pharyngitis (19 features, 512
+  samples, 2 classes), Health Insurance (13/2000/2), Spaceship Titanic (13/2000/2) - and 3 OpenML
+  datasets - Airlines (7/2000/2), Balance Scale (4/125/3), Breast-w (9/69/2). Pruning matches CAAFE
+  (Hollmann et al. 2023). Released with the code at &lt;https://github.com/morning9393/ADRL&gt;.
+* **NLP evaluation suite** (Language Model Evaluation Harness, Gao et al. 2021): ARC_Challenge,
+  HellaSwag, PIQA, MMLU. Used only for measuring whether POAD damages general-purpose LM abilities.
+* No human studies; no proprietary data.
+
+#### Main Ideas
+
+* The right granularity for credit assignment in LLM-agent RL is the token, not the textual action,
+  but it must be done with BAD&#x27;s intra-action gamma_w = 1 to stay consistent with the original MDP.
+  This is the single most useful idea for our project&#x27;s hierarchical-conditioning agenda: it gives a
+  formal handle on what &quot;fine-grained&quot; actually means.
+* The discrepancy between action-level and naive token-level optimisation grows with action length.
+  Any task with long actions (e.g., subtask-level plans, or atomic-execution code blocks) will
+  silently underperform under TWOSOME-style updates, which is directly relevant to our scope-aware
+  vs scope-mismatched conditions in t0009 / t0014.
+* Token-level credit assignment, when done correctly, also yields better open-vocabulary
+  generalisation (7/8 unseen Food Preparation variants), suggesting that finer-grained alignment
+  signals do not memorise but rather generalise.
+* The complexity reduction from O(|V|^|a|) to O(|a| * |V|) is what makes RL on free-form action
+  spaces tractable; this is a precondition for any future work in our project that uses RL on agent
+  traces with arbitrary text outputs.
+* sBAD extends the approach to entropy-regularised SAC-style algorithms, which keeps the door open
+  for off-policy variants if we adopt this method downstream.
+
+#### Summary
+
+Wen et al. confront a structural tension in RL fine-tuning of LLM agents: action-level methods
+(GLAM, TWOSOME) must hand-prune the action space and fail to assign credit to specific tokens inside
+an action, while naive token-level methods that embed token generation into the MDP implicitly
+assume that later tokens are more important than earlier ones. The paper makes this informal
+complaint formal by deriving a closed-form expression for the discrepancy between action-level and
+naive token-level Bellman updates, splitting the discount factor into gamma_a and gamma_w and
+showing the discrepancy is proportional to (1 - gamma_w^{|a_t|-j}).
+
+The fix is the Bellman backup with Action Decomposition (BAD): set gamma_w = 1 and only apply
+gamma_a at the action boundary, which the authors prove recovers the action-level optimum exactly
+while still giving per-token credit. They package BAD inside PPO as POAD, with a critic loss that
+explicitly splits intra-action and inter-action errors and an actor loss that uses per-token clipped
+ratios and GAE-estimated per-token advantages. The complexity drops from O(|V|^|a|) to O(|a| * |V|).
+
+Empirically, POAD wins on three families of tasks. On Overcooked and VirtualHome it converges faster
+and more stably than TWOSOME and beats NTPO clearly. On 8 unseen Food Preparation variants it wins 7
+of 8 against TWOSOME, NTPO, and the LLaMA2-7B base model. Most importantly, on the new DataSciCoding
+benchmark, where TWOSOME is inapplicable because the action space is unrestricted, POAD-Best with
+CodeLLaMA-7B beats CAAFE with GPT-4 on every one of six datasets while training in under three hours
+on a single A100. Ablations on gamma_w track the theoretical prediction that the NTPO-vs-POAD gap
+widens as gamma_w drops, and the LLM Evaluation Harness shows no loss of base language ability.
+
+For our project, this paper is directly relevant in three ways. First, it gives the most rigorous
+existing answer to &quot;what is the right granularity for assigning credit inside an LLM agent&#x27;s
+action,&quot; which is the formal counterpart of the v2 hierarchical-annotation result from t0009 and
+t0014. Second, the length-dependence of the action-level/token-level discrepancy predicts that any
+scope-aware vs scope-mismatched ABC condition that varies action length will see widening
+performance gaps under TWOSOME-style updates - a useful theoretical anchor for our Phase 2 ABC
+analysis. Third, POAD&#x27;s unrestricted-action-space results on DataSciCoding suggest that, if we ever
+move beyond evaluation into RL fine-tuning of judges or agents, BAD/POAD is the principled starting
+point. The main caveat is that POAD requires a quantitative reward function, which is not available
+in our annotation-only pipeline; this aligns with the authors&#x27; own listed limitation.
+
+## ArCHer: Training Language Model Agents via Hierarchical Multi-Turn RL
+ID: 10.48550_arXiv.2402.19446
+Year: 2024
+Authors: Yifei Zhou, Andrea Zanette, Jiayi Pan, Sergey Levine, Aviral Kumar
+Venue: ICML 2024
+Venue type: conference
+DOI: 10.48550/arXiv.2402.19446
+URL: https://arxiv.org/abs/2402.19446
+Categories: hierarchical-planning, agent-evaluation
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/zhou_2024_archer-hierarchical-rl.pdf`
+* **Published**: 2024
+* **Authors**: Yifei Zhou 🇺🇸, Andrea Zanette 🇺🇸, Jiayi Pan 🇺🇸, Sergey Levine 🇺🇸, Aviral Kumar 🇺🇸
+* **Venue**: ICML 2024
+* **DOI**: `10.48550/arXiv.2402.19446`
+
+#### Abstract
+
+A broad use case of large language models (LLMs) is in goal-directed decision-making tasks (or
+&quot;agent&quot; tasks), where an LLM needs to not just generate completions for a given prompt, but rather
+make intelligent decisions over a multi-turn interaction to accomplish a task (e.g., when
+interacting with the web, using tools, or providing customer support). Reinforcement learning (RL)
+provides a general paradigm to address such agent tasks, but current RL methods for LLMs largely
+focus on optimizing single-turn rewards. By construction, most single-turn RL methods cannot endow
+LLMs with the ability to intelligently seek information over multiple turns, perform credit
+assignment, or reason about their past actions -- all of which are critical in agent tasks. This
+raises the question: how can we design effective and efficient multi-turn RL algorithms for LLMs? In
+this paper, we develop a framework for building multi-turn RL algorithms for fine-tuning LLMs, that
+preserves the flexibility of existing single-turn RL methods for LLMs (e.g., proximal policy
+optimization), while accommodating multiple turns, long horizons, and delayed rewards effectively.
+To do this, our framework adopts a hierarchical RL approach and runs two RL algorithms in parallel:
+a high-level off-policy value-based RL algorithm to aggregate reward over utterances, and a
+low-level RL algorithm that utilizes this high-level value function to train a token policy within
+each utterance or turn. Our hierarchical framework, Actor-Critic Framework with a Hierarchical
+Structure (ArCHer), can also give rise to other RL methods. Empirically, we find that ArCHer
+significantly improves efficiency and performance on agent tasks, attaining a sample efficiency of
+about 100x over existing methods, while also improving with larger model capacity (upto the 7
+billion scale that we tested on).
+
+#### Overview
+
+ArCHer addresses a fundamental mismatch between how RL is currently applied to LLMs and how LLMs are
+deployed as agents. Mainstream single-turn RL approaches such as PPO and RLHF treat each generation
+as an isolated bandit problem and optimize a per-prompt reward signal. This is a poor fit for agent
+settings, where decisions span many utterances, information must be acquired incrementally, and the
+only meaningful reward often arrives at the end of an episode. The authors argue that existing
+remedies — flattening multi-turn trajectories into one long sequence and then running token-level
+PPO, or training entirely at the utterance level with a supervised filtering scheme — either suffer
+from extreme variance and poor credit assignment over long horizons or sacrifice the per-token
+policy expressivity that makes LLM RL effective in the first place.
+
+The paper&#x27;s central contribution is a hierarchical actor-critic framework that runs two RL
+algorithms in parallel at different temporal scales. A high-level off-policy critic operates over
+whole utterances and is trained with temporal-difference learning on a replay buffer; a low-level
+on-policy actor operates over tokens within each utterance and is trained with policy gradient using
+the high-level critic&#x27;s output as the advantage signal. This decoupling allows ArCHer to combine the
+sample efficiency of value-based methods with the stability and expressiveness of token-level policy
+gradients. Empirically the framework reaches strong agent-task performance with roughly two orders
+of magnitude fewer environment interactions than online PPO baselines and continues to improve up to
+a 7B-parameter base policy.
+
+#### Architecture, Models and Methods
+
+ArCHer is structured as a two-level actor-critic. At the **utterance (high) level**, the framework
+maintains an action-value Q(s, a) and a state-value V(s) where a state is the dialogue prefix and an
+action is a complete utterance generated by the LLM. The critic uses double Q-learning with two
+separate {Q1, V1} and {Q2, V2} heads sharing a RoBERTa-base encoder backbone (taking the [CLS] token
+followed by a linear layer), updated against delayed target networks via Polyak averaging to
+stabilize bootstrapped TD targets. At the **token (low) level**, ArCHer trains the LLM policy with
+REINFORCE-style policy gradient where the advantage for every token in an utterance is A = Q(s, a) -
+V(s), yielding a per-utterance scalar advantage that is broadcast over the tokens of that utterance.
+An optional token-level value baseline trained by supervised regression onto Monte Carlo returns is
+included to reduce variance on longer utterances.
+
+The core base policy is GPT-2 (about 100M parameters). A scaling experiment uses Mistral-7B with
+LoRA fine-tuning. Critics are kept much smaller than the actors. Training proceeds in alternating
+phases: collect rollouts with the current LLM policy, push transitions to a replay buffer, run TD
+updates on the high-level Q/V networks against target networks, and run on-policy token-level
+gradient updates on the actor with the freshly-updated advantages. The discount factor at the
+utterance level is set to 1.0 in the main experiments. The replay buffer size, target-network update
+rate, and number of critic updates per actor update are key hyperparameters analyzed in ablations.
+All baselines (online PPO, online filtered behavior cloning, CHAI utterance-level Q-learning) start
+from the same supervised fine-tuning checkpoint trained on sub-optimal demonstration data so that
+comparisons isolate the contribution of multi-turn RL itself rather than initialization.
+
+#### Results
+
+* On Twenty Questions, ArCHer reaches a return of about **-17** with **fewer than 1,000**
+  environment interactions, while online token-level PPO requires more than **100,000** interactions
+  to reach the same level — roughly a **100x sample-efficiency boost**.
+* On WebShop, an ArCHer-trained GPT-2 (~100M params) **outperforms GPT-3.5** equipped with several
+  prompting strategies on the same task, despite being orders of magnitude smaller.
+* ArCHer **outperforms baselines on four out of five tasks** that require hidden-information search
+  (Twenty Questions, Twenty Questions 10-word, Guess My City, WebShop), and matches the best prior
+  method on the simpler Detective Game.
+* Filtered behavior cloning (online filtered BC) **converges quickly but plateaus suboptimally**,
+  while utterance-level CHAI improves rapidly early then converges below ArCHer&#x27;s final performance.
+* Scaling the actor from **GPT-2 (100M)** to **Mistral-7B** continues to improve final performance,
+  demonstrating that the hierarchical framework benefits from larger backbones rather than
+  saturating.
+* Ablations show that **larger replay buffers improve stability** but gains plateau past a
+  threshold, and that the two-level decomposition is **more robust than single-level token PPO** on
+  long horizons (10+ turns).
+* On harder Twenty Questions splits the **gap to PPO widens with horizon length**, confirming that
+  hierarchical credit assignment is the load-bearing component, not just additional optimization
+  signal.
+
+#### Innovations
+
+##### Two-Timescale Hierarchical Actor-Critic for LLMs
+
+ArCHer decouples credit assignment over utterances from policy optimization over tokens. The
+high-level off-policy TD critic learns from a replay buffer at the utterance scale; the low-level
+on-policy actor learns from fresh rollouts at the token scale using the high-level critic&#x27;s
+advantage. Prior LLM-RL work either flattened both scales into one (token-level PPO) or collapsed
+both into one (utterance-only filtered BC or Q-learning). The hierarchy is the paper&#x27;s key
+algorithmic move and is what enables both the 100x sample efficiency and the stability over long
+horizons.
+
+##### Off-Policy Value Learning at the Utterance Level
+
+By framing each utterance as a single composite action, ArCHer can apply standard off-policy
+value-based RL machinery (replay buffers, double Q-learning, target networks, Polyak averaging) that
+has been hard to apply at the token level because of the combinatorial action space. This gives
+ArCHer the data-reuse benefits of off-policy RL while still allowing a token-level policy gradient
+that respects the LLM&#x27;s autoregressive structure.
+
+##### Algorithm-Family Generalization
+
+The authors present ArCHer as a framework rather than a single algorithm: any high-level value
+algorithm (TD, IQL, CQL) can be paired with any low-level token policy algorithm (REINFORCE, PPO,
+AWR). This makes the contribution a compositional recipe for multi-turn LLM RL rather than a point
+solution.
+
+##### Empirical 100x Sample-Efficiency Gain on LLM Agents
+
+To the authors&#x27; knowledge this is the first paper to demonstrate a roughly two-orders-of-magnitude
+sample-efficiency gain over online PPO on multi-turn LLM agent tasks while also matching or
+exceeding the asymptotic performance of utterance-level baselines.
+
+#### Datasets
+
+ArCHer is evaluated on five interactive multi-turn agent tasks rather than static datasets:
+
+* **Detective Game** — interactive text fiction environment used as a relatively easy multi-turn
+  benchmark; sparse end-of-episode reward.
+* **Twenty Questions (157-word vocabulary)** — guess a hidden word in 20 yes/no turns; primary
+  hidden-information-seeking task.
+* **Twenty Questions (10-word vocabulary)** — easier subset of the above used for ablations.
+* **Guess My City** — guess one of 100 cities from free-form responses; longer and harder than
+  Twenty Questions.
+* **WebShop** — web-shopping environment with dense [0, 1] similarity rewards comparing the selected
+  product against a target description; standard agent benchmark from Yao et al. 2022.
+
+All tasks are publicly available through their original benchmark releases. No human-subject
+datasets are involved. The supervised fine-tuning data used to initialize all methods is sub-optimal
+demonstration data collected from each environment.
+
+#### Main Ideas
+
+* For multi-turn LLM agents, **token-level PPO is sample-inefficient and brittle** at long horizons
+  because all credit assignment has to flow through one giant flattened sequence; splitting the
+  problem into utterance-level value learning and token-level policy gradient is dramatically
+  better.
+* **Off-policy critics over utterances** are the right way to recycle expensive LLM rollouts in
+  agent settings, and pair naturally with on-policy token-level actors. This is directly relevant
+  for any project that wants to do RL fine-tuning on LLM agents under a tight rollout budget.
+* The hierarchical decomposition **scales with model size** — going from 100M to 7B parameters keeps
+  improving final performance, suggesting hierarchical RL is not a small-model trick.
+* **Granularity of the action space matters**: treating an utterance as one decision unit at the
+  high level mirrors the global / subtask / atomic hierarchy used in this project&#x27;s benchmark, and
+  is a concrete piece of evidence that explicit granularity boundaries help credit assignment.
+
+#### Summary
+
+This paper develops ArCHer (Actor-Critic Framework with a Hierarchical Structure), a framework for
+multi-turn reinforcement learning of language model agents. The motivation is that real LLM agent
+tasks — web navigation, tool use, customer support, dialogue — involve long horizons, hidden
+information that has to be acquired across turns, and rewards that arrive only at the end of an
+episode, but the dominant LLM-RL recipes (PPO over flattened sequences, RLHF-style single-turn
+optimization) handle none of these well. The authors argue that a hierarchical framing is a natural
+fix that has been missing from the LLM-RL literature.
+
+Methodologically, ArCHer runs two RL algorithms simultaneously at different time-scales. A
+high-level off-policy critic, trained with temporal-difference learning, replay buffers, and
+double-Q targets, learns Q- and V-functions over utterance-level state-action pairs. A low-level
+on-policy token policy gradient (REINFORCE with optional baseline) updates the LLM itself, using the
+high-level critic to produce a per-utterance advantage that is broadcast over the utterance&#x27;s
+tokens. This decoupling preserves the per-token expressivity that makes LLM RL work while delegating
+long-horizon credit assignment to a tractable utterance-level Bellman update.
+
+The empirical evidence is striking. On Twenty Questions, Twenty Questions 10-word, Guess My City,
+and WebShop, ArCHer matches or outperforms strong baselines (online PPO, online filtered BC, CHAI)
+with roughly **100x fewer environment interactions** than online PPO. A GPT-2 actor (~100M
+parameters) trained with ArCHer **beats GPT-3.5 with prompting** on WebShop. Performance keeps
+improving as the actor is scaled from GPT-2 to Mistral-7B, suggesting the framework composes cleanly
+with model scale rather than being a small-model artifact.
+
+For the t0017 literature survey on hierarchical agents and judges, ArCHer is a load-bearing
+reference. It provides direct evidence that explicit hierarchy in the action space — utterance vs
+token — yields large practical gains, mirroring the global / subtask / atomic decomposition used in
+this project&#x27;s annotation schema. The two-level credit-assignment story is also the right shape for
+the project&#x27;s scope-aware vs scope-unaware experimental conditions: ArCHer is essentially a
+&quot;scope-aware&quot; trainer that knows which level of the hierarchy each decision lives at. The main
+caveats for downstream use are that all evaluation is on relatively short-horizon text games (max
+~20 turns), no SWE-bench or WorkArena-style benchmarks are tested, and the critic is small
+(RoBERTa-base) which may not scale to harder reasoning agents.
+
+## SELF-DISCOVER: Large Language Models Self-Compose Reasoning Structures
+ID: 10.48550_arXiv.2402.03620
+Year: 2024
+Authors: Pei Zhou, Jay Pujara, Xiang Ren, Xinyun Chen, Heng-Tze Cheng, Quoc V. Le, Ed H. Chi, Denny Zhou, Swaroop Mishra, Huaixiu Steven Zheng
+Venue: NeurIPS 2024
+Venue type: conference
+DOI: 10.48550/arXiv.2402.03620
+URL: https://arxiv.org/abs/2402.03620
+Categories: hierarchical-planning, agent-evaluation
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/zhou_2024_self-discover.pdf`
+* **Published**: 2024-02-06 (NeurIPS 2024)
+* **Authors**: Pei Zhou, Jay Pujara, Xiang Ren (USC), Xinyun Chen, Heng-Tze Cheng, Quoc V. Le, Ed H.
+  Chi, Denny Zhou, Swaroop Mishra, Huaixiu Steven Zheng (Google DeepMind)
+* **Venue**: NeurIPS 2024 (also arXiv:2402.03620)
+* **DOI**: `10.48550/arXiv.2402.03620`
+
+#### Abstract
+
+We introduce SELF-DISCOVER, a general framework for LLMs to self-discover the task-intrinsic
+reasoning structures to tackle complex reasoning problems that are challenging for typical prompting
+methods. Core to the framework is a self-discovery process where LLMs select multiple atomic
+reasoning modules such as critical thinking and step-by-step thinking, and compose them into an
+explicit reasoning structure for LLMs to follow during decoding. SELF-DISCOVER substantially
+improves GPT-4 and PaLM 2&#x27;s performance on challenging reasoning benchmarks such as BigBench-Hard,
+grounded agent reasoning, and MATH, by as much as 32% compared to Chain of Thought (CoT).
+Furthermore, SELF-DISCOVER outperforms inference-intensive methods such as CoT-Self-Consistency by
+more than 20%, while requiring 10-40x fewer inference compute. Finally, we show that the
+self-discovered reasoning structures are universally applicable across model families: from PaLM 2-L
+to GPT-4, and from GPT-4 to Llama2, and share commonalities with human reasoning patterns.
+
+#### Overview
+
+SELF-DISCOVER addresses a core limitation of prompting techniques like Chain-of-Thought (CoT),
+Plan-and-Solve, and decomposition-based prompting: each technique is a single, atomic reasoning
+module applied uniformly regardless of the task&#x27;s intrinsic structure. The authors argue that
+different tasks demand different reasoning programs — symbolic manipulation rewards least-to-most
+decomposition, while social reasoning benefits from reflective and perspective-taking moves — and
+that LLMs should compose these modules adaptively per task rather than committing to a single a
+priori scaffold.
+
+The framework operates in two stages. Stage 1 runs once per task and uses three meta-prompts
+(SELECT, ADAPT, IMPLEMENT) to pick relevant atomic modules from a pool of 39 (e.g., &quot;step-by-step
+thinking&quot;, &quot;break the problem into sub-problems&quot;, &quot;critical thinking&quot;, &quot;reflective thinking&quot;),
+rephrase them for the task, and emit a JSON-formatted reasoning structure with key-value slots.
+Stage 2 then prepends this discovered structure to every instance and asks the LLM to fill in the
+slot values during decoding. Because Stage 1 amortizes its three extra inference calls across all
+instances of the task, the per-instance cost is the same as plain CoT, while delivering large gains
+on world-knowledge and grounded-agent tasks and modest gains on pure-arithmetic benchmarks.
+
+#### Architecture, Models and Methods
+
+The seed module pool comprises 39 reasoning module descriptions in natural language, drawn from
+prior cognitive-science and prompting literature, including &quot;Use critical thinking&quot;, &quot;Let&#x27;s think
+step by step&quot;, &quot;Devise an experiment to test the hypothesis&quot;, and &quot;How can I simplify this
+problem?&quot;. Stage 1 issues three sequential meta-prompts to a generative model M with an unlabeled
+task description and a few example instances t_i:
+
+1. SELECT (D_S = M(p_S || D || t_i)) — choose a relevant subset of modules.
+2. ADAPT (D_A = M(p_A || D_S || t_i)) — rephrase each selected module to be task-specific.
+3. IMPLEMENT (D_I = M(p_A || S_human || D_A || t_i)) — convert the adapted modules into a JSON
+   key-value reasoning structure, conditioned on a single human-written demonstration on a different
+   task.
+
+Stage 2 reuses D_I across all task instances: A = M(D_I || t). Models evaluated are GPT-4
+(gpt-4-turbo-preview), GPT-3.5-turbo, instruction-tuned PaLM 2-L (with a stronger instruction-tuned
+variant for MATH), and Llama-2-70B. Evaluation uses accuracy across 25 tasks: 23 BIG-Bench Hard
+(BBH) tasks, Thinking for Doing (T4D) for grounded social-agent reasoning, and 200 subsampled MATH
+test problems. Baselines include Direct Prompting, zero-shot CoT, Plan-and-Solve, CoT-Self-
+Consistency (10 samples), Majority voting over each raw module (40 modules), Best-of-each-RM with
+oracle labels, and the OPRO prompt-optimization method. Ablations remove each of SELECT, ADAPT, and
+IMPLEMENT in turn.
+
+#### Results
+
+* On 23 BBH tasks with PaLM 2-L, SELF-DISCOVER achieves **67%** average accuracy versus **60%** for
+  CoT and **61%** for Plan-and-Solve (**+7 / +6** absolute), and outperforms Direct or CoT on
+  **21/25** tasks.
+* On BBH with GPT-4, SELF-DISCOVER reaches **81%** versus **75%** for CoT and **73%** for
+  Plan-and-Solve (**+6 / +8** absolute).
+* On the T4D grounded-agent task, SELF-DISCOVER reaches **69%** with PaLM 2-L (vs **40%** CoT,
+  **42%** PS) and **85%** with GPT-4 (vs **52%** CoT, **53%** PS) — improvements of **+27 to +32**
+  absolute, beating the expert-designed Foresee-and-Reflect (FaR) prompt.
+* On MATH (200-example subsample), SELF-DISCOVER yields **50.5%** with PaLM 2-L and **73%** with
+  GPT-4, a moderate **+1 to +7** gain. Error analysis shows the discovered reasoning structures are
+  correct **87.5%** of the time; **74.7%** of remaining failures are downstream computation errors.
+* On a per-category BBH breakdown for PaLM 2-L, SELF-DISCOVER vs CoT delta is largest on
+  World-Knowledge (**+19.7**), strong on NLU (**+8.0**), moderate on Algorithmic (**+5.2**), and
+  smallest on Multilingual (**+4.0** delta over Direct in the reported chart).
+* SELF-DISCOVER uses **1** inference call per instance plus **3** task-level meta-prompts, while
+  CoT-Self-Consistency requires **10x** more calls and majority-voting over each module requires
+  **40x** more — yet SELF-DISCOVER still beats both in accuracy on the BBH-movie-recommendation and
+  BBH-geometric-shapes subsets.
+* Ablations show that all three actions matter: removing IMPLEMENT (using only SELECT+ADAPT in
+  natural-language form) drops GPT-4 accuracy noticeably across the four ablation tasks, confirming
+  that the JSON structured-output step is critical.
+* Universality study: structures discovered by PaLM 2-L transfer to GPT-4 and structures discovered
+  by GPT-4 transfer to Llama-2-70B with most of the gain retained, while OPRO-optimized prompts
+  transfer worse.
+
+#### Innovations
+
+##### Two-Stage Self-Composition Framework
+
+SELF-DISCOVER is the first prompting framework that explicitly composes a task-specific reasoning
+program from a library of atomic modules using the LLM itself as the composer. Earlier methods such
+as CoT, Plan-and-Solve, decomposition prompting, and step-back prompting each commit to one fixed
+reasoning shape; SELF-DISCOVER instead chooses and combines among 39 modules based on the task,
+producing a different structure per task family.
+
+##### SELECT-ADAPT-IMPLEMENT Meta-Prompts
+
+The three-action decomposition (pick modules, rephrase to the task, lay out as JSON key-value slots)
+is itself a contribution. Ablating any of the three drops performance, and using a single
+human-written reasoning structure on a different task in the IMPLEMENT prompt is sufficient
+in-context guidance to yield reliable JSON structures.
+
+##### Task-Level Amortization for Cheap Inference
+
+By running Stage 1 once per task and reusing the resulting structure for every instance, the
+per-instance cost is the same as CoT. This is the first method to combine self-consistency-level
+accuracy with CoT-level inference cost on BBH and T4D, achieving a Pareto improvement of 10-40x
+fewer calls at higher accuracy.
+
+##### Cross-Model Universality of Reasoning Structures
+
+Self-discovered structures from a stronger model (PaLM 2-L or GPT-4) transfer to weaker models
+(GPT-4 or Llama-2-70B) with most accuracy gain retained, more so than OPRO-optimized prompt wording.
+This suggests reasoning structure is a model-agnostic abstraction, complementary to
+prompt-engineering wording optimization.
+
+#### Datasets
+
+* **BIG-Bench Hard (BBH)** — 23 challenging tasks selected from BIG-Bench, spanning Algorithmic and
+  Multi-Step Arithmetic, Natural Language Understanding, Use of World Knowledge, and Multilingual
+  Knowledge and Reasoning. Public; standard accuracy metric.
+* **Thinking for Doing (T4D)** — grounded social agent reasoning task from Zhou et al. 2023 where
+  models must use mental-state reasoning to determine actions; GPT-4 with CoT reaches around 50%.
+  Public.
+* **MATH** (Hendrycks et al. 2021) — 200 examples subsampled from the test set, using one-shot
+  instance-level reasoning structures due to MATH&#x27;s complexity. Public.
+* **Seed reasoning modules** — 39 module descriptions in natural language taken from prior prompting
+  literature; provided in Appendix A of the paper.
+
+#### Main Ideas
+
+* Reasoning shape should be **task-conditioned, not method-conditioned**: prompting frameworks that
+  fix a single reasoning style underperform on tasks whose intrinsic structure does not match.
+  Letting the LLM compose from atomic modules is a low-cost way to get this conditioning.
+* **Structure beats wording for transfer**: discovered reasoning structures move across model
+  families more cleanly than optimized prompt phrasing, suggesting that &quot;what to think about&quot; is a
+  more portable abstraction than &quot;what words to use&quot;.
+* **Computation-aware prompting matters**: SELF-DISCOVER&#x27;s task-level amortization (3 extra calls
+  total, then 1 per instance) achieves better accuracy than 10-40x more expensive ensembles, arguing
+  that test-time compute should be invested in better structure not more samples.
+* **Explicit JSON key-value scaffolds outperform free-text plans**: ablations show the IMPLEMENT
+  step that emits structured key-value slots is the largest single contributor, beyond mere module
+  selection or natural-language planning.
+* **Computation errors dominate residual failures on math**: 74.7% of MATH failures stem from
+  arithmetic execution despite correct high-level structure, pointing toward tool-use or
+  verifier-based mitigations as the next bottleneck.
+
+#### Summary
+
+SELF-DISCOVER tackles the question of whether LLMs can themselves compose the right reasoning
+program for a task instead of relying on a fixed prompting template. The authors argue that
+single-shape methods like CoT and Plan-and-Solve are mismatched to many tasks, and that a task&#x27;s
+intrinsic reasoning structure is best discovered explicitly. Their framework supplies the LLM with a
+pool of 39 atomic reasoning modules and three meta-prompts (SELECT, ADAPT, IMPLEMENT) that pick,
+specialize, and lay out a JSON reasoning structure per task; this structure is then reused across
+all instances of the task at no per-instance overhead beyond plain CoT.
+
+The methodology runs Stage 1 once per task (three inference calls) and Stage 2 once per instance.
+Models tested are GPT-4, GPT-3.5, PaLM 2-L, and Llama-2-70B, evaluated on 23 BIG-Bench Hard tasks,
+the T4D grounded-agent task, and 200 MATH test problems. Baselines span Direct, CoT, Plan-and-
+Solve, CoT-Self-Consistency, per-module majority voting, oracle best-of-each-module, and the OPRO
+prompt optimizer. Ablations on SELECT/ADAPT/IMPLEMENT and a transfer study from PaLM 2-L to GPT-4
+and GPT-4 to Llama-2-70B round out the experiments.
+
+Headline results: SELF-DISCOVER beats CoT by 6-7 absolute on BBH average and by 27-32 absolute on
+T4D for both PaLM 2-L and GPT-4, and beats CoT-Self-Consistency and per-module majority voting while
+using 10-40x fewer inference calls. On MATH the gain is modest (1-7 points), and 74.7% of remaining
+failures are downstream computation errors rather than structural reasoning errors. Discovered
+structures transfer across model families with most of the gain retained, indicating that reasoning
+structure is a portable abstraction.
+
+For the t0017 hierarchical-agents-and-judges literature survey, this paper is directly relevant
+because it operationalizes a hierarchical reasoning idea: a task-level &quot;planner&quot; composes an
+explicit structure that an instance-level &quot;executor&quot; then fills in. It demonstrates that explicit
+JSON-structured plans beat free-text plans, that task-level meta-prompts amortize cleanly to per-
+instance cost, and that structured reasoning is more transferable than wording. These findings
+support hierarchical-agent designs that separate plan composition from plan execution and motivate
+judges that evaluate structural correctness independently from value-filling correctness — the exact
+decomposition this project&#x27;s hierarchical-judge designs are exploring.
+
+## AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents
+ID: 10.48550_arXiv.2401.13178
+Year: 2024
+Authors: Chang Ma, Junlei Zhang, Zhihao Zhu, Cheng Yang, Yujiu Yang, Yaohui Jin, Zhenzhong Lan, Lingpeng Kong, Junxian He
+Venue: NeurIPS 2024 Datasets and Benchmarks
+Venue type: conference
+DOI: 10.48550/arXiv.2401.13178
+URL: https://arxiv.org/abs/2401.13178
+Categories: agent-evaluation, hierarchical-planning
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/ma_2024_agentboard.pdf`
+* **Published**: 2024 (arXiv v2 December 2024; NeurIPS 2024 D&amp;B Oral)
+* **Authors**: Chang Ma 🇭🇰, Junlei Zhang 🇨🇳, Zhihao Zhu 🇨🇳, Cheng Yang 🇨🇳, Yujiu Yang 🇨🇳, Yaohui Jin
+  🇨🇳, Zhenzhong Lan 🇨🇳, Lingpeng Kong 🇭🇰, Junxian He 🇭🇰
+* **Venue**: NeurIPS 2024 Datasets and Benchmarks Track (Oral)
+* **DOI**: `10.48550/arXiv.2401.13178`
+
+#### Abstract
+
+Evaluating Large Language Models (LLMs) as general-purpose agents is essential for understanding
+their capabilities and facilitating their integration into practical applications. However, the
+evaluation process presents substantial challenges. A primary obstacle is the benchmarking of agent
+performance across diverse scenarios within a unified framework, especially in maintaining
+partially-observable environments and ensuring multi-round interactions. Moreover, current
+evaluation frameworks mostly focus on the final success rate, revealing few insights during the
+process and failing to provide a deep understanding of the model abilities. To address these
+challenges, we introduce AgentBoard, a pioneering comprehensive benchmark and accompanied
+open-source evaluation framework tailored to analytical evaluation of LLM agents. AgentBoard offers
+a fine-grained progress rate metric that captures incremental advancements as well as a
+comprehensive evaluation toolkit that features easy assessment of agents for multi-faceted analysis.
+This not only sheds light on the capabilities and limitations of LLM agents but also propels the
+interpretability of their performance to the forefront. Ultimately, AgentBoard serves as a step
+towards demystifying agent behaviors and accelerating the development of stronger LLM agents.
+
+#### Overview
+
+AgentBoard is a unified benchmark and analytical evaluation framework that targets a fundamental gap
+in LLM-agent evaluation: prior benchmarks reduce performance to a single, end-of-trajectory success
+rate, which collapses very different agent behaviors into the same number whenever success is rare.
+The authors argue this is exactly the regime current open-weight LLMs operate in, so research
+progress is invisible under the existing measurement instrument. AgentBoard&#x27;s central contribution
+is a fine-grained &quot;progress rate&quot; metric defined per interaction step, computed either as a
+continuous matching score against the goal state or as the fraction of human-annotated subgoals
+achieved so far. The framework wraps this metric in a unified POMDP-style API that imposes
+multi-round, partially-observable interaction across all tasks.
+
+The benchmark contains 9 tasks and 1013 environments spanning four families (embodied, game, web,
+tool). Each task is either constructed or adapted to be text-only, multi-round, and partially
+observable, and each is augmented with hand-annotated subgoal sequences. The authors evaluate 17
+proprietary and open-weight LLMs and ship an open-source Weights&amp;Biases panel that visualises
+sub-skill scores, easy/hard splits, and long-range progress curves. The headline finding is that
+GPT-4 (70.0% progress / 47.9% success) leads by a large margin, but progress rate exposes meaningful
+differentiation among open-weight models that look indistinguishable under success rate alone.
+
+#### Architecture, Models and Methods
+
+The interaction model is a partially observable Markov decision process tuple (g, S, A, O, T) with
+goal g, state space S, action space A, observation space O, and deterministic transition T. The
+agent maintains memory m_t = {o_0, a_0, ..., o_t} and selects an action a_t under policy pi. A
+&quot;reflex&quot; act-only prompting strategy is used as the canonical baseline (one-shot in-context example,
+sliding-window memory following LangChain), and ReAct-style prompting is provided as an ablation.
+The sliding window allows runs to continue past the context limit, in contrast to prior benchmarks
+that abort.
+
+The progress rate has two forms: a continuous similarity function f(s_i, g) in [0, 1] for tasks with
+comparable states (PDDL, WebShop, Sheet operations), or the fraction of matched subgoals (1/K) sum
+f(s_i, g_k) for tasks with discrete subgoal sequences (AlfWorld, ScienceWorld, BabyAI, Jericho,
+Tool-Query, Tool-Operation Todo, WebArena). Subgoal matching uses regular-expression predicates
+against the trajectory state. The authors manually edited 5% of problems so each final goal admits a
+unique subgoal ordering, while still permitting diverse trajectories.
+
+Annotation: subgoals were authored by paper authors and verified through multi-stage review. A
+60-trajectory-per-task user study compared four-author human progress scores against automatic
+progress rate; Pearson rho exceeds 0.95 on every task and Fleiss&#x27; kappa is in the
+substantial-agreement range (0.73-0.91). Hardware/compute is not the focus, but vLLM
+(PagedAttention) is used for open-weight inference. They evaluate 17 LLMs sorted by average success
+rate: GPT-4, Claude 2, Gemini-1.5-Flash, Claude-3-Haiku, Llama3-70b, GPT-3.5-Turbo, xLAM-70b,
+DeepSeek-67b, Text-Davinci-003, GPT-3.5-Turbo-16k, AgentLM-70b, Lemur-70b, CodeLlama-34b, Llama3-8b,
+CodeLlama-13b, Llama2-70b, Mistral-7b, Vicuna-13b-16k, Llama2-13b. Six sub-skills are scored:
+memory, planning, world modelling, self-reflection, grounding, and spatial navigation. Easy/hard
+splits are defined by the number of subgoals or conditions per environment.
+
+#### Results
+
+* GPT-4 leads with **70.0% progress / 47.9% success** averaged over 9 tasks; Claude 2 follows at
+  **48.9% / 26.2%** and Gemini-1.5-Flash at **43.5% / 20.6%**.
+* Open-weight models cluster much lower: Llama3-70b **41.9% / 20.2%**, DeepSeek-67b **38.5% /
+  17.2%**, AgentLM-70b **33.3% / 14.7%**, Lemur-70b **30.8% / 8.3%**, Mistral-7b **24.6% / 3.9%**,
+  Llama2-13b **18.9% / 2.1%**.
+* Progress rate separates models that success rate cannot: Llama2-13b (2.1%) vs Mistral-7b (3.9%)
+  look identical on success but differ by **5.7 progress points**; CodeLlama-34b&#x27;s failure to emit
+  the &quot;finish&quot; action gives it lower success but higher progress than CodeLlama-13b.
+* All 17 models show large hard/easy degradation. GPT-4 drops from **79.2% to 62.7%** progress
+  (-16.5) and from **85.0% to 24.9%** success (-60.1) between easy and hard splits.
+* Long-range curves show GPT-4 and Claude 2 still improving at step 30 on AlfWorld and PDDL, while
+  most open-weight models plateau by **step 6**.
+* Grounding accuracy averages **85.6%** for GPT-4, **76.2%** for GPT-3.5-Turbo-16k, and only
+  **43.8%** for Mistral-7b; ScienceWorld remains the hardest grounding task (GPT-4 only 22.8%).
+* Coding-trained open-weight LLMs help: CodeLlama-34b beats Llama2-70b by **+6.2 progress points**;
+  Lemur-70b (code-continued-pretrained) similarly outperforms Llama2-70b.
+* Sub-skill radar plots show GPT-4 dominates all six dimensions; open-weight models are most
+  deficient on world modelling and self-reflection.
+* Human-vs-automatic progress correlation: Pearson rho in [0.95, 0.99] across 8 tasks (60
+  trajectories each); Fleiss&#x27; kappa in [0.73, 0.91].
+
+#### Innovations
+
+##### Fine-Grained Progress Rate Metric
+
+First agent benchmark to define a per-step progress metric that is unified across embodied, game,
+web, and tool tasks. The metric uses two complementary forms (continuous matching f(s_i, g) and
+discrete subgoal coverage), validated against four-author human ratings with Pearson rho &gt; 0.95.
+
+##### Unified POMDP API for Heterogeneous Agent Tasks
+
+Reformulates AlfWorld, ScienceWorld, BabyAI, Jericho, PDDL, WebShop, WebArena, Tool-Query, and
+Tool-Operation as a single POMDP tuple with a shared action/observation interface, including
+adaptations such as text-action BabyAI, rewritten Jericho goals (max 15 subgoals), expanded WebShop
+error feedback, and re-annotated ScienceWorld subgoals.
+
+##### Hand-Annotated Subgoal Sequences with Uniqueness Editing
+
+For all 1013 environments the authors annotate (or re-annotate) an ordered subgoal list and edit
+about 5% of original problems so each final goal admits a unique subgoal ordering. This is the
+prerequisite that makes the discrete progress metric well-defined and reproducible.
+
+##### Multi-Faceted Analytical Toolkit
+
+Open-source W&amp;B panel that visualises six sub-skill scores (memory, planning, world modelling,
+self-reflection, grounding, spatial navigation), easy/hard breakdowns, long-range progress curves,
+grounding accuracy, and trajectory traces. Goes beyond a single leaderboard number.
+
+##### Cross-Family LLM Sweep
+
+Evaluates 17 proprietary and open-weight LLMs (including agent-specific xLAM-70b, AgentLM-70b,
+Lemur-70b) on the same 9 tasks under the same prompting protocol, supporting cross-family claims
+such as &quot;code-pretrained open-weight LLMs are stronger agents&quot;.
+
+#### Datasets
+
+The benchmark is a curated composite of nine environments, all repackaged into the AgentBoard
+text-only multi-round POMDP format. Total of 1013 instances across the 9 tasks; per-task split sizes
+are listed in Appendix Table 14 of the paper.
+
+* **AlfWorld (ALF)** - household embodied tasks; subgoal-based progress rate.
+* **ScienceWorld (SW)** - interactive scientific commonsense; re-annotated subgoals to fix sparsity.
+* **BabyAI (BA)** - 20x20 grid navigation; converted from image+tensor to text actions and
+  observations; re-annotated subgoals.
+* **Jericho (JC)** - text-adventure games; goals rewritten so each finishes within 15 subgoals.
+* **PDDL (PL)** - 4 PDDL planning games (Gripper, Barman, Blocksworld, Tyreworld); continuous
+  matching score r_match.
+* **WebShop (WS)** - e-commerce simulation with improved error feedback and expanded scoring.
+* **WebArena (WA)** - real web environment; revised score combining URL match and content match
+  computed step-by-step.
+* **Tool-Query (TQ)** - three sub-environments (Weather, Movie, Academia) requiring DB queries;
+  subgoal annotated.
+* **Tool-Operation (TO)** - Todo list management (subgoal-based) and Google Sheet operations
+  (matching-score based on cell-level table comparison).
+
+All environments are released open source under the AgentBoard repository
+(https://github.com/hkust-nlp/AgentBoard) under permissive licences inherited from the upstream
+benchmarks. The 60-trajectory-per-task human-evaluation set used for metric validation was collected
+from four paper authors as raters using a 5-point scale {0%, 25%, 50%, 75%, 100%}.
+
+#### Main Ideas
+
+* The &quot;progress rate&quot; idea generalises directly to this project&#x27;s three-level hierarchy:
+  subgoal-coverage progress at the global plan level, subtask-completion progress at the mid level,
+  and fine-grained matching at atomic-execution level give a single comparable scalar across A
+  (scope-aware), B (scope-unaware), and C (scope-mismatched) conditions. This is a stronger Metric 1
+  candidate than binary task success.
+* AgentBoard demonstrates the methodology for hand-annotating subgoals at scale (1013 environments,
+  multi-stage review, Pearson rho &gt; 0.95 against humans). The same pattern (manual annotation by
+  authors plus uniqueness editing of about 5% of problems) is directly applicable to the &gt;=100-task
+  annotated set required by this project&#x27;s success criteria.
+* The hard/easy split based on subgoal count is a useful template for stratifying our results and is
+  much more informative than overall accuracy when models cluster near 0% success.
+* Re-annotation of existing benchmarks (BabyAI, ScienceWorld, Jericho) to enforce uniformity of
+  subgoal sequences is a precedent for our annotations on top of SWE-bench Verified, tau-bench,
+  WorkArena++, and FrontierScience.
+* The six-dimensional sub-skill scoring (memory / planning / world modelling / self-reflection /
+  grounding / spatial navigation) is a candidate template for analysing agent behaviour conditional
+  on granularity in our hierarchical setup.
+* Open-weight models plateau at about 6 steps; any longer-horizon experiment in this project should
+  expect compounding-error effects and report progress curves rather than only end-of-trajectory
+  metrics.
+
+#### Summary
+
+Ma et al. introduce AgentBoard, a NeurIPS 2024 Datasets-and-Benchmarks oral that addresses two
+fundamental measurement problems in LLM-agent evaluation: incompatible task interfaces across
+existing benchmarks and the loss of information caused by reporting only end-of-trajectory success
+rate. The authors argue, with evidence, that current open-weight LLMs cluster at near-zero success
+on hard agent tasks, so any &quot;progress&quot; between models is invisible. They propose a unified POMDP
+formulation, nine carefully curated text-only multi-round partially-observable environments
+(AlfWorld, ScienceWorld, BabyAI, Jericho, PDDL, WebShop, WebArena, Tool-Query, Tool-Operation), and
+a fine-grained progress-rate metric defined per interaction step.
+
+Methodologically, the progress rate has two forms (continuous state-similarity and discrete
+subgoal-coverage). Subgoal sequences were hand-annotated for all 1013 environments and about 5% of
+problems were edited so each goal admits a unique ordering. A 60-trajectory-per-task user study with
+four expert raters gives Pearson rho &gt; 0.95 between human and automatic progress, validating the
+metric. The benchmark ships with an open-source W&amp;B visualisation panel that breaks performance down
+by sub-skill (memory, planning, world modelling, self-reflection, grounding, spatial navigation), by
+easy/hard difficulty (defined by subgoal count), and by step number.
+
+The empirical findings are that GPT-4 leads at **70.0% progress / 47.9% success**, followed by
+Claude 2 (**48.9% / 26.2%**) and Gemini-1.5-Flash (**43.5% / 20.6%**); open-weight models lag
+substantially with the strongest (Llama3-70b at **41.9% / 20.2%**) still well below GPT-4. Critical
+analyses show that progress rate separates models that look indistinguishable under success rate
+(Llama2-13b vs Mistral-7b), that all models drop sharply on hard examples (GPT-4 success: 85.0% to
+24.9%), that open-weight models plateau by step 6 while frontier models continue progressing through
+step 30, and that code-pretrained open-weight LLMs (CodeLlama, Lemur) outperform their non-code
+counterparts.
+
+For this project, AgentBoard is highly relevant in three ways. First, the progress-rate construction
+is a direct candidate for our task-success metric (Metric 1), giving us a continuous, per-step
+comparable signal across A/B/C conditions instead of a binary outcome. Second, the
+subgoal-annotation methodology - per-environment manual labelling, uniqueness editing, multi-stage
+verification, and a four-author user study - is a working template for the &gt;=100-task annotated
+benchmark this project must build over SWE-bench Verified, tau-bench, WorkArena++, and
+FrontierScience. Third, the easy/hard split by subgoal count and the long-range progress-curve
+analysis suggest concrete reporting patterns for our hierarchical-planning experiments. The
+limitations the authors acknowledge - reliance on human subgoal annotation and simulated rather than
+real-world environments - are exactly the cost we will inherit, and the absence of a
+granularity-conditioning treatment in their design is precisely the gap our project intends to fill.
+
+## Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models
+ID: 10.48550_arXiv.2310.04406
+Year: 2024
+Authors: Andy Zhou, Kai Yan, Michal Shlapentokh-Rothman, Haohan Wang, Yu-Xiong Wang
+Venue: ICML 2024
+Venue type: conference
+DOI: 10.48550/arXiv.2310.04406
+URL: https://arxiv.org/abs/2310.04406
+Categories: hierarchical-planning, agent-evaluation
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/zhou_2024_lats-agent-tree-search.pdf`
+* **Published**: 2024 (ICML 2024; arXiv v1 Oct 2023, v3 Jun 2024)
+* **Authors**: Andy Zhou (UIUC, Lapis Labs), Kai Yan (UIUC), Michal Shlapentokh-Rothman (UIUC),
+  Haohan Wang (UIUC), Yu-Xiong Wang (UIUC)
+* **Venue**: ICML 2024 (PMLR 235)
+* **DOI**: `10.48550/arXiv.2310.04406`
+
+#### Abstract
+
+While language models (LMs) have shown potential across a range of decision-making tasks, their
+reliance on simple acting processes limits their broad deployment as autonomous agents. In this
+paper, we introduce Language Agent Tree Search (LATS) -- the first general framework that synergizes
+the capabilities of LMs in reasoning, acting, and planning. By leveraging the in-context learning
+ability of LMs, we integrate Monte Carlo Tree Search into LATS to enable LMs as agents, along with
+LM-powered value functions and self-reflections for proficient exploration and enhanced
+decision-making. A key feature of our approach is the incorporation of an environment for external
+feedback, which offers a more deliberate and adaptive problem-solving mechanism that surpasses the
+constraints of existing techniques. Our experimental evaluation across diverse domains, including
+programming, interactive question-answering (QA), web navigation, and math, validates the
+effectiveness and generality of LATS in decision-making while maintaining competitive or improved
+reasoning performance. Notably, LATS achieves state-of-the-art pass@1 accuracy (92.7%) for
+programming on HumanEval with GPT-4 and demonstrates gradient-free performance (average score of
+75.9) comparable to gradient-based fine-tuning for web navigation on WebShop with GPT-3.5.
+
+#### Overview
+
+LATS unifies three previously fragmented strands of LM research -- internal reasoning (CoT, ToT,
+RAP, self-consistency), external acting (ReAct, Reflexion, AdaPlanner), and planning via search --
+into a single framework that wraps an LM agent in a Monte Carlo Tree Search (MCTS) loop. The core
+observation is that the typical bottleneck of MCTS in reinforcement learning, namely the need for an
+environment model that can revert to arbitrary states, does not apply to most LM tasks: the agent
+can simply re-feed an earlier prompt prefix to recover a prior state. This makes MCTS naturally
+applicable as an inference-time planner for LM agents.
+
+The framework keeps every node in the tree as a triple of accumulated input, actions, and
+observations, and uses the same LM in three distinct roles -- policy, value function, and reflection
+generator. After each rollout, environment feedback (e.g., HotPotQA correctness, HumanEval test
+output, WebShop reward, compiler errors) is backpropagated through the tree, while failed
+trajectories are summarized into verbal self-reflections that are inserted as additional context for
+later iterations. This couples search, external grounding, and Reflexion-style self-improvement into
+one mechanism.
+
+LATS is evaluated across HotPotQA (multi-hop QA), HumanEval and MBPP (programming), WebShop (web
+navigation), and Game of 24 (math). In every domain it outperforms strong specialized baselines
+including ReAct, Reflexion, ToT, and RAP, achieving 92.7% pass@1 on HumanEval with GPT-4 -- a
+state-of-the-art result at submission time -- while also expanding fewer nodes than competing
+tree-search methods upon success.
+
+#### Architecture, Models and Methods
+
+LATS instantiates an MCTS variant with six operations: selection, expansion, evaluation, simulation,
+backpropagation, and reflection. Each tree node `s = [x, a_{1..i}, o_{1..i}]` records the original
+input plus the action and observation history. The action space follows ReAct, combining real
+environment commands with free-form thought tokens; in pure-reasoning settings it falls back to CoT.
+At each iteration the algorithm walks the tree using the UCT rule
+`UCT(s) = V(s) + w * sqrt(ln N(p) / N(s))`, expands the chosen leaf by sampling `n` actions from the
+LM, gathers environment observations, evaluates each child, and simulates downward until a terminal
+node.
+
+The value function is a novel hybrid `V(s) = lambda * LM(s) + (1 - lambda) * SC(s)`, mixing an
+LM-as-judge correctness score (1-10 scale, prompted explicitly to reason then output a final score)
+with a self-consistency term over repeated samples. `lambda = 0.5` is used for HotPotQA and Game of
+24, `lambda = 0.8` for HumanEval, MBPP, and WebShop. Backpropagation updates each visited node&#x27;s
+value with the running average `V(s_i) &lt;- (V_old(s_i)(N(s_i)-1) + r) / N(s_i)`. When a trajectory
+ends in failure, the LM is prompted with the full trace to produce a verbal reflection, which is
+stored in long-term memory and fed back into subsequent rollouts.
+
+Default hyperparameters are `n = 5` children per expansion, exploration weight `w = 1`, and
+trajectory budget `k = 50` (HotPotQA), `k = 8` (HumanEval/MBPP), `k = 30` (WebShop, Game of 24).
+Maximum depths are 6 (HotPotQA), 8 (HumanEval), 15 (WebShop), and 5 (Game of 24). Backbone models
+are GPT-3.5 and GPT-4 accessed through the OpenAI API; no parameters are updated, so LATS is a pure
+inference-time, gradient-free method.
+
+#### Results
+
+* **HumanEval pass@1**: LATS reaches **92.7%** with GPT-4 (vs Reflexion 91.0, base GPT-4 80.1) and
+  **83.8%** with GPT-3.5 (vs Reflexion 68.1, RAP 63.1, ToT 54.4, CoT 46.9).
+* **MBPP pass@1** with GPT-3.5: LATS **81.1%** vs RAP 71.4, Reflexion 70.0, ReAct 67.0, ToT 65.8,
+  CoT 54.9.
+* **HotPotQA EM** with GPT-3.5: reasoning-only LATS(CoT) **0.62**; acting LATS(ReAct) **0.63**;
+  combined LATS(CoT+ReAct) **0.71**, doubling ReAct&#x27;s 0.32 baseline and exceeding RAP&#x27;s 0.54.
+* **WebShop**: LATS **75.9** average score and **38.0** success rate, beating Reflexion (64.2 /
+  35.0) and even gradient-based fine-tuning (67.5 / 45.0) on score, though still below human experts
+  (82.1 / 59.6).
+* **Game of 24** with GPT-3.5: LATS(CoT) **0.44** success rate vs RAP 0.40, ToT 0.20, Reflexion
+  0.12, CoT 0.08.
+* **Efficiency on HotPotQA at k=50**: LATS uses **66.65** average expanded nodes vs RAP 70.60 and
+  ToT 84.05 while achieving higher accuracy (0.61 vs 0.54 vs 0.49); the gap grows for smaller `k`.
+* **Token cost on HotPotQA upon success**: LATS 173,290 tokens vs RAP 176,500 vs ToT 210,215 -- same
+  asymptotic `O(kn)` complexity but lower constants.
+* **Ablations on HotPotQA**: removing the LM value function drops EM by **0.26**; replacing MCTS
+  with DFS drops by **0.21**; removing self-reflection drops by **0.05**; lowering `w` from 1.0 to
+  0.5 drops EM from 0.63 to 0.55.
+
+#### Innovations
+
+##### MCTS Adapted to Language Agents
+
+LATS is the first work to integrate the full six-operation MCTS loop (selection, expansion,
+evaluation, simulation, backpropagation, reflection) with an LM-as-agent setup that consumes real
+environment observations. Unlike RAP, which requires the LM to act as a learned world model, LATS
+directly queries the environment, eliminating the world-model bottleneck and making it applicable to
+any environment that supports state reversion via prompt replay.
+
+##### Hybrid LM-as-Judge plus Self-Consistency Value Function
+
+The proposed `V(s) = lambda * LM(s) + (1 - lambda) * SC(s)` combines an LM correctness score (with
+chain-of-thought rationale) with a self-consistency frequency over repeated rollouts. Ablations show
+LM scoring is the single most important component (0.26 EM drop when removed); self-consistency adds
+a smaller but reliable boost (0.04 on Game of 24). This is one of the earliest concrete realizations
+of an LM-as-judge value function used inside an MCTS planner for agent tasks.
+
+##### Unified Reasoning + Acting + Planning + Reflection
+
+Table 1 of the paper places LATS in a quadrant where it is the only method to combine reasoning,
+acting, planning, self-reflection, and external memory simultaneously, generalizing CoT, ReAct, ToT,
+RAP, Reflexion, and Self-Refine. The paper also introduces a hybrid CoT+ReAct base agent that falls
+back from internal reasoning to retrieval only on failure, mirroring a human &quot;look it up if unsure&quot;
+heuristic.
+
+##### Reflection-as-Backprop-Signal
+
+Failed terminal trajectories trigger an LM-generated natural-language reflection that is stored in
+long-term memory and prepended to subsequent rollouts. This effectively turns Reflexion&#x27;s
+trial-by-trial improvement into a per-node semantic gradient that complements scalar UCT updates.
+
+#### Datasets
+
+* **HotPotQA** (Yang et al., 2018): 113k Wikipedia-based multi-hop QA pairs; LATS evaluates on a
+  random 100-question subset. Public and freely available.
+* **HumanEval** (Chen et al., 2021): 164 hand-written Python programming problems with docstrings,
+  reference implementations, and ~7.7 unit tests per problem; full set used. Public.
+* **MBPP** (Austin et al., 2022): 974 short Python functions with three test cases each; 397
+  randomly sampled problems used. Public.
+* **WebShop** (Yao et al., 2022): simulated e-commerce environment with 1.18M Amazon products, 12k
+  crowdsourced instructions, structured-text observations; 50 instructions evaluated. Public, MIT
+  license.
+* **Game of 24** (Yao et al., 2023a): mathematical reasoning task that requires producing 24 from
+  four input numbers using basic arithmetic; 50 games evaluated. Public.
+
+#### Main Ideas
+
+* **MCTS is a near-free lunch for LM agents** when the environment supports prompt-replay state
+  reversion -- which covers most code, web, QA, and tool-use settings -- so LATS-style planners are
+  a natural fit for hierarchical-agent benchmarks in this project.
+* **LM-as-judge value functions work**, and combining them with self-consistency gives a
+  surprisingly strong heuristic without any learned critic; this is a useful blueprint for the
+  judge-side experiments planned in t0017&#x27;s downstream tasks.
+* **Verbal self-reflection adds an orthogonal signal to scalar rewards** -- small individually (0.05
+  EM on HotPotQA) but compatible with search and worth keeping when deploying agents in
+  partially-observable environments.
+* **Tree search expands fewer nodes than alternatives** (3.55 fewer than RAP, 12.12 fewer than ToT
+  on HotPotQA) at higher accuracy, so when budgeting agent experiments LATS is competitive on cost
+  with simpler tree methods despite the extra reflection overhead.
+* **Limitations matter**: LATS assumes state reversibility and is more expensive than ReAct or
+  Reflexion per task; for highly stochastic real-world environments or strict latency budgets it is
+  not the right tool.
+
+#### Summary
+
+Zhou et al. introduce LATS, an inference-time framework that unifies LM-based reasoning, acting, and
+planning by wrapping a ReAct-style agent in a Monte Carlo Tree Search loop. The paper situates
+itself against a fragmented prior literature -- CoT and self-consistency for reasoning, ReAct and
+Reflexion for acting, ToT and RAP for planning -- and shows that no existing method combines all of
+reasoning, acting, planning, self-reflection, and external memory. LATS fills that gap by treating
+the LM simultaneously as policy, state evaluator, and reflection generator, and by exploiting the
+under-appreciated fact that LM environments allow trivial state reversion via prompt replay.
+
+Methodologically the work contributes a six-operation MCTS adaptation (selection, expansion,
+evaluation, simulation, backpropagation, reflection), a hybrid LM-score plus self-consistency value
+function, and a memory of natural-language reflections that act as a semantic gradient signal across
+rollouts. All operations are realized through prompting GPT-3.5 or GPT-4 with no fine-tuning, making
+LATS gradient-free and immediately portable to any tool-using LM. Hyperparameters are deliberately
+small: `n = 5` children, `w = 1`, and budgets of `k = 8` to `k = 50` rollouts.
+
+The empirical findings are strong and consistent across four very different benchmarks. LATS sets
+the state of the art on HumanEval pass@1 at 92.7% with GPT-4, doubles ReAct on HotPotQA, beats
+gradient-based fine-tuning on WebShop score, and outperforms reasoning-specific methods on Game of
+24\. Ablations confirm that every component matters: removing the LM value function costs 0.26 EM,
+swapping MCTS for DFS costs 0.21, and dropping reflection costs 0.05. Cost analysis shows LATS
+expands fewer nodes and consumes fewer tokens than ToT or RAP for the same `n` and `k`, partially
+offsetting its higher per-step compute relative to ReAct.
+
+For this project, LATS is a foundational reference point for the &quot;agents and judges&quot; literature
+survey: it operationalizes both hierarchical search-based planning over an LM agent and an
+LM-as-judge value function inside the same loop, which are exactly the two threads the t0017 survey
+is meant to map. Practical takeaways are (1) tree search with explicit external feedback should be a
+baseline whenever the project benchmarks support state reversion, (2) the
+LM-score-plus-self-consistency value function is a cheap, training-free judge worth replicating in
+ablations, and (3) reflection memory is a small but reliable add-on for any iterative-agent
+pipeline. Limitations to keep in mind are the assumption of reversible environments and the
+non-trivial inference cost, both of which constrain when LATS should be preferred over Reflexion or
+plain ReAct.
+
+## Between MDPs and semi-MDPs: A framework for temporal abstraction in reinforcement learning
+ID: no-doi_Sutton1999_options-framework
+Year: 1999
+Authors: Richard S. Sutton, Doina Precup, Satinder Singh
+Venue: Artificial Intelligence
+Venue type: journal
+DOI: 10.1016/S0004-3702(99)00052-1
+URL: https://www.sciencedirect.com/science/article/pii/S0004370299000521
+Categories: hierarchical-planning
+Added by task: t0017_literature_hierarchical_agents_and_judges
+Date added: 2026-05-01
+
+#### Metadata
+
+* **File**: `files/sutton_1999_options-framework.pdf`
+* **Published**: 1999 (Artificial Intelligence 112, pp. 181-211)
+* **Authors**: Richard S. Sutton 🇺🇸, Doina Precup 🇺🇸, Satinder Singh 🇺🇸
+* **Venue**: Artificial Intelligence (Elsevier journal)
+* **DOI**: `10.1016/S0004-3702(99)00052-1`
+* **Note**: DOI contains parentheses that violate the slug character set, so this asset uses the
+  `no-doi_` fallback ID. The DOI itself is preserved in `details.json`.
+
+#### Abstract
+
+Learning, planning, and representing knowledge at multiple levels of temporal abstraction are key,
+longstanding challenges for AI. In this paper we consider how these challenges can be addressed
+within the mathematical framework of reinforcement learning and Markov decision processes (MDPs). We
+extend the usual notion of action in this framework to include options-closed-loop policies for
+taking action over a period of time. Examples of options include picking up an object, going to
+lunch, and traveling to a distant city, as well as primitive actions such as muscle twitches and
+joint torques. Overall, we show that options enable temporally abstract knowledge and action to be
+included in the reinforcement learning framework in a natural and general way. In particular, we
+show that options may be used interchangeably with primitive actions in planning methods such as
+dynamic programming and in learning methods such as Q-learning. Formally, a set of options defined
+over an MDP constitutes a semi-Markov decision process (SMDP), and the theory of SMDPs provides the
+foundation for the theory of options. However, the most interesting issues concern the interplay
+between the underlying MDP and the SMDP and are thus beyond SMDP theory. We present results for
+three such cases: (1) we show that the results of planning with options can be used during execution
+to interrupt options and thereby perform even better than planned, (2) we introduce new intra-option
+methods that are able to learn about an option from fragments of its execution, and (3) we propose a
+notion of subgoal that can be used to improve the options themselves.
+
+#### Overview
+
+This paper introduces the *options framework*, the canonical formalization of temporal abstraction
+in reinforcement learning. The PDF was downloaded successfully from Andrew Barto&#x27;s UMass course
+page, so the summary below reflects the full text of the paper rather than only the abstract. The
+authors target a long-standing problem in AI: real decision making works at multiple time scales
+(muscle twitches, picking up a phone, traveling to a city), but conventional MDPs only support a
+single discrete time step.
+
+The contribution is to extend MDPs with *options* - closed-loop policies with an initiation set,
+internal policy, and stochastic termination condition. A fixed set of options over an MDP induces a
+semi-Markov decision process (SMDP) over the same state space, so all classical SMDP planning and
+learning machinery (value iteration, Q-learning) applies unchanged at the option level. The novel
+contribution is the *interplay* between the underlying MDP and the induced SMDP: options are not
+opaque black boxes but policies that can be inspected, interrupted, learned about during partial
+executions, and improved against subgoals.
+
+The framework subsumes prior temporal-abstraction work (HAMs, MAXQ, macro-operators) by providing a
+single, minimal extension to MDPs. The paper proves three theorems beyond standard SMDP theory:
+interruption (Theorem 2), intra-option Bellman equations (Theorem 3), and subgoal-based option
+improvement (Theorem 4). It also gives empirical illustrations in a 4-rooms gridworld and a
+continuous 2-D navigation task.
+
+#### Architecture, Models and Methods
+
+The paper is theoretical. The core mathematical objects are:
+
+**Option**: A triple `&lt;I, pi, beta&gt;` where `I` is the initiation set (states where the option can
+start), `pi : S x A -&gt; [0, 1]` is the option&#x27;s internal policy over primitive actions, and
+`beta : S+ -&gt; [0, 1]` is the termination probability per state. A *Markov* option&#x27;s `pi` and `beta`
+depend only on the current state; a *semi-Markov* option may condition on the entire history
+`h_{t,tau}` since the option started.
+
+**Primitive actions as options**: Each primitive action `a` corresponds to a one-step option with
+`I = {s : a in A_s}`, `pi(s, a) = 1`, `beta(s) = 1` everywhere. This unifies primitive and extended
+actions under a single algebra.
+
+**MDP + Options = SMDP (Theorem 1)**: For any MDP and any fixed set of options, the decision process
+that selects only among those options and runs each to termination is a discrete-event SMDP. This
+grants free use of SMDP value iteration and Q-learning at the option level.
+
+**Multi-time model**: For each option `o` started in `s`, the model is
+`r^o_s = E[r_{t+1} + gamma r_{t+2} + ... + gamma^{k-1} r_{t+k}]` for cumulative discounted reward
+and `p^o_{ss&#x27;} = sum_k p(s&#x27;, k) gamma^k` for the discounted state-prediction. The `gamma^k`
+weighting bakes the temporal extension directly into the transition kernel.
+
+**Bellman equations over options**: `V^mu(s) = sum_o mu(s, o) [r^o_s + sum_{s&#x27;} p^o_{ss&#x27;} V^mu(s&#x27;)]`
+and analogous `Q^mu(s, o)`.
+
+**SMDP Q-learning** (Bradtke and Duff): `Q(s, o) &lt;- Q(s, o) + alpha [r + gamma^k max_{o&#x27;} Q(s&#x27;, o&#x27;)
+- Q(s, o)]`where`r`is the cumulative discounted option reward and`k` the option duration.
+
+**Interruption (Theorem 2)**: Define `mu&#x27;` from `mu` by terminating any option `o` whenever
+`Q^mu(s, o) &lt; V^mu(s)`. Then `V^{mu&#x27;} &gt;= V^mu` everywhere, with strict inequality at any non-zero
+probability interrupted history.
+
+**Intra-option learning (Theorem 3)**: Off-policy Bellman update for *all* Markov options consistent
+with the executed primitive action, learning many option-value functions in parallel from one
+trajectory.
+
+**Subgoals (Theorem 4)**: Define a per-option pseudo-reward `g(s)` (a &quot;subgoal&quot;) and learn the
+option&#x27;s policy `pi` to maximize discounted return plus a termination bonus `g(s_terminal)`.
+
+Experiments use a 4-rooms gridworld (stochastic 4-direction primitive actions, 2/3 success rate)
+with 8 hand-crafted hallway options and a continuous 2-D navigation task. Discount `gamma = 0.9`,
+epsilon-greedy with `epsilon = 0.1`, step sizes optimized to nearest power of 2.
+
+#### Results
+
+* **Theorem 1**: Any MDP plus a fixed set of options forms an SMDP, so SMDP value iteration and
+  Q-learning apply at the option level (proved via SMDP definition).
+* **Planning speedup with options**: In the rooms gridworld synchronous value iteration with the
+  hallway options reaches the optimal value function for goal G1 (a hallway state) in 2 iterations,
+  versus needing roughly the diameter of the gridworld in iterations with primitive actions only.
+* **Mixed option set A union H**: When the goal G2 lies inside a room, planning with both primitive
+  options and hallway options reaches a near-optimal value function in 4 iterations; primitives
+  alone propagate value at one cell per iteration.
+* **SMDP Q-learning**: Learning curves in the rooms task show multi-step options reach the goal far
+  faster on the very first episode and maintain a long-term advantage over flat Q-learning when the
+  goal aligns with option subgoals; with the goal inside a room (G2), `H` alone underperforms but
+  `A union H` still beats `A`.
+* **Interruption theorem (Theorem 2)**: For any policy `mu`, the interrupted policy `mu&#x27;` satisfies
+  `V^{mu&#x27;}(s) &gt;= V^mu(s)` for all `s`, with strict improvement whenever a non-zero-probability
+  history is interrupted. This gives a nearly-free improvement over SMDP optimal policies once
+  `Q*_O` is known.
+* **Continuous-navigation interruption demo**: In the 2-D navigation task interruption tightens
+  trajectories around obstacles relative to running options to natural termination, illustrating the
+  theorem in a continuous-state setting.
+* **Intra-option learning (Theorem 3)**: Off-policy intra-option Bellman updates converge to the
+  correct option-value function while observing only fragments of an option&#x27;s execution, enabling
+  parallel learning of many options from one trajectory.
+* **Subgoal improvement (Theorem 4)**: Defining a per-option pseudo-reward and improving the option
+  policy against it yields strictly better options under standard policy-improvement conditions; in
+  the rooms task this recovers near-optimal hallway navigators from learned subgoals.
+* **Generality**: All results are obtained without committing to any particular state abstraction,
+  function approximation, or hierarchical structure - the framework strictly *extends* MDPs.
+
+#### Innovations
+
+##### The Options Framework
+
+The paper&#x27;s central innovation. An option `&lt;I, pi, beta&gt;` is the minimal extension of a primitive
+action that adds (a) a domain of applicability, (b) an internal closed-loop policy, and (c) a
+stochastic termination rule. By making primitive actions a special case (one-step options that
+always terminate), the algebra unifies flat and hierarchical control under one type. This is the
+formal construct that virtually all subsequent hierarchical RL work (option-critic, FuN, HIRO,
+DIAYN, hierarchical actor-critic) builds on or contrasts with.
+
+##### MDP + Options = SMDP (Theorem 1)
+
+Establishes that augmenting an MDP with any fixed option set yields an SMDP at the option level, so
+*all classical SMDP machinery* - value iteration, Q-learning, policy iteration, convergence
+guarantees - lifts to options for free. This factors the hierarchical-RL problem into &quot;design
+options&quot; plus &quot;do standard SMDP RL&quot;, and is the theoretical backbone of SMDP Q-learning over
+options.
+
+##### Interruption Theorem
+
+Proves that an SMDP-optimal policy can be strictly improved by interrupting options whenever
+continuing is dominated by switching, *without* re-solving the SMDP. This is the formal
+justification for greedy / call-and-return / polling execution in hierarchical agents and for &quot;early
+exit&quot; mechanisms in modern LLM-agent planners.
+
+##### Intra-Option Learning
+
+Introduces off-policy Bellman updates that learn about *every* Markov option consistent with the
+observed primitive action, from any trajectory. This breaks the SMDP assumption that options must be
+executed to termination to be learned about, dramatically improving sample efficiency and enabling
+counterfactual learning across an option library.
+
+##### Subgoal-Based Option Improvement
+
+Formalizes &quot;subgoal&quot; as a state-dependent pseudo-reward used to shape an option&#x27;s internal policy,
+proving that policy improvement against the subgoal yields a strictly better option. This is the
+direct ancestor of feudal RL, intrinsic-motivation hierarchies, and modern goal-conditioned
+hierarchical agents.
+
+##### Unification of Prior Work
+
+Subsumes macro-operators, behaviors, abstract actions, hierarchical abstract machines (Parr) and
+MAXQ (Dietterich) under one minimal extension, making prior results comparable and clarifying which
+features are essential vs. incidental.
+
+#### Datasets
+
+This is a theoretical paper; no datasets were used. Empirical illustrations use two synthetic
+environments constructed by the authors:
+
+* A discrete 4-rooms gridworld (104 cells across 4 rooms with 8 hallway options) used for value
+  iteration and SMDP Q-learning experiments.
+* A continuous 2-D navigation task with obstacles used to illustrate the interruption theorem.
+
+Both environments are described in full in the paper and have been re-used widely in subsequent
+hierarchical RL literature.
+
+#### Main Ideas
+
+* **Options as the unit of hierarchy**: Treat *every* level of decision as an option `&lt;I, pi, beta&gt;`
+  with primitive actions as the one-step special case. For this project, the global / subtask /
+  atomic levels in the three-level hierarchy correspond directly to options at different time
+  scales, and the framework gives us a single formalism in which to reason about scope-aware vs.
+  scope-unaware vs. scope-mismatched conditioning (conditions A, B, C).
+* **Hierarchical decomposition is free SMDP**: Once you fix a set of options the decision process
+  *is* an SMDP, and standard convergence guarantees apply - no new theory is needed to justify
+  hierarchical evaluation. This means that when we run condition A (scope-aware) with explicit
+  granularity labels, we are essentially executing an SMDP policy at the labeled level, while
+  conditions B and C correspond to running the same option library without the matching policy
+  index.
+* **Interruption as a cheap improvement**: An optimal SMDP policy can be strictly improved by
+  switching whenever continuing is dominated, at near-zero extra compute. This maps directly onto
+  &quot;must-request&quot; vs &quot;can-execute-now&quot; decisions (Metric 3) - an agent that can interrupt a subtask
+  when continuation is suboptimal makes better request decisions.
+* **Subgoal pseudo-rewards**: Improving options against subgoals gives a principled, theorem-backed
+  recipe for distilling new options from data - relevant when we generate gold sub-actions during
+  benchmark annotation (Phase 1).
+* **Avoid premature commitment to hierarchy**: The framework deliberately separates &quot;what is an
+  option&quot; from &quot;how is the option set organized&quot;. Our project should adopt the same separation -
+  define hierarchy levels as labels on options, not as a baked-in tree structure that the agent must
+  commit to.
+
+#### Summary
+
+Sutton, Precup, and Singh address a foundational gap in reinforcement learning theory: classical
+MDPs operate at a single discrete time scale and cannot natively express temporally extended courses
+of action like &quot;drive to the airport&quot; or &quot;search a room&quot;. They propose the *options framework*, in
+which an option `&lt;I, pi, beta&gt;` packages an initiation set, an internal closed-loop policy, and a
+stochastic termination condition. Primitive actions become one-step options, so the framework
+strictly extends - rather than replaces - the existing MDP formalism. The motivation is to find the
+*minimal* extension that enables temporally abstract knowledge while preserving every standard RL
+algorithm.
+
+Methodologically, the authors prove that any MDP equipped with a fixed option set induces a
+semi-Markov decision process (SMDP) at the option level, so SMDP value iteration and Q-learning -
+including the multi-time discount model `r^o_s` and `p^o_{ss&#x27;} = sum_k p(s&#x27;, k) gamma^k` - apply
+unchanged. They then go beyond SMDP theory in three directions: (1) the *interruption theorem*
+proves that switching options whenever `Q^mu(s, o) &lt; V^mu(s)` strictly improves the policy, (2)
+*intra-option learning* lets a single trajectory update value estimates for every option whose
+policy is consistent with the observed action, and (3) *subgoal-based improvement* shows that
+defining a per-option pseudo-reward and running policy improvement against it yields strictly better
+options.
+
+Empirically, in a 4-rooms gridworld with 8 hand-designed hallway options, synchronous value
+iteration with options reaches the optimal value function in 2 iterations versus diameter-many for
+primitives, and SMDP Q-learning attains the goal far faster on the very first episode. The combined
+option set `A union H` works robustly even when the goal lies in a room interior, where hallway-only
+planning is insufficient. A continuous 2-D navigation task illustrates that the interruption theorem
+tightens trajectories around obstacles. The headline qualitative result is that all of this is
+accomplished without committing to any particular hierarchy, function approximator, or state
+abstraction.
+
+For this project the paper is foundational. The three-level hierarchy (global / subtask / atomic) is
+naturally expressed as options at different time scales, and conditions A/B/C can be formalized as
+the *same* option library executed under different conditioning policies. The interruption theorem
+provides theoretical backing for the &quot;can-execute-now vs. must-request&quot; distinction (Metric 3): an
+agent that interrupts a subtask whenever continuing is dominated makes better request decisions, and
+the resulting policy improvement is provably bounded below by the SMDP-optimal policy. The
+intra-option learning result is relevant for any future task that wants to learn from partial
+trajectories of agent runs, and the subgoal construction gives a principled way to derive options
+from gold sub-actions produced during benchmark annotation. We should treat this paper as the
+canonical reference whenever the project formalizes the relationship between hierarchy levels and
+conditioning.
 
 ## Introducing SWE-bench Verified
 ID: no-doi_OpenAI2024_swe-bench-verified

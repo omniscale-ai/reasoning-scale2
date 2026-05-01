@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the FrontierScience-Olympiad be
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-frontierscience.md) |
-[Suggestions (7)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
+[Suggestions (8)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
 (1)](../datasets/by-category/benchmark-frontierscience.md) | [Libraries
 (1)](../libraries/by-category/benchmark-frontierscience.md) | [Predictions
 (3)](../predictions/by-category/benchmark-frontierscience.md)
@@ -65,7 +65,7 @@ AI's evaluation pipeline is a known operational risk for the t0003 download-data
 
 No answers in this category.
 
-## Suggestions (6 open, 1 closed)
+## Suggestions (7 open, 1 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -79,6 +79,27 @@ numerical computation, retrieval, and code execution for most problems. Adding a
 execution tool and a retrieval tool would lift accuracy above the current floor and make
 A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
 confirmatory N would decrease proportionally.
+
+</details>
+
+<details>
+<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
+in the next ABC-condition run</strong> (S-0017-02)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0017_literature_hierarchical_agents_and_judges](../../tasks/t0017_literature_hierarchical_agents_and_judges/)
+
+t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
+with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
+conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
+with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
+Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
+missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
+specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
+success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
+scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
+confirmatory run) producing legible results. Estimated effort: 1-2 days of
+metric-implementation work.
 
 </details>
 
