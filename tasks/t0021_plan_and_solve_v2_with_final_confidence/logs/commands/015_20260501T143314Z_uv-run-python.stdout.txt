@@ -1,0 +1,13 @@
+[t0021 smoke] Loaded 1 rows.
+[t0021 smoke] === Condition A: scope-aware ReAct ===
+[t0021 smoke]   fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96: answer=ok correct=False confidence=0.78 parse_failures=0 cost=$0.0649
+[t0021 smoke] === Condition B: scope-unaware Plan-and-Solve v2 ===
+[t0021 smoke]   fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96: answer=<none> correct=False confidence=None parse_failures=0 cost=$0.1898
+[t0021 smoke] === Condition C: scope-mismatched (random) ===
+[t0021 smoke]   fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96: answer=<none> correct=False confidence=None parse_failures=0 cost=$0.5383
+
+[t0021 smoke] === SUMMARY ===
+  condition_a_scope_aware: n=1 success=0.000 overconfident_err=1.000 avg_decisions=1.00 parse_failure_rate=0.000
+  condition_b_scope_unaware: n=1 success=0.000 overconfident_err=0.000 avg_decisions=8.00 parse_failure_rate=0.000
+  condition_c_scope_mismatched: n=1 success=0.000 overconfident_err=0.000 avg_decisions=31.00 parse_failure_rate=0.000
+  total_cost=$0.5383 calls=43 duration=786.7s overall_parse_failure_rate=0.000

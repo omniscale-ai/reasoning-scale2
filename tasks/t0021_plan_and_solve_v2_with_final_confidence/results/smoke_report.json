@@ -1,0 +1,41 @@
+{
+  "spec_version": "1",
+  "task_id": "t0021_plan_and_solve_v2_with_final_confidence",
+  "rows_per_condition": [
+    1,
+    1,
+    1
+  ],
+  "total_cost_usd": 0.538343,
+  "total_calls": 43,
+  "duration_s": 786.69,
+  "overall_parse_failure_rate": 0.0,
+  "parse_failure_rate_threshold": 0.2,
+  "parse_failure_threshold_breached": false,
+  "per_condition_metrics": {
+    "condition_a_scope_aware": {
+      "task_success_rate": 0.0,
+      "overconfident_error_rate": 1.0,
+      "avg_decisions_per_task": 1.0,
+      "n": 1,
+      "parse_failure_rate": 0.0,
+      "parse_failure_total": 0
+    },
+    "condition_b_scope_unaware": {
+      "task_success_rate": 0.0,
+      "overconfident_error_rate": 0.0,
+      "avg_decisions_per_task": 8.0,
+      "n": 1,
+      "parse_failure_rate": 0.0,
+      "parse_failure_total": 0
+    },
+    "condition_c_scope_mismatched": {
+      "task_success_rate": 0.0,
+      "overconfident_error_rate": 0.0,
+      "avg_decisions_per_task": 31.0,
+      "n": 1,
+      "parse_failure_rate": 0.0,
+      "parse_failure_total": 0
+    }
+  }
+}

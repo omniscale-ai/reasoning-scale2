@@ -1,0 +1,9 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence/assets/library/tasks/t0021_plan_and_solve_v2_with_final_confidence/assets/library/scope_unaware_planandsolve_v2
+
+[31m[1mERRORS:[0m
+[31m  LA-E001 error: details.json does not exist: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence/assets/library/tasks/t0021_plan_and_solve_v2_with_final_confidence/assets/library/scope_unaware_planandsolve_v2/details.json[0m
+[31m  LA-E002 error: description.md does not exist: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence/assets/library/tasks/t0021_plan_and_solve_v2_with_final_confidence/assets/library/scope_unaware_planandsolve_v2/description.md[0m
+
+[31m[1mFAILED[0m — 2 error(s), 0 warning(s)
+
