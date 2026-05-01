@@ -113,10 +113,10 @@
       "step": 13,
       "name": "results",
       "description": "Write metrics.json with three variants (v1-flat-truncated, v2-tree-truncated, v2-tree-full), Wilson 95% CIs, decomposition table in results_detailed.md, and at least two charts.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-01T14:43:42Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/013_results/"
     },
     {
       "step": 14,

@@ -1,0 +1,49 @@
+{
+  "variants": [
+    {
+      "variant_id": "v1-flat-truncated",
+      "label": "v1 flat schema, problem truncated to 1500 chars",
+      "dimensions": {
+        "schema": "flat",
+        "problem_excerpt_limit": 1500,
+        "annotator_model": "claude-haiku-4-5",
+        "judge_model": "claude-haiku-4-5",
+        "n_judged": 12,
+        "source_task": "t0005_hierarchical_annotation_pilot_v1"
+      },
+      "metrics": {
+        "task_success_rate": 0.3333
+      }
+    },
+    {
+      "variant_id": "v2-tree-truncated",
+      "label": "v2 tree schema, problem truncated to 1500 chars",
+      "dimensions": {
+        "schema": "tree",
+        "problem_excerpt_limit": 1500,
+        "annotator_model": "claude-haiku-4-5",
+        "judge_model": "claude-haiku-4-5",
+        "n_judged": 20,
+        "source_task": "t0020_v2_truncation_vs_schema_ablation"
+      },
+      "metrics": {
+        "task_success_rate": 0.9
+      }
+    },
+    {
+      "variant_id": "v2-tree-full",
+      "label": "v2 tree schema, full untruncated problem text",
+      "dimensions": {
+        "schema": "tree",
+        "problem_excerpt_limit": null,
+        "annotator_model": "claude-haiku-4-5",
+        "judge_model": "claude-haiku-4-5",
+        "n_judged": 20,
+        "source_task": "t0014_v2_annotator_sonnet_rerun"
+      },
+      "metrics": {
+        "task_success_rate": 0.95
+      }
+    }
+  ]
+}
