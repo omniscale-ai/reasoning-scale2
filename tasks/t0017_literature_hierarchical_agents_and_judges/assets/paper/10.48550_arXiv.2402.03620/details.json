@@ -1,0 +1,98 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2402.03620",
+  "doi": "10.48550/arXiv.2402.03620",
+  "title": "SELF-DISCOVER: Large Language Models Self-Compose Reasoning Structures",
+  "url": "https://arxiv.org/abs/2402.03620",
+  "pdf_url": "https://arxiv.org/pdf/2402.03620.pdf",
+  "date_published": "2024-02-06",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Pei Zhou",
+      "country": "US",
+      "institution": "University of Southern California",
+      "orcid": null
+    },
+    {
+      "name": "Jay Pujara",
+      "country": "US",
+      "institution": "University of Southern California",
+      "orcid": null
+    },
+    {
+      "name": "Xiang Ren",
+      "country": "US",
+      "institution": "University of Southern California",
+      "orcid": null
+    },
+    {
+      "name": "Xinyun Chen",
+      "country": "US",
+      "institution": "Google DeepMind",
+      "orcid": null
+    },
+    {
+      "name": "Heng-Tze Cheng",
+      "country": "US",
+      "institution": "Google DeepMind",
+      "orcid": null
+    },
+    {
+      "name": "Quoc V. Le",
+      "country": "US",
+      "institution": "Google DeepMind",
+      "orcid": null
+    },
+    {
+      "name": "Ed H. Chi",
+      "country": "US",
+      "institution": "Google DeepMind",
+      "orcid": null
+    },
+    {
+      "name": "Denny Zhou",
+      "country": "US",
+      "institution": "Google DeepMind",
+      "orcid": null
+    },
+    {
+      "name": "Swaroop Mishra",
+      "country": "US",
+      "institution": "Google DeepMind",
+      "orcid": null
+    },
+    {
+      "name": "Huaixiu Steven Zheng",
+      "country": "US",
+      "institution": "Google DeepMind",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "University of Southern California",
+      "country": "US"
+    },
+    {
+      "name": "Google DeepMind",
+      "country": "US"
+    }
+  ],
+  "journal": "NeurIPS 2024",
+  "venue_type": "conference",
+  "categories": [
+    "hierarchical-planning",
+    "agent-evaluation"
+  ],
+  "abstract": "We introduce SELF-DISCOVER, a general framework for LLMs to self-discover the task-intrinsic reasoning structures to tackle complex reasoning problems that are challenging for typical prompting methods. Core to the framework is a self-discovery process where LLMs select multiple atomic reasoning modules such as critical thinking and step-by-step thinking, and compose them into an explicit reasoning structure for LLMs to follow during decoding. SELF-DISCOVER substantially improves GPT-4 and PaLM 2's performance on challenging reasoning benchmarks such as BigBench-Hard, grounded agent reasoning, and MATH, by as much as 32% compared to Chain of Thought (CoT). Furthermore, SELF-DISCOVER outperforms inference-intensive methods such as CoT-Self-Consistency by more than 20%, while requiring 10-40x fewer inference compute. Finally, we show that the self-discovered reasoning structures are universally applicable across model families: from PaLM 2-L to GPT-4, and from GPT-4 to Llama2, and share commonalities with human reasoning patterns.",
+  "citation_key": "Zhou2024b",
+  "summary_path": "summary.md",
+  "files": [
+    "files/zhou_2024_self-discover.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}

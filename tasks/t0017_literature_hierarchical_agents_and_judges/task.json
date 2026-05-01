@@ -5,10 +5,10 @@
   "name": "Literature: Hierarchical Agents and LLM-as-Judge",
   "short_description": "Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "completed",
   "dependencies": [],
-  "start_time": null,
-  "end_time": null,
+  "start_time": "2026-05-01T00:00:00Z",
+  "end_time": "2026-05-01T01:40:00Z",
   "expected_assets": {
     "paper": 10
   },

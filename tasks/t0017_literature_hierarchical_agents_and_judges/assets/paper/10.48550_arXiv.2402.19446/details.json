@@ -1,0 +1,68 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2402.19446",
+  "doi": "10.48550/arXiv.2402.19446",
+  "title": "ArCHer: Training Language Model Agents via Hierarchical Multi-Turn RL",
+  "url": "https://arxiv.org/abs/2402.19446",
+  "pdf_url": "https://arxiv.org/pdf/2402.19446.pdf",
+  "date_published": "2024-02-29",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Yifei Zhou",
+      "country": "US",
+      "institution": "University of California, Berkeley",
+      "orcid": null
+    },
+    {
+      "name": "Andrea Zanette",
+      "country": "US",
+      "institution": "University of California, Berkeley",
+      "orcid": null
+    },
+    {
+      "name": "Jiayi Pan",
+      "country": "US",
+      "institution": "University of California, Berkeley",
+      "orcid": null
+    },
+    {
+      "name": "Sergey Levine",
+      "country": "US",
+      "institution": "University of California, Berkeley",
+      "orcid": null
+    },
+    {
+      "name": "Aviral Kumar",
+      "country": "US",
+      "institution": "Google DeepMind",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "University of California, Berkeley",
+      "country": "US"
+    },
+    {
+      "name": "Google DeepMind",
+      "country": "US"
+    }
+  ],
+  "journal": "ICML 2024",
+  "venue_type": "conference",
+  "categories": [
+    "hierarchical-planning",
+    "agent-evaluation"
+  ],
+  "abstract": "A broad use case of large language models (LLMs) is in goal-directed decision-making tasks (or \"agent\" tasks), where an LLM needs to not just generate completions for a given prompt, but rather make intelligent decisions over a multi-turn interaction to accomplish a task (e.g., when interacting with the web, using tools, or providing customer support). Reinforcement learning (RL) provides a general paradigm to address such agent tasks, but current RL methods for LLMs largely focus on optimizing single-turn rewards. By construction, most single-turn RL methods cannot endow LLMs with the ability to intelligently seek information over multiple turns, perform credit assignment, or reason about their past actions -- all of which are critical in agent tasks. This raises the question: how can we design effective and efficient multi-turn RL algorithms for LLMs? In this paper, we develop a framework for building multi-turn RL algorithms for fine-tuning LLMs, that preserves the flexibility of existing single-turn RL methods for LLMs (e.g., proximal policy optimization), while accommodating multiple turns, long horizons, and delayed rewards effectively. To do this, our framework adopts a hierarchical RL approach and runs two RL algorithms in parallel: a high-level off-policy value-based RL algorithm to aggregate reward over utterances, and a low-level RL algorithm that utilizes this high-level value function to train a token policy within each utterance or turn. Our hierarchical framework, Actor-Critic Framework with a Hierarchical Structure (ArCHer), can also give rise to other RL methods. Empirically, we find that ArCHer significantly improves efficiency and performance on agent tasks, attaining a sample efficiency of about 100x over existing methods, while also improving with larger model capacity (upto the 7 billion scale that we tested on).",
+  "citation_key": "Zhou2024",
+  "summary_path": "summary.md",
+  "files": [
+    "files/zhou_2024_archer-hierarchical-rl.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}

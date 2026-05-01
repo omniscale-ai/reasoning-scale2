@@ -1,0 +1,80 @@
+{
+  "spec_version": "3",
+  "paper_id": "no-doi_Gao2026_hierarchical-preference-learning-llm-agents",
+  "doi": null,
+  "title": "Solving the Granularity Mismatch: Hierarchical Preference Learning for Long-Horizon LLM Agents",
+  "url": "https://openreview.net/forum?id=s8usvGHYlk",
+  "pdf_url": "https://arxiv.org/pdf/2510.03253",
+  "date_published": "2025-10-03",
+  "year": 2026,
+  "authors": [
+    {
+      "name": "Heyang Gao",
+      "country": "CN",
+      "institution": "Gaoling School of Artificial Intelligence, Renmin University of China",
+      "orcid": null
+    },
+    {
+      "name": "Zexu Sun",
+      "country": "CN",
+      "institution": "Baidu Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Erxue Min",
+      "country": "CN",
+      "institution": "Baidu Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Hengyi Cai",
+      "country": "CN",
+      "institution": "Baidu Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Shuaiqiang Wang",
+      "country": "CN",
+      "institution": "Baidu Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Dawei Yin",
+      "country": "CN",
+      "institution": "Baidu Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Xu Chen",
+      "country": "CN",
+      "institution": "Gaoling School of Artificial Intelligence, Renmin University of China",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Gaoling School of Artificial Intelligence, Renmin University of China",
+      "country": "CN"
+    },
+    {
+      "name": "Baidu Inc.",
+      "country": "CN"
+    }
+  ],
+  "journal": "ICLR 2026",
+  "venue_type": "conference",
+  "categories": [
+    "hierarchical-planning",
+    "granularity-conditioning"
+  ],
+  "abstract": "Large Language Models (LLMs) as autonomous agents are increasingly tasked with solving complex, long-horizon problems. Aligning these agents via preference-based offline methods like Direct Preference Optimization (DPO) is a promising direction, yet it faces a critical granularity mismatch. Trajectory-level DPO provides a signal that is too coarse for precise credit assignment, while step-level DPO is often too myopic to capture the value of multi-step behaviors. To resolve this challenge, we introduce Hierarchical Preference Learning (HPL), a hierarchical framework that optimizes LLM agents by leveraging preference signals at multiple, synergistic granularities. While HPL incorporates trajectory- and step-level DPO for global and local policy stability, its core innovation lies in group-level preference optimization guided by a dual-layer curriculum. Our approach first decomposes expert trajectories into semantically coherent action groups and then generates contrasting suboptimal groups to enable preference learning at a fine-grained, sub-task level. Then, instead of treating all preference pairs equally, HPL introduces a curriculum scheduler that organizes the learning process from simple to complex. This curriculum is structured along two axes: the group length, representing sub-task complexity, and the sample difficulty, defined by the reward gap between preferred and dispreferred action groups. Experiments on three challenging agent benchmarks show that HPL outperforms existing state-of-the-art methods. Our analyses demonstrate that the hierarchical DPO loss effectively integrates preference signals across multiple granularities, while the dual-layer curriculum is crucial for enabling the agent to solve a wide range of tasks, from simple behaviors to complex multi-step sequences.",
+  "citation_key": "Gao2026",
+  "summary_path": "summary.md",
+  "files": [
+    "files/gao_2026_hierarchical-preference-learning.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}

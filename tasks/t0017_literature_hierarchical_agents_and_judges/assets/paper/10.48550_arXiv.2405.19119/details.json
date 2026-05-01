@@ -1,0 +1,116 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2405.19119",
+  "doi": "10.48550/arXiv.2405.19119",
+  "title": "Can Graph Learning Improve Planning in LLM-based Agents?",
+  "url": "https://arxiv.org/abs/2405.19119",
+  "pdf_url": "https://arxiv.org/pdf/2405.19119",
+  "date_published": "2024-05-29",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Xixi Wu",
+      "country": "CN",
+      "institution": "Fudan University",
+      "orcid": null
+    },
+    {
+      "name": "Yifei Shen",
+      "country": "CN",
+      "institution": "Microsoft Research Asia",
+      "orcid": null
+    },
+    {
+      "name": "Caihua Shan",
+      "country": "CN",
+      "institution": "Microsoft Research Asia",
+      "orcid": null
+    },
+    {
+      "name": "Kaitao Song",
+      "country": "CN",
+      "institution": "Microsoft Research Asia",
+      "orcid": null
+    },
+    {
+      "name": "Siwei Wang",
+      "country": "CN",
+      "institution": "Microsoft Research Asia",
+      "orcid": null
+    },
+    {
+      "name": "Bohang Zhang",
+      "country": "CN",
+      "institution": "Peking University",
+      "orcid": null
+    },
+    {
+      "name": "Jiarui Feng",
+      "country": "US",
+      "institution": "Washington University in Saint Louis",
+      "orcid": null
+    },
+    {
+      "name": "Hong Cheng",
+      "country": "HK",
+      "institution": "The Chinese University of Hong Kong",
+      "orcid": null
+    },
+    {
+      "name": "Wei Chen",
+      "country": "CN",
+      "institution": "Microsoft Research Asia",
+      "orcid": null
+    },
+    {
+      "name": "Yun Xiong",
+      "country": "CN",
+      "institution": "Fudan University",
+      "orcid": null
+    },
+    {
+      "name": "Dongsheng Li",
+      "country": "CN",
+      "institution": "Microsoft Research Asia",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Fudan University",
+      "country": "CN"
+    },
+    {
+      "name": "Microsoft Research Asia",
+      "country": "CN"
+    },
+    {
+      "name": "The Chinese University of Hong Kong",
+      "country": "HK"
+    },
+    {
+      "name": "Peking University",
+      "country": "CN"
+    },
+    {
+      "name": "Washington University in Saint Louis",
+      "country": "US"
+    }
+  ],
+  "journal": "NeurIPS 2024",
+  "venue_type": "conference",
+  "categories": [
+    "hierarchical-planning",
+    "agent-evaluation"
+  ],
+  "abstract": "Task planning in language agents is emerging as an important research topic alongside the development of large language models (LLMs). It aims to break down complex user requests in natural language into solvable sub-tasks, thereby fulfilling the original requests. In this context, the sub-tasks can be naturally viewed as a graph, where the nodes represent the sub-tasks, and the edges denote the dependencies among them. Consequently, task planning is a decision-making problem that involves selecting a connected path or subgraph within the corresponding graph and invoking it. In this paper, we explore graph learning-based methods for task planning, a direction that is orthogonal to the prevalent focus on prompt design. Our interest in graph learning stems from a theoretical discovery: the biases of attention and auto-regressive loss impede LLMs' ability to effectively navigate decision-making on graphs, which is adeptly addressed by graph neural networks (GNNs). This theoretical insight led us to integrate GNNs with LLMs to enhance overall performance. Extensive experiments demonstrate that GNN-based methods surpass existing solutions even without training, and minimal training can further enhance their performance. The performance gain increases with a larger task graph size.",
+  "citation_key": "Wu2024",
+  "summary_path": "summary.md",
+  "files": [
+    "files/wu_2024_graph-learning-planning.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}

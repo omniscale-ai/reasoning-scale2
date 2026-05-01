@@ -1,0 +1,55 @@
+{
+  "spec_version": "3",
+  "paper_id": "no-doi_Sutton1999_options-framework",
+  "doi": "10.1016/S0004-3702(99)00052-1",
+  "title": "Between MDPs and semi-MDPs: A framework for temporal abstraction in reinforcement learning",
+  "url": "https://www.sciencedirect.com/science/article/pii/S0004370299000521",
+  "pdf_url": "https://people.cs.umass.edu/~barto/courses/cs687/Sutton-Precup-Singh-AIJ99.pdf",
+  "date_published": "1999-08",
+  "year": 1999,
+  "authors": [
+    {
+      "name": "Richard S. Sutton",
+      "country": "US",
+      "institution": "AT&T Labs.-Research",
+      "orcid": null
+    },
+    {
+      "name": "Doina Precup",
+      "country": "US",
+      "institution": "University of Massachusetts Amherst",
+      "orcid": null
+    },
+    {
+      "name": "Satinder Singh",
+      "country": "US",
+      "institution": "AT&T Labs.-Research",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "AT&T Labs.-Research",
+      "country": "US"
+    },
+    {
+      "name": "University of Massachusetts Amherst",
+      "country": "US"
+    }
+  ],
+  "journal": "Artificial Intelligence",
+  "venue_type": "journal",
+  "categories": [
+    "hierarchical-planning"
+  ],
+  "abstract": "Learning, planning, and representing knowledge at multiple levels of temporal abstraction are key, longstanding challenges for AI. In this paper we consider how these challenges can be addressed within the mathematical framework of reinforcement learning and Markov decision processes (MDPs). We extend the usual notion of action in this framework to include options-closed-loop policies for taking action over a period of time. Examples of options include picking up an object, going to lunch, and traveling to a distant city, as well as primitive actions such as muscle twitches and joint torques. Overall, we show that options enable temporally abstract knowledge and action to be included in the reinforcement learning framework in a natural and general way. In particular, we show that options may be used interchangeably with primitive actions in planning methods such as dynamic programming and in learning methods such as Q-learning. Formally, a set of options defined over an MDP constitutes a semi-Markov decision process (SMDP), and the theory of SMDPs provides the foundation for the theory of options. However, the most interesting issues concern the interplay between the underlying MDP and the SMDP and are thus beyond SMDP theory. We present results for three such cases: (1) we show that the results of planning with options can be used during execution to interrupt options and thereby perform even better than planned, (2) we introduce new intra-option methods that are able to learn about an option from fragments of its execution, and (3) we propose a notion of subgoal that can be used to improve the options themselves.",
+  "citation_key": "Sutton1999",
+  "summary_path": "summary.md",
+  "files": [
+    "files/sutton_1999_options-framework.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}

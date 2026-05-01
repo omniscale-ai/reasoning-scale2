@@ -1,0 +1,108 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2401.13178",
+  "doi": "10.48550/arXiv.2401.13178",
+  "title": "AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents",
+  "url": "https://arxiv.org/abs/2401.13178",
+  "pdf_url": "https://arxiv.org/pdf/2401.13178",
+  "date_published": "2024-12-23",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Chang Ma",
+      "country": "HK",
+      "institution": "The University of Hong Kong",
+      "orcid": null
+    },
+    {
+      "name": "Junlei Zhang",
+      "country": "CN",
+      "institution": "Zhejiang University",
+      "orcid": null
+    },
+    {
+      "name": "Zhihao Zhu",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Cheng Yang",
+      "country": "CN",
+      "institution": "Tsinghua University",
+      "orcid": null
+    },
+    {
+      "name": "Yujiu Yang",
+      "country": "CN",
+      "institution": "Tsinghua University",
+      "orcid": null
+    },
+    {
+      "name": "Yaohui Jin",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Zhenzhong Lan",
+      "country": "CN",
+      "institution": "Westlake University",
+      "orcid": null
+    },
+    {
+      "name": "Lingpeng Kong",
+      "country": "HK",
+      "institution": "The University of Hong Kong",
+      "orcid": null
+    },
+    {
+      "name": "Junxian He",
+      "country": "HK",
+      "institution": "The Hong Kong University of Science and Technology",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "The University of Hong Kong",
+      "country": "HK"
+    },
+    {
+      "name": "Zhejiang University",
+      "country": "CN"
+    },
+    {
+      "name": "Shanghai Jiao Tong University",
+      "country": "CN"
+    },
+    {
+      "name": "Tsinghua University",
+      "country": "CN"
+    },
+    {
+      "name": "Westlake University",
+      "country": "CN"
+    },
+    {
+      "name": "The Hong Kong University of Science and Technology",
+      "country": "HK"
+    }
+  ],
+  "journal": "NeurIPS 2024 Datasets and Benchmarks",
+  "venue_type": "conference",
+  "categories": [
+    "agent-evaluation",
+    "hierarchical-planning"
+  ],
+  "abstract": "Evaluating Large Language Models (LLMs) as general-purpose agents is essential for understanding their capabilities and facilitating their integration into practical applications. However, the evaluation process presents substantial challenges. A primary obstacle is the benchmarking of agent performance across diverse scenarios within a unified framework, especially in maintaining partially-observable environments and ensuring multi-round interactions. Moreover, current evaluation frameworks mostly focus on the final success rate, revealing few insights during the process and failing to provide a deep understanding of the model abilities. To address these challenges, we introduce AgentBoard, a pioneering comprehensive benchmark and accompanied open-source evaluation framework tailored to analytical evaluation of LLM agents. AgentBoard offers a fine-grained progress rate metric that captures incremental advancements as well as a comprehensive evaluation toolkit that features easy assessment of agents for multi-faceted analysis. This not only sheds light on the capabilities and limitations of LLM agents but also propels the interpretability of their performance to the forefront. Ultimately, AgentBoard serves as a step towards demystifying agent behaviors and accelerating the development of stronger LLM agents.",
+  "citation_key": "Ma2024",
+  "summary_path": "summary.md",
+  "files": [
+    "files/ma_2024_agentboard.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}
