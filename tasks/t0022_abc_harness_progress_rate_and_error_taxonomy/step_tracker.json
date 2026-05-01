@@ -131,10 +131,10 @@
       "step": 15,
       "name": "reporting",
       "description": "Final verification, session capture, mark task completed.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-01T16:00:35Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/015_reporting/"
     }
   ]
 }
