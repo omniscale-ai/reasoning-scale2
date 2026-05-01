@@ -1,0 +1,33 @@
+{
+  "spec_version": "2",
+  "predictions_id": "phase2-smoke-b",
+  "name": "Phase 2 smoke condition B (scope-unaware Plan-and-Solve) on FrontierScience-Olympiad",
+  "short_description": "Per-row predictions from the scope-unaware Plan-and-Solve agent (condition B) on FrontierScience-Olympiad rows of the v2 hierarchical-annotation dataset, paired with conditions A and C.",
+  "description_path": "description.md",
+  "model_id": null,
+  "model_description": "claude-haiku-4-5 (Anthropic) accessed via the local Claude Code CLI with a minimal system prompt. Agent library: scope_unaware_planandsolve_v1 (t0007). Tool registry: minimal calculator + finish only. No granularity tag (condition B by design).",
+  "dataset_ids": [
+    "hierarchical-annotation-v2"
+  ],
+  "prediction_format": "jsonl",
+  "prediction_schema": "Each line is a JSON object with fields: condition, task_id, problem, gold_answer, final_answer, is_correct, decision_count, final_confidence, trajectory, agent_refused.",
+  "instance_count": 40,
+  "metrics_at_creation": {
+    "task_success_rate": 0.0,
+    "overconfident_error_rate": 0.0,
+    "avg_decisions_per_task": 6.525
+  },
+  "files": [
+    {
+      "path": "files/predictions-frontierscience-olympiad.jsonl",
+      "description": "Per-row predictions for condition B on the 40 FrontierScience-Olympiad hierarchy-complete rows of hierarchical-annotation-v2.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "agent-evaluation",
+    "benchmark-frontierscience"
+  ],
+  "created_by_task": "t0012_phase2_abc_smoke_frontierscience",
+  "date_created": "2026-05-01"
+}

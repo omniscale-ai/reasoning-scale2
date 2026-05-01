@@ -1,0 +1,7 @@
+
+Verifying: /Users/anaderi/git/reasoning-scale2-worktrees/t0012_phase2_abc_smoke_frontierscience/tasks/t0012_phase2_abc_smoke_frontierscience/research/research_papers.md
+
+[33m[1mWARNINGS:[0m
+[33m  RP-W002 warning: Paper Index entry [Rein2023] has DOI '10.48550/arXiv.2311.12022' but no paper asset folder '10.48550_arXiv.2311.12022' was found[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)

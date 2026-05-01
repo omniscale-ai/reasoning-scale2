@@ -1,0 +1,113 @@
+{
+  "n_paired": 6,
+  "halted_for_budget": true,
+  "task_ids_paired": [
+    "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+    "fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57",
+    "fs_1875e781-bd89-4528-8bc3-94b7b436402f",
+    "fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f",
+    "fs_1dba0086-bca8-4b25-8843-e6e428f9284d",
+    "fs_1e2f4cbe-4a38-4dd3-9378-14df40f7599f"
+  ],
+  "metrics": {
+    "a": {
+      "task_success_rate": 0.025,
+      "overconfident_error_rate": 0.6470588235294118,
+      "avg_decisions_per_task": 1.2,
+      "n": 40
+    },
+    "b": {
+      "task_success_rate": 0.0,
+      "overconfident_error_rate": 0.0,
+      "avg_decisions_per_task": 6.525,
+      "n": 40
+    },
+    "c": {
+      "task_success_rate": 0.0,
+      "overconfident_error_rate": 0.0,
+      "avg_decisions_per_task": 26.0,
+      "n": 11
+    }
+  },
+  "wilson_ci_task_success": {
+    "a": {
+      "estimate": 0.0,
+      "lower": 0.0,
+      "upper": 0.39033429165637357
+    },
+    "b": {
+      "estimate": 0.0,
+      "lower": 0.0,
+      "upper": 0.39033429165637357
+    },
+    "c": {
+      "estimate": 0.0,
+      "lower": 0.0,
+      "upper": 0.39033429165637357
+    }
+  },
+  "mcnemar": {
+    "a_vs_b": {
+      "n_pairs": 6,
+      "discordant_pairs": 0,
+      "pos_minus_neg": 0,
+      "p_value": 1.0,
+      "statistic": null,
+      "method": "exact_binomial_no_discordant"
+    },
+    "b_vs_c": {
+      "n_pairs": 6,
+      "discordant_pairs": 0,
+      "pos_minus_neg": 0,
+      "p_value": 1.0,
+      "statistic": null,
+      "method": "exact_binomial_no_discordant"
+    },
+    "a_vs_c": {
+      "n_pairs": 6,
+      "discordant_pairs": 0,
+      "pos_minus_neg": 0,
+      "p_value": 1.0,
+      "statistic": null,
+      "method": "exact_binomial_no_discordant"
+    }
+  },
+  "deltas_pp": {
+    "a_minus_b_task_success": 2.5,
+    "a_minus_b_overconfident": 64.70588235294117,
+    "b_minus_c_task_success": 0.0,
+    "a_minus_c_task_success": 2.5
+  },
+  "rq1_pre_registered": {
+    "predicted_direction_pp": "+5",
+    "observed_pp": 2.5,
+    "p_value_a_b": 1.0,
+    "confirmed": false,
+    "refuted": false
+  },
+  "rq2_pre_registered": {
+    "predicted_direction_pp": "-2",
+    "observed_pp": 64.70588235294117,
+    "confirmed": false,
+    "refuted": true
+  },
+  "rq5_pre_registered": {
+    "predicted": "C strictly worst on metric 1 and metric 2",
+    "c_lt_min_ab_metric1_pp": 0.0,
+    "c_gt_max_ab_metric2_pp": -64.70588235294117,
+    "confirmed": false
+  },
+  "confirmatory_n_for_5pp_effect_at_alpha_0.05_power_0.8": 157,
+  "cost_breakdown": {
+    "claude-haiku-4-5": {
+      "calls": 665,
+      "cost_usd": 18.367785849999997,
+      "input_tokens": 10307,
+      "output_tokens": 2632048,
+      "cache_creation_tokens": 1970877,
+      "cache_read_tokens": 16299436
+    }
+  },
+  "total_cost_usd": 18.367785849999997,
+  "budget_cap_usd": 18.0
+}

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0012_phase2_abc_smoke_frontierscience",
+  "command": "uv run python -m arf.scripts.utils.init_task_folders t0012_phase2_abc_smoke_frontierscience --step-log-dir tasks/t0012_phase2_abc_smoke_frontierscience/logs/steps/003_init-folders/",
+  "exit_code": 0,
+  "duration_seconds": 0.05,
+  "started_at": "2026-04-30T01:01:04Z",
+  "completed_at": "2026-04-30T01:01:04Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0012_phase2_abc_smoke_frontierscience",
+  "stdout_file": "002_20260430T010104Z_uv-run-python.stdout.txt",
+  "stderr_file": "002_20260430T010104Z_uv-run-python.stderr.txt",
+  "stdout_lines": 17,
+  "stderr_lines": 0,
+  "truncated": false
+}

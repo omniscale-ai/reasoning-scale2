@@ -1,0 +1,113 @@
+Loaded 40 FrontierScience-Olympiad complete rows
+
+=== Condition A (Condition A: scope-aware ReAct) — already done: 0 ===
+  [A] 1/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=1 conf=0.85 final='## Establishing a Robust Pathosystem in Chenopodium pallidic' elapsed=72.8s running_cost=$0.0457
+  [A] 2/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=1 conf=0.85 final='<none>' elapsed=40.8s running_cost=$0.0703
+  [A] 3/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=1 conf=0.85 final='<none>' elapsed=60.0s running_cost=$0.1045
+  [A] 4/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=1 conf=0.85 final='<none>' elapsed=77.9s running_cost=$0.1505
+  [A] 5/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=1 conf=0.42 final='ESTABLISHING A ROBUST PATHOSYSTEM IN CHENOPODIUM PALLIDICAUL' elapsed=116.4s running_cost=$0.2282
+  [A] 6/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=1 conf=0.85 final='<none>' elapsed=278.1s running_cost=$0.2662
+  [A] 7/40 fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57 verdict=False decisions=1 conf=None final='<none>' elapsed=123.3s running_cost=$0.3652
+  [A] 8/40 fs_1875e781-bd89-4528-8bc3-94b7b436402f verdict=False decisions=1 conf=0.95 final='<none>' elapsed=22.1s running_cost=$0.3876
+  [A] 9/40 fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f verdict=False decisions=1 conf=0.85 final='# IMMUNOSTAIN PANEL DESIGN FOR AURORA SPECTRAL CYTOMETRY: NK' elapsed=167.1s running_cost=$0.5075
+  [A] 10/40 fs_1dba0086-bca8-4b25-8843-e6e428f9284d verdict=False decisions=1 conf=0.92 final='√(s²/N + a²/12)' elapsed=41.7s running_cost=$0.5423
+  [A] 11/40 fs_1e2f4cbe-4a38-4dd3-9378-14df40f7599f verdict=False decisions=1 conf=0.92 final='<none>' elapsed=60.2s running_cost=$0.5971
+  [A] 12/40 fs_1eca2503-b141-4f9f-ab10-e27d272c93b0 verdict=False decisions=1 conf=0.45 final='<none>' elapsed=149.2s running_cost=$0.7006
+  [A] 13/40 fs_1eca2503-b141-4f9f-ab10-e27d272c93b0 verdict=False decisions=1 conf=0.65 final='<none>' elapsed=118.7s running_cost=$0.7794
+  [A] 14/40 fs_1eca2503-b141-4f9f-ab10-e27d272c93b0 verdict=False decisions=1 conf=0.72 final='<none>' elapsed=123.7s running_cost=$0.8672
+  [A] 15/40 fs_27c865e6-1c87-489b-b7ea-b197fe3356ba verdict=False decisions=1 conf=0.85 final='U(T, P) = CT' elapsed=72.4s running_cost=$0.9270
+  [A] 16/40 fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6 verdict=False decisions=1 conf=None final='<none>' elapsed=128.4s running_cost=$1.0193
+  [A] 17/40 fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6 verdict=False decisions=2 conf=0.9 final='19' elapsed=152.0s running_cost=$1.1483
+  [A] 18/40 fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6 verdict=False decisions=1 conf=0.75 final='<none>' elapsed=72.2s running_cost=$1.2011
+  [A] 19/40 fs_4225f097-0cee-4e43-b5b9-6efbab4c3447 verdict=False decisions=2 conf=0.75 final='**Solution using Superposition Principle:**\n\nThe magnetic fi' elapsed=393.9s running_cost=$1.3553
+  [A] 20/40 fs_5ef8b29d-7665-45e6-a26a-bd4a27f450ad verdict=False decisions=1 conf=0.35 final='X is 4,5-dipropoxy-2-methyl-1,3-dioxolane (or a structural i' elapsed=231.7s running_cost=$1.5014
+  [A] 21/40 fs_60ff38cc-fb55-4c3c-b75c-f59dde5de0c3 verdict=False decisions=1 conf=0.92 final='# COMPREHENSIVE ANSWER: CONFIDENCE INTERVALS WITH BOUNDARY C' elapsed=167.9s running_cost=$1.6162
+  [A] 22/40 fs_676e50c1-cea4-4361-81e1-d4409a23422c verdict=False decisions=1 conf=0.85 final='# COMPREHENSIVE ANALYSIS: TDP-43 PATHOLOGICAL AGGREGATION IN' elapsed=98.6s running_cost=$1.6800
+  [A] 23/40 fs_7c94f50a-0896-450f-8d55-00c98aca5158 verdict=False decisions=1 conf=0.85 final='<none>' elapsed=43.9s running_cost=$1.7090
+  [A] 24/40 fs_7e32b7a6-9340-4a41-8c1f-89a0a91a6d3f verdict=False decisions=1 conf=None final='## COMPREHENSIVE ANALYSIS OF HALOTAG PROTEIN EXPRESSION AND ' elapsed=89.5s running_cost=$1.7707
+  [A] 25/40 fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c verdict=True decisions=1 conf=0.85 final='BATCH EFFECTS (patient-specific effects). For visualizing an' elapsed=38.4s running_cost=$1.8151
+  [A] 26/40 fs_a74ccc5b-fd37-49fa-b784-871dbcc41e9e verdict=False decisions=1 conf=None final='<none>' elapsed=88.1s running_cost=$1.8767
+  [A] 27/40 fs_af50243e-3a60-4460-9536-f9a02c4f8eb8 verdict=False decisions=4 conf=0.85 final='# STOCHASTIC PATH INTEGRAL FRAMEWORK FOR CONTINUOUS QUANTUM ' elapsed=252.6s running_cost=$2.0880
+  [A] 28/40 fs_af50243e-3a60-4460-9536-f9a02c4f8eb8 verdict=False decisions=2 conf=0.82 final='# STOCHASTIC PATH INTEGRAL FRAMEWORK FOR CONTINUOUS QUANTUM ' elapsed=128.2s running_cost=$2.1864
+  [A] 29/40 fs_b75893ef-5c56-4d43-9ae1-8c9caaf32ee2 verdict=False decisions=2 conf=0.85 final='di-n-butylamine (or dibutylamine)' elapsed=245.4s running_cost=$2.3673
+  [A] 30/40 fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8 verdict=False decisions=2 conf=0.72 final='# Solution to Nucleon Lattice Hamiltonian Problem\n\n## Part (' elapsed=180.9s running_cost=$2.5136
+  [A] 31/40 fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8 verdict=False decisions=2 conf=0.8 final='# Complete Solution: Lattice Hamiltonian for Nucleons\n\n## Pa' elapsed=345.6s running_cost=$2.7015
+  [A] 32/40 fs_dcfa830a-3f87-43eb-9ec7-6649fcdd0473 verdict=False decisions=1 conf=0.72 final='<none>' elapsed=55.7s running_cost=$2.7347
+  [A] 33/40 fs_ecb58594-7fd9-4a94-b799-0f1c13acb752 verdict=False decisions=1 conf=0.87 final='NaBiO₃ (sodium bismuthate)' elapsed=141.6s running_cost=$2.8061
+  [A] 34/40 fs_ecb58594-7fd9-4a94-b799-0f1c13acb752 verdict=False decisions=1 conf=0.78 final='<none>' elapsed=106.2s running_cost=$2.8765
+  [A] 35/40 fs_eec8840a-2d00-4e70-b043-0da51bd1b288 verdict=False decisions=1 conf=None final='<none>' elapsed=60.8s running_cost=$2.9200
+  [A] 36/40 fs_f12a8706-3ddd-4255-9234-0655babceb8e verdict=False decisions=1 conf=0.72 final='<none>' elapsed=138.9s running_cost=$3.0315
+  [A] 37/40 fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d verdict=False decisions=1 conf=0.5 final='<none>' elapsed=346.3s running_cost=$3.1398
+  [A] 38/40 fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d verdict=False decisions=1 conf=0.45 final='<none>' elapsed=155.7s running_cost=$3.2588
+  [A] row 39/40 fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d ERRORED: TimeoutExpired: Command '['claude', '-p', '-', '--model', 'claude-haiku-4-5', '--output-format', 'json', '--system-prompt', "You are a careful scientific reasoning assistant. Follow the user's instructions exactly, p
+  [A] 39/40 fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d verdict=False decisions=0 conf=None final='<none>' elapsed=630.1s running_cost=$3.2588
+  [A] 40/40 fs_f7b49518-6e84-44e3-9480-4cf91d149702 verdict=False decisions=1 conf=0.72 final='Macropinocytosis (or non-specific/constitutive endocytosis)' elapsed=45.1s running_cost=$3.2927
+
+=== Condition B (Condition B: scope-unaware Plan-and-Solve) — already done: 0 ===
+  [B] 1/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=1 conf=None final='<none>' elapsed=37.1s running_cost=$3.3187
+  [B] 2/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=8 conf=None final='<none>' elapsed=318.5s running_cost=$3.5705
+  [B] 3/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=6 conf=None final='<none>' elapsed=291.4s running_cost=$3.7484
+  [B] 4/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=8 conf=None final='<none>' elapsed=155.6s running_cost=$3.8735
+  [B] 5/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=8 conf=None final='<none>' elapsed=314.3s running_cost=$4.1156
+  [B] 6/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=8 conf=None final='<none>' elapsed=182.6s running_cost=$4.2625
+  [B] 7/40 fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57 verdict=False decisions=8 conf=None final='<none>' elapsed=284.4s running_cost=$4.5342
+  [B] 8/40 fs_1875e781-bd89-4528-8bc3-94b7b436402f verdict=False decisions=7 conf=None final='<none>' elapsed=295.0s running_cost=$4.7235
+  [B] 9/40 fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f verdict=False decisions=7 conf=None final='<none>' elapsed=276.9s running_cost=$4.9303
+  [B] 10/40 fs_1dba0086-bca8-4b25-8843-e6e428f9284d verdict=False decisions=8 conf=None final='<none>' elapsed=100.0s running_cost=$5.0290
+  [B] 11/40 fs_1e2f4cbe-4a38-4dd3-9378-14df40f7599f verdict=False decisions=7 conf=None final='<none>' elapsed=465.5s running_cost=$5.5163
+  [B] 12/40 fs_1eca2503-b141-4f9f-ab10-e27d272c93b0 verdict=False decisions=6 conf=None final='8' elapsed=998.6s running_cost=$6.1533
+  [B] 13/40 fs_1eca2503-b141-4f9f-ab10-e27d272c93b0 verdict=False decisions=7 conf=None final='8' elapsed=1014.9s running_cost=$6.7781
+  [B] 14/40 fs_1eca2503-b141-4f9f-ab10-e27d272c93b0 verdict=False decisions=7 conf=None final='35' elapsed=299.6s running_cost=$7.0258
+  [B] 15/40 fs_27c865e6-1c87-489b-b7ea-b197fe3356ba verdict=False decisions=6 conf=None final='$U(T,P) = CT$ where the constant term $f(P)$ is an arbitrary' elapsed=219.6s running_cost=$7.2397
+  [B] 16/40 fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6 verdict=False decisions=8 conf=None final='<none>' elapsed=361.7s running_cost=$7.4961
+  [B] 17/40 fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6 verdict=False decisions=7 conf=None final='19' elapsed=374.8s running_cost=$7.6437
+  [B] 18/40 fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6 verdict=False decisions=7 conf=None final='<none>' elapsed=359.1s running_cost=$7.8849
+  [B] 19/40 fs_4225f097-0cee-4e43-b5b9-6efbab4c3447 verdict=False decisions=7 conf=None final='$\\vec{B}_1 = \\frac{3}{4}\\vec{B}_0$' elapsed=188.4s running_cost=$8.0405
+  [B] 20/40 fs_5ef8b29d-7665-45e6-a26a-bd4a27f450ad verdict=False decisions=6 conf=None final='<none>' elapsed=395.4s running_cost=$8.3351
+  [B] 21/40 fs_60ff38cc-fb55-4c3c-b75c-f59dde5de0c3 verdict=False decisions=8 conf=None final='<none>' elapsed=187.4s running_cost=$8.5009
+  [B] 22/40 fs_676e50c1-cea4-4361-81e1-d4409a23422c verdict=False decisions=8 conf=None final='<none>' elapsed=234.8s running_cost=$8.6612
+  [B] 23/40 fs_7c94f50a-0896-450f-8d55-00c98aca5158 verdict=False decisions=1 conf=None final='**Complete comprehensive analysis provided above addressing ' elapsed=108.2s running_cost=$8.7149
+  [B] 24/40 fs_7e32b7a6-9340-4a41-8c1f-89a0a91a6d3f verdict=False decisions=7 conf=None final='<none>' elapsed=203.0s running_cost=$8.8333
+  [B] 25/40 fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c verdict=False decisions=7 conf=None final='<none>' elapsed=150.4s running_cost=$8.9447
+  [B] 26/40 fs_a74ccc5b-fd37-49fa-b784-871dbcc41e9e verdict=False decisions=6 conf=None final='7' elapsed=440.9s running_cost=$9.1384
+  [B] 27/40 fs_af50243e-3a60-4460-9536-f9a02c4f8eb8 verdict=False decisions=8 conf=None final='<none>' elapsed=311.8s running_cost=$9.3753
+  [B] 28/40 fs_af50243e-3a60-4460-9536-f9a02c4f8eb8 verdict=False decisions=2 conf=None final='<none>' elapsed=165.8s running_cost=$9.5048
+  [B] row 29/40 fs_b75893ef-5c56-4d43-9ae1-8c9caaf32ee2 ERRORED: MalformedPlanError: No numbered plan steps were found in the planner output. Expected lines starting with '1.' or '1)'.
+  [B] 29/40 fs_b75893ef-5c56-4d43-9ae1-8c9caaf32ee2 verdict=False decisions=0 conf=None final='<none>' elapsed=117.8s running_cost=$9.5942
+  [B] 30/40 fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8 verdict=False decisions=8 conf=None final='<none>' elapsed=639.9s running_cost=$9.9953
+  [B] 31/40 fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8 verdict=False decisions=5 conf=None final='<none>' elapsed=334.1s running_cost=$10.3035
+  [B] 32/40 fs_dcfa830a-3f87-43eb-9ec7-6649fcdd0473 verdict=False decisions=8 conf=None final='<none>' elapsed=201.8s running_cost=$10.4504
+  [B] 33/40 fs_ecb58594-7fd9-4a94-b799-0f1c13acb752 verdict=False decisions=6 conf=None final='<none>' elapsed=275.3s running_cost=$10.6745
+  [B] 34/40 fs_ecb58594-7fd9-4a94-b799-0f1c13acb752 verdict=False decisions=6 conf=None final='NaBiO₃ (sodium bismuthate)' elapsed=230.3s running_cost=$10.8619
+  [B] 35/40 fs_eec8840a-2d00-4e70-b043-0da51bd1b288 verdict=False decisions=6 conf=None final='SO₂Cl₂' elapsed=150.2s running_cost=$10.9934
+  [B] 36/40 fs_f12a8706-3ddd-4255-9234-0655babceb8e verdict=False decisions=7 conf=None final='<none>' elapsed=507.1s running_cost=$11.2441
+  [B] 37/40 fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d verdict=False decisions=8 conf=None final='<none>' elapsed=478.8s running_cost=$11.4941
+  [B] 38/40 fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d verdict=False decisions=8 conf=None final='<none>' elapsed=206.4s running_cost=$11.7028
+  [B] 39/40 fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d verdict=False decisions=8 conf=None final='<none>' elapsed=526.7s running_cost=$12.1374
+  [B] 40/40 fs_f7b49518-6e84-44e3-9480-4cf91d149702 verdict=False decisions=7 conf=None final='Pinocytosis (fluid-phase endocytosis) or macropinocytosis' elapsed=343.9s running_cost=$12.2306
+
+=== Condition C (Condition C: scope-mismatched (random)) — already done: 0 ===
+  [C] 1/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=31 conf=None final='<none>' elapsed=483.3s running_cost=$12.6258
+  [C] 2/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=18 conf=None final='<none>' elapsed=307.6s running_cost=$12.8856
+  [C] 3/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=34 conf=None final='<none>' elapsed=604.9s running_cost=$13.3524
+  [C] 4/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=15 conf=None final='<none>' elapsed=371.8s running_cost=$13.5760
+  [C] 5/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=34 conf=None final='<none>' elapsed=689.4s running_cost=$14.0403
+  [C] 6/40 fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96 verdict=False decisions=29 conf=None final='<none>' elapsed=698.0s running_cost=$14.5731
+  [C] 7/40 fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57 verdict=False decisions=24 conf=None final='<none>' elapsed=584.4s running_cost=$15.1522
+  [C] 8/40 fs_1875e781-bd89-4528-8bc3-94b7b436402f verdict=False decisions=21 conf=None final='<none>' elapsed=516.2s running_cost=$15.6789
+  [C] 9/40 fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f verdict=False decisions=40 conf=None final='<none>' elapsed=891.6s running_cost=$16.3890
+  [C] 10/40 fs_1dba0086-bca8-4b25-8843-e6e428f9284d verdict=False decisions=19 conf=None final='<none>' elapsed=426.5s running_cost=$16.8310
+  [C] 11/40 fs_1e2f4cbe-4a38-4dd3-9378-14df40f7599f verdict=False decisions=21 conf=None final='<none>' elapsed=1771.2s running_cost=$18.3678
+  [BUDGET-HALT] tracker total $18.3678 reached cap $18.0
+
+========================================
+Total cost: $18.3678 (cap $18.0)
+Halted: True
+N paired: 6
+Metrics A: success=0.025 overconf=0.647 avg_dec=1.20
+Metrics B: success=0.000 overconf=0.000 avg_dec=6.53
+Metrics C: success=0.000 overconf=0.000 avg_dec=26.00
+A-B McNemar p=1.0000 discordant=0 method=exact_binomial_no_discordant
+B-C McNemar p=1.0000 discordant=0
+Confirmatory N for 5pp effect: 157
+========================================

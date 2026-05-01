@@ -1,0 +1,52 @@
+{
+  "query": "Chenopodium diseases Phytophthora Alternaria fungi",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01UF1VehHdwNbd7L5sFDqF6R",
+      "content": [
+        {
+          "title": "Chenopodolans A-C: phytotoxic furopyrans produced by Phoma chenopodiicola, a fungal pathogen of Chenopodium album - PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24211132/"
+        },
+        {
+          "title": "Chenopodium quinoa, a New Host for Alternaria Section Alternata and Alternaria Section Infectoriae Causing Yellow Leaf Blotch Disease | Plant Disease",
+          "url": "https://apsjournals.apsnet.org/doi/abs/10.1094/PDIS-10-22-2320-SC"
+        },
+        {
+          "title": "Phytophthora - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Phytophthora"
+        },
+        {
+          "title": "(PDF) Chenopodium quinoa , a New Host for Alternaria Section Alternata and Alternaria Section Infectoriae Causing Yellow Leaf Blotch Disease",
+          "url": "https://www.researchgate.net/publication/369065250_Chenopodium_quinoa_a_new_host_for_Alternaria_section_alternata_and_Alternaria_section_Infectoriae_causing_yellow_leaf_blotch_disease"
+        },
+        {
+          "title": "Phytophthora infestans - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Phytophthora_infestans"
+        },
+        {
+          "title": "A Review of Chenopodium quinoa (Willd.) Diseases\u2014An Updated Perspective - PMC",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8233811/"
+        },
+        {
+          "title": "Morphology, phylogeny, and pathogenicity of Trichothecium, Alternaria, and Fusarium species associated with panicle rot on Chenopodium quinoa in Shanxi Province, China - Yin - 2022 - Plant Pathology - Wiley Online Library",
+          "url": "https://bsppjournals.onlinelibrary.wiley.com/doi/10.1111/ppa.13462"
+        },
+        {
+          "title": "Characterization of Alternaria alternata and Alternaria scrophulariae Brown Spot in Colombian quinoa (Chenopodium quinoa) - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10532934/"
+        },
+        {
+          "title": "Phytophthora Diseases in Ornamentals",
+          "url": "https://www.extension.purdue.edu/extmedia/BP/BP-215-W.pdf"
+        },
+        {
+          "title": "Biological Control of Oomycete Soilborne Diseases Caused by Phytophthora capsici, Phytophthora infestans, and Phytophthora nicotianae in Solanaceous Crops - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9645277/"
+        }
+      ]
+    },
+    "Based on the search results, here's what I found about Chenopodium diseases related to Phytophthora, Alternaria, and fungi:\n\n## Alternaria Diseases on Chenopodium\n\nAlternaria alternata has been isolated from Chenopodium album in Pakistan as a foliar fungal pathogen. The disease manifests with specific symptoms: small yellow blotches on the upper surface of leaves with a pale chlorotic halo surrounding the lesion.\n\nTrichothecium roseum, Alternaria alternata, and Fusarium citri were identified as pathogens responsible for quinoa panicle rot in Shanxi Province, China. Additionally, two different Alternaria species belonging to Alternaria section Infectoriae and alternata were identified as the causal agent of yellow leaf blotch disease, representing the first report of Alternaria spp. as foliar pathogens of quinoa.\n\n## Other Fungal Pathogens\n\nPhoma chenopodiicola is a fungal pathogen of Chenopodium album that has been proposed for biological control of this common worldwide weed.\n\n## Phytophthora and Chenopodium\n\nWhile the search results contain extensive information about Phytophthora as a plant pathogen genus, there is limited direct information about Phytophthora species specifically affecting Chenopodium. The results focus more on Phytophthora's impact on other crops like potatoes and solanaceous plants. For specific information about Phytophthora-Chenopodium interactions, additional targeted research would be needed."
+  ],
+  "durationSeconds": 6.4695279580000005
+}

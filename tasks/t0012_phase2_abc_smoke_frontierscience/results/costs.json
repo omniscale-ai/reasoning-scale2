@@ -1,0 +1,14 @@
+{
+  "total_cost_usd": 18.37,
+  "breakdown": {
+    "claude-haiku-4-5": {
+      "calls": 665,
+      "cost_usd": 18.37,
+      "input_tokens": 10307,
+      "output_tokens": 2632048,
+      "cache_creation_tokens": 1970877,
+      "cache_read_tokens": 16299436,
+      "note": "All calls via local Claude Code CLI with --tools '' --setting-sources '' to suppress default 50k-token system prompt. 25x cost reduction vs default prompt."
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "query": "Pseudomonas Xanthomonas Chenopodium bacterial diseases",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01Tyn5vsSS39GZBoSDgjA4DW",
+      "content": [
+        {
+          "title": "Xanthomonas - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Xanthomonas"
+        },
+        {
+          "title": "Xanthomonas - an overview | ScienceDirect Topics",
+          "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/xanthomonas"
+        },
+        {
+          "title": "Molecular Epidemiology of Pseudomonas syringae pv. syringae Causing Bacterial Leaf Spot of Watermelon and Squash in Florida | Plant Disease",
+          "url": "https://apsjournals.apsnet.org/doi/10.1094/PDIS-07-17-1002-RE"
+        },
+        {
+          "title": "Xanthomonas campestris - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Xanthomonas_campestris"
+        },
+        {
+          "title": "Xanthomonas spp. Infecting Araceae and Araliaceae: Taxonomy, Phylogeny, and Potential Virulence Mechanisms - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12292232/"
+        },
+        {
+          "title": "Bacterial Diseases of Beans (Xanthomonas campestris pv. phaseoli and Pseudomonas spp.)-Hort Answers - University of Illinois Extension",
+          "url": "https://web.extension.illinois.edu/hortanswers/detailproblem.cfm?PathogenID=129"
+        },
+        {
+          "title": "Mechanistic insights into host adaptation, virulence and epidemiology of the phytopathogen Xanthomonas | FEMS Microbiology Reviews | Oxford Academic",
+          "url": "https://academic.oup.com/femsre/article/44/1/1/5580289"
+        },
+        {
+          "title": "Xanthomonas campestris - an overview | ScienceDirect Topics",
+          "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/xanthomonas-campestris"
+        },
+        {
+          "title": "Bacterial Diseases of Solanaceous Crops (Xanthomonas and Pseudomonas spp.)-Hort Answers - University of Illinois Extension",
+          "url": "https://web.extension.illinois.edu/hortanswers/detailproblem.cfm?PathogenID=132"
+        },
+        {
+          "title": "Xanthomonas species (Bacterial leaf spot on ornamentals) - Bugwoodwiki",
+          "url": "https://wiki.bugwood.org/Xanthomonas_species_(Bacterial_leaf_spot_on_ornamentals)"
+        }
+      ]
+    },
+    "Based on the search results, here's what I found about bacterial diseases involving Pseudomonas, Xanthomonas, and Chenopodium:\n\n## Pseudomonas and Xanthomonas Bacterial Diseases\n\nXanthomonas is a genus of bacteria, many of which cause plant diseases, with at least 27 plant associated Xanthomonas spp. that collectively infect at least 400 plant species.\n\n### Major Xanthomonas Diseases\n\nXanthomonas species can cause bacterial spots and blights of leaves, stems, and fruits on a wide variety of plant species. Notable diseases include:\n\n- Citrus canker, caused by Xanthomonas citri subsp. citri, is an economically important disease of many citrus species\n- Bacterial blight of rice, caused by Xanthomonas oryzae pv. oryzae, is a disease found worldwide and particularly destructive in rice-producing regions in Asia\n- Xanthomonas campestris pv. campestris causes black rot in brassicas (cruciferous vegetables), one of the most important diseases of brassicas worldwide\n\n### Chenopodium Connection\n\nThere is a first report of bacterial leaf spot on Chenopodium quinoa caused by Pseudomonas syringae in Colombia. This indicates that Pseudomonas can also infect Chenopodium (including quinoa).\n\n### Virulence Mechanisms\n\nXanthomonas possess type III secretion system (T3SS) as a key factor of pathogenicity, typically injecting a cocktail of 20-30 effector proteins that interfere with plant immune system and various host cellular processes."
+  ],
+  "durationSeconds": 7.197522917000002
+}

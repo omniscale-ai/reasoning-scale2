@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0012_phase2_abc_smoke_frontierscience",
+  "command": "uv run --active python -u -m tasks.t0012_phase2_abc_smoke_frontierscience.code.run_smoke --budget-cap-usd 18.0",
+  "exit_code": 0,
+  "duration_seconds": 25956.124,
+  "started_at": "2026-04-30T16:43:23Z",
+  "completed_at": "2026-04-30T23:55:59Z",
+  "working_directory": "/Users/anaderi/git/reasoning-scale2-worktrees/t0012_phase2_abc_smoke_frontierscience",
+  "stdout_file": "008_20260430T164323Z_uv-run-active.stdout.txt",
+  "stderr_file": "008_20260430T164323Z_uv-run-active.stderr.txt",
+  "stdout_lines": 113,
+  "stderr_lines": 0,
+  "truncated": false
+}

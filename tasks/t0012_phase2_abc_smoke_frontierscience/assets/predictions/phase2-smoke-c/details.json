@@ -1,0 +1,34 @@
+{
+  "spec_version": "2",
+  "predictions_id": "phase2-smoke-c",
+  "name": "Phase 2 smoke condition C (scope-mismatched random) on FrontierScience-Olympiad",
+  "short_description": "Per-row predictions from the matched-mismatch agent (condition C, random strategy) on the first 11 FrontierScience-Olympiad rows of the v2 dataset; partial run halted at the budget cap.",
+  "description_path": "description.md",
+  "model_id": null,
+  "model_description": "claude-haiku-4-5 via local Claude Code CLI. Agent library: matched_mismatch_v1 (t0010), strategy='random', delegate=scope_unaware_planandsolve_v1. Each phase receives a deliberately incorrect granularity tag drawn uniformly from the two non-correct choices.",
+  "dataset_ids": [
+    "hierarchical-annotation-v2"
+  ],
+  "prediction_format": "jsonl",
+  "prediction_schema": "Each line is a JSON object with fields: condition, task_id, problem, gold_answer, final_answer, is_correct, decision_count, final_confidence, trajectory, agent_refused.",
+  "instance_count": 11,
+  "metrics_at_creation": {
+    "task_success_rate": 0.0,
+    "overconfident_error_rate": 0.0,
+    "avg_decisions_per_task": 26.0
+  },
+  "files": [
+    {
+      "path": "files/predictions-frontierscience-olympiad.jsonl",
+      "description": "Partial per-row predictions for condition C on the first 11 FrontierScience-Olympiad hierarchy-complete rows; run halted at $18 budget cap before reaching the remaining 29 rows.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "agent-evaluation",
+    "benchmark-frontierscience",
+    "granularity-conditioning"
+  ],
+  "created_by_task": "t0012_phase2_abc_smoke_frontierscience",
+  "date_created": "2026-05-01"
+}

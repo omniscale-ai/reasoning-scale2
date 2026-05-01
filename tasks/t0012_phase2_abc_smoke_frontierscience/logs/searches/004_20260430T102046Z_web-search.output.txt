@@ -1,0 +1,52 @@
+{
+  "query": "quinoa Chenopodium quinoa diseases pathogens comprehensive review",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01Ukvr1eA2gNuBqimVAzspJt",
+      "content": [
+        {
+          "title": "A Review of Chenopodium quinoa (Willd.) Diseases\u2014An Updated Perspective - PMC",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8233811/"
+        },
+        {
+          "title": "A Review of Chenopodium quinoa (Willd.) Diseases\u2014An Updated Perspective",
+          "url": "https://www.mdpi.com/2223-7747/10/6/1228"
+        },
+        {
+          "title": "Chenopodium Quinoa (Willd.) Diseases | Encyclopedia",
+          "url": "https://encyclopedia.pub/12476"
+        },
+        {
+          "title": "Chenopodium quinoa (Willd.) Diseases | Encyclopedia MDPI",
+          "url": "https://encyclopedia.pub/entry/history/compare_revision/26276"
+        },
+        {
+          "title": "(PDF) Diseases of Quinoa (Chenopodium quinoa)",
+          "url": "https://www.researchgate.net/publication/233196710_Diseases_of_Quinoa_Chenopodium_quinoa"
+        },
+        {
+          "title": "Emerging diseases affecting quinoa (Chenopodium quinoa) cultivation in Saskatchewan, Canada: Canadian Journal of Plant Pathology: Vol 48 , No 2 - Get Access",
+          "url": "https://www.tandfonline.com/doi/full/10.1080/07060661.2025.2595618"
+        },
+        {
+          "title": "A Review of Chenopodium quinoa (Willd.) Diseases-An Updated Perspective - PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34208662/"
+        },
+        {
+          "title": "(PDF) Diseases of Quinoa ( Chenopodium quinoa )",
+          "url": "https://www.academia.edu/11190828/Diseases_of_Quinoa_Chenopodium_quinoa_"
+        },
+        {
+          "title": "Diagnosis of fungal diseases in quinoa (Chenopodium quinoa Willd) in Burkina Faso - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11473529/"
+        },
+        {
+          "title": "(PDF) A Review of Chenopodium quinoa (Willd.) Diseases\u2014An Updated Perspective",
+          "url": "https://www.researchgate.net/publication/352479192_A_Review_of_Chenopodium_quinoa_Willd_Diseases-An_Updated_Perspective"
+        }
+      ]
+    },
+    "I've completed the web search for quinoa (*Chenopodium quinoa*) diseases and pathogens. Here's a summary of what the search found:\n\n## Key Findings\n\n**Major Disease Categories:**\n\nOomycetes and fungi are the two most important eukaryotic plant pathogens, with their predominance on the quinoa pathobiome being evident.\n\n**Most Important Disease:**\n\nDowny mildew caused by *Peronospora farinosa* is the most damaging disease of quinoa, reported from all areas of quinoa cultivation and considered endemic in the Andean highlands.\n\n**Other Key Pathogens:**\n\nThese include *Ascochyta caulina*, *Cercospora* cf. *chenopodii*, *Colletotrichum nigrum*, *C. truncatum*, and *Pseudomonas syringae*.\n\n**Additional Soil and Seedling Diseases:**\n\nA range of fungal pathogens, including *Rhizoctonia solani*, *Fusarium* spp., *Sclerotium rolfsii*, and *Pythium* spp. have been implicated in root rot as well as pre- and post-emergence damping-off.\n\n**Geographic Context:**\n\nThe recent introduction and cultivation of quinoa in novel environments has resulted in a wider spectrum and higher intensity of infectious diseases.\n\nThe search results point to several comprehensive reviews on quinoa diseases from peer-reviewed sources, including one from MDPI Plants (2021) that provides detailed information on disease assessment and management strategies."
+  ],
+  "durationSeconds": 6.764897166000003
+}

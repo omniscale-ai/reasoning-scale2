@@ -1,0 +1,5 @@
+branch: task/t0012_phase2_abc_smoke_frontierscience
+base_branch: main
+base_commit: 587e5d471f44b993e5af2f20a714f9abb6d52b91
+worktree_path: /Users/anaderi/git/reasoning-scale2-worktrees/t0012_phase2_abc_smoke_frontierscience
+created_at: 2026-04-30T00:55:21Z

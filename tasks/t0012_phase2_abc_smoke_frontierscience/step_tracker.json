@@ -1,0 +1,140 @@
+{
+  "task_id": "t0012_phase2_abc_smoke_frontierscience",
+  "steps": [
+    {
+      "step": 1,
+      "name": "create-branch",
+      "description": "Create task/t0012_phase2_abc_smoke_frontierscience branch from main.",
+      "status": "completed",
+      "started_at": "2026-04-30T00:55:21Z",
+      "completed_at": "2026-04-30T00:59:49Z",
+      "log_file": "logs/steps/001_create-branch/"
+    },
+    {
+      "step": 2,
+      "name": "check-deps",
+      "description": "Verify t0009, t0010, t0011 are completed and assets are available.",
+      "status": "completed",
+      "started_at": "2026-04-30T01:00:13Z",
+      "completed_at": "2026-04-30T01:00:56Z",
+      "log_file": "logs/steps/002_check-deps/"
+    },
+    {
+      "step": 3,
+      "name": "init-folders",
+      "description": "Create mandatory task folder structure including assets/library/ and assets/predictions/.",
+      "status": "completed",
+      "started_at": "2026-04-30T01:01:01Z",
+      "completed_at": "2026-04-30T01:01:24Z",
+      "log_file": "logs/steps/003_init-folders/"
+    },
+    {
+      "step": 4,
+      "name": "research-papers",
+      "description": "Review t0002 ReAct/Plan-and-Solve/Xiong2024 summaries to ground the harness design.",
+      "status": "completed",
+      "started_at": "2026-04-30T01:01:51Z",
+      "completed_at": "2026-04-30T01:04:43Z",
+      "log_file": "logs/steps/004_research-papers/"
+    },
+    {
+      "step": 5,
+      "name": "research-internet",
+      "description": "Skipped: deps cover the necessary literature; no new external info needed.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/005_research-internet/"
+    },
+    {
+      "step": 6,
+      "name": "research-code",
+      "description": "Review t0006/t0007/t0010/t0011 library APIs and the v2 dataset schema.",
+      "status": "completed",
+      "started_at": "2026-04-30T01:04:49Z",
+      "completed_at": "2026-04-30T01:06:53Z",
+      "log_file": "logs/steps/006_research-code/"
+    },
+    {
+      "step": 7,
+      "name": "planning",
+      "description": "Plan the harness, compute breakdown of cost vs $20 budget cap, enumerate phase walk.",
+      "status": "completed",
+      "started_at": "2026-04-30T01:06:59Z",
+      "completed_at": "2026-04-30T01:10:05Z",
+      "log_file": "logs/steps/007_planning/"
+    },
+    {
+      "step": 8,
+      "name": "setup-machines",
+      "description": "Skipped: Anthropic API only, no remote compute needed.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/008_setup-machines/"
+    },
+    {
+      "step": 9,
+      "name": "implementation",
+      "description": "Build phase2_smoke_harness_v1, run all rows \u00d7 3 conditions, compute metrics.",
+      "status": "completed",
+      "started_at": "2026-04-30T01:10:11Z",
+      "completed_at": "2026-05-01T04:37:17Z",
+      "log_file": "logs/steps/009_implementation/"
+    },
+    {
+      "step": 10,
+      "name": "teardown",
+      "description": "Skipped: no remote machines were used.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/010_teardown/"
+    },
+    {
+      "step": 11,
+      "name": "creative-thinking",
+      "description": "Skipped: smoke test directionality is the explicit goal; defer creative ablations to follow-up suggestions.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/011_creative-thinking/"
+    },
+    {
+      "step": 12,
+      "name": "results",
+      "description": "Write results_summary.md, results_detailed.md, metrics.json (3 variants), images/ charts.",
+      "status": "completed",
+      "started_at": "2026-05-01T04:37:21Z",
+      "completed_at": "2026-05-01T04:42:19Z",
+      "log_file": "logs/steps/012_results/"
+    },
+    {
+      "step": 13,
+      "name": "compare-literature",
+      "description": "Compare A's task_success_rate against published ReAct/FrontierMath performance bands.",
+      "status": "completed",
+      "started_at": "2026-05-01T04:42:27Z",
+      "completed_at": "2026-05-01T04:42:41Z",
+      "log_file": "logs/steps/013_compare-literature/"
+    },
+    {
+      "step": 14,
+      "name": "suggestions",
+      "description": "Generate follow-up suggestions: multi-provider replication, confirmatory N expansion.",
+      "status": "completed",
+      "started_at": "2026-05-01T04:42:44Z",
+      "completed_at": "2026-05-01T04:42:57Z",
+      "log_file": "logs/steps/014_suggestions/"
+    },
+    {
+      "step": 15,
+      "name": "reporting",
+      "description": "Run all verificators, capture sessions, mark task complete, prepare PR.",
+      "status": "completed",
+      "started_at": "2026-05-01T04:43:01Z",
+      "completed_at": "2026-05-01T04:43:34Z",
+      "log_file": "logs/steps/015_reporting/"
+    }
+  ]
+}
