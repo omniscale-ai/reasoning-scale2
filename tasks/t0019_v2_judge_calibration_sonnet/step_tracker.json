@@ -14,9 +14,9 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify task dependencies (none declared) and confirm reachable t0014/t0009/t0005 inputs.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:06:58Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:07:30Z",
       "log_file": "logs/steps/002_check-deps/"
     },
     {
