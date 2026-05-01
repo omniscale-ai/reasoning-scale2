@@ -1,0 +1,68 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2310.04406",
+  "doi": "10.48550/arXiv.2310.04406",
+  "title": "Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models",
+  "url": "https://arxiv.org/abs/2310.04406",
+  "pdf_url": "https://arxiv.org/pdf/2310.04406.pdf",
+  "date_published": "2024-06-06",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Andy Zhou",
+      "country": "US",
+      "institution": "University of Illinois Urbana-Champaign",
+      "orcid": null
+    },
+    {
+      "name": "Kai Yan",
+      "country": "US",
+      "institution": "University of Illinois Urbana-Champaign",
+      "orcid": null
+    },
+    {
+      "name": "Michal Shlapentokh-Rothman",
+      "country": "US",
+      "institution": "University of Illinois Urbana-Champaign",
+      "orcid": null
+    },
+    {
+      "name": "Haohan Wang",
+      "country": "US",
+      "institution": "University of Illinois Urbana-Champaign",
+      "orcid": null
+    },
+    {
+      "name": "Yu-Xiong Wang",
+      "country": "US",
+      "institution": "University of Illinois Urbana-Champaign",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "University of Illinois Urbana-Champaign",
+      "country": "US"
+    },
+    {
+      "name": "Lapis Labs",
+      "country": "US"
+    }
+  ],
+  "journal": "ICML 2024",
+  "venue_type": "conference",
+  "categories": [
+    "hierarchical-planning",
+    "agent-evaluation"
+  ],
+  "abstract": "While language models (LMs) have shown potential across a range of decision-making tasks, their reliance on simple acting processes limits their broad deployment as autonomous agents. In this paper, we introduce Language Agent Tree Search (LATS) -- the first general framework that synergizes the capabilities of LMs in reasoning, acting, and planning. By leveraging the in-context learning ability of LMs, we integrate Monte Carlo Tree Search into LATS to enable LMs as agents, along with LM-powered value functions and self-reflections for proficient exploration and enhanced decision-making. A key feature of our approach is the incorporation of an environment for external feedback, which offers a more deliberate and adaptive problem-solving mechanism that surpasses the constraints of existing techniques. Our experimental evaluation across diverse domains, including programming, interactive question-answering (QA), web navigation, and math, validates the effectiveness and generality of LATS in decision-making while maintaining competitive or improved reasoning performance. Notably, LATS achieves state-of-the-art pass@1 accuracy (92.7%) for programming on HumanEval with GPT-4 and demonstrates gradient-free performance (average score of 75.9) comparable to gradient-based fine-tuning for web navigation on WebShop with GPT-3.5.",
+  "citation_key": "Zhou2024a",
+  "summary_path": "summary.md",
+  "files": [
+    "files/zhou_2024_lats-agent-tree-search.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}

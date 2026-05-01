@@ -1,0 +1,136 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2410.07166",
+  "doi": "10.48550/arXiv.2410.07166",
+  "title": "Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making",
+  "url": "https://arxiv.org/abs/2410.07166",
+  "pdf_url": "https://arxiv.org/pdf/2410.07166",
+  "date_published": "2024-10-09",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Manling Li",
+      "country": "US",
+      "institution": "Northwestern University",
+      "orcid": null
+    },
+    {
+      "name": "Shiyu Zhao",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Qineng Wang",
+      "country": "US",
+      "institution": "Northwestern University",
+      "orcid": null
+    },
+    {
+      "name": "Kangrui Wang",
+      "country": "US",
+      "institution": "Northwestern University",
+      "orcid": null
+    },
+    {
+      "name": "Yu Zhou",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Sanjana Srivastava",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Cem Gokmen",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Tony Lee",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Li Erran Li",
+      "country": "US",
+      "institution": "Amazon",
+      "orcid": null
+    },
+    {
+      "name": "Ruohan Zhang",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Weiyu Liu",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Percy Liang",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Li Fei-Fei",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    },
+    {
+      "name": "Jiayuan Mao",
+      "country": "US",
+      "institution": "Massachusetts Institute of Technology",
+      "orcid": null
+    },
+    {
+      "name": "Jiajun Wu",
+      "country": "US",
+      "institution": "Stanford University",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Northwestern University",
+      "country": "US"
+    },
+    {
+      "name": "Stanford University",
+      "country": "US"
+    },
+    {
+      "name": "Massachusetts Institute of Technology",
+      "country": "US"
+    },
+    {
+      "name": "Amazon",
+      "country": "US"
+    }
+  ],
+  "journal": "NeurIPS 2024",
+  "venue_type": "conference",
+  "categories": [
+    "agent-evaluation",
+    "hierarchical-planning"
+  ],
+  "abstract": "We aim to evaluate Large Language Models (LLMs) for embodied decision making. While a significant body of work has been leveraging LLMs for decision making in embodied environments, we still lack a systematic understanding of their performance because they are usually applied in different domains, for different purposes, and built based on different inputs and outputs. Furthermore, existing evaluations tend to rely solely on a final success rate, making it difficult to pinpoint what ability is missing in LLMs and where the problem lies, which in turn blocks embodied agents from leveraging LLMs effectively and selectively. To address these limitations, we propose a generalized interface (Embodied Agent Interface) that supports the formalization of various types of tasks and input-output specifications of LLM-based modules. Specifically, it allows us to unify 1) a broad set of embodied decision-making tasks involving both state and temporally extended goals, 2) four commonly-used LLM-based modules for decision making: goal interpretation, subgoal decomposition, action sequencing, and transition modeling, and 3) a collection of fine-grained metrics which break down evaluation into various types of errors, such as hallucination errors, affordance errors, various types of planning errors, etc. Overall, our benchmark offers a comprehensive assessment of LLMs' performance for different subtasks, pinpointing the strengths and weaknesses in LLM-powered embodied AI systems, and providing insights for effective and selective use of LLMs in embodied decision making.",
+  "citation_key": "Li2024",
+  "summary_path": "summary.md",
+  "files": [
+    "files/li_2024_embodied-agent-interface.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}

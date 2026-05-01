@@ -88,6 +88,7 @@ dev = [
     "flowmark>=0.6.5",
     "mypy>=1.13",
     "pre-commit>=4.0",
+    "pypdf>=6.10.2",
     "pytest>=8.0",
     "ruff>=0.8",
     "types-pyyaml",

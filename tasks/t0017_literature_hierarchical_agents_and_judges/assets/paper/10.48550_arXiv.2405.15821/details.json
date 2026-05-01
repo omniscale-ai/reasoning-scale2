@@ -1,0 +1,68 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2405.15821",
+  "doi": "10.48550/arXiv.2405.15821",
+  "title": "Reinforcing Language Agents via Policy Optimization with Action Decomposition",
+  "url": "https://arxiv.org/abs/2405.15821",
+  "pdf_url": "https://arxiv.org/pdf/2405.15821",
+  "date_published": "2024-05-23",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Muning Wen",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Ziyu Wan",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Weinan Zhang",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Jun Wang",
+      "country": "GB",
+      "institution": "University College London",
+      "orcid": null
+    },
+    {
+      "name": "Ying Wen",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Shanghai Jiao Tong University",
+      "country": "CN"
+    },
+    {
+      "name": "University College London",
+      "country": "GB"
+    }
+  ],
+  "journal": "NeurIPS 2024",
+  "venue_type": "conference",
+  "categories": [
+    "hierarchical-planning",
+    "granularity-conditioning"
+  ],
+  "abstract": "Language models as intelligent agents push the boundaries of sequential decision-making agents but struggle with limited knowledge of environmental dynamics and exponentially huge action space. Recent efforts like GLAM and TWOSOME manually constrain the action space to a restricted subset and employ reinforcement learning to align agents' knowledge with specific environments. However, they overlook fine-grained credit assignments for intra-action tokens, which is essential for efficient language agent optimization, and rely on human's prior knowledge to restrict action space. This paper proposes decomposing language agent optimization from the action level to the token level, offering finer supervision for each intra-action token and manageable optimization complexity in environments with unrestricted action spaces. Beginning with the simplification of flattening all actions, we theoretically explore the discrepancies between action-level optimization and this naive token-level optimization. We then derive the Bellman backup with Action Decomposition (BAD) to integrate credit assignments for both intra-action and inter-action tokens, effectively eliminating the discrepancies. Implementing BAD within the PPO algorithm, we introduce Policy Optimization with Action Decomposition (POAD). POAD benefits from a finer-grained credit assignment process and lower optimization complexity, leading to enhanced learning efficiency and generalization abilities in aligning language agents with interactive environments. We validate POAD across diverse testbeds, with results affirming the advantages of our approach and the correctness of our theoretical analysis.",
+  "citation_key": "Wen2024",
+  "summary_path": "summary.md",
+  "files": [
+    "files/wen_2024_action-decomposition.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0017_literature_hierarchical_agents_and_judges",
+  "date_added": "2026-05-01"
+}
