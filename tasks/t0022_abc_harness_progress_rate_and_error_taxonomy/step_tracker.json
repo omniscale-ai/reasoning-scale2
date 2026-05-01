@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0012 prediction format, t0017 instrument definitions, and existing harness libraries.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:07:40Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:12:02Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
