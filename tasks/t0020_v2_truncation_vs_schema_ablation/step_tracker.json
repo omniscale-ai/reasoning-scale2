@@ -32,19 +32,19 @@
       "step": 4,
       "name": "research-papers",
       "description": "Skipped: this is a focused re-run of an established pipeline; relevant prior literature was already covered in t0009/t0014.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/004_research-papers/"
     },
     {
       "step": 5,
       "name": "research-internet",
       "description": "Skipped: no external knowledge needed; the pipeline reuses claude CLI with the same models.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/005_research-internet/"
     },
     {
       "step": 6,
@@ -68,10 +68,10 @@
       "step": 8,
       "name": "setup-machines",
       "description": "Skipped: all calls run locally via the claude CLI; no remote compute required.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/008_setup-machines/"
     },
     {
       "step": 9,
@@ -86,28 +86,28 @@
       "step": 10,
       "name": "creative-thinking",
       "description": "Skipped: this is a tightly scoped ablation; the experimental design is fixed by the task description.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/010_creative-thinking/"
     },
     {
       "step": 11,
       "name": "compare-literature",
       "description": "Skipped: comparison is internal across three project conditions; Xiong2024 framing was already discussed in t0009/t0014.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/011_compare-literature/"
     },
     {
       "step": 12,
       "name": "teardown",
       "description": "Skipped: no remote machines provisioned.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/012_teardown/"
     },
     {
       "step": 13,
