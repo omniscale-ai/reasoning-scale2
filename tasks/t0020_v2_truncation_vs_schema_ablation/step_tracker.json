@@ -1,0 +1,140 @@
+{
+  "task_id": "t0020_v2_truncation_vs_schema_ablation",
+  "steps": [
+    {
+      "step": 1,
+      "name": "create-branch",
+      "description": "Create the task worktree and branch, populate step_tracker.json with the planned step list.",
+      "status": "in_progress",
+      "started_at": "2026-05-01T14:06:36Z",
+      "completed_at": null,
+      "log_file": "logs/steps/001_create-branch/"
+    },
+    {
+      "step": 2,
+      "name": "check-deps",
+      "description": "Verify the task has no dependencies (per task.json).",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 3,
+      "name": "init-folders",
+      "description": "Create the standard task folder structure (assets, results, code, plan, research, intervention, corrections).",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 4,
+      "name": "research-papers",
+      "description": "Skipped: this is a focused re-run of an established pipeline; relevant prior literature was already covered in t0009/t0014.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 5,
+      "name": "research-internet",
+      "description": "Skipped: no external knowledge needed; the pipeline reuses claude CLI with the same models.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 6,
+      "name": "research-code",
+      "description": "Review t0009 and t0014 annotator/judge code to confirm exactly how to insert the 1500-char truncation in both annotator and judge prompts.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 7,
+      "name": "planning",
+      "description": "Plan the implementation: paths.py, constants.py with truncation, v2_truncated_annotator.py, v2_truncated_judge.py, compute_stats.py for 3-way comparison and decomposition with Wilson 95% CIs.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 8,
+      "name": "setup-machines",
+      "description": "Skipped: all calls run locally via the claude CLI; no remote compute required.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 9,
+      "name": "implementation",
+      "description": "Run haiku annotator on the t0014 pool with 1500-char truncated problems, then haiku judge with 1500-char truncated problems. Build the predictions asset; compute the decomposition.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 10,
+      "name": "creative-thinking",
+      "description": "Skipped: this is a tightly scoped ablation; the experimental design is fixed by the task description.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 11,
+      "name": "compare-literature",
+      "description": "Skipped: comparison is internal across three project conditions; Xiong2024 framing was already discussed in t0009/t0014.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 12,
+      "name": "teardown",
+      "description": "Skipped: no remote machines provisioned.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 13,
+      "name": "results",
+      "description": "Write metrics.json with three variants (v1-flat-truncated, v2-tree-truncated, v2-tree-full), Wilson 95% CIs, decomposition table in results_detailed.md, and at least two charts.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 14,
+      "name": "suggestions",
+      "description": "Generate follow-up suggestions based on the decomposition outcome.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 15,
+      "name": "reporting",
+      "description": "Final pre-PR verifications: asset verificators, verify_task_complete, verify_pr_premerge.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    }
+  ]
+}
