@@ -1,0 +1,55 @@
+{
+  "spec_version": "2",
+  "library_id": "scope_unaware_planandsolve_v2",
+  "name": "Scope-Unaware Plan-and-Solve v2 (with final_confidence)",
+  "version": "1",
+  "short_description": "Wraps the v1 scope-unaware Plan-and-Solve agent and adds a verbalized final_confidence field on every trajectory, following the Xiong et al. 2024 section 3.2 protocol.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/planandsolve_v2.py",
+    "code/constants.py",
+    "code/paths.py"
+  ],
+  "entry_points": [
+    {
+      "name": "PlanAndSolveAgentV2",
+      "kind": "class",
+      "module": "code/planandsolve_v2.py",
+      "description": "Plan-and-Solve v2 agent. Composes the v1 agent and emits a verbalized final_confidence on every AgentResultV2 result."
+    },
+    {
+      "name": "AgentResultV2",
+      "kind": "class",
+      "module": "code/planandsolve_v2.py",
+      "description": "Aggregate output: final_answer, trajectory, plan, final_confidence (0..1 or None), final_confidence_parse_failures (0/1/2)."
+    },
+    {
+      "name": "TrajectoryRecordV2",
+      "kind": "class",
+      "module": "code/planandsolve_v2.py",
+      "description": "Trajectory record with the canonical six v1 fields plus final_confidence (populated only on the finishing record)."
+    },
+    {
+      "name": "elicit_final_confidence",
+      "kind": "function",
+      "module": "code/planandsolve_v2.py",
+      "description": "Issue the Xiong2024 verbalized-confidence prompt once with one retry on parse failure; returns (value_in_[0,1] or None, parse_failures_in_{0,1,2})."
+    },
+    {
+      "name": "parse_final_confidence",
+      "kind": "function",
+      "module": "code/planandsolve_v2.py",
+      "description": "Strict regex parser: match \\b(0(?:\\.\\d+)?|1(?:\\.0+)?)\\b, take last match, clamp to [0.0, 1.0]; return None when no match."
+    }
+  ],
+  "dependencies": [],
+  "test_paths": [
+    "code/test_planandsolve_v2.py"
+  ],
+  "categories": [
+    "uncertainty-calibration",
+    "hierarchical-planning"
+  ],
+  "created_by_task": "t0021_plan_and_solve_v2_with_final_confidence",
+  "date_created": "2026-05-01"
+}
