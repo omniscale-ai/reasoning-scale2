@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0021_plan_and_solve_v2_with_final_confidence",
+  "command": "uv run flowmark --inplace --nobackup tasks/t0021_plan_and_solve_v2_with_final_confidence/plan/plan.md",
+  "exit_code": 0,
+  "duration_seconds": 0.604,
+  "started_at": "2026-05-01T14:17:03Z",
+  "completed_at": "2026-05-01T14:17:04Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence",
+  "stdout_file": "007_20260501T141703Z_uv-run-flowmark.stdout.txt",
+  "stderr_file": "007_20260501T141703Z_uv-run-flowmark.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 0,
+  "truncated": false
+}
