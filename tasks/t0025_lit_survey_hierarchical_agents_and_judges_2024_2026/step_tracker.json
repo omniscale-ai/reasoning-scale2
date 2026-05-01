@@ -14,7 +14,7 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify task dependencies (none for this task).",
-      "status": "not_started",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/002_check-deps/"
@@ -23,7 +23,7 @@
       "step": 3,
       "name": "init-folders",
       "description": "Initialize the mandatory task folder structure.",
-      "status": "not_started",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/003_init-folders/"
@@ -59,7 +59,7 @@
       "step": 7,
       "name": "planning",
       "description": "Write plan/plan.md describing how 10 papers will be added in parallel via add-paper sub-agents and how the synthesis will be produced.",
-      "status": "not_started",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
@@ -77,7 +77,7 @@
       "step": 9,
       "name": "implementation",
       "description": "Add 10 paper assets via add-paper sub-agents (parallelism capped at 3 concurrent), then write results/results_summary.md and results/results_detailed.md syntheses.",
-      "status": "not_started",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/009_implementation/"
@@ -104,7 +104,7 @@
       "step": 12,
       "name": "results",
       "description": "Verify results files exist and pass verify_task_results.",
-      "status": "not_started",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/012_results/"
@@ -122,7 +122,7 @@
       "step": 14,
       "name": "suggestions",
       "description": "Write results/suggestions.json with follow-up suggestions derived from the synthesis.",
-      "status": "not_started",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/014_suggestions/"
@@ -131,7 +131,7 @@
       "step": 15,
       "name": "reporting",
       "description": "Open PR, run pre-merge verificator, merge, refresh overview/.",
-      "status": "not_started",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/015_reporting/"
