@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-01T12:08:03Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-01T13:56:45Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>70647</char_count>
-    <byte_count>70738</byte_count>
-    <estimated_tokens>17661</estimated_tokens>
+    <char_count>73522</char_count>
+    <byte_count>73615</byte_count>
+    <estimated_tokens>18380</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -148,9 +148,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
+        <id>t0018_brainstorm_results_6</id>
       </source_ids>
       <content>
-Completed tasks: 17
+Completed tasks: 18
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -253,13 +254,57 @@ ID: t0017_literature_hierarchical_agents_and_judges
 Completed: 2026-05-01
 Short description: Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.
 Result summary: Results Summary: Literature Survey on Hierarchical Agents and LLM-as-Judge Summary Completed a literature survey of ten papers covering hierarchical / granularity-aware LLM agents, search-and-planning structure, reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology — plus the foundational options-framework paper (Sutton 1999) as a brief theory anchor. All ten paper assets pass the v3 paper-asset verificator with zero errors and zero warnings. The synthesis below groups findings by the five themes defined in `task_description.md` and identifies which backlog suggestions and prior tasks the survey strengthens or weakens. Metrics * **10 paper assets created** out of a...
+
+## Brainstorm session 6: paper-driven slate after t0017 literature survey
+ID: t0018_brainstorm_results_6
+Completed: 2026-05-01
+Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
+Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0019_v2_judge_calibration_sonnet</id>
+        <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
+        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
+        <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
+      </source_ids>
       <content>
-Planned or active tasks: 0
+Planned or active tasks: 5
+
+## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+ID: t0019_v2_judge_calibration_sonnet
+Status: not_started
+Effective date: 2026-05-01
+Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+
+## v2 Truncation vs Schema Ablation
+ID: t0020_v2_truncation_vs_schema_ablation
+Status: not_started
+Effective date: 2026-05-01
+Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
+
+## Plan-and-Solve v2 with final_confidence Field
+ID: t0021_plan_and_solve_v2_with_final_confidence
+Status: not_started
+Effective date: 2026-05-01
+Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
+
+## ABC Harness with Progress Rate and EAI Error Taxonomy
+ID: t0022_abc_harness_progress_rate_and_error_taxonomy
+Status: not_started
+Effective date: 2026-05-01
+Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
+
+## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
+ID: t0023_phase2_abc_confirmatory_sonnet_swebench
+Status: not_started
+Effective date: 2026-05-01
+Short description: Confirmatory N&gt;=157 paired ABC run with claude-sonnet-4-6 on SWE-bench Verified Lite using the new metrics library to test RQ1, RQ5, RQ6, RQ9.
+Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_progress_rate_and_error_taxonomy
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -277,13 +322,11 @@ Answers: 0
         <id>S-0002-03</id>
         <id>S-0002-06</id>
         <id>S-0002-07</id>
-        <id>S-0003-01</id>
         <id>S-0005-02</id>
         <id>S-0006-03</id>
         <id>S-0007-01</id>
         <id>S-0010-01</id>
         <id>S-0009-01</id>
-        <id>S-0009-03</id>
         <id>S-0009-04</id>
         <id>S-0009-06</id>
         <id>S-0014-02</id>
@@ -293,6 +336,8 @@ Answers: 0
         <id>S-0017-01</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
+        <id>S-0002-08</id>
+        <id>S-0003-01</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -324,13 +369,6 @@ Priority: high
 Kind: technique
 Source task: t0002_literature_survey_granularity_conditioning
 The scope-aware (A) condition can be implemented as ReAct [Yao2022] extended with a per-token granularity tag from the set {global, subtask, atomic}. This task would specify the prompt template per granularity, the tagging logic that decides which granularity is active at each LLM call, and a logging schema that records the active granularity for every action so post-hoc per-granularity analysis is possible. Replicate Least-to-Most&#x27;s solution-reuse pattern [Zhou2022] inside the implementation.
-
-## Negotiate Epoch AI access for full FrontierMath benchmark
-ID: S-0003-01
-Priority: high
-Kind: dataset
-Source task: t0003_download_benchmark_subsets
-FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses 40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per the t0002 fallback plan.
 
 ## Re-run LLM-as-judge with full problem text (no truncation)
 ID: S-0005-02
@@ -366,13 +404,6 @@ Priority: high
 Kind: experiment
 Source task: t0009_hierarchical_annotation_v2
 The v2 annotator was switched from sonnet to haiku to fit the $15 task budget under Claude Code CLI overhead. The v2-vs-v1 accept rate delta therefore conflates the schema upgrade (flat -&gt; tree) with a model downgrade (sonnet -&gt; haiku). Re-run all 115 rows on claude-sonnet-4-6 using the direct Anthropic API (no CLI), where per-call cost is ~$0.02 and 115 rows costs ~$2.30. Compare the resulting per-benchmark accept rate against both v1 (sonnet, flat) and v2-haiku (haiku, tree) to attribute the +33% to +100% deltas between schema and model contributions.
-
-## Run a single-blind human review pass on the 115 v2 rows and report human-vs-judge agreement (Cohen&#x27;s kappa)
-ID: S-0009-03
-Priority: high
-Kind: evaluation
-Source task: t0009_hierarchical_annotation_v2
-v2 is judged only by a single LLM call per row. The dataset is &#x27;LLM-judge-acceptable&#x27; but not &#x27;human-validated&#x27;. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision verdicts. Compute Cohen&#x27;s kappa between human and the haiku judge to estimate how much of the +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget estimate: 4-6 hours of human review time at $50/hour = $200-300.
 
 ## Add an ablation: tree-schema-with-truncated-text to isolate the truncation fix from the schema upgrade
 ID: S-0009-04
@@ -436,6 +467,20 @@ Priority: medium
 Kind: dataset
 Source task: t0002_literature_survey_granularity_conditioning
 SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
+
+## Run a Phase 1 pilot annotation on 20 tasks before scaling to 100
+ID: S-0002-08
+Priority: medium
+Kind: experiment
+Source task: t0002_literature_survey_granularity_conditioning
+The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+## Negotiate Epoch AI access for full FrontierMath benchmark
+ID: S-0003-01
+Priority: medium
+Kind: dataset
+Source task: t0003_download_benchmark_subsets
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses 40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per the t0002 fallback plan.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">

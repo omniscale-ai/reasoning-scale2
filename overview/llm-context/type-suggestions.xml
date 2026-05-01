@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T12:08:03Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T13:56:45Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>49273</char_count>
-    <byte_count>49282</byte_count>
-    <estimated_tokens>12318</estimated_tokens>
+    <char_count>49278</char_count>
+    <byte_count>49287</byte_count>
+    <estimated_tokens>12319</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -176,7 +176,7 @@ The project&#x27;s success criteria require 100 tasks annotated at three granula
 
 ## Re-fetch the 11 paper PDFs with git LFS enabled
 ID: S-0002-09
-Status: active
+Status: rejected
 Priority: low
 Kind: library
 Source task: t0002_literature_survey_granularity_conditioning
@@ -199,7 +199,7 @@ Reflexion [Shinn2023] adds verbal self-reflection across trials and reaches 91% 
 ## Negotiate Epoch AI access for full FrontierMath benchmark
 ID: S-0003-01
 Status: active
-Priority: high
+Priority: medium
 Kind: dataset
 Source task: t0003_download_benchmark_subsets
 Source paper: 10.48550_arXiv.2411.04872
@@ -521,7 +521,7 @@ The two needs-revision rows on FrontierScience-Olympiad both failed for the same
 ## Run a single-blind human review pass on the 115 v2 rows and report human-vs-judge agreement (Cohen&#x27;s kappa)
 ID: S-0009-03
 Status: active
-Priority: high
+Priority: medium
 Kind: evaluation
 Source task: t0009_hierarchical_annotation_v2
 Categories: hierarchical-planning, benchmark-annotation, agent-evaluation
@@ -609,7 +609,7 @@ Under the t0014 measurement, haiku and sonnet annotators produce statistically i
 
 ## Re-run the three FrontierScience-Olympiad sonnet timeouts under a longer CLI timeout to recover the missing rows
 ID: S-0014-05
-Status: active
+Status: rejected
 Priority: low
 Kind: experiment
 Source task: t0014_v2_annotator_sonnet_rerun
@@ -665,7 +665,7 @@ The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools 
 ## Add tool use (search, code execution) to the smoke harness for FrontierScience-Olympiad
 ID: S-0012-03
 Status: active
-Priority: medium
+Priority: low
 Kind: experiment
 Source task: t0012_phase2_abc_smoke_frontierscience
 Categories: granularity-conditioning, agent-evaluation, benchmark-frontierscience

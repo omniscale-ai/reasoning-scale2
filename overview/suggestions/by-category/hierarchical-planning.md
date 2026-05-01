@@ -1,37 +1,14 @@
 # Suggestions: `hierarchical-planning`
 
 19 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **14 open** (5
-high, 6 medium, 3 low), **5 closed**.
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **12 open** (2
+high, 7 medium, 3 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
-
-<details>
-<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
-truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-04` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
-
-v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
-chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
-entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
-Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
-annotator and judge prompts. If accept rate drops materially below v2-full-text on
-FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
-levels, the schema is the dominant cause. Cost ~$2 with haiku.
-
-</details>
 
 <details>
 <summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
@@ -71,53 +48,6 @@ slice with a single shared LLM provider, recording trajectory_records.jsonl per 
 computing the registered metrics task_success_rate, avg_decisions_per_task, and
 overconfident_error_rate per condition. The harness must depend on this library only via the
 trajectory schema, never via internal helpers, to preserve isolation.
-
-</details>
-
-<details>
-<summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
-report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-03` |
-| **Kind** | evaluation |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-v2 is judged only by a single LLM call per row. The dataset is 'LLM-judge-acceptable' but not
-'human-validated'. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row
-stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision
-verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
-+58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
-estimate: 4-6 hours of human review time at $50/hour = $200-300.
-
-</details>
-
-<details>
-<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
-substantive judge</strong> (S-0014-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0014-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
-published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
-partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
-than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
-critic prompt that simulates execution ('verify each atomic, executed in order, would actually
-solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
-v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
-judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
-is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
 
@@ -236,6 +166,28 @@ change to the FrontierScience-Olympiad or SWE-bench Verified rows.
 </details>
 
 <details>
+<summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
+report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+v2 is judged only by a single LLM call per row. The dataset is 'LLM-judge-acceptable' but not
+'human-validated'. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row
+stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision
+verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
++58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
+estimate: 4-6 hours of human review time at $50/hour = $200-300.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Scope a v3 schema iteration motivated by per-benchmark
 schema-only deltas, not aggregate</strong> (S-0014-01)</summary>
 
@@ -326,6 +278,31 @@ verbatim. If it diverges, file a correction.
 </details>
 
 ## Closed
+
+<details>
+<summary>✅ <s>Add an ablation: tree-schema-with-truncated-text to isolate the
+truncation fix from the schema upgrade</s> — covered by <a
+href="../../../tasks/t0020_v2_truncation_vs_schema_ablation/"><code>t0020_v2_truncation_vs_schema_ablation</code></a>
+(S-0009-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
+chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
+entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
+Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
+annotator and judge prompts. If accept rate drops materially below v2-full-text on
+FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
+levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
+</details>
 
 <details>
 <summary>✅ <s>Implement matched-mismatch (C) library on top of
@@ -444,5 +421,32 @@ scaling, run a 20-task pilot to validate the annotation schema, measure inter-an
 agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest
 atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold
 atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+</details>
+
+<details>
+<summary>✅ <s>Stress-test the +57 pp schema-only delta with a stricter substantive
+judge</s> — covered by <a
+href="../../../tasks/t0019_v2_judge_calibration_sonnet/"><code>t0019_v2_judge_calibration_sonnet</code></a>
+(S-0014-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
+published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
+partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
+than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
+critic prompt that simulates execution ('verify each atomic, executed in order, would actually
+solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
+v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
+judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
+is doing real work. Cost ~$3 with sonnet judge.
 
 </details>

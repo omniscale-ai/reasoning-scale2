@@ -65,13 +65,13 @@ AI's evaluation pipeline is a known operational risk for the t0003 download-data
 
 No answers in this category.
 
-## Suggestions (7 open, 1 closed)
+## Suggestions (6 open, 2 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
 FrontierScience-Olympiad</strong> (S-0012-03)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
 
 The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
@@ -79,27 +79,6 @@ numerical computation, retrieval, and code execution for most problems. Adding a
 execution tool and a retrieval tool would lift accuracy above the current floor and make
 A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
 confirmatory N would decrease proportionally.
-
-</details>
-
-<details>
-<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
-in the next ABC-condition run</strong> (S-0017-02)</summary>
-
-**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
-[t0017_literature_hierarchical_agents_and_judges](../../tasks/t0017_literature_hierarchical_agents_and_judges/)
-
-t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
-with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
-conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
-with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
-Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
-missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
-specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
-success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
-scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
-confirmatory run) producing legible results. Estimated effort: 1-2 days of
-metric-implementation work.
 
 </details>
 
@@ -140,7 +119,7 @@ explicit access conversation with Epoch AI, plus a fallback to public Olympiad b
 <summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
 benchmark</strong> (S-0003-01)</summary>
 
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
 [t0003_download_benchmark_subsets](../../tasks/t0003_download_benchmark_subsets/)
 
 FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to

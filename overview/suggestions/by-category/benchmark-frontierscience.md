@@ -1,35 +1,14 @@
 # Suggestions: `benchmark-frontierscience`
 
 8 suggestion(s) in category
-[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **7 open**
-(2 high, 4 medium, 1 low), **1 closed**.
+[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **6 open**
+(1 high, 3 medium, 2 low), **2 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
-
-<details>
-<summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
-benchmark</strong> (S-0003-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0003-01` |
-| **Kind** | dataset |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0003_download_benchmark_subsets`](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
-| **Source paper** | [`10.48550_arXiv.2411.04872`](../../../tasks/t0003_download_benchmark_subsets/assets/paper/10.48550_arXiv.2411.04872/) |
-| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
-
-FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to
-FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses
-40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research
-access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per
-the t0002 fallback plan.
-
-</details>
 
 <details>
 <summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
@@ -53,54 +32,6 @@ explicit access conversation with Epoch AI, plus a fallback to public Olympiad b
 </details>
 
 ## Medium Priority
-
-<details>
-<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
-FrontierScience-Olympiad</strong> (S-0012-03)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0012-03` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
-| **Source paper** | — |
-| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
-
-The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
-numerical computation, retrieval, and code execution for most problems. Adding a Python code
-execution tool and a retrieval tool would lift accuracy above the current floor and make
-A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
-confirmatory N would decrease proportionally.
-
-</details>
-
-<details>
-<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
-in the next ABC-condition run</strong> (S-0017-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0017-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
-| **Source paper** | [`10.48550_arXiv.2401.13178`](../../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2401.13178/) |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
-
-t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
-with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
-conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
-with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
-Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
-missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
-specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
-success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
-scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
-confirmatory run) producing legible results. Estimated effort: 1-2 days of
-metric-implementation work.
-
-</details>
 
 <details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
@@ -144,7 +75,49 @@ apply the canonical 4-8 decisions filter consistently across all four benchmarks
 
 </details>
 
+<details>
+<summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
+benchmark</strong> (S-0003-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0003-01` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0003_download_benchmark_subsets`](../../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
+| **Source paper** | [`10.48550_arXiv.2411.04872`](../../../tasks/t0003_download_benchmark_subsets/assets/paper/10.48550_arXiv.2411.04872/) |
+| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to
+FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses
+40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research
+access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per
+the t0002 fallback plan.
+
+</details>
+
 ## Low Priority
+
+<details>
+<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
+FrontierScience-Olympiad</strong> (S-0012-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
+numerical computation, retrieval, and code execution for most problems. Adding a Python code
+execution tool and a retrieval tool would lift accuracy above the current floor and make
+A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
+confirmatory N would decrease proportionally.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
@@ -171,6 +144,35 @@ credible. Cost <$1.
 </details>
 
 ## Closed
+
+<details>
+<summary>✅ <s>Adopt AgentBoard progress-rate metric and EAI error taxonomy in the
+next ABC-condition run</s> — covered by <a
+href="../../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/"><code>t0022_abc_harness_progress_rate_and_error_taxonomy</code></a>
+(S-0017-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2401.13178`](../../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2401.13178/) |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
+with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
+conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
+with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
+Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
+missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
+specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
+success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
+scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
+confirmatory run) producing legible results. Estimated effort: 1-2 days of
+metric-implementation work.
+
+</details>
 
 <details>
 <summary>✅ <s>Run the A-vs-B-vs-C Phase 2 experiment on the FrontierScience

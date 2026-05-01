@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-01T12:08:03Z">
+<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-01T13:56:45Z">
   <archive_summary>
     <title>Results Deep Dive</title>
     <description>Completed-task result summaries plus all detailed results reports.</description>
     <use_case>Performance analysis, experiment comparison, and result interpretation.</use_case>
-    <section_count>21</section_count>
-    <char_count>227371</char_count>
-    <byte_count>228156</byte_count>
-    <estimated_tokens>56842</estimated_tokens>
+    <section_count>22</section_count>
+    <char_count>236795</char_count>
+    <byte_count>237626</byte_count>
+    <estimated_tokens>59198</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -144,9 +144,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
+        <id>t0018_brainstorm_results_6</id>
       </source_ids>
       <content>
-Completed tasks: 17
+Completed tasks: 18
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -249,13 +250,57 @@ ID: t0017_literature_hierarchical_agents_and_judges
 Completed: 2026-05-01
 Short description: Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.
 Result summary: Results Summary: Literature Survey on Hierarchical Agents and LLM-as-Judge Summary Completed a literature survey of ten papers covering hierarchical / granularity-aware LLM agents, search-and-planning structure, reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology — plus the foundational options-framework paper (Sutton 1999) as a brief theory anchor. All ten paper assets pass the v3 paper-asset verificator with zero errors and zero warnings. The synthesis below groups findings by the five themes defined in `task_description.md` and identifies which backlog suggestions and prior tasks the survey strengthens or weakens. Metrics * **10 paper assets created** out of a...
+
+## Brainstorm session 6: paper-driven slate after t0017 literature survey
+ID: t0018_brainstorm_results_6
+Completed: 2026-05-01
+Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
+Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0019_v2_judge_calibration_sonnet</id>
+        <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
+        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
+        <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
+      </source_ids>
       <content>
-Planned or active tasks: 0
+Planned or active tasks: 5
+
+## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+ID: t0019_v2_judge_calibration_sonnet
+Status: not_started
+Effective date: 2026-05-01
+Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+
+## v2 Truncation vs Schema Ablation
+ID: t0020_v2_truncation_vs_schema_ablation
+Status: not_started
+Effective date: 2026-05-01
+Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
+
+## Plan-and-Solve v2 with final_confidence Field
+ID: t0021_plan_and_solve_v2_with_final_confidence
+Status: not_started
+Effective date: 2026-05-01
+Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
+
+## ABC Harness with Progress Rate and EAI Error Taxonomy
+ID: t0022_abc_harness_progress_rate_and_error_taxonomy
+Status: not_started
+Effective date: 2026-05-01
+Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
+
+## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
+ID: t0023_phase2_abc_confirmatory_sonnet_swebench
+Status: not_started
+Effective date: 2026-05-01
+Short description: Confirmatory N&gt;=157 paired ABC run with claude-sonnet-4-6 on SWE-bench Verified Lite using the new metrics library to test RQ1, RQ5, RQ6, RQ9.
+Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_progress_rate_and_error_taxonomy
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -3568,6 +3613,135 @@ task_types: [ &quot;literature-survey&quot; ]
 | REQ-8 | Pointers to t0009, t0014, t0012, S-0009-03, S-0009-04 | All 5 referenced | DONE | &quot;Pointers Back to Backlog Suggestions and Prior Tasks&quot; in `results/results_summary.md`. |
 | REQ-9 | Follow-up suggestions | 3 new suggestions drafted | DONE | `results/suggestions.json` (S-0017-01, S-0017-02, S-0017-03). |
 | REQ-10 | Verifier passes on all paper assets | 10/10 zero-error zero-warning | DONE | `meta.asset_types.paper.verificator` per paper after PA-W005 cleanup on `Zhou2024b`. |
+      </content>
+    </section>
+    <section id="t0018_brainstorm_results_6-results-detailed" source_kind="file">
+      <title>t0018_brainstorm_results_6 — Brainstorm session 6: paper-driven slate after t0017 literature survey — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0018_brainstorm_results_6</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0018_brainstorm_results_6/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+#### Summary
+
+Brainstorm Session 6 produced a 5-task experimental slate (t0019-t0023) covering 7 of 10 research
+questions, plus 5 suggestion corrections (3 priority demotions, 2 rejections). Total budget
+commitment ~$38, fitting within the remaining $51 project budget.
+
+#### Methodology
+
+* Date: 2026-05-01
+* Type: planning session, no compute or API spend.
+* Inputs: aggregator outputs from `aggregate_tasks`, `aggregate_suggestions`, `aggregate_costs`,
+  `aggregate_answers`; results summaries from t0014, t0015, t0017; t0017 literature synthesis.
+
+#### Project State At Session Start
+
+* **17 completed tasks** (t0001-t0017), 0 in-progress, 0 not-started.
+* **Budget**: $48.6924 of $100 spent (48.7%); $51.3076 remaining.
+* Two prior tasks over per-task limit: t0012 ($18.37), t0014 ($21.16).
+* **Active suggestions**: 40 uncovered (10 high-priority, 18 medium, 12 low).
+* **Answers**: 0 answer assets in the project.
+
+#### Decisions
+
+##### New Tasks (5)
+
+| ID | Slug | Covers | Cost | Depends |
+| --- | --- | --- | --- | --- |
+| t0019 | `v2_judge_calibration_sonnet` | S-0014-02 (primary), S-0014-03 | ~$5 | none |
+| t0020 | `v2_truncation_vs_schema_ablation` | S-0009-04 | ~$2 | none |
+| t0021 | `plan_and_solve_v2_with_final_confidence` | S-0012-01 | $0 | none |
+| t0022 | `abc_harness_progress_rate_and_error_taxonomy` | S-0017-02 | ~$1 | none |
+| t0023 | `phase2_abc_confirmatory_sonnet_swebench` | S-0012-02 (primary), S-0010-01 | ~$30 | t0021, t0022 |
+
+##### Corrections (5)
+
+| Suggestion | Action | Reason |
+| --- | --- | --- |
+| S-0009-03 | priority high → medium | Cheap LLM stress tests in t0019 run before $200-300 human kappa pass. |
+| S-0003-01 | priority high → medium | SWE-bench is chosen path; FrontierMath access does not fix floor problem. |
+| S-0012-03 | priority medium → low | Abandoning FSO route in favour of SWE-bench sonnet. |
+| S-0014-05 | status active → rejected | Cost-of-recovery exceeds value; t0019 does not need those rows. |
+| S-0002-09 | status active → rejected | Public-fork LFS upload denied; ghostscript compression is the working pattern. |
+
+##### Default Model Standardization
+
+* **Annotation/judging**: haiku unless the hypothesis demands sonnet (e.g., t0019 substantive
+  judge). t0014 showed sonnet adds nothing as annotator on the v2 schema.
+* **Agent runs**: sonnet. Literature consensus + t0012 showed haiku-no-tools is at floor on hard
+  benchmarks.
+
+##### Parallelism
+
+t0019, t0020, t0021, t0022 launch in parallel worktrees immediately. t0023 starts when t0021 and
+t0022 are complete.
+
+#### RQ Coverage After This Session
+
+| RQ | Status | Addressed by |
+| --- | --- | --- |
+| RQ1 (granularity → success) | open → addressed | t0023 |
+| RQ2 (gains in scope-sensitive states) | open → addressed | t0022 + t0023 |
+| RQ3 (info sufficiency) | open | deferred to a future round |
+| RQ4 (calibration) | open → addressed | t0021 (prereq) + t0023 |
+| RQ5 (mismatch penalty) | open → addressed | t0023 |
+| RQ6 (hierarchical consistency) | open → addressed | t0022 + t0023 |
+| RQ7 (semantic scope vs prompt length) | open → addressed | t0019 + t0020 |
+| RQ8 (agent-inferred granularity) | open | deferred |
+| RQ9 (depth, branching, info dependencies) | open → partially addressed | t0023 hard/easy split |
+| RQ10 (recovery / replanning) | open | deferred |
+
+7 of 10 RQs receive direct evidence from this slate. RQ3, RQ8, RQ10 deferred to a future brainstorm
+once the core RQ1/2/5/7 story holds at N&gt;=157.
+
+#### Verification
+
+* All 5 child task files (t0019-t0023) pass `verify_task_file` with 0 errors and 0 warnings.
+* All 5 correction files pass `verify_corrections` with 0 errors.
+* Brainstorm task structure (4 phases, step logs) follows `human-brainstorm` skill conventions.
+* `verify_task_results` and `verify_logs` pass on this task folder.
+* Task index ordering invariant satisfied: brainstorm task t0018 has lower index than child tasks
+  t0019-t0023 (per Phase 3 step 19 of the human-brainstorm skill).
+
+#### Limitations
+
+* Brainstorm sessions are planning artifacts, not experimental results. No metrics, no compute
+  spend, no empirical findings. Decisions are quality-controlled only by reviewer judgement.
+* The slate&#x27;s expected-value reasoning depends on t0017&#x27;s literature claims (Wang2023, Boisvert2024,
+  Xiong2024 effect-size predictions); if those numbers do not transfer, t0023 may still hit the
+  floor and force a paper-pivot.
+* Source-suggestion coverage is single-valued in `task.json`: secondary suggestions covered by t0019
+  (S-0014-03) and t0023 (S-0010-01) are recorded only in the task descriptions.
+* RQ3, RQ8, RQ10 remain unaddressed; the next brainstorm after t0023 results land must scope them.
+
+#### Files Created
+
+* `tasks/t0018_brainstorm_results_6/` — full brainstorm task folder.
+* `tasks/t0019_v2_judge_calibration_sonnet/` — task scaffold (status `not_started`).
+* `tasks/t0020_v2_truncation_vs_schema_ablation/` — task scaffold.
+* `tasks/t0021_plan_and_solve_v2_with_final_confidence/` — task scaffold.
+* `tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/` — task scaffold.
+* `tasks/t0023_phase2_abc_confirmatory_sonnet_swebench/` — task scaffold.
+* 5 correction files in `tasks/t0018_brainstorm_results_6/corrections/`.
+
+#### Next Steps and Suggestions
+
+No new suggestions emitted by this session — all forward motion is encoded in the 5 new task
+folders.
+
+After t0019/t0020 results return:
+
+* If t0019 substantive judge sustains the +57 pp schema-only delta: proceed with t0023 and write the
+  schema-validity section of the paper.
+* If t0019 substantive judge invalidates or reduces the schema-only delta: re-scope t0023 to also
+  include the substantive judge as the primary metric, and re-evaluate S-0014-01 (v3 schema
+  iteration).
+* If t0020 shows truncation explains a meaningful fraction of v2&#x27;s gain: RQ7 conclusion shifts;
+  paper claims must be qualified accordingly.
       </content>
     </section>
   </sections>
