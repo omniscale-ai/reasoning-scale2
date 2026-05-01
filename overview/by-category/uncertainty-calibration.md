@@ -5,9 +5,11 @@ probabilities.
 
 [Back to Dashboard](../README.md)
 
-**Detail pages**: [Papers (2)](../papers/by-category/uncertainty-calibration.md) |
-[Suggestions (10)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
-(3)](../libraries/by-category/uncertainty-calibration.md)
+**Detail pages**: [Papers (2)](../papers/by-category/uncertainty-calibration.md) | [Answers
+(1)](../answers/by-category/uncertainty-calibration.md) | [Suggestions
+(13)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
+(3)](../libraries/by-category/uncertainty-calibration.md) | [Predictions
+(1)](../predictions/by-category/uncertainty-calibration.md)
 
 ---
 
@@ -113,11 +115,25 @@ condition's confidence elicitation.
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
 | 0017 | [Literature: Hierarchical Agents and LLM-as-Judge](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) | completed | 2026-05-01 01:40 |
 
-## Answers (0)
+## Answers (1)
 
-No answers in this category.
+<details>
+<summary><strong>Does the v2 schema retain a 30+ pp accept-rate delta over v1 under
+a substantive judge and under a sonnet judge, or is the +57 pp t0014
+headline an artefact of haiku judge anchoring?</strong></summary>
 
-## Suggestions (7 open, 3 closed)
+**Confidence**: low | **Date**: 2026-05-01 | **Full answer**:
+[`does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges`](../../tasks/t0019_v2_judge_calibration_sonnet/assets/answer/does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges/)
+
+The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 pp and under
+model-rotated-sonnet it is +37.3 pp, vs the t0014 baseline of +58.0 pp. The +57 pp headline
+does not cleanly survive a stronger judge, but neither does it collapse below +30 pp on both
+configurations; the answer depends on which sonnet judge configuration is treated as
+canonical.
+
+</details>
+
+## Suggestions (10 open, 3 closed)
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -136,6 +152,60 @@ ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-a
 that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
 annotation rerun. Deliverable: a small library that wraps the existing judge call with
 confidence + abstain semantics, exposed to t0009-style annotation tasks.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Confirmatory v2 vs v1 schema sweep with fresh annotations and
+a third sonnet judge</strong> (S-0019-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0019_v2_judge_calibration_sonnet](../../tasks/t0019_v2_judge_calibration_sonnet/)
+
+Run a confirmatory experiment that re-annotates a fresh n>=80 row pool (not the t0014 pool)
+under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three
+independent sonnet configurations: substantive critic, model-rotated original prompt, and a
+new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band
+unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool
+overlapped with t0014. A fresh-pool replication at the planned n>=80 would tighten the
+per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30
+pp or commit it above +45 pp.
+
+</details>
+
+<details>
+<summary>📊 <strong>Substantive critic vs original prompt: 50-row prompt-only
+ablation at fixed model</strong> (S-0019-03)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0019_v2_judge_calibration_sonnet](../../tasks/t0019_v2_judge_calibration_sonnet/)
+
+Run a focused n=50 ablation that holds the judge model fixed at claude-sonnet-4-6 and varies
+only the system prompt between the substantive critic (with simulate-execution instruction)
+and the original t0014 prompt. The current task found a Cohen's kappa of 0.626 between the two
+prompts on the same model, with one row (v2-haiku-0007) where the substantive prompt caught a
+dimensional-analysis error the original prompt missed and two rows (v1-sonnet-0002,
+v1-sonnet-0004) where the substantive prompt accepted structural-but-executable trees the
+original rejected. A larger ablation would quantify how often each prompt mode wins, which
+would inform whether the substantive critic should become the production judge or stay as a
+stricter audit.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Cross-vendor judge: replicate the schema-only delta with GPT-4
+and Gemini judges</strong> (S-0019-04)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0019_v2_judge_calibration_sonnet](../../tasks/t0019_v2_judge_calibration_sonnet/)
+
+Test the family-bias hypothesis at the judge stage by re-judging the same 55-row pool under
+GPT-4o and Gemini-2.5 with the same substantive critic prompt, and comparing the schema-only
+delta to the +24.6 / +37.3 pp Anthropic numbers from this task. Xiong2024 reports
+within-family acceptance bonuses of 5-10 pp; if the cross-vendor schema-only delta lands close
+to the substantive-sonnet +24.6 pp, the v2-sonnet familial bias hypothesis (kappa=1.0 on the
+v2-sonnet cell) gains support; if it lands close to +37 pp, prompt strictness dominates over
+model family.
 
 </details>
 

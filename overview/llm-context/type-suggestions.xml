@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T16:23:48Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T18:03:16Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>60853</char_count>
-    <byte_count>60863</byte_count>
-    <estimated_tokens>15213</estimated_tokens>
+    <char_count>64610</char_count>
+    <byte_count>64620</byte_count>
+    <estimated_tokens>16152</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -74,6 +74,10 @@
         <id>S-0017-01</id>
         <id>S-0017-02</id>
         <id>S-0017-03</id>
+        <id>S-0019-01</id>
+        <id>S-0019-02</id>
+        <id>S-0019-03</id>
+        <id>S-0019-04</id>
         <id>S-0020-01</id>
         <id>S-0020-02</id>
         <id>S-0020-03</id>
@@ -89,7 +93,7 @@
         <id>S-0022-05</id>
       </source_ids>
       <content>
-Suggestions: 70
+Suggestions: 74
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -743,6 +747,50 @@ Categories: granularity-conditioning, agent-evaluation
 Date added: 2026-05-01
 
 Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning structure -- selected from atomic reasoning modules and composed once per task type, then re-used across instances -- transfers across model families and outperforms CoT-Self-Consistency at 10-40x lower inference cost. The IMPLEMENT step (explicit JSON key-value scaffold) is the largest ablation contributor. This is a near-zero-cost upgrade to our scope-aware (A) condition prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScience-Olympiad, SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family. Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope: any retraining; this is purely a prompting change.
+
+## Confirmatory v2 vs v1 schema sweep with fresh annotations and a third sonnet judge
+ID: S-0019-01
+Status: active
+Priority: high
+Kind: experiment
+Source task: t0019_v2_judge_calibration_sonnet
+Categories: agent-evaluation, hierarchical-planning, uncertainty-calibration
+Date added: 2026-05-01
+
+Run a confirmatory experiment that re-annotates a fresh n&gt;=80 row pool (not the t0014 pool) under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three independent sonnet configurations: substantive critic, model-rotated original prompt, and a new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool overlapped with t0014. A fresh-pool replication at the planned n&gt;=80 would tighten the per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30 pp or commit it above +45 pp.
+
+## Provision a sonnet-quota Anthropic API key to drop per-call cost ~7x
+ID: S-0019-02
+Status: active
+Priority: medium
+Kind: library
+Source task: t0019_v2_judge_calibration_sonnet
+Categories: agent-evaluation
+Date added: 2026-05-01
+
+Acquire an Anthropic API key with claude-sonnet-4-6 quota and switch JUDGE_TRANSPORT back from the claude CLI subprocess to the Anthropic SDK. The current OAuth-issued key in this environment lacks sonnet quota, forcing the CLI fallback at ~$0.18/call (cache-creation overhead) instead of the ~$0.024/call SDK + cache-hit projection. Provisioning a sonnet-capable key would let S-0019-01&#x27;s confirmatory sweep run within the original $5 budget envelope and unblock larger-n experiments without per-task cap raises. This is a project-level service request, not a research experiment.
+
+## Substantive critic vs original prompt: 50-row prompt-only ablation at fixed model
+ID: S-0019-03
+Status: active
+Priority: medium
+Kind: evaluation
+Source task: t0019_v2_judge_calibration_sonnet
+Categories: agent-evaluation, uncertainty-calibration
+Date added: 2026-05-01
+
+Run a focused n=50 ablation that holds the judge model fixed at claude-sonnet-4-6 and varies only the system prompt between the substantive critic (with simulate-execution instruction) and the original t0014 prompt. The current task found a Cohen&#x27;s kappa of 0.626 between the two prompts on the same model, with one row (v2-haiku-0007) where the substantive prompt caught a dimensional-analysis error the original prompt missed and two rows (v1-sonnet-0002, v1-sonnet-0004) where the substantive prompt accepted structural-but-executable trees the original rejected. A larger ablation would quantify how often each prompt mode wins, which would inform whether the substantive critic should become the production judge or stay as a stricter audit.
+
+## Cross-vendor judge: replicate the schema-only delta with GPT-4 and Gemini judges
+ID: S-0019-04
+Status: active
+Priority: low
+Kind: experiment
+Source task: t0019_v2_judge_calibration_sonnet
+Categories: agent-evaluation, uncertainty-calibration
+Date added: 2026-05-01
+
+Test the family-bias hypothesis at the judge stage by re-judging the same 55-row pool under GPT-4o and Gemini-2.5 with the same substantive critic prompt, and comparing the schema-only delta to the +24.6 / +37.3 pp Anthropic numbers from this task. Xiong2024 reports within-family acceptance bonuses of 5-10 pp; if the cross-vendor schema-only delta lands close to the substantive-sonnet +24.6 pp, the v2-sonnet familial bias hypothesis (kappa=1.0 on the v2-sonnet cell) gains support; if it lands close to +37 pp, prompt strictness dominates over model family.
 
 ## Re-judge the remaining 8 v1 paired rows to tighten the pure-schema CI
 ID: S-0020-01

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-05-01T16:23:48Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-05-01T18:03:16Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>43</section_count>
-    <char_count>334146</char_count>
-    <byte_count>334932</byte_count>
-    <estimated_tokens>83536</estimated_tokens>
+    <section_count>44</section_count>
+    <char_count>355574</char_count>
+    <byte_count>356432</byte_count>
+    <estimated_tokens>88893</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -145,12 +145,13 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
+        <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 21
+Completed tasks: 22
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -260,6 +261,12 @@ Completed: 2026-05-01
 Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
 Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
 
+## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+ID: t0019_v2_judge_calibration_sonnet
+Completed: 2026-05-01
+Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+Result summary: Results Summary: v2 Judge Calibration with Sonnet Summary Re-judged the same 55-row hierarchy pool from t0014 (12 v1-sonnet + 23 v2-haiku + 20 v2-sonnet) under three judge configurations: the cached t0014 original-haiku verdicts as baseline, a substantive critic prompt on `claude-sonnet-4-6`, and a model-rotated original-prompt judge on `claude-sonnet-4-6`. The headline finding is that the +57 pp v2-vs-v1 schema-only gap from t0014 **partially survives** under sonnet judges: **+24.6 pp** under the substantive critic and **+37.3 pp** under the model-rotated judge, vs the **+58.0 pp** baseline. Neither pre-registered extreme decision criterion (drops below +30 pp on both sonnet judges, or...
+
 ## v2 Truncation vs Schema Ablation
 ID: t0020_v2_truncation_vs_schema_ablation
 Completed: 2026-05-01
@@ -283,17 +290,10 @@ Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Su
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
-ID: t0019_v2_judge_calibration_sonnet
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+Planned or active tasks: 1
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -308,9 +308,10 @@ Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_p
       <source_name>aggregate_answers_full</source_name>
       <source_ids>
         <id>decomposition-v2-schema-vs-truncation</id>
+        <id>does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges</id>
       </source_ids>
       <content>
-Answers: 1
+Answers: 2
 
 ## How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?
 ID: decomposition-v2-schema-vs-truncation
@@ -319,6 +320,14 @@ Confidence: medium
 Categories: benchmark-annotation, hierarchical-planning
 
 The v2 tree schema explains essentially all of the gap: switching from flat-v1 to tree-v2 while holding the 1500-char truncation constant lifts the haiku judge accept rate from 33% to 90%, a +57 pp jump (95% Wilson CI on the difference: +23 pp to +77 pp). Adding the full untruncated problem text on top of the v2 schema lifts accept from 90% to 95%, a further +5 pp (95% CI -15 pp to +26 pp), which is not statistically significant. The headline +62 pp v2-full vs v1-truncated gap is therefore ~92% pure-schema and ~8% pure-text-length on the 20-row matched pool.
+
+## Does the v2 schema retain a 30+ pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or is the +57 pp t0014 headline an artefact of haiku judge anchoring?
+ID: does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges
+Created by: t0019_v2_judge_calibration_sonnet on 2026-05-01
+Confidence: low
+Categories: agent-evaluation, hierarchical-planning, uncertainty-calibration
+
+The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 pp and under model-rotated-sonnet it is +37.3 pp, vs the t0014 baseline of +58.0 pp. The +57 pp headline does not cleanly survive a stronger judge, but neither does it collapse below +30 pp on both configurations; the answer depends on which sonnet judge configuration is treated as canonical.
       </content>
     </section>
     <section id="t0001_brainstorm_results_1-research_papers" source_kind="file">
@@ -5224,6 +5233,361 @@ No research required for brainstorming session.
 #### References
 
 No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0019_v2_judge_calibration_sonnet-research_code" source_kind="file">
+      <title>t0019_v2_judge_calibration_sonnet — v2 Judge Calibration with Sonnet (Substantive + Familial Bias) — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0019_v2_judge_calibration_sonnet</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0019_v2_judge_calibration_sonnet/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0019_v2_judge_calibration_sonnet&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 18
+tasks_cited: 4
+libraries_found: 5
+libraries_relevant: 0
+date_completed: &quot;2026-05-01&quot;
+status: &quot;complete&quot;
+---
+### Research Code: v2 Judge Calibration with Sonnet
+
+#### Task Objective
+
+Re-judge the 55-row pool from t0014 (20 v2-sonnet + 23 v2-haiku + 12 v1-sonnet judged rows) under
+two new judge configurations using `claude-sonnet-4-6`: a **substantive critic** prompt (simulates
+execution to verify whether each atomic, executed in order, would actually solve the problem) and a
+**model-rotated** judge (original t0014 prompt, sonnet model instead of haiku). The output is a
+predictions asset with per-row verdicts under all three judge configurations (baseline from t0014,
+substantive, model-rotated), an answer asset addressing whether the +57 pp schema-only delta
+survives a stricter judge, and a multi-variant `metrics.json` covering all 9 cells (3 annotators × 3
+judge configs). No re-annotation occurs; this task only re-judges using the Anthropic API directly.
+
+#### Library Landscape
+
+Five libraries exist in the project. None is relevant to this task.
+
+* **scope_aware_react_v1** (`t0006`): ReAct agent with explicit granularity tags. Unrelated to
+  judging or statistical analysis.
+* **scope_unaware_planandsolve_v1** (`t0007`): Plan-and-Solve baseline agent. Unrelated.
+* **matched_mismatch_v1** (`t0010`): Condition-C agent wrapper. Unrelated.
+* **metric2_calibration_aggregator_v1** (`t0011`): Verbalized-confidence + self-consistency
+  aggregator computing `overconfident_error_rate`. Not applicable to binary accept/reject judging.
+* **phase2_smoke_harness_v1** (`t0012`): Experiment harness for A/B/C agent evaluation. Unrelated to
+  LLM-as-judge calibration.
+
+None of the registered libraries provides judging, cost-tracking, or Wilson-CI utilities that are
+applicable here. All reusable code must be copied from prior task `code/` directories.
+
+#### Key Findings
+
+##### Judge Prompts and Parsing Pattern from t0014
+
+The core judging pattern used in [t0014] is in
+`tasks/t0014_v2_annotator_sonnet_rerun/code/v2_judge.py` (458 lines). The key elements:
+
+* **`_call_claude_cli()`** (lines 81–118): Invokes the `claude` CLI via `subprocess.run` with
+  `--output-format json`, extracts `result` from the envelope, reads `usage.input_tokens` and
+  `usage.output_tokens` when available, and falls back to character-based estimates (~4
+  chars/token). Uses a 300-second timeout. Returns a `CliCallResult` frozen dataclass.
+* **`_parse_verdict()`** (lines 145–163): Strips markdown fencing, finds the first `{...}` JSON
+  object via `_extract_first_json_object()`, normalizes verdict to `&quot;acceptable&quot;` or
+  `&quot;needs revision&quot;`, and returns `(verdict, justification, notes)`. The `notes` field signals parse
+  failures.
+* **`_judge_one()`** (lines 165–193): Formats the `JUDGE_USER_TEMPLATE` with the row&#x27;s benchmark,
+  domain, problem, `hierarchy_json`, and `gold_actions_json`. Calls `_call_claude_cli()` then
+  `_parse_verdict()`.
+* **`run_judge()`** (lines 196–260): Thread-pool executor (default 4 workers), idempotent via
+  `_load_existing_indices()`, budget cap via `threading.Event halt`, JSONL append mode. Key: already
+  judged rows (by `_pilot_row_index`) are skipped.
+* **Output schema** (`_outputs/v2_sonnet_judge_outcomes.jsonl`): per row — `pilot_row_index`,
+  `task_id`, `benchmark`, `verdict`, `justification`, `notes`, `cost_usd`. No input/output token
+  counts in the file (only in the costs JSON). This task needs to extend the schema with
+  `judge_prompt_version` and `judge_model` fields.
+
+The **original judge system prompt** (`JUDGE_SYSTEM_PROMPT` in `constants.py`, lines 90–105 of
+`tasks/t0014_v2_annotator_sonnet_rerun/code/constants.py`): checks that (1) global captures the
+plan, (2) subtasks cover what the problem asks, (3) atomics under each subtask are operational steps
+executed in order, (4) global_atomics crosses subtasks, (5) gold_actions mirrors the structure.
+Binary verdict only: no per-criterion sub-scores. This is the exact prompt to reuse for the
+**model-rotated** condition.
+
+The **original judge user template** (`JUDGE_USER_TEMPLATE`, `constants.py` lines 106–115):
+
+```
+Benchmark: {benchmark}
+Domain: {domain}
+
+Full problem:
+{problem}
+
+Candidate v2 hierarchy:
+{hierarchy_json}
+
+Candidate v2 gold_actions:
+{gold_actions_json}
+
+Output the JSON verdict now.
+```
+
+This exact template is reused for the model-rotated condition; only `JUDGE_MODEL_ID` changes from
+`claude-haiku-4-5` to `claude-sonnet-4-6`.
+
+##### Row Pool Assembly from Multiple Source Files
+
+The 55 judged rows come from three separate JSONL files:
+
+* **v2-sonnet judged rows** (n=20): embedded in
+  `tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet/files/hierarchical_annotation_v2_sonnet.jsonl`
+  — rows where `judge_verdict` is non-null. Fields include `_pilot_row_index`, `task_id`,
+  `benchmark`, `problem`, `hierarchy`, `gold_actions`, `judge_verdict`, `annotation_model`.
+* **v2-haiku judged rows** (n=23): embedded in
+  `tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/files/hierarchical_annotation_v2.jsonl`
+  — rows where `judge_verdict` is non-null.
+* **v1-sonnet judged rows** (n=12): in
+  `tasks/t0005_hierarchical_annotation_pilot_v1/code/_outputs/mapped_with_judge.jsonl` — rows where
+  `judge_verdict` is non-null. Note: v1 uses a different flat schema (`hierarchy.global`,
+  `hierarchy.subtask[]`, `hierarchy.atomic[]` vs the v2 tree schema). The v1 judge prompt was also
+  different (t0005 used a v1-specific template). For re-judging v1 rows under the new conditions,
+  the same v2 judge prompt format is used with the v1 hierarchy rendered as JSON.
+
+Note: t0015&#x27;s correction overlay relabels Mind2Web → WorkArena++ and HumanEval → tau-bench in the
+t0009 v2-haiku dataset. The effective corrected file is in
+`tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/files/hierarchical_annotation_v2_relabeled.jsonl`.
+Per the correction spec, this file replaces the original for analysis purposes. However, since we
+are re-judging existing rows (not re-computing per-benchmark statistics from scratch), we should use
+the corrected benchmark labels from t0015 when assembling the row pool.
+
+##### Cost and Token Tracking Pattern
+
+[t0014]&#x27;s `_call_claude_cli()` returns a `CliCallResult` with `input_tokens`, `output_tokens`,
+`cost_usd`. The CLI&#x27;s `--output-format json` envelope exposes `usage.input_tokens` and
+`usage.output_tokens` when the Claude Code CLI returns them; the code falls back to `len(text) / 4`
+estimates otherwise. The `total_cost_usd` field in the envelope (when present) overrides the
+computed estimate.
+
+For this task, the sonnet pricing is `$3.00/M` input, `$15.00/M` output. The per-call cost formula
+from [t0014] `constants.py`:
+
+```python
+cost_usd = input_tokens * 3.00 / 1_000_000 + output_tokens * 15.00 / 1_000_000
+```
+
+##### Wilson Confidence Intervals and Statistics Pattern
+
+[t0014]&#x27;s `compute_stats.py` implements `_wilson_ci(k, n, z=1.96)` (lines 161–176). This is the
+exact function needed for `accept_rate_stderr` (Wilson 95% CI half-width) in the multi-variant
+metrics. The function returns `(lower, upper)` bounds. For `accept_rate_stderr` we can report half
+the CI width: `(upper - lower) / 2`.
+
+The `_delta_with_ci()` function in `compute_stats.py` (lines 178–199) computes deltas with Wilson
+CIs on both sides and is reusable for the side-by-side delta table in `results_detailed.md`.
+
+##### Idempotency and Parallel Execution Pattern
+
+[t0014]&#x27;s `run_judge()` uses `ThreadPoolExecutor(max_workers=4)` with an append-mode JSONL output
+and an existing-index set for idempotency. This pattern works for parallelizing the 55 × 2 = 110
+judge calls. A 4-worker pool at ~10–30 s/call will complete in ~5–15 minutes.
+
+The pattern also includes a budget-cap `threading.Event halt` that stops new submissions when the
+running total exceeds the cap. This should be retained with a `$6` cap (slightly above the $5 task
+budget to allow for retry overhead).
+
+##### v1 Schema Difference
+
+The v1 flat schema (`t0005`) uses `hierarchy.subtask` (list of strings) and `hierarchy.atomic` (list
+of strings), not the tree structure (`hierarchy.subtasks[].atomics[]`) of v2. When feeding v1 rows
+to the v2 judge prompts, the hierarchy JSON is rendered as-is; the judge can handle either schema
+since it evaluates structural and semantic coverage, not a specific schema. This is documented in
+[t0005]&#x27;s `judge_runner.py` (uses a different v1-specific prompt template that references `global`,
+`subtask[]`, and `atomic[]` directly).
+
+##### Metrics Registry Alignment
+
+Registered metrics in `meta/metrics/` must be checked before writing `results/metrics.json`. The
+multi-variant format is:
+`{&quot;variants&quot;: [{&quot;variant_id&quot;: &quot;...&quot;, &quot;dimensions&quot;: {...}, &quot;metrics&quot;: {...}}]}`. Required metrics per
+cell: `accept_rate`, `accept_rate_stderr`, `efficiency_inference_cost_per_item_usd`,
+`efficiency_inference_time_per_item_seconds`. These must be registered to be usable in metrics.json.
+
+#### Reusable Code and Assets
+
+All reusable items are from `tasks/t0014_v2_annotator_sonnet_rerun/code/`. Cross-task imports from
+other task `code/` directories are forbidden; all items below must be **copied into task**.
+
+##### `_call_claude_cli()` — CLI wrapper
+
+* **Source**: `tasks/t0014_v2_annotator_sonnet_rerun/code/v2_judge.py`, lines 81–118 (~38 lines)
+* **What it does**: subprocess call to the `claude` CLI with `--output-format json`, extracts the
+  result and usage tokens, falls back to character estimates, returns `CliCallResult`.
+* **Reuse method**: **copy into task** →
+  `tasks/t0019_v2_judge_calibration_sonnet/code/judge_runner.py`
+* **Signature**: `_call_claude_cli(*, prompt: str, model: str, system_prompt: str) -&gt; CliCallResult`
+* **Adaptation needed**: The t0014 version takes `system_prompt` as a parameter. Extend to accept a
+  `timeout` parameter (default 300 s) and log per-call timing via `time.monotonic()`.
+
+##### `_parse_verdict()` and `_extract_first_json_object()` — verdict parser
+
+* **Source**: `tasks/t0014_v2_annotator_sonnet_rerun/code/v2_judge.py`, lines 121–163 (~43 lines)
+* **What it does**: strips markdown fencing, extracts the first JSON object, normalizes
+  `&quot;acceptable&quot;` / `&quot;needs revision&quot;`, returns `(verdict, justification, notes)`.
+* **Reuse method**: **copy into task**
+* **Signature**: `_parse_verdict(*, raw_text: str) -&gt; tuple[str | None, str | None, str]`
+* **Adaptation needed**: For the substantive critic judge, extend `_parse_verdict_substantive()` to
+  also extract `sub_scores` if the judge returns per-criterion fields.
+
+##### `_wilson_ci()` — Wilson confidence interval
+
+* **Source**: `tasks/t0014_v2_annotator_sonnet_rerun/code/compute_stats.py`, lines 161–176 (~16
+  lines)
+* **What it does**: Computes Wilson 95% CI for a binomial proportion. Returns `(lower, upper)`.
+* **Reuse method**: **copy into task** → `tasks/t0019_v2_judge_calibration_sonnet/code/stats.py`
+* **Signature**:
+  `_wilson_ci(*, k: int, n: int, z: float = 1.96) -&gt; tuple[float | None, float | None]`
+* **Adaptation needed**: None; copy verbatim.
+
+##### `_delta_with_ci()` — pairwise delta with CIs
+
+* **Source**: `tasks/t0014_v2_annotator_sonnet_rerun/code/compute_stats.py`, lines 178–199 (~22
+  lines)
+* **What it does**: Computes accept-rate delta `a - b` with Wilson CIs for both sides.
+* **Reuse method**: **copy into task** → `tasks/t0019_v2_judge_calibration_sonnet/code/stats.py`
+* **Signature**: `_delta_with_ci(*, a: dict[str, Any], b: dict[str, Any]) -&gt; dict[str, Any]`
+
+##### `JUDGE_SYSTEM_PROMPT` and `JUDGE_USER_TEMPLATE` — original judge prompt
+
+* **Source**: `tasks/t0014_v2_annotator_sonnet_rerun/code/constants.py`, lines 90–115
+* **What it does**: The original haiku judge system and user prompt templates — used verbatim for
+  the **model-rotated** condition (only model changes).
+* **Reuse method**: **copy into task** → `tasks/t0019_v2_judge_calibration_sonnet/code/constants.py`
+* **Adaptation needed**: Rename constants for clarity: `ORIGINAL_JUDGE_SYSTEM_PROMPT`,
+  `ORIGINAL_JUDGE_USER_TEMPLATE`. Add new `SUBSTANTIVE_JUDGE_SYSTEM_PROMPT` and
+  `SUBSTANTIVE_JUDGE_USER_TEMPLATE`.
+
+##### Source data paths
+
+* v2-sonnet dataset:
+  `tasks/t0014_v2_annotator_sonnet_rerun/assets/dataset/hierarchical-annotation-v2-sonnet/files/hierarchical_annotation_v2_sonnet.jsonl`
+* v2-haiku corrected dataset:
+  `tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/files/hierarchical_annotation_v2_relabeled.jsonl`
+* v1-sonnet with judge:
+  `tasks/t0005_hierarchical_annotation_pilot_v1/code/_outputs/mapped_with_judge.jsonl`
+
+#### Dataset Landscape
+
+Three datasets are used as read-only inputs:
+
+* **hierarchical-annotation-v2-sonnet** (`t0014`): 115 rows, 20 judged by `claude-haiku-4-5`. JSONL
+  with fields: `_pilot_row_index`, `task_id`, `benchmark`, `problem`, `hierarchy`, `gold_actions`,
+  `judge_verdict`, `annotation_model`.
+* **hierarchical-annotation-v2** (`t0009`, corrected by `t0015`): 115 rows, 23 judged. Same v2 tree
+  schema. Effective corrected file: `hierarchical_annotation_v2_relabeled.jsonl` from t0015. The
+  benchmark labels for 52 rows differ from the uncorrected file.
+* **v1 mapped_with_judge** (`t0005`): 115 rows, 12 judged. Flat schema (`hierarchy.global`,
+  `.subtask[]`, `.atomic[]`). Located in `code/_outputs/`, not in `assets/`.
+
+#### Lessons Learned
+
+* **Claude CLI overhead**: t0014 and t0009 documented that the Claude Code CLI invokes
+  cache-creation overhead on each call (~$0.06–0.12/call for Haiku despite the &quot;estimated&quot; cost
+  being much lower). For Sonnet the per-call cost is higher; the `total_cost_usd` field in the CLI
+  envelope is authoritative when present. The task should always prefer the envelope&#x27;s
+  `total_cost_usd` over the character-based estimate.
+* **Idempotency via `_pilot_row_index`**: t0014&#x27;s approach of keying the existing-outcomes set on
+  `_pilot_row_index` is the correct pattern because `task_id` is not globally unique within a JSONL
+  that mixes benchmarks.
+* **v1 haiku timeouts**: t0009 had 3 FrontierScience-Olympiad sonnet annotation timeouts that
+  reduced the judge sample from 23 to 20. The equivalent issue for this task is already baked in —
+  we inherit exactly those 20 and 23 rows, and the 12 v1 rows are fixed. No new annotation occurs.
+* **JSON parse failures**: t0014 saw no parse failures on haiku but the pattern of
+  `_parse_verdict()` using `_extract_first_json_object()` proved robust against markdown fencing and
+  extra prose. Keep this pattern.
+* **Thread-pool with budget cap**: The `halt = threading.Event()` budget enforcement in t0014&#x27;s
+  `run_judge()` correctly prevents over-spending when running parallel jobs. This pattern is
+  essential for the 110-call budget-sensitive run.
+* **Per-row timing not tracked**: t0014 did not record per-call wall-clock time in the outcomes
+  JSONL. This task needs `elapsed_seconds` per row in the output for the
+  `efficiency_inference_time_per_item_seconds` metric.
+
+#### Recommendations for This Task
+
+1. **Copy `_call_claude_cli()`, `_parse_verdict()`, `_extract_first_json_object()`, and the
+   `CliCallResult` dataclass** from `tasks/t0014_v2_annotator_sonnet_rerun/code/v2_judge.py` into
+   `tasks/t0019_v2_judge_calibration_sonnet/code/judge_runner.py`. Extend `_call_claude_cli()` to
+   record `elapsed_seconds` via `time.monotonic()`.
+
+2. **Copy `_wilson_ci()` and `_delta_with_ci()`** from
+   `tasks/t0014_v2_annotator_sonnet_rerun/code/compute_stats.py` into
+   `tasks/t0019_v2_judge_calibration_sonnet/code/stats.py`.
+
+3. **Use the t0015 corrected file** for v2-haiku rows to get correct benchmark labels in
+   per-benchmark breakdowns.
+
+4. **Design the new substantive critic prompt** to produce binary `verdict` + `justification` (same
+   as the original) but with the additional instruction to simulate execution. Keep the output
+   schema identical to avoid a new parser. Per-criterion sub-scores are optional; if the model
+   returns them, capture them in a `sub_scores` field but do not require them.
+
+5. **Use the Anthropic Python SDK directly** (not the Claude CLI subprocess) to reduce per-call
+   overhead and get clean token counts. The CLI&#x27;s cache-creation overhead inflates costs; the SDK
+   `anthropic.Anthropic().messages.create()` call gives authoritative `usage.input_tokens`,
+   `usage.output_tokens`, and response latency. This is a departure from t0014&#x27;s approach but better
+   suits the 110-call budget.
+
+6. **Run both judge conditions in a single script** with a `judge_config` parameter (`&quot;substantive&quot;`
+   or `&quot;model_rotated&quot;`), writing to separate JSONL output files. Use 4 parallel workers per config.
+
+7. **Verify registered metrics** before writing `metrics.json`. Run
+   `uv run python -u -m arf.scripts.aggregators.aggregate_metrics --format ids` to confirm that
+   `accept_rate`, `accept_rate_stderr`, `efficiency_inference_cost_per_item_usd`, and
+   `efficiency_inference_time_per_item_seconds` are all registered.
+
+#### Task Index
+
+##### [t0005]
+
+* **Task ID**: t0005_hierarchical_annotation_pilot_v1
+* **Name**: Hierarchical annotation pilot v1: audit and conform existing 115 rows
+* **Status**: completed
+* **Relevance**: Provides the v1-sonnet judged rows (n=12) in
+  `code/_outputs/mapped_with_judge.jsonl`. The v1 flat schema (global/subtask/atomic lists vs the v2
+  tree) must be understood when feeding v1 rows to the new v2-format judge prompts.
+
+##### [t0009]
+
+* **Task ID**: t0009_hierarchical_annotation_v2
+* **Name**: Hierarchical annotation v2: tree schema with subtask-to-atomic edges
+* **Status**: completed
+* **Relevance**: Provides the v2-haiku judged rows (n=23) in the dataset asset file. The judge
+  outcomes JSONL at `code/_outputs/v2_judge_outcomes.jsonl` (23 rows) shows the per-row haiku
+  verdicts that serve as the baseline for the model-rotated and substantive conditions.
+
+##### [t0014]
+
+* **Task ID**: t0014_v2_annotator_sonnet_rerun
+* **Name**: v2 annotator Sonnet rerun: deconfound schema vs model
+* **Status**: completed
+* **Relevance**: The primary source of reusable code. `v2_judge.py` contains the
+  `_call_claude_cli()`, `_parse_verdict()`, and `run_judge()` patterns. `compute_stats.py` has
+  `_wilson_ci()` and `_delta_with_ci()`. `constants.py` has the original judge system prompt and
+  user template needed for the model-rotated condition. The three-way comparison logic is the
+  template for the nine-cell comparison table.
+
+##### [t0015]
+
+* **Task ID**: t0015_correct_proxy_benchmark_labels
+* **Name**: Correct proxy-benchmark labels in t0009 v2 dataset
+* **Status**: completed
+* **Relevance**: Provides the corrected v2-haiku JSONL with accurate benchmark labels (Mind2Web
+  instead of WorkArena++, HumanEval instead of tau-bench) at
+  `assets/dataset/hierarchical-annotation-v2-relabeled/files/hierarchical_annotation_v2_relabeled.jsonl`.
+  Per-benchmark breakdowns in this task must use the corrected labels.
       </content>
     </section>
     <section id="t0020_v2_truncation_vs_schema_ablation-research_code" source_kind="file">

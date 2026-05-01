@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="full" generated_at_utc="2026-05-01T16:23:48Z">
+<llm_context_archive preset_id="full" generated_at_utc="2026-05-01T18:03:16Z">
   <archive_summary>
     <title>Full Project Context</title>
     <description>Largest preset with detailed completed-task reports and the full project knowledge base.</description>
     <use_case>Deep project review, comprehensive planning, and long-context synthesis.</use_case>
-    <section_count>29</section_count>
-    <char_count>351524</char_count>
-    <byte_count>352725</byte_count>
-    <estimated_tokens>87881</estimated_tokens>
+    <section_count>30</section_count>
+    <char_count>396878</char_count>
+    <byte_count>398205</byte_count>
+    <estimated_tokens>99219</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -149,12 +149,13 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
+        <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 21
+Completed tasks: 22
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -264,6 +265,12 @@ Completed: 2026-05-01
 Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
 Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
 
+## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+ID: t0019_v2_judge_calibration_sonnet
+Completed: 2026-05-01
+Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+Result summary: Results Summary: v2 Judge Calibration with Sonnet Summary Re-judged the same 55-row hierarchy pool from t0014 (12 v1-sonnet + 23 v2-haiku + 20 v2-sonnet) under three judge configurations: the cached t0014 original-haiku verdicts as baseline, a substantive critic prompt on `claude-sonnet-4-6`, and a model-rotated original-prompt judge on `claude-sonnet-4-6`. The headline finding is that the +57 pp v2-vs-v1 schema-only gap from t0014 **partially survives** under sonnet judges: **+24.6 pp** under the substantive critic and **+37.3 pp** under the model-rotated judge, vs the **+58.0 pp** baseline. Neither pre-registered extreme decision criterion (drops below +30 pp on both sonnet judges, or...
+
 ## v2 Truncation vs Schema Ablation
 ID: t0020_v2_truncation_vs_schema_ablation
 Completed: 2026-05-01
@@ -287,139 +294,10 @@ Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Su
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
-ID: t0019_v2_judge_calibration_sonnet
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
-
-#### Motivation
-
-t0014 produced a schema-only delta of **+57 pp** for v2 over v1, well above Zhou2022&#x27;s +16 pp and
-Boisvert2024&#x27;s +25 pp published bands, and a model-only delta of **-1 pp** that sits below
-Xiong2024&#x27;s lower edge (0 pp). Two plausible threats to validity remain:
-
-1. **Judge anchoring** (S-0014-02): the haiku judge may be partially scoring &quot;the model produced a
-   parseable tree with subtask-to-atomic edges&quot; rather than &quot;the decomposition is substantively
-   right&quot;. If so, the +57 pp gap to literature is a judge artefact, not a schema effect.
-2. **Familial bias** (S-0014-03): the haiku judge gives the v2-haiku annotator a same-family
-   agreement bonus (~5-10 pp per Xiong2024). If so, the -1 pp model-only delta is masking a real
-   sonnet annotator advantage.
-
-Both threats can be tested at the same 43-row pool used in t0014 by swapping the judge prompt and
-judge model. Defending the +57 pp schema-only headline before scaling to a confirmatory experiment
-is the cheapest paper-defensible step on the critical path.
-
-This task covers `S-0014-02` (primary) and `S-0014-03` (secondary).
-
-#### Scope
-
-Re-judge **the same 43 v2 rows** that t0014 produced (20 v2-sonnet + 23 v2-haiku) plus the matched
-20 v1-sonnet rows from t0009/t0014, under two new judge configurations:
-
-* **Substantive critic** prompt (S-0014-02): the judge simulates execution (&quot;verify each atomic,
-  executed in order, would actually solve the problem&quot;) and outputs a binary accept/reject plus a
-  per-criterion sub-score.
-* **Model-rotated** judge (S-0014-03): keep the original t0014 judge prompt, swap the judge model
-  from haiku to claude-sonnet-4-6.
-
-Both judges run against the same row pool. Combined output is a 4-condition matrix per row:
-
-| Condition | Annotator | Judge Prompt | Judge Model |
-| --- | --- | --- | --- |
-| Baseline (from t0014) | v1-sonnet / v2-haiku / v2-sonnet | original | haiku |
-| Substantive | v1-sonnet / v2-haiku / v2-sonnet | substantive critic | sonnet |
-| Model-rotated | v1-sonnet / v2-haiku / v2-sonnet | original | sonnet |
-
-This task does not re-annotate. It only re-judges. Annotation rows from t0014 are read in via the
-existing predictions overlay applied by t0015.
-
-#### Deliverables
-
-1. **Predictions asset** (`assets/predictions/v2_judge_calibration/`): per-row judge verdicts under
-   the substantive and model-rotated conditions, plus the cached baseline t0014/t0015 verdicts as
-   reference. Includes prompt-version and judge-model fields per row.
-2. **Answer asset** (`assets/answer/.../`) addressing the question: &quot;Does the v2 schema retain a 30+
-   pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or is the +57 pp
-   t0014 headline an artefact of haiku judge anchoring?&quot;
-3. **Reported metrics** in `results/metrics.json` using the explicit multi-variant format, one
-   variant per (annotator x judge-prompt x judge-model) cell. Each cell reports:
-   * `accept_rate`
-   * `accept_rate_stderr` (Wilson 95% CI)
-   * `efficiency_inference_cost_per_item_usd`
-   * `efficiency_inference_time_per_item_seconds`
-4. **Comparison table** in `results/results_detailed.md` showing the schema-only and model-only
-   deltas under all three judge configurations side by side, with explicit deltas vs t0014.
-
-#### Models and Configurations
-
-* **Annotator outputs** (already produced; not re-run): claude-sonnet-4-6 v1 (20 rows), haiku v2 (23
-  rows), sonnet v2 (20 rows). All from t0014.
-* **Substantive critic judge**: claude-sonnet-4-6 with the new prompt template.
-* **Model-rotated judge**: claude-sonnet-4-6 with the original t0014 judge prompt.
-
-Total judge calls: 43 rows x 2 new judge configurations = **86 sonnet judge calls**.
-
-#### Cost Estimate
-
-* Sonnet input ~5k tokens per call x 86 = **~430k input tokens**.
-* Sonnet output ~600 tokens per call x 86 = **~52k output tokens**.
-* At claude-sonnet-4-6 pricing (approximately $3/M in, $15/M out): **about $2.05** sonnet spend.
-* Reserve for retry/repair: **+$1**.
-* Total: **~$3-5**.
-
-This sits well within the remaining $51 budget.
-
-#### Decision Criteria
-
-After this task:
-
-* If schema-only delta drops below **+30 pp** under the substantive judge, the +57 pp t0014 headline
-  is partly judge-anchoring; reset the headline to the substantive number and revisit S-0014-01 (v3
-  schema iteration).
-* If schema-only delta stays at or above **+45 pp** under both new judges, the schema effect is
-  robust; commit to the t0023 confirmatory run as planned.
-* If model-only delta swings to **at least +5 pp** under the sonnet judge, the t0014 -1 pp result is
-  a haiku familial bias, and v2-sonnet should be the production annotator going forward.
-* If model-only delta stays within +/-2 pp under the sonnet judge, the v2 schema does the work and
-  sonnet annotation is not worth the cost premium.
-
-#### Dependencies
-
-None on uncompleted tasks. Reads from t0014&#x27;s predictions and t0015&#x27;s correction overlay; both are
-merged.
-
-#### Source Suggestion
-
-This task covers `S-0014-02` (primary) and `S-0014-03` (secondary). Both suggestions remain active
-as `source_suggestion` until t0019 results are merged; the secondary will be marked covered in the
-next brainstorm round if the data answers it.
-
-#### Risks and Fallbacks
-
-* **Substantive judge is slow or unstable**: if per-row judge time exceeds 30 s, drop sub-criteria
-  and use a binary verdict only.
-* **Sonnet judge disagrees with itself across the two prompt variants on the same row**: log per-row
-  agreement; report Cohen&#x27;s kappa across (substantive, model-rotated) at the same model. This is a
-  free signal about prompt-vs-anchoring effects.
-* **The t0014 row pool has masked instances** (we know 3 sonnet timeouts exist; S-0014-05 was
-  rejected): exclude those rows from all conditions consistently and report the effective n.
-
-#### Verification Criteria
-
-* Predictions asset passes `verify_predictions_asset.py`.
-* Answer asset passes `verify_answer_asset.py`.
-* `results/metrics.json` contains all 9 cells (3 annotators x 3 judge configs) with accept_rate and
-  stderr.
-* `results/results_detailed.md` contains a side-by-side delta table and an explicit
-  decision-criteria check-off against the four bullets above.
-* Cost in `results/costs.json` is at or below **$5**.
+Planned or active tasks: 1
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -584,9 +462,10 @@ the phase-randomized control is in scope only if budget permits.
       <source_name>aggregate_answers_full</source_name>
       <source_ids>
         <id>decomposition-v2-schema-vs-truncation</id>
+        <id>does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges</id>
       </source_ids>
       <content>
-Answers: 1
+Answers: 2
 
 ## How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?
 ID: decomposition-v2-schema-vs-truncation
@@ -721,6 +600,126 @@ artifact, but is out of scope for this task.
 [t0009]: ../../../t0009_hierarchical_annotation_v2/
 [t0014]: ../../../t0014_v2_annotator_sonnet_rerun/
 [t0020]: ../../../t0020_v2_truncation_vs_schema_ablation/
+
+## Does the v2 schema retain a 30+ pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or is the +57 pp t0014 headline an artefact of haiku judge anchoring?
+ID: does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges
+Created by: t0019_v2_judge_calibration_sonnet on 2026-05-01
+Confidence: low
+Categories: agent-evaluation, hierarchical-planning, uncertainty-calibration
+
+#### Question
+
+Does the v2 schema retain a 30+ pp accept-rate delta over v1 under a substantive judge and under a
+sonnet judge, or is the +57 pp t0014 headline an artefact of haiku judge anchoring?
+
+#### Short Answer
+
+The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 pp and under
+model-rotated-sonnet it is +37.3 pp, vs the t0014 baseline of +58.0 pp. The +57 pp headline does not
+cleanly survive a stronger judge, but neither does it collapse below +30 pp on both configurations;
+the answer depends on which sonnet judge configuration is treated as canonical.
+
+#### Research Process
+
+We re-judged a fixed 55-row pool (12 v1-sonnet rows from t0005, 23 v2-haiku rows from t0009 with
+t0015 benchmark-label corrections applied, and 20 v2-sonnet rows from t0014) under three judge
+configurations: the cached original-haiku verdicts from t0014/t0005 (baseline), a substantive critic
+prompt that asks claude-sonnet-4-6 to simulate executing the atomics in order, and a model-rotated
+configuration that keeps the original prompt verbatim and only swaps the judge model from
+claude-haiku-4-5 to claude-sonnet-4-6. We did not re-annotate; only the judge stage changes. The two
+sonnet configurations were run via the local `claude` CLI subprocess because the OAuth-issued API
+key in this environment lacks sonnet quota (see `intervention/critical_step_blocked.md`).
+
+For each (annotator x judge_config) cell we computed the binary acceptance rate, the Wilson 95%
+confidence interval, and the schema-only delta (v2-haiku minus v1-sonnet) and model-only delta
+(v2-sonnet minus v2-haiku) within each judge configuration. We also computed Cohen&#x27;s kappa between
+the three judge configurations on the per-row binary verdict.
+
+#### Evidence from Papers
+
+The papers method was not used directly in this task. The literature priors that motivate the
+question (Zhou2022 on judge anchoring, Boisvert2024 on hierarchical-annotation effect sizes,
+Xiong2024 on within-family judge bias) were already surveyed in the t0017 literature task and are
+referenced for comparison only; no new paper download or summarization was performed here.
+
+#### Evidence from Internet Sources
+
+The internet method was not used in this task. The data sources are entirely internal: t0014&#x27;s
+v2-sonnet annotations, t0009 v2-haiku annotations with t0015 corrections applied, t0005 v1-sonnet
+judgments, and the 110 fresh sonnet judge calls produced by this task&#x27;s runners.
+
+#### Evidence from Code or Experiments
+
+The 9-cell evidence table from `assets/predictions/v2-judge-calibration/files/predictions.jsonl`:
+
+| Annotator | Judge | n | k | accept_rate | 95% Wilson CI |
+| --- | --- | --- | --- | --- | --- |
+| v1-sonnet | original-haiku | 12 | 4 | 33.3% | [13.8, 60.9] |
+| v1-sonnet | substantive-sonnet | 12 | 8 | 66.7% | [39.1, 86.2] |
+| v1-sonnet | model-rotated-sonnet | 12 | 7 | 58.3% | [32.0, 80.7] |
+| v2-haiku | original-haiku | 23 | 21 | 91.3% | [73.2, 97.6] |
+| v2-haiku | substantive-sonnet | 23 | 21 | 91.3% | [73.2, 97.6] |
+| v2-haiku | model-rotated-sonnet | 23 | 22 | 95.7% | [79.0, 99.2] |
+| v2-sonnet | original-haiku | 20 | 18 | 90.0% | [69.9, 97.2] |
+| v2-sonnet | substantive-sonnet | 20 | 20 | 100.0% | [83.9, 100.0] |
+| v2-sonnet | model-rotated-sonnet | 20 | 20 | 100.0% | [83.9, 100.0] |
+
+Schema-only delta (v2-haiku minus v1-sonnet) and model-only delta (v2-sonnet minus v2-haiku) under
+each judge configuration:
+
+| Judge | Schema-only delta | Model-only delta |
+| --- | --- | --- |
+| original-haiku (baseline, t0014/t0005) | +58.0 pp | -1.3 pp |
+| substantive-sonnet | +24.6 pp | +8.7 pp |
+| model-rotated-sonnet | +37.3 pp | +4.3 pp |
+
+Decision-criteria check-off (each criterion was pre-registered in `task_description.md`):
+
+* **Schema-only delta drops below +30 pp under substantive-sonnet**: Yes (+24.6 pp)
+* **Schema-only delta drops below +30 pp under model-rotated-sonnet**: No (+37.3 pp)
+* **Schema-only delta stays at or above +45 pp under substantive-sonnet**: No (+24.6 pp)
+* **Schema-only delta stays at or above +45 pp under model-rotated-sonnet**: No (+37.3 pp)
+* **Model-only delta swings by 5+ pp under substantive-sonnet vs baseline**: Yes (delta-of-deltas
+  +10.0 pp)
+* **Model-only delta swings by 5+ pp under model-rotated-sonnet vs baseline**: Yes (delta-of-deltas
+  +5.7 pp)
+* **Model-only delta stays within +/- 2 pp under substantive-sonnet vs baseline**: No
+* **Model-only delta stays within +/- 2 pp under model-rotated-sonnet vs baseline**: No
+
+#### Synthesis
+
+The +57 pp v2-vs-v1 schema-only headline observed in t0014 (under haiku as judge) shifts
+substantially under the stronger judges (substantive +24.6 pp, model-rotated +37.3 pp vs baseline
++58.0 pp). Under both sonnet configurations the schema-only delta is much smaller, and the
+model-only delta shifts in lock-step. This supports the interpretation that the t0014 headline is
+partially an artefact of haiku judge anchoring on v1-sonnet hierarchies rather than a clean signal
+that the v2 schema by itself produces dramatically more correct decompositions; both prompt-swap and
+model-swap shrink the gap to a similar magnitude, suggesting model anchoring dominates prompt
+anchoring on this pool.
+
+#### Limitations
+
+* **n = 55 is small** (12 v1, 23 v2-haiku, 20 v2-sonnet); Wilson 95% CI half-widths on the per-cell
+  rates are 12-30 pp, so per-cell rate differences below ~10 pp should not be over-interpreted.
+* **The original-haiku verdicts are read from cached fields** (`judge_verdict` on each row), which
+  means the baseline cell&#x27;s per-call cost and elapsed-time fields are missing in the predictions
+  JSONL. The accept_rate is still authoritative because t0014&#x27;s runner emitted it via the same
+  parser used here.
+* **Two of the v1-sonnet rows are FrontierScience-Olympiad rows that t0014 already analysed**; the
+  model-only delta is therefore not entirely independent of t0014&#x27;s scope. Future replications on a
+  fresh-pool task (S-0014-04) will give the cleaner test.
+* **All sonnet calls went through the `claude` CLI subprocess** because the OAuth-issued API key in
+  this environment lacks sonnet quota; this raised the per-call cost from the planned ~$0.024/call
+  (SDK + cache hits) to ~$0.18/call (CLI + cache-creation overhead) and required raising the task
+  budget cap from $4.50 to $20.00. See `intervention/critical_step_blocked.md`.
+
+#### Sources
+
+* Predictions asset: `assets/predictions/v2-judge-calibration/files/predictions.jsonl`
+* Task: `t0005_hierarchical_annotation_pilot_v1`
+* Task: `t0009_hierarchical_annotation_v2`
+* Task: `t0014_v2_annotator_sonnet_rerun`
+* Task: `t0015_correct_proxy_benchmark_labels`
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
@@ -4508,6 +4507,750 @@ After t0019/t0020 results return:
   iteration).
 * If t0020 shows truncation explains a meaningful fraction of v2&#x27;s gain: RQ7 conclusion shifts;
   paper claims must be qualified accordingly.
+      </content>
+    </section>
+    <section id="t0019_v2_judge_calibration_sonnet-results-detailed" source_kind="file">
+      <title>t0019_v2_judge_calibration_sonnet — v2 Judge Calibration with Sonnet (Substantive + Familial Bias) — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0019_v2_judge_calibration_sonnet</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0019_v2_judge_calibration_sonnet/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0019_v2_judge_calibration_sonnet&quot;
+---
+### Detailed Results: v2 Judge Calibration with Sonnet
+
+#### Summary
+
+Re-judged the same 55-row hierarchy pool from t0014 (12 v1-sonnet + 23 v2-haiku + 20 v2-sonnet)
+under three judge configurations: the cached t0014 original-haiku verdicts as baseline, a
+substantive critic prompt on `claude-sonnet-4-6`, and a model-rotated original-prompt judge on
+`claude-sonnet-4-6`. The +57 pp v2-vs-v1 schema-only gap from t0014 partially survives both sonnet
+judges (**+24.6 pp** substantive, **+37.3 pp** model-rotated, vs **+58.0 pp** baseline), and neither
+pre-registered extreme decision criterion (drop below +30 pp on both, or stay at or above +45 pp on
+both) was simultaneously satisfied; the answer is **Mixed / low confidence**.
+
+#### Methodology
+
+* **Machine**: Apple M-series laptop (`darwin` arm64, Python 3.13.5 via `uv`); no remote machines.
+* **Wall-clock runtime**: ~26 minutes total spread across the validation gate, the substantive full
+  sweep, and the model-rotated full sweep (per `data/*_outcomes.jsonl` timestamps).
+* **Start / end timestamps**: started 2026-05-01T14:02:34Z (`task.json` `start_time`); the last
+  judge call landed at 2026-05-01T17:39:42Z (per `data/computed_stats.json` `generated_at_utc`,
+  written immediately after the last successful run).
+* **Models**: judge model `claude-sonnet-4-6` for both sonnet variants; `claude-haiku-4-5` baseline
+  is read from cached `judge_verdict` fields written by t0014 / t0005. Pricing: $3/M input, $15/M
+  output (`code/constants.py`).
+* **Transport**: the OAuth-issued `ANTHROPIC_API_KEY` in this environment is provisioned only for
+  haiku quota; every call to `claude-sonnet-4-6` returned `RateLimitError 429`. Per option-2 in
+  `intervention/critical_step_blocked.md` the budget cap was raised from $4.50 to $20.00 and the
+  judge transport switched from the Anthropic SDK to the local `claude` CLI subprocess (which routes
+  through the user&#x27;s Claude Code subscription). The transport is a constant (`code/constants.py`
+  `JUDGE_TRANSPORT = &quot;cli&quot;`).
+* **Pool**: 55 rows total (12 v1-sonnet from `t0005_hierarchical_annotation_pilot_v1`, 23 v2-haiku
+  from `t0009_hierarchical_annotation_v2` with the `t0015` benchmark-label correction overlay
+  applied, and 20 v2-sonnet from `t0014_v2_annotator_sonnet_rerun`). Pool assembly is in
+  `code/data_loader.py`.
+* **Prompts**: substantive critic system prompt extends the original t0014 judge with an explicit
+  &quot;mentally simulate executing the atomics in the listed order&quot; instruction and an optional
+  `sub_scores` schema; the model-rotated config uses the original t0014 prompt verbatim. Both
+  prompts are in `code/constants.py`.
+* **Run script**: `code/run_substantive.py` (validation gate + 50-row sweep) and
+  `code/run_model_rotated.py` (full 55-row sweep, no separate gate because the substantive gate
+  already validated parsing and per-call cost). Idempotent JSONL append output written to
+  `data/substantive_outcomes.jsonl` and `data/model_rotated_outcomes.jsonl`.
+* **Statistics**: per-cell binary acceptance rate, Wilson 95% CI (`code/stats.py` `wilson_ci`),
+  schema-only delta (v2-haiku - v1-sonnet) and model-only delta (v2-sonnet - v2-haiku) with delta
+  CIs (`stats.py` `delta_with_ci`), Cohen&#x27;s kappa per annotator and overall between every pair of
+  judge configurations (`stats.py` `cohens_kappa`).
+* **Outcome volume**: 110 fresh sonnet judge calls (55 substantive + 55 model-rotated). 0 parse
+  failures, 0 call failures, 0 budget halts. Total spend $19.30 (see `results/costs.json`),
+  comfortably below the raised $20 cap but ~4.3x the original $4.50 plan.
+* **Output building**: `code/builddata.py` reads the two outcome JSONLs plus the cached baseline
+  verdicts, joins by `_pilot_row_index`, and writes the predictions asset, the answer asset, the
+  explicit-multi-variant `metrics.json` (registered metric `task_success_rate` only), the two charts
+  in `results/images/`, and the full audit `data/computed_stats.json`.
+
+#### Metrics Tables
+
+##### Per-cell accept rate with Wilson 95% CI
+
+Source: `data/computed_stats.json`. Each row is one (annotator x judge) cell.
+
+| Annotator | Judge | n | k_acceptable | accept_rate | Wilson 95% CI | half-width | sonnet $/call | sonnet s/call |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| v1-sonnet | original-haiku | 12 | 4 | **33.3%** | [13.8, 60.9] | 23.6 pp | n/a | n/a |
+| v1-sonnet | substantive-sonnet | 12 | 8 | **66.7%** | [39.1, 86.2] | 23.6 pp | $0.176 | 13.0 s |
+| v1-sonnet | model-rotated-sonnet | 12 | 7 | **58.3%** | [32.0, 80.7] | 24.4 pp | $0.175 | 13.1 s |
+| v2-haiku | original-haiku | 23 | 21 | **91.3%** | [73.2, 97.6] | 12.2 pp | n/a | n/a |
+| v2-haiku | substantive-sonnet | 23 | 21 | **91.3%** | [73.2, 97.6] | 12.2 pp | $0.177 | 28.9 s |
+| v2-haiku | model-rotated-sonnet | 23 | 22 | **95.7%** | [79.0, 99.2] | 10.1 pp | $0.176 | 11.6 s |
+| v2-sonnet | original-haiku | 20 | 18 | **90.0%** | [69.9, 97.2] | 13.7 pp | n/a | n/a |
+| v2-sonnet | substantive-sonnet | 20 | 20 | **100.0%** | [83.9, 100.0] | 8.1 pp | $0.175 | 8.8 s |
+| v2-sonnet | model-rotated-sonnet | 20 | 20 | **100.0%** | [83.9, 100.0] | 8.1 pp | $0.173 | 8.0 s |
+
+Original-haiku per-call cost and latency are `n/a` because the verdicts are read from t0014 / t0005
+cached rows — the underlying runs did not record per-call fields in the same shape this task uses.
+
+##### Schema-only and model-only deltas under each judge
+
+| Judge | Schema-only (v2-haiku - v1-sonnet) | Model-only (v2-sonnet - v2-haiku) |
+| --- | --- | --- |
+| original-haiku (baseline) | **+58.0 pp** | **-1.3 pp** |
+| substantive-sonnet | **+24.6 pp** | **+8.7 pp** |
+| model-rotated-sonnet | **+37.3 pp** | **+4.3 pp** |
+
+##### Cohen&#x27;s kappa between judges
+
+| Judge pair | v1-sonnet | v2-haiku | v2-sonnet | Overall |
+| --- | --- | --- | --- | --- |
+| substantive vs model-rotated | 0.471 | 0.646 | 1.000 | **0.626** |
+| substantive vs baseline-haiku | 0.400 | 0.452 | 0.000 | 0.480 |
+| model-rotated vs baseline-haiku | 0.211 | 0.646 | 0.000 | 0.480 |
+
+Interpretation: **moderate** agreement between the two sonnet judges overall (0.626), with the v2
+cells showing high agreement (1.0 on v2-sonnet, 0.65 on v2-haiku) and the v1-sonnet cell showing the
+most disagreement (0.47). The &quot;kappa = 0&quot; cells are an artefact of an undefined kappa whenever one
+of the two judges produces zero variance (e.g., 100% acceptance on v2-sonnet under both sonnet
+configs); the cohens_kappa helper substitutes 0 in that case.
+
+#### Comparison vs Baselines
+
+The headline comparison this task was created to test is the t0014 schema-only delta (+58.0 pp). The
+two new sonnet configurations both shrink that delta but neither collapses it:
+
+* **Substantive critic**: schema-only delta drops by **33.4 pp** (from +58.0 to +24.6) and
+  model-only delta swings by **+10.0 pp** (from -1.3 to +8.7).
+* **Model-rotated**: schema-only delta drops by **20.7 pp** (from +58.0 to +37.3) and model-only
+  delta swings by **+5.6 pp** (from -1.3 to +4.3).
+
+Both directions are consistent with a partial haiku-judge anchoring effect on v1-sonnet hierarchies
+(the baseline accepts only 33% of v1, but both sonnet judges accept 58-67%) without implying that v2
+is no better than v1: v2-haiku and v2-sonnet still hit 91-100% acceptance under every judge.
+
+Comparison to the published bands cited in `task_description.md` is in
+`logs/steps/013_compare-literature/` (Zhou2022, Boisvert2024, Xiong2024).
+
+#### Visualizations
+
+##### Accept rate by annotator and judge
+
+![Per-cell accept rate with Wilson 95% CI error bars](images/accept_rate_3x3.png)
+
+Grouped bar chart of the nine accept_rate values with Wilson 95% CI error bars (matplotlib). The
+v2-haiku and v2-sonnet bars stay near the top under all three judges; the v1-sonnet bar shifts up
+sharply when the judge moves from haiku (33%) to either sonnet (58-67%).
+
+##### Schema-only delta by judge
+
+![Schema-only delta by judge with +30 pp and +45 pp threshold lines](images/schema_only_delta_by_judge.png)
+
+3-bar chart of the schema-only delta (v2-haiku - v1-sonnet) under each of the three judge
+configurations. Green dashed line at +30 pp marks the &quot;headline collapses&quot; threshold; red dashed
+line at +45 pp marks the &quot;headline robust&quot; threshold. The substantive bar lands below +30 pp; the
+model-rotated bar lands between +30 and +45 pp; the baseline bar lands above +45 pp.
+
+#### Analysis
+
+The pre-registered decision criteria from `task_description.md` resolve as follows:
+
+| Criterion | Threshold | Substantive | Model-rotated | Met? |
+| --- | --- | --- | --- | --- |
+| Schema-only delta drops below +30 pp | &lt; +30 pp | +24.6 pp | +37.3 pp | Substantive YES, model-rotated NO |
+| Schema-only delta stays &gt;= +45 pp | &gt;= +45 pp | +24.6 pp | +37.3 pp | Both NO |
+| Model-only delta swings &gt;= +5 pp | swing &gt;= +5 pp | +10.0 pp | +5.6 pp | Both YES |
+| Model-only delta stays within +/-2 pp | swing &lt;= 2 pp | +10.0 pp | +5.6 pp | Both NO |
+
+The intended decisions (&quot;reset the headline&quot; if drop-below-30-pp, &quot;commit to t0023 confirmatory&quot; if
+stay-above-45-pp, etc.) require the same threshold to be met under both new judges; that did not
+happen. The substantive judge crosses the lower threshold but the model-rotated judge does not. The
+most defensible reading is:
+
+1. **The schema effect is real but smaller than t0014 reported.** Even the most permissive new delta
+   (+37.3 pp under model-rotated) is well below the original +58 pp. The most stringent delta (+24.6
+   pp under substantive) sits in the same band as Boisvert2024&#x27;s published +25 pp, which is the
+   closest external prior on hierarchical-annotation effects.
+2. **Familial bias appears to exist on v2-sonnet.** Both new sonnet judges accept 100% of v2-sonnet
+   rows whereas haiku accepts 90%, and the kappa between substantive and model-rotated on v2-sonnet
+   is 1.0. This is consistent with Xiong2024&#x27;s reported within-family agreement bonus.
+3. **The t0014 -1 pp model-only finding does not survive** either sonnet judge: model-only delta
+   swings from -1.3 pp to +4-9 pp, indicating that under sonnet judges v2-sonnet annotations are
+   modestly better than v2-haiku ones. The swing magnitude (5-10 pp) is at or above Xiong2024&#x27;s
+   reported familial-bias range.
+
+#### Examples
+
+The 10 disagreement rows below are every row in the 55-row pool where the three judges (cached
+original-haiku, substantive-sonnet, model-rotated-sonnet) did not agree on the verdict. Each example
+shows the system prompt the sonnet judges saw, the parsed verdict + justification per judge, and a
+brief note on the disagreement pattern. The user template (identical for both sonnet judges) is also
+reproduced once below to keep the per-example blocks readable.
+
+##### Sonnet judge prompts (sent to `claude-sonnet-4-6` for every row)
+
+The substantive critic system prompt:
+
+```text
+You are an expert reviewer evaluating hierarchical decompositions of benchmark problems.
+You output ONLY a single JSON object: {&quot;verdict&quot;: &quot;acceptable&quot; | &quot;needs revision&quot;,
+&quot;justification&quot;: &quot;&lt;one to two sentences&gt;&quot;, &quot;sub_scores&quot;: {&quot;coverage&quot;: 0|1,
+&quot;executable&quot;: 0|1, &quot;gold_actions_consistency&quot;: 0|1}}.
+
+A decomposition is &quot;acceptable&quot; if:
+- &quot;global&quot; captures the overall plan in one sentence,
+- the union of subtasks covers what the problem actually asks for,
+- atomics under each subtask are operational steps that, executed in order, would complete
+that subtask,
+- &quot;global_atomics&quot; contains only steps that genuinely cross subtasks (verification, final
+checks, etc.),
+- gold_actions mirrors the same structure with specific resolved actions.
+
+Before deciding, mentally simulate executing the atomics in the listed order against the
+original problem statement. Mark &quot;acceptable&quot; only if the simulated execution would actually
+solve the problem; mark &quot;needs revision&quot; if the simulated execution exposes any missing,
+incorrect, or non-operational step.
+
+Sub-score definitions (each in {0, 1}):
+- &quot;coverage&quot;: 1 if the union of subtasks fully covers what the problem asks for, else 0.
+- &quot;executable&quot;: 1 if the atomics are concrete operational steps that the agent could actually
+perform in order, else 0.
+- &quot;gold_actions_consistency&quot;: 1 if gold_actions mirrors the hierarchy structure with specific
+resolved actions, else 0.
+
+Output ONLY the JSON object, with no prose before or after, no markdown fencing.
+```
+
+The original (haiku) judge system prompt used by both the cached baseline and the sonnet
+model-rotated config:
+
+```text
+You are an expert reviewer evaluating hierarchical decompositions of benchmark problems.
+You output ONLY a single JSON object: {&quot;verdict&quot;: &quot;acceptable&quot; | &quot;needs revision&quot;,
+&quot;justification&quot;: &quot;&lt;one to two sentences&gt;&quot;}.
+
+A decomposition is &quot;acceptable&quot; if:
+- &quot;global&quot; captures the overall plan in one sentence,
+- the union of subtasks covers what the problem actually asks for,
+- atomics under each subtask are operational steps that, executed in order, would complete
+that subtask,
+- &quot;global_atomics&quot; contains only steps that genuinely cross subtasks (verification, final
+checks, etc.),
+- gold_actions mirrors the same structure with specific resolved actions.
+
+It &quot;needs revision&quot; if any of the above fail clearly.
+
+Output ONLY the JSON object, with no prose before or after, no markdown fencing.
+```
+
+The user template (used identically by both sonnet judges; only the system prompt differs):
+
+```text
+Benchmark: {benchmark}
+Domain: {domain}
+
+Full problem:
+{problem}
+
+Candidate v2 hierarchy:
+{hierarchy_json}
+
+Candidate v2 gold_actions:
+{gold_actions_json}
+
+Output the JSON verdict now.
+```
+
+##### Example 1: `v2-sonnet-0039` (SWE-bench Verified, matplotlib `cla()` / `clf()` fix)
+
+* **Annotator**: v2-sonnet
+* **Verdicts**: baseline-haiku=needs revision, substantive=acceptable, model-rotated=acceptable
+
+Substantive raw response (verdict + justification):
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The hierarchy fully covers both cla() and clf() fixes, the atomics are concrete ordered steps that when executed would reproduce and resolve the bug, and the gold_actions mirror the same structure with specific file paths, attribute names, and test code. Mental simulation of executing the atomics in order would produce a working patch.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The global sentence correctly summarizes the two-pronged fix; the five subtasks together cover reading the reference implementation, patching both cla() and clf(), and adding regression tests, with each atomic being a concrete, ordered step that would complete its parent subtask. The gold_actions mirrors the same structure with specific file paths and code snippets, and the global_atomics are genuine cross-subtask end-to-end verification commands.&quot;
+}
+```
+
+**Pattern**: classic haiku-anchoring miss. The cached haiku verdict marked the row as &quot;needs
+revision&quot; but both sonnet judges (with and without the substantive critic addition) walked the patch
+step by step and accepted it. This is one of the rows that drives the +37 pp model-rotated delta
+below the baseline +58 pp.
+
+##### Example 2: `v2-sonnet-0049` (tau-bench, HumanEval-144 multiplier divisibility)
+
+* **Annotator**: v2-sonnet
+* **Verdicts**: baseline-haiku=needs revision, substantive=acceptable, model-rotated=acceptable
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The decomposition fully covers parsing, multiplication, and divisibility checking; all atomics are concrete and executable in order to solve the problem. The gold_actions mirror the hierarchy with specific resolved Python expressions consistent with the approach.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The global sentence accurately captures the full algorithm, all three subtasks collectively cover parsing, multiplication, and divisibility checking, the atomics within each subtask are concrete executable steps in correct order, and the global_atomics entry is a legitimate cross-subtask verification step. The gold_actions mirror the hierarchy with specific resolved code-level actions.&quot;
+}
+```
+
+**Pattern**: same as Example 1 — sonnet accepts where haiku rejected, on a v2-sonnet annotation that
+both new judges find substantively correct. Two of these failures contribute to the v2-sonnet cell
+jumping from 90% (haiku) to 100% (both sonnet variants).
+
+##### Example 3: `v2-haiku-0007` (FrontierScience-Olympiad, lattice-dispersion physics)
+
+* **Annotator**: v2-haiku
+* **Verdicts**: baseline-haiku=acceptable, substantive=needs revision, model-rotated=acceptable
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;needs revision&quot;,
+  &quot;justification&quot;: &quot;The hierarchy covers all five sub-problems and the atomics are concrete operational steps, but the gold_actions contain critical errors that invalidate the execution: the energy calculation in subtask 3 is dimensionally inconsistent (using k² /2M without ℏ² factors, yielding ~1.04 MeV instead of ~40 MeV), the two reported values for E_min (1.04 and 1.74 MeV) are mutually contradictory, and the hierarchy atomic for subtask 2 instructs expanding to second order rather than first providing the exact lattice dispersion as the problem explicitly requires.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 0, &quot;gold_actions_consistency&quot;: 0}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The global statement concisely frames the full problem, the five subtasks map directly onto parts (a)–(e) with operational atomics in plausible execution order, global_atomics are genuinely cross-cutting verification steps, and gold_actions mirror the hierarchy with specific formulas and numerical targets throughout.&quot;
+}
+```
+
+**Pattern**: this is the single row in the pool where the substantive critic changed the verdict in
+the *stricter* direction (acceptable -&gt; needs revision) by simulating the calculation and catching a
+dimensional-analysis error. Neither the original haiku judge nor the model-rotated sonnet judge
+(same prompt as haiku) caught it. This is direct evidence that the substantive prompt adds
+substantive value beyond model-anchoring effects.
+
+##### Example 4: `v2-haiku-0017` (FrontierScience-Olympiad, SO2/Cl2 photochemistry)
+
+* **Annotator**: v2-haiku
+* **Verdicts**: baseline-haiku=needs revision, substantive=acceptable, model-rotated=acceptable
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The decomposition correctly identifies SO₂ and Cl₂ as gases A and B via molar mass ratios, traces the photochemical reaction to SO₂Cl₂, verifies the 2:1 acid ratio in hydrolysis, and confirms isomer Y as SOCl₂ with matching molar mass ratio. Simulated execution of the atomics in order would successfully solve the problem.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The global statement correctly summarizes the identification strategy, all subtasks collectively cover gas identification, product formation, hydrolysis analysis, isomer verification, and precipitate confirmation, and the gold_actions provide specific resolved actions (SO₂Cl₂, SOCl₂, molar masses, balanced equations) that mirror the hierarchy correctly.&quot;
+}
+```
+
+**Pattern**: haiku rejected this v2-haiku row but both sonnet judges accepted after walking through
+the chemistry chain. Same direction as Examples 1-2 (sonnet accepts where haiku rejected), but here
+the *annotator* is also haiku, ruling out a same-family bonus interpretation on this particular
+cell.
+
+##### Example 5: `v1-sonnet-0000` (FrontierScience-Olympiad, HaloTag gel analysis)
+
+* **Annotator**: v1-sonnet
+* **Verdicts**: baseline-haiku=needs revision, substantive=needs revision, model-rotated=acceptable
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;needs revision&quot;,
+  &quot;justification&quot;: &quot;The gold_actions contain a critical arithmetic error: subtask 3 claims tagged bands (106–113 kDa) are &#x27;roughly double the untagged bands (~40–47 kDa)&#x27;, but the actual untagged bands are 73–80 kDa, not ~40–47 kDa; the ~40–47 kDa figures appear to be the result of incorrectly subtracting HaloTag mass from the untagged bands, which is nonsensical. Atomic step 2 compounds this by instructing subtraction of ~33 kDa from the lower (untagged) band to infer &#x27;native protein size&#x27;, whereas the lower band already is the native untagged protein and HaloTag subtraction should be applied to the upper (tagged) band, making the homodimer hypothesis—a central interpretive thread—both mathematically unfounded and operationally incorrect.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 0, &quot;gold_actions_consistency&quot;: 0}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;All six problem parts (1A–1D, 2A, 2B) are covered by the union of subtasks, the atomics provide concrete operational steps to answer each part, the gold_actions mirror the structure faithfully, and the scientifically uncertain homodimerization interpretation is appropriately hedged by flagging gel type as the critical missing experimental detail in Part 1D.&quot;,
+  &quot;sub_scores&quot;: null
+}
+```
+
+**Pattern**: substantive critic and model-rotated disagree at the same model — the substantive
+critic catches an arithmetic error in `gold_actions` that the model-rotated judge misses. This is
+the kind of row that drives the model-rotated -&gt; substantive +24.6 pp drop in the v1-sonnet cell
+(67% -&gt; 58% acceptance under the two sonnet judges respectively).
+
+##### Example 6: `v1-sonnet-0001` (FrontierScience-Olympiad, scRNA-seq batch effects)
+
+* **Annotator**: v1-sonnet
+* **Verdicts**: baseline-haiku=needs revision, substantive=acceptable, model-rotated=acceptable
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The decomposition correctly identifies both sub-questions (batch effects from PCA clustering pattern, UMAP for cell-type visualization) and the subtasks/atomics form a logically ordered execution path that would solve the problem. The gold_actions mirror the hierarchy with specific, resolved reasoning steps.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The global captures the two-part structure, subtasks progressively cover both the batch-effects reasoning and the UMAP selection, and the atomics confirm final answers for both parts. The gold_actions mirror the subtask structure with specific resolved actions.&quot;
+}
+```
+
+**Pattern**: haiku rejected, both sonnet judges accept on a v1-sonnet annotation. This is one of the
+rows that pushes the v1-sonnet acceptance rate up from 33% (haiku) to 58-67% (sonnet), shrinking the
+schema-only delta.
+
+##### Example 7: `v1-sonnet-0002` (SWE-bench Verified, astropy fits-Card encoding)
+
+* **Annotator**: v1-sonnet
+* **Verdicts**: baseline-haiku=acceptable, substantive=acceptable, model-rotated=needs revision
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The atomics, executed in order, would concretely solve the problem: both Card.fromstring and Header.fromstring receive an isinstance/decode guard using a well-motivated latin-1 codec, the docstring and __doctest_skip__ are updated consistently, and a final verification step closes the loop. Gold actions mirror the hierarchy with specific file locations, codec choices, and code patterns that are directly implementable.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;needs revision&quot;,
+  &quot;justification&quot;: &quot;Two of the four subtasks (&#x27;Understand Python 2/3 str vs bytes split&#x27; and &#x27;Choose latin-1 as the decode codec&#x27;) have no corresponding operational atomics beneath them, violating the requirement that atomics under each subtask must be steps that complete that subtask; additionally, implementation-specific atomics (the Card.fromstring and Header.fromstring guards) appear in the global atomic list rather than nested under their respective locating subtasks, while the docstring and doctest steps belong to neither the locate subtasks nor a dedicated subtask.&quot;
+}
+```
+
+**Pattern**: model-rotated sonnet (with the original haiku-style prompt) rejected this row for a
+*structural* reason (subtasks without atomics), while substantive-sonnet (with the
+simulate-execution instruction) accepted because the atomics, executed in order, would still solve
+the problem. This is a rare reversal: same model, different prompt, opposite verdict; it illustrates
+that the substantive prompt is somewhat more *forgiving* on structural-but-executable trees.
+
+##### Example 8: `v1-sonnet-0004` (SWE-bench Verified, pytest fixture rename)
+
+* **Annotator**: v1-sonnet
+* **Verdicts**: baseline-haiku=needs revision, substantive=acceptable, model-rotated=needs revision
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;Simulated execution of the atomics in order — prefixing all five fixture name strings with underscores in python.py and unittest.py, then running both verification commands — would correctly resolve the regression. The gold_actions supply concrete line references and exact string changes that mirror the hierarchy faithfully, and the subtasks adequately cover the two source files involved.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;needs revision&quot;,
+  &quot;justification&quot;: &quot;The &#x27;global&#x27; claims the goal is only to &#x27;Reproduce and understand the regression,&#x27; yet the atomics include concrete code-change steps (prefixing fixture names with underscores) and verification runs — making the global badly misaligned with what the decomposition actually accomplishes. The subtasks cover only identification/location and contain no &#x27;fix&#x27; subtask to which the five prefix-change atomics could logically belong.&quot;,
+  &quot;sub_scores&quot;: null
+}
+```
+
+**Pattern**: similar to Example 7 but in the same direction as the haiku baseline — model-rotated
+keeps the structural strictness from the original prompt while substantive accepts on &quot;the simulated
+execution would still solve it&quot;. This row shows up in the v1-sonnet cell as the single point of
+substantive-vs-model-rotated disagreement on SWE-bench Verified.
+
+##### Example 9: `v1-sonnet-0008` (WorkArena++, boxing event ticket flow)
+
+* **Annotator**: v1-sonnet
+* **Verdicts**: baseline-haiku=needs revision, substantive=acceptable, model-rotated=acceptable
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The decomposition covers the full task flow from searching for boxing events to selecting a ticket, and the atomics are concrete, ordered, operational steps that would actually complete the task. The gold_actions mirror the hierarchy with specific resolved actions.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The global captures the overall strategy, the single subtask covers the identification and selection of a boxing-like event, and the atomics are operational steps executed in order that complete the task end-to-end including ticket selection. The gold_actions mirrors the same structure with adequately resolved specific actions.&quot;
+}
+```
+
+**Pattern**: WorkArena++ row that haiku rejected; both sonnet judges accept. Same direction as
+Examples 1-2, but on a v1-sonnet annotator instead of a v2 one — these flips are exactly what
+shrinks the schema-only delta on the sonnet judges.
+
+##### Example 10: `v1-sonnet-0010` (WorkArena++, simple newsletter signup)
+
+* **Annotator**: v1-sonnet
+* **Verdicts**: baseline-haiku=needs revision, substantive=acceptable, model-rotated=acceptable
+
+Substantive raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The decomposition covers the essential steps to sign up for a newsletter: entering an email and submitting the form. The atomics are concrete and executable in order, and gold_actions mirrors the structure with specific resolved actions.&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1}
+}
+```
+
+Model-rotated raw response:
+
+```json
+{
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;The global captures the overall intent, and the two atomics cover the complete task (enter email, submit). No subtasks are needed for this simple two-step flow, and global_atomics are unnecessary here.&quot;,
+  &quot;sub_scores&quot;: null
+}
+```
+
+**Pattern**: minimal-decomposition v1-sonnet row (two atomics, no subtasks) that haiku rejected for
+missing structure. Both sonnet judges agree the structure is appropriate for the task&#x27;s simplicity.
+This is the cleanest example of haiku over-penalising minimalism on simple agentic tasks.
+
+##### Disagreement summary
+
+* 10 disagreement rows out of 55 (18%); 45 rows (82%) had unanimous verdicts across all three
+  judges.
+* Direction of disagreement: 7/10 are &quot;haiku rejects, both sonnet judges accept&quot; (the
+  schema-only-delta shrinking pattern).
+* 1/10 (Example 3) is &quot;haiku accepts, substantive rejects, model-rotated accepts&quot; — the only row
+  where the substantive prompt added strictness beyond model-anchoring.
+* 2/10 (Examples 7-8) show same-model prompt-driven disagreement (substantive accepts, model-rotated
+  rejects on v1-sonnet SWE-bench rows) — substantive critic is somewhat more forgiving on
+  structural-but-executable trees.
+
+#### Verification
+
+* `verify_task_file.py`: PASSED. Logs in `logs/steps/015_reporting/`.
+* `verify_logs.py`: PASSED.
+* `verify_task_results.py`: PASSED (all mandatory sections present, frontmatter set,
+  `task_types: [&quot;comparative-analysis&quot;, &quot;data-analysis&quot;]` triggers `## Examples` section, which is
+  populated with 10 LLM-input/output example blocks above).
+* `verify_predictions_asset.py`: PASSED (165 rows, schema fields populated for every row, baseline
+  cost / latency are nullable per spec).
+* `verify_answer_asset.py`: PASSED (`details.json`, `short_answer.md`, `full_answer.md` all present
+  and well-formed; confidence &quot;low&quot; is allowed).
+* `verify_task_metrics.py`: PASSED (9 variants, all using registered metric `task_success_rate`).
+* `verify_step_tracker.py`: PASSED (15 steps, in_progress/completed flags consistent with logs).
+
+#### Limitations
+
+* **n = 55 is small** (12 v1-sonnet, 23 v2-haiku, 20 v2-sonnet). Wilson 95% CI half-widths on the
+  per-cell rates run from 8 pp (v2-sonnet under sonnet judges, perfect 100%) to 24 pp (v1-sonnet
+  under either sonnet judge). Per-cell differences below ~10 pp should not be over-interpreted.
+* **Original-haiku verdicts are read from cached `judge_verdict` fields**, so the baseline cell&#x27;s
+  per-call cost and elapsed-time are missing in `predictions.jsonl`. The accept_rate is still
+  authoritative because t0014&#x27;s runner used the same parser used here.
+* **Task description claimed 20 v1-sonnet rows**; only 12 were available with `judge_verdict`
+  populated in `tasks/t0005_hierarchical_annotation_pilot_v1/code/_outputs/mapped_with_judge.jsonl`.
+  Documented in `plan/plan.md` REQ-1.
+* **Sonnet calls went through the local `claude` CLI subprocess** because the OAuth-issued API key
+  in this environment lacks sonnet quota; this raised per-call cost from the planned ~$0.024/call
+  (SDK + cache hits) to ~$0.18/call (CLI + cache-creation overhead) and forced raising the task
+  budget cap from $4.50 to $20.00. The validation gate still fired correctly and no calls failed.
+  See `intervention/critical_step_blocked.md`.
+* **Cohen&#x27;s kappa = 0 on v2-sonnet cells** is an artefact of perfect 100% acceptance under both
+  sonnet judges — kappa is undefined when one rater has zero variance, and the helper substitutes 0.
+  Read these as &quot;no information about agreement on this cell&quot; rather than &quot;disagreement&quot;.
+* **The substantive prompt&#x27;s `sub_scores` schema is descriptive only**: rows where
+  sub_scores=(1,1,1) were not always accepted (Example 3 is the visible counterexample where the
+  judge wrote `executable=0` and rejected); the binary verdict is the authoritative signal.
+* **No fresh re-annotation**. The pool is the t0014 / t0005 / t0009 fixed pool; this task only
+  re-judges. A confirmatory experiment with re-annotation is the next logical step (S-0014-04 /
+  t0023).
+
+#### Files Created
+
+* `assets/predictions/v2-judge-calibration/details.json` — predictions asset metadata (spec_version
+  2).
+* `assets/predictions/v2-judge-calibration/description.md` — predictions asset description with
+  frontmatter, source datasets, and prediction schema.
+* `assets/predictions/v2-judge-calibration/files/predictions.jsonl` — 165 rows (55 pool x 3 judge
+  configs).
+* `assets/answer/does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges/details.json`
+  — answer asset metadata (spec_version 2, confidence low).
+* `assets/answer/does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges/short_answer.md`
+  — short answer markdown (with frontmatter and Sources section).
+* `assets/answer/does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges/full_answer.md`
+  — full answer markdown with the 9-cell table and decision-criteria check-off.
+* `results/results_summary.md` — top-level summary (this task).
+* `results/results_detailed.md` — this file.
+* `results/metrics.json` — explicit-multi-variant format with 9 variants and registered metric
+  `task_success_rate` only.
+* `results/costs.json` — total spend $19.30 of the raised $20 cap (substantive $9.68 + rotated
+  $9.63).
+* `results/remote_machines_used.json` — empty list (no remote machines).
+* `results/suggestions.json` — follow-up task suggestions (spec_version 2).
+* `results/images/accept_rate_3x3.png` — grouped bar chart with Wilson 95% CI error bars.
+* `results/images/schema_only_delta_by_judge.png` — 3-bar chart with +30 pp / +45 pp threshold
+  lines.
+* `data/substantive_outcomes.jsonl` — 55 substantive sonnet judge rows.
+* `data/model_rotated_outcomes.jsonl` — 55 model-rotated sonnet judge rows.
+* `data/computed_stats.json` — full audit dump: per-cell ci_lower / ci_upper / half_width /
+  cost_per_item / time_per_item, all three deltas, all three pairwise kappas.
+* `code/constants.py`, `code/data_loader.py`, `code/judge_runner.py`, `code/parse.py`,
+  `code/paths.py`, `code/run_substantive.py`, `code/run_model_rotated.py`, `code/stats.py`,
+  `code/builddata.py` — task code.
+* `intervention/critical_step_blocked.md` — documents the haiku-only quota issue and the option-2
+  resolution (raise cap, switch transport).
+
+#### Task Requirement Coverage
+
+The operative task request from `task.json` `name` and `short_description` and the resolved long
+description in `task_description.md`:
+
+&gt; **Name**: v2 Judge Calibration with Sonnet (Substantive + Familial Bias).
+&gt; 
+&gt; **Short description**: Re-judge the t0014 43-row v2 sample with two sonnet judge variants
+&gt; (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+&gt; 
+&gt; **Long description (from `task_description.md`)**: Re-judge the same 43 v2 rows that t0014
+&gt; produced (20 v2-sonnet + 23 v2-haiku) plus the matched 20 v1-sonnet rows from t0009/t0014, under
+&gt; two new judge configurations: substantive critic (S-0014-02) and model-rotated (S-0014-03). Both
+&gt; judges run against the same row pool. This task does not re-annotate. It only re-judges.
+&gt; Annotation rows from t0014 are read in via the existing predictions overlay applied by t0015.
+&gt; Total: 43 rows x 2 new judge configurations = 86 sonnet judge calls. Cost ceiling: $5. Decision
+&gt; criteria: drop below +30 pp on substantive =&gt; reset; stay &gt;= +45 pp on both =&gt; commit
+&gt; confirmatory; model-only delta swings &gt;= +5 pp on sonnet =&gt; v2-sonnet is the production annotator.
+
+The `REQ-*` IDs below are reused verbatim from `plan/plan.md`.
+
+* **REQ-1** — Re-judge the 12 v1-sonnet + 23 v2-haiku + 20 v2-sonnet pool under two new
+  configurations.
+  * Status: **Done** (effective n=55; 12 v1-sonnet rows used, not 20, because the v1 pool only had
+    12 rows with `judge_verdict` populated; documented in `## Limitations` and in `plan/plan.md`
+    REQ-1 mitigation).
+  * Direct answer: 110 fresh sonnet judge calls landed across the 55 pool rows; per-row verdicts are
+    in `assets/predictions/v2-judge-calibration/files/predictions.jsonl` (165 rows total including
+    baseline).
+  * Evidence: `data/substantive_outcomes.jsonl`, `data/model_rotated_outcomes.jsonl`,
+    `assets/predictions/v2-judge-calibration/files/predictions.jsonl`.
+
+* **REQ-2** — Use the substantive critic prompt with `claude-sonnet-4-6` for one new configuration.
+  * Status: **Done**.
+  * Direct answer: substantive critic prompt is in `code/constants.py`
+    `SUBSTANTIVE_JUDGE_SYSTEM_PROMPT`; 55 calls landed against `claude-sonnet-4-6`.
+  * Evidence: `code/run_substantive.py`, `data/substantive_outcomes.jsonl` (judge_model =
+    &quot;claude-sonnet-4-6&quot;, judge_prompt_version = &quot;substantive&quot; on every row).
+
+* **REQ-3** — Use the original t0014 judge prompt with `claude-sonnet-4-6` for the other new
+  configuration.
+  * Status: **Done**.
+  * Direct answer: original prompt is in `code/constants.py` `ORIGINAL_JUDGE_SYSTEM_PROMPT`
+    (verbatim copy from t0014); 55 calls landed against `claude-sonnet-4-6`.
+  * Evidence: `code/run_model_rotated.py`, `data/model_rotated_outcomes.jsonl` (judge_prompt_version
+    = &quot;model_rotated&quot;, judge_model = &quot;claude-sonnet-4-6&quot;).
+
+* **REQ-4** — Produce a predictions asset with per-row verdicts under all three judge configs, with
+  `judge_prompt_version` and `judge_model` fields.
+  * Status: **Done**.
+  * Direct answer: 165 rows in `assets/predictions/v2-judge-calibration/files/predictions.jsonl`;
+    every row has both fields populated.
+  * Evidence:
+    `assets/predictions/v2-judge-calibration/{details.json, description.md, files/predictions.jsonl}`.
+
+* **REQ-5** — Produce an answer asset addressing the canonical question.
+  * Status: **Done**.
+  * Direct answer: the answer asset folder
+    `assets/answer/does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges/` holds
+    `details.json`, `short_answer.md`, and `full_answer.md`. Confidence is &quot;low&quot; (not &quot;medium&quot; as
+    originally planned) because neither pre-registered extreme criterion was met simultaneously.
+  * Evidence: that folder.
+
+* **REQ-6** — Write `results/metrics.json` using the explicit multi-variant format with 9 cells.
+  * Status: **Done**.
+  * Direct answer: `results/metrics.json` has 9 variants, each with the registered metric
+    `task_success_rate`. The full per-cell table with `accept_rate`, stderr, cost-per-item, and
+    time-per-item is in this file&#x27;s `## Metrics Tables` section above (the spec forbids unregistered
+    metric keys in `metrics.json`).
+  * Evidence: `results/metrics.json`, `data/computed_stats.json`.
+
+* **REQ-7** — Generate `results_detailed.md` with a side-by-side comparison table (schema-only and
+  model-only deltas under all three judge configs) and explicit deltas vs t0014.
+  * Status: **Done**.
+  * Direct answer: see `## Metrics Tables` and `## Comparison vs Baselines` above.
+  * Evidence: this file.
+
+* **REQ-8** — Cost in `results/costs.json` &lt;= $5.
+  * Status: **Partial / not met**. Total spend was **$19.30** of a raised **$20.00** cap, vs the
+    original $5 ceiling. The original ceiling was unattainable in this environment because the
+    `claude` CLI subprocess is the only path to sonnet and it charges cache-creation tokens on every
+    invocation (~$0.18/call vs the $0.024/call SDK + cache-hit projection). Documented in
+    `intervention/critical_step_blocked.md` and approved as option 2 by the user.
+  * Evidence: `results/costs.json`, `intervention/critical_step_blocked.md`.
+
+* **REQ-9** — Predictions asset passes `verify_predictions_asset.py`.
+  * Status: **Done**.
+  * Direct answer: verificator passes.
+  * Evidence: `logs/steps/015_reporting/`.
+
+* **REQ-10** — Answer asset passes `verify_answer_asset.py`.
+  * Status: **Done**.
+  * Direct answer: verificator passes.
+  * Evidence: `logs/steps/015_reporting/`.
+
+* **REQ-11** — Apply the t0015 benchmark-label correction overlay when assembling v2-haiku rows.
+  * Status: **Done**.
+  * Direct answer: `code/data_loader.py` reads v2-haiku rows from
+    `tasks/t0015_correct_proxy_benchmark_labels/assets/dataset/hierarchical-annotation-v2-relabeled/files/hierarchical_annotation_v2_relabeled.jsonl`,
+    not the raw t0009 dataset.
+  * Evidence: `code/data_loader.py`, `code/paths.py`.
+
+* **REQ-12** — Report Cohen&#x27;s kappa across (substantive, model-rotated) at the same model.
+  * Status: **Done**.
+  * Direct answer: `## Metrics Tables` -&gt; &quot;Cohen&#x27;s kappa between judges&quot; reports kappa per annotator
+    and overall for all three pairs of judge configurations. Overall substantive-vs-model-rotated
+    kappa is 0.626 (moderate).
+  * Evidence: `data/computed_stats.json` `kappas`.
       </content>
     </section>
     <section id="t0020_v2_truncation_vs_schema_ablation-results-detailed" source_kind="file">

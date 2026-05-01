@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-overview" generated_at_utc="2026-05-01T16:23:48Z">
+<llm_context_archive preset_id="project-overview" generated_at_utc="2026-05-01T18:03:16Z">
   <archive_summary>
     <title>Project Overview</title>
     <description>Compact starter context for general project chats.</description>
     <use_case>General orientation, quick status questions, and lightweight strategy chats.</use_case>
     <section_count>4</section_count>
-    <char_count>31372</char_count>
-    <byte_count>31433</byte_count>
-    <estimated_tokens>7843</estimated_tokens>
+    <char_count>32935</char_count>
+    <byte_count>32996</byte_count>
+    <estimated_tokens>8233</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -144,12 +144,13 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
+        <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 21
+Completed tasks: 22
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -259,6 +260,12 @@ Completed: 2026-05-01
 Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
 Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
 
+## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+ID: t0019_v2_judge_calibration_sonnet
+Completed: 2026-05-01
+Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+Result summary: Results Summary: v2 Judge Calibration with Sonnet Summary Re-judged the same 55-row hierarchy pool from t0014 (12 v1-sonnet + 23 v2-haiku + 20 v2-sonnet) under three judge configurations: the cached t0014 original-haiku verdicts as baseline, a substantive critic prompt on `claude-sonnet-4-6`, and a model-rotated original-prompt judge on `claude-sonnet-4-6`. The headline finding is that the +57 pp v2-vs-v1 schema-only gap from t0014 **partially survives** under sonnet judges: **+24.6 pp** under the substantive critic and **+37.3 pp** under the model-rotated judge, vs the **+58.0 pp** baseline. Neither pre-registered extreme decision criterion (drops below +30 pp on both sonnet judges, or...
+
 ## v2 Truncation vs Schema Ablation
 ID: t0020_v2_truncation_vs_schema_ablation
 Completed: 2026-05-01
@@ -282,17 +289,10 @@ Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Su
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
-ID: t0019_v2_judge_calibration_sonnet
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+Planned or active tasks: 1
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -307,9 +307,10 @@ Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_p
       <source_name>aggregate_answers_full</source_name>
       <source_ids>
         <id>decomposition-v2-schema-vs-truncation</id>
+        <id>does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges</id>
       </source_ids>
       <content>
-Answers: 1
+Answers: 2
 
 ## How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?
 ID: decomposition-v2-schema-vs-truncation
@@ -318,6 +319,14 @@ Confidence: medium
 Categories: benchmark-annotation, hierarchical-planning
 
 The v2 tree schema explains essentially all of the gap: switching from flat-v1 to tree-v2 while holding the 1500-char truncation constant lifts the haiku judge accept rate from 33% to 90%, a +57 pp jump (95% Wilson CI on the difference: +23 pp to +77 pp). Adding the full untruncated problem text on top of the v2 schema lifts accept from 90% to 95%, a further +5 pp (95% CI -15 pp to +26 pp), which is not statistically significant. The headline +62 pp v2-full vs v1-truncated gap is therefore ~92% pure-schema and ~8% pure-text-length on the 20-row matched pool.
+
+## Does the v2 schema retain a 30+ pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or is the +57 pp t0014 headline an artefact of haiku judge anchoring?
+ID: does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges
+Created by: t0019_v2_judge_calibration_sonnet on 2026-05-01
+Confidence: low
+Categories: agent-evaluation, hierarchical-planning, uncertainty-calibration
+
+The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 pp and under model-rotated-sonnet it is +37.3 pp, vs the t0014 baseline of +58.0 pp. The +57 pp headline does not cleanly survive a stronger judge, but neither does it collapse below +30 pp on both configurations; the answer depends on which sonnet judge configuration is treated as canonical.
       </content>
     </section>
   </sections>

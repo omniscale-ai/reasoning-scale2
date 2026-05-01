@@ -1,8 +1,8 @@
 # Suggestions: `uncertainty-calibration`
 
-10 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **7 open** (2
-high, 1 medium, 4 low), **3 closed**.
+13 suggestion(s) in category
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **10 open** (3
+high, 2 medium, 5 low), **3 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -33,6 +33,30 @@ ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-a
 that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
 annotation rerun. Deliverable: a small library that wraps the existing judge call with
 confidence + abstain semantics, exposed to t0009-style annotation tasks.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Confirmatory v2 vs v1 schema sweep with fresh annotations and
+a third sonnet judge</strong> (S-0019-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0019-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0019_v2_judge_calibration_sonnet`](../../../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+Run a confirmatory experiment that re-annotates a fresh n>=80 row pool (not the t0014 pool)
+under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three
+independent sonnet configurations: substantive critic, model-rotated original prompt, and a
+new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band
+unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool
+overlapped with t0014. A fresh-pool replication at the planned n>=80 would tighten the
+per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30
+pp or commit it above +45 pp.
 
 </details>
 
@@ -86,6 +110,31 @@ bucket, weight by bucket size. Output should be both a scalar ECE value and a li
 
 </details>
 
+<details>
+<summary>📊 <strong>Substantive critic vs original prompt: 50-row prompt-only
+ablation at fixed model</strong> (S-0019-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0019-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0019_v2_judge_calibration_sonnet`](../../../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+Run a focused n=50 ablation that holds the judge model fixed at claude-sonnet-4-6 and varies
+only the system prompt between the substantive critic (with simulate-execution instruction)
+and the original t0014 prompt. The current task found a Cohen's kappa of 0.626 between the two
+prompts on the same model, with one row (v2-haiku-0007) where the substantive prompt caught a
+dimensional-analysis error the original prompt missed and two rows (v1-sonnet-0002,
+v1-sonnet-0004) where the substantive prompt accepted structural-but-executable trees the
+original rejected. A larger ablation would quantify how often each prompt mode wins, which
+would inform whether the substantive critic should become the production judge or stay as a
+stricter audit.
+
+</details>
+
 ## Low Priority
 
 <details>
@@ -133,6 +182,29 @@ benchmark them on a held-out 50-problem set during Phase 2. Goal: identify which
 minimizes overconfident_error_rate per provider and ship that as the default mapping in
 t0012's experiment harness. Out of scope for this task per task_description.md but identified
 as the obvious next sweep.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Cross-vendor judge: replicate the schema-only delta with GPT-4
+and Gemini judges</strong> (S-0019-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0019-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0019_v2_judge_calibration_sonnet`](../../../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+Test the family-bias hypothesis at the judge stage by re-judging the same 55-row pool under
+GPT-4o and Gemini-2.5 with the same substantive critic prompt, and comparing the schema-only
+delta to the +24.6 / +37.3 pp Anthropic numbers from this task. Xiong2024 reports
+within-family acceptance bonuses of 5-10 pp; if the cross-vendor schema-only delta lands close
+to the substantive-sonnet +24.6 pp, the v2-sonnet familial bias hypothesis (kappa=1.0 on the
+v2-sonnet cell) gains support; if it lands close to +37 pp, prompt strictness dominates over
+model family.
 
 </details>
 

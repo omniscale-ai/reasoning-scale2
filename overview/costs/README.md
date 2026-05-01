@@ -1,6 +1,6 @@
 # Project Costs
 
-Spent $54.58 of $100.00 USD. $45.42 remains overall and $45.42 remains before the 100% stop
+Spent $73.88 of $100.00 USD. $26.12 remains overall and $26.12 remains before the 100% stop
 threshold.
 
 ## Budget Summary
@@ -8,22 +8,22 @@ threshold.
 | Field | Value |
 |-------|-------|
 | Total budget | $100.00 USD |
-| Total spent | $54.58 USD |
-| Budget left | $45.42 USD |
-| Budget left before stop threshold | $45.42 USD |
-| Spent percent | 54.58% |
+| Total spent | $73.88 USD |
+| Budget left | $26.12 USD |
+| Budget left before stop threshold | $26.12 USD |
+| Spent percent | 73.88% |
 | Warn threshold | 80% ($80.00) |
 | Stop threshold | 100% ($100.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 21 |
-| Tasks with non-zero spend | 7 |
-| Skipped tasks | 2 |
+| Tasks with cost records | 22 |
+| Tasks with non-zero spend | 8 |
+| Skipped tasks | 1 |
 
 ## Service Totals
 
 | Key | Cost (USD) |
 |-----|------------|
-| `anthropic_api` | $24.32 |
+| `anthropic_api` | $43.62 |
 
 ## Breakdown Totals
 
@@ -31,6 +31,8 @@ threshold.
 |-----|------------|
 | `annotator_sonnet_4_6` | $19.77 |
 | `claude-haiku-4-5` | $18.91 |
+| `substantive_sonnet_judge` | $9.68 |
+| `model_rotated_sonnet_judge` | $9.63 |
 | `annotator_haiku_4_5` | $7.42 |
 | `judge_haiku_4_5` | $3.08 |
 | `claude-haiku-4-5_progress_rate_judge` | $1.55 |
@@ -49,6 +51,7 @@ threshold.
 | [`t0009_hierarchical_annotation_v2`](../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | completed | $9.10 | $10.00 | no |
 | [`t0012_phase2_abc_smoke_frontierscience`](../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | completed | $18.37 | $10.00 | yes |
 | [`t0014_v2_annotator_sonnet_rerun`](../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | completed | $21.16 | $10.00 | yes |
+| [`t0019_v2_judge_calibration_sonnet`](../../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | completed | $19.30 | $20.00 | no |
 | [`t0020_v2_truncation_vs_schema_ablation`](../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | completed | $2.93 | $6.00 | no |
 | [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | completed | $0.54 | $1.00 | no |
 | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | completed | $2.42 | $2.00 | yes |
@@ -57,5 +60,4 @@ threshold.
 
 | Task ID | Reason |
 |---------|--------|
-| `t0019_v2_judge_calibration_sonnet` | results/costs.json is missing or invalid |
 | `t0023_phase2_abc_confirmatory_sonnet_swebench` | results/costs.json is missing or invalid |
