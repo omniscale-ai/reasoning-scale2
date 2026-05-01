@@ -77,9 +77,9 @@
       "step": 9,
       "name": "implementation",
       "description": "Build phase2_smoke_harness_v1, run all rows \u00d7 3 conditions, compute metrics.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-04-30T01:10:11Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T04:37:17Z",
       "log_file": "logs/steps/009_implementation/"
     },
     {
