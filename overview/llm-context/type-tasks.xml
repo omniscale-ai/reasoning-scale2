@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-05-01T16:04:55Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-05-01T16:23:48Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>178916</char_count>
-    <byte_count>179449</byte_count>
-    <estimated_tokens>44729</estimated_tokens>
+    <char_count>180468</char_count>
+    <byte_count>181015</byte_count>
+    <estimated_tokens>45117</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -2921,12 +2921,13 @@ pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n
 
 ## Plan-and-Solve v2 with final_confidence Field
 ID: t0021_plan_and_solve_v2_with_final_confidence
-Status: in_progress
+Status: completed
 Effective date: 2026-05-01
 Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
 Task types: write-library
 Source suggestion: S-0012-01
 Start time: 2026-05-01T14:03:02Z
+End time: 2026-05-01T17:10:00Z
 
 #### Motivation
 
@@ -3033,6 +3034,38 @@ None. The library will be reused by t0023.
 * `results/metrics.json` records the smoke run&#x27;s Metric 2 value to confirm the field is wired
   end-to-end.
 * Cost in `results/costs.json` is at or below **$1**.
+
+### Results Summary
+
+#### Summary
+
+The deliverable is the `scope_unaware_planandsolve_v2` library that wraps the v1 Plan-and-Solve
+agent and emits a verbalized `final_confidence` field on every trajectory following the Xiong et al.
+2024 section 3.2 protocol. The n=1 x 3 validation pass confirms the parser, two-call protocol, and
+confidence emission are wired end-to-end across all three conditions (A scope-aware, B
+scope-unaware, C scope-mismatched). The 0% task-success rate across all conditions on
+FrontierScience-Olympiad with claude-haiku-4-5 is consistent with the t0012 floor finding for the
+same benchmark and model and is the explicit motivation for the larger downstream confirmatory study
+in t0023.
+
+#### Metrics
+
+* **task_success_rate**: A=**0.0** (0/1), B=**0.0** (0/1), C=**0.0** (0/1) — at-floor on this
+  benchmark, as expected.
+* **overconfident_error_rate**: A=**1.0** (the single A row was wrong with high confidence),
+  B=**0.0**, C=**0.0** — non-degenerate emission across conditions confirmed.
+* **avg_decisions_per_task**: A=**1.0**, B=**8.0**, C=**31.0** — flagged side-finding: C used 31x
+  more decisions than A.
+* **parse_failure_rate**: **0.0** across all 3 trajectories (well under the 20% gate from the plan).
+* **Total cost**: **$0.5383** of the $1.00 cap; **43** claude-haiku-4-5 calls in **786.69 s** (~13
+  min).
+
+#### Verification
+
+* `verify_task_file` — PASSED
+* `verify_logs` — PASSED
+* `verify_task_results` — PASSED
+* `verify_library_asset scope_unaware_planandsolve_v2` — PASSED
 
 ## ABC Harness with Progress Rate and EAI Error Taxonomy
 ID: t0022_abc_harness_progress_rate_and_error_taxonomy

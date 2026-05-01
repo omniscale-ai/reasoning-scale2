@@ -6,9 +6,9 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 
 **Detail pages**: [Papers (14)](../papers/by-category/hierarchical-planning.md) | [Answers
 (1)](../answers/by-category/hierarchical-planning.md) | [Suggestions
-(23)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
+(24)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
 (4)](../datasets/by-category/hierarchical-planning.md) | [Libraries
-(3)](../libraries/by-category/hierarchical-planning.md) | [Predictions
+(4)](../libraries/by-category/hierarchical-planning.md) | [Predictions
 (1)](../predictions/by-category/hierarchical-planning.md)
 
 ---
@@ -735,7 +735,7 @@ matched pool.
 
 </details>
 
-## Suggestions (16 open, 7 closed)
+## Suggestions (17 open, 7 closed)
 
 <details>
 <summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
@@ -784,6 +784,23 @@ hierarchical-annotation-v1 source dataset, with both truncated and full conditio
 cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would
 either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a
 meaningful contributor.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Investigate the 31-decision scope-mismatched trajectory at larger
+sample size</strong> (S-0021-01)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0021_plan_and_solve_v2_with_final_confidence](../../tasks/t0021_plan_and_solve_v2_with_final_confidence/)
+
+The n=1 smoke for Condition C (matched-mismatch wrapping scope_unaware_planandsolve_v2) used
+31 decisions on a single FrontierScience-Olympiad row, vs 8 for B and 1 for A. At n=1 this is
+one observation, but it is a strong signal that the matched-mismatch wrapper plus
+contradictory granularity guidance can trigger a planning loop in the v1 Plan-and-Solve agent.
+In t0023's larger run, log per-row decision counts and check whether C's distribution is
+heavy-tailed compared to B; if it is, design a follow-up to root-cause whether the loop comes
+from the wrapper, the scope mismatch, or the v1 planner itself.
 
 </details>
 

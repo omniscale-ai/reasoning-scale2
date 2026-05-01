@@ -5,14 +5,14 @@
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-8-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
   <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-4-9370DB" alt="Predictions"></a>
-  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-6-20B2AA" alt="Libraries"></a>
+  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-7-20B2AA" alt="Libraries"></a>
   <a href="answers/"><img src="https://img.shields.io/badge/Answers-1-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-23-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-67-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-70-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-3-DC143C" alt="Results"></a>
@@ -30,15 +30,15 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (8K) |
-[full](llm-context/full.xml) (85K) | [roadmap](llm-context/roadmap.xml) (23K) |
-[results](llm-context/results-deep-dive.xml) (70K) |
+[full](llm-context/full.xml) (88K) | [roadmap](llm-context/roadmap.xml) (23K) |
+[results](llm-context/results-deep-dive.xml) (74K) |
 [assets](llm-context/literature-and-assets.xml) (16K)
 
-*Last updated: 2026-05-01 16:04 UTC*
+*Last updated: 2026-05-01 16:23 UTC*
 
-* **Budget**: **$54** spent of $100
-* **Remaining**: **$46**
-* **Usage**: `███████████░░░░░░░░░` 54.0%
+* **Budget**: **$55** spent of $100
+* **Remaining**: **$45**
+* **Usage**: `███████████░░░░░░░░░` 54.6%
 
 ---
 
@@ -48,34 +48,34 @@ No daily news yet.
 
 ---
 
-## [In Progress (2)](tasks/by-status/in_progress.md)
+## [In Progress (1)](tasks/by-status/in_progress.md)
 
 | # | Task | Started |
 |---|------|---------|
-| 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | 2026-05-01 14:03 |
 | 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | 2026-05-01 14:02 |
 
 ---
 
-## [Ready to Start (0)](tasks/by-status/not_started.md)
+## [Ready to Start (1)](tasks/by-status/not_started.md)
 
-No tasks ready to start.
-
----
-
-## [Blocked Tasks (1)](tasks/)
-
-| # | Task | Blocked By |
-|---|------|------------|
-| 0023 | [Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench](../overview/tasks/task_pages/t0023_phase2_abc_confirmatory_sonnet_swebench.md) | [`t0021_plan_and_solve_v2_with_final_confidence`](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| # | Task | Description | Date Added |
+|---|------|-------------|------------|
+| 0023 | [Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench](../overview/tasks/task_pages/t0023_phase2_abc_confirmatory_sonnet_swebench.md) | [`description`](../tasks/t0023_phase2_abc_confirmatory_sonnet_swebench/task_description.md) | 2026-05-01 |
 
 ---
 
-## [Recently Completed (20 total)](tasks/by-status/completed.md)
+## [Blocked Tasks (0)](tasks/)
+
+No blocked tasks.
+
+---
+
+## [Recently Completed (21 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
 | 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`results`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/results_detailed.md) | 2026-05-01 20:40 |
+| 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`results`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/results_detailed.md) | 2026-05-01 17:10 |
 | 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
 | 0018 | [Brainstorm session 6: paper-driven slate after t0017 literature survey](../overview/tasks/task_pages/t0018_brainstorm_results_6.md) | [`results`](../tasks/t0018_brainstorm_results_6/results/results_detailed.md) | 2026-05-01 13:30 |
 | 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`results`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/results_detailed.md) | 2026-05-01 04:43 |
@@ -84,9 +84,8 @@ No tasks ready to start.
 | 0016 | [Brainstorm session 5: prune backlog after t0014 deconfound](../overview/tasks/task_pages/t0016_brainstorm_results_5.md) | [`results`](../tasks/t0016_brainstorm_results_5/results/results_detailed.md) | 2026-04-30 22:30 |
 | 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`results`](../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) | 2026-04-30 19:32 |
 | 0013 | [Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels](../overview/tasks/task_pages/t0013_brainstorm_results_4.md) | [`results`](../tasks/t0013_brainstorm_results_4/results/results_detailed.md) | 2026-04-30 18:00 |
-| 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`results`](../tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md) | 2026-04-30 00:53 |
 
-*10 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*11 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -102,10 +101,13 @@ No tasks ready to start.
 | 4 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition A: scope-aware ReAct | **0.025** |
 | 5 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition B: scope-unaware Plan-and-Solve | **0.0** |
 | 6 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition C: scope-mismatched (random) | **0.0** |
+| 7 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition A: scope-aware ReAct | **0.0** |
+| 8 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition B: scope-unaware Plan-and-Solve v2 | **0.0** |
+| 9 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition C: scope-mismatched (random) | **0.0** |
 
 ---
 
-## [Recent Suggestions (53 open)](suggestions/)
+## [Recent Suggestions (56 open)](suggestions/)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -274,11 +276,11 @@ harness budget planning.
 
 </details>
 
-*43 more open suggestions → [open suggestions](suggestions/)*
+*46 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (13)](suggestions/)
+## [High Priority Suggestions (14)](suggestions/)
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -313,6 +315,23 @@ judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did no
 extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
 half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
 possible follow-up that materially improves statistical power.
+
+</details>
+
+<details>
+<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
+confirmatory run</strong> (S-0021-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0021_plan_and_solve_v2_with_final_confidence](../tasks/t0021_plan_and_solve_v2_with_final_confidence/)
+
+The v2 library now emits final_confidence on every trajectory across all three conditions,
+which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
+reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
+addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
+informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
+Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
+shifts or just accuracy shifts.
 
 </details>
 
@@ -433,21 +452,7 @@ fallback.
 
 </details>
 
-<details>
-<summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
-review</strong> (S-0005-01)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter
-retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
-a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
-Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-*3 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+*4 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 
@@ -1044,10 +1049,11 @@ No models yet.
 
 ---
 
-## [Latest Libraries (6 total)](libraries/)
+## [Latest Libraries (7 total)](libraries/)
 
 | Name | Source | Created |
 |------|--------|---------|
+| [Scope-Unaware Plan-and-Solve v2 (with final_confidence)](../tasks/t0021_plan_and_solve_v2_with_final_confidence/assets/library/scope_unaware_planandsolve_v2/description.md) | [21](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | 2026-05-01 |
 | [Phase 2 A/B/C Smoke Harness (v1)](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/library/phase2_smoke_harness_v1/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
 | [ABC Harness Metrics](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/assets/library/abc_harness_metrics/description.md) | [22](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | 2026-05-01 |
 | [Scope-Unaware Plan-and-Solve Agent (v1)](../tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md) | [7](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | 2026-04-29 |
@@ -1057,7 +1063,7 @@ No models yet.
 
 ---
 
-## [Cost Leaders (6 tasks with spend)](costs/)
+## [Cost Leaders (7 tasks with spend)](costs/)
 
 | Task | Cost | Date |
 |------|------|------|
@@ -1066,4 +1072,5 @@ No models yet.
 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`$9.10`](../tasks/t0009_hierarchical_annotation_v2/results/costs.json) | 2026-04-30 00:53 |
 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`$2.93`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/costs.json) | 2026-05-01 14:53 |
 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`$2.42`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/costs.json) | 2026-05-01 20:40 |
+| [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`$0.54`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/costs.json) | 2026-05-01 17:10 |
 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`$0.06`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/costs.json) | 2026-04-29 20:14 |

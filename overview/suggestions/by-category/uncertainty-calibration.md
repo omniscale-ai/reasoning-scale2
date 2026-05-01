@@ -1,8 +1,8 @@
 # Suggestions: `uncertainty-calibration`
 
-8 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **5 open** (1
-high, 1 medium, 3 low), **3 closed**.
+10 suggestion(s) in category
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **7 open** (2
+high, 1 medium, 4 low), **3 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -36,6 +36,29 @@ confidence + abstain semantics, exposed to t0009-style annotation tasks.
 
 </details>
 
+<details>
+<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
+confirmatory run</strong> (S-0021-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0021-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The v2 library now emits final_confidence on every trajectory across all three conditions,
+which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
+reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
+addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
+informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
+Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
+shifts or just accuracy shifts.
+
+</details>
+
 ## Medium Priority
 
 <details>
@@ -64,6 +87,29 @@ bucket, weight by bucket size. Output should be both a scalar ECE value and a li
 </details>
 
 ## Low Priority
+
+<details>
+<summary>📚 <strong>Add a JSON-mode fallback path to the confidence elicitation if
+larger runs hit the 20% parse-failure gate</strong> (S-0021-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0021-03` |
+| **Kind** | library |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The smoke parse-failure rate on haiku is 0/3 on n=1 x 3, so the strict regex parser is fine
+for haiku at this scale. However, if the t0023 sonnet run or any future larger run pushes the
+parse-failure rate above the documented 20% gate (REQ-10), the library should fall back to
+JSON-mode output (e.g., a tool-use call returning {confidence: 0.85}) instead of free-form
+text. Implement this as an opt-in path so the existing two-call protocol stays the default and
+the JSON fallback only activates when the model demonstrably cannot produce parseable output.
+Keep the verbalized prompt as the canonical Xiong2024 §3.2 protocol.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Add provider-specific calibration prompt variants for

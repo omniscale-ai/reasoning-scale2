@@ -1,6 +1,6 @@
 # Research Suggestions Backlog
 
-67 suggestions **53 open** (13 high, 24 medium, 16 low), **14 closed**.
+70 suggestions **56 open** (14 high, 25 medium, 17 low), **14 closed**.
 
 **Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
 [`benchmark-annotation`](by-category/benchmark-annotation.md),
@@ -289,6 +289,29 @@ all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal
 </details>
 
 <details>
+<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
+confirmatory run</strong> (S-0021-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0021-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+The v2 library now emits final_confidence on every trajectory across all three conditions,
+which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
+reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
+addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
+informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
+Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
+shifts or just accuracy shifts.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
 experiments</strong> (S-0005-06)</summary>
 
@@ -482,6 +505,29 @@ task_ids. Multiple rows share the same task_id (different granularity levels of 
 problem), which means the pairing logic treats them as separate predictions for the same task.
 A deduplication or re-keying correction task should produce a version of the dataset with
 unique task_ids per row, or document the intended semantics of multi-row task_ids.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Investigate the 31-decision scope-mismatched trajectory at larger
+sample size</strong> (S-0021-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0021-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+The n=1 smoke for Condition C (matched-mismatch wrapping scope_unaware_planandsolve_v2) used
+31 decisions on a single FrontierScience-Olympiad row, vs 8 for B and 1 for A. At n=1 this is
+one observation, but it is a strong signal that the matched-mismatch wrapper plus
+contradictory granularity guidance can trigger a planning loop in the v1 Plan-and-Solve agent.
+In t0023's larger run, log per-row decision counts and check whether C's distribution is
+heavy-tailed compared to B; if it is, design a follow-up to root-cause whether the loop comes
+from the wrapper, the scope mismatch, or the v1 planner itself.
 
 </details>
 
@@ -844,6 +890,29 @@ any retraining; this is purely a prompting change.
 </details>
 
 ## Low Priority
+
+<details>
+<summary>📚 <strong>Add a JSON-mode fallback path to the confidence elicitation if
+larger runs hit the 20% parse-failure gate</strong> (S-0021-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0021-03` |
+| **Kind** | library |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+The smoke parse-failure rate on haiku is 0/3 on n=1 x 3, so the strict regex parser is fine
+for haiku at this scale. However, if the t0023 sonnet run or any future larger run pushes the
+parse-failure rate above the documented 20% gate (REQ-10), the library should fall back to
+JSON-mode output (e.g., a tool-use call returning {confidence: 0.85}) instead of free-form
+text. Implement this as an opt-in path so the existing two-call protocol stays the default and
+the JSON fallback only activates when the model demonstrably cannot produce parseable output.
+Keep the verbalized prompt as the canonical Xiong2024 §3.2 protocol.
+
+</details>
 
 <details>
 <summary>📊 <strong>Add a row-level original_benchmark provenance field to future

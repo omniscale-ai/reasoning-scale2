@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T16:04:55Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T16:23:48Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>93537</char_count>
-    <byte_count>93608</byte_count>
-    <estimated_tokens>23384</estimated_tokens>
+    <char_count>91341</char_count>
+    <byte_count>91412</byte_count>
+    <estimated_tokens>22835</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -146,10 +146,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 20
+Completed tasks: 21
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -265,6 +266,12 @@ Completed: 2026-05-01
 Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
 Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the problem text to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree schema explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0); the pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20). Metrics * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%] * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%] *...
 
+## Plan-and-Solve v2 with final_confidence Field
+ID: t0021_plan_and_solve_v2_with_final_confidence
+Completed: 2026-05-01
+Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
+Result summary: Results Summary: Plan-and-Solve v2 with final_confidence Summary The deliverable is the `scope_unaware_planandsolve_v2` library that wraps the v1 Plan-and-Solve agent and emits a verbalized `final_confidence` field on every trajectory following the Xiong et al. 2024 section 3.2 protocol. The n=1 x 3 validation pass confirms the parser, two-call protocol, and confidence emission are wired end-to-end across all three conditions (A scope-aware, B scope-unaware, C scope-mismatched). The 0% task-success rate across all conditions on FrontierScience-Olympiad with claude-haiku-4-5 is consistent with the t0012 floor finding for the same benchmark and model and is the explicit motivation for the...
+
 ## ABC Harness with Progress Rate and EAI Error Taxonomy
 ID: t0022_abc_harness_progress_rate_and_error_taxonomy
 Completed: 2026-05-01
@@ -277,11 +284,10 @@ Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Su
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0019_v2_judge_calibration_sonnet</id>
-        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 ID: t0019_v2_judge_calibration_sonnet
@@ -410,118 +416,6 @@ next brainstorm round if the data answers it.
 * `results/results_detailed.md` contains a side-by-side delta table and an explicit
   decision-criteria check-off against the four bullets above.
 * Cost in `results/costs.json` is at or below **$5**.
-
-## Plan-and-Solve v2 with final_confidence Field
-ID: t0021_plan_and_solve_v2_with_final_confidence
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
-
-#### Motivation
-
-The t0007 `scope_unaware_planandsolve_v1` library does not emit a `final_confidence` field on
-trajectory records. As a result, t0012&#x27;s smoke run collapsed Metric 2 (overconfident_error_rate) to
-**0.0** for conditions B and C, making **RQ4 untestable** in any confirmatory ABC experiment that
-reuses this library.
-
-Before scaling to t0023 (sonnet on SWE-bench, N&gt;=157), the library has to emit a verbalized
-confidence label so Metric 2 is non-degenerate. This is a prerequisite library task with **zero
-external API cost**.
-
-This task covers `S-0012-01`.
-
-#### Scope
-
-Extend the existing `tasks/t0007_*/code/` library (or the active fork of it) so that every
-trajectory record produced by `scope_unaware_planandsolve_v1` carries a `final_confidence` field in
-the range `[0.0, 1.0]`, populated by a verbalized confidence call following the **Xiong2024 section
-3.2 protocol**:
-
-* After the model produces its final action / answer for the trajectory, issue **one additional
-  prompt** asking the model to rate its confidence in the just-produced output on a 0-1 scale, with
-  explicit anchor-language (&quot;0.0 = certain wrong, 0.5 = coin flip, 1.0 = certain right&quot;).
-* Parse the numeric value with a strict regex; on parse failure, retry once with a clearer prompt;
-  on second failure, write `null` and increment a `final_confidence_parse_failures` counter on the
-  trajectory metadata.
-
-The new `final_confidence` field must be emitted by **all three conditions** (A scope-aware, B
-scope-unaware, C scope-mismatched) so paired analysis is well-defined.
-
-#### Deliverables
-
-1. **Library asset** (`assets/library/scope_unaware_planandsolve_v2/`) with full `details.json`,
-   canonical description document, and source code under `files/`. The library keeps backward
-   compatibility: the v1 entry point still exists and still returns trajectories without
-   `final_confidence`; the new v2 entry point returns trajectories that always carry the field.
-2. **Unit tests** in `tasks/t0021_*/code/test_*.py`:
-   * `final_confidence` is in `[0.0, 1.0]` whenever the parse succeeds.
-   * `final_confidence` is `null` when the parse fails.
-   * `final_confidence_parse_failures` count matches the number of `null` rows.
-   * Trajectories from all three conditions (A, B, C) carry the field.
-   * The v1 entry point continues to return the legacy schema.
-3. **Smoke validation**: run the v2 library on a 5-row instance pool with claude-haiku-4-5 and
-   confirm Metric 2 (overconfident_error_rate) returns a non-degenerate, non-zero value when at
-   least one row is wrong with high confidence.
-4. **Verbalized confidence prompt template** copied into `assets/library/.../files/prompts/`
-   verbatim, with an inline citation to Xiong2024 §3.2 in the description document.
-
-#### Implementation Notes
-
-* **Prompt protocol**: Xiong2024 section 3.2 says: &quot;After answering, on a separate line, output a
-  number between 0 and 1 representing your confidence that your answer is correct, where 0 means
-  certain wrong and 1 means certain correct.&quot; Reuse this exact phrasing.
-* **Two-call vs one-call**: prefer the two-call protocol (final answer first, confidence second) to
-  avoid the model conditioning its answer on its own confidence claim. One-call is acceptable only
-  if the cost difference matters at scale.
-* **Caching**: confidence calls must reuse the same conversation prefix as the answer call to avoid
-  double-charging for the prompt context. Use claude prompt caching where available.
-
-#### Cost Estimate
-
-* Smoke validation: 5 rows x 3 conditions x 2 calls each (answer + confidence) with claude-haiku-4-5
-  = **30 calls**.
-* Haiku input ~4k tokens per call x 30 = **~120k input tokens**.
-* Haiku output ~300 tokens per call x 30 = **~9k output tokens**.
-* At haiku pricing: **&lt;$0.20**.
-* Total: **&lt;$1**.
-
-#### Decision Criteria
-
-After this task:
-
-* If unit tests and the smoke validation pass, the library is unblocked for t0023.
-* If the confidence parse fails on more than **20%** of haiku rows, raise the parse failure rate in
-  the description document and either tighten the prompt or move to JSON-mode output. Do not ship a
-  library that is unreliable at parsing.
-
-#### Dependencies
-
-None. The library will be reused by t0023.
-
-#### Source Suggestion
-
-`S-0012-01`.
-
-#### Risks and Fallbacks
-
-* **Sonnet-vs-haiku confidence drift**: haiku may produce flat confidence distributions (everything
-  0.7-0.9). If so, document this and flag it as an interpretability risk for t0023&#x27;s Metric 2
-  analysis. The library does not need to fix the model&#x27;s calibration; it only needs to emit the
-  field.
-* **Refusal rate increase**: adding a confidence call may push some models toward hedging the
-  primary answer. Compare the smoke-run accuracy at A condition to the t0007/t0012 numbers; if
-  accuracy drops by more than 5 pp, run an ablation with the confidence call moved to a separate
-  trajectory.
-
-#### Verification Criteria
-
-* Library asset passes `verify_library_asset.py`.
-* Unit tests pass (`uv run pytest tasks/t0021_*/code/`).
-* Smoke validation produces a non-zero, non-1 value for Metric 2 when ground truth shows at least
-  one high-confidence error.
-* `results/metrics.json` records the smoke run&#x27;s Metric 2 value to confirm the field is wired
-  end-to-end.
-* Cost in `results/costs.json` is at or below **$1**.
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -720,6 +614,7 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0012-02</id>
         <id>S-0017-01</id>
         <id>S-0020-01</id>
+        <id>S-0021-02</id>
         <id>S-0022-02</id>
         <id>S-0022-05</id>
         <id>S-0002-01</id>
@@ -744,6 +639,7 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0017-03</id>
         <id>S-0020-02</id>
         <id>S-0020-03</id>
+        <id>S-0021-01</id>
         <id>S-0022-01</id>
         <id>S-0022-03</id>
         <id>S-0022-04</id>
@@ -760,9 +656,10 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0012-05</id>
         <id>S-0020-04</id>
         <id>S-0020-05</id>
+        <id>S-0021-03</id>
       </source_ids>
       <content>
-Open suggestions: 57
+Open suggestions: 60
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -882,6 +779,13 @@ Priority: high
 Kind: experiment
 Source task: t0020_v2_truncation_vs_schema_ablation
 The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1 judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest possible follow-up that materially improves statistical power.
+
+## Track final_confidence vs correctness calibration on the t0023 confirmatory run
+ID: S-0021-02
+Priority: high
+Kind: evaluation
+Source task: t0021_plan_and_solve_v2_with_final_confidence
+The v2 library now emits final_confidence on every trajectory across all three conditions, which unblocks paired calibration analysis. On t0023 (n&gt;=157, sonnet), report per-condition reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration shifts or just accuracy shifts.
 
 ## Tighten FrontierScience-Olympiad subgoal lists by hand on a 5-task pilot before t0023
 ID: S-0022-02
@@ -1051,6 +955,13 @@ Kind: experiment
 Source task: t0020_v2_truncation_vs_schema_ablation
 The pure-text delta on this run is +5 pp with a CI of [-15, +26] pp at n=20. To resolve whether the true pure-text effect is zero, +5 pp, or larger, the experiment needs n&gt;=80 per condition (Newcombe-Wilson half-width drops to ~10 pp at n=80 vs ~20 pp at n=20). This requires running the v2 annotator and judge on 60 additional matched rows from the same hierarchical-annotation-v1 source dataset, with both truncated and full conditions. Estimated cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a meaningful contributor.
 
+## Investigate the 31-decision scope-mismatched trajectory at larger sample size
+ID: S-0021-01
+Priority: medium
+Kind: experiment
+Source task: t0021_plan_and_solve_v2_with_final_confidence
+The n=1 smoke for Condition C (matched-mismatch wrapping scope_unaware_planandsolve_v2) used 31 decisions on a single FrontierScience-Olympiad row, vs 8 for B and 1 for A. At n=1 this is one observation, but it is a strong signal that the matched-mismatch wrapper plus contradictory granularity guidance can trigger a planning loop in the v1 Plan-and-Solve agent. In t0023&#x27;s larger run, log per-row decision counts and check whether C&#x27;s distribution is heavy-tailed compared to B; if it is, design a follow-up to root-cause whether the loop comes from the wrapper, the scope mismatch, or the v1 planner itself.
+
 ## Tighten budget-guard wrapper to skip-write fallback responses to disk cache
 ID: S-0022-01
 Priority: medium
@@ -1162,6 +1073,13 @@ Priority: low
 Kind: evaluation
 Source task: t0020_v2_truncation_vs_schema_ablation
 Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality), v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC harness budget planning.
+
+## Add a JSON-mode fallback path to the confidence elicitation if larger runs hit the 20% parse-failure gate
+ID: S-0021-03
+Priority: low
+Kind: library
+Source task: t0021_plan_and_solve_v2_with_final_confidence
+The smoke parse-failure rate on haiku is 0/3 on n=1 x 3, so the strict regex parser is fine for haiku at this scale. However, if the t0023 sonnet run or any future larger run pushes the parse-failure rate above the documented 20% gate (REQ-10), the library should fall back to JSON-mode output (e.g., a tool-use call returning {confidence: 0.85}) instead of free-form text. Implement this as an opt-in path so the existing two-call protocol stays the default and the JSON fallback only activates when the model demonstrably cannot produce parseable output. Keep the verbalized prompt as the canonical Xiong2024 §3.2 protocol.
       </content>
     </section>
   </sections>
