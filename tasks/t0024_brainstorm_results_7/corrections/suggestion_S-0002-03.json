@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0024-04",
+  "correcting_task": "t0024_brainstorm_results_7",
+  "target_task": "t0002_literature_survey_granularity_conditioning",
+  "target_kind": "suggestion",
+  "target_id": "S-0002-03",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "file_changes": null,
+  "rationale": "ServiceNow + WorkArena harness is out of scope for the project's remaining budget. SWE-bench Verified Lite is the chosen benchmark, and FrontierScience-Olympiad already provides a complementary code-reasoning testbed (t0012). Demoted from high to low; can be promoted again only if a future task explicitly motivates the WorkArena dimension."
+}
