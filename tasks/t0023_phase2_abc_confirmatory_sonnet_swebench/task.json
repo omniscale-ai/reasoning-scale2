@@ -5,7 +5,7 @@
   "name": "Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench",
   "short_description": "Confirmatory N>=157 paired ABC run with claude-sonnet-4-6 on SWE-bench Verified Lite using the new metrics library to test RQ1, RQ5, RQ6, RQ9.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "cancelled",
   "dependencies": [
     "t0021_plan_and_solve_v2_with_final_confidence",
     "t0022_abc_harness_progress_rate_and_error_taxonomy"
