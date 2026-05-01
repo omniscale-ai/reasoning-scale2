@@ -4,7 +4,7 @@ task_id: "t0012_phase2_abc_smoke_frontierscience"
 ---
 # Results Summary — Phase 2 A/B/C Smoke (FrontierScience-Olympiad)
 
-## Headline
+## Summary
 
 All three agent conditions (scope-aware ReAct A, scope-unaware Plan-and-Solve B, scope-mismatched
 Plan-and-Solve C) solved near-zero FrontierScience-Olympiad problems with claude-haiku-4-5 and no
@@ -15,14 +15,19 @@ use.
 
 ## Metrics
 
+* **task_success_rate**: A=0.025 (1/40), B=0.000 (0/40), C=0.000 (0/11)
+* **overconfident_error_rate**: A=0.647, B=0.000\*, C=0.000\* (\*collapsed — no final_confidence in
+  Plan-and-Solve trajectories; not comparable to A)
+* **avg_decisions_per_task**: A=1.20, B=6.53, C=26.0
+
 | Metric | A: scope-aware ReAct (N=40) | B: scope-unaware Plan-Solve (N=40) | C: scope-mismatched (N=11) |
 | --- | --- | --- | --- |
 | `task_success_rate` | **0.025** (1/40) | 0.000 (0/40) | 0.000 (0/11) |
 | `overconfident_error_rate` | **0.647** | 0.000 \* | 0.000 \* |
 | `avg_decisions_per_task` | **1.20** | 6.53 | 26.0 |
 
-\* Collapsed metric: Plan-and-Solve trajectories do not emit `final_confidence`, so the Xiong2024
-aggregator sees zero overconfident errors for B and C. This gap is not comparable to A.
+\* Plan-and-Solve trajectories do not emit `final_confidence`; the Xiong2024 aggregator records zero
+overconfident errors by construction. Not comparable to A.
 
 ## Statistical Tests
 
@@ -48,3 +53,14 @@ condition cost ~4× per row due to long Plan-and-Solve trajectories).
   `final_confidence`. This is the most actionable methodological finding.
 * **Per-row checkpointing and system-prompt override** are the two engineering techniques that made
   this smoke possible within the $18 budget constraint.
+
+## Verification
+
+All verificators passed:
+
+* `verify_task_metrics` — PASSED (explicit-variant format, 3 condition variants)
+* `verify_task_results` — PASSED after adding required sections
+* `verify_task_folder` — PASSED (no files outside task folder)
+* `verify_task_file` — PASSED (task.json valid)
+* Predictions verificators for phase2-smoke-a, phase2-smoke-b, phase2-smoke-c — all PASSED
+* Library verificator for phase2_smoke_harness_v1 — PASSED

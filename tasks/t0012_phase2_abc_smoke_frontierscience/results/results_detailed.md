@@ -104,21 +104,27 @@ paired), plus the one correct A row.
 ### Example 1 — Correct A row (scRNA-seq dimensionality reduction)
 
 **Problem** (truncated): "Biopsies of solid tumors from placebo patients and patients given drug X
-were collected. Total RNA was reverse-transcribed and scRNA-seq was performed. A high-dimensional
-data matrix (6,000+ genes × cells)…"
+were collected. Total RNA was reverse-transcribed and scRNA-seq performed. A high-dimensional data
+matrix (6,000+ genes × cells)…"
 
-**Gold**:
-`GLOBAL: Apply t-SNE or UMAP non-linear dimensionality reduction to visualize and assess cell-type populations in the scRNA-seq data. SUBTASK: Analyze PCA clustering pattern. ATOM: Observe samples group by patient…`
+```
+GOLD:
+GLOBAL: Apply t-SNE or UMAP non-linear dimensionality reduction to visualize and assess
+cell-type populations in the scRNA-seq data.
+SUBTASK: Analyze PCA clustering pattern.
+ATOM: Observe samples group by patient…
 
-**A (correct)**: "BATCH EFFECTS (patient-specific effects). For visualizing and assessing diverse
-cell types/populations, the recommended method is UMAP (Uniform Manifold Approximation and
-Projection) or t-SNE (t-Distributed Stochastic Neighbor Embedding)…" *is_correct=True, conf=0.85,
-decisions=1*
+CONDITION A (is_correct=True, conf=0.85, decisions=1):
+BATCH EFFECTS (patient-specific effects). For visualizing and assessing diverse cell
+types/populations, the recommended method is UMAP (Uniform Manifold Approximation and
+Projection) or t-SNE (t-Distributed Stochastic Neighbor Embedding)…
 
-**B**: empty string — agent produced no final answer *is_correct=False, conf=None, decisions=1*
+CONDITION B (is_correct=False, conf=None, decisions=1):
+[empty string — agent produced no final answer]
 
-**C**: None — agent produced no final answer (31 replanning decisions) *is_correct=False, conf=None,
-decisions=31*
+CONDITION C (is_correct=False, conf=None, decisions=31):
+[None — agent produced no final answer after 31 replanning decisions]
+```
 
 * * *
 
@@ -127,15 +133,21 @@ decisions=31*
 **Problem** (truncated): "Context: Climate change is increasing the demand for stress resilient
 crops. Chenopodium pallidicaule, native to the Andes, is an understudied crop…"
 
-**Gold**:
-`GLOBAL: Establish C. pallidicaule pathosystem by selecting model pathogen through literature review…`
+```
+GOLD:
+GLOBAL: Establish C. pallidicaule pathosystem by selecting model pathogen through
+literature review…
 
-**A**: "## Establishing a Robust Pathosystem in Chenopodium pallidicaule: Model Pathogen Selection
-and Screening…" *is_correct=False, conf=0.85, decisions=1*
+CONDITION A (is_correct=False, conf=0.85, decisions=1):
+"Establishing a Robust Pathosystem in Chenopodium pallidicaule: Model Pathogen
+Selection and Screening…"
 
-**B**: " " (whitespace only) *is_correct=False, conf=None, decisions=1*
+CONDITION B (is_correct=False, conf=None, decisions=1):
+[whitespace only]
 
-**C**: None *is_correct=False, conf=None, decisions=31*
+CONDITION C (is_correct=False, conf=None, decisions=31):
+[None]
+```
 
 * * *
 
@@ -144,14 +156,15 @@ and Screening…" *is_correct=False, conf=0.85, decisions=1*
 **Problem** (truncated): "Context: A research paper discusses the interaction of plasmonic silver
 (Ag) nanocubes with methylene blue (MB) under different conditions…"
 
-**Gold**: `GLOBAL: Determine plasmonic-enhanced MB decomposition rate = direct baseline rate
-* enhancement factor…`
+```
+GOLD:
+GLOBAL: Determine plasmonic-enhanced MB decomposition rate = direct baseline rate *
+enhancement factor…
 
-**A**: " " (empty) *is_correct=False, conf=None, decisions=1*
-
-**B**: None *is_correct=False, conf=None, decisions=8*
-
-**C**: " " (empty) *is_correct=False, conf=None, decisions=24*
+CONDITION A (is_correct=False, conf=None, decisions=1): [empty]
+CONDITION B (is_correct=False, conf=None, decisions=8):  [None]
+CONDITION C (is_correct=False, conf=None, decisions=24): [empty]
+```
 
 * * *
 
@@ -160,13 +173,14 @@ and Screening…" *is_correct=False, conf=0.85, decisions=1*
 **Problem** (truncated): "Context: Specific activity and yield of proteins are crucial in
 determining the purification scheme of an enzyme. Question: Fill in the missing values A–I…"
 
-**Gold**: `GLOBAL: Compute A=11.3, B=100.0, C=7.9, D=1.0, E=2.7, F=64.4, G=5.4, H=6.0, I=41…`
+```
+GOLD:
+GLOBAL: Compute A=11.3, B=100.0, C=7.9, D=1.0, E=2.7, F=64.4, G=5.4, H=6.0, I=41…
 
-**A**: " " (empty) *is_correct=False, conf=0.95, decisions=1* — high confidence, wrong
-
-**B**: " " (empty) *is_correct=False, conf=None, decisions=7*
-
-**C**: " " (empty) *is_correct=False, conf=None, decisions=21*
+CONDITION A (is_correct=False, conf=0.95, decisions=1): [empty] — high confidence, wrong
+CONDITION B (is_correct=False, conf=None, decisions=7):  [empty]
+CONDITION C (is_correct=False, conf=None, decisions=21): [empty]
+```
 
 * * *
 
@@ -175,15 +189,17 @@ determining the purification scheme of an enzyme. Question: Fill in the missing 
 **Problem** (truncated): "Context: Spectral cytometry is becoming a popular tool due to its ability
 to measure a higher number of fluorescently labeled markers…"
 
-**Gold**:
-`GLOBAL: Optimize and validate a 15-parameter spectral flow panel on Aurora spectral cytometer…`
+```
+GOLD:
+GLOBAL: Optimize and validate a 15-parameter spectral flow panel on Aurora spectral
+cytometer…
 
-**A**: "# IMMUNOSTAIN PANEL DESIGN FOR AURORA SPECTRAL CYTOMETRY: NK AND ILC DEVELOPMENT"
-*is_correct=False, conf=0.85, decisions=1*
+CONDITION A (is_correct=False, conf=0.85, decisions=1):
+"IMMUNOSTAIN PANEL DESIGN FOR AURORA SPECTRAL CYTOMETRY: NK AND ILC DEVELOPMENT…"
 
-**B**: " " *is_correct=False, conf=None, decisions=7*
-
-**C**: None *is_correct=False, conf=None, decisions=40* — hit max decisions
+CONDITION B (is_correct=False, conf=None, decisions=7):  [whitespace]
+CONDITION C (is_correct=False, conf=None, decisions=40): [None] — hit max decisions
+```
 
 * * *
 
@@ -192,18 +208,20 @@ to measure a higher number of fluorescently labeled markers…"
 **Problem** (truncated): "Assuming we conducted an experiment to determine a physical quantity X. We
 measure X, obtaining N measurements…"
 
-**Gold**:
-`GLOBAL: Calculate the combined measurement uncertainty of μ̂ by combining Type A and Type B uncertainties…`
+```
+GOLD:
+GLOBAL: Calculate the combined measurement uncertainty of μ̂ by combining Type A and
+Type B uncertainties…
 
-**A**: "√(s²/N + a²/12)" (correct formula, wrong format match) *is_correct=False, conf=0.92,
-decisions=1*
+CONDITION A (is_correct=False, conf=0.92, decisions=1):
+√(s²/N + a²/12)   [correct formula — judge did not match to hierarchical gold format]
 
-**B**: None *is_correct=False, conf=None, decisions=8*
+CONDITION B (is_correct=False, conf=None, decisions=8):  [None]
+CONDITION C (is_correct=False, conf=None, decisions=19): [None]
+```
 
-**C**: None *is_correct=False, conf=None, decisions=19*
-
-Note: A gave the correct formula but the judge did not match it to the hierarchical gold annotation
-format — a known limitation of string-based matching for mathematical answers.
+Note: string-based matching against the hierarchical gold annotation did not recognize the correct
+formula — a known judge limitation for mathematical answers.
 
 * * *
 
@@ -212,31 +230,41 @@ format — a known limitation of string-based matching for mathematical answers.
 This and examples 8–10 are from the A-only rows (not in the 6 paired set) showing condition A's
 overconfident error pattern.
 
-**A**: Multi-paragraph immunostaining protocol, *conf=0.85*, not matching hierarchical gold
-annotation. *is_correct=False*
+```
+CONDITION A (is_correct=False, conf=0.85, decisions=1):
+[Multi-paragraph immunostaining protocol — does not match hierarchical gold annotation]
+```
 
 * * *
 
 ### Example 8 — A refuses, B/C N/A
 
-One row where condition A produced an empty string with no trajectory (agent refusal event).
-*conf=None, is_correct=False, decisions=1*
+One row where condition A produced an empty string with no trajectory (agent refusal event):
+
+```
+CONDITION A (is_correct=False, conf=None, decisions=1): [empty — agent refusal]
+```
 
 * * *
 
 ### Example 9 — A high-confidence wrong (conf=0.95)
 
-Condition A produced a substantive answer with confidence 0.95 that did not match the hierarchical
-gold annotation. Illustrates calibration gap: the scope-aware prompt does not prevent overconfident
-wrong answers on expert olympiad problems.
+```
+CONDITION A (is_correct=False, conf=0.95, decisions=1):
+[Substantive answer that does not match hierarchical gold annotation — high confidence, wrong.
+Illustrates calibration gap: scope-aware prompt does not prevent overconfident errors on
+expert olympiad problems.]
+```
 
 * * *
 
 ### Example 10 — A medium-confidence wrong (conf=0.42)
 
-One row where A assigned lower confidence (0.42) to a wrong answer, suggesting some self-awareness
-about difficulty. However the answer was still incorrect, illustrating that reduced confidence does
-not reliably indicate unsolvability.
+```
+CONDITION A (is_correct=False, conf=0.42, decisions=1):
+[Wrong answer with reduced confidence — suggests some self-awareness about difficulty.
+Reduced confidence does not reliably indicate unsolvability.]
+```
 
 * * *
 
@@ -325,3 +353,23 @@ See `results/suggestions.json` for 5 queued suggestions. The highest-priority it
    or tau-bench (benchmarks where sonnet can achieve non-floor accuracy).
 3. Add tool use (search, code execution) to the harness so FrontierScience-Olympiad accuracy lifts
    above the floor for all conditions.
+
+## Task Requirement Coverage
+
+This section maps the task's expected deliverables (from `task.json`) to results produced.
+
+* **Expected: 3 predictions assets** — Delivered: `phase2-smoke-a` (40 rows), `phase2-smoke-b` (40
+  rows), `phase2-smoke-c` (11 rows, partial due to budget halt). All pass verificators.
+* **Expected: 1 library asset** — Delivered: `phase2_smoke_harness_v1` (8 source modules). Passes
+  verificator.
+* **Expected: 3 registered metrics in explicit-variant format** — Delivered: `results/metrics.json`
+  with variants `condition_a_scope_aware`, `condition_b_scope_unaware`,
+  `condition_c_scope_mismatched`. Passes `verify_task_metrics`.
+* **Expected: paired hypothesis tests (McNemar)** — Delivered: 3 McNemar tests in
+  `_intermediate_stats.json` and documented in this file (A vs B, B vs C, A vs C; all p=1.0).
+* **Expected: confirmatory-N estimate** — Delivered: N=157 for 5 pp effect at α=0.05, power=0.8.
+* **Partial gap: Condition C ran only 11/40 rows** — Budget halted at $18.37. C metrics are reported
+  honestly at N=11 with a note. Per-row checkpointing preserved all 11 completed rows.
+* **Known gap: Metric 2 not comparable for B/C** — Plan-and-Solve does not emit `final_confidence`;
+  `overconfident_error_rate` is 0.0 for B and C by construction, not by calibration. Documented
+  throughout and queued as S-0012-01.
