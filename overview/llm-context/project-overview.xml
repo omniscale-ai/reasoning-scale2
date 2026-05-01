@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-overview" generated_at_utc="2026-05-01T12:08:03Z">
+<llm_context_archive preset_id="project-overview" generated_at_utc="2026-05-01T13:56:45Z">
   <archive_summary>
     <title>Project Overview</title>
     <description>Compact starter context for general project chats.</description>
     <use_case>General orientation, quick status questions, and lightweight strategy chats.</use_case>
     <section_count>4</section_count>
-    <char_count>25269</char_count>
-    <byte_count>25326</byte_count>
-    <estimated_tokens>6317</estimated_tokens>
+    <char_count>28271</char_count>
+    <byte_count>28330</byte_count>
+    <estimated_tokens>7067</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -143,9 +143,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
+        <id>t0018_brainstorm_results_6</id>
       </source_ids>
       <content>
-Completed tasks: 17
+Completed tasks: 18
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -248,13 +249,57 @@ ID: t0017_literature_hierarchical_agents_and_judges
 Completed: 2026-05-01
 Short description: Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.
 Result summary: Results Summary: Literature Survey on Hierarchical Agents and LLM-as-Judge Summary Completed a literature survey of ten papers covering hierarchical / granularity-aware LLM agents, search-and-planning structure, reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology — plus the foundational options-framework paper (Sutton 1999) as a brief theory anchor. All ten paper assets pass the v3 paper-asset verificator with zero errors and zero warnings. The synthesis below groups findings by the five themes defined in `task_description.md` and identifies which backlog suggestions and prior tasks the survey strengthens or weakens. Metrics * **10 paper assets created** out of a...
+
+## Brainstorm session 6: paper-driven slate after t0017 literature survey
+ID: t0018_brainstorm_results_6
+Completed: 2026-05-01
+Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
+Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0019_v2_judge_calibration_sonnet</id>
+        <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
+        <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
+        <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
+      </source_ids>
       <content>
-Planned or active tasks: 0
+Planned or active tasks: 5
+
+## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+ID: t0019_v2_judge_calibration_sonnet
+Status: not_started
+Effective date: 2026-05-01
+Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+
+## v2 Truncation vs Schema Ablation
+ID: t0020_v2_truncation_vs_schema_ablation
+Status: not_started
+Effective date: 2026-05-01
+Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
+
+## Plan-and-Solve v2 with final_confidence Field
+ID: t0021_plan_and_solve_v2_with_final_confidence
+Status: not_started
+Effective date: 2026-05-01
+Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
+
+## ABC Harness with Progress Rate and EAI Error Taxonomy
+ID: t0022_abc_harness_progress_rate_and_error_taxonomy
+Status: not_started
+Effective date: 2026-05-01
+Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
+
+## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
+ID: t0023_phase2_abc_confirmatory_sonnet_swebench
+Status: not_started
+Effective date: 2026-05-01
+Short description: Confirmatory N&gt;=157 paired ABC run with claude-sonnet-4-6 on SWE-bench Verified Lite using the new metrics library to test RQ1, RQ5, RQ6, RQ9.
+Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_progress_rate_and_error_taxonomy
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">

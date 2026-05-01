@@ -691,45 +691,13 @@ hierarchical-judge designs are exploring.
 
 No answers in this category.
 
-## Suggestions (24 open, 5 closed)
-
-<details>
-<summary>📚 <strong>Extend scope_unaware_planandsolve_v1 to emit
-final_confidence</strong> (S-0012-01)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
-
-The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records.
-This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2
-untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2
-protocol: add a follow-up call after the final plan step asking the model to rate its
-confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that
-wants to test RQ2.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
-tau-bench</strong> (S-0012-02)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
-
-The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
-0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
-invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
-accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
-claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
-this smoke. This is the highest-priority next experiment for RQ1/RQ5.
-
-</details>
+## Suggestions (20 open, 9 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
 FrontierScience-Olympiad</strong> (S-0012-03)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
 
 The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
@@ -777,27 +745,6 @@ confidence + abstain semantics, exposed to t0009-style annotation tasks.
 </details>
 
 <details>
-<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
-in the next ABC-condition run</strong> (S-0017-02)</summary>
-
-**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
-[t0017_literature_hierarchical_agents_and_judges](../../tasks/t0017_literature_hierarchical_agents_and_judges/)
-
-t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
-with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
-conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
-with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
-Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
-missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
-specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
-success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
-scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
-confirmatory run) producing legible results. Estimated effort: 1-2 days of
-metric-implementation work.
-
-</details>
-
-<details>
 <summary>🔧 <strong>Use SELF-DISCOVER reasoning scaffolds as the scope-aware (A)
 condition prompt template</strong> (S-0017-03)</summary>
 
@@ -820,7 +767,7 @@ any retraining; this is purely a prompting change.
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
 report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
 [t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
 
 v2 is judged only by a single LLM call per row. The dataset is 'LLM-judge-acceptable' but not
@@ -845,25 +792,6 @@ AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expa
 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
 smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
 rate, ~$5-6 added cost. Inherits S-0005-01.
-
-</details>
-
-<details>
-<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
-substantive judge</strong> (S-0014-02)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0014_v2_annotator_sonnet_rerun](../../tasks/t0014_v2_annotator_sonnet_rerun/)
-
-The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
-published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
-partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
-than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
-critic prompt that simulates execution ('verify each atomic, executed in order, would actually
-solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
-v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
-judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
-is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
 

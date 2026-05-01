@@ -297,45 +297,13 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (16 open, 4 closed)
-
-<details>
-<summary>📚 <strong>Extend scope_unaware_planandsolve_v1 to emit
-final_confidence</strong> (S-0012-01)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
-
-The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records.
-This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2
-untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2
-protocol: add a follow-up call after the final plan step asking the model to rate its
-confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that
-wants to test RQ2.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
-tau-bench</strong> (S-0012-02)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
-
-The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
-0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
-invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
-accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
-claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
-this smoke. This is the highest-priority next experiment for RQ1/RQ5.
-
-</details>
+## Suggestions (13 open, 7 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
 FrontierScience-Olympiad</strong> (S-0012-03)</summary>
 
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
 
 The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
@@ -374,27 +342,6 @@ model-specific or generalizes across providers. The harness's model_call.py abst
 makes this a configuration change rather than a code change. Defer until the confirmatory N
 result is available from S-0012-02 to avoid spending budget before the primary hypothesis is
 tested.
-
-</details>
-
-<details>
-<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
-in the next ABC-condition run</strong> (S-0017-02)</summary>
-
-**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
-[t0017_literature_hierarchical_agents_and_judges](../../tasks/t0017_literature_hierarchical_agents_and_judges/)
-
-t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
-with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
-conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
-with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
-Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
-missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
-specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
-success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
-scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
-confirmatory run) producing legible results. Estimated effort: 1-2 days of
-metric-implementation work.
 
 </details>
 

@@ -117,7 +117,7 @@ condition's confidence elicitation.
 
 No answers in this category.
 
-## Suggestions (6 open, 2 closed)
+## Suggestions (5 open, 3 closed)
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -136,23 +136,6 @@ ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-a
 that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
 annotation rerun. Deliverable: a small library that wraps the existing judge call with
 confidence + abstain semantics, exposed to t0009-style annotation tasks.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
-truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
-
-v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
-chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
-entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
-Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
-annotator and judge prompts. If accept rate drops materially below v2-full-text on
-FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
-levels, the schema is the dominant cause. Cost ~$2 with haiku.
 
 </details>
 

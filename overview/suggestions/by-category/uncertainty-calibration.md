@@ -1,37 +1,14 @@
 # Suggestions: `uncertainty-calibration`
 
 8 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **6 open** (2
-high, 1 medium, 3 low), **2 closed**.
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **5 open** (1
+high, 1 medium, 3 low), **3 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
-
-<details>
-<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
-truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-04` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
-
-v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
-chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
-entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
-Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
-annotator and judge prompts. If accept rate drops materially below v2-full-text on
-FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
-levels, the schema is the dominant cause. Cost ~$2 with haiku.
-
-</details>
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -157,6 +134,31 @@ small chart and a recommended threshold for downstream tasks.
 </details>
 
 ## Closed
+
+<details>
+<summary>✅ <s>Add an ablation: tree-schema-with-truncated-text to isolate the
+truncation fix from the schema upgrade</s> — covered by <a
+href="../../../tasks/t0020_v2_truncation_vs_schema_ablation/"><code>t0020_v2_truncation_vs_schema_ablation</code></a>
+(S-0009-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
+chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
+entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
+Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
+annotator and judge prompts. If accept rate drops materially below v2-full-text on
+FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
+levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
+</details>
 
 <details>
 <summary>✅ <s>Implement verbalized-confidence + 3-sample self-consistency aggregator

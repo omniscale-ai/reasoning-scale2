@@ -63,7 +63,7 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (14 open, 4 closed)
+## Suggestions (12 open, 6 closed)
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -86,7 +86,7 @@ with zero additional model cost on the happy path.
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
 report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
 [t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
 
 v2 is judged only by a single LLM call per row. The dataset is 'LLM-judge-acceptable' but not
@@ -95,23 +95,6 @@ stratified sample (or all 115 rows for higher precision) and emit acceptable/nee
 verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
 +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
 estimate: 4-6 hours of human review time at $50/hour = $200-300.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
-truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../../tasks/t0009_hierarchical_annotation_v2/)
-
-v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
-chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
-entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
-Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
-annotator and judge prompts. If accept rate drops materially below v2-full-text on
-FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
-levels, the schema is the dominant cause. Cost ~$2 with haiku.
 
 </details>
 
@@ -147,25 +130,6 @@ but this is potentially confounded with the truncation fix bundled into v2 (S-00
 already adequate. A v3 schema should target SWE/tau-style structured-action tasks specifically
 — e.g., add explicit precondition/postcondition fields to atomics, since the SWE/tau cells
 already saturate the high-level subtask abstraction.
-
-</details>
-
-<details>
-<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
-substantive judge</strong> (S-0014-02)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0014_v2_annotator_sonnet_rerun](../../tasks/t0014_v2_annotator_sonnet_rerun/)
-
-The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
-published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
-partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
-than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
-critic prompt that simulates execution ('verify each atomic, executed in order, would actually
-solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
-v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
-judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
-is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
 

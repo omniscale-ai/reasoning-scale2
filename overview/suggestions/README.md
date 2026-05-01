@@ -1,6 +1,6 @@
 # Research Suggestions Backlog
 
-57 suggestions **48 open** (16 high, 19 medium, 13 low), **9 closed**.
+57 suggestions **43 open** (10 high, 19 medium, 14 low), **14 closed**.
 
 **Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
 [`benchmark-annotation`](by-category/benchmark-annotation.md),
@@ -37,29 +37,6 @@ v2 hierarchy with the correct tag). The three-way ablation decomposes the C-cond
 'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
 preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
 effect (see research_papers.md, Wang2023 and Zhou2022).
-
-</details>
-
-<details>
-<summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the
-truncation fix from the schema upgrade</strong> (S-0009-04)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-04` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | [`10.48550_arXiv.2306.13063`](../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
-| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/) |
-
-v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
-chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
-entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
-Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
-annotator and judge prompts. If accept rate drops materially below v2-full-text on
-FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
-levels, the schema is the dominant cause. Cost ~$2 with haiku.
 
 </details>
 
@@ -114,50 +91,6 @@ confidence + abstain semantics, exposed to t0009-style annotation tasks.
 </details>
 
 <details>
-<summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
-tau-bench</strong> (S-0012-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0012-02` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
-| **Source paper** | — |
-| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`benchmark-swebench`](../../meta/categories/benchmark-swebench/) |
-
-The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
-0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
-invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
-accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
-claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
-this smoke. This is the highest-priority next experiment for RQ1/RQ5.
-
-</details>
-
-<details>
-<summary>📚 <strong>Extend scope_unaware_planandsolve_v1 to emit
-final_confidence</strong> (S-0012-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0012-01` |
-| **Kind** | library |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
-| **Source paper** | — |
-| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-
-The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records.
-This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2
-untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2
-protocol: add a follow-up call after the final plan step asking the model to rate its
-confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that
-wants to test RQ2.
-
-</details>
-
-<details>
 <summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
 review</strong> (S-0005-01)</summary>
 
@@ -174,27 +107,6 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
-benchmark</strong> (S-0003-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0003-01` |
-| **Kind** | dataset |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0003_download_benchmark_subsets`](../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
-| **Source paper** | [`10.48550_arXiv.2411.04872`](../../tasks/t0003_download_benchmark_subsets/assets/paper/10.48550_arXiv.2411.04872/) |
-| **Categories** | [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
-
-FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to
-FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses
-40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research
-access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per
-the t0002 fallback plan.
 
 </details>
 
@@ -288,28 +200,6 @@ sonnet judge on 43 rows.
 </details>
 
 <details>
-<summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
-report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0009-03` |
-| **Kind** | evaluation |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0009_hierarchical_annotation_v2`](../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-
-v2 is judged only by a single LLM call per row. The dataset is 'LLM-judge-acceptable' but not
-'human-validated'. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row
-stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision
-verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
-+58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
-estimate: 4-6 hours of human review time at $50/hour = $200-300.
-
-</details>
-
-<details>
 <summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
 WorkArena++</strong> (S-0002-03)</summary>
 
@@ -327,31 +217,6 @@ developer instance and the BrowserGym Python harness. This is a substantial infr
 task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
 any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
 annotation begins.
-
-</details>
-
-<details>
-<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
-substantive judge</strong> (S-0014-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0014-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-04-30 |
-| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
-
-The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
-published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
-partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
-than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
-critic prompt that simulates execution ('verify each atomic, executed in order, would actually
-solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
-v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
-judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
-is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
 
@@ -421,54 +286,6 @@ concentrates rather than just a single number. Should be a small follow-up: buck
 CalibrationRecord by predicted_confidence, compute |accuracy - mean_confidence| within each
 bucket, weight by bucket size. Output should be both a scalar ECE value and a list of
 (bucket_lower, bucket_upper, accuracy, mean_confidence, count) tuples for plotting.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
-FrontierScience-Olympiad</strong> (S-0012-03)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0012-03` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
-| **Source paper** | — |
-| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
-
-The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
-numerical computation, retrieval, and code execution for most problems. Adding a Python code
-execution tool and a retrieval tool would lift accuracy above the current floor and make
-A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
-confirmatory N would decrease proportionally.
-
-</details>
-
-<details>
-<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
-in the next ABC-condition run</strong> (S-0017-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0017-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
-| **Source paper** | [`10.48550_arXiv.2401.13178`](../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2401.13178/) |
-| **Categories** | [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
-
-t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
-with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
-conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
-with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
-Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
-missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
-specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
-success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
-scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
-confirmatory run) producing legible results. Estimated effort: 1-2 days of
-metric-implementation work.
 
 </details>
 
@@ -599,6 +416,27 @@ problems per benchmark and reports the fallback rate alongside task success.
 </details>
 
 <details>
+<summary>📂 <strong>Negotiate Epoch AI access for full FrontierMath
+benchmark</strong> (S-0003-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0003-01` |
+| **Kind** | dataset |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0003_download_benchmark_subsets`](../../overview/tasks/task_pages/t0003_download_benchmark_subsets.md) |
+| **Source paper** | [`10.48550_arXiv.2411.04872`](../../tasks/t0003_download_benchmark_subsets/assets/paper/10.48550_arXiv.2411.04872/) |
+| **Categories** | [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
+
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to
+FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses
+40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research
+access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per
+the t0002 fallback plan.
+
+</details>
+
+<details>
 <summary>📚 <strong>Per-step strategy override for matched_mismatch_v1</strong>
 (S-0010-02)</summary>
 
@@ -706,6 +544,28 @@ re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator
 t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against
 hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any
 change to the FrontierScience-Olympiad or SWE-bench Verified rows.
+
+</details>
+
+<details>
+<summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
+report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+v2 is judged only by a single LLM call per row. The dataset is 'LLM-judge-acceptable' but not
+'human-validated'. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row
+stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision
+verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
++58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
+estimate: 4-6 hours of human review time at $50/hour = $200-300.
 
 </details>
 
@@ -892,6 +752,27 @@ benchmark them on a held-out 50-problem set during Phase 2. Goal: identify which
 minimizes overconfident_error_rate per provider and ship that as the default mapping in
 t0012's experiment harness. Out of scope for this task per task_description.md but identified
 as the obvious next sweep.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
+FrontierScience-Olympiad</strong> (S-0012-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
+
+The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
+numerical computation, retrieval, and code execution for most problems. Adding a Python code
+execution tool and a retrieval tool would lift accuracy above the current floor and make
+A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
+confirmatory N would decrease proportionally.
 
 </details>
 
@@ -1091,6 +972,108 @@ small chart and a recommended threshold for downstream tasks.
 </details>
 
 ## Closed
+
+<details>
+<summary>✅ <s>Add an ablation: tree-schema-with-truncated-text to isolate the
+truncation fix from the schema upgrade</s> — covered by <a
+href="../../tasks/t0020_v2_truncation_vs_schema_ablation/"><code>t0020_v2_truncation_vs_schema_ablation</code></a>
+(S-0009-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0009-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0009_hierarchical_annotation_v2`](../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) |
+| **Source paper** | [`10.48550_arXiv.2306.13063`](../../tasks/t0009_hierarchical_annotation_v2/assets/paper/10.48550_arXiv.2306.13063/) |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/) |
+
+v2 changed two things at once: schema (flat -> tree) and text completeness (truncated 1500
+chars -> full). On FrontierScience-Olympiad and WorkArena++ the +67% and +100% deltas could be
+entirely from the truncation fix (Xiong2024's prediction) or entirely from the schema upgrade.
+Run a third condition: the v2 tree schema but truncate the problem to 1500 chars in both the
+annotator and judge prompts. If accept rate drops materially below v2-full-text on
+FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
+levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
+</details>
+
+<details>
+<summary>✅ <s>Adopt AgentBoard progress-rate metric and EAI error taxonomy in the
+next ABC-condition run</s> — covered by <a
+href="../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/"><code>t0022_abc_harness_progress_rate_and_error_taxonomy</code></a>
+(S-0017-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2401.13178`](../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2401.13178/) |
+| **Categories** | [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
+
+t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
+with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
+conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
+with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
+Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
+missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
+specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
+success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
+scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
+confirmatory run) producing legible results. Estimated effort: 1-2 days of
+metric-implementation work.
+
+</details>
+
+<details>
+<summary>✅ <s>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
+tau-bench</s> — covered by <a
+href="../../tasks/t0023_phase2_abc_confirmatory_sonnet_swebench/"><code>t0023_phase2_abc_confirmatory_sonnet_swebench</code></a>
+(S-0012-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`benchmark-swebench`](../../meta/categories/benchmark-swebench/) |
+
+The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
+0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
+invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
+accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
+claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
+this smoke. This is the highest-priority next experiment for RQ1/RQ5.
+
+</details>
+
+<details>
+<summary>✅ <s>Extend scope_unaware_planandsolve_v1 to emit final_confidence</s> —
+covered by <a
+href="../../tasks/t0021_plan_and_solve_v2_with_final_confidence/"><code>t0021_plan_and_solve_v2_with_final_confidence</code></a>
+(S-0012-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-01` |
+| **Kind** | library |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records.
+This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2
+untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2
+protocol: add a follow-up call after the final plan step asking the model to rate its
+confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that
+wants to test RQ2.
+
+</details>
 
 <details>
 <summary>✅ <s>Implement matched-mismatch (C) library on top of
@@ -1305,5 +1288,32 @@ libraries plus a no-prompt-engineering baseline (C), measuring task_success_rate
 overconfident_error_rate, and avg_decisions_per_task across N=50 problems. Expected effect
 size: +5 to +15 absolute success rate for A over B based on the Yao2022 ALFWorld result
 anchor.
+
+</details>
+
+<details>
+<summary>✅ <s>Stress-test the +57 pp schema-only delta with a stricter substantive
+judge</s> — covered by <a
+href="../../tasks/t0019_v2_judge_calibration_sonnet/"><code>t0019_v2_judge_calibration_sonnet</code></a>
+(S-0014-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0014-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-04-30 |
+| **Source task** | [`t0014_v2_annotator_sonnet_rerun`](../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`benchmark-annotation`](../../meta/categories/benchmark-annotation/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
+published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
+partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
+than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
+critic prompt that simulates execution ('verify each atomic, executed in order, would actually
+solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
+v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
+judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
+is doing real work. Cost ~$3 with sonnet judge.
 
 </details>
