@@ -76,34 +76,34 @@
     {
       "step": 9,
       "name": "implementation",
-      "description": "Implement the v2 library, prompts, tests, and run the 5x3 smoke validation with claude-haiku-4-5.",
+      "description": "Implement the v2 library, prompts, tests, and run the n=1x3 smoke validation with claude-haiku-4-5.",
+      "status": "completed",
+      "started_at": "2026-05-01T14:17:54Z",
+      "completed_at": "2026-05-01T14:46:00Z",
+      "log_file": "logs/steps/009_implementation/"
+    },
+    {
+      "step": 10,
+      "name": "teardown",
+      "description": "Skipped: no remote machines were provisioned.",
       "status": "pending",
       "started_at": null,
       "completed_at": null,
       "log_file": null
     },
     {
-      "step": 10,
-      "name": "teardown",
-      "description": "Skipped: no remote machines were provisioned.",
-      "status": "skipped",
-      "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/010_teardown/"
-    },
-    {
       "step": 11,
       "name": "creative-thinking",
       "description": "Skipped: mechanical library extension; the protocol and smoke design are already fixed.",
-      "status": "skipped",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
-      "log_file": "logs/steps/011_creative-thinking/"
+      "log_file": null
     },
     {
       "step": 12,
       "name": "results",
-      "description": "Write results_summary.md, results_detailed.md, metrics.json, costs.json with smoke validation outputs.",
+      "description": "Write results_summary.md, results_detailed.md, metrics.json, costs.json, remote_machines_used.json with smoke validation outputs.",
       "status": "pending",
       "started_at": null,
       "completed_at": null,
@@ -113,10 +113,10 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Skipped: this is a library task with no quantitative results comparable to published baselines.",
-      "status": "skipped",
+      "status": "pending",
       "started_at": null,
       "completed_at": null,
-      "log_file": "logs/steps/013_compare-literature/"
+      "log_file": null
     },
     {
       "step": 14,
@@ -130,7 +130,7 @@
     {
       "step": 15,
       "name": "reporting",
-      "description": "Run all verificators, capture sessions, set task status to completed.",
+      "description": "Run all verificators, capture sessions, set task status to completed, open and merge the PR.",
       "status": "pending",
       "started_at": null,
       "completed_at": null,
