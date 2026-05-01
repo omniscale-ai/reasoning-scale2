@@ -1,21 +1,21 @@
-# ⏹ Tasks: Not Started
+# ❌ Tasks: Cancelled
 
-1 tasks. ⏹ **1 not_started**.
+1 tasks. ❌ **1 cancelled**.
 
 [Back to all tasks](../README.md)
 
 ---
 
-## ⏹ Not Started
+## ❌ Cancelled
 
 <details>
-<summary>⏹ 0023 — <strong>Phase 2 Confirmatory ABC Run with Sonnet on
+<summary>❌ 0023 — <strong>Phase 2 Confirmatory ABC Run with Sonnet on
 SWE-bench</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0023_phase2_abc_confirmatory_sonnet_swebench` |
-| **Status** | not_started |
+| **Status** | cancelled |
 | **Effective date** | 2026-05-01 |
 | **Dependencies** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md), [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
 | **Expected assets** | 1 predictions, 1 answer |

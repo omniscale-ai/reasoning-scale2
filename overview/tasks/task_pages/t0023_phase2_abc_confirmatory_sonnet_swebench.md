@@ -1,4 +1,4 @@
-# ⏹ Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
+# ❌ Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,7 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0023_phase2_abc_confirmatory_sonnet_swebench` |
-| **Status** | ⏹ not_started |
+| **Status** | ❌ cancelled |
 | **Dependencies** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md), [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
 | **Source suggestion** | `S-0012-02` |
 | **Task types** | `experiment-run`, `comparative-analysis` |

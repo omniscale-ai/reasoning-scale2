@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-05-01T18:03:16Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-05-01T21:53:55Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>183734</char_count>
-    <byte_count>184295</byte_count>
-    <estimated_tokens>45933</estimated_tokens>
+    <char_count>213904</char_count>
+    <byte_count>214567</byte_count>
+    <estimated_tokens>53476</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -40,9 +40,11 @@
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
+        <id>t0024_brainstorm_results_7</id>
+        <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
       </source_ids>
       <content>
-Total tasks: 23
+Total tasks: 25
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -3289,7 +3291,7 @@ trajectories.
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
-Status: not_started
+Status: cancelled
 Effective date: 2026-05-01
 Short description: Confirmatory N&gt;=157 paired ABC run with claude-sonnet-4-6 on SWE-bench Verified Lite using the new metrics library to test RQ1, RQ5, RQ6, RQ9.
 Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_progress_rate_and_error_taxonomy
@@ -3445,6 +3447,522 @@ the phase-randomized control is in scope only if budget permits.
   literature-comparison table.
 * Cost in `results/costs.json` is documented with the per-stage breakdown above and is at or below
   the agreed limit (currently ~$45).
+
+## Brainstorm session 7: rescope around RQ answers after t0019 calibration finding
+ID: t0024_brainstorm_results_7
+Status: completed
+Effective date: 2026-05-01
+Short description: Brainstorm 7: cancel t0023, schedule rescoped t0025 (N=80, $25 cap) to answer RQ1/2/4/5; defer RQ3.
+Dependencies: t0001_brainstorm_results_1, t0002_literature_survey_granularity_conditioning, t0003_download_benchmark_subsets, t0004_brainstorm_results_2, t0005_hierarchical_annotation_pilot_v1, t0006_scope_aware_react_library, t0007_scope_unaware_planandsolve_library, t0008_brainstorm_results_3, t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator, t0012_phase2_abc_smoke_frontierscience, t0013_brainstorm_results_4, t0014_v2_annotator_sonnet_rerun, t0015_correct_proxy_benchmark_labels, t0016_brainstorm_results_5, t0017_literature_hierarchical_agents_and_judges, t0018_brainstorm_results_6, t0019_v2_judge_calibration_sonnet, t0020_v2_truncation_vs_schema_ablation, t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_progress_rate_and_error_taxonomy
+Task types: brainstorming
+Start time: 2026-05-01T18:00:00Z
+End time: 2026-05-01T19:30:00Z
+
+#### Motivation
+
+Brainstorm Session 6 (t0018) scheduled the headline confirmatory experiment as t0023
+(`phase2_abc_confirmatory_sonnet_swebench`, N=157, $40-45 estimated). Two facts moved between t0018
+and now:
+
+1. **t0019 weakened the headline schema effect**. The schema-only accept-rate delta from t0014 (+58
+   pp under haiku judge) shrinks to +24.6 pp under a substantive sonnet judge and +37.3 pp under a
+   model-rotated sonnet judge. Both numbers are below the +45 pp commit threshold the task
+   pre-registered. Model-anchoring is the dominant judge-side effect.
+2. **Budget**: $26.12 remaining of the $100 project budget. Tasks have run 3-4x estimates (t0014
+   $21.16, t0019 $19.30 against $5 plans). t0023 at $40-45 does not fit even with the minimum-viable
+   cuts described in its `task_description.md` Risks &amp; Fallbacks.
+
+The brainstorm-6 slate intentionally separated infrastructure (t0021, t0022) from the headline agent
+run. Both libraries are now shipped and verified. Before consuming them with another expensive
+sonnet experiment, the researcher chose to refresh the project&#x27;s literature understanding of
+hierarchical / granularity-aware agents and judge methodology, so the next experiment iteration is
+designed against the current state of the art rather than the t0002 / t0017 surveys that predate the
+t0014, t0019, t0020 findings.
+
+#### Decisions
+
+##### Direction
+
+The five project research questions in `project/description.md` have **zero confirmed answers**
+across 22 completed tasks. The brainstorm-6 plan was to answer 4 of 5 RQs in one rescoped sonnet
+experiment. After dialogue, the researcher decided that the cheapest correct next move is a focused
+2024-2026 literature survey covering hierarchical / granularity-aware LLM agents, search and
+planning structure, reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology,
+plus the foundational options-framework theory anchor (Sutton, Precup &amp; Singh 1999). The survey
+informs the design of the next agent-iteration experiment, which is deferred to a post-survey
+brainstorm session.
+
+RQ3 (low-level &quot;can-execute-now&quot; vs &quot;must-request-information&quot;) remains deferred — it requires a
+different instrumentation (τ-bench-style) regardless of which experiment comes next.
+
+##### New Tasks (1)
+
+| ID | Slug | Covers | Cost cap | Depends |
+| --- | --- | --- | --- | --- |
+| t0025 | `lit_survey_hierarchical_agents_and_judges_2024_2026` | reading list of 10 papers; informs next agent-iteration design | ~$3 | none |
+
+##### Cancellations (1)
+
+| ID | Action | Reason |
+| --- | --- | --- |
+| t0023 | `not_started` → `cancelled` | Original $40-45 estimate exceeds remaining budget. The phase 2 ABC sonnet experiment is deferred to a post-literature-survey brainstorm so the design can incorporate hierarchical-agent and judge-methodology findings from t0025. |
+
+##### Corrections (5)
+
+| Suggestion | Action | Reason |
+| --- | --- | --- |
+| S-0014-03 | active → rejected | Covered by t0019 model-rotated judge run; data merged. |
+| S-0019-01 | active → rejected | Confirmatory v3 schema iteration not on critical path within remaining budget. |
+| S-0017-01 | active → rejected | Trust-or-Escalate selective-evaluation library setup cost exceeds RQ-level value; the Trust-or-Escalate paper itself is on the t0025 reading list. |
+| S-0002-03 | priority high → low | ServiceNow + WorkArena harness out of scope; SWE-bench is the chosen benchmark for the deferred phase 2 experiment. |
+| S-0010-01 | priority high → medium | C-adversarial dropped from the immediate slate; partial coverage by C-random remains in the planned phase 2 successor. |
+
+#### t0025 Reading List
+
+Ten papers organized by theme. Asset format: standard paper assets in
+`tasks/t0025_*/assets/paper/&lt;paper_id&gt;/` per `meta/asset_types/paper/specification.md`.
+
+* **Hierarchical / granularity-aware agents** (4):
+  * &quot;Solving the Granularity Mismatch: Hierarchical Preference Learning for Long-Horizon LLM Agents&quot;
+    (ICLR 2026)
+  * ArCHer: &quot;Training Language Model Agents via Hierarchical Multi-Turn RL&quot; (ICML 2024)
+  * &quot;Reinforcing LLM Agents via Policy Optimization with Action Decomposition&quot; (NeurIPS 2024)
+  * Sutton, Precup &amp; Singh 1999: &quot;Between MDPs and Semi-MDPs&quot; (foundational options framework)
+* **Search and planning structure** (2):
+  * &quot;Can Graph Learning Improve Planning in LLM-based Agents?&quot; (NeurIPS 2024)
+  * LATS: &quot;Language Agent Tree Search&quot; (ICML 2024)
+* **Reasoning structure discovery** (1):
+  * SELF-DISCOVER (NeurIPS 2024)
+* **Agent benchmarks** (2):
+  * Embodied Agent Interface (NeurIPS 2024)
+  * AgentBoard (NeurIPS 2024 Datasets and Benchmarks)
+* **LLM-as-judge methodology** (1):
+  * &quot;Trust or Escalate: LLM Judges with Provable Guarantees for Human Agreement&quot;
+
+#### Hard Kill Switches for t0025
+
+A literature-survey task does not need experiment-style kill switches, but the cost cap is enforced:
+
+* **Hard cap**: ~$3 ceiling for the whole survey (PDF downloads are free; cost comes only from agent
+  reading and summarization). Halt if the projection at 5 papers in exceeds $5.
+* **Stop on paywall block**: if more than 2 of the 10 papers cannot be downloaded after exhausting
+  arXiv, Semantic Scholar, OpenAlex, and conference proceedings, halt and produce a summary based on
+  abstracts plus a triage note.
+
+#### Parallelism
+
+t0025 is the only new task. The 10 paper-add invocations inside t0025 can run in parallel via
+sub-agents (each `add-paper` invocation is independent).
+
+#### RQ Coverage After This Session
+
+| RQ | Status After t0024 | Addressed by |
+| --- | --- | --- |
+| RQ1 (granularity → success) | open → still open | future post-survey experiment |
+| RQ2 (overconfident error) | open → still open | future post-survey experiment |
+| RQ3 (can-execute vs must-request) | open → deferred | future task |
+| RQ4 (gains in info-asymmetric states) | open → still open | future post-survey experiment |
+| RQ5 (mismatch penalty) | open → still open | future post-survey experiment |
+
+The literature survey itself does not answer any RQ; it informs the design of the experiment that
+will. If post-survey brainstorming concludes that no remaining-budget experiment can credibly answer
+the RQs, the project pivots to a thesis headlined on the offline annotation + judge calibration
+findings (t0014 + t0019 + t0020) plus the literature-survey synthesis.
+
+#### Files Created
+
+* `tasks/t0024_brainstorm_results_7/` — full brainstorm task folder.
+* `tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/` — task scaffold (status
+  `not_started`).
+* 5 correction files in `tasks/t0024_brainstorm_results_7/corrections/`.
+* `tasks/t0023_phase2_abc_confirmatory_sonnet_swebench/task.json` — status edited to `cancelled`.
+
+#### Limitations
+
+* Brainstorm sessions are planning artifacts, not experimental results. No metrics, no compute, no
+  empirical findings. Decisions are quality-controlled only by reviewer judgement.
+* A literature survey does not directly answer any RQ. It is preparatory work for the next
+  experiment design, which itself is not yet scheduled.
+* The remaining $26 budget after t0025&#x27;s ~$3 leaves only ~$23 for any post-survey experiment — which
+  is below most realistic cost estimates for an above-floor sonnet ABC run with N&gt;=80. The
+  post-survey brainstorm may have to choose between a tightly minimal experiment and a thesis pivot.
+* RQ3 is deferred without a scheduled successor task.
+
+#### Next Steps
+
+* Execute t0025 next: download and summarize the 10 papers, then write a synthesis section in the
+  results that explicitly maps findings to candidate next-experiment designs.
+* After t0025 completes: open Brainstorm Session 8 to scope the next agent-iteration experiment
+  given the survey synthesis and the ~$23 remaining budget.
+
+### Results Summary
+
+#### Summary
+
+Cancelled t0023 ($40-45 estimated, exceeds the $26.12 remaining budget), replaced it with t0025 — a
+10-paper literature survey on hierarchical agents and LLM-as-judge methodology — and deferred the
+phase 2 ABC sonnet experiment to a post-survey Brainstorm Session 8. Five suggestions corrected
+(three rejected, two demoted). No RQ answered.
+
+#### Headline Decisions
+
+* Cancelled t0023 (`phase2_abc_confirmatory_sonnet_swebench`, $40-45 estimated) because its cost
+  exceeds the $26.12 remaining project budget.
+* Created t0025 (`lit_survey_hierarchical_agents_and_judges_2024_2026`) — a focused 10-paper
+  literature survey of 2024-2026 work on hierarchical agents, search and planning structure,
+  reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology, plus the
+  foundational Sutton-Precup-Singh 1999 options-framework paper. Cost cap ~$3.
+* Wrote 5 correction files: 3 suggestion rejections (S-0014-03, S-0019-01, S-0017-01) and 2 priority
+  demotions (S-0002-03 → low; S-0010-01 → medium).
+* Deferred RQ3 (can-execute-now vs must-request-information) to a future task — different
+  instrumentation requirements regardless of the next experiment.
+* Deferred the phase 2 ABC sonnet experiment to a post-survey Brainstorm Session 8 so the design can
+  incorporate hierarchical-agent and judge-methodology findings from t0025.
+
+#### Methodology
+
+This was a planning session. No metrics were computed, no compute was used, no remote machines were
+provisioned. The decisions were derived from:
+
+* Aggregator outputs (`aggregate_tasks`, `aggregate_suggestions`, `aggregate_answers`,
+  `aggregate_costs`).
+* The four results summaries produced since Brainstorm Session 6: t0019, t0020, t0021, t0022.
+* Direct researcher dialogue, captured in the step logs.
+
+#### Metrics
+
+No quantitative metrics were produced. This is a planning task; `results/metrics.json` is `{}` by
+design. Cross-task counts captured in this session:
+
+* Tasks cancelled: 1 (t0023).
+* New tasks created: 1 (t0025).
+* Suggestion corrections: 5 (3 rejections — S-0014-03, S-0019-01, S-0017-01; 2 priority demotions —
+  S-0002-03 → low, S-0010-01 → medium).
+* Follow-on suggestions: 0.
+* Compute cost: $0.00. Remote machines used: 0.
+
+#### Verification
+
+* `verify_task_file t0024_brainstorm_results_7` — passed (1 expected `TF-W005` warning for empty
+  `expected_assets`).
+* `verify_task_results t0024_brainstorm_results_7` — passed after this section was added.
+* `verify_logs t0024_brainstorm_results_7` — passed (3 acceptable warnings: no command logs, no
+  session capture, no capture report; expected for a planning-only task).
+* `verify_corrections t0024_brainstorm_results_7` — passed (5 correction files, 0 errors, 0
+  warnings).
+* `verify_task_file t0025_lit_survey_hierarchical_agents_and_judges_2024_2026` — passed (0 errors, 0
+  warnings).
+
+#### RQ Coverage After This Session
+
+| RQ | Status | Addressed by |
+| --- | --- | --- |
+| RQ1 (granularity → success) | open | future post-survey experiment |
+| RQ2 (overconfident error) | open | future post-survey experiment |
+| RQ3 (can-execute vs must-request) | deferred | future task |
+| RQ4 (gains in info-asymmetric states) | open | future post-survey experiment |
+| RQ5 (mismatch penalty) | open | future post-survey experiment |
+
+The literature survey itself does not answer any RQ; it informs the design of the experiment that
+will. If post-survey brainstorming concludes that no remaining-budget experiment can credibly answer
+the RQs, the project pivots to a thesis headlined on the offline annotation + judge calibration
+findings (t0014 + t0019 + t0020) plus the literature-survey synthesis.
+
+#### Files Created
+
+* `tasks/t0024_brainstorm_results_7/` — full brainstorm task folder.
+* `tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/` — task scaffold (status
+  `not_started`).
+* 5 correction files in `tasks/t0024_brainstorm_results_7/corrections/`.
+* `tasks/t0023_phase2_abc_confirmatory_sonnet_swebench/task.json` — status edited to `cancelled`.
+
+#### Next Steps
+
+* Execute t0025 next: download and summarize the 10 papers, then write a synthesis section that
+  explicitly maps findings to candidate next-experiment designs.
+* After t0025 completes: open Brainstorm Session 8 to scope the next agent-iteration experiment
+  given the survey synthesis and the ~$23 remaining budget.
+
+## Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)
+ID: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Status: completed
+Effective date: 2026-05-01
+Short description: Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 from existing t0017 paper summaries plus t0014/t0019/t0020 findings.
+Task types: literature-survey, answer-question
+Start time: 2026-05-01T21:10:07Z
+End time: 2026-05-01T21:46:00Z
+
+#### Motivation
+
+This task was originally planned as a 10-paper literature survey of 2024-2026 work on hierarchical
+agents and LLM-as-judge methodology. During implementation prestep, an `aggregate_papers` check
+found that **all 10 target papers were already added to the project under
+`t0017_literature_hierarchical_agents_and_judges`**. The `add-paper` skill&#x27;s duplicate-stop rule
+forbids re-adding any of them.
+
+The intervention file `intervention/duplicate_papers.md` documents the conflict and three resolution
+options. The researcher chose to drop the asset-addition half of the task entirely and pivot the
+remaining work to **answering the project&#x27;s five Research Questions directly**, using the existing
+10 paper summaries plus prior project findings from t0014, t0019, and t0020 as the evidence base.
+
+#### Scope
+
+Produce a synthesis structured around the project&#x27;s RQ1-RQ5:
+
+* **RQ1**. Does explicit granularity conditioning yield higher final task success than an otherwise
+  identical scope-unaware agent on the composite benchmark?
+* **RQ2**. Does explicit granularity conditioning reduce the overconfident error rate, i.e. the
+  fraction of incorrect actions taken with high confidence?
+* **RQ3**. On low-level tasks, does granularity conditioning improve accuracy in distinguishing &quot;can
+  execute now&quot; from &quot;must request information&quot;?
+* **RQ4**. Are gains concentrated in states where local execution requires information not needed
+  for higher-level planning (sub-hypothesis 1)?
+* **RQ5**. Do scope-mismatched agents perform strictly worse than both scope-aware and scope-unaware
+  baselines (sub-hypothesis 2)?
+
+For each RQ, the synthesis reports:
+1. The current best answer the project can defend (verdict: **strong support**, **partial support**,
+   **no direct evidence**, or **contradictory**), based on the union of the existing evidence base.
+2. Specific evidence from the 10 t0017 papers, cited by `citation_key` and headline numbers.
+3. Specific evidence from prior project tasks t0014, t0019, t0020 — paying particular attention that
+   those tasks studied **annotation and judging** of hierarchical schemas, not the runtime A/B/C
+   agent conditioning that RQ1-RQ5 directly target. Indirect signal is reported as such.
+4. Residual uncertainty: which parts of the RQ remain open and what experimental evidence (Phase 2
+   A/B/C runs) would be needed to close them.
+
+#### Approach
+
+1. Read all 10 paper summaries under
+   `tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/&lt;paper_id&gt;/summary.md`.
+2. Read prior task results: `tasks/t0014_v2_annotator_sonnet_rerun/results/results_summary.md`,
+   `tasks/t0019_v2_judge_calibration_sonnet/results/results_summary.md`,
+   `tasks/t0020_v2_truncation_vs_schema_ablation/results/results_summary.md`.
+3. Cross-tabulate evidence by RQ.
+4. Write `results/results_summary.md` with a one-paragraph verdict per RQ and a single comparison
+   table at the end.
+5. Write `results/results_detailed.md` with the full evidence per RQ: literature evidence section,
+   prior-project-task evidence section, residual-uncertainty section, and a final &quot;next-experiment
+   design&quot; subsection mapping uncertainty to candidate Phase 2 designs.
+
+#### Cost Estimation
+
+Total: ~$0.50.
+
+* No paper downloads, no `add-paper` invocations.
+* One sub-agent reads 10 paper summaries and produces a structured evidence table (~$0.20).
+* Synthesis writeup uses cached evidence; orchestrator-only (~$0.30).
+
+#### Expected Outputs
+
+* `results/results_summary.md` — one paragraph per RQ, with a single end-of-document comparison
+  table summarising verdicts and primary supporting citation keys.
+* `results/results_detailed.md` — full per-RQ evidence sections plus next-experiment design
+  candidates derived from the residual-uncertainty notes.
+* No new asset folders.
+
+#### Dependencies
+
+None. The synthesis reads only files in `tasks/t0017_*/`, `tasks/t0014_*/`, `tasks/t0019_*/`,
+`tasks/t0020_*/`, and the project&#x27;s `description.md`.
+
+#### Risks &amp; Fallbacks
+
+* Risk: the 10 t0017 paper summaries contain insufficient detail to ground a particular RQ verdict.
+  Fallback: mark that RQ as **no direct evidence** and explicitly document what the closest analog
+  from the literature does say.
+* Risk: t0014/t0019/t0020 prior findings are conflated with RQ1-RQ5. Mitigation: those tasks studied
+  annotation and judging, not the runtime agent under A/B/C conditioning. The synthesis must keep
+  that distinction explicit.
+* Risk: the synthesis produces an over-confident verdict where RQs require empirical Phase 2 data
+  the project has not yet collected. Mitigation: the **residual uncertainty** subsection per RQ is
+  mandatory; verdicts are bounded by the evidence and explicitly downgraded where direct empirical
+  measurements are missing.
+
+#### Time Estimation
+
+~30-45 minutes of agent execution.
+
+#### Assets Needed
+
+None.
+
+#### Expected Assets
+
+None. The deliverable is the synthesis written to `results/`.
+
+#### Remote Machines
+
+None.
+
+#### Verification Criteria
+
+* `results/results_summary.md` contains a section for each of RQ1, RQ2, RQ3, RQ4, RQ5 with an
+  explicit verdict label and primary supporting citations.
+* `results/results_detailed.md` contains, for each RQ, both literature evidence and prior-project
+  evidence sections, plus a residual-uncertainty subsection.
+* `verify_task_results` passes with zero errors.
+* `verify_logs` passes for all step folders.
+* `verify_task_file` passes for the re-scoped `task.json`.
+* `verify_pr_premerge` passes before merge.
+
+#### Categories
+
+This task does not produce paper assets or other categorised assets, so no `meta/categories/`
+membership is required.
+
+### Results Summary
+
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0025_lit_survey_hierarchical_agents_and_judges_2024_2026&quot;
+date_completed: &quot;2026-05-01&quot;
+status: &quot;complete&quot;
+---
+### Results Summary: Best-Available Answers to RQ1-RQ5
+
+#### Summary
+
+This task was re-scoped after the implementation prestep discovered that all 10 originally planned
+paper assets already exist under `t0017_literature_hierarchical_agents_and_judges`. Rather than
+duplicate them, the task now answers the project&#x27;s five Research Questions (RQ1-RQ5) directly, using
+the existing t0017 paper summaries plus prior project findings from t0014, t0019, and t0020 as
+evidence. The headline finding is that **RQ1 and RQ4 have strong external-literature support,
+RQ2/RQ3/RQ5 have only partial support**, and **none of the five RQs has yet been answered with
+direct empirical project data on the runtime A/B/C agent conditioning** because the project&#x27;s Phase
+2 experiment (the cancelled t0023 ABC sonnet run, $40-45 estimate) has not yet been executed. The
+most important Brainstorm-Session-8 input from this synthesis is the residual- uncertainty list at
+the end of `results/results_detailed.md`, which scopes a minimum-viable Phase 2 design within the
+~$23 budget remaining after this task.
+
+#### Methodology
+
+* No remote compute. No paid LLM calls beyond the synthesis sub-agent (~$0.20).
+* Evidence base: 10 paper summaries under
+  `tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/&lt;paper_id&gt;/summary.md`
+  (citation keys: Gao2026, Zhou2024 [ArCHer], Wen2024, Sutton1999, Wu2024, Zhou2024a [LATS],
+  Zhou2024b [SELF-DISCOVER], Li2024 [Embodied Agent Interface], Ma2024 [AgentBoard], Jung2024
+  [Trust or Escalate]).
+* Prior-project evidence: `t0014/results/results_summary.md`, `t0019/results/results_summary.md`,
+  `t0020/results/results_summary.md`.
+* Cross-tabulation produced by a single sub-agent (general-purpose) and recorded in the per-RQ
+  subsections of `results/results_detailed.md`.
+
+#### Metrics
+
+This is a synthesis task with no new empirical measurements; the headline numbers below are the
+strongest external-literature data points cited in support of each RQ verdict. The project itself
+has produced **zero** direct runtime A/B/C measurements bearing on RQ1-RQ5 to date.
+
+* **RQ1 — strongest external support**: Gao2026 HPL beats IPR by **+3.97 abs** on Qwen2.5-7B
+  averaged across ALFWorld / WebShop / InterCode-SQL.
+* **RQ2 — strongest external support**: Jung2024 calibrated abstention cuts ECE from **0.217 -&gt;
+  0.095** on TL;DR (GPT-4).
+* **RQ3 — strongest external support**: Sutton1999 interruption theorem (formal; switching from
+  option mu to a primitive when **Q^mu(s, mu) &lt; V^mu(s)** is a strict policy improvement).
+* **RQ4 — strongest external support**: Wen2024 POAD wins **7/8** unseen VirtualHome scenarios; the
+  gap to baselines widens with action length.
+* **RQ5 — strongest external support**: Wen2024 NTPO (mismatched gamma_w &lt; 1) underperforms **both**
+  action-level TWOSOME and POAD baselines, with the gap widening as action length grows.
+* **Project-internal direct evidence on RQ1-RQ5 at runtime**: **0 measurements**. The closest
+  empirical signals (t0014 schema-effect **+57 pp**, t0019 judge-anchoring inflation **+33 pp**, and
+  t0020 pure-schema delta **+57 pp**) are all annotation-time or judging-time, not runtime A/B/C.
+* **Verdict distribution across the 5 RQs**: 2 strong external support (RQ1, RQ4), 3 partial support
+  (RQ2, RQ3, RQ5), 0 contradictory.
+
+#### Per-RQ Verdicts
+
+##### RQ1. Does explicit granularity conditioning yield higher final task success?
+
+**Verdict: strong external-literature support; no direct project evidence yet.** Five independent
+works show explicit granularity / structure conditioning beats uniform baselines. Gao2026 (HPL)
+beats SFT/ETO/IPR by **+3.97** absolute on the Qwen2.5-7B average across ALFWorld / WebShop /
+InterCode-SQL, with the ablation localising the gain to the group-level (= subtask-level) DPO term.
+Zhou2024 (ArCHer) reports ~100x sample efficiency over PPO and a GPT-2 ArCHer beating GPT-3.5
+prompting on WebShop. Zhou2024b (SELF-DISCOVER) lifts T4D from 40 to 69 (PaLM 2-L) and 52 to 85
+(GPT-4) over uniform CoT — the closest analog to scope-aware vs scope-unaware prompting. Sutton1999
+supplies the theoretical floor: SMDP planning with options reaches optimal value in 2 iterations vs
+the gridworld diameter. The project&#x27;s t0014/t0020 findings show the v2 tree (hierarchical)
+annotation schema is **+57 pp** more acceptable than the v1 flat schema with the annotator model
+held constant, but this is an annotation-time signal, not a runtime A/B/C experiment.
+
+##### RQ2. Does explicit granularity conditioning reduce overconfident error rate?
+
+**Verdict: partial external-literature support; project has direct calibration evidence pointing the
+other direction at judging time.** Wu2024 (graph-augmented planning) drops hallucination from
+**24.3% to &lt;1%** on UltraTool by restricting candidate sets via dependency graphs. Jung2024 (Trust
+or Escalate) halves ECE on TL;DR (**0.217 -&gt; 0.095** for GPT-4) using calibrated abstention.
+Zhou2024a (LATS) confirms the LM-judge value head is the largest single contributor to gain (-0.26
+EM in ablation). However, **no paper measures &quot;overconfident error rate&quot; as defined by this
+project** (incorrect actions taken with high agent-self-reported confidence under explicit
+granularity conditioning), and the project&#x27;s t0019 finding is that judge anchoring on model identity
+inflates the schema effect by ~**+33 pp** (haiku judge: +58 pp; sonnet substantive judge: +24.6 pp),
+which signals that calibration of the *evaluator* is itself non-trivial and may confound any RQ2
+measurement that uses the haiku judge.
+
+##### RQ3. On low-level tasks, does granularity conditioning improve &quot;execute-now vs request-info&quot; accuracy?
+
+**Verdict: partial support — strong formal primitives, weak direct evidence.** Sutton1999&#x27;s
+**interruption theorem** (switching from option mu to a primitive when Q^mu(s, mu) &lt; V^mu(s)
+strictly improves the policy) is the formal counterpart of the execute-now-vs-request-info decision.
+Jung2024 supplies a calibrated &quot;trust or escalate&quot; primitive with provable P(judge=human |
+non-abstain) &gt;= 1 - alpha. Zhou2024 (ArCHer) reports gains widening on hidden-information tasks.
+**No paper directly evaluates the project&#x27;s specific framing** (&quot;can execute now&quot; vs &quot;must request
+information&quot; distinguished by the agent itself on low-level tasks), so the closest empirical signal
+is indirect.
+
+##### RQ4. Are gains concentrated in info-asymmetric states (sub-hypothesis 1)?
+
+**Verdict: strong external-literature support; no direct project evidence yet.** Four works document
+a clean monotonic relationship between local-information demand and the gain from granularity-aware
+structure. Zhou2024 (ArCHer) shows the gap to PPO **widens with horizon length**. Wu2024 shows
+graph-restriction gain **scales with task-graph size**. Wen2024 (POAD) proves discrepancy between
+token- and action-level Bellman backups grows with action length: small on Overcooked, large on
+DataSciCoding (where POAD wins all 6 datasets). Li2024 isolates transition modeling — the most
+info-local module — as the worst-performing across all evaluated LLMs (&lt;=78.8% F1). Sutton1999
+furnishes the theoretical version: option benefits concentrate when goals lie inside option-internal
+states. The project&#x27;s own annotation-acceptance gap is largest on FrontierScience-Olympiad (+100 pp)
+and WorkArena++ (+100 pp) — the two benchmarks with the longest horizons — consistent with the
+prediction, though again at annotation time.
+
+##### RQ5. Do scope-mismatched agents perform strictly worse than both A and B (sub-hypothesis 2)?
+
+**Verdict: partial support; the strict-double-inequality form is undertested.** Wen2024 provides the
+cleanest case: NTPO (mismatched gamma_w &lt; 1) underperforms **both** action-level TWOSOME and POAD,
+with the gap widening as action length grows. Sutton1999 gives a corroborating example: H-only
+options can underperform A-only when the goal is misaligned with option structure (mismatched scope
+strictly worse than the unaware baseline). Zhou2024b (SELF-DISCOVER) shows IMPLEMENT-stage ablation
+(structure mismatch) drops accuracy below SELECT-only. **No paper directly tests &quot;strictly worse
+than both A and B simultaneously&quot;** under the project&#x27;s exact prompting framing, so the strict form
+of RQ5 remains an open empirical question.
+
+#### Comparison Table
+
+| RQ | External lit verdict | Strongest supporting cite | Headline number | Project direct evidence |
+| --- | --- | --- | --- | --- |
+| RQ1 | strong support | Gao2026 | HPL +3.97 abs over IPR (Qwen2.5-7B avg of ALFWorld/WebShop/InterCode-SQL) | None at runtime; t0014/t0020 schema-effect +57 pp at annotation time |
+| RQ2 | partial support | Jung2024 | ECE 0.217 -&gt; 0.095 on TL;DR (GPT-4) via calibrated abstention | Indirect: t0019 judge anchoring inflates effect by +33 pp under haiku |
+| RQ3 | partial support | Sutton1999 | Interruption theorem: Q^mu &lt; V^mu =&gt; switch is strict improvement | None |
+| RQ4 | strong support | Wen2024 | POAD wins 7/8 unseen VirtualHome; gap widens with action length | Indirect: schema effect +100 pp on long-horizon benchmarks (annotation-time) |
+| RQ5 | partial support | Wen2024 | Mismatched gamma_w (NTPO) underperforms both action-level baselines | None |
+
+#### Verification
+
+* `verify_task_results` and `verify_logs` are run by the orchestrator at the next step.
+* `verify_task_file` passes for the re-scoped `task.json` (`expected_assets: {}`,
+  `task_types: [&quot;literature-survey&quot;, &quot;answer-question&quot;]`, `status: in_progress` until reporting
+  completes).
+* No new asset folders, so no per-asset verificator invocations are required.
+
+#### Files Created
+
+* `results/results_summary.md` (this file).
+* `results/results_detailed.md` (full per-RQ evidence and next-experiment-design candidates).
+
+#### Next Steps
+
+The Brainstorm-Session-8 input is the **residual-uncertainty list** in `results/results_detailed.md`
+§ Next-Experiment Design Candidates. Three candidate Phase 2 designs are scoped within the remaining
+~$23 budget; the recommended ranking is in the same section.
       </content>
     </section>
   </sections>

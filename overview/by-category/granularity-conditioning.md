@@ -6,7 +6,7 @@ subtask, atomic).
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (6)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (21)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
+[Suggestions (25)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
 (3)](../datasets/by-category/granularity-conditioning.md) | [Libraries
 (5)](../libraries/by-category/granularity-conditioning.md) | [Predictions
 (2)](../predictions/by-category/granularity-conditioning.md)
@@ -297,7 +297,7 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (14 open, 7 closed)
+## Suggestions (18 open, 7 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -378,6 +378,70 @@ error labels into the existing harness output, and report progress-rate means an
 error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
 responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
 task was built for.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 calibration-focused A/B with explicit confidence
+elicitation (recommended Candidate 2)</strong> (S-0025-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Run a minimum-viable Phase 2 A vs B experiment on a 30-instance subset of the composite
+benchmark, eliciting agent self-reported confidence at every action and using a sonnet rotated
+judge plus programmatic graders to break the t0019 anchoring effect. Primary metrics:
+normalized task success and overconfident-error-rate (incorrect actions taken with
+self-reported confidence above a threshold). This is the cheapest design that produces RQ1 +
+RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23
+budget.
+
+</details>
+
+<details>
+<summary>📊 <strong>Adopt AgentBoard progress-rate as a secondary RQ1 metric
+alongside binary task success</strong> (S-0025-02)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Ma2024 (AgentBoard) shows that pairs of models with identical binary success rates differ by
+up to 5.7 progress-rate points (Llama2-13b vs Mistral-7b), revealing differences invisible in
+success-only evaluation. Add progress-rate as Metric 1b for every Phase 2 A/B/C run so that
+even runs that tie on success surface granularity-conditioning differences in mid-trajectory
+behaviour.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 three-arm A/B/C pilot at half scale to test the
+strict-double-inequality form of RQ5</strong> (S-0025-03)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Wen2024 NTPO is the only paper that directly observes a mismatched-scope condition
+underperforming both baselines, but it is in the RL fine-tuning regime, not prompting. To test
+RQ5's strict double inequality (C < both A and B) under our prompting framing, run all three
+arms on a half-scale (15-instance) subset of the composite benchmark, ~$15-20. Lower-priority
+than S-0025-01 because RQ5 is a sub-hypothesis and the strict form is the most expensive to
+falsify.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Investigate group-level (subtask-level) DPO as an alternative to
+A/B/C prompting for granularity conditioning</strong> (S-0025-06)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Gao2026 HPL ablates trajectory-, step-, and group-level DPO and isolates the group-level term
+as the primary driver of the +3.97 abs gain over IPR on Qwen2.5-7B. The group level
+corresponds exactly to the project's mid-granularity (subtask) annotation layer. If Phase 2
+A/B/C prompting shows weak runtime gains, the next experiment should be a small-scale
+group-level DPO fine-tune on the v2-tree annotated subset, comparing to a flat-DPO baseline.
+Defer until after Phase 2 is complete and budget is reassessed.
 
 </details>
 
@@ -473,7 +537,7 @@ later-merged task. This is the cheapest insurance against silent schema drift.
 <summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
 t0012</strong> (S-0010-01)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
 [t0010_matched_mismatch_library](../../tasks/t0010_matched_mismatch_library/)
 
 When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T18:03:16Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T21:53:55Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>89919</char_count>
-    <byte_count>89990</byte_count>
-    <estimated_tokens>22479</estimated_tokens>
+    <char_count>84407</char_count>
+    <byte_count>84486</byte_count>
+    <estimated_tokens>21101</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -149,9 +149,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0020_v2_truncation_vs_schema_ablation</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
+        <id>t0024_brainstorm_results_7</id>
+        <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
       </source_ids>
       <content>
-Completed tasks: 22
+Completed tasks: 24
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -284,173 +286,25 @@ ID: t0022_abc_harness_progress_rate_and_error_taxonomy
 Completed: 2026-05-01
 Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
 Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Summary Built and validated the `abc_harness_metrics` library: Ma2024 AgentBoard discrete-subgoal progress rate plus Li2024 Embodied Agent Interface six-plus-one error taxonomy. The library exposes `compute_progress_rate`, `classify_error`, and the high-level `score_trajectory` entry point, with 26 unit tests passing and a t0012 replay confirming end-to-end correctness on production-shape trajectories. Metrics * **Progress-rate mean across 89 t0012 trajectories**: **0.103** (decision threshold &gt; 0.05) — the library detects intermediate progress on real agent traces, not zero or one. * **Progress-rate standard deviation**...
+
+## Brainstorm session 7: rescope around RQ answers after t0019 calibration finding
+ID: t0024_brainstorm_results_7
+Completed: 2026-05-01
+Short description: Brainstorm 7: cancel t0023, schedule rescoped t0025 (N=80, $25 cap) to answer RQ1/2/4/5; defer RQ3.
+Result summary: Brainstorm Session 7 — Results Summary Summary Cancelled t0023 ($40-45 estimated, exceeds the $26.12 remaining budget), replaced it with t0025 — a 10-paper literature survey on hierarchical agents and LLM-as-judge methodology — and deferred the phase 2 ABC sonnet experiment to a post-survey Brainstorm Session 8. Five suggestions corrected (three rejected, two demoted). No RQ answered. Headline Decisions * Cancelled t0023 (`phase2_abc_confirmatory_sonnet_swebench`, $40-45 estimated) because its cost exceeds the $26.12 remaining project budget. * Created t0025 (`lit_survey_hierarchical_agents_and_judges_2024_2026`) — a focused 10-paper literature survey of 2024-2026 work on hierarchical...
+
+## Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)
+ID: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Completed: 2026-05-01
+Short description: Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 from existing t0017 paper summaries plus t0014/t0019/t0020 findings.
+Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0025_lit_survey_hierarchical_agents_and_judges_2024_2026&quot; date_completed: &quot;2026-05-01&quot; status: &quot;complete&quot; --- Results Summary: Best-Available Answers to RQ1-RQ5 Summary This task was re-scoped after the implementation prestep discovered that all 10 originally planned paper assets already exist under `t0017_literature_hierarchical_agents_and_judges`. Rather than duplicate them, the task now answers the project&#x27;s five Research Questions (RQ1-RQ5) directly, using the existing t0017 paper summaries plus prior project findings from t0014, t0019, and t0020 as evidence. The headline finding is that **RQ1 and RQ4 have strong external-literature support, RQ2/RQ3/RQ5...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
-      <source_ids>
-        <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
-      </source_ids>
       <content>
-Planned or active tasks: 1
-
-## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
-ID: t0023_phase2_abc_confirmatory_sonnet_swebench
-Status: not_started
-Effective date: 2026-05-01
-Short description: Confirmatory N&gt;=157 paired ABC run with claude-sonnet-4-6 on SWE-bench Verified Lite using the new metrics library to test RQ1, RQ5, RQ6, RQ9.
-Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_progress_rate_and_error_taxonomy
-
-#### Motivation
-
-t0012&#x27;s smoke run on FrontierScience-Olympiad with claude-haiku-4-5 hit the floor on all three ABC
-conditions (A: 2.5%, B: 0%, C: 0%). It cannot answer RQ1 (does scope-aware A beat scope-unaware B),
-RQ2 (do gains concentrate in scope-sensitive states), or RQ5 (do scope-mismatched C agents degrade
-predictably) because the conditions are indistinguishable at the floor.
-
-Per the t0017 literature survey, three changes lift the experiment out of the floor regime:
-
-1. **Stronger model**: claude-sonnet-4-6 instead of haiku (the literature consensus is that
-   scope-conditioning effects only become legible above ~30% baseline accuracy, see Wang2023 and
-   Boisvert2024).
-2. **Tractable benchmark**: SWE-bench Verified Lite at the per-instance level (haiku achieves
-   roughly 12-18% on the public leaderboard for similar lite splits; sonnet should reach 30-50%).
-3. **Continuous and diagnostic metrics**: progress rate (Ma2024) plus EAI error taxonomy (Li2024),
-   wired in via t0022, replace the binary-success metric that collapsed t0012.
-
-This is the **headline experiment** of the upcoming paper. Everything in Wave 1 (t0019, t0020)
-defends the schema headline; everything in Wave 2 (t0021, t0022) builds the instruments; **Wave 3
-(this task) produces the confirmatory N&gt;=157 signal that the paper claims**.
-
-This task covers `S-0012-02` (primary) and `S-0010-01` (secondary; the C-condition variants provide
-partial coverage).
-
-#### Scope
-
-Run a paired ABC experiment on **N&gt;=157 SWE-bench Verified Lite instances** with claude-sonnet-4-6,
-using the t0021 v2 Plan-and-Solve library (which emits `final_confidence`) and the t0022 metrics
-library (progress rate + EAI error taxonomy).
-
-Three conditions per instance, in randomized order to defuse position bias:
-
-* **A scope-aware**: the agent receives the v2 hierarchical scope tag for each step.
-* **B scope-unaware**: the agent receives no scope tag (matches the base Plan-and-Solve setting).
-* **C scope-mismatched**: the agent receives a wrong scope tag.
-
-C-condition variants (per S-0010-01):
-
-* `C-random`: tag drawn uniformly from the wrong-tag set with seed=0.
-* `C-adversarial`: tag chosen to be the most distant from the true scope (e.g., atomic on a global
-  step).
-
-If budget allows, also run a `C-phase-randomized` control where the hierarchy itself is shuffled
-within the row but the tag is correct; this isolates step-order from scope-mismatch.
-
-#### Sample Size and Power
-
-* **N&gt;=157 paired rows** per condition (Phase 1 confirmatory power calculation from t0012&#x27;s smoke
-  output): detects a 10 pp success-rate delta at alpha=0.05 with power 0.8 under McNemar pairing.
-* **Annotation pre-step**: SWE-bench Verified Lite needs hierarchical-decomposition annotations for
-  the agent&#x27;s scope-tag input. The current dataset has 23 SWE-bench rows from t0012; this task
-  **must annotate ~150 fresh instances** before the agent runs. Annotation uses claude-haiku-4-5
-  with the t0014 v2 schema.
-
-#### Deliverables
-
-1. **Predictions asset** (`assets/predictions/phase2_abc_swebench_sonnet/`): per-row trajectories
-   for all three conditions plus the C variants, with `final_confidence`, `progress_rate`, and error
-   taxonomy distributions filled in.
-2. **Answer asset** addressing RQ1 (&quot;Does explicit operating-granularity conditioning improve final
-   task success?&quot;) with explicit numerical answers for:
-   * `success_rate(A) - success_rate(B)` with 95% CI from McNemar paired test
-   * `progress_rate(A) - progress_rate(B)` with 95% CI from paired t-test
-   * `success_rate(A) - success_rate(C-random)` and `... - success_rate(C-adversarial)`
-   * `overconfident_error_rate` per condition (using `final_confidence` from t0021)
-3. **Reported metrics** in `results/metrics.json` (explicit multi-variant) covering:
-   * Per condition: `task_success_rate`, `progress_rate_mean`, `overconfident_error_rate`, plus
-     per-error-taxonomy-label counts.
-   * Paired-difference statistics: McNemar p-values, paired t-test p-values, effect sizes.
-   * Efficiency: `efficiency_inference_time_per_item_seconds`,
-     `efficiency_inference_cost_per_item_usd` (per condition).
-4. **Hard/easy split analysis** by SWE-bench Verified hunk count (RQ9): does scope-conditioning
-   value increase with task complexity? Reported in `results/results_detailed.md` with per-bucket
-   deltas and 95% CIs.
-5. **Compare-literature step**: side-by-side table of A-vs-B deltas with Wang2023 and Boisvert2024&#x27;s
-   scope-conditioning numbers.
-
-#### Models and Configurations
-
-* **Annotator** (pre-step): claude-haiku-4-5 with v2 tree schema (matching t0014).
-* **Agent**: claude-sonnet-4-6 via the t0021 v2 Plan-and-Solve library.
-* **Judge / metric scorer**: claude-haiku-4-5 (default; per t0022 cost analysis), with a sonnet
-  spot-check on a 20-row stratified sample to bound judge bias.
-
-#### Cost Estimate
-
-* **Annotation pre-step** (about 150 fresh SWE-bench rows with haiku at v2 schema): about 150 calls,
-  around 6k tokens in / 1k tokens out per call. **About $11**.
-* **Agent run** (N=157 x 3 conditions + 1 C variant on a 50-row subset = 521 trajectories, about 10
-  calls per trajectory averaging 8k tokens in / 1k tokens out at sonnet pricing): about 5.2M input
-  tokens, about 520k output tokens. **About $23-25**.
-* **Metric scoring** (per t0022 cost analysis): **about $3**.
-* **Sonnet spot-check** (20 rows x 3 conditions x about 5 steps = 300 calls, about 3k in, 200 out at
-  sonnet pricing): **about $3**.
-* **Reserve for retries / extra rows**: **+$3**.
-* **Total**: **about $40-45**. The per-task limit may need to be raised; pre-flag as a budget
-  intervention. If it does not get raised, drop the C-adversarial variant or the sonnet spot-check.
-
-#### Decision Criteria (Headline)
-
-* If `success_rate(A) - success_rate(B) &gt;= +5 pp` with McNemar p&lt;0.05, the paper&#x27;s central claim
-  (RQ1) holds and the v2 schema produces a **legible**, **non-floor**, **paired** signal.
-* If `progress_rate(A) - progress_rate(B) &gt;= +0.05` with paired-t p&lt;0.05 even when binary success is
-  closer, the granularity-conditioning effect manifests in subgoal coverage rather than terminal
-  success. Both interpretations support the headline.
-* If both deltas are within +/-2 pp / +/-0.02 of zero with tight CIs, the v2 schema does not
-  transfer from offline annotation accept-rate to online agent task success on this benchmark; the
-  paper pivots to &quot;schema helps annotation, not online agents&quot; and the brainstorm round after this
-  task scopes the next experiment.
-* The C-adversarial penalty must be at least as large as C-random for RQ5 to hold.
-
-#### Dependencies
-
-* `t0021_plan_and_solve_v2_with_final_confidence` (library that emits `final_confidence`).
-* `t0022_abc_harness_progress_rate_and_error_taxonomy` (progress rate + EAI taxonomy).
-
-Both are in flight as of this task&#x27;s creation. Sequential dependency: t0023 cannot start
-implementation until both libraries pass their own verification.
-
-#### Source Suggestion
-
-`S-0012-02` (primary). `S-0010-01` is partially covered by the C-random and C-adversarial variants;
-the phase-randomized control is in scope only if budget permits.
-
-#### Risks and Fallbacks
-
-* **Budget overrun**: if the run-cost exceeds $40, drop the C-adversarial variant first (saves about
-  $5), then the sonnet spot-check (about $3). The paired A/B/C-random comparison is the minimum
-  viable headline.
-* **Sonnet hits a different floor on SWE-bench**: if A-condition success rate at N=20 pilot is below
-  10%, abort the full run and recompute the power requirement at the new effect size.
-* **Annotation cost dominates**: if the v2 annotation pre-step exceeds $15, switch to a three-shot
-  prompt instead of the full v2 schema for the SWE-bench corpus only and document the schema
-  simplification.
-* **Judge bias on SWE-bench**: SWE-bench has a deterministic test-suite ground truth, so
-  task_success is judge-free. Progress rate is judge-dependent; the sonnet spot-check exists to
-  bound this bias.
-
-#### Verification Criteria
-
-* Predictions asset passes `verify_predictions_asset.py`.
-* Answer asset passes `verify_answer_asset.py`.
-* `results/metrics.json` has explicit variants for A, B, C-random, and (if run) C-adversarial, each
-  with task_success_rate, progress_rate_mean, overconfident_error_rate, and efficiency metrics.
-* Paired-difference statistics for at least RQ1 and RQ5 are reported with explicit p-values.
-* `results/results_detailed.md` contains the hard/easy split analysis (RQ9) and the
-  literature-comparison table.
-* Cost in `results/costs.json` is documented with the per-stage breakdown above and is at or below
-  the agreed limit (currently ~$45).
+Planned or active tasks: 0
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -485,26 +339,23 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
       <source_name>aggregate_suggestions_full</source_name>
       <source_ids>
         <id>S-0002-02</id>
-        <id>S-0002-03</id>
         <id>S-0002-06</id>
         <id>S-0002-07</id>
         <id>S-0005-02</id>
         <id>S-0006-03</id>
         <id>S-0007-01</id>
-        <id>S-0010-01</id>
         <id>S-0009-01</id>
         <id>S-0009-04</id>
         <id>S-0009-06</id>
         <id>S-0014-02</id>
-        <id>S-0014-03</id>
         <id>S-0012-01</id>
         <id>S-0012-02</id>
-        <id>S-0017-01</id>
-        <id>S-0019-01</id>
         <id>S-0020-01</id>
         <id>S-0021-02</id>
         <id>S-0022-02</id>
         <id>S-0022-05</id>
+        <id>S-0025-01</id>
+        <id>S-0025-04</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
@@ -515,6 +366,7 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0006-01</id>
         <id>S-0006-04</id>
         <id>S-0007-03</id>
+        <id>S-0010-01</id>
         <id>S-0010-02</id>
         <id>S-0011-01</id>
         <id>S-0009-02</id>
@@ -533,6 +385,9 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0022-01</id>
         <id>S-0022-03</id>
         <id>S-0022-04</id>
+        <id>S-0025-02</id>
+        <id>S-0025-03</id>
+        <id>S-0002-03</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
         <id>S-0006-02</id>
@@ -548,9 +403,11 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0020-04</id>
         <id>S-0020-05</id>
         <id>S-0021-03</id>
+        <id>S-0025-05</id>
+        <id>S-0025-06</id>
       </source_ids>
       <content>
-Open suggestions: 64
+Open suggestions: 67
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -558,13 +415,6 @@ Priority: high
 Kind: library
 Source task: t0002_literature_survey_granularity_conditioning
 Xiong2024 establishes that single-sample verbalized confidence is poorly calibrated and that 3-sample self-consistency aggregation reduces ECE by 2-8 points. The project should commit to this protocol for Metric 2 (overconfident error rate). This task would specify the human-inspired confidence prompt template (low/medium/high + brief justification), implement the self-consistency aggregator, and validate calibration on a small held-out set before Phase 2 launches.
-
-## Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++
-ID: S-0002-03
-Priority: high
-Kind: library
-Source task: t0002_literature_survey_granularity_conditioning
-Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow developer instance and the BrowserGym Python harness. This is a substantial infrastructure task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1 annotation begins.
 
 ## Implement Plan-and-Solve as the canonical scope-unaware (B) baseline
 ID: S-0002-06
@@ -601,13 +451,6 @@ Kind: library
 Source task: t0007_scope_unaware_planandsolve_library
 Create a third agent library that wraps scope_unaware_planandsolve_v1 (or scope_aware_react_v1) with a tag-classifier that retroactively labels each step&#x27;s granularity, producing the matched-mismatch (C) condition for the project&#x27;s A-vs-B-vs-C comparison. Reuse this task&#x27;s TRAJECTORY_RECORD_FIELDS export so all three libraries share the same trajectory schema. The classifier should be a small fine-tuned model or heuristic so the task is local-only and deterministic.
 
-## Add a uniform-random vs. adversarial vs. matched ablation to t0012
-ID: S-0010-01
-Priority: high
-Kind: experiment
-Source task: t0010_matched_mismatch_library
-When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A and B: matched_mismatch_v1 with mismatch_strategy=&#x27;random&#x27; and seed=0, matched_mismatch_v1 with mismatch_strategy=&#x27;adversarial&#x27;, and a phase-randomised C control (random walk over the v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into &#x27;phase order matters&#x27;, &#x27;any wrong tag matters&#x27;, and &#x27;most-distant wrong tag matters&#x27;, preventing the granularity-mismatch effect from being conflated with a step-order-mismatch effect (see research_papers.md, Wang2023 and Zhou2022).
-
 ## Re-run v2 annotator with claude-sonnet-4-6 via direct API to disentangle schema vs model effect
 ID: S-0009-01
 Priority: high
@@ -636,13 +479,6 @@ Kind: evaluation
 Source task: t0014_v2_annotator_sonnet_rerun
 The schema-only delta of +57 pp is well above Zhou2022&#x27;s +16 pp and Boisvert2024&#x27;s +25 pp published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be partially scoring &#x27;did the model produce a parseable tree with subtask-to-atomic edges&#x27; rather than &#x27;is the decomposition substantively right&#x27;. Replace the haiku judge with a substantive critic prompt that simulates execution (&#x27;verify each atomic, executed in order, would actually solve the problem&#x27;) and re-judge the same 20-row sample under all three conditions (v1-sonnet, v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive judge, the gap to literature was judge anchoring...
 
-## Rotate the judge model to test the haiku-vs-haiku familial bias hypothesis on the model-only delta
-ID: S-0014-03
-Priority: high
-Kind: experiment
-Source task: t0014_v2_annotator_sonnet_rerun
-The model-only delta of -1 pp sits below Xiong2024&#x27;s lower edge (0 pp). Xiong2024 documents that judges trained on the same model family as the annotator show a small positive familial bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near zero, sonnet really does provide no annotator-quality...
-
 ## Extend scope_unaware_planandsolve_v1 to emit final_confidence
 ID: S-0012-01
 Priority: high
@@ -656,20 +492,6 @@ Priority: high
 Kind: experiment
 Source task: t0012_phase2_abc_smoke_frontierscience
 The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B: 0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50% accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2) claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from this smoke. This is the highest-priority next experiment for RQ1/RQ5.
-
-## Adopt Trust-or-Escalate selective evaluation for the multi-judge agreement study
-ID: S-0017-01
-Priority: high
-Kind: evaluation
-Source task: t0017_literature_hierarchical_agents_and_judges
-S-0009-03 calls for a multi-judge agreement study; Jung2024 (&quot;Trust or Escalate&quot;, ICLR 2025) provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1) Simulated Annotators on top of the project&#x27;s existing judge LLM to produce ensemble-based confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing (Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor that GPT-4 alone never reaches, so this is also...
-
-## Confirmatory v2 vs v1 schema sweep with fresh annotations and a third sonnet judge
-ID: S-0019-01
-Priority: high
-Kind: experiment
-Source task: t0019_v2_judge_calibration_sonnet
-Run a confirmatory experiment that re-annotates a fresh n&gt;=80 row pool (not the t0014 pool) under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three independent sonnet configurations: substantive critic, model-rotated original prompt, and a new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool overlapped with t0014. A fresh-pool replication at the planned n&gt;=80 would tighten the per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30 pp or commit it above +45 pp.
 
 ## Re-judge the remaining 8 v1 paired rows to tighten the pure-schema CI
 ID: S-0020-01
@@ -698,6 +520,20 @@ Priority: high
 Kind: experiment
 Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
 The whole purpose of t0022 is to make t0023&#x27;s confirmatory N&gt;=157 ABC re-run produce signal at the floor where binary task success failed in t0012. Schedule t0023 to consume abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step error labels into the existing harness output, and report progress-rate means and error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge responses from t0022 to keep marginal cost low. This is the direct downstream consumer this task was built for.
+
+## Phase 2 calibration-focused A/B with explicit confidence elicitation (recommended Candidate 2)
+ID: S-0025-01
+Priority: high
+Kind: experiment
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Run a minimum-viable Phase 2 A vs B experiment on a 30-instance subset of the composite benchmark, eliciting agent self-reported confidence at every action and using a sonnet rotated judge plus programmatic graders to break the t0019 anchoring effect. Primary metrics: normalized task success and overconfident-error-rate (incorrect actions taken with self-reported confidence above a threshold). This is the cheapest design that produces RQ1 + RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23 budget.
+
+## Replace haiku judge with a sonnet-rotated or programmatic grader for all Phase 2 A/B/C scoring
+ID: S-0025-04
+Priority: high
+Kind: evaluation
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer, SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM judge from the gradient.
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -768,6 +604,13 @@ Priority: medium
 Kind: evaluation
 Source task: t0007_scope_unaware_planandsolve_library
 After t0006 (scope_aware_react_v1) merges, run a small deduplication-style task that imports both libraries&#x27; TRAJECTORY_RECORD_FIELDS tuples and asserts they are identical, plus a smoke test that runs both libraries on the same toy problem and verifies the trajectory JSON shapes round-trip through a single Pydantic loader. If they diverge, file a correction in the later-merged task. This is the cheapest insurance against silent schema drift.
+
+## Add a uniform-random vs. adversarial vs. matched ablation to t0012
+ID: S-0010-01
+Priority: medium
+Kind: experiment
+Source task: t0010_matched_mismatch_library
+When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A and B: matched_mismatch_v1 with mismatch_strategy=&#x27;random&#x27; and seed=0, matched_mismatch_v1 with mismatch_strategy=&#x27;adversarial&#x27;, and a phase-randomised C control (random walk over the v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into &#x27;phase order matters&#x27;, &#x27;any wrong tag matters&#x27;, and &#x27;most-distant wrong tag matters&#x27;, preventing the granularity-mismatch effect from being conflated with a step-order-mismatch effect (see research_papers.md, Wang2023 and Zhou2022).
 
 ## Per-step strategy override for matched_mismatch_v1
 ID: S-0010-02
@@ -895,6 +738,27 @@ Kind: evaluation
 Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
 Both progress_rate and error_taxonomy judge calls default to claude-haiku-4-5 to keep t0023 cost bounded. Risk: haiku miscalibration could produce systematic bias on the error taxonomy (e.g., over-classifying steps as &quot;ok&quot;). Build a small re-grading script that picks 20 steps stratified by (condition, predicted label) and re-classifies them with claude-sonnet. Report agreement rate per label. If overall agreement &lt; 70% or any label has &lt; 50% agreement, escalate to sonnet for the headline t0023 numbers and document in t0023&#x27;s Limitations.
 
+## Adopt AgentBoard progress-rate as a secondary RQ1 metric alongside binary task success
+ID: S-0025-02
+Priority: medium
+Kind: evaluation
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Ma2024 (AgentBoard) shows that pairs of models with identical binary success rates differ by up to 5.7 progress-rate points (Llama2-13b vs Mistral-7b), revealing differences invisible in success-only evaluation. Add progress-rate as Metric 1b for every Phase 2 A/B/C run so that even runs that tie on success surface granularity-conditioning differences in mid-trajectory behaviour.
+
+## Phase 2 three-arm A/B/C pilot at half scale to test the strict-double-inequality form of RQ5
+ID: S-0025-03
+Priority: medium
+Kind: experiment
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Wen2024 NTPO is the only paper that directly observes a mismatched-scope condition underperforming both baselines, but it is in the RL fine-tuning regime, not prompting. To test RQ5&#x27;s strict double inequality (C &lt; both A and B) under our prompting framing, run all three arms on a half-scale (15-instance) subset of the composite benchmark, ~$15-20. Lower-priority than S-0025-01 because RQ5 is a sub-hypothesis and the strict form is the most expensive to falsify.
+
+## Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++
+ID: S-0002-03
+Priority: low
+Kind: library
+Source task: t0002_literature_survey_granularity_conditioning
+Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow developer instance and the BrowserGym Python harness. This is a substantial infrastructure task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1 annotation begins.
+
 ## Defer Reflexion-style episodic memory to a Phase 3 ablation
 ID: S-0002-10
 Priority: low
@@ -999,6 +863,20 @@ Priority: low
 Kind: library
 Source task: t0021_plan_and_solve_v2_with_final_confidence
 The smoke parse-failure rate on haiku is 0/3 on n=1 x 3, so the strict regex parser is fine for haiku at this scale. However, if the t0023 sonnet run or any future larger run pushes the parse-failure rate above the documented 20% gate (REQ-10), the library should fall back to JSON-mode output (e.g., a tool-use call returning {confidence: 0.85}) instead of free-form text. Implement this as an opt-in path so the existing two-call protocol stays the default and the JSON fallback only activates when the model demonstrably cannot produce parseable output. Keep the verbalized prompt as the canonical Xiong2024 §3.2 protocol.
+
+## Add an existing-asset inventory cross-check to the brainstorm-results task workflow
+ID: S-0025-05
+Priority: low
+Kind: technique
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Brainstorm Session 7 (t0024) created t0025 with a 10-paper expected_assets count without first checking the existing paper inventory; all 10 papers were already added under t0017. Adding an aggregate_papers / aggregate_datasets / aggregate_libraries cross-check step to /human-brainstorm before any expected_assets count is finalized would have surfaced the duplication and saved a full intervention/re-scope cycle. Low priority because it is a process improvement, not a research direction.
+
+## Investigate group-level (subtask-level) DPO as an alternative to A/B/C prompting for granularity conditioning
+ID: S-0025-06
+Priority: low
+Kind: experiment
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Gao2026 HPL ablates trajectory-, step-, and group-level DPO and isolates the group-level term as the primary driver of the +3.97 abs gain over IPR on Qwen2.5-7B. The group level corresponds exactly to the project&#x27;s mid-granularity (subtask) annotation layer. If Phase 2 A/B/C prompting shows weak runtime gains, the next experiment should be a small-scale group-level DPO fine-tune on the v2-tree annotated subset, comparing to a flat-DPO baseline. Defer until after Phase 2 is complete and budget is reassessed.
       </content>
     </section>
   </sections>

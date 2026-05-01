@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T18:03:16Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T21:53:55Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>64610</char_count>
-    <byte_count>64620</byte_count>
-    <estimated_tokens>16152</estimated_tokens>
+    <char_count>69696</char_count>
+    <byte_count>69706</byte_count>
+    <estimated_tokens>17424</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -91,9 +91,15 @@
         <id>S-0022-03</id>
         <id>S-0022-04</id>
         <id>S-0022-05</id>
+        <id>S-0025-01</id>
+        <id>S-0025-02</id>
+        <id>S-0025-03</id>
+        <id>S-0025-04</id>
+        <id>S-0025-05</id>
+        <id>S-0025-06</id>
       </source_ids>
       <content>
-Suggestions: 74
+Suggestions: 80
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -122,7 +128,7 @@ Xiong2024 establishes that single-sample verbalized confidence is poorly calibra
 ## Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++
 ID: S-0002-03
 Status: active
-Priority: high
+Priority: low
 Kind: library
 Source task: t0002_literature_survey_granularity_conditioning
 Source paper: 10.48550_arXiv.2407.05291
@@ -446,7 +452,7 @@ The PS+ instruction string in scope_unaware_planandsolve_v1 was sourced through 
 ## Add a uniform-random vs. adversarial vs. matched ablation to t0012
 ID: S-0010-01
 Status: active
-Priority: high
+Priority: medium
 Kind: experiment
 Source task: t0010_matched_mismatch_library
 Source paper: 10.48550_arXiv.2305.04091
@@ -604,7 +610,7 @@ The schema-only delta of +57 pp is well above Zhou2022&#x27;s +16 pp and Boisver
 
 ## Rotate the judge model to test the haiku-vs-haiku familial bias hypothesis on the model-only delta
 ID: S-0014-03
-Status: active
+Status: rejected
 Priority: high
 Kind: experiment
 Source task: t0014_v2_annotator_sonnet_rerun
@@ -714,7 +720,7 @@ The smoke used only claude-haiku-4-5. Replicating on GPT-4o and Gemini 1.5 Pro (
 
 ## Adopt Trust-or-Escalate selective evaluation for the multi-judge agreement study
 ID: S-0017-01
-Status: active
+Status: rejected
 Priority: high
 Kind: evaluation
 Source task: t0017_literature_hierarchical_agents_and_judges
@@ -750,7 +756,7 @@ Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning 
 
 ## Confirmatory v2 vs v1 schema sweep with fresh annotations and a third sonnet judge
 ID: S-0019-01
-Status: active
+Status: rejected
 Priority: high
 Kind: experiment
 Source task: t0019_v2_judge_calibration_sonnet
@@ -934,6 +940,75 @@ Categories: agent-evaluation, granularity-conditioning, hierarchical-planning
 Date added: 2026-05-01
 
 The whole purpose of t0022 is to make t0023&#x27;s confirmatory N&gt;=157 ABC re-run produce signal at the floor where binary task success failed in t0012. Schedule t0023 to consume abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step error labels into the existing harness output, and report progress-rate means and error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge responses from t0022 to keep marginal cost low. This is the direct downstream consumer this task was built for.
+
+## Phase 2 calibration-focused A/B with explicit confidence elicitation (recommended Candidate 2)
+ID: S-0025-01
+Status: active
+Priority: high
+Kind: experiment
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Source paper: 10.48550_arXiv.2407.18370
+Categories: granularity-conditioning, uncertainty-calibration, agent-evaluation
+Date added: 2026-05-01
+
+Run a minimum-viable Phase 2 A vs B experiment on a 30-instance subset of the composite benchmark, eliciting agent self-reported confidence at every action and using a sonnet rotated judge plus programmatic graders to break the t0019 anchoring effect. Primary metrics: normalized task success and overconfident-error-rate (incorrect actions taken with self-reported confidence above a threshold). This is the cheapest design that produces RQ1 + RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23 budget.
+
+## Adopt AgentBoard progress-rate as a secondary RQ1 metric alongside binary task success
+ID: S-0025-02
+Status: active
+Priority: medium
+Kind: evaluation
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Source paper: 10.48550_arXiv.2401.13178
+Categories: agent-evaluation, granularity-conditioning
+Date added: 2026-05-01
+
+Ma2024 (AgentBoard) shows that pairs of models with identical binary success rates differ by up to 5.7 progress-rate points (Llama2-13b vs Mistral-7b), revealing differences invisible in success-only evaluation. Add progress-rate as Metric 1b for every Phase 2 A/B/C run so that even runs that tie on success surface granularity-conditioning differences in mid-trajectory behaviour.
+
+## Phase 2 three-arm A/B/C pilot at half scale to test the strict-double-inequality form of RQ5
+ID: S-0025-03
+Status: active
+Priority: medium
+Kind: experiment
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Source paper: 10.48550_arXiv.2405.15821
+Categories: granularity-conditioning, agent-evaluation
+Date added: 2026-05-01
+
+Wen2024 NTPO is the only paper that directly observes a mismatched-scope condition underperforming both baselines, but it is in the RL fine-tuning regime, not prompting. To test RQ5&#x27;s strict double inequality (C &lt; both A and B) under our prompting framing, run all three arms on a half-scale (15-instance) subset of the composite benchmark, ~$15-20. Lower-priority than S-0025-01 because RQ5 is a sub-hypothesis and the strict form is the most expensive to falsify.
+
+## Replace haiku judge with a sonnet-rotated or programmatic grader for all Phase 2 A/B/C scoring
+ID: S-0025-04
+Status: active
+Priority: high
+Kind: evaluation
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Categories: uncertainty-calibration, agent-evaluation
+Date added: 2026-05-01
+
+t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer, SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM judge from the gradient.
+
+## Add an existing-asset inventory cross-check to the brainstorm-results task workflow
+ID: S-0025-05
+Status: active
+Priority: low
+Kind: technique
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Date added: 2026-05-01
+
+Brainstorm Session 7 (t0024) created t0025 with a 10-paper expected_assets count without first checking the existing paper inventory; all 10 papers were already added under t0017. Adding an aggregate_papers / aggregate_datasets / aggregate_libraries cross-check step to /human-brainstorm before any expected_assets count is finalized would have surfaced the duplication and saved a full intervention/re-scope cycle. Low priority because it is a process improvement, not a research direction.
+
+## Investigate group-level (subtask-level) DPO as an alternative to A/B/C prompting for granularity conditioning
+ID: S-0025-06
+Status: active
+Priority: low
+Kind: experiment
+Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Source paper: no-doi_Gao2026_hierarchical-preference-learning-llm-agents
+Categories: hierarchical-planning, granularity-conditioning
+Date added: 2026-05-01
+
+Gao2026 HPL ablates trajectory-, step-, and group-level DPO and isolates the group-level term as the primary driver of the +3.97 abs gain over IPR on Qwen2.5-7B. The group level corresponds exactly to the project&#x27;s mid-granularity (subtask) annotation layer. If Phase 2 A/B/C prompting shows weak runtime gains, the next experiment should be a small-scale group-level DPO fine-tune on the v2-tree annotated subset, comparing to a flat-DPO baseline. Defer until after Phase 2 is complete and budget is reassessed.
       </content>
     </section>
   </sections>

@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-25 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **18 open** (5
-high, 10 medium, 3 low), **7 closed**.
+26 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **19 open** (5
+high, 10 medium, 4 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -391,6 +391,28 @@ extension is to let the agent emit a granularity transition (e.g., start global,
 subtask once a plan is established, drop to atomic during execution). Add a model-driven mode
 where the parser also accepts <transition_to:subtask> markers and the agent updates the active
 granularity per turn. This is a research extension worth Phase 2 ablation.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Investigate group-level (subtask-level) DPO as an alternative to
+A/B/C prompting for granularity conditioning</strong> (S-0025-06)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0025-06` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
+| **Source paper** | [`no-doi_Gao2026_hierarchical-preference-learning-llm-agents`](../../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/assets/paper/no-doi_Gao2026_hierarchical-preference-learning-llm-agents/) |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+
+Gao2026 HPL ablates trajectory-, step-, and group-level DPO and isolates the group-level term
+as the primary driver of the +3.97 abs gain over IPR on Qwen2.5-7B. The group level
+corresponds exactly to the project's mid-granularity (subtask) annotation layer. If Phase 2
+A/B/C prompting shows weak runtime gains, the next experiment should be a small-scale
+group-level DPO fine-tune on the v2-tree annotated subset, comparing to a flat-DPO baseline.
+Defer until after Phase 2 is complete and budget is reassessed.
 
 </details>
 

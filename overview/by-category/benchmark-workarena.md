@@ -113,7 +113,7 @@ No answers in this category.
 <summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
 WorkArena++</strong> (S-0002-03)</summary>
 
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: library | **Priority**: low | **Date**: 2026-04-29 | **Source**:
 [t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
 
 Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow

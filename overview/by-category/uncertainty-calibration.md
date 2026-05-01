@@ -7,7 +7,7 @@ probabilities.
 
 **Detail pages**: [Papers (2)](../papers/by-category/uncertainty-calibration.md) | [Answers
 (1)](../answers/by-category/uncertainty-calibration.md) | [Suggestions
-(13)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
+(15)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
 (3)](../libraries/by-category/uncertainty-calibration.md) | [Predictions
 (1)](../predictions/by-category/uncertainty-calibration.md)
 
@@ -133,7 +133,7 @@ canonical.
 
 </details>
 
-## Suggestions (10 open, 3 closed)
+## Suggestions (12 open, 3 closed)
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -240,6 +240,39 @@ JSON-mode output (e.g., a tool-use call returning {confidence: 0.85}) instead of
 text. Implement this as an opt-in path so the existing two-call protocol stays the default and
 the JSON fallback only activates when the model demonstrably cannot produce parseable output.
 Keep the verbalized prompt as the canonical Xiong2024 §3.2 protocol.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 calibration-focused A/B with explicit confidence
+elicitation (recommended Candidate 2)</strong> (S-0025-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Run a minimum-viable Phase 2 A vs B experiment on a 30-instance subset of the composite
+benchmark, eliciting agent self-reported confidence at every action and using a sonnet rotated
+judge plus programmatic graders to break the t0019 anchoring effect. Primary metrics:
+normalized task success and overconfident-error-rate (incorrect actions taken with
+self-reported confidence above a threshold). This is the cheapest design that produces RQ1 +
+RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23
+budget.
+
+</details>
+
+<details>
+<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
+for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
+haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
+judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
+Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
+SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
+judge from the gradient.
 
 </details>
 

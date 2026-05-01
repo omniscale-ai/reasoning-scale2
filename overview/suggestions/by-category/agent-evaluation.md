@@ -1,36 +1,13 @@
 # Suggestions: `agent-evaluation`
 
-43 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**34 open** (11 high, 15 medium, 8 low), **9 closed**.
+47 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
+**38 open** (11 high, 18 medium, 9 low), **9 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
-
-<details>
-<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
-t0012</strong> (S-0010-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0010-01` |
-| **Kind** | experiment |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
-| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0010_matched_mismatch_library/assets/paper/10.48550_arXiv.2305.04091/) |
-| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
-and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
-with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
-v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
-'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
-preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
-effect (see research_papers.md, Wang2023 and Zhou2022).
-
-</details>
 
 <details>
 <summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
@@ -128,6 +105,51 @@ trajectory schema, never via internal helpers, to preserve isolation.
 </details>
 
 <details>
+<summary>🧪 <strong>Phase 2 calibration-focused A/B with explicit confidence
+elicitation (recommended Candidate 2)</strong> (S-0025-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0025-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
+| **Source paper** | [`10.48550_arXiv.2407.18370`](../../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/assets/paper/10.48550_arXiv.2407.18370/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Run a minimum-viable Phase 2 A vs B experiment on a 30-instance subset of the composite
+benchmark, eliciting agent self-reported confidence at every action and using a sonnet rotated
+judge plus programmatic graders to break the t0019 anchoring effect. Primary metrics:
+normalized task success and overconfident-error-rate (incorrect actions taken with
+self-reported confidence above a threshold). This is the cheapest design that produces RQ1 +
+RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23
+budget.
+
+</details>
+
+<details>
+<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
+for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0025-04` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
+haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
+judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
+Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
+SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
+judge from the gradient.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
 hypothesis on the model-only delta</strong> (S-0014-03)</summary>
 
@@ -172,27 +194,6 @@ error labels into the existing harness output, and report progress-rate means an
 error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
 responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
 task was built for.
-
-</details>
-
-<details>
-<summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
-WorkArena++</strong> (S-0002-03)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0002-03` |
-| **Kind** | library |
-| **Date added** | 2026-04-29 |
-| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
-| **Source paper** | [`10.48550_arXiv.2407.05291`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2407.05291/) |
-| **Categories** | [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow
-developer instance and the BrowserGym Python harness. This is a substantial infrastructure
-task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
-any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
-annotation begins.
 
 </details>
 
@@ -264,6 +265,29 @@ prompts (B vs G/S/A from the project's research questions).
 ## Medium Priority
 
 <details>
+<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
+t0012</strong> (S-0010-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0010-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md) |
+| **Source paper** | [`10.48550_arXiv.2305.04091`](../../../tasks/t0010_matched_mismatch_library/assets/paper/10.48550_arXiv.2305.04091/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
+and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
+with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
+v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
+'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
+preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
+effect (see research_papers.md, Wang2023 and Zhou2022).
+
+</details>
+
+<details>
 <summary>📊 <strong>Add finer-grained SWE-bench subgoals at the line-range and
 AST-node level</strong> (S-0022-03)</summary>
 
@@ -283,6 +307,27 @@ Implement a second subgoals JSON file with per-hunk line ranges parsed from the 
 and a small AST-node helper that maps line ranges to the enclosing function/class. Compare
 progress-rate distributions on the t0012 sample (or a fresh small SWE-bench eval) between the
 two granularities. Useful Metric 1 calibration step independent of t0023.
+
+</details>
+
+<details>
+<summary>📊 <strong>Adopt AgentBoard progress-rate as a secondary RQ1 metric
+alongside binary task success</strong> (S-0025-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0025-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
+| **Source paper** | [`10.48550_arXiv.2401.13178`](../../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/assets/paper/10.48550_arXiv.2401.13178/) |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+
+Ma2024 (AgentBoard) shows that pairs of models with identical binary success rates differ by
+up to 5.7 progress-rate points (Llama2-13b vs Mistral-7b), revealing differences invisible in
+success-only evaluation. Add progress-rate as Metric 1b for every Phase 2 A/B/C run so that
+even runs that tie on success surface granularity-conditioning differences in mid-trajectory
+behaviour.
 
 </details>
 
@@ -371,6 +416,28 @@ tag_missing_defaulted_to_atomic warning observation. The deterministic tests cov
 path but the fallback rate against real LLMs (GPT-4o, Claude 3.7 Sonnet, Llama-3.1-70B) is
 unknown. Build an evaluation task that runs each library at each granularity over N=20
 problems per benchmark and reports the fallback rate alongside task success.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 three-arm A/B/C pilot at half scale to test the
+strict-double-inequality form of RQ5</strong> (S-0025-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0025-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
+| **Source paper** | [`10.48550_arXiv.2405.15821`](../../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/assets/paper/10.48550_arXiv.2405.15821/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Wen2024 NTPO is the only paper that directly observes a mismatched-scope condition
+underperforming both baselines, but it is in the RL fine-tuning regime, not prompting. To test
+RQ5's strict double inequality (C < both A and B) under our prompting framing, run all three
+arms on a half-scale (15-instance) subset of the composite benchmark, ~$15-20. Lower-priority
+than S-0025-01 because RQ5 is a sub-hypothesis and the strict form is the most expensive to
+falsify.
 
 </details>
 
@@ -778,6 +845,27 @@ global' adversarial maps and report the per-step contribution. If the two choice
 materially, document the chosen direction and the empirical justification in
 matched_mismatch_v1's description.md. If they do not differ, lock the current choice and
 remove the ambiguity note.
+
+</details>
+
+<details>
+<summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
+WorkArena++</strong> (S-0002-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0002-03` |
+| **Kind** | library |
+| **Date added** | 2026-04-29 |
+| **Source task** | [`t0002_literature_survey_granularity_conditioning`](../../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) |
+| **Source paper** | [`10.48550_arXiv.2407.05291`](../../../tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2407.05291/) |
+| **Categories** | [`benchmark-workarena`](../../../meta/categories/benchmark-workarena/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow
+developer instance and the BrowserGym Python harness. This is a substantial infrastructure
+task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
+any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
+annotation begins.
 
 </details>
 

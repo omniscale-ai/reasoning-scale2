@@ -6,7 +6,7 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 
 **Detail pages**: [Papers (14)](../papers/by-category/hierarchical-planning.md) | [Answers
 (2)](../answers/by-category/hierarchical-planning.md) | [Suggestions
-(25)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
+(26)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
 (4)](../datasets/by-category/hierarchical-planning.md) | [Libraries
 (4)](../libraries/by-category/hierarchical-planning.md) | [Predictions
 (2)](../predictions/by-category/hierarchical-planning.md)
@@ -751,7 +751,7 @@ matched pool.
 
 </details>
 
-## Suggestions (18 open, 7 closed)
+## Suggestions (19 open, 7 closed)
 
 <details>
 <summary>🧪 <strong>Confirmatory v2 vs v1 schema sweep with fresh annotations and
@@ -852,6 +852,22 @@ error labels into the existing harness output, and report progress-rate means an
 error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
 responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
 task was built for.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Investigate group-level (subtask-level) DPO as an alternative to
+A/B/C prompting for granularity conditioning</strong> (S-0025-06)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Gao2026 HPL ablates trajectory-, step-, and group-level DPO and isolates the group-level term
+as the primary driver of the +3.97 abs gain over IPR on Qwen2.5-7B. The group level
+corresponds exactly to the project's mid-granularity (subtask) annotation layer. If Phase 2
+A/B/C prompting shows weak runtime gains, the next experiment should be a small-scale
+group-level DPO fine-tune on the v2-tree annotated subset, comparing to a flat-DPO baseline.
+Defer until after Phase 2 is complete and budget is reassessed.
 
 </details>
 

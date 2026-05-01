@@ -6,7 +6,7 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 
 **Detail pages**: [Papers (14)](../papers/by-category/agent-evaluation.md) | [Answers
 (1)](../answers/by-category/agent-evaluation.md) | [Suggestions
-(43)](../suggestions/by-category/agent-evaluation.md) | [Datasets
+(47)](../suggestions/by-category/agent-evaluation.md) | [Datasets
 (4)](../datasets/by-category/agent-evaluation.md) | [Libraries
 (5)](../libraries/by-category/agent-evaluation.md) | [Predictions
 (4)](../predictions/by-category/agent-evaluation.md)
@@ -706,7 +706,7 @@ canonical.
 
 </details>
 
-## Suggestions (34 open, 9 closed)
+## Suggestions (38 open, 9 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -1017,6 +1017,70 @@ task was built for.
 </details>
 
 <details>
+<summary>🧪 <strong>Phase 2 calibration-focused A/B with explicit confidence
+elicitation (recommended Candidate 2)</strong> (S-0025-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Run a minimum-viable Phase 2 A vs B experiment on a 30-instance subset of the composite
+benchmark, eliciting agent self-reported confidence at every action and using a sonnet rotated
+judge plus programmatic graders to break the t0019 anchoring effect. Primary metrics:
+normalized task success and overconfident-error-rate (incorrect actions taken with
+self-reported confidence above a threshold). This is the cheapest design that produces RQ1 +
+RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23
+budget.
+
+</details>
+
+<details>
+<summary>📊 <strong>Adopt AgentBoard progress-rate as a secondary RQ1 metric
+alongside binary task success</strong> (S-0025-02)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Ma2024 (AgentBoard) shows that pairs of models with identical binary success rates differ by
+up to 5.7 progress-rate points (Llama2-13b vs Mistral-7b), revealing differences invisible in
+success-only evaluation. Add progress-rate as Metric 1b for every Phase 2 A/B/C run so that
+even runs that tie on success surface granularity-conditioning differences in mid-trajectory
+behaviour.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Phase 2 three-arm A/B/C pilot at half scale to test the
+strict-double-inequality form of RQ5</strong> (S-0025-03)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Wen2024 NTPO is the only paper that directly observes a mismatched-scope condition
+underperforming both baselines, but it is in the RL fine-tuning regime, not prompting. To test
+RQ5's strict double inequality (C < both A and B) under our prompting framing, run all three
+arms on a half-scale (15-instance) subset of the composite benchmark, ~$15-20. Lower-priority
+than S-0025-01 because RQ5 is a sub-hypothesis and the strict form is the most expensive to
+falsify.
+
+</details>
+
+<details>
+<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
+for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
+haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
+judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
+Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
+SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
+judge from the gradient.
+
+</details>
+
+<details>
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
 report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
 
@@ -1125,7 +1189,7 @@ luck.
 <summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
 WorkArena++</strong> (S-0002-03)</summary>
 
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: library | **Priority**: low | **Date**: 2026-04-29 | **Source**:
 [t0002_literature_survey_granularity_conditioning](../../tasks/t0002_literature_survey_granularity_conditioning/)
 
 Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow
@@ -1243,7 +1307,7 @@ later-merged task. This is the cheapest insurance against silent schema drift.
 <summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
 t0012</strong> (S-0010-01)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-29 | **Source**:
 [t0010_matched_mismatch_library](../../tasks/t0010_matched_mismatch_library/)
 
 When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A

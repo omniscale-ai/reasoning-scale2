@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-01T18:03:16Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-01T21:53:55Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>66460</char_count>
-    <byte_count>66555</byte_count>
-    <estimated_tokens>16615</estimated_tokens>
+    <char_count>68085</char_count>
+    <byte_count>68188</byte_count>
+    <estimated_tokens>17021</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -152,9 +152,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0020_v2_truncation_vs_schema_ablation</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
+        <id>t0024_brainstorm_results_7</id>
+        <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
       </source_ids>
       <content>
-Completed tasks: 22
+Completed tasks: 24
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -287,23 +289,25 @@ ID: t0022_abc_harness_progress_rate_and_error_taxonomy
 Completed: 2026-05-01
 Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
 Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Summary Built and validated the `abc_harness_metrics` library: Ma2024 AgentBoard discrete-subgoal progress rate plus Li2024 Embodied Agent Interface six-plus-one error taxonomy. The library exposes `compute_progress_rate`, `classify_error`, and the high-level `score_trajectory` entry point, with 26 unit tests passing and a t0012 replay confirming end-to-end correctness on production-shape trajectories. Metrics * **Progress-rate mean across 89 t0012 trajectories**: **0.103** (decision threshold &gt; 0.05) — the library detects intermediate progress on real agent traces, not zero or one. * **Progress-rate standard deviation**...
+
+## Brainstorm session 7: rescope around RQ answers after t0019 calibration finding
+ID: t0024_brainstorm_results_7
+Completed: 2026-05-01
+Short description: Brainstorm 7: cancel t0023, schedule rescoped t0025 (N=80, $25 cap) to answer RQ1/2/4/5; defer RQ3.
+Result summary: Brainstorm Session 7 — Results Summary Summary Cancelled t0023 ($40-45 estimated, exceeds the $26.12 remaining budget), replaced it with t0025 — a 10-paper literature survey on hierarchical agents and LLM-as-judge methodology — and deferred the phase 2 ABC sonnet experiment to a post-survey Brainstorm Session 8. Five suggestions corrected (three rejected, two demoted). No RQ answered. Headline Decisions * Cancelled t0023 (`phase2_abc_confirmatory_sonnet_swebench`, $40-45 estimated) because its cost exceeds the $26.12 remaining project budget. * Created t0025 (`lit_survey_hierarchical_agents_and_judges_2024_2026`) — a focused 10-paper literature survey of 2024-2026 work on hierarchical...
+
+## Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)
+ID: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
+Completed: 2026-05-01
+Short description: Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 from existing t0017 paper summaries plus t0014/t0019/t0020 findings.
+Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0025_lit_survey_hierarchical_agents_and_judges_2024_2026&quot; date_completed: &quot;2026-05-01&quot; status: &quot;complete&quot; --- Results Summary: Best-Available Answers to RQ1-RQ5 Summary This task was re-scoped after the implementation prestep discovered that all 10 originally planned paper assets already exist under `t0017_literature_hierarchical_agents_and_judges`. Rather than duplicate them, the task now answers the project&#x27;s five Research Questions (RQ1-RQ5) directly, using the existing t0017 paper summaries plus prior project findings from t0014, t0019, and t0020 as evidence. The headline finding is that **RQ1 and RQ4 have strong external-literature support, RQ2/RQ3/RQ5...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
-      <source_ids>
-        <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
-      </source_ids>
       <content>
-Planned or active tasks: 1
-
-## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
-ID: t0023_phase2_abc_confirmatory_sonnet_swebench
-Status: not_started
-Effective date: 2026-05-01
-Short description: Confirmatory N&gt;=157 paired ABC run with claude-sonnet-4-6 on SWE-bench Verified Lite using the new metrics library to test RQ1, RQ5, RQ6, RQ9.
-Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_progress_rate_and_error_taxonomy
+Planned or active tasks: 0
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">

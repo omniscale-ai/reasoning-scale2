@@ -11,8 +11,8 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-23-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-74-DAA520" alt="Suggestions"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-25-4682B4" alt="Tasks"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-80-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-3-DC143C" alt="Results"></a>
@@ -29,16 +29,16 @@
 [hierarchical-planning](by-category/hierarchical-planning.md) |
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
-**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (8K) |
-[full](llm-context/full.xml) (99K) | [roadmap](llm-context/roadmap.xml) (22K) |
-[results](llm-context/results-deep-dive.xml) (85K) |
+**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (9K) |
+[full](llm-context/full.xml) (107K) | [roadmap](llm-context/roadmap.xml) (21K) |
+[results](llm-context/results-deep-dive.xml) (95K) |
 [assets](llm-context/literature-and-assets.xml) (17K)
 
-*Last updated: 2026-05-01 18:03 UTC*
+*Last updated: 2026-05-01 21:53 UTC*
 
 * **Budget**: **$74** spent of $100
 * **Remaining**: **$26**
-* **Usage**: `███████████████░░░░░` 73.9%
+* **Usage**: `███████████████░░░░░` 74.1%
 
 ---
 
@@ -54,11 +54,9 @@ No tasks in progress.
 
 ---
 
-## [Ready to Start (1)](tasks/by-status/not_started.md)
+## [Ready to Start (0)](tasks/by-status/not_started.md)
 
-| # | Task | Description | Date Added |
-|---|------|-------------|------------|
-| 0023 | [Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench](../overview/tasks/task_pages/t0023_phase2_abc_confirmatory_sonnet_swebench.md) | [`description`](../tasks/t0023_phase2_abc_confirmatory_sonnet_swebench/task_description.md) | 2026-05-01 |
+No tasks ready to start.
 
 ---
 
@@ -68,11 +66,13 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (22 total)](tasks/by-status/completed.md)
+## [Recently Completed (24 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0025 | [Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)](../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | [`results`](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/results/results_detailed.md) | 2026-05-01 21:46 |
 | 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`results`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/results_detailed.md) | 2026-05-01 20:40 |
+| 0024 | [Brainstorm session 7: rescope around RQ answers after t0019 calibration finding](../overview/tasks/task_pages/t0024_brainstorm_results_7.md) | [`results`](../tasks/t0024_brainstorm_results_7/results/results_detailed.md) | 2026-05-01 19:30 |
 | 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | [`results`](../tasks/t0019_v2_judge_calibration_sonnet/results/results_detailed.md) | 2026-05-01 17:55 |
 | 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`results`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/results_detailed.md) | 2026-05-01 17:10 |
 | 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
@@ -80,10 +80,8 @@ No blocked tasks.
 | 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`results`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/results_detailed.md) | 2026-05-01 04:43 |
 | 0017 | [Literature: Hierarchical Agents and LLM-as-Judge](../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) | [`results`](../tasks/t0017_literature_hierarchical_agents_and_judges/results/results_detailed.md) | 2026-05-01 01:40 |
 | 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`results`](../tasks/t0014_v2_annotator_sonnet_rerun/results/results_detailed.md) | 2026-04-30 23:59 |
-| 0016 | [Brainstorm session 5: prune backlog after t0014 deconfound](../overview/tasks/task_pages/t0016_brainstorm_results_5.md) | [`results`](../tasks/t0016_brainstorm_results_5/results/results_detailed.md) | 2026-04-30 22:30 |
-| 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`results`](../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) | 2026-04-30 19:32 |
 
-*12 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*14 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -108,7 +106,7 @@ No blocked tasks.
 
 ---
 
-## [Recent Suggestions (60 open)](suggestions/)
+## [Recent Suggestions (66 open)](suggestions/)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -282,7 +280,7 @@ possible follow-up that materially improves statistical power.
 
 </details>
 
-*50 more open suggestions → [open suggestions](suggestions/)*
+*56 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
@@ -394,6 +392,39 @@ task was built for.
 </details>
 
 <details>
+<summary>🧪 <strong>Phase 2 calibration-focused A/B with explicit confidence
+elicitation (recommended Candidate 2)</strong> (S-0025-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+Run a minimum-viable Phase 2 A vs B experiment on a 30-instance subset of the composite
+benchmark, eliciting agent self-reported confidence at every action and using a sonnet rotated
+judge plus programmatic graders to break the t0019 anchoring effect. Primary metrics:
+normalized task success and overconfident-error-rate (incorrect actions taken with
+self-reported confidence above a threshold). This is the cheapest design that produces RQ1 +
+RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23
+budget.
+
+</details>
+
+<details>
+<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
+for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
+
+t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
+haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
+judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
+Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
+SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
+judge from the gradient.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
 hypothesis on the model-only delta</strong> (S-0014-03)</summary>
 
@@ -427,36 +458,6 @@ $50-200 range, the cost differential dominates: a 200-row sonnet annotation pass
 $40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
 annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
 judge bias.
-
-</details>
-
-<details>
-<summary>📚 <strong>Set up ServiceNow + BrowserGym harness shared by WorkArena and
-WorkArena++</strong> (S-0002-03)</summary>
-
-**Kind**: library | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-Both WorkArena [Drouin2024] and WorkArena++ [Boisvert2024] require a self-hosted ServiceNow
-developer instance and the BrowserGym Python harness. This is a substantial infrastructure
-task with credentials, container orchestration, and end-to-end smoke tests. Schedule it before
-any task that needs WorkArena or WorkArena++ data so the harness is ready when Phase 1
-annotation begins.
-
-</details>
-
-<details>
-<summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
-pipeline</strong> (S-0002-04)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
-
-FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch
-AI's evaluation pipeline; the raw problems are not publicly downloadable. The project needs an
-explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
-(MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
-1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
 
 </details>
 
@@ -1088,7 +1089,7 @@ No models yet.
 
 ---
 
-## [Cost Leaders (8 tasks with spend)](costs/)
+## [Cost Leaders (9 tasks with spend)](costs/)
 
 | Task | Cost | Date |
 |------|------|------|
@@ -1099,4 +1100,5 @@ No models yet.
 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`$2.93`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/costs.json) | 2026-05-01 14:53 |
 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`$2.42`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/costs.json) | 2026-05-01 20:40 |
 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`$0.54`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/costs.json) | 2026-05-01 17:10 |
+| [Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)](../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | [`$0.20`](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/results/costs.json) | 2026-05-01 21:46 |
 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`$0.06`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/costs.json) | 2026-04-29 20:14 |

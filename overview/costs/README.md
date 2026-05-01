@@ -1,6 +1,6 @@
 # Project Costs
 
-Spent $73.88 of $100.00 USD. $26.12 remains overall and $26.12 remains before the 100% stop
+Spent $74.08 of $100.00 USD. $25.92 remains overall and $25.92 remains before the 100% stop
 threshold.
 
 ## Budget Summary
@@ -8,15 +8,15 @@ threshold.
 | Field | Value |
 |-------|-------|
 | Total budget | $100.00 USD |
-| Total spent | $73.88 USD |
-| Budget left | $26.12 USD |
-| Budget left before stop threshold | $26.12 USD |
-| Spent percent | 73.88% |
+| Total spent | $74.08 USD |
+| Budget left | $25.92 USD |
+| Budget left before stop threshold | $25.92 USD |
+| Spent percent | 74.08% |
 | Warn threshold | 80% ($80.00) |
 | Stop threshold | 100% ($100.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 22 |
-| Tasks with non-zero spend | 8 |
+| Tasks with cost records | 24 |
+| Tasks with non-zero spend | 9 |
 | Skipped tasks | 1 |
 
 ## Service Totals
@@ -39,9 +39,10 @@ threshold.
 | `claude-haiku-4-5-annotator` | $1.55 |
 | `claude-haiku-4-5-judge` | $1.38 |
 | `claude-haiku-4-5_error_taxonomy_judge` | $0.86 |
+| `synthesis_subagent` | $0.20 |
 | `anthropic_api` | $0.06 |
 
-14 task cost record(s) are zero-cost and omitted from the main spend table.
+15 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 
@@ -55,6 +56,7 @@ threshold.
 | [`t0020_v2_truncation_vs_schema_ablation`](../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | completed | $2.93 | $6.00 | no |
 | [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | completed | $0.54 | $1.00 | no |
 | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | completed | $2.42 | $2.00 | yes |
+| [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | completed | $0.20 | $10.00 | no |
 
 ## Skipped Tasks
 
