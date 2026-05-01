@@ -59,9 +59,9 @@
       "step": 7,
       "name": "planning",
       "description": "Design the v2 library API, two-call protocol, parser, prompts, tests, and 5x3 smoke validation plan.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:15:04Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:17:30Z",
       "log_file": "logs/steps/007_planning/"
     },
     {
