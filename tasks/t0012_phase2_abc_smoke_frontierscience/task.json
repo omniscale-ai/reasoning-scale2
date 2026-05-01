@@ -5,14 +5,14 @@
   "name": "Phase 2 A/B/C smoke harness on FrontierScience subset",
   "short_description": "First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0009_hierarchical_annotation_v2",
     "t0010_matched_mismatch_library",
     "t0011_metric2_calibration_aggregator"
   ],
   "start_time": "2026-04-30T00:55:11Z",
-  "end_time": null,
+  "end_time": "2026-05-01T04:43:00Z",
   "expected_assets": {
     "predictions": 3,
     "library": 1
