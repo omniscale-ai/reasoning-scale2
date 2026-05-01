@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-05-01T16:04:55Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-05-01T16:23:48Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>2242</char_count>
-    <byte_count>2242</byte_count>
-    <estimated_tokens>560</estimated_tokens>
+    <char_count>2297</char_count>
+    <byte_count>2297</byte_count>
+    <estimated_tokens>574</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -18,14 +18,14 @@
       <source_name>aggregate_costs_full</source_name>
       <content>
 Total budget: $100.00
-Total spent: $54.04
-Budget remaining: $45.96
-Spent: 54.0%
+Total spent: $54.58
+Budget remaining: $45.42
+Spent: 54.6%
 
 ### Cost Breakdown by Category
 
 * annotator_sonnet_4_6: $19.77
-* claude-haiku-4-5: $18.37
+* claude-haiku-4-5: $18.91
 * annotator_haiku_4_5: $7.42
 * judge_haiku_4_5: $3.08
 * claude-haiku-4-5_progress_rate_judge: $1.55
@@ -36,7 +36,7 @@ Spent: 54.0%
 
 ### Cost Breakdown by Service
 
-* anthropic_api: $23.78
+* anthropic_api: $24.32
 
 ### Per-Task Costs
 
@@ -59,6 +59,7 @@ Spent: 54.0%
 * t0017_literature_hierarchical_agents_and_judges: $0.00
 * t0018_brainstorm_results_6: $0.00
 * t0020_v2_truncation_vs_schema_ablation: $2.93
+* t0021_plan_and_solve_v2_with_final_confidence: $0.54
 * t0022_abc_harness_progress_rate_and_error_taxonomy: $2.42
       </content>
     </section>

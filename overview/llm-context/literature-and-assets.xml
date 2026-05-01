@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-01T16:04:55Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-01T16:23:48Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>63346</char_count>
-    <byte_count>63441</byte_count>
-    <estimated_tokens>15836</estimated_tokens>
+    <char_count>64897</char_count>
+    <byte_count>64992</byte_count>
+    <estimated_tokens>16224</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -149,10 +149,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 20
+Completed tasks: 21
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -268,6 +269,12 @@ Completed: 2026-05-01
 Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
 Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the problem text to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree schema explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0); the pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20). Metrics * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%] * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%] *...
 
+## Plan-and-Solve v2 with final_confidence Field
+ID: t0021_plan_and_solve_v2_with_final_confidence
+Completed: 2026-05-01
+Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
+Result summary: Results Summary: Plan-and-Solve v2 with final_confidence Summary The deliverable is the `scope_unaware_planandsolve_v2` library that wraps the v1 Plan-and-Solve agent and emits a verbalized `final_confidence` field on every trajectory following the Xiong et al. 2024 section 3.2 protocol. The n=1 x 3 validation pass confirms the parser, two-call protocol, and confidence emission are wired end-to-end across all three conditions (A scope-aware, B scope-unaware, C scope-mismatched). The 0% task-success rate across all conditions on FrontierScience-Olympiad with claude-haiku-4-5 is consistent with the t0012 floor finding for the same benchmark and model and is the explicit motivation for the...
+
 ## ABC Harness with Progress Rate and EAI Error Taxonomy
 ID: t0022_abc_harness_progress_rate_and_error_taxonomy
 Completed: 2026-05-01
@@ -280,23 +287,16 @@ Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Su
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0019_v2_judge_calibration_sonnet</id>
-        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 ID: t0019_v2_judge_calibration_sonnet
 Status: in_progress
 Effective date: 2026-05-01
 Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
-
-## Plan-and-Solve v2 with final_confidence Field
-ID: t0021_plan_and_solve_v2_with_final_confidence
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -592,9 +592,10 @@ Hierarchical Annotation v2-sonnet is the controlled-rerun companion to t0009&#x2
         <id>scope_unaware_planandsolve_v1</id>
         <id>abc_harness_metrics</id>
         <id>phase2_smoke_harness_v1</id>
+        <id>scope_unaware_planandsolve_v2</id>
       </source_ids>
       <content>
-Libraries: 6
+Libraries: 7
 
 ## Matched-Mismatch Agent (v1)
 ID: matched_mismatch_v1
@@ -637,6 +638,13 @@ Version: 0.1.0
 Created by task: t0012_phase2_abc_smoke_frontierscience
 Module paths: tasks/t0012_phase2_abc_smoke_frontierscience/code/charts.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/constants.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/harness.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/model_call.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/paths.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/run_smoke.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/stats.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/tools.py
 The harness is the substrate for every Phase 2 A/B/C run on the project&#x27;s hierarchical- annotation data. It pairs three agent libraries against the same problem set and the same model, computes the three registered project metrics in the explicit-variant format, runs paired hypothesis tests, and produces an asset-compliant predictions JSONL per condition plus two charts. Cost control is built into the run loop, and...
+
+## Scope-Unaware Plan-and-Solve v2 (with final_confidence)
+ID: scope_unaware_planandsolve_v2
+Version: 1
+Created by task: t0021_plan_and_solve_v2_with_final_confidence
+Module paths: tasks/t0021_plan_and_solve_v2_with_final_confidence/code/planandsolve_v2.py, tasks/t0021_plan_and_solve_v2_with_final_confidence/code/constants.py, tasks/t0021_plan_and_solve_v2_with_final_confidence/code/paths.py
+This library ships a thin v2 wrapper around the existing scope-unaware Plan-and-Solve agent that emits a verbalized `final_confidence` value on every result. The implementation strategy is composition: v1 is imported unchanged, the v1 agent runs to produce an answer, and a single post-call elicitation following the Xiong et al. 2024 section 3.2 black-box protocol attaches a `[0.0, 1.0]` confidence (or `None` on...
       </content>
     </section>
     <section id="metrics" source_kind="aggregator">

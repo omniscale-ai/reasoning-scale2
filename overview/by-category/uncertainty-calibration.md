@@ -6,8 +6,8 @@ probabilities.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/uncertainty-calibration.md) |
-[Suggestions (8)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
-(2)](../libraries/by-category/uncertainty-calibration.md)
+[Suggestions (10)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
+(3)](../libraries/by-category/uncertainty-calibration.md)
 
 ---
 
@@ -117,7 +117,7 @@ condition's confidence elicitation.
 
 No answers in this category.
 
-## Suggestions (5 open, 3 closed)
+## Suggestions (7 open, 3 closed)
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -136,6 +136,40 @@ ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-a
 that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
 annotation rerun. Deliverable: a small library that wraps the existing judge call with
 confidence + abstain semantics, exposed to t0009-style annotation tasks.
+
+</details>
+
+<details>
+<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
+confirmatory run</strong> (S-0021-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0021_plan_and_solve_v2_with_final_confidence](../../tasks/t0021_plan_and_solve_v2_with_final_confidence/)
+
+The v2 library now emits final_confidence on every trajectory across all three conditions,
+which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
+reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
+addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
+informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
+Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
+shifts or just accuracy shifts.
+
+</details>
+
+<details>
+<summary>📚 <strong>Add a JSON-mode fallback path to the confidence elicitation if
+larger runs hit the 20% parse-failure gate</strong> (S-0021-03)</summary>
+
+**Kind**: library | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0021_plan_and_solve_v2_with_final_confidence](../../tasks/t0021_plan_and_solve_v2_with_final_confidence/)
+
+The smoke parse-failure rate on haiku is 0/3 on n=1 x 3, so the strict regex parser is fine
+for haiku at this scale. However, if the t0023 sonnet run or any future larger run pushes the
+parse-failure rate above the documented 20% gate (REQ-10), the library should fall back to
+JSON-mode output (e.g., a tool-use call returning {confidence: 0.85}) instead of free-form
+text. Implement this as an opt-in path so the existing two-call protocol stays the default and
+the JSON fallback only activates when the model demonstrably cannot produce parseable output.
+Keep the verbalized prompt as the canonical Xiong2024 §3.2 protocol.
 
 </details>
 

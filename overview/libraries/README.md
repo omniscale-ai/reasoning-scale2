@@ -1,6 +1,6 @@
-# Libraries (6)
+# Libraries (7)
 
-6 librar(y/ies).
+7 librar(y/ies).
 
 **Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
 [`benchmark-frontierscience`](by-category/benchmark-frontierscience.md),
@@ -242,5 +242,40 @@ trajectory writer.
 
 Scope-unaware Plan-and-Solve agent adapting LangChain Plan-and-Execute as the canonical
 condition-B baseline for the project's A-vs-B-vs-C comparison.
+
+</details>
+
+<details>
+<summary>📦 <strong>Scope-Unaware Plan-and-Solve v2 (with final_confidence)</strong>
+(<code>scope_unaware_planandsolve_v2</code>)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `scope_unaware_planandsolve_v2` |
+| **Version** | 1 |
+| **Modules** | `tasks/t0021_plan_and_solve_v2_with_final_confidence/code/planandsolve_v2.py`, `tasks/t0021_plan_and_solve_v2_with_final_confidence/code/constants.py`, `tasks/t0021_plan_and_solve_v2_with_final_confidence/code/paths.py` |
+| **Dependencies** | — |
+| **Date created** | 2026-05-01 |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`hierarchical-planning`](../../meta/categories/hierarchical-planning/) |
+| **Created by** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Documentation** | [`description.md`](../../tasks/t0021_plan_and_solve_v2_with_final_confidence/assets/library/scope_unaware_planandsolve_v2/description.md) |
+
+**Entry points:**
+
+* `PlanAndSolveAgentV2` (class) — Plan-and-Solve v2 agent. Composes the v1 agent and emits a
+  verbalized final_confidence on every AgentResultV2 result.
+* `AgentResultV2` (class) — Aggregate output: final_answer, trajectory, plan, final_confidence
+  (0..1 or None), final_confidence_parse_failures (0/1/2).
+* `TrajectoryRecordV2` (class) — Trajectory record with the canonical six v1 fields plus
+  final_confidence (populated only on the finishing record).
+* `elicit_final_confidence` (function) — Issue the Xiong2024 verbalized-confidence prompt once
+  with one retry on parse failure; returns (value_in_[0,1] or None,
+  parse_failures_in_{0,1,2}).
+* `parse_final_confidence` (function) — Strict regex parser: match
+  \b(0(?:\.\d+)?|1(?:\.0+)?)\b, take last match, clamp to [0.0, 1.0]; return None when no
+  match.
+
+Wraps the v1 scope-unaware Plan-and-Solve agent and adds a verbalized final_confidence field
+on every trajectory, following the Xiong et al. 2024 section 3.2 protocol.
 
 </details>

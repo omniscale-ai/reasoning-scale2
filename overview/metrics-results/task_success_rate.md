@@ -1,6 +1,6 @@
 # Task Success Rate
 
-**Key**: `task_success_rate` | **Unit**: accuracy | **Results**: 6
+**Key**: `task_success_rate` | **Unit**: accuracy | **Results**: 9
 
 [Back to all metrics](README.md)
 
@@ -12,3 +12,6 @@
 | 4 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition A: scope-aware ReAct | **0.025** |
 | 5 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition B: scope-unaware Plan-and-Solve | **0.0** |
 | 6 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition C: scope-mismatched (random) | **0.0** |
+| 7 | [Plan-and-Solve v2 with final_confidence Field](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition A: scope-aware ReAct | **0.0** |
+| 8 | [Plan-and-Solve v2 with final_confidence Field](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition B: scope-unaware Plan-and-Solve v2 | **0.0** |
+| 9 | [Plan-and-Solve v2 with final_confidence Field](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition C: scope-mismatched (random) | **0.0** |

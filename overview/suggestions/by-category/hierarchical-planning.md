@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-23 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **16 open** (4
-high, 9 medium, 3 low), **7 closed**.
+24 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **17 open** (4
+high, 10 medium, 3 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -160,6 +160,29 @@ AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expa
 rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
 smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
 rate, ~$5-6 added cost. Inherits S-0005-01.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Investigate the 31-decision scope-mismatched trajectory at larger
+sample size</strong> (S-0021-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0021-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The n=1 smoke for Condition C (matched-mismatch wrapping scope_unaware_planandsolve_v2) used
+31 decisions on a single FrontierScience-Olympiad row, vs 8 for B and 1 for A. At n=1 this is
+one observation, but it is a strong signal that the matched-mismatch wrapper plus
+contradictory granularity guidance can trigger a planning loop in the v1 Plan-and-Solve agent.
+In t0023's larger run, log per-row decision counts and check whether C's distribution is
+heavy-tailed compared to B; if it is, design a follow-up to root-cause whether the loop comes
+from the wrapper, the scope mismatch, or the v1 planner itself.
 
 </details>
 

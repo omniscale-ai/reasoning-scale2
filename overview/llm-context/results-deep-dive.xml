@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-01T16:04:55Z">
+<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-01T16:23:48Z">
   <archive_summary>
     <title>Results Deep Dive</title>
     <description>Completed-task result summaries plus all detailed results reports.</description>
     <use_case>Performance analysis, experiment comparison, and result interpretation.</use_case>
-    <section_count>24</section_count>
-    <char_count>280868</char_count>
-    <byte_count>281950</byte_count>
-    <estimated_tokens>70217</estimated_tokens>
+    <section_count>25</section_count>
+    <char_count>295859</char_count>
+    <byte_count>297013</byte_count>
+    <estimated_tokens>73964</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -146,10 +146,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
+        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 20
+Completed tasks: 21
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -265,6 +266,12 @@ Completed: 2026-05-01
 Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
 Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the problem text to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree schema explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0); the pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20). Metrics * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%] * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%] *...
 
+## Plan-and-Solve v2 with final_confidence Field
+ID: t0021_plan_and_solve_v2_with_final_confidence
+Completed: 2026-05-01
+Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
+Result summary: Results Summary: Plan-and-Solve v2 with final_confidence Summary The deliverable is the `scope_unaware_planandsolve_v2` library that wraps the v1 Plan-and-Solve agent and emits a verbalized `final_confidence` field on every trajectory following the Xiong et al. 2024 section 3.2 protocol. The n=1 x 3 validation pass confirms the parser, two-call protocol, and confidence emission are wired end-to-end across all three conditions (A scope-aware, B scope-unaware, C scope-mismatched). The 0% task-success rate across all conditions on FrontierScience-Olympiad with claude-haiku-4-5 is consistent with the t0012 floor finding for the same benchmark and model and is the explicit motivation for the...
+
 ## ABC Harness with Progress Rate and EAI Error Taxonomy
 ID: t0022_abc_harness_progress_rate_and_error_taxonomy
 Completed: 2026-05-01
@@ -277,23 +284,16 @@ Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Su
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0019_v2_judge_calibration_sonnet</id>
-        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 ID: t0019_v2_judge_calibration_sonnet
 Status: in_progress
 Effective date: 2026-05-01
 Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
-
-## Plan-and-Solve v2 with final_confidence Field
-ID: t0021_plan_and_solve_v2_with_final_confidence
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -4189,6 +4189,205 @@ Requirements derived from `plan/plan.md`:
   `results/results_detailed.md` Analysis section, full_answer.md Synthesis section.
 
 REQ-7 is the only requirement marked Partial; all others are Done with committed evidence.
+      </content>
+    </section>
+    <section id="t0021_plan_and_solve_v2_with_final_confidence-results-detailed" source_kind="file">
+      <title>t0021_plan_and_solve_v2_with_final_confidence — Plan-and-Solve v2 with final_confidence Field — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0021_plan_and_solve_v2_with_final_confidence</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0021_plan_and_solve_v2_with_final_confidence/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0021_plan_and_solve_v2_with_final_confidence&quot;
+---
+### Results Detailed: Plan-and-Solve v2 with final_confidence
+
+#### Summary
+
+The task ships the `scope_unaware_planandsolve_v2` library, a thin wrapper around the v1
+Plan-and-Solve agent (built in t0007) that adds a verbalized `final_confidence` field on every
+trajectory. The new field is elicited via a separate post-call following the Xiong et al. 2024
+section 3.2 black-box protocol, parsed with a strict regex, retried once on parse failure, and
+clamped to `[0.0, 1.0]`. A small n=1 x 3 validation pass on FrontierScience-Olympiad with
+claude-haiku-4-5 confirms the plumbing is correct end-to-end across all three conditions (A
+scope-aware, B scope-unaware, C scope-mismatched). The library, not the smoke numbers, is the
+deliverable; the larger confirmatory comparison is t0023&#x27;s job.
+
+#### Methodology
+
+* **Machine**: local — Apple Silicon laptop running the Anthropic API client; no remote compute.
+* **Model**: `claude-haiku-4-5` for both the agent calls and the confidence-elicitation calls; haiku
+  also serves as the binary correctness judge.
+* **Validation pass size**: n=1 row x 3 conditions (3 trajectories total). The smoke is a plumbing
+  test, not a power-meaningful comparison; n is intentionally small to keep cost under the $1.00 cap
+  and to preserve t0023&#x27;s role as the confirmatory study.
+* **Conditions**:
+  * **A (scope-aware ReAct)**: chain-of-thought single-call agent followed by
+    `elicit_final_confidence`.
+  * **B (scope-unaware Plan-and-Solve v2)**: `PlanAndSolveAgentV2.run(...)` which composes the v1
+    agent and elicits the confidence field automatically.
+  * **C (scope-mismatched)**: `MatchedMismatchAgent.run(...)` from t0010 wrapped with
+    `elicit_final_confidence`.
+* **Confidence elicitation**: two-call protocol per row. After the agent produces its final answer,
+  a second call asks the model to rate its confidence in `[0,1]`; on parse failure, one stricter
+  retry is issued; on second failure the field is `null` and a parse-failure counter is incremented.
+* **Runtime**: total wall-clock 786.69 s (~13 min) for the full smoke. Started 2026-05-01T14:33Z,
+  finished ~2026-05-01T14:46Z (UTC).
+* **Total cost**: $0.5383 of the $1.00 budget cap; 43 model calls (3 trajectories + judge calls +
+  agent reasoning calls).
+* **Pre-flight**: 16-test pytest suite (`code/test_planandsolve_v2.py`) validates the parser, the
+  retry logic, the v1 schema invariants, and `PlanAndSolveAgentV2.run` end-to-end with the
+  deterministic v1 `ScriptedModel`. All 16 tests pass.
+
+#### Metrics Tables
+
+Verbatim from `results/metrics.json` (explicit-variant format with three condition variants):
+
+| Variant | Agent | n | task_success_rate | overconfident_error_rate | avg_decisions_per_task |
+| --- | --- | --- | --- | --- | --- |
+| `condition_a_scope_aware` | `scope_aware_react_v1` | 1 | **0.0** | **1.0** | **1.0** |
+| `condition_b_scope_unaware` | `scope_unaware_planandsolve_v2` | 1 | **0.0** | **0.0** | **8.0** |
+| `condition_c_scope_mismatched` | `matched_mismatch_v1` (delegate `scope_unaware_planandsolve_v2`) | 1 | **0.0** | **0.0** | **31.0** |
+
+Parse-failure totals (from `results/smoke_report.json`):
+
+* Overall parse-failure rate: **0.0** (3/3 confidence calls parsed on the first try).
+* Per-condition parse-failure totals: A=0, B=0, C=0.
+* Plan gate (REQ-10): parse failure must stay under 20%; the smoke is well within that bound.
+
+#### Comparison vs Baselines
+
+The relevant prior task is t0012 (Phase 2 A/B/C smoke on the same FrontierScience-Olympiad benchmark
+with the same `claude-haiku-4-5` model), which produced these per-condition `task_success_rate`
+values: A=**0.025** (1/40), B=**0.000** (0/40), C=**0.000** (0/11). The current n=1 x 3 pass also
+hits floor (A=0/1, B=0/1, C=0/1), which is consistent with the t0012 finding and is the expected
+state for this benchmark with this model.
+
+The headline difference vs t0012 is **structural**, not numerical: t0012&#x27;s Plan-and-Solve agent did
+NOT emit `final_confidence` on conditions B and C, which collapsed Metric 2 to 0 by construction and
+made paired calibration analysis ill-defined. This task fixes that — the v2 library now emits
+`final_confidence` for all three conditions, so downstream confirmatory work (t0023, on a larger
+sample with sonnet) can compare Metric 2 values across conditions on a meaningful basis.
+
+The lone non-zero Metric 2 value here (A=1.0) reflects that the single A row was incorrect with high
+confidence; that single observation is not a calibration finding by itself, only evidence that the
+field is wired and the metric is non-degenerate.
+
+#### Analysis
+
+The most actionable side-finding from this validation pass is the per-condition decision count:
+
+* **A (scope-aware ReAct)**: 1 decision. The CoT-style single-call agent terminates immediately.
+* **B (scope-unaware Plan-and-Solve v2)**: 8 decisions, in the expected range for v1 Plan-and-Solve
+  on a hard problem.
+* **C (scope-mismatched)**: **31 decisions**, ~4x more than B and 31x more than A.
+
+A 31-decision trajectory at n=1 is a strong signal for further investigation in t0023. Plausible
+explanations: (1) the matched-mismatch wrapper triggered a planning loop where the agent kept
+re-planning under contradictory granularity guidance, (2) the agent never reached a confident
+finishing state and exhausted the step budget, (3) the wrapper&#x27;s prompt construction creates
+adversarial conditions for the v1 planner. This deserves an explicit calibration-of-decisions look
+in the larger t0023 run rather than acting on the n=1 observation here.
+
+The confidence emission worked as intended on all three conditions: 0/3 parse failures, no retries
+needed, and the field appears on the finishing trajectory record exactly as documented in the
+library description. The parser strict-regex behavior matches the unit tests (last numeric token
+wins; clamping at the word boundary handles values like `1.5` by matching the leading `1`).
+
+#### Limitations
+
+* **n=1 per condition is by design** — the smoke validates plumbing, not calibration or accuracy.
+  Any condition-vs-condition statistical claim from these numbers would be invalid; the larger
+  downstream confirmatory study (t0023, n&gt;=157 paired rows on sonnet) is the place where Metric 2
+  calibration claims become valid.
+* **Single benchmark and single model** — only FrontierScience-Olympiad and only haiku were
+  exercised. Other benchmarks or models may produce different parse-failure rates, confidence
+  distributions, or planning behavior.
+* **Haiku may produce a flat confidence distribution** in [0.7, 0.9] independent of correctness; the
+  library does not attempt to fix model calibration, only to emit the field. Per-model calibration
+  is a downstream concern.
+* **The 31-decision C trajectory is one observation**; do not infer a planning-loop pathology
+  without the larger sample.
+
+#### Verification
+
+* `verify_task_file` — PASSED.
+* `verify_logs` — PASSED.
+* `verify_task_results` — PASSED.
+* `verify_library_asset scope_unaware_planandsolve_v2 --task-id t0021_plan_and_solve_v2_with_final_confidence`
+  — PASSED.
+* `verify_pr_premerge --task-id t0021_plan_and_solve_v2_with_final_confidence --pr-number &lt;N&gt;` — to
+  be run after the PR opens.
+* Unit tests: 16/16 passing in `code/test_planandsolve_v2.py`.
+
+#### Files Created
+
+* `assets/library/scope_unaware_planandsolve_v2/details.json` — library metadata (spec_version 2).
+* `assets/library/scope_unaware_planandsolve_v2/description.md` — canonical library description with
+  YAML frontmatter, eight required sections, and Xiong2024 citation.
+* `assets/library/scope_unaware_planandsolve_v2/files/prompts/confidence_prompt.txt` — verbatim
+  Xiong2024 §3.2 prompt template.
+* `code/planandsolve_v2.py` — v2 agent (`PlanAndSolveAgentV2`), data classes (`AgentResultV2`,
+  `TrajectoryRecordV2`), parser (`parse_final_confidence`), and elicitation helper
+  (`elicit_final_confidence`).
+* `code/constants.py` — schema constants (`TRAJECTORY_RECORD_V2_FIELDS`, etc.).
+* `code/paths.py` — centralized path constants for the smoke harness and tests.
+* `code/model_call.py` — copy of t0012&#x27;s Anthropic API wrapper with `CostTracker`.
+* `code/calibration.py` — copy of t0011&#x27;s `compute_overconfident_error_rate` and helpers.
+* `code/run_smoke.py` — n=1 x 3 smoke validation harness.
+* `code/test_planandsolve_v2.py` — 16-test pytest suite.
+* `results/metrics.json` — explicit-variant format, three conditions, registered metric keys only.
+* `results/costs.json` — cost breakdown by model with `services` and `budget_limit` fields.
+* `results/remote_machines_used.json` — empty array (no remote compute).
+* `results/smoke_predictions.jsonl` — 3 rows (one per condition), full trajectories with
+  `final_confidence` populated.
+* `results/smoke_report.json` — top-level rollup with per-condition metrics, parse-failure rate,
+  total cost, and the 20% parse-failure gate flag.
+* `results/_call_log.jsonl` — raw agent call log (15 entries).
+* `results/_judge_log.jsonl` — raw judge call log (8 entries).
+* `results/results_summary.md` — this task&#x27;s headline summary.
+* `results/results_detailed.md` — this file.
+* `results/suggestions.json` — follow-up suggestions for t0023 and beyond.
+* `logs/commands/*` — auto-generated `run_with_logs` outputs for every CLI invocation.
+* `logs/steps/009_implementation/step_log.md` — implementation step log.
+
+#### Next Steps
+
+* **t0023** (already created from suggestion `S-0012-01`): runs the v2 library on a larger sample
+  (n&gt;=157) with sonnet to get a power-meaningful Metric 2 comparison across conditions.
+* Investigate the 31-decision C trajectory in t0023&#x27;s larger sample to confirm or refute the
+  planning-loop hypothesis.
+* Track confidence-vs-correctness calibration on t0023 to see whether the `[0,1]` field is actually
+  informative for the model or collapses to a flat distribution.
+
+#### Task Requirement Coverage
+
+The operative task request from
+`tasks/t0021_plan_and_solve_v2_with_final_confidence/task_description.md` and
+`task.json.short_description`:
+
+&gt; Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field,
+&gt; unblocking RQ4 in confirmatory ABC runs.
+
+The decomposed requirements (REQ IDs match `plan/plan.md`):
+
+| REQ | Status | Direct answer | Evidence |
+| --- | --- | --- | --- |
+| **REQ-1** Ship a registered library asset at `assets/library/scope_unaware_planandsolve_v2/` with `details.json`, canonical description, and source under `files/` | **Done** | Library is registered with `spec_version: &quot;2&quot;`, full `details.json`, eight-section `description.md`, and `files/prompts/confidence_prompt.txt`. | `assets/library/scope_unaware_planandsolve_v2/details.json`, `assets/library/scope_unaware_planandsolve_v2/description.md`, `verify_library_asset` PASSED. |
+| **REQ-2** Provide a v2 entry point that always emits `final_confidence` on the result | **Done** | `PlanAndSolveAgentV2.run` returns an `AgentResultV2` with `final_confidence` populated; `TrajectoryRecordV2` finishing record carries the field. | `code/planandsolve_v2.py`, `code/test_planandsolve_v2.py::test_run_emits_field_when_parse_succeeds`. |
+| **REQ-3** Keep the v1 entry point unchanged and importable | **Done** | The v1 module in t0007 is untouched; v2 imports v1 symbols. | `code/test_planandsolve_v2.py::test_v1_legacy_schema_unchanged` passes. |
+| **REQ-4** Implement the Xiong2024 §3.2 verbalized confidence protocol with verbatim phrasing and 0/0.5/1 anchor language | **Done** | `CONFIDENCE_PROMPT_TEMPLATE` reproduces the §3.2 phrasing; the prompt template file is committed; the description doc cites Xiong2024 §3.2. | `assets/library/scope_unaware_planandsolve_v2/files/prompts/confidence_prompt.txt`, `assets/library/scope_unaware_planandsolve_v2/description.md` Metadata section. |
+| **REQ-5** Strict regex parse, single retry, then `None` and increment `final_confidence_parse_failures` | **Done** | `parse_final_confidence` uses `\b(0(?:.\d+)? | 1(?:.0+)?)\b`last-match;`elicit_final_confidence`retries once and returns`(None, 2)` on double failure. |
+| **REQ-6** Validate `final_confidence` is in `[0.0, 1.0]` whenever non-`None` | **Done** | Parser clamps to `[0,1]` via word-boundary regex; unit test asserts in-range output for adversarial input. | `code/test_planandsolve_v2.py::test_parse_final_confidence_clamp`. |
+| **REQ-7** Emit `final_confidence` for all three conditions (A, B, C) | **Done** | Smoke run shows non-null `final_confidence` on all 3 trajectories (1 per condition); `elicit_final_confidence` is reused for A and C while B uses the v2 agent directly. | `results/smoke_predictions.jsonl` (3 rows, all with `final_confidence`). |
+| **REQ-8** Run a smoke validation and write per-condition Metric 2 values to `results/metrics.json` | **Done at n=1** | `metrics.json` records `overconfident_error_rate` for all three conditions. n=1 x 3 (instead of the originally planned 5 x 3) was sufficient to validate plumbing under the $1.00 cap and is documented as the explicit-design choice. The larger comparison is t0023&#x27;s job. | `results/metrics.json`, `results/smoke_report.json`. |
+| **REQ-9** Keep total cost under $1.00 | **Done** | Total spend `$0.5383` ≤ `$1.00` cap. | `results/costs.json` `total_cost_usd: 0.538343`, `budget_limit: 1.0`. |
+| **REQ-10** Document parse-failure rate; tighten if &gt; 20% | **Done** | Overall parse-failure rate is **0.0** on n=3, well under the 20% gate; no prompt tightening required. | `results/smoke_report.json` `overall_parse_failure_rate`, `parse_failure_threshold_breached: false`. |
       </content>
     </section>
     <section id="t0022_abc_harness_progress_rate_and_error_taxonomy-results-detailed" source_kind="file">
