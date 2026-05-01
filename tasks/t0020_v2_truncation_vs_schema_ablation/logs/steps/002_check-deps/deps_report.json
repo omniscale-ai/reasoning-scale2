@@ -1,0 +1,8 @@
+{
+  "task_id": "t0020_v2_truncation_vs_schema_ablation",
+  "checked_at": "2026-05-01T14:09:12Z",
+  "result": "passed",
+  "dependencies": [],
+  "errors": 0,
+  "warnings": 0
+}
