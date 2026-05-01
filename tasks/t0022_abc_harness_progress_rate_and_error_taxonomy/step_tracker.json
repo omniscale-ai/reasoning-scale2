@@ -122,9 +122,9 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up suggestions for t0023 and beyond.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T15:59:14Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T16:00:31Z",
       "log_file": "logs/steps/014_suggestions/"
     },
     {
