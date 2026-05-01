@@ -50,10 +50,10 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0009 and t0014 annotator/judge code to confirm exactly how to insert the 1500-char truncation in both annotator and judge prompts.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-01T14:09:43Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/006_research-code/"
     },
     {
       "step": 7,
