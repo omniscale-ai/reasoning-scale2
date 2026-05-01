@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence/tasks/t0021_plan_and_solve_v2_with_final_confidence/research/research_code.md
+
+[31m[1mERRORS:[0m
+[31m  RC-E002 error: YAML frontmatter is missing or has invalid delimiters[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+
