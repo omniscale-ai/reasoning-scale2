@@ -1,0 +1,27 @@
+{
+  "spec_version": "2",
+  "answer_id": "does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges",
+  "question": "Does the v2 schema retain a 30+ pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or is the +57 pp t0014 headline an artefact of haiku judge anchoring?",
+  "short_title": "Does v2 keep a 30+ pp delta under substantive and sonnet judges?",
+  "short_answer_path": "short_answer.md",
+  "full_answer_path": "full_answer.md",
+  "categories": [
+    "agent-evaluation",
+    "hierarchical-planning",
+    "uncertainty-calibration"
+  ],
+  "answer_methods": [
+    "code-experiment"
+  ],
+  "source_paper_ids": [],
+  "source_urls": [],
+  "source_task_ids": [
+    "t0005_hierarchical_annotation_pilot_v1",
+    "t0009_hierarchical_annotation_v2",
+    "t0014_v2_annotator_sonnet_rerun",
+    "t0015_correct_proxy_benchmark_labels"
+  ],
+  "confidence": "low",
+  "created_by_task": "t0019_v2_judge_calibration_sonnet",
+  "date_created": "2026-05-01"
+}

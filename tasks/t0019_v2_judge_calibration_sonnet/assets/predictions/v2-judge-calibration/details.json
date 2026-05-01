@@ -1,0 +1,41 @@
+{
+  "spec_version": "2",
+  "predictions_id": "v2-judge-calibration",
+  "name": "v2 Judge Calibration: 3 judges x 3 annotators on 55-row pool",
+  "short_description": "Per-row binary verdicts from three judge configurations (original-haiku from t0014, substantive-sonnet, model-rotated-sonnet) over the same 55-row hierarchy pool used in t0014, recording verdict, justification, optional sub-scores, parse status, and per-call cost and latency for each of 165 (row x judge) pairs.",
+  "description_path": "description.md",
+  "model_id": null,
+  "model_description": "Two judge models: claude-haiku-4-5 (original-haiku, cached from t0014/t0005) and claude-sonnet-4-6 (substantive-sonnet and model-rotated-sonnet, fresh calls in this task). Sonnet calls were routed through the local `claude` CLI subprocess because the OAuth-issued ANTHROPIC_API_KEY in this environment is provisioned only for haiku quota; see intervention/critical_step_blocked.md for the rationale.",
+  "dataset_ids": [
+    "hierarchical-annotation-v2-sonnet",
+    "hierarchical-annotation-v2-relabeled"
+  ],
+  "prediction_format": "jsonl",
+  "prediction_schema": "Each line is a JSON object with fields: pool_row_id (string), annotator (one of v1-sonnet, v2-haiku, v2-sonnet), task_id (string), benchmark (string), domain (string), judge_prompt_version (one of original_haiku, substantive, model_rotated), judge_label (one of original-haiku, substantive-sonnet, model-rotated-sonnet), judge_model (one of claude-haiku-4-5, claude-sonnet-4-6), verdict (acceptable | needs revision | null), justification (string | null), sub_scores (object | null), parse_status (string), cost_usd (float | null), elapsed_seconds (float | null).",
+  "instance_count": 165,
+  "metrics_at_creation": {
+    "accept_rate__v1-sonnet__original-haiku": 0.3333,
+    "accept_rate__v1-sonnet__substantive-sonnet": 0.6667,
+    "accept_rate__v1-sonnet__model-rotated-sonnet": 0.5833,
+    "accept_rate__v2-haiku__original-haiku": 0.913,
+    "accept_rate__v2-haiku__substantive-sonnet": 0.913,
+    "accept_rate__v2-haiku__model-rotated-sonnet": 0.9565,
+    "accept_rate__v2-sonnet__original-haiku": 0.9,
+    "accept_rate__v2-sonnet__substantive-sonnet": 1.0,
+    "accept_rate__v2-sonnet__model-rotated-sonnet": 1.0
+  },
+  "files": [
+    {
+      "path": "files/predictions.jsonl",
+      "description": "165 rows: 55 pool rows x 3 judge configurations (original-haiku, substantive-sonnet, model-rotated-sonnet).",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "agent-evaluation",
+    "hierarchical-planning",
+    "uncertainty-calibration"
+  ],
+  "created_by_task": "t0019_v2_judge_calibration_sonnet",
+  "date_created": "2026-05-01"
+}

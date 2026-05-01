@@ -1,0 +1,237 @@
+{
+  "generated_at_utc": "2026-05-01T17:39:42.895527+00:00",
+  "cells": [
+    {
+      "annotator": "v1-sonnet",
+      "judge_label": "original-haiku",
+      "prompt_kind": "original_haiku",
+      "judge_model": "claude-haiku-4-5",
+      "judged": 12,
+      "acceptable": 4,
+      "accept_rate": 0.3333333333333333,
+      "ci_lower": 0.13811783989736134,
+      "ci_upper": 0.609382412602386,
+      "half_width": 0.23563228635251232,
+      "cost_per_item_usd": null,
+      "time_per_item_seconds": null
+    },
+    {
+      "annotator": "v1-sonnet",
+      "judge_label": "substantive-sonnet",
+      "prompt_kind": "substantive",
+      "judge_model": "claude-sonnet-4-6",
+      "judged": 12,
+      "acceptable": 8,
+      "accept_rate": 0.6666666666666666,
+      "ci_lower": 0.3906175873976139,
+      "ci_upper": 0.8618821601026385,
+      "half_width": 0.23563228635251232,
+      "cost_per_item_usd": 0.17582676666666666,
+      "time_per_item_seconds": 13.011647442976633
+    },
+    {
+      "annotator": "v1-sonnet",
+      "judge_label": "model-rotated-sonnet",
+      "prompt_kind": "model_rotated",
+      "judge_model": "claude-sonnet-4-6",
+      "judged": 12,
+      "acceptable": 7,
+      "accept_rate": 0.5833333333333334,
+      "ci_lower": 0.3195073356553728,
+      "ci_upper": 0.8067425380947535,
+      "half_width": 0.24361760121969034,
+      "cost_per_item_usd": 0.17524251666666665,
+      "time_per_item_seconds": 13.147745748360952
+    },
+    {
+      "annotator": "v2-haiku",
+      "judge_label": "original-haiku",
+      "prompt_kind": "original_haiku",
+      "judge_model": "claude-haiku-4-5",
+      "judged": 23,
+      "acceptable": 21,
+      "accept_rate": 0.9130434782608695,
+      "ci_lower": 0.7320359570190598,
+      "ci_upper": 0.9758205045927666,
+      "half_width": 0.12189227378685341,
+      "cost_per_item_usd": null,
+      "time_per_item_seconds": null
+    },
+    {
+      "annotator": "v2-haiku",
+      "judge_label": "substantive-sonnet",
+      "prompt_kind": "substantive",
+      "judge_model": "claude-sonnet-4-6",
+      "judged": 23,
+      "acceptable": 21,
+      "accept_rate": 0.9130434782608695,
+      "ci_lower": 0.7320359570190598,
+      "ci_upper": 0.9758205045927666,
+      "half_width": 0.12189227378685341,
+      "cost_per_item_usd": 0.1767288804347826,
+      "time_per_item_seconds": 28.860223718311477
+    },
+    {
+      "annotator": "v2-haiku",
+      "judge_label": "model-rotated-sonnet",
+      "prompt_kind": "model_rotated",
+      "judge_model": "claude-sonnet-4-6",
+      "judged": 23,
+      "acceptable": 22,
+      "accept_rate": 0.9565217391304348,
+      "ci_lower": 0.7900841350594088,
+      "ci_upper": 0.9922835330378734,
+      "half_width": 0.10109969898923232,
+      "cost_per_item_usd": 0.1763620891304348,
+      "time_per_item_seconds": 11.604474088420039
+    },
+    {
+      "annotator": "v2-sonnet",
+      "judge_label": "original-haiku",
+      "prompt_kind": "original_haiku",
+      "judge_model": "claude-haiku-4-5",
+      "judged": 20,
+      "acceptable": 18,
+      "accept_rate": 0.9,
+      "ci_lower": 0.6989617935882066,
+      "ci_upper": 0.9721341060158468,
+      "half_width": 0.1365861562138201,
+      "cost_per_item_usd": null,
+      "time_per_item_seconds": null
+    },
+    {
+      "annotator": "v2-sonnet",
+      "judge_label": "substantive-sonnet",
+      "prompt_kind": "substantive",
+      "judge_model": "claude-sonnet-4-6",
+      "judged": 20,
+      "acceptable": 20,
+      "accept_rate": 1.0,
+      "ci_lower": 0.8388698745050667,
+      "ci_upper": 1.0,
+      "half_width": 0.08056506274746666,
+      "cost_per_item_usd": 0.1750950375,
+      "time_per_item_seconds": 8.831612253189087
+    },
+    {
+      "annotator": "v2-sonnet",
+      "judge_label": "model-rotated-sonnet",
+      "prompt_kind": "model_rotated",
+      "judge_model": "claude-sonnet-4-6",
+      "judged": 20,
+      "acceptable": 20,
+      "accept_rate": 1.0,
+      "ci_lower": 0.8388698745050667,
+      "ci_upper": 1.0,
+      "half_width": 0.08056506274746666,
+      "cost_per_item_usd": 0.1733246625,
+      "time_per_item_seconds": 8.02825481891632
+    }
+  ],
+  "deltas": {
+    "original-haiku": {
+      "schema_only_delta_v2haiku_minus_v1sonnet": {
+        "a_judged": 23,
+        "a_acceptable": 21,
+        "a_accept_rate": 0.9130434782608695,
+        "a_ci_lower": 0.7320359570190598,
+        "a_ci_upper": 0.9758205045927666,
+        "b_judged": 12,
+        "b_acceptable": 4,
+        "b_accept_rate": 0.3333333333333333,
+        "b_ci_lower": 0.13811783989736134,
+        "b_ci_upper": 0.609382412602386,
+        "delta": 0.5797101449275361
+      },
+      "model_only_delta_v2sonnet_minus_v2haiku": {
+        "a_judged": 20,
+        "a_acceptable": 18,
+        "a_accept_rate": 0.9,
+        "a_ci_lower": 0.6989617935882066,
+        "a_ci_upper": 0.9721341060158468,
+        "b_judged": 23,
+        "b_acceptable": 21,
+        "b_accept_rate": 0.9130434782608695,
+        "b_ci_lower": 0.7320359570190598,
+        "b_ci_upper": 0.9758205045927666,
+        "delta": -0.01304347826086949
+      }
+    },
+    "substantive-sonnet": {
+      "schema_only_delta_v2haiku_minus_v1sonnet": {
+        "a_judged": 23,
+        "a_acceptable": 21,
+        "a_accept_rate": 0.9130434782608695,
+        "a_ci_lower": 0.7320359570190598,
+        "a_ci_upper": 0.9758205045927666,
+        "b_judged": 12,
+        "b_acceptable": 8,
+        "b_accept_rate": 0.6666666666666666,
+        "b_ci_lower": 0.3906175873976139,
+        "b_ci_upper": 0.8618821601026385,
+        "delta": 0.24637681159420288
+      },
+      "model_only_delta_v2sonnet_minus_v2haiku": {
+        "a_judged": 20,
+        "a_acceptable": 20,
+        "a_accept_rate": 1.0,
+        "a_ci_lower": 0.8388698745050667,
+        "a_ci_upper": 1.0,
+        "b_judged": 23,
+        "b_acceptable": 21,
+        "b_accept_rate": 0.9130434782608695,
+        "b_ci_lower": 0.7320359570190598,
+        "b_ci_upper": 0.9758205045927666,
+        "delta": 0.08695652173913049
+      }
+    },
+    "model-rotated-sonnet": {
+      "schema_only_delta_v2haiku_minus_v1sonnet": {
+        "a_judged": 23,
+        "a_acceptable": 22,
+        "a_accept_rate": 0.9565217391304348,
+        "a_ci_lower": 0.7900841350594088,
+        "a_ci_upper": 0.9922835330378734,
+        "b_judged": 12,
+        "b_acceptable": 7,
+        "b_accept_rate": 0.5833333333333334,
+        "b_ci_lower": 0.3195073356553728,
+        "b_ci_upper": 0.8067425380947535,
+        "delta": 0.37318840579710144
+      },
+      "model_only_delta_v2sonnet_minus_v2haiku": {
+        "a_judged": 20,
+        "a_acceptable": 20,
+        "a_accept_rate": 1.0,
+        "a_ci_lower": 0.8388698745050667,
+        "a_ci_upper": 1.0,
+        "b_judged": 23,
+        "b_acceptable": 22,
+        "b_accept_rate": 0.9565217391304348,
+        "b_ci_lower": 0.7900841350594088,
+        "b_ci_upper": 0.9922835330378734,
+        "delta": 0.04347826086956519
+      }
+    }
+  },
+  "kappas": {
+    "substantive_vs_model_rotated": {
+      "v1-sonnet": 0.47058823529411775,
+      "v2-haiku": 0.6461538461538485,
+      "v2-sonnet": 1.0,
+      "overall": 0.6258503401360536
+    },
+    "substantive_vs_baseline_haiku": {
+      "v1-sonnet": 0.39999999999999997,
+      "v2-haiku": 0.4523809523809546,
+      "v2-sonnet": -4.440892098500647e-15,
+      "overall": 0.4799054373522451
+    },
+    "model_rotated_vs_baseline_haiku": {
+      "v1-sonnet": 0.21052631578947384,
+      "v2-haiku": 0.6461538461538485,
+      "v2-sonnet": -4.440892098500647e-15,
+      "overall": 0.4799054373522451
+    }
+  }
+}
