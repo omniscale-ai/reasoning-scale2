@@ -122,9 +122,9 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up suggestions based on the decomposition outcome.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:51:41Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:52:49Z",
       "log_file": "logs/steps/014_suggestions/"
     },
     {
