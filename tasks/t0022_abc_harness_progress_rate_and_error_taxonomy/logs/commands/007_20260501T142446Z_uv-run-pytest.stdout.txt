@@ -1,0 +1,248 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0 -- /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 26 items
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[hallucination] PASSED [  3%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[affordance] FAILED [  7%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[missing_step] FAILED [ 11%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[extra_step] FAILED [ 15%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[wrong_order] FAILED [ 19%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[precondition_or_effect] FAILED [ 23%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[ok] FAILED [ 26%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_parse_error_label_strips_whitespace_and_lowercases PASSED [ 30%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_parse_error_label_substring_match PASSED [ 34%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_parse_error_label_ambiguous_falls_back_to_precondition PASSED [ 38%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_parse_error_label_garbage_falls_back_to_precondition PASSED [ 42%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_classify_error_raises_without_judge_or_tracker PASSED [ 46%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_cache_round_trip PASSED [ 50%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_cache_keys_are_deterministic PASSED [ 53%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_cache_keys_differ_on_any_component PASSED [ 57%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_cache_get_returns_none_on_corrupt_file PASSED [ 61%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_hash_trajectory_step_stable PASSED [ 65%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_make_cache_key_short_key_raises PASSED [ 69%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_zero_when_no_subgoals_hit PASSED [ 73%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_one_when_all_subgoals_hit FAILED [ 76%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_partial_hit_with_alternating_judge PASSED [ 80%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_returns_zero_for_empty_subgoal_list PASSED [ 84%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_short_circuits_after_first_hit PASSED [ 88%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_raises_without_judge_or_tracker PASSED [ 92%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_score_trajectory.py::test_score_trajectory_on_synthetic PASSED [ 96%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_score_trajectory.py::test_score_trajectory_on_real_t0012_row_does_not_raise PASSED [100%]
+
+=================================== FAILURES ===================================
+__________________ test_each_label_is_producible[affordance] ___________________
+
+label = <ErrorTaxonomyLabel.AFFORDANCE: 'affordance'>
+
+    @pytest.mark.parametrize(
+        "label",
+        [
+            ErrorTaxonomyLabel.HALLUCINATION,
+            ErrorTaxonomyLabel.AFFORDANCE,
+            ErrorTaxonomyLabel.MISSING_STEP,
+            ErrorTaxonomyLabel.EXTRA_STEP,
+            ErrorTaxonomyLabel.WRONG_ORDER,
+            ErrorTaxonomyLabel.PRECONDITION_OR_EFFECT,
+            ErrorTaxonomyLabel.OK,
+        ],
+    )
+    def test_each_label_is_producible(label: ErrorTaxonomyLabel) -> None:
+        """For every one of the seven labels, a hand-crafted response yields it."""
+        judge = _judge(response=label.value)
+        out = classify_error(
+            trajectory_step=_step(),
+            environment_state={},
+            judge=judge,
+            environment_id="e-test",
+        )
+>       assert out == label
+E       AssertionError: assert <ErrorTaxonom...allucination'> == <ErrorTaxonom... 'affordance'>
+E         
+E         - affordance
+E         + hallucination
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py:75: AssertionError
+_________________ test_each_label_is_producible[missing_step] __________________
+
+label = <ErrorTaxonomyLabel.MISSING_STEP: 'missing_step'>
+
+    @pytest.mark.parametrize(
+        "label",
+        [
+            ErrorTaxonomyLabel.HALLUCINATION,
+            ErrorTaxonomyLabel.AFFORDANCE,
+            ErrorTaxonomyLabel.MISSING_STEP,
+            ErrorTaxonomyLabel.EXTRA_STEP,
+            ErrorTaxonomyLabel.WRONG_ORDER,
+            ErrorTaxonomyLabel.PRECONDITION_OR_EFFECT,
+            ErrorTaxonomyLabel.OK,
+        ],
+    )
+    def test_each_label_is_producible(label: ErrorTaxonomyLabel) -> None:
+        """For every one of the seven labels, a hand-crafted response yields it."""
+        judge = _judge(response=label.value)
+        out = classify_error(
+            trajectory_step=_step(),
+            environment_state={},
+            judge=judge,
+            environment_id="e-test",
+        )
+>       assert out == label
+E       AssertionError: assert <ErrorTaxonom...allucination'> == <ErrorTaxonom...missing_step'>
+E         
+E         - missing_step
+E         + hallucination
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py:75: AssertionError
+__________________ test_each_label_is_producible[extra_step] ___________________
+
+label = <ErrorTaxonomyLabel.EXTRA_STEP: 'extra_step'>
+
+    @pytest.mark.parametrize(
+        "label",
+        [
+            ErrorTaxonomyLabel.HALLUCINATION,
+            ErrorTaxonomyLabel.AFFORDANCE,
+            ErrorTaxonomyLabel.MISSING_STEP,
+            ErrorTaxonomyLabel.EXTRA_STEP,
+            ErrorTaxonomyLabel.WRONG_ORDER,
+            ErrorTaxonomyLabel.PRECONDITION_OR_EFFECT,
+            ErrorTaxonomyLabel.OK,
+        ],
+    )
+    def test_each_label_is_producible(label: ErrorTaxonomyLabel) -> None:
+        """For every one of the seven labels, a hand-crafted response yields it."""
+        judge = _judge(response=label.value)
+        out = classify_error(
+            trajectory_step=_step(),
+            environment_state={},
+            judge=judge,
+            environment_id="e-test",
+        )
+>       assert out == label
+E       AssertionError: assert <ErrorTaxonom...allucination'> == <ErrorTaxonom... 'extra_step'>
+E         
+E         - extra_step
+E         + hallucination
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py:75: AssertionError
+__________________ test_each_label_is_producible[wrong_order] __________________
+
+label = <ErrorTaxonomyLabel.WRONG_ORDER: 'wrong_order'>
+
+    @pytest.mark.parametrize(
+        "label",
+        [
+            ErrorTaxonomyLabel.HALLUCINATION,
+            ErrorTaxonomyLabel.AFFORDANCE,
+            ErrorTaxonomyLabel.MISSING_STEP,
+            ErrorTaxonomyLabel.EXTRA_STEP,
+            ErrorTaxonomyLabel.WRONG_ORDER,
+            ErrorTaxonomyLabel.PRECONDITION_OR_EFFECT,
+            ErrorTaxonomyLabel.OK,
+        ],
+    )
+    def test_each_label_is_producible(label: ErrorTaxonomyLabel) -> None:
+        """For every one of the seven labels, a hand-crafted response yields it."""
+        judge = _judge(response=label.value)
+        out = classify_error(
+            trajectory_step=_step(),
+            environment_state={},
+            judge=judge,
+            environment_id="e-test",
+        )
+>       assert out == label
+E       AssertionError: assert <ErrorTaxonom...allucination'> == <ErrorTaxonom...'wrong_order'>
+E         
+E         - wrong_order
+E         + hallucination
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py:75: AssertionError
+____________ test_each_label_is_producible[precondition_or_effect] _____________
+
+label = <ErrorTaxonomyLabel.PRECONDITION_OR_EFFECT: 'precondition_or_effect'>
+
+    @pytest.mark.parametrize(
+        "label",
+        [
+            ErrorTaxonomyLabel.HALLUCINATION,
+            ErrorTaxonomyLabel.AFFORDANCE,
+            ErrorTaxonomyLabel.MISSING_STEP,
+            ErrorTaxonomyLabel.EXTRA_STEP,
+            ErrorTaxonomyLabel.WRONG_ORDER,
+            ErrorTaxonomyLabel.PRECONDITION_OR_EFFECT,
+            ErrorTaxonomyLabel.OK,
+        ],
+    )
+    def test_each_label_is_producible(label: ErrorTaxonomyLabel) -> None:
+        """For every one of the seven labels, a hand-crafted response yields it."""
+        judge = _judge(response=label.value)
+        out = classify_error(
+            trajectory_step=_step(),
+            environment_state={},
+            judge=judge,
+            environment_id="e-test",
+        )
+>       assert out == label
+E       AssertionError: assert <ErrorTaxonom...allucination'> == <ErrorTaxonom...on_or_effect'>
+E         
+E         - precondition_or_effect
+E         + hallucination
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py:75: AssertionError
+______________________ test_each_label_is_producible[ok] _______________________
+
+label = <ErrorTaxonomyLabel.OK: 'ok'>
+
+    @pytest.mark.parametrize(
+        "label",
+        [
+            ErrorTaxonomyLabel.HALLUCINATION,
+            ErrorTaxonomyLabel.AFFORDANCE,
+            ErrorTaxonomyLabel.MISSING_STEP,
+            ErrorTaxonomyLabel.EXTRA_STEP,
+            ErrorTaxonomyLabel.WRONG_ORDER,
+            ErrorTaxonomyLabel.PRECONDITION_OR_EFFECT,
+            ErrorTaxonomyLabel.OK,
+        ],
+    )
+    def test_each_label_is_producible(label: ErrorTaxonomyLabel) -> None:
+        """For every one of the seven labels, a hand-crafted response yields it."""
+        judge = _judge(response=label.value)
+        out = classify_error(
+            trajectory_step=_step(),
+            environment_state={},
+            judge=judge,
+            environment_id="e-test",
+        )
+>       assert out == label
+E       AssertionError: assert <ErrorTaxonom...allucination'> == <ErrorTaxonomyLabel.OK: 'ok'>
+E         
+E         - ok
+E         + hallucination
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py:75: AssertionError
+_________________ test_progress_rate_one_when_all_subgoals_hit _________________
+
+    def test_progress_rate_one_when_all_subgoals_hit() -> None:
+        traj = _trajectory(n_steps=3)
+        env = _env_with(n_subgoals=2)
+        judge = _mock_judge(response="yes")
+        result = compute_progress_rate(trajectory=traj, environment_subgoals=env, judge=judge)
+>       assert result == 1.0
+E       assert 0.0 == 1.0
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py:100: AssertionError
+=========================== short test summary info ============================
+FAILED tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[affordance]
+FAILED tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[missing_step]
+FAILED tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[extra_step]
+FAILED tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[wrong_order]
+FAILED tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[precondition_or_effect]
+FAILED tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[ok]
+FAILED tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_one_when_all_subgoals_hit
+========================= 7 failed, 19 passed in 0.07s =========================

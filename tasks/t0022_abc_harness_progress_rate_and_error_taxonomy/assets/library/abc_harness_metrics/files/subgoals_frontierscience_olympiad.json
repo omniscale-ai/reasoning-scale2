@@ -1,0 +1,608 @@
+[
+  {
+    "environment_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Select model pathogen by literature search for C. pallidicaule natural diseases, trait comparison of candidates, and prioritization for rapid screening"
+      },
+      {
+        "id": "g2",
+        "description": "Rapidly screen virulence of candidate pathogens using standardized greenhouse inoculation, quantitative disease rating, and time-course analysis"
+      },
+      {
+        "id": "g3",
+        "description": "Identify pathovars by molecular genotyping of isolates and virulence comparison on standardized host background"
+      },
+      {
+        "id": "g4",
+        "description": "Validate selected pathovar(s) for reproducibility, quantifiable phenotypes, and broad host applicability"
+      },
+      {
+        "id": "g5",
+        "description": "Establish and document standardized baseline pathosystem materials and protocols for downstream immunity research"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Assemble input parameters including photon flux, enhancement factors, wavelength-specific cross-sections, and baseline decomposition rates"
+      },
+      {
+        "id": "g2",
+        "description": "Calculate effective photon flux after electromagnetic enhancement and resulting charge excitation rates"
+      },
+      {
+        "id": "g3",
+        "description": "Calculate enhanced MB decomposition rate by multiplying direct rate by enhancement factor"
+      },
+      {
+        "id": "g4",
+        "description": "Compare rates and identify wavelength dependence drivers"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_1875e781-bd89-4528-8bc3-94b7b436402f",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Solve for A and B using Step 1 data and establish Total Activity₁ = 13,050 units as baseline"
+      },
+      {
+        "id": "g2",
+        "description": "Calculate E, H, K by inverting specific activity relationship SA = Activity / Concentration"
+      },
+      {
+        "id": "g3",
+        "description": "Calculate C, I, G using yield formula rearranged as Total Activity = (Yield/100) × 13,050 and Activity = Total Activity / Volume"
+      },
+      {
+        "id": "g4",
+        "description": "Calculate D, J by applying SA = Activity / Concentration to solved activity values"
+      },
+      {
+        "id": "g5",
+        "description": "Calculate F, L using Yield = (Total Activity / 13,050) × 100"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Document NK developmental stages (CD34+ progenitor, CD56bright developmental, CD56dim mature, terminal KIR+) and ILC subsets (ILC1: T-bet+RORγt-, ILC2: CRTH2+GATA3+, ILC3: RORγt+) with gating markers CD3-, CD5-, CD56, CD161, CD117, CRTH2"
+      },
+      {
+        "id": "g2",
+        "description": "Map to Aurora spectral detector configuration (6L or 5L) and calculate spillover matrix for surface marker + intracellular transcription factor panel"
+      },
+      {
+        "id": "g3",
+        "description": "Order validated antibodies: CD3 (clone UCHT1), CD5, CD19, CD20, CD34, CD56 (clone HCD56 or NK56), CD161 (clone HP-3G10), CD117 (YB5.B8), CRTH2, T-bet, GATA3, RORγt, viability dye from BioLegend/BD/Miltenyi"
+      },
+      {
+        "id": "g4",
+        "description": "Combine 15 parameters into single panel; titrate each antibody (0.01-5 µg/mL range); optimize staining/permeabilization protocol; generate compensation matrix via Aurora software"
+      },
+      {
+        "id": "g5",
+        "description": "Stain peripheral blood and tonsil samples with optimized 15-parameter panel; apply gating hierarchy to identify NK stages and ILC subsets; measure transcription factor expression (MFI) per population"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_1dba0086-bca8-4b25-8843-e6e428f9284d",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Establish Type A standard error of the mean"
+      },
+      {
+        "id": "g2",
+        "description": "Determine the variance and standard deviation of uniform scale error"
+      },
+      {
+        "id": "g3",
+        "description": "Recognize how systematic scale error propagates to mean estimate"
+      },
+      {
+        "id": "g4",
+        "description": "Combine independent uncertainties in quadrature"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_1e2f4cbe-4a38-4dd3-9378-14df40f7599f",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Write Maxwell-Boltzmann distribution"
+      },
+      {
+        "id": "g2",
+        "description": "Construct flux weighting function"
+      },
+      {
+        "id": "g3",
+        "description": "Evaluate flux-weighted integrals"
+      },
+      {
+        "id": "g4",
+        "description": "Simplify ratio to extract temperature dependence"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_1eca2503-b141-4f9f-ab10-e27d272c93b0",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Model allele segregation in n-ploid with 1 'a' and n-1 'A' alleles"
+      },
+      {
+        "id": "g2",
+        "description": "Track cumulative 'a' alleles through Fₖ crossing with Fₖ₋₁"
+      },
+      {
+        "id": "g3",
+        "description": "Relate maximum 'a' allele count to generation number"
+      },
+      {
+        "id": "g4",
+        "description": "Solve for n satisfying the minimum generation constraint"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_27c865e6-1c87-489b-b7ea-b197fe3356ba",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Compute E(T,P) from Curie law susceptibility"
+      },
+      {
+        "id": "g2",
+        "description": "Apply Maxwell relation from Helmholtz free energy"
+      },
+      {
+        "id": "g3",
+        "description": "Show that (∂U/∂p)_T = 0 using the first law"
+      },
+      {
+        "id": "g4",
+        "description": "Convert to polarization dependence and integrate"
+      },
+      {
+        "id": "g5",
+        "description": "Write the final answer"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Set incident ray at θ=3° and compute reflection law effects from surface perturbations"
+      },
+      {
+        "id": "g2",
+        "description": "Constrain ripples by requiring reflected rays remain upward-traveling"
+      },
+      {
+        "id": "g3",
+        "description": "Account for different geometric projections in vertical versus horizontal directions"
+      },
+      {
+        "id": "g4",
+        "description": "Compute final ratio r = cot(3°)"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Apply superposition decomposition"
+      },
+      {
+        "id": "g2",
+        "description": "Establish inverse-radius scaling"
+      },
+      {
+        "id": "g3",
+        "description": "Calculate removed disk contribution"
+      },
+      {
+        "id": "g4",
+        "description": "Compute the hollowed magnet's field"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_5ef8b29d-7665-45e6-a26a-bd4a27f450ad",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Characterize the bicyclic product structure and deduce its connectivity"
+      },
+      {
+        "id": "g2",
+        "description": "Determine molecular formula relationships and balance the cyclization reaction"
+      },
+      {
+        "id": "g3",
+        "description": "Identify functional groups in X capable of forming the bicyclic acetal"
+      },
+      {
+        "id": "g4",
+        "description": "Apply retrosynthetic analysis to deduce X structure"
+      },
+      {
+        "id": "g5",
+        "description": "Propose candidate X structures and verify against all constraints"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_60ff38cc-fb55-4c3c-b75c-f59dde5de0c3",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Explain Feldman-Cousins is required because dt_best-fit = 1960 days lies at the parameter space boundary, violating Wilks' Theorem assumption of interior parameter; Feldman-Cousins inverts acceptance regions from pseudo-experiments to gu..."
+      },
+      {
+        "id": "g2",
+        "description": "Generate 1000 signal-injected pseudo-experiments at each of 189 (ns, dt) grid points, fitting over (gamma, ns, t0, dt) to compute TS_best-fit and TS_truth (via scan, not re-fit), then compute ΔTS_trial and extract 90th percentile quantiles."
+      },
+      {
+        "id": "g3",
+        "description": "Fit real NGC 1068 data to obtain TS_best-fit_obs, then scan likelihood at each (ns_i, dt_j) grid point to compute ΔTS_obs(ns_i, dt_j) = TS_best-fit_obs - TS_scan(ns_i, dt_j)."
+      },
+      {
+        "id": "g4",
+        "description": "Construct 2D Feldman-Cousins contour: include grid point (ns_i, dt_j) in 90% region if ΔTS_obs(ns_i, dt_j) ≤ ΔTS_90(ns_i, dt_j); plot the boundary."
+      },
+      {
+        "id": "g5",
+        "description": "Explain ΔTS > 0 regions arise when pseudo-trial best-fits occur far from truth points (flat likelihood), ΔTS < 0 arise when best-fits cluster near truth (peaked likelihood); analyze minimizer initialization via S/B threshold and adaptive..."
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_676e50c1-cea4-4361-81e1-d4409a23422c",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Characterize TDP-43's modular architecture: RRM1 (residues ~101–176) and RRM2 (residues ~191–262) as rigid RNA-binding domains; LCD (residues ~262–414) as the LLPS-driving sequence rich in glutamine/asparagine and weak multivalent intera..."
+      },
+      {
+        "id": "g2",
+        "description": "Decompose aggregation pathway: initial LLPS (liquidlike condensate formation) → intra-condensate LCD demixing (second-order phase separation) → nucleation and β-sheet propagation in demixed subphase"
+      },
+      {
+        "id": "g3",
+        "description": "Quantify RRM1 stabilization effect: compute that increased RRM1 ΔGfold → negative (more stable) reduces effective [LCD]free and decreases nucleation rate by factor of α ∝ ([LCD]WT / [LCD]variant)²"
+      },
+      {
+        "id": "g4",
+        "description": "Quantify C6-C10 saturated fatty acid effect: compute that fatty acids lower critical concentration for demixing (c*_demix) and increase demixing rate by reducing surface tension and Gibbs free energy barrier"
+      },
+      {
+        "id": "g5",
+        "description": "Integrate RRM1 stabilization (↓ aggregation, magnitude ~2–10 fold suppression) and C6-C10 elevation (↑ aggregation, magnitude ~3–10 fold promotion) to predict combined net effect and mechanistic outcome"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_7c94f50a-0896-450f-8d55-00c98aca5158",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Calculate paclitaxel dissolution kinetics and incomplete complexation consequences at 1 minute stirring"
+      },
+      {
+        "id": "g2",
+        "description": "Quantitatively compare osmotic pressure and ionic strength effects of water versus 0.9% saline versus 5% sucrose"
+      },
+      {
+        "id": "g3",
+        "description": "Measure DLS intensity distribution peaks and calculate hydrodynamic volumes for unfiltered system"
+      },
+      {
+        "id": "g4",
+        "description": "Identify and catalog missing characterization steps, QC specifications, and stability guidance"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_7e32b7a6-9340-4a41-8c1f-89a0a91a6d3f",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Calculate untagged protein MW and classify each lane: Lane 1 shows two variants (~40 kDa and ~73 kDa native), Lane 2 shows one (~75 kDa native), Lane 3 shows two variants (~42 kDa and ~75 kDa native), Lane 4 shows two variants (~47 kDa a..."
+      },
+      {
+        "id": "g2",
+        "description": "Attribute ~25–40 kDa size differences (e.g., Lane 1: native 40 vs 73 kDa, tagged 73 vs 106 kDa) to differential glycosylation (~10–20 kDa mass shift) combined with phosphorylation or ubiquitination (~5–10 kDa per modification)"
+      },
+      {
+        "id": "g3",
+        "description": "Group Lanes 1 and 3 as same species: both express ~75 kDa untagged major form and ~108 kDa tagged form; classify Lane 2 and Lane 4 as distinct species with different native MW patterns"
+      },
+      {
+        "id": "g4",
+        "description": "Identify that native (untagged) target protein molecular weight from sequence and species-specific PTM profile are critical details: must know expected MW to distinguish true variants from artifacts, and must know PTM repertoire to predi..."
+      },
+      {
+        "id": "g5",
+        "description": "Interpret endogenous tagging showing cytoplasmic puncta (not membrane/expected trafficking location) as evidence that native expression level reveals true protein compartmentalization, distinct from overexpression artifacts: propose aggr..."
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Analyze PCA clustering pattern"
+      },
+      {
+        "id": "g2",
+        "description": "Classify the separation as batch effects"
+      },
+      {
+        "id": "g3",
+        "description": "Assess PCA inadequacy for cell-type discovery"
+      },
+      {
+        "id": "g4",
+        "description": "Apply t-SNE or UMAP for cell-type visualization"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_a74ccc5b-fd37-49fa-b784-871dbcc41e9e",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Compute degree of unsaturation"
+      },
+      {
+        "id": "g2",
+        "description": "Enumerate acyclic alkynes"
+      },
+      {
+        "id": "g3",
+        "description": "Enumerate acyclic dienes"
+      },
+      {
+        "id": "g4",
+        "description": "Enumerate cyclic monoene isomers"
+      },
+      {
+        "id": "g5",
+        "description": "Enumerate bicyclic structures"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_af50243e-3a60-4460-9536-f9a02c4f8eb8",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Construct the postselected stochastic path integral Z[ψ₀,ψf] = ∫[Dψ Dψ̄] exp(-S_eff/ℏ) with explicit |ψ(0)⟩=|ψ₀⟩ and |ψ(T)⟩=|ψf⟩ boundary constraints; show that the effective action S_eff reduces to the standard stochastic master equatio..."
+      },
+      {
+        "id": "g2",
+        "description": "Define doubled Hilbert space H⊗H* with canonical Poisson brackets {ψ(t), π̄(t')}=δ(t−t'); express the stochastic action S = ∫[ψ̄∂_t ψ − H_eff(ψ,ψ̄)]dt in the extended phase space with measurement back-action; verify that extremizing δS/δ..."
+      },
+      {
+        "id": "g3",
+        "description": "Compute the stochastic Hamiltonian H_eff(ψ,ψ̄) = ψ̄H₀ψ + γ_m(M†ρM − |ψ̄M|²/2) + √(γ_m/2)dW(ψ̄Mψ − ⟨M⟩); derive Hamilton equations dψ/dt = −i∂H/∂ψ̄ and dψ̄/dt = +i∂H/∂ψ; convert to density-matrix ODE dρ/dt = −i[H₀,ρ] + γ_m(MρM† − {M†M,ρ}/..."
+      },
+      {
+        "id": "g4",
+        "description": "For quantum-demolition regime with H_QD = (ω₀/2)σ_z + √(Γ_m/2)σ_x dW and quantum-non-demolition regime with H_QND = (ω₀/2)σ_z + √(Γ_m/2)σ_z dW, numerically solve optimal trajectory equations with preselection |+⟩=(|↑⟩+|↓⟩)/√2; extract de..."
+      },
+      {
+        "id": "g5",
+        "description": "Identify quantum jumps as discrete escapes from the (ψ,ψ̄) eigenspace of measurement operator M; compute large-deviation rate function I(jump) for jump probability; derive suppression scaling P_jump(T,Γ_m)≈exp(−αΓ_m T); interpret jumps a..."
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_b75893ef-5c56-4d43-9ae1-8c9caaf32ee2",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Derive molecular formula from 129 g/mol and no-oxygen constraint"
+      },
+      {
+        "id": "g2",
+        "description": "Use ¹³C-NMR and ¹H-NMR data to constrain structure"
+      },
+      {
+        "id": "g3",
+        "description": "Enumerate and test C₈H₁₉N structures with 4-fold symmetry"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Construct explicit singlet basis states in second quantization"
+      },
+      {
+        "id": "g2",
+        "description": "Match lattice and continuum dispersion to extract t"
+      },
+      {
+        "id": "g3",
+        "description": "Evaluate minimum non-zero energy using L_phy = 3.4 fm, M = 1634 MeV"
+      },
+      {
+        "id": "g4",
+        "description": "Solve two-body problem: fix C from binding energy, compute E_excited"
+      },
+      {
+        "id": "g5",
+        "description": "Enumerate two-particle states and find second excited state with degeneracy"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_dcfa830a-3f87-43eb-9ec7-6649fcdd0473",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Predict somatopleure rotation outcome as disruption to mesoderm-ectoderm signaling axis"
+      },
+      {
+        "id": "g2",
+        "description": "Describe HOXB5 deletion causing posterior digit identity transformations and skeletal defects"
+      },
+      {
+        "id": "g3",
+        "description": "Predict CYP26A1 overexpression shifts anterior digit identity; RA treatment shifts posterior"
+      },
+      {
+        "id": "g4",
+        "description": "Identify Sonic Hedgehog as the HOX9-regulated limb patterning protein at HH17"
+      },
+      {
+        "id": "g5",
+        "description": "Compare developmental axes: paired appendages dominated by anterior-posterior; median fins by medial-lateral"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_ecb58594-7fd9-4a94-b799-0f1c13acb752",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Iron (Fe) is identified as element A; it reacts at high temperature with water/steam to form Fe₂O₃ or Fe₃O₄"
+      },
+      {
+        "id": "g2",
+        "description": "Fe₂O₃ (or Fe₃O₄) is the binary compound B produced from Fe + H₂O"
+      },
+      {
+        "id": "g3",
+        "description": "Fe₂O₃ + NaOH + Br₂ generates sodium ferrate family compound with Fe in +6 oxidation state"
+      },
+      {
+        "id": "g4",
+        "description": "Compound C is determined to be Na₂FeO₄ or NaFeO₄·H₂O (or heavier variant), a sodium ferrate"
+      },
+      {
+        "id": "g5",
+        "description": "Verify compound C is a strong oxidizer with Na and Fe as two metals in 1:1 (or near 1:1) stoichiometric ratio"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_eec8840a-2d00-4e70-b043-0da51bd1b288",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Identify A = SO₂ (M=64, colorless) and B = Cl₂ (M=71, yellow-green pungent)"
+      },
+      {
+        "id": "g2",
+        "description": "Identify SO₂ + Cl₂ under UV radiation → SO₂Cl₂ (sulfuryl chloride)"
+      },
+      {
+        "id": "g3",
+        "description": "Balance SO₂Cl₂ + 2H₂O → H₂SO₄ + 2HCl with 2:1 acid ratio"
+      },
+      {
+        "id": "g4",
+        "description": "Identify Y = SOCl₂ (thionyl chloride) containing same elements S,O,Cl"
+      },
+      {
+        "id": "g5",
+        "description": "Confirm SO₂Cl₂ identity through all constraints"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_f12a8706-3ddd-4255-9234-0655babceb8e",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Extract the S₂O₃²⁻/S and S₂O₃²⁻/SO₂ couple potentials"
+      },
+      {
+        "id": "g2",
+        "description": "Apply the Nernst-based cell potential formula to the disproportionation"
+      },
+      {
+        "id": "g3",
+        "description": "Write the balanced disproportionation equation with electron stoichiometry"
+      },
+      {
+        "id": "g4",
+        "description": "Determine which reaction is spontaneous and the sign of the driving potential"
+      },
+      {
+        "id": "g5",
+        "description": "Express the answer to two decimal places"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Compute the radius of curvature ρ at the equilibrium contact point where the ellipse rests stably"
+      },
+      {
+        "id": "g2",
+        "description": "Calculate the moment of inertia I_cm = (m/4)(A² + B²) for the elliptical cross-section"
+      },
+      {
+        "id": "g3",
+        "description": "Derive the equation of motion θ̈ + (g ρ m)/(I_cm + m ρ²) θ = 0 using Lagrangian mechanics with rolling constraint and curvature-induced potential energy"
+      },
+      {
+        "id": "g4",
+        "description": "Extract ω² = g(A²/B) / ((1/4)(A² + B²) + A⁴/B²) and simplify to ω² = 4g A²/(4A⁴ + A²B² + B⁴)"
+      },
+      {
+        "id": "g5",
+        "description": "Compute the final result ω = √(4g A²/(4A⁴ + A²B² + B⁴)) = 2A√(g/(4A⁴ + A²B² + B⁴))"
+      }
+    ]
+  },
+  {
+    "environment_id": "fs_f7b49518-6e84-44e3-9480-4cf91d149702",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Establish baseline understanding of nanobody delivery design and constraint"
+      },
+      {
+        "id": "g2",
+        "description": "Classify endocytic pathways by signal requirement"
+      },
+      {
+        "id": "g3",
+        "description": "Determine compatibility of non-specific uptake with orphan receptor targeting"
+      },
+      {
+        "id": "g4",
+        "description": "Resolve the cellular process mediating drug delivery"
+      }
+    ]
+  }
+]

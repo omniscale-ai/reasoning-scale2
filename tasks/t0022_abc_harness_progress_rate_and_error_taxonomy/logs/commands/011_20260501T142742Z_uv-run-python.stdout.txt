@@ -1,0 +1,2 @@
+wrote 26 environments to /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy/tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/assets/library/abc_harness_metrics/files/subgoals_frontierscience_olympiad.json
+  subgoals/env: min=3 max=5 mean=4.6

@@ -1,0 +1,13 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy/tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/research/research_code.md
+
+[31m[1mERRORS:[0m
+[31m  RC-E006 error: Inline citation [t0011] has no matching Task Index entry[0m
+[31m  RC-E007 error: Task Index entry [t0006] is missing the Task ID field[0m
+[31m  RC-E007 error: Task Index entry [t0007] is missing the Task ID field[0m
+[31m  RC-E007 error: Task Index entry [t0010] is missing the Task ID field[0m
+[31m  RC-E007 error: Task Index entry [t0012] is missing the Task ID field[0m
+[31m  RC-E007 error: Task Index entry [t0017] is missing the Task ID field[0m
+
+[31m[1mFAILED[0m — 6 error(s), 0 warning(s)
+

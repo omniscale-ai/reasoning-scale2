@@ -1,0 +1,1006 @@
+[
+  {
+    "environment_id": "astropy__astropy-14309",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `astropy/io/fits/connect.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `astropy/io/fits/connect.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "astropy__astropy-14995",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `astropy/nddata/mixins/ndarithmetic.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `astropy/nddata/mixins/ndarithmetic.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "astropy__astropy-7166",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `astropy/utils/misc.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `astropy/utils/misc.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "astropy__astropy-7336",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `astropy/units/decorators.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `astropy/units/decorators.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-10097",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/core/validators.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/core/validators.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-10880",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/aggregates.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/aggregates.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-10914",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/conf/global_settings.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/conf/global_settings.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-10999",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/utils/dateparse.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/utils/dateparse.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11066",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/contenttypes/management/__init__.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/contenttypes/management/__init__.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11099",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/auth/validators.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/auth/validators.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11119",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/template/engine.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/template/engine.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11133",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/http/response.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/http/response.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11163",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/forms/models.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/forms/models.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11179",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/deletion.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/deletion.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11239",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/backends/postgresql/client.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/backends/postgresql/client.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11299",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/sql/query.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/sql/query.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11433",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/forms/models.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/forms/models.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11451",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/auth/backends.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/auth/backends.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11490",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/sql/compiler.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/sql/compiler.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11555",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/sql/compiler.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/sql/compiler.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11603",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/aggregates.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/aggregates.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11820",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/base.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/base.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11880",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/forms/fields.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/forms/fields.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11951",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/query.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/query.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-11964",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/enums.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/enums.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-12125",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/migrations/serializer.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/migrations/serializer.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-12193",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/forms/widgets.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/forms/widgets.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-12209",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/base.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/base.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-12276",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/forms/widgets.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/forms/widgets.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-12304",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/enums.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/enums.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-12308",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/admin/utils.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/admin/utils.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-12419",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/conf/global_settings.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/conf/global_settings.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-12741",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Edit `django/core/management/commands/flush.py` as part of the multi-file fix."
+      },
+      {
+        "id": "g2",
+        "description": "Edit `django/db/backends/base/operations.py` as part of the multi-file fix."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13023",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/fields/__init__.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/fields/__init__.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13089",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/core/cache/backends/db.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/core/cache/backends/db.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13109",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/fields/related.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/fields/related.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13112",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/fields/related.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/fields/related.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13297",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/views/generic/base.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/views/generic/base.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13363",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/functions/datetime.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/functions/datetime.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13406",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/query.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/query.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13410",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/core/files/locks.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/core/files/locks.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13417",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/models/query.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/models/query.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13512",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Edit `django/contrib/admin/utils.py` as part of the multi-file fix."
+      },
+      {
+        "id": "g2",
+        "description": "Edit `django/forms/fields.py` as part of the multi-file fix."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13551",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/auth/tokens.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/auth/tokens.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13741",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/auth/forms.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/auth/forms.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13794",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/utils/functional.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/utils/functional.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13807",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/backends/sqlite3/base.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/backends/sqlite3/base.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13821",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/backends/sqlite3/base.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/backends/sqlite3/base.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-13933",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/forms/models.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/forms/models.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14089",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/utils/datastructures.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/utils/datastructures.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14315",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Edit `django/db/backends/base/client.py` as part of the multi-file fix."
+      },
+      {
+        "id": "g2",
+        "description": "Edit `django/db/backends/postgresql/client.py` as part of the multi-file fix."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14373",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/utils/dateformat.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/utils/dateformat.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14376",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Edit `django/db/backends/mysql/base.py` as part of the multi-file fix."
+      },
+      {
+        "id": "g2",
+        "description": "Edit `django/db/backends/mysql/client.py` as part of the multi-file fix."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14404",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/admin/sites.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/admin/sites.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14493",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/staticfiles/storage.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/staticfiles/storage.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14534",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/forms/boundfield.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/forms/boundfield.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14539",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/utils/html.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/utils/html.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14580",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/db/migrations/serializer.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/db/migrations/serializer.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14608",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/forms/formsets.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/forms/formsets.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  },
+  {
+    "environment_id": "django__django-14752",
+    "subgoals": [
+      {
+        "id": "g1",
+        "description": "Locate the relevant code in `django/contrib/admin/views/autocomplete.py`."
+      },
+      {
+        "id": "g2",
+        "description": "Modify `django/contrib/admin/views/autocomplete.py` to fix the reported bug."
+      },
+      {
+        "id": "g3",
+        "description": "Verify the fix preserves existing behavior on related tests."
+      }
+    ]
+  }
+]

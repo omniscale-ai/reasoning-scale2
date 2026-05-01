@@ -1,0 +1,5 @@
+branch: task/t0022_abc_harness_progress_rate_and_error_taxonomy
+base_branch: main
+base_commit: b069a44bd14f12bfe997aaf8e7f001abfebc5c76
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy
+created_at: 2026-05-01T14:04:45Z

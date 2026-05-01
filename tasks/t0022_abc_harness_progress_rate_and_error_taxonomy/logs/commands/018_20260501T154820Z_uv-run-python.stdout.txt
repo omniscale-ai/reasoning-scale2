@@ -1,0 +1,5 @@
+wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy/tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/replay_summary.json
+  processed: 89 rows; skipped: 2
+  progress_rate: mean=0.103 stddev=0.228
+  a_vs_c_separation_rate: 0.771
+  total_cost_usd: 0.0000

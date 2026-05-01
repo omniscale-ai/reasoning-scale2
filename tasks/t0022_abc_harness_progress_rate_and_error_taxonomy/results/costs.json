@@ -1,0 +1,22 @@
+{
+  "total_cost_usd": 2.4172,
+  "breakdown": {
+    "claude-haiku-4-5_progress_rate_judge": {
+      "description": "Judge calls scoring (subgoal, step) pairs for Ma2024 progress rate during the t0012 replay validation.",
+      "cost_usd": 1.554,
+      "model": "claude-haiku-4-5",
+      "calls": 432
+    },
+    "claude-haiku-4-5_error_taxonomy_judge": {
+      "description": "Judge calls classifying each step into the Li2024 6+1 error taxonomy during the t0012 replay validation.",
+      "cost_usd": 0.8632,
+      "model": "claude-haiku-4-5",
+      "calls": 101
+    }
+  },
+  "services": {
+    "anthropic_api": 2.4172
+  },
+  "budget_limit": 2.0,
+  "note": "Total spend exceeded the 2.0 USD task budget by 0.42 USD across 533 cumulative judge calls. Root cause: the budget-guard wrapper checked is_budget_ok(headroom_usd=0.01), which was smaller than the worst observed per-call cost (~0.04 USD), so an in-flight call could push the running total past the cap before the guard fired. Headroom is now bumped to 0.10 USD and prior_spend_usd is read from _cost_log.jsonl on subsequent runs, so re-runs cannot exceed the cap. Recovery: 551 cached judge responses written to disk reduce the marginal cost of t0023's confirmatory ABC re-run to near-zero. The cumulative project cost is logged in tasks/t0022_*/code/_cost_log.jsonl (gitignored as a runtime artifact)."
+}

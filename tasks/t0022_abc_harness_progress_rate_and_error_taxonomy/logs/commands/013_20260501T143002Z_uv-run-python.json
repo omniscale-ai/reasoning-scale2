@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0022_abc_harness_progress_rate_and_error_taxonomy",
+  "command": "uv run python -u -m tasks.t0022_abc_harness_progress_rate_and_error_taxonomy.code.replay_t0012 --dry-run --limit 5 --output /tmp/replay_dryrun.json",
+  "exit_code": 0,
+  "duration_seconds": 0.089,
+  "started_at": "2026-05-01T14:30:02Z",
+  "completed_at": "2026-05-01T14:30:02Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy",
+  "stdout_file": "013_20260501T143002Z_uv-run-python.stdout.txt",
+  "stderr_file": "013_20260501T143002Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}

@@ -1,0 +1,2 @@
+wrote 60 environments to /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy/tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/assets/library/abc_harness_metrics/files/subgoals_swebench_verified_lite.json
+  subgoals/env: min=2 max=3 mean=2.9

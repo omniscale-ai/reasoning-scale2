@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0 -- /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0022_abc_harness_progress_rate_and_error_taxonomy
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 26 items
+
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[hallucination] PASSED [  3%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[affordance] PASSED [  7%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[missing_step] PASSED [ 11%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[extra_step] PASSED [ 15%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[wrong_order] PASSED [ 19%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[precondition_or_effect] PASSED [ 23%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_each_label_is_producible[ok] PASSED [ 26%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_parse_error_label_strips_whitespace_and_lowercases PASSED [ 30%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_parse_error_label_substring_match PASSED [ 34%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_parse_error_label_ambiguous_falls_back_to_precondition PASSED [ 38%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_parse_error_label_garbage_falls_back_to_precondition PASSED [ 42%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_error_taxonomy.py::test_classify_error_raises_without_judge_or_tracker PASSED [ 46%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_cache_round_trip PASSED [ 50%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_cache_keys_are_deterministic PASSED [ 53%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_cache_keys_differ_on_any_component PASSED [ 57%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_cache_get_returns_none_on_corrupt_file PASSED [ 61%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_hash_trajectory_step_stable PASSED [ 65%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_judge_cache.py::test_make_cache_key_short_key_raises PASSED [ 69%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_zero_when_no_subgoals_hit PASSED [ 73%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_one_when_all_subgoals_hit PASSED [ 76%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_partial_hit_with_alternating_judge PASSED [ 80%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_returns_zero_for_empty_subgoal_list PASSED [ 84%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_short_circuits_after_first_hit PASSED [ 88%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_progress_rate.py::test_progress_rate_raises_without_judge_or_tracker PASSED [ 92%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_score_trajectory.py::test_score_trajectory_on_synthetic PASSED [ 96%]
+tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/code/test_score_trajectory.py::test_score_trajectory_on_real_t0012_row_does_not_raise PASSED [100%]
+
+============================== 26 passed in 0.06s ==============================
