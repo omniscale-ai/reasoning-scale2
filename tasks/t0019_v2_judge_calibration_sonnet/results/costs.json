@@ -1,0 +1,22 @@
+{
+  "total_cost_usd": 19.3023,
+  "breakdown": {
+    "substantive_sonnet_judge": {
+      "description": "55 substantive critic judgments via claude CLI subprocess (claude-sonnet-4-6, 5 validation + 50 sweep).",
+      "cost_usd": 9.6766,
+      "model": "claude-sonnet-4-6",
+      "calls": 55
+    },
+    "model_rotated_sonnet_judge": {
+      "description": "55 model-rotated original-prompt judgments via claude CLI subprocess (claude-sonnet-4-6).",
+      "cost_usd": 9.6257,
+      "model": "claude-sonnet-4-6",
+      "calls": 55
+    }
+  },
+  "services": {
+    "anthropic_api": 19.3023
+  },
+  "budget_limit": 20.0,
+  "note": "Hard cap raised from $4.50 to $20.00 (option-2 in intervention/critical_step_blocked.md) because the OAuth-issued ANTHROPIC_API_KEY in this environment lacks claude-sonnet-4-6 quota; sonnet calls were routed through the local `claude` CLI subprocess. Per-call cost averaged $0.176 (vs the SDK projection of $0.024) due to cache-creation overhead the CLI cannot reuse across the validation gate / full sweep boundary. Total spend $19.30 is just below the raised cap; the original task plan's $4.50 ceiling is documented as not achievable in this environment without a different API key."
+}

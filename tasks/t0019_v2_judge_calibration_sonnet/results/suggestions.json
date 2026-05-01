@@ -1,0 +1,45 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0019-01",
+      "title": "Confirmatory v2 vs v1 schema sweep with fresh annotations and a third sonnet judge",
+      "description": "Run a confirmatory experiment that re-annotates a fresh n>=80 row pool (not the t0014 pool) under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three independent sonnet configurations: substantive critic, model-rotated original prompt, and a new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool overlapped with t0014. A fresh-pool replication at the planned n>=80 would tighten the per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30 pp or commit it above +45 pp.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0019_v2_judge_calibration_sonnet",
+      "source_paper": null,
+      "categories": ["agent-evaluation", "hierarchical-planning", "uncertainty-calibration"]
+    },
+    {
+      "id": "S-0019-02",
+      "title": "Provision a sonnet-quota Anthropic API key to drop per-call cost ~7x",
+      "description": "Acquire an Anthropic API key with claude-sonnet-4-6 quota and switch JUDGE_TRANSPORT back from the claude CLI subprocess to the Anthropic SDK. The current OAuth-issued key in this environment lacks sonnet quota, forcing the CLI fallback at ~$0.18/call (cache-creation overhead) instead of the ~$0.024/call SDK + cache-hit projection. Provisioning a sonnet-capable key would let S-0019-01's confirmatory sweep run within the original $5 budget envelope and unblock larger-n experiments without per-task cap raises. This is a project-level service request, not a research experiment.",
+      "kind": "library",
+      "priority": "medium",
+      "source_task": "t0019_v2_judge_calibration_sonnet",
+      "source_paper": null,
+      "categories": ["agent-evaluation"]
+    },
+    {
+      "id": "S-0019-03",
+      "title": "Substantive critic vs original prompt: 50-row prompt-only ablation at fixed model",
+      "description": "Run a focused n=50 ablation that holds the judge model fixed at claude-sonnet-4-6 and varies only the system prompt between the substantive critic (with simulate-execution instruction) and the original t0014 prompt. The current task found a Cohen's kappa of 0.626 between the two prompts on the same model, with one row (v2-haiku-0007) where the substantive prompt caught a dimensional-analysis error the original prompt missed and two rows (v1-sonnet-0002, v1-sonnet-0004) where the substantive prompt accepted structural-but-executable trees the original rejected. A larger ablation would quantify how often each prompt mode wins, which would inform whether the substantive critic should become the production judge or stay as a stricter audit.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0019_v2_judge_calibration_sonnet",
+      "source_paper": null,
+      "categories": ["agent-evaluation", "uncertainty-calibration"]
+    },
+    {
+      "id": "S-0019-04",
+      "title": "Cross-vendor judge: replicate the schema-only delta with GPT-4 and Gemini judges",
+      "description": "Test the family-bias hypothesis at the judge stage by re-judging the same 55-row pool under GPT-4o and Gemini-2.5 with the same substantive critic prompt, and comparing the schema-only delta to the +24.6 / +37.3 pp Anthropic numbers from this task. Xiong2024 reports within-family acceptance bonuses of 5-10 pp; if the cross-vendor schema-only delta lands close to the substantive-sonnet +24.6 pp, the v2-sonnet familial bias hypothesis (kappa=1.0 on the v2-sonnet cell) gains support; if it lands close to +37 pp, prompt strictness dominates over model family.",
+      "kind": "experiment",
+      "priority": "low",
+      "source_task": "t0019_v2_judge_calibration_sonnet",
+      "source_paper": null,
+      "categories": ["agent-evaluation", "uncertainty-calibration"]
+    }
+  ]
+}
