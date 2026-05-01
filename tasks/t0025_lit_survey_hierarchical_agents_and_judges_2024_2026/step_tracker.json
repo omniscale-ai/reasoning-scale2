@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Write plan/plan.md describing how 10 papers will be added in parallel via add-paper sub-agents and how the synthesis will be produced.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-01T21:17:02Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
