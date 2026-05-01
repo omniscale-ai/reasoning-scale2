@@ -1,0 +1,6 @@
+remote: 
+remote: Create a pull request for 'task/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026' on GitHub by visiting:        
+remote:      https://github.com/omniscale-ai/reasoning-scale2/pull/new/task/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026        
+remote: 
+To github-other:omniscale-ai/reasoning-scale2
+ * [new branch]      task/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026 -> task/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026

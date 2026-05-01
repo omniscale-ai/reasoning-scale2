@@ -1,0 +1,9 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/logs/steps/015_reporting
+
+[31m[1mERRORS:[0m
+[31m  SV-E003 error: Required file missing: logs/sessions/capture_report.json[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+
+

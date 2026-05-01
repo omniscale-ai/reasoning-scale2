@@ -1,0 +1,22 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/task.json
+
+[31m[1mERRORS:[0m
+[31m  PM-E007 error: Step 'reporting' has status 'in_progress', not finished[0m
+[31m  PM-E013 error: PR body missing required section: '## Assets Produced'[0m
+[31m  PM-E013 error: PR body missing required section: '## Verification'[0m
+
+[33m[1mWARNINGS:[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (126): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (152): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (135): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (119): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (106): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (104): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (112): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (102): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W002 warning: Commit subject exceeds 100 chars (108): 't0025_lit_survey_hierarchical_agents_and_judges_20...'[0m
+[33m  PM-W003 warning: PR title does not start with 't0025_lit_survey_hierarchical_agents_and_judges_2024_2026:' or 't0025:': 't0025 lit survey re-scoped: synthesize RQ1-RQ5 answers'[0m
+
+[31m[1mFAILED[0m — 3 error(s), 10 warning(s)
+
