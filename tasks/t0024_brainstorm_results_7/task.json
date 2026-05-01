@@ -1,0 +1,40 @@
+{
+  "spec_version": 4,
+  "task_id": "t0024_brainstorm_results_7",
+  "task_index": 24,
+  "name": "Brainstorm session 7: rescope around RQ answers after t0019 calibration finding",
+  "short_description": "Brainstorm 7: cancel t0023, schedule rescoped t0025 (N=80, $25 cap) to answer RQ1/2/4/5; defer RQ3.",
+  "long_description_file": "task_description.md",
+  "task_types": [
+    "brainstorming"
+  ],
+  "status": "completed",
+  "dependencies": [
+    "t0001_brainstorm_results_1",
+    "t0002_literature_survey_granularity_conditioning",
+    "t0003_download_benchmark_subsets",
+    "t0004_brainstorm_results_2",
+    "t0005_hierarchical_annotation_pilot_v1",
+    "t0006_scope_aware_react_library",
+    "t0007_scope_unaware_planandsolve_library",
+    "t0008_brainstorm_results_3",
+    "t0009_hierarchical_annotation_v2",
+    "t0010_matched_mismatch_library",
+    "t0011_metric2_calibration_aggregator",
+    "t0012_phase2_abc_smoke_frontierscience",
+    "t0013_brainstorm_results_4",
+    "t0014_v2_annotator_sonnet_rerun",
+    "t0015_correct_proxy_benchmark_labels",
+    "t0016_brainstorm_results_5",
+    "t0017_literature_hierarchical_agents_and_judges",
+    "t0018_brainstorm_results_6",
+    "t0019_v2_judge_calibration_sonnet",
+    "t0020_v2_truncation_vs_schema_ablation",
+    "t0021_plan_and_solve_v2_with_final_confidence",
+    "t0022_abc_harness_progress_rate_and_error_taxonomy"
+  ],
+  "start_time": "2026-05-01T18:00:00Z",
+  "end_time": "2026-05-01T19:30:00Z",
+  "expected_assets": {},
+  "source_suggestion": null
+}
