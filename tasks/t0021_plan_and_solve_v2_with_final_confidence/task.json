@@ -5,9 +5,9 @@
   "name": "Plan-and-Solve v2 with final_confidence Field",
   "short_description": "Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [],
-  "start_time": null,
+  "start_time": "2026-05-01T14:03:02Z",
   "end_time": null,
   "expected_assets": {
     "library": 1
