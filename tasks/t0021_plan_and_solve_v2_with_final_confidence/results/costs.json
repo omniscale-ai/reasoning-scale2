@@ -1,0 +1,19 @@
+{
+  "total_cost_usd": 0.538343,
+  "breakdown": {
+    "claude-haiku-4-5": {
+      "cost_usd": 0.538343,
+      "calls": 43,
+      "input_tokens": 53291,
+      "output_tokens": 82040,
+      "cache_creation_tokens": 4464,
+      "cache_read_tokens": 0,
+      "duration_s": 786.69,
+      "note": "Smoke validation run for n=1 x 3 conditions including answer + confidence calls and haiku judge calls."
+    }
+  },
+  "services": {
+    "anthropic_api": 0.538343
+  },
+  "budget_limit": 1.0
+}
