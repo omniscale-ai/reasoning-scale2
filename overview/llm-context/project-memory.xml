@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-04-30T22:03:04Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-01T04:45:51Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>59615</char_count>
-    <byte_count>59690</byte_count>
-    <estimated_tokens>14903</estimated_tokens>
+    <char_count>61559</char_count>
+    <byte_count>61641</byte_count>
+    <estimated_tokens>15389</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -142,13 +142,14 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0009_hierarchical_annotation_v2</id>
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
+        <id>t0012_phase2_abc_smoke_frontierscience</id>
         <id>t0013_brainstorm_results_4</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
       </source_ids>
       <content>
-Completed tasks: 15
+Completed tasks: 16
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -216,6 +217,12 @@ Completed: 2026-04-29
 Short description: Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.
 Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Implemented the metric2_calibration_aggregator_v1 library that operationalizes the project&#x27;s Metric 2 (`overconfident_error_rate`) using the Xiong2024 §3.2 black-box calibration protocol. The library exposes `ConfidencePromptTemplate`, `ConfidenceJudge`, `elicit_confidence`, `compute_overconfident_error_rate`, and `CalibrationRecord` plus a trajectory-record adapter, with a single overridable threshold default (`HIGH_CONFIDENCE_THRESHOLD = 0.75`) and the canonical low/medium/high → 0.25/0.5/0.9 numeric mapping. Metrics * **Tests run**: 25 — all passed in 0.03 s (`uv run pytest tasks/t0011_metric2_calibration_aggregator/code/`). *...
 
+## Phase 2 A/B/C smoke harness on FrontierScience subset
+ID: t0012_phase2_abc_smoke_frontierscience
+Completed: 2026-05-01
+Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
+Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0012_phase2_abc_smoke_frontierscience&quot; --- Results Summary — Phase 2 A/B/C Smoke (FrontierScience-Olympiad) Summary All three agent conditions (scope-aware ReAct A, scope-unaware Plan-and-Solve B, scope-mismatched Plan-and-Solve C) solved near-zero FrontierScience-Olympiad problems with claude-haiku-4-5 and no tools: A solved 1/40 (2.5%), B solved 0/40, C solved 0/11 (budget halted at 11 rows). The paired McNemar test across the 6 fully overlapping rows yields p=1.0 for all pairs — the null is not rejected, and the smoke confirms that FrontierScience-Olympiad is beyond haiku capacity without tool use. Metrics * **task_success_rate**: A=0.025 (1/40), B=0.000...
+
 ## Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels
 ID: t0013_brainstorm_results_4
 Completed: 2026-04-30
@@ -244,18 +251,8 @@ Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm s
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
-      <source_ids>
-        <id>t0012_phase2_abc_smoke_frontierscience</id>
-      </source_ids>
       <content>
-Planned or active tasks: 1
-
-## Phase 2 A/B/C smoke harness on FrontierScience subset
-ID: t0012_phase2_abc_smoke_frontierscience
-Status: in_progress
-Effective date: 2026-04-30
-Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
-Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator
+Planned or active tasks: 0
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -284,11 +281,11 @@ Answers: 0
         <id>S-0009-06</id>
         <id>S-0014-02</id>
         <id>S-0014-03</id>
+        <id>S-0012-01</id>
+        <id>S-0012-02</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
-        <id>S-0003-03</id>
-        <id>S-0003-04</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -398,6 +395,20 @@ Kind: experiment
 Source task: t0014_v2_annotator_sonnet_rerun
 The model-only delta of -1 pp sits below Xiong2024&#x27;s lower edge (0 pp). Xiong2024 documents that judges trained on the same model family as the annotator show a small positive familial bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near zero, sonnet really does provide no annotator-quality...
 
+## Extend scope_unaware_planandsolve_v1 to emit final_confidence
+ID: S-0012-01
+Priority: high
+Kind: library
+Source task: t0012_phase2_abc_smoke_frontierscience
+The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records. This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2 untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2 protocol: add a follow-up call after the final plan step asking the model to rate its confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that wants to test RQ2.
+
+## Confirmatory Phase 2 run: sonnet on SWE-bench Verified or tau-bench
+ID: S-0012-02
+Priority: high
+Kind: experiment
+Source task: t0012_phase2_abc_smoke_frontierscience
+The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B: 0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50% accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2) claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from this smoke. This is the highest-priority next experiment for RQ1/RQ5.
+
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
 Priority: medium
@@ -418,20 +429,6 @@ Priority: medium
 Kind: experiment
 Source task: t0002_literature_survey_granularity_conditioning
 The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
-
-## Sensitivity-check the SWE-bench Verified 4-8-hunks subset against [3, 12]
-ID: S-0003-03
-Priority: medium
-Kind: evaluation
-Source task: t0003_download_benchmark_subsets
-The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks. The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo distributions; this informs whether the 4-8 boundary is too narrow for Phase 2&#x27;s atomic-edit experiments.
-
-## Derive step graphs for FrontierScience-Olympiad rows
-ID: S-0003-04
-Priority: medium
-Kind: experiment
-Source task: t0003_download_benchmark_subsets
-FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
@@ -620,9 +617,10 @@ Hierarchical Annotation v2-sonnet is the controlled-rerun companion to t0009&#x2
         <id>metric2_calibration_aggregator_v1</id>
         <id>scope_aware_react_v1</id>
         <id>scope_unaware_planandsolve_v1</id>
+        <id>phase2_smoke_harness_v1</id>
       </source_ids>
       <content>
-Libraries: 4
+Libraries: 5
 
 ## Matched-Mismatch Agent (v1)
 ID: matched_mismatch_v1
@@ -651,6 +649,13 @@ Version: 0.1.0
 Created by task: t0007_scope_unaware_planandsolve_library
 Module paths: tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py
 This library provides a deterministic, fully-testable Python implementation of the scope-unaware (B) Plan-and-Solve baseline for the project&#x27;s A-vs-B-vs-C comparison. It exposes a single top-level class, `PlanAndSolveAgent`, that drives a planner-then-executor loop using a swappable `model_call` callable. The trajectory record schema is identical to the schema produced by sister task t0006&#x27;s scope-aware library, so a...
+
+## Phase 2 A/B/C Smoke Harness (v1)
+ID: phase2_smoke_harness_v1
+Version: 0.1.0
+Created by task: t0012_phase2_abc_smoke_frontierscience
+Module paths: tasks/t0012_phase2_abc_smoke_frontierscience/code/charts.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/constants.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/harness.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/model_call.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/paths.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/run_smoke.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/stats.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/tools.py
+The harness is the substrate for every Phase 2 A/B/C run on the project&#x27;s hierarchical- annotation data. It pairs three agent libraries against the same problem set and the same model, computes the three registered project metrics in the explicit-variant format, runs paired hypothesis tests, and produces an asset-compliant predictions JSONL per condition plus two charts. Cost control is built into the run loop, and...
       </content>
     </section>
     <section id="metrics" source_kind="aggregator">

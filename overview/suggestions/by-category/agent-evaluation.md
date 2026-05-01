@@ -1,7 +1,7 @@
 # Suggestions: `agent-evaluation`
 
-22 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**17 open** (8 high, 6 medium, 3 low), **5 closed**.
+26 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
+**21 open** (10 high, 7 medium, 4 low), **5 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -53,6 +53,50 @@ $50-200 range, the cost differential dominates: a 200-row sonnet annotation pass
 $40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
 annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
 judge bias.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
+tau-bench</strong> (S-0012-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) |
+
+The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
+0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
+invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
+accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
+claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
+this smoke. This is the highest-priority next experiment for RQ1/RQ5.
+
+</details>
+
+<details>
+<summary>📚 <strong>Extend scope_unaware_planandsolve_v1 to emit
+final_confidence</strong> (S-0012-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-01` |
+| **Kind** | library |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records.
+This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2
+untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2
+protocol: add a follow-up call after the final plan step asking the model to rate its
+confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that
+wants to test RQ2.
 
 </details>
 
@@ -190,6 +234,27 @@ prompts (B vs G/S/A from the project's research questions).
 </details>
 
 ## Medium Priority
+
+<details>
+<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
+FrontierScience-Olympiad</strong> (S-0012-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
+numerical computation, retrieval, and code execution for most problems. Adding a Python code
+execution tool and a retrieval tool would lift accuracy above the current floor and make
+A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
+confirmatory N would decrease proportionally.
+
+</details>
 
 <details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
@@ -365,6 +430,28 @@ Run the same 12-row spot-check with two judge models (claude-haiku-4-5 + claude-
 and compute pairwise verdict agreement plus a confusion matrix. The v1 single-judge accept
 rate of 33% may be miscalibrated; multi-judge agreement gives a more reliable quality
 estimate. Estimated cost: ~$0.30 per run.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Multi-provider replication: run Phase 2 harness with GPT-4o and
+Gemini 1.5 Pro</strong> (S-0012-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The smoke used only claude-haiku-4-5. Replicating on GPT-4o and Gemini 1.5 Pro (both now
+available via project API keys) would test whether the granularity conditioning effect is
+model-specific or generalizes across providers. The harness's model_call.py abstraction layer
+makes this a configuration change rather than a code change. Defer until the confirmatory N
+result is available from S-0012-02 to avoid spending budget before the primary hypothesis is
+tested.
 
 </details>
 

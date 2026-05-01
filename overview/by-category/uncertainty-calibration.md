@@ -7,7 +7,7 @@ probabilities.
 
 **Detail pages**: [Papers (1)](../papers/by-category/uncertainty-calibration.md) |
 [Suggestions (7)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
-(1)](../libraries/by-category/uncertainty-calibration.md)
+(2)](../libraries/by-category/uncertainty-calibration.md)
 
 ---
 

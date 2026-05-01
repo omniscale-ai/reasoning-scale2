@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-frontierscience`
 
-6 suggestion(s) in category
-[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **5 open**
-(2 high, 2 medium, 1 low), **1 closed**.
+7 suggestion(s) in category
+[`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) **6 open**
+(2 high, 3 medium, 1 low), **1 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -53,6 +53,27 @@ explicit access conversation with Epoch AI, plus a fallback to public Olympiad b
 </details>
 
 ## Medium Priority
+
+<details>
+<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
+FrontierScience-Olympiad</strong> (S-0012-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
+numerical computation, retrieval, and code execution for most problems. Adding a Python code
+execution tool and a retrieval tool would lift accuracy above the current floor and make
+A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
+confirmatory N would decrease proportionally.
+
+</details>
 
 <details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap

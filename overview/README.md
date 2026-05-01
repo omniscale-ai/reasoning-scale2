@@ -4,18 +4,18 @@
   <a href="papers/"><img src="https://img.shields.io/badge/Papers-11-4169E1" alt="Papers"></a>
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-8-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
-  <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-0-9370DB" alt="Predictions"></a>
-  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-4-20B2AA" alt="Libraries"></a>
+  <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-3-9370DB" alt="Predictions"></a>
+  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-5-20B2AA" alt="Libraries"></a>
   <a href="answers/"><img src="https://img.shields.io/badge/Answers-0-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-16-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-49-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-54-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
-  <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-1-DC143C" alt="Results"></a>
+  <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-3-DC143C" alt="Results"></a>
   <a href="task-types/"><img src="https://img.shields.io/badge/Task%20Types-18-708090" alt="Task%20Types"></a>
 </p>
 
@@ -30,15 +30,15 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (6K) |
-[full](llm-context/full.xml) (55K) | [roadmap](llm-context/roadmap.xml) (15K) |
-[results](llm-context/results-deep-dive.xml) (48K) |
-[assets](llm-context/literature-and-assets.xml) (11K)
+[full](llm-context/full.xml) (59K) | [roadmap](llm-context/roadmap.xml) (14K) |
+[results](llm-context/results-deep-dive.xml) (53K) |
+[assets](llm-context/literature-and-assets.xml) (12K)
 
-*Last updated: 2026-04-30 22:03 UTC*
+*Last updated: 2026-05-01 04:45 UTC*
 
-* **Budget**: **$30** spent of $100
-* **Remaining**: **$70**
-* **Usage**: `██████░░░░░░░░░░░░░░` 30.3%
+* **Budget**: **$49** spent of $100
+* **Remaining**: **$51**
+* **Usage**: `██████████░░░░░░░░░░` 48.7%
 
 ---
 
@@ -48,11 +48,9 @@ No daily news yet.
 
 ---
 
-## [In Progress (1)](tasks/by-status/in_progress.md)
+## [In Progress (0)](tasks/by-status/in_progress.md)
 
-| # | Task | Started |
-|---|------|---------|
-| 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-04-30 00:55 |
+No tasks in progress.
 
 ---
 
@@ -68,10 +66,11 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (15 total)](tasks/by-status/completed.md)
+## [Recently Completed (16 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`results`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/results_detailed.md) | 2026-05-01 04:43 |
 | 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`results`](../tasks/t0014_v2_annotator_sonnet_rerun/results/results_detailed.md) | 2026-04-30 23:59 |
 | 0016 | [Brainstorm session 5: prune backlog after t0014 deconfound](../overview/tasks/task_pages/t0016_brainstorm_results_5.md) | [`results`](../tasks/t0016_brainstorm_results_5/results/results_detailed.md) | 2026-04-30 22:30 |
 | 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`results`](../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) | 2026-04-30 19:32 |
@@ -81,13 +80,102 @@ No blocked tasks.
 | 0010 | [Matched-mismatch library: condition C with deliberately wrong granularity tags](../overview/tasks/task_pages/t0010_matched_mismatch_library.md) | [`results`](../tasks/t0010_matched_mismatch_library/results/results_detailed.md) | 2026-04-29 23:46 |
 | 0011 | [Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) | [`results`](../tasks/t0011_metric2_calibration_aggregator/results/results_detailed.md) | 2026-04-29 23:43 |
 | 0005 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`results`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/results_detailed.md) | 2026-04-29 20:14 |
-| 0006 | [Scope-aware ReAct library: condition A with explicit granularity tags](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | [`results`](../tasks/t0006_scope_aware_react_library/results/results_detailed.md) | 2026-04-29 20:07 |
 
-*5 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*6 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
-## [Recent Suggestions (40 open)](suggestions/)
+## [Key Metrics Leaderboard](metrics-results/)
+
+### Task Success Rate
+
+| # | Task | Variant | Value |
+|---|------|---------|-------|
+| 1 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition A: scope-aware ReAct | **0.025** |
+| 2 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition B: scope-unaware Plan-and-Solve | **0.0** |
+| 3 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition C: scope-mismatched (random) | **0.0** |
+
+---
+
+## [Recent Suggestions (45 open)](suggestions/)
+
+<details>
+<summary>📚 <strong>Extend scope_unaware_planandsolve_v1 to emit
+final_confidence</strong> (S-0012-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records.
+This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2
+untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2
+protocol: add a follow-up call after the final plan step asking the model to rate its
+confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that
+wants to test RQ2.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
+tau-bench</strong> (S-0012-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
+0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
+invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
+accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
+claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
+this smoke. This is the highest-priority next experiment for RQ1/RQ5.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
+FrontierScience-Olympiad</strong> (S-0012-03)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
+numerical computation, retrieval, and code execution for most problems. Adding a Python code
+execution tool and a retrieval tool would lift accuracy above the current floor and make
+A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
+confirmatory N would decrease proportionally.
+
+</details>
+
+<details>
+<summary>📂 <strong>Fix task_id collision in FrontierScience-Olympiad pilot
+dataset</strong> (S-0012-04)</summary>
+
+**Kind**: dataset | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The hierarchical-annotation-v2 FrontierScience-Olympiad subset has 40 rows but only 26 unique
+task_ids. Multiple rows share the same task_id (different granularity levels of the same
+problem), which means the pairing logic treats them as separate predictions for the same task.
+A deduplication or re-keying correction task should produce a version of the dataset with
+unique task_ids per row, or document the intended semantics of multi-row task_ids.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Multi-provider replication: run Phase 2 harness with GPT-4o and
+Gemini 1.5 Pro</strong> (S-0012-05)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The smoke used only claude-haiku-4-5. Replicating on GPT-4o and Gemini 1.5 Pro (both now
+available via project API keys) would test whether the granularity conditioning effect is
+model-specific or generalizes across providers. The harness's model_call.py abstraction layer
+makes this a configuration change rather than a code change. Defer until the confirmatory N
+result is available from S-0012-02 to avoid spending budget before the primary hypothesis is
+tested.
+
+</details>
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -174,105 +262,43 @@ already saturate the high-level subtask abstraction.
 
 </details>
 
-<details>
-<summary>📊 <strong>Stress-test the +57 pp schema-only delta with a stricter
-substantive judge</strong> (S-0014-02)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
-
-The schema-only delta of +57 pp is well above Zhou2022's +16 pp and Boisvert2024's +25 pp
-published bands. One plausible cause is judge anchoring on tree shape: the haiku judge may be
-partially scoring 'did the model produce a parseable tree with subtask-to-atomic edges' rather
-than 'is the decomposition substantively right'. Replace the haiku judge with a substantive
-critic prompt that simulates execution ('verify each atomic, executed in order, would actually
-solve the problem') and re-judge the same 20-row sample under all three conditions (v1-sonnet,
-v2-haiku, v2-sonnet). If schema-only drops materially below +57 pp under the substantive
-judge, the gap to literature was judge anchoring; if schema-only stays near +57 pp, the schema
-is doing real work. Cost ~$3 with sonnet judge.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
-hypothesis on the model-only delta</strong> (S-0014-03)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
-
-The model-only delta of -1 pp sits below Xiong2024's lower edge (0 pp). Xiong2024 documents
-that judges trained on the same model family as the annotator show a small positive familial
-bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which
-means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row
-v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of
-haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the
-haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near
-zero, sonnet really does provide no annotator-quality lift on this composite. Cost ~$2 with
-sonnet judge on 43 rows.
-
-</details>
-
-<details>
-<summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
-is not justified</strong> (S-0014-04)</summary>
-
-**Kind**: technique | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
-
-Under the t0014 measurement, haiku and sonnet annotators produce statistically
-indistinguishable accept rates under the v2 tree schema (90% sonnet vs 91% haiku, CIs overlap
-completely). Sonnet annotation costs ~$0.20 per call vs haiku ~$0.02 per call (10x via Claude
-Code CLI; 7-8x via direct API). For Phase 2 ABC/main-experiment annotation budgets in the
-$50-200 range, the cost differential dominates: a 200-row sonnet annotation pass would cost
-$40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
-annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
-judge bias.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a
-longer CLI timeout to recover the missing rows</strong> (S-0014-05)</summary>
-
-**Kind**: experiment | **Priority**: low | **Date**: 2026-04-30 | **Source**:
-[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
-
-Three FrontierScience-Olympiad rows (pilot indices 7, 8, 14) timed out at the 300s Claude Code
-CLI ceiling during the sonnet annotation pass. They were dropped from the judge sample,
-reducing FS sample size from 6 (t0009 v2-haiku) to 3 (t0014 v2-sonnet). The +33 pp model-only
-delta on FS (67% v2-haiku vs 100% v2-sonnet, n=6 vs n=3) is therefore on a smaller sample than
-the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (or via direct
-Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
-aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
-credible. Cost <$1.
-
-</details>
-
-<details>
-<summary>📂 <strong>Replace Mind2Web/HumanEval proxy rows with native WorkArena++
-and tau-bench data</strong> (S-0015-01)</summary>
-
-**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
-[t0015_correct_proxy_benchmark_labels](../tasks/t0015_correct_proxy_benchmark_labels/)
-
-Variant a of S-0009-06 (now folded into this follow-up). The 26 m2w_* rows in the v2
-hierarchical-annotation dataset are Mind2Web data used as a proxy for the gated WorkArena++
-split, and the 26 he_* rows are HumanEval data used as a proxy for the gated tau-bench split.
-t0015 corrected the labels but did not replace the underlying data. This task should (1)
-obtain access to a real WorkArena++ split and a real tau-bench split (both currently gated;
-expect a registration / agreement step that must be tracked as an intervention), (2)
-re-annotate 26 + 26 rows under the v2 tree schema using the same haiku annotator and judge as
-t0009 to keep variant b apples-to-apples, and (3) issue a corrections-overlay against
-hierarchical-annotation-v2 that swaps the proxy rows for the native rows. Out of scope: any
-change to the FrontierScience-Olympiad or SWE-bench Verified rows.
-
-</details>
-
-*30 more open suggestions → [open suggestions](suggestions/)*
+*35 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (13)](suggestions/)
+## [High Priority Suggestions (15)](suggestions/)
+
+<details>
+<summary>📚 <strong>Extend scope_unaware_planandsolve_v1 to emit
+final_confidence</strong> (S-0012-01)</summary>
+
+**Kind**: library | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records.
+This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2
+untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2
+protocol: add a follow-up call after the final plan step asking the model to rate its
+confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that
+wants to test RQ2.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
+tau-bench</strong> (S-0012-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
+0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
+invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
+accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
+claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
+this smoke. This is the highest-priority next experiment for RQ1/RQ5.
+
+</details>
 
 <details>
 <summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
@@ -408,37 +434,7 @@ the t0002 fallback plan.
 
 </details>
 
-<details>
-<summary>📂 <strong>Provision a ServiceNow developer instance for WorkArena++ live
-evaluation</strong> (S-0003-02)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
-
-WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to
-the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the
-upstream task-class manifest. Provision a free ServiceNow developer instance, request HF
-access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
-decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
-fallback.
-
-</details>
-
-<details>
-<summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
-review</strong> (S-0005-01)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter
-retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
-a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
-Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-*3 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+*5 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 
@@ -894,16 +890,21 @@ No models yet.
 
 ---
 
-## [Latest Predictions (0 total)](predictions/)
-
-No predictions yet.
-
----
-
-## [Latest Libraries (4 total)](libraries/)
+## [Latest Predictions (3 total)](predictions/)
 
 | Name | Source | Created |
 |------|--------|---------|
+| [Phase 2 smoke condition C (scope-mismatched random) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-c/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
+| [Phase 2 smoke condition B (scope-unaware Plan-and-Solve) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-b/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
+| [Phase 2 smoke condition A (scope-aware ReAct) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-a/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
+
+---
+
+## [Latest Libraries (5 total)](libraries/)
+
+| Name | Source | Created |
+|------|--------|---------|
+| [Phase 2 A/B/C Smoke Harness (v1)](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/library/phase2_smoke_harness_v1/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
 | [Scope-Unaware Plan-and-Solve Agent (v1)](../tasks/t0007_scope_unaware_planandsolve_library/assets/library/scope_unaware_planandsolve_v1/description.md) | [7](../overview/tasks/task_pages/t0007_scope_unaware_planandsolve_library.md) | 2026-04-29 |
 | [Scope-Aware ReAct Agent](../tasks/t0006_scope_aware_react_library/assets/library/scope_aware_react_v1/description.md) | [6](../overview/tasks/task_pages/t0006_scope_aware_react_library.md) | 2026-04-29 |
 | [Metric 2 Calibration Aggregator](../tasks/t0011_metric2_calibration_aggregator/assets/library/metric2_calibration_aggregator_v1/description.md) | [11](../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) | 2026-04-29 |
@@ -911,10 +912,11 @@ No predictions yet.
 
 ---
 
-## [Cost Leaders (3 tasks with spend)](costs/)
+## [Cost Leaders (4 tasks with spend)](costs/)
 
 | Task | Cost | Date |
 |------|------|------|
 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`$21.16`](../tasks/t0014_v2_annotator_sonnet_rerun/results/costs.json) | 2026-04-30 23:59 |
+| [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`$18.37`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/costs.json) | 2026-05-01 04:43 |
 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`$9.10`](../tasks/t0009_hierarchical_annotation_v2/results/costs.json) | 2026-04-30 00:53 |
 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`$0.06`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/costs.json) | 2026-04-29 20:14 |

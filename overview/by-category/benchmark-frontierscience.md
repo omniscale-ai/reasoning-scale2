@@ -5,8 +5,10 @@ Per-source tag for tasks and assets sourced from the FrontierScience-Olympiad be
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-frontierscience.md) |
-[Suggestions (6)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
-(1)](../datasets/by-category/benchmark-frontierscience.md)
+[Suggestions (7)](../suggestions/by-category/benchmark-frontierscience.md) | [Datasets
+(1)](../datasets/by-category/benchmark-frontierscience.md) | [Libraries
+(1)](../libraries/by-category/benchmark-frontierscience.md) | [Predictions
+(3)](../predictions/by-category/benchmark-frontierscience.md)
 
 ---
 
@@ -63,7 +65,22 @@ AI's evaluation pipeline is a known operational risk for the t0003 download-data
 
 No answers in this category.
 
-## Suggestions (5 open, 1 closed)
+## Suggestions (6 open, 1 closed)
+
+<details>
+<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
+FrontierScience-Olympiad</strong> (S-0012-03)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
+numerical computation, retrieval, and code execution for most problems. Adding a Python code
+execution tool and a retrieval tool would lift accuracy above the current floor and make
+A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
+confirmatory N would decrease proportionally.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Re-run the three FrontierScience-Olympiad sonnet timeouts under a

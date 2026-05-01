@@ -6,26 +6,29 @@
 
 ---
 
-## 2026-04-30 (7)
+## 2026-05-01 (1)
 
-## ⏳ In Progress
+## ✅ Completed
 
 <details>
-<summary>⏳ 0012 — <strong>Phase 2 A/B/C smoke harness on FrontierScience
+<summary>✅ 0012 — <strong>Phase 2 A/B/C smoke harness on FrontierScience
 subset</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0012_phase2_abc_smoke_frontierscience` |
-| **Status** | in_progress |
-| **Effective date** | 2026-04-30 |
+| **Status** | completed |
+| **Effective date** | 2026-05-01 |
 | **Dependencies** | [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md), [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0011_metric2_calibration_aggregator`](../../../overview/tasks/task_pages/t0011_metric2_calibration_aggregator.md) |
 | **Expected assets** | 3 predictions, 1 library |
 | **Source suggestion** | `S-0006-03` |
 | **Task types** | [`experiment-run`](../../../meta/task_types/experiment-run/), [`baseline-evaluation`](../../../meta/task_types/baseline-evaluation/) |
 | **Start time** | 2026-04-30T00:55:11Z |
+| **End time** | 2026-05-01T04:43:00Z |
+| **Step progress** | 11/15 |
 | **Task page** | [Phase 2 A/B/C smoke harness on FrontierScience subset](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
 | **Task folder** | [`t0012_phase2_abc_smoke_frontierscience/`](../../../tasks/t0012_phase2_abc_smoke_frontierscience/) |
+| **Detailed report** | [results_detailed.md](../../../tasks/t0012_phase2_abc_smoke_frontierscience/results/results_detailed.md) |
 
 # Phase 2 A/B/C Smoke Harness on FrontierScience Subset
 
@@ -143,7 +146,38 @@ covers S-0007-02 and S-0005-06 by consolidation.
 5. Are there per-domain (physics / chemistry / biology) effect-size differences worth
    surfacing to the next brainstorm?
 
+**Results summary:**
+
+> ---
+> spec_version: "2"
+> task_id: "t0012_phase2_abc_smoke_frontierscience"
+> ---
+> **Results Summary — Phase 2 A/B/C Smoke (FrontierScience-Olympiad)**
+>
+> **Summary**
+>
+> All three agent conditions (scope-aware ReAct A, scope-unaware Plan-and-Solve B,
+> scope-mismatched
+> Plan-and-Solve C) solved near-zero FrontierScience-Olympiad problems with claude-haiku-4-5
+> and no
+> tools: A solved 1/40 (2.5%), B solved 0/40, C solved 0/11 (budget halted at 11 rows). The
+> paired
+> McNemar test across the 6 fully overlapping rows yields p=1.0 for all pairs — the null is
+> not
+> rejected, and the smoke confirms that FrontierScience-Olympiad is beyond haiku capacity
+> without tool
+> use.
+>
+> **Metrics**
+>
+> * **task_success_rate**: A=0.025 (1/40), B=0.000 (0/40), C=0.000 (0/11)
+> * **overconfident_error_rate**: A=0.647, B=0.000\*, C=0.000\* (\*collapsed — no
+>   final_confidence in
+> Plan-and-Solve trajectories; not comparable to A)
+
 </details>
+
+## 2026-04-30 (6)
 
 ## ✅ Completed
 

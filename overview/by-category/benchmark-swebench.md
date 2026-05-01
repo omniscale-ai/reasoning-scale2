@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the SWE-bench Verified benchmar
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/benchmark-swebench.md) | [Suggestions
-(3)](../suggestions/by-category/benchmark-swebench.md) | [Datasets
+(4)](../suggestions/by-category/benchmark-swebench.md) | [Datasets
 (1)](../datasets/by-category/benchmark-swebench.md)
 
 ---
@@ -105,7 +105,23 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (3 open, 0 closed)
+## Suggestions (4 open, 0 closed)
+
+<details>
+<summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
+tau-bench</strong> (S-0012-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0012_phase2_abc_smoke_frontierscience](../../tasks/t0012_phase2_abc_smoke_frontierscience/)
+
+The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
+0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
+invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
+accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
+claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
+this smoke. This is the highest-priority next experiment for RQ1/RQ5.
+
+</details>
 
 <details>
 <summary>📂 <strong>Build the SWE-bench Verified Docker harness</strong> (S-0002-05)</summary>

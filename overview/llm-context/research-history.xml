@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-04-30T22:03:04Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-05-01T04:45:51Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>32</section_count>
-    <char_count>224090</char_count>
-    <byte_count>224603</byte_count>
-    <estimated_tokens>56022</estimated_tokens>
+    <section_count>34</section_count>
+    <char_count>253674</char_count>
+    <byte_count>254260</byte_count>
+    <estimated_tokens>63418</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -138,13 +138,14 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0009_hierarchical_annotation_v2</id>
         <id>t0010_matched_mismatch_library</id>
         <id>t0011_metric2_calibration_aggregator</id>
+        <id>t0012_phase2_abc_smoke_frontierscience</id>
         <id>t0013_brainstorm_results_4</id>
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
       </source_ids>
       <content>
-Completed tasks: 15
+Completed tasks: 16
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -212,6 +213,12 @@ Completed: 2026-04-29
 Short description: Write-library implementing the Xiong2024 verbalized-confidence + 3-sample self-consistency aggregator that computes overconfident_error_rate.
 Result summary: Results Summary — Metric 2 Calibration Aggregator Summary Implemented the metric2_calibration_aggregator_v1 library that operationalizes the project&#x27;s Metric 2 (`overconfident_error_rate`) using the Xiong2024 §3.2 black-box calibration protocol. The library exposes `ConfidencePromptTemplate`, `ConfidenceJudge`, `elicit_confidence`, `compute_overconfident_error_rate`, and `CalibrationRecord` plus a trajectory-record adapter, with a single overridable threshold default (`HIGH_CONFIDENCE_THRESHOLD = 0.75`) and the canonical low/medium/high → 0.25/0.5/0.9 numeric mapping. Metrics * **Tests run**: 25 — all passed in 0.03 s (`uv run pytest tasks/t0011_metric2_calibration_aggregator/code/`). *...
 
+## Phase 2 A/B/C smoke harness on FrontierScience subset
+ID: t0012_phase2_abc_smoke_frontierscience
+Completed: 2026-05-01
+Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
+Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0012_phase2_abc_smoke_frontierscience&quot; --- Results Summary — Phase 2 A/B/C Smoke (FrontierScience-Olympiad) Summary All three agent conditions (scope-aware ReAct A, scope-unaware Plan-and-Solve B, scope-mismatched Plan-and-Solve C) solved near-zero FrontierScience-Olympiad problems with claude-haiku-4-5 and no tools: A solved 1/40 (2.5%), B solved 0/40, C solved 0/11 (budget halted at 11 rows). The paired McNemar test across the 6 fully overlapping rows yields p=1.0 for all pairs — the null is not rejected, and the smoke confirms that FrontierScience-Olympiad is beyond haiku capacity without tool use. Metrics * **task_success_rate**: A=0.025 (1/40), B=0.000...
+
 ## Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels
 ID: t0013_brainstorm_results_4
 Completed: 2026-04-30
@@ -240,18 +247,8 @@ Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm s
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
-      <source_ids>
-        <id>t0012_phase2_abc_smoke_frontierscience</id>
-      </source_ids>
       <content>
-Planned or active tasks: 1
-
-## Phase 2 A/B/C smoke harness on FrontierScience subset
-ID: t0012_phase2_abc_smoke_frontierscience
-Status: in_progress
-Effective date: 2026-04-30
-Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
-Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator
+Planned or active tasks: 0
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -2960,6 +2957,484 @@ surface the model&#x27;s most-confident wrong answer (matching the metric&#x27;s
   / 0.5 / 0.9), the 3-sample self-consistency aggregation rule, and the high-confidence bucket
   boundary that this library implements verbatim. Sole source for the prompt template and threshold
   default.
+      </content>
+    </section>
+    <section id="t0012_phase2_abc_smoke_frontierscience-research_papers" source_kind="file">
+      <title>t0012_phase2_abc_smoke_frontierscience — Phase 2 A/B/C smoke harness on FrontierScience subset — research_papers.md</title>
+      <source_name>research_papers.md</source_name>
+      <source_ids>
+        <id>t0012_phase2_abc_smoke_frontierscience</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0012_phase2_abc_smoke_frontierscience/research/research_papers.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0012_phase2_abc_smoke_frontierscience&quot;
+research_stage: &quot;papers&quot;
+papers_reviewed: 4
+papers_cited: 4
+
+categories_consulted:
+  - &quot;granularity-conditioning&quot;
+  - &quot;hierarchical-planning&quot;
+  - &quot;uncertainty-calibration&quot;
+  - &quot;agent-evaluation&quot;
+  - &quot;benchmark-frontierscience&quot;
+date_completed: &quot;2026-04-30&quot;
+status: &quot;complete&quot;
+---
+### Research Papers: Phase 2 A/B/C Smoke Harness on FrontierScience
+
+#### Task Objective
+
+This task runs the project&#x27;s first end-to-end Phase 2 A/B/C comparison on a real benchmark
+(FrontierScience-Olympiad) using the v2 hierarchical annotations from t0009. It tests the headline
+hypothesis: scope-aware (A, ReAct with explicit `&lt;global&gt;/&lt;subtask&gt;/&lt;atomic&gt;` tags) outperforms
+scope-unaware (B, Plan-and-Solve) which in turn outperforms scope-mismatched (C, deliberately wrong
+granularity tags). The literature review focuses on (i) the published baselines for the A and B
+conditions, (ii) the verbalized-confidence calibration protocol used to compute Metric 2, and (iii)
+benchmark expectations for frontier-science reasoning so we can interpret absolute task-success
+numbers in context.
+
+#### Category Selection Rationale
+
+Consulted `granularity-conditioning` and `hierarchical-planning` because they index every paper that
+defines the A/B/C condition libraries: ReAct establishes condition A&#x27;s prompt template and
+trajectory schema; Plan-and-Solve establishes condition B&#x27;s planner+executor pattern. Consulted
+`uncertainty-calibration` because the task computes `overconfident_error_rate` per Xiong2024&#x27;s
+verbalized-confidence protocol, which underpins Metric 2 and the calibration delta we expect between
+A and B. Consulted `benchmark-frontierscience` to anchor expected absolute success rates on
+open-ended scientific derivation problems. Excluded `benchmark-swebench`, `benchmark-taubench`, and
+`benchmark-workarena` — those benchmarks live in separate suggestion-driven task lines (RQ3 and RQ4)
+and the smoke test is intentionally scoped to FrontierScience only.
+
+#### Key Findings
+
+##### Scope-aware structured prompting is the single largest driver of agent success
+
+ReAct [Yao2022] interleaves explicit reasoning (&quot;Thought&quot;) and action steps in one transcript.
+Reported gains over CoT-only and act-only baselines are large: **+34 absolute** success rate on
+ALFWorld and **+10 absolute** on WebShop, with **only one or two in-context examples**. ReAct also
+reduces hallucination on HotpotQA by grounding intermediate claims in tool observations. Crucially,
+the Thought tokens are interpretable per-turn, which is the hook this project uses to attach the
+explicit `&lt;global&gt;/&lt;subtask&gt;/&lt;atomic&gt;` tags in the A condition (`scope_aware_react_v1`, the t0006
+project library). [Yao2022] does not study granularity tagging directly, but its trajectory schema
+gives every Thought a slot where the per-turn scope tag can live without changing the parser.
+
+Plan-and-Solve (PS+) [Wang2023] is the canonical scope-unaware baseline. The agent is asked to
+&quot;first understand the problem, extract relevant variables and their corresponding numerals, and make
+and devise a complete plan. Then, let&#x27;s carry out the plan, calculate intermediate variables (pay
+attention to correct numerical calculation and commonsense), solve the problem step by step, and
+show the answer.&quot; [Wang2023] reports PS+ improves over zero-shot CoT by **+5 to +10 accuracy** on
+math word problems (GSM8K, MultiArith, AddSub, AQuA-RAT) and **+2.5%** on commonsense reasoning
+without any in-context examples. There is no per-turn granularity signal — every record in condition
+B logs `granularity=&quot;unspecified&quot;` (the t0007 project library). This makes B the natural control for
+the headline hypothesis: same model, same problem, same final-answer format, but no scope
+information.
+
+##### Verbalized-confidence calibration is sample-efficient enough for N=28 paired runs
+
+[Xiong2024] systematically tests confidence elicitation in LLMs and concludes that simple verbalized
+prompts (&quot;respond with low/medium/high confidence and your answer&quot;) combined with 3-sample
+self-consistency aggregation produce calibration that is competitive with token-logprob methods on
+math reasoning tasks. They report Brier scores on the order of **0.15-0.18** for GPT-3.5/GPT-4 on
+GSM8K with the verbalized + self-consistency protocol, vs. **0.20-0.24** with naive single-sample
+verbalized prompts. Critically for this task, the protocol does not require logprobs — it works on
+closed APIs (Anthropic Claude). This is what t0011&#x27;s `compute_overconfident_error_rate`
+operationalizes: a record is &quot;overconfident&quot; if the model is wrong AND its aggregated verbalized
+confidence ≥ 0.75 (the high-confidence threshold). [Xiong2024] reports overconfident-error rates of
+**15-25%** on math benchmarks for GPT-3.5/GPT-4 — this is the band we expect to see for B and the
+band we predict A undercuts by 2-8 percentage points.
+
+##### Benchmark expectations on frontier-science problems
+
+GPQA [Rein2023] and FrontierMath-style olympiad benchmarks consistently show that even strong
+reasoning models score **below 30-40%** on graduate-level science derivation tasks when scored on
+exact final-answer match, much lower than on grade-school math (GSM8K, ~85-95%). FrontierScience
+problems in t0009&#x27;s v2 dataset are open-ended derivation prompts — the `gold_actions` field contains
+a free-form expected derivation chain, not a single canonical numerical answer. This means: (a)
+absolute `task_success_rate` will be modest even for A (we predict the **15-40% band**); (b)
+exact-string answer comparison is insufficient — an LLM-as-judge tier is required for any
+non-trivial answer comparison; (c) effect sizes between conditions A−B may be small in absolute
+terms (≤10pp) which is below the smoke test&#x27;s N=28 detection threshold for a single comparison. This
+is the key motivation for the sample-size calibration the task is designed to produce.
+
+#### Methodology Insights
+
+* **Use ReAct&#x27;s exact prompt structure for condition A.** The system prompt must include the line
+  `Thought: &lt;{granularity}&gt; ...` so the parser (t0006 project library) can recover the per-turn tag.
+  Reuse `scope_aware_react_v1` directly; do not reimplement.
+* **Use PS+ verbatim for condition B.** [Wang2023] §3 specifies the exact prompt; t0007&#x27;s
+  `PLAN_PROMPT_TEMPLATE` and `EXECUTE_PROMPT_TEMPLATE` already encode it. Pair the two libraries on
+  the same model and same temperature — only the prompt differs.
+* **Use 3-sample self-consistency for confidence elicitation.** [Xiong2024] shows 3 samples is the
+  knee of the cost-vs-Brier curve; more samples buy little. t0011&#x27;s `ConfidenceJudge` defaults to 3,
+  so accept the default.
+* **Set the high-confidence threshold at 0.75.** [Xiong2024] uses a slightly lower threshold (0.7)
+  but reports the same qualitative pattern at 0.75. t0011&#x27;s `HIGH_CONFIDENCE_THRESHOLD = 0.75` is
+  consistent with the protocol; do not lower it for the smoke test.
+* **Use LLM-as-judge for final-answer comparison on FrontierScience.** Direct string comparison is
+  insufficient because gold derivations are paragraph-long. Use Claude Haiku as a binary judge:
+  &quot;Does this candidate answer match the gold derivation? Reply YES or NO.&quot; This matches [Yao2022]
+  ALFWorld scoring practice and keeps judge cost low. Log every judge call.
+* **Pair runs by `task_id`.** McNemar / paired sign tests need paired binary outcomes per problem
+  per condition. The harness must serialize problems and conditions in a deterministic order so
+  every problem appears in all three trajectory files.
+* **Hypotheses to test in Phase 2:** (H1) A − B ≥ +5pp on `task_success_rate`; (H2) A − B ≤ −2pp on
+  `overconfident_error_rate`; (H3) C ranks worst on both. The smoke test cannot reliably detect H1
+  at +5pp with N=28 (needs ~150 discordant pairs for paired McNemar at α=0.05/0.8 power); it can
+  detect ~+15pp paired effects, which is what most published structured-prompting gains report on
+  first-pass benchmarks. The implied confirmatory N is the secondary deliverable.
+
+#### Gaps and Limitations
+
+* **No paper directly compares scope-aware vs scope-unaware prompting on the same model and same
+  problem set.** [Yao2022] and [Wang2023] each report against CoT, never against each other under
+  matched conditions. This is the gap Phase 2 fills.
+* **No paper reports calibration on FrontierScience.** [Xiong2024] uses GSM8K and TruthfulQA. We do
+  not know ex-ante how Anthropic Claude calibrates on graduate-level physics derivations; the smoke
+  test is partly a calibration-on-hard-problems probe.
+* **Effect sizes for granularity conditioning are unknown.** [Yao2022]&#x27;s +34pp gain over imitation
+  is against a much weaker baseline (no reasoning at all) on a much easier benchmark (ALFWorld). We
+  have no published prior on the size of the A-vs-B gap when both conditions use the same model with
+  structured prompting on a hard derivation task.
+* **No literature on adversarial mismatch.** Condition C is original to this project. There is no
+  prior expectation for how much worse &quot;deliberately wrong granularity tags&quot; makes performance,
+  beyond the intuition that injecting misleading metadata should hurt. The random mismatch strategy
+  used in this smoke run is the safer / weaker variant; an adversarial-strategy ablation is queued
+  (S-0010-01).
+* **FrontierScience-Olympiad row count differs from estimate.** The task description estimates N≈28;
+  v2 actually has **40** complete FrontierScience-Olympiad rows. This raises the smoke test&#x27;s
+  per-condition power slightly and increases the budget envelope, but does not change the
+  qualitative conclusions or the core hypotheses.
+
+#### Recommendations for This Task
+
+1. Build the harness as a thin orchestrator that loads the v2 dataset, filters to
+   FrontierScience-Olympiad complete rows, and dispatches per-condition to the three sister
+   libraries. Reuse all four sister libraries verbatim — do not reimplement ReAct, PS+, the
+   matched-mismatch wrapper, or the calibration aggregator.
+2. Use `claude-sonnet-4-6-20251001` for the agent runs (recommended in the task description). Use
+   `claude-haiku-4-5-20251001` for the LLM-as-judge correctness check and any 3-sample
+   confidence-elicitation calls.
+3. Run all 40 FrontierScience-Olympiad complete rows × 3 conditions = 120 runs. Document the
+   v1-vs-v2 row count discrepancy in the results.
+4. Report McNemar p-values for paired A-vs-B and B-vs-C, observed effect sizes, 95% CIs (Wilson
+   bounds for proportions, Wilcoxon CI for paired differences), and the implied confirmatory N for a
+   5pp paired effect at α=0.05/0.8 power.
+5. Add the smoke test&#x27;s three predictions assets so downstream tasks can recompute metrics
+   (different thresholds, different sense aggregations) without re-running the agents.
+
+#### Paper Index
+
+##### [Yao2022]
+
+* **Title**: ReAct: Synergizing Reasoning and Acting in Language Models
+* **Authors**: Yao et al.
+* **Year**: 2023
+* **DOI**: 10.48550/arXiv.2210.03629
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2210.03629`
+* **Categories**: granularity-conditioning, hierarchical-planning
+* **Relevance**: Defines the prompt structure and trajectory schema reused in condition A; reports
+  the +34pp/+10pp baseline gains that justify the headline hypothesis.
+
+##### [Wang2023]
+
+* **Title**: Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large
+  Language Models
+* **Authors**: Wang et al.
+* **Year**: 2023
+* **DOI**: 10.48550/arXiv.2305.04091
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2305.04091`
+* **Categories**: granularity-conditioning, hierarchical-planning
+* **Relevance**: Defines the planner+executor pattern reused verbatim in condition B; PS+
+  instruction line is quoted in t0007&#x27;s `PLAN_PROMPT_TEMPLATE`.
+
+##### [Xiong2024]
+
+* **Title**: Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation
+  in LLMs
+* **Authors**: Xiong et al.
+* **Year**: 2024
+* **DOI**: 10.48550/arXiv.2306.13063
+* **Asset**:
+  `tasks/t0002_literature_survey_granularity_conditioning/assets/paper/10.48550_arXiv.2306.13063`
+* **Categories**: uncertainty-calibration, agent-evaluation
+* **Relevance**: Defines the verbalized-confidence + 3-sample self-consistency protocol that t0011
+  implements; reports 15-25% overconfident-error rates that calibrate our expected B-condition
+  baseline.
+
+##### [Rein2023]
+
+* **Title**: GPQA: A Graduate-Level Google-Proof Q&amp;A Benchmark
+* **Authors**: Rein et al.
+* **Year**: 2023
+* **DOI**: 10.48550/arXiv.2311.12022
+* **Asset**: not yet downloaded — referenced for absolute frontier-science success-rate context.
+  Adding this paper to the corpus is a downstream task suggestion.
+* **Categories**: benchmark-frontierscience
+* **Relevance**: Cited as the closest published benchmark for graduate-level science Q&amp;A; sets the
+  expectation that absolute success rates on derivation problems remain in the 15-40% band.
+      </content>
+    </section>
+    <section id="t0012_phase2_abc_smoke_frontierscience-research_code" source_kind="file">
+      <title>t0012_phase2_abc_smoke_frontierscience — Phase 2 A/B/C smoke harness on FrontierScience subset — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0012_phase2_abc_smoke_frontierscience</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0012_phase2_abc_smoke_frontierscience/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0012_phase2_abc_smoke_frontierscience&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 6
+tasks_cited: 6
+libraries_found: 4
+libraries_relevant: 4
+date_completed: &quot;2026-04-30&quot;
+status: &quot;complete&quot;
+---
+### Research Code: Phase 2 A/B/C Smoke Harness on FrontierScience
+
+#### Task Objective
+
+Build a thin orchestrator library `phase2_smoke_harness_v1` that loads the t0009 v2 dataset, filters
+to FrontierScience-Olympiad complete rows, and dispatches each row to one of three condition
+libraries (A: scope_aware_react_v1; B: scope_unaware_planandsolve_v1; C: matched_mismatch_v1). After
+every run, compute three registered metrics per condition (`task_success_rate`,
+`overconfident_error_rate`, `avg_decisions_per_task`) and emit one predictions asset per condition.
+All four condition/metric libraries already exist; this code research catalogs their public APIs so
+the harness can wire them together without reimplementing anything.
+
+#### Library Landscape
+
+The aggregator (`aggregate_libraries`) reports four libraries in the project, all four are direct
+dependencies of this task and all four are imported via library (no code copying):
+
+* **scope_aware_react_v1** (`tasks/t0006_scope_aware_react_library/code/scope_aware_react.py`) —
+  produced by [t0006]. Public API: `ScopeAwareReactAgent`, `TrajectoryRecord`, `Action`,
+  `ScriptedModel`, `MalformedActionError`, `_parse_model_output`. Trajectory schema:
+  `(turn_index, granularity, thought, action, observation, confidence)` per
+  `TRAJECTORY_RECORD_FIELDS`. The agent calls `model_call(prompt: str) -&gt; str`. **Relevant**:
+  condition A library — direct usage.
+* **scope_unaware_planandsolve_v1**
+  (`tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py`) — produced by [t0007].
+  Public API: `PlanAndSolveAgent`, `TrajectoryRecord`, `parse_plan`, `MalformedPlanError`,
+  `PLAN_PROMPT_TEMPLATE`, `EXECUTE_PROMPT_TEMPLATE`, `TRAJECTORY_RECORD_FIELDS`,
+  `GRANULARITY_UNSPECIFIED`. Same six-field trajectory schema. **Relevant**: condition B library —
+  direct usage.
+* **matched_mismatch_v1** (`tasks/t0010_matched_mismatch_library/code/matched_mismatch.py`) —
+  produced by [t0010]. Public API: `MatchedMismatchAgent`, `MatchedMismatchRecord`,
+  `AgentRunResult`, `Phase`, `iter_phases`, `pick_mismatch_tag`, `GRANULARITY_VALUES`,
+  `ADVERSARIAL_MAP`, `CORRECT_GRANULARITY_EXTRAS_KEY`. The agent constructor takes
+  `(model_call, tool_registry, delegate, mismatch_strategy, seed)` and exposes
+  `run(*, problem, annotation)`. **Relevant**: condition C library — use
+  `delegate=&quot;scope_unaware_planandsolve&quot;`, `mismatch_strategy=&quot;random&quot;`, `seed=42`.
+* **metric2_calibration_aggregator_v1**
+  (`tasks/t0011_metric2_calibration_aggregator/code/calibration.py`) — produced by [t0011]. Public
+  API: `compute_overconfident_error_rate(records, threshold=0.75)`, `ConfidenceJudge`,
+  `elicit_confidence`, `calibration_record_from_trajectory`, `CalibrationRecord`,
+  `ConfidenceSample`, `ConfidenceAggregate`, `MalformedConfidenceError`, `ConfidencePromptTemplate`.
+  Default `HIGH_CONFIDENCE_THRESHOLD = 0.75` and `SELF_CONSISTENCY_SAMPLES = 3`. **Relevant**:
+  Metric 2 implementation.
+
+#### Key Findings
+
+##### All three condition libraries already conform to a single trajectory schema
+
+The six-field schema `(turn_index, granularity, thought, action, observation, confidence)` is
+defined exactly once, in [t0007] as `TRAJECTORY_RECORD_FIELDS`. Both [t0006] and [t0010] import that
+constant and assert the field tuple matches at module load. This means the harness can serialize all
+three conditions with a single JSONL writer and downstream metric code does not need per-condition
+branching. The only difference between conditions: A writes the canonical granularity tag
+(`global`/`subtask`/`atomic`); B always writes `&quot;unspecified&quot;`; C writes a deliberately-wrong tag
+drawn from the matched-mismatch strategy. Condition C also adds an `extras` dict carrying the
+correct tag under `_correct_granularity` — but `extras` is dropped when serializing only the
+canonical six fields, which keeps the JSONL files schema-identical.
+
+##### Condition libraries already encapsulate their own prompts
+
+The harness does not need to construct any agent prompts itself. [t0006] builds the system prompt in
+`_build_system_prompt(granularity=...)` and the per-turn prompt in `_build_prompt(...)`, both
+internal to `ScopeAwareReactAgent.run()`. [t0007] uses the module-level
+`PLAN_PROMPT_TEMPLATE.format(problem=...)` for planning and `EXECUTE_PROMPT_TEMPLATE.format(...)`
+for execution. [t0010] builds two prompt variants internally
+(`_build_react_phase_prompt`/`_build_planandsolve_phase_prompt`) selected by the `delegate` literal.
+Therefore the harness only owns: (a) the model_call wrapper around the Anthropic API, (b) the tool
+registry, (c) the data loading and answer extraction, and (d) the post-run metric computation.
+
+##### Tool registry shape differs between conditions A and (B, C)
+
+[t0006]&#x27;s ReAct registry calls `tool(**action.args)` because `Action.args` is already a dict.
+[t0007]&#x27;s Plan-and-Solve registry calls `tool(args_str: str)` with a single argument string. [t0010]
+inherits whichever shape its `delegate` uses. This means the harness must construct **two** tool
+registries from the same underlying implementation: one keyword-args wrapper (for A) and one
+string-args wrapper (for B and C with `delegate=&quot;scope_unaware_planandsolve&quot;`). This is a small
+adapter, not a duplication of the tool itself.
+
+##### Metric 2 needs verbalized confidence; trajectory `confidence` field may be numeric or null
+
+t0006 records numeric confidence (0-1) when the model emits a `Confidence: &lt;0-100&gt;` line. t0007
+always records `None`. t0010 records whatever the chosen delegate produces. To compute
+`overconfident_error_rate` we need a numeric confidence per problem; for B (and for trajectories
+where the model omitted the confidence line) the harness must call `elicit_confidence` from [t0011]
+post-hoc on the agent&#x27;s final action and use 3-sample self-consistency aggregation. The recommended
+path for the smoke run: skip self-consistency for cost and use the trajectory&#x27;s own final-turn
+`confidence` when present, falling back to a single `elicit_confidence` call when absent. Document
+this simplification in the plan and the results.
+
+##### Dataset filtering is straightforward; row count is 40, not 28
+
+The v2 dataset asset is one JSONL file (115 rows, all `hierarchy_completeness=true` under the v2
+stricter rule). Filtering to `benchmark == &quot;FrontierScience-Olympiad&quot;` yields **40 rows**, not 28.
+The task description noted N≈28 (matching v1) and instructs us to proceed with whatever count v2
+provides. v2&#x27;s annotator was Claude Haiku 4.5 (not Sonnet as originally specified) — confound
+already documented as S-0009-01 and acceptable for the smoke. [t0009] is the producer.
+
+#### Reusable Code and Assets
+
+* **Source**: `tasks/t0006_scope_aware_react_library/code/scope_aware_react.py` (~470 lines)
+  * **What it does**: condition A agent + trajectory schema + scripted-model test fake.
+  * **Reuse method**: **import via library** as
+    `tasks.t0006_scope_aware_react_library.code.scope_aware_react`.
+  * **Function signatures**:
+    `ScopeAwareReactAgent(*, problem, granularity, tool_registry, model_call, trajectory_path, max_turns=12)`;
+    `agent.run() -&gt; AgentResult(answer, finished, turns, trajectory)`.
+  * **Adaptation**: none.
+* **Source**: `tasks/t0007_scope_unaware_planandsolve_library/code/planandsolve.py` (~360 lines)
+  * **What it does**: condition B planner+executor agent.
+  * **Reuse method**: **import via library** as
+    `tasks.t0007_scope_unaware_planandsolve_library.code.planandsolve`.
+  * **Function signatures**:
+    `PlanAndSolveAgent(model_call, tool_registry, max_steps=32, granularity_label=&quot;unspecified&quot;)`;
+    `agent.run(problem) -&gt; AgentResult(final_answer, trajectory, plan)`.
+  * **Adaptation**: none.
+* **Source**: `tasks/t0010_matched_mismatch_library/code/matched_mismatch.py` (~650 lines)
+  * **What it does**: condition C agent that walks the v2 hierarchy and substitutes wrong
+    granularity tags.
+  * **Reuse method**: **import via library** as
+    `tasks.t0010_matched_mismatch_library.code.matched_mismatch`.
+  * **Function signatures**:
+    `MatchedMismatchAgent(model_call, tool_registry, delegate, mismatch_strategy, seed=0)`;
+    `agent.run(*, problem, annotation) -&gt; AgentRunResult(final_answer, trajectory, phases)`. Use
+    `delegate=&quot;scope_unaware_planandsolve&quot;` and `mismatch_strategy=&quot;random&quot;` for the smoke (per task
+    description).
+  * **Adaptation**: none.
+* **Source**: `tasks/t0011_metric2_calibration_aggregator/code/calibration.py` (~390 lines)
+  * **What it does**: Metric 2 aggregator with verbalized confidence elicitation and
+    self-consistency.
+  * **Reuse method**: **import via library** as
+    `tasks.t0011_metric2_calibration_aggregator.code.calibration`.
+  * **Function signatures**:
+    `compute_overconfident_error_rate(*, records: Iterable[CalibrationRecord], threshold=0.75) -&gt; float`;
+    `calibration_record_from_trajectory(*, problem_id, record, is_correct) -&gt; CalibrationRecord`;
+    `elicit_confidence(*, model_call, problem, action, prompt_template=None) -&gt; tuple[str, float]`.
+  * **Adaptation**: none.
+* **Source**:
+  `tasks/t0009_hierarchical_annotation_v2/assets/dataset/hierarchical-annotation-v2/files/hierarchical_annotation_v2.jsonl`
+  * **What it is**: 115 rows of hierarchical annotations across four benchmarks.
+  * **Reuse method**: read directly from disk; no import needed. Filter to
+    `benchmark == &quot;FrontierScience-Olympiad&quot;` and `hierarchy_completeness == True` to obtain the 40
+    smoke-run rows.
+
+#### Lessons Learned
+
+* **Always assert schema parity at module load.** [t0010] imports [t0007]&#x27;s
+  `TRAJECTORY_RECORD_FIELDS` and `assert`s the field tuple matches at top-level. The harness should
+  do the same so a future schema drift fails loudly instead of producing silently mismatched
+  trajectory files.
+* **Never reimplement a published prompt.** [t0007]&#x27;s `PS_PLUS_INSTRUCTION` is the verbatim Wang2023
+  instruction; [t0006]&#x27;s system prompt is adapted from LangChain (Apache 2.0). Both attribution
+  lines are encoded in the source. The harness must not invent its own prompts for conditions A or
+  B.
+* **Predict cost before running.** [t0009] used Haiku for annotation because Sonnet ran 5x over
+  budget; the v2 confound is documented and accepted. The smoke run must compute a per-call cost
+  estimate before launching the full sweep, then halt at $20 per the task description&#x27;s explicit
+  cap.
+* **Pair runs by `task_id`.** McNemar / paired sign tests need paired binary outcomes. The harness
+  must serialize problems and conditions in a deterministic order (alphabetical task_id × A,B,C) so
+  every problem appears in all three trajectory files even if some agent runs error out.
+* **LLM-as-judge is unavoidable for FrontierScience.** Direct string comparison of agent
+  `Finish(answer)` against `gold_actions[&#x27;global&#x27;]` will produce near-zero match rates. Use
+  Anthropic Haiku as a binary judge with a simple &quot;Does the candidate match the gold?&quot; prompt. Log
+  every judge call.
+
+#### Recommendations for This Task
+
+1. Build `phase2_smoke_harness_v1` as a pure orchestrator with five modules in `code/`: `paths.py`
+   (centralized paths), `constants.py` (model IDs, registries, schema constants), `model_call.py`
+   (Anthropic SDK wrapper with cost tracking), `harness.py` (the dataset loader, per-condition
+   dispatcher, judge, and metric computer), `run_smoke.py` (the CLI entrypoint).
+2. Use the same `model_call` callable for all three conditions on the same row to ensure paired
+   results have identical model behavior assumptions. The model call is `claude-sonnet-4-6-20251001`
+   for the agent runs and `claude-haiku-4-5-20251001` for the judge and any post-hoc confidence
+   elicitation.
+3. Persist trajectories as JSONL under
+   `assets/predictions/phase2_smoke_{a,b,c}/files/predictions-frontierscience-olympiad.jsonl` and
+   write per-condition metrics to `results/metrics.json` in the explicit-variant format with three
+   variants.
+4. After every variant run, sum API spend and check the $20 cap. If the cap is approached mid-run,
+   halt remaining variants, write the partial result, and document the overrun.
+5. Reuse all four sister libraries verbatim. Do not reimplement, do not modify, do not copy
+   non-library code. The harness&#x27;s only original code is the dataset loader, the cost tracker, the
+   judge prompt, and the metric aggregator.
+
+#### Task Index
+
+##### [t0006]
+
+* **Task ID**: t0006_scope_aware_react_library
+* **Name**: Scope-aware ReAct library (condition A)
+* **Status**: completed
+* **Relevance**: Provides the condition A agent and the canonical trajectory schema referenced by
+  every other library.
+
+##### [t0007]
+
+* **Task ID**: t0007_scope_unaware_planandsolve_library
+* **Name**: Scope-unaware Plan-and-Solve library (condition B)
+* **Status**: completed
+* **Relevance**: Provides the condition B agent and defines `TRAJECTORY_RECORD_FIELDS` shared across
+  all conditions.
+
+##### [t0009]
+
+* **Task ID**: t0009_hierarchical_annotation_v2
+* **Name**: Hierarchical annotation v2: tree schema with subtask-to-atomic edges
+* **Status**: completed
+* **Relevance**: Produces the dataset asset this task consumes; filtered to
+  `benchmark == &quot;FrontierScience-Olympiad&quot;` (40 complete rows).
+
+##### [t0010]
+
+* **Task ID**: t0010_matched_mismatch_library
+* **Name**: Matched-mismatch library: condition C with deliberately wrong granularity tags
+* **Status**: completed
+* **Relevance**: Provides the condition C agent and the v2-hierarchy phase walk used by the harness.
+
+##### [t0011]
+
+* **Task ID**: t0011_metric2_calibration_aggregator
+* **Name**: Metric 2 calibration aggregator: verbalized confidence + 3-sample self-consistency
+* **Status**: completed
+* **Relevance**: Provides `compute_overconfident_error_rate` and the verbalized-confidence
+  elicitation utilities required for the Metric 2 column.
+
+##### [t0002]
+
+* **Task ID**: t0002_literature_survey_granularity_conditioning
+* **Name**: Literature survey on granularity conditioning
+* **Status**: completed
+* **Relevance**: Holds the paper assets for ReAct, Plan-and-Solve, and Xiong2024 cited in
+  research_papers.md.
       </content>
     </section>
     <section id="t0013_brainstorm_results_4-research_papers" source_kind="file">

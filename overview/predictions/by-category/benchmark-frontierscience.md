@@ -1,12 +1,10 @@
-# Predictions by Date Added
+# Predictions: `benchmark-frontierscience`
 
-3 predictions asset(s) grouped by creation date.
+3 predictions asset(s).
 
 [Back to all predictions](../README.md)
 
 ---
-
-## 2026-05-01 (3)
 
 <details>
 <summary>📊 <strong>Phase 2 smoke condition A (scope-aware ReAct) on

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="libraries" generated_at_utc="2026-04-30T22:03:04Z">
+<llm_context_archive type_id="libraries" generated_at_utc="2026-05-01T04:45:51Z">
   <archive_summary>
     <title>All Libraries</title>
     <description>Complete library registry with full descriptions, module paths, and entry points.</description>
     <section_count>1</section_count>
-    <char_count>61263</char_count>
-    <byte_count>61431</byte_count>
-    <estimated_tokens>15315</estimated_tokens>
+    <char_count>71593</char_count>
+    <byte_count>71807</byte_count>
+    <estimated_tokens>17898</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -21,9 +21,10 @@
         <id>metric2_calibration_aggregator_v1</id>
         <id>scope_aware_react_v1</id>
         <id>scope_unaware_planandsolve_v1</id>
+        <id>phase2_smoke_harness_v1</id>
       </source_ids>
       <content>
-Libraries: 4
+Libraries: 5
 
 ## Matched-Mismatch Agent (v1)
 ID: matched_mismatch_v1
@@ -1286,6 +1287,178 @@ prompt template is a single string constant — task-specific prompt customizati
 subclassing or replacing the constant before instantiation; and the schema field set is fixed —
 adding new fields (e.g., per-step latency) requires a coordinated change with t0006&#x27;s
 `scope_aware_react_v1` library.
+
+## Phase 2 A/B/C Smoke Harness (v1)
+ID: phase2_smoke_harness_v1
+Version: 0.1.0
+Created by task: t0012_phase2_abc_smoke_frontierscience
+Date created: 2026-05-01
+Module paths: tasks/t0012_phase2_abc_smoke_frontierscience/code/charts.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/constants.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/harness.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/model_call.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/paths.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/run_smoke.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/stats.py, tasks/t0012_phase2_abc_smoke_frontierscience/code/tools.py
+Dependencies: matplotlib, numpy
+Test paths: tasks/t0012_phase2_abc_smoke_frontierscience/code/test_harness.py
+Categories: agent-evaluation, benchmark-frontierscience, granularity-conditioning, uncertainty-calibration
+Entry point: main (script) — CLI entry point. Loads the v2 dataset, runs A/B/C with paired execution, persists predictions JSONL per condition, computes metrics in explicit-variant format, runs paired McNemar tests, computes confirmatory N, renders charts, and writes intermediate stats.
+Entry point: run_condition_a (function) — Drive scope_aware_react_v1 over the v2 hierarchy of one row in phase order; return final answer plus trajectory.
+Entry point: run_condition_b (function) — Drive scope_unaware_planandsolve_v1 over one row; return final answer plus trajectory.
+Entry point: run_condition_c (function) — Drive matched_mismatch_v1 (random strategy) wrapping scope_unaware_planandsolve_v1 over one row; return final answer plus trajectory carrying wrong granularity tags.
+Entry point: compute_metrics (function) — Compute task_success_rate, overconfident_error_rate, and avg_decisions_per_task from a list of RowOutcome records.
+Entry point: judge_correctness (function) — Compare a candidate final answer against gold actions using the local Claude Code CLI judge (haiku) with retry and short-circuit normalisation.
+Entry point: load_smoke_rows (function) — Load and filter the v2 dataset to FrontierScience-Olympiad hierarchy-complete rows.
+Entry point: make_model_call (function) — Return a closure that invokes the local Claude Code CLI with --tools &#x27;&#x27; and --setting-sources &#x27;&#x27; to suppress the default system prompt and tool catalogue, dropping per-call cost from ~$0.10 to ~$0.005 with cache reuse.
+Entry point: CostTracker (class) — Process-wide cumulative-spend tracker with budget enforcement; thread-safe, supports per-model breakdown.
+Entry point: mcnemar_paired (function) — Paired McNemar test on binary correctness vectors with exact binomial fallback when discordant pairs are sparse.
+Entry point: wilson_interval (function) — Wilson 95% confidence interval for a binomial proportion.
+Entry point: confirmatory_n_for_paired_difference (function) — Estimate the N required to detect a target paired effect at alpha=0.05 / power=0.8 given an observed discordant rate.
+Entry point: build_react_tool_registry (function) — Build the minimal calculator + finish tool registry used by condition A.
+Entry point: build_planandsolve_tool_registry (function) — Build the minimal calculator + finish tool registry used by conditions B and C.
+
+#### Metadata
+
+* **Name**: Phase 2 A/B/C Smoke Harness
+* **Version**: 0.1.0
+* **Task**: `t0012_phase2_abc_smoke_frontierscience`
+* **Dependencies**: matplotlib, numpy
+* **Modules**: `code/run_smoke.py`, `code/harness.py`, `code/model_call.py`, `code/stats.py`,
+  `code/charts.py`, `code/tools.py`, `code/constants.py`, `code/paths.py`
+
+#### Overview
+
+This is the experiment harness for the project&#x27;s first end-to-end Phase 2 result. It loads the
+v2 hierarchical-annotation dataset (t0009), filters to FrontierScience-Olympiad rows with a
+complete tree-shaped hierarchy, and runs three agent libraries — `scope_aware_react_v1` (A),
+`scope_unaware_planandsolve_v1` (B), and `matched_mismatch_v1` (C) — against the same model on
+the same rows, paired by `task_id`. Per-row trajectories are persisted to JSONL on every step
+so a crash mid-run can resume from the last checkpoint. After the runs finish, the harness
+computes the registered project metrics in the explicit-variant format, runs paired McNemar
+tests, computes a confirmatory-N estimate, and renders two charts. All model calls go through
+the local Claude Code CLI with `--tools &quot;&quot;` and `--setting-sources &quot;&quot;` to suppress the default
+system prompt and tool catalogue, dropping per-call cost from ~$0.10 to ~$0.005 with cache
+reuse — a 25× reduction the harness needs to fit the $20 budget cap.
+
+#### API Reference
+
+##### `run_smoke.main()` (script)
+
+CLI entry point. Flags:
+
+```
+--limit N                Cap N rows to process.
+--budget-cap-usd USD     Hard cap on cumulative spend (default: 18.0).
+--skip-condition {a,b,c} Skip a single condition (debug only).
+--resume                 Reuse existing _intermediate_*.json files when present.
+```
+
+##### `harness.run_condition_a / run_condition_b / run_condition_c` (functions)
+
+Each takes `row` (one v2 dataset row), `model_call` (a closure produced by
+`make_model_call`), and a tool registry. Returns a tuple `(final_answer, trajectory)` where
+`trajectory` is a list of trajectory records with the canonical
+`TRAJECTORY_RECORD_FIELDS` schema from t0007.
+
+##### `harness.compute_metrics(outcomes: list[RowOutcome]) -&gt; Metrics`
+
+Aggregates row outcomes into the three registered project metrics.
+
+##### `harness.judge_correctness(*, task_id, problem, gold, candidate, judge_call) -&gt; bool`
+
+Compares a candidate final answer against the row&#x27;s gold actions using the haiku judge with
+short-circuit normalisation (whitespace, case, equivalent expressions). Returns `False` for
+`None` candidates and content-policy refusals.
+
+##### `model_call.make_model_call(*, model, cost_tracker, note) -&gt; Callable[[str], str]`
+
+Returns a closure that invokes the local Claude Code CLI and records cost on every call. The
+returned callable raises `RuntimeError` on persistent CLI failures after exponential backoff.
+
+##### `stats.mcnemar_paired(*, a_correct, b_correct) -&gt; McNemarResult`
+
+Paired McNemar test on binary correctness vectors. Falls back to an exact binomial when
+discordant pairs are sparse (n_discordant &lt; 10).
+
+##### `stats.confirmatory_n_for_paired_difference(*, discordant_rate_estimate, target_effect_pp) -&gt; int`
+
+Estimate of the N required to detect a target paired-difference effect at α=0.05, power=0.8
+given an observed discordant rate.
+
+#### Usage Examples
+
+```bash
+### Full smoke run (default budget cap $18.0)
+uv run python -u -m arf.scripts.utils.run_with_logs \
+    --task-id t0012_phase2_abc_smoke_frontierscience -- \
+    uv run python -u -m tasks.t0012_phase2_abc_smoke_frontierscience.code.run_smoke
+
+### Quick 2-row validation
+uv run python -u -m tasks.t0012_phase2_abc_smoke_frontierscience.code.run_smoke \
+    --limit 2 --budget-cap-usd 5.0
+
+### Resume after a crash
+uv run python -u -m tasks.t0012_phase2_abc_smoke_frontierscience.code.run_smoke --resume
+```
+
+Programmatic use of `compute_metrics`:
+
+```python
+from tasks.t0012_phase2_abc_smoke_frontierscience.code.harness import (
+    compute_metrics, jsonable_to_outcomes,
+)
+import json
+
+outcomes = jsonable_to_outcomes(
+    json.load(open(&quot;tasks/.../_intermediate_a.json&quot;))
+)
+metrics = compute_metrics(outcomes=outcomes)
+print(metrics.task_success_rate, metrics.overconfident_error_rate)
+```
+
+#### Dependencies
+
+* `matplotlib` — for the two result charts (`condition_metric_bar.png`,
+  `per_row_success_heatmap.png`).
+* `numpy` — used in `stats.py` for the McNemar exact-binomial fallback and Wilson interval.
+
+#### Testing
+
+```bash
+uv run pytest tasks/t0012_phase2_abc_smoke_frontierscience/code/test_harness.py
+```
+
+The test suite (14 tests) covers: outcome serialisation round-trip, metric computation
+(including the 0-success edge case), gold-answer extraction, judge short-circuits on common
+normalisation cases, McNemar exact-binomial fallback, Wilson interval, and confirmatory-N
+calculation. All tests run deterministically with no live API calls.
+
+#### Main Ideas
+
+* **Per-row checkpointing is mandatory** for any experiment harness with non-trivial wall-clock
+  cost. The first two attempts to run this harness through a spawned `/execute-task` agent
+  crashed mid-run; checkpointing meant the third attempt resumed without losing prior rows.
+* **System-prompt override is the single biggest cost lever** when using the local Claude
+  Code CLI — the default system prompt is ~50k tokens. With `--tools &quot;&quot;` and
+  `--setting-sources &quot;&quot;` the harness fits 84 row-runs under $18 instead of ~$200.
+* **Trajectory schema parity with t0006/t0007/t0010 is enforced by re-export**: the harness
+  reads `TRAJECTORY_RECORD_FIELDS` from t0007 and asserts every emitted record matches. This
+  caught two mismatches during early development.
+* **The `final_confidence` gap in t0007/t0010** is exposed by the harness rather than papered
+  over: B/C trajectories carry `null` confidence and Metric 2 collapses to zero for those
+  conditions. The harness reports the metric honestly and surfaces the gap as a follow-up
+  suggestion rather than synthesising a fake confidence score.
+
+#### Summary
+
+The harness is the substrate for every Phase 2 A/B/C run on the project&#x27;s hierarchical-
+annotation data. It pairs three agent libraries against the same problem set and the same
+model, computes the three registered project metrics in the explicit-variant format, runs
+paired hypothesis tests, and produces an asset-compliant predictions JSONL per condition plus
+two charts. Cost control is built into the run loop, and per-row checkpointing makes the
+harness robust to mid-run crashes.
+
+In the project, this library is consumed by the t0012 task itself and is the natural starting
+point for any follow-up confirmatory run, multi-provider replication, or extension to
+additional benchmarks (SWE-bench Verified, tau-bench). Its known limitations — the Metric 2
+collapse for B/C, the `task_id` collision in the upstream pilot file, the lack of a pluggable
+provider beyond the local Claude Code CLI — are documented in this task&#x27;s results and queued
+as follow-up suggestions.
       </content>
     </section>
   </sections>

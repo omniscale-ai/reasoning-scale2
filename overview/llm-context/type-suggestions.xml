@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-04-30T22:03:04Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T04:45:51Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>41667</char_count>
-    <byte_count>41673</byte_count>
-    <estimated_tokens>10416</estimated_tokens>
+    <char_count>45530</char_count>
+    <byte_count>45539</byte_count>
+    <estimated_tokens>11382</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -66,9 +66,14 @@
         <id>S-0014-05</id>
         <id>S-0015-01</id>
         <id>S-0015-02</id>
+        <id>S-0012-01</id>
+        <id>S-0012-02</id>
+        <id>S-0012-03</id>
+        <id>S-0012-04</id>
+        <id>S-0012-05</id>
       </source_ids>
       <content>
-Suggestions: 49
+Suggestions: 54
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -631,6 +636,61 @@ Categories: benchmark-annotation
 Date added: 2026-04-30
 
 The t0015 overlay rewrites the per-row benchmark string but does not preserve the original proxy label inside the row. A reader inspecting only the effective JSONL cannot tell that the row was previously labeled differently — provenance lives only in the corrections overlay&#x27;s description.md. For future relabel corrections, the framework would benefit from a soft convention where the corrected row carries an original_benchmark field (or, more generally, original_&lt;field&gt; for any field rewritten by a corrections overlay). This makes per-row provenance auditable without round-tripping through the corrections file. The task should: (1) propose the convention as a small extension to the corrections specification, (2) update the dataset-asset verificator to surface a warning when an overlay rewrites a per-row field without preserving the original, and (3) backfill the convention into the t0015 overlay.
+
+## Extend scope_unaware_planandsolve_v1 to emit final_confidence
+ID: S-0012-01
+Status: active
+Priority: high
+Kind: library
+Source task: t0012_phase2_abc_smoke_frontierscience
+Categories: granularity-conditioning, agent-evaluation
+Date added: 2026-05-01
+
+The t0007 Plan-and-Solve library does not emit a final_confidence field in trajectory records. This collapses Metric 2 (overconfident_error_rate) to 0.0 for conditions B and C, making RQ2 untestable. Extend the library to emit a verbalized confidence label per the Xiong2024 §3.2 protocol: add a follow-up call after the final plan step asking the model to rate its confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that wants to test RQ2.
+
+## Confirmatory Phase 2 run: sonnet on SWE-bench Verified or tau-bench
+ID: S-0012-02
+Status: active
+Priority: high
+Kind: experiment
+Source task: t0012_phase2_abc_smoke_frontierscience
+Categories: granularity-conditioning, agent-evaluation, benchmark-swebench
+Date added: 2026-05-01
+
+The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B: 0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50% accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2) claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from this smoke. This is the highest-priority next experiment for RQ1/RQ5.
+
+## Add tool use (search, code execution) to the smoke harness for FrontierScience-Olympiad
+ID: S-0012-03
+Status: active
+Priority: medium
+Kind: experiment
+Source task: t0012_phase2_abc_smoke_frontierscience
+Categories: granularity-conditioning, agent-evaluation, benchmark-frontierscience
+Date added: 2026-05-01
+
+The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step numerical computation, retrieval, and code execution for most problems. Adding a Python code execution tool and a retrieval tool would lift accuracy above the current floor and make A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but confirmatory N would decrease proportionally.
+
+## Fix task_id collision in FrontierScience-Olympiad pilot dataset
+ID: S-0012-04
+Status: active
+Priority: medium
+Kind: dataset
+Source task: t0012_phase2_abc_smoke_frontierscience
+Categories: granularity-conditioning, granularity-conditioning
+Date added: 2026-05-01
+
+The hierarchical-annotation-v2 FrontierScience-Olympiad subset has 40 rows but only 26 unique task_ids. Multiple rows share the same task_id (different granularity levels of the same problem), which means the pairing logic treats them as separate predictions for the same task. A deduplication or re-keying correction task should produce a version of the dataset with unique task_ids per row, or document the intended semantics of multi-row task_ids.
+
+## Multi-provider replication: run Phase 2 harness with GPT-4o and Gemini 1.5 Pro
+ID: S-0012-05
+Status: active
+Priority: low
+Kind: experiment
+Source task: t0012_phase2_abc_smoke_frontierscience
+Categories: granularity-conditioning, agent-evaluation
+Date added: 2026-05-01
+
+The smoke used only claude-haiku-4-5. Replicating on GPT-4o and Gemini 1.5 Pro (both now available via project API keys) would test whether the granularity conditioning effect is model-specific or generalizes across providers. The harness&#x27;s model_call.py abstraction layer makes this a configuration change rather than a code change. Defer until the confirmatory N result is available from S-0012-02 to avoid spending budget before the primary hypothesis is tested.
       </content>
     </section>
   </sections>

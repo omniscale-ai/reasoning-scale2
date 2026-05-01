@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-04-30T22:03:04Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-05-01T04:45:51Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>116421</char_count>
-    <byte_count>116834</byte_count>
-    <estimated_tokens>29105</estimated_tokens>
+    <char_count>119796</char_count>
+    <byte_count>120231</byte_count>
+    <estimated_tokens>29949</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -1490,13 +1490,14 @@ low/medium/high → 0.25/0.5/0.9 numeric mapping.
 
 ## Phase 2 A/B/C smoke harness on FrontierScience subset
 ID: t0012_phase2_abc_smoke_frontierscience
-Status: in_progress
-Effective date: 2026-04-30
+Status: completed
+Effective date: 2026-05-01
 Short description: First end-to-end Phase 2 A/B/C run on the FrontierScience subset of the v2 dataset; N=28 paired across conditions, single provider Anthropic.
 Dependencies: t0009_hierarchical_annotation_v2, t0010_matched_mismatch_library, t0011_metric2_calibration_aggregator
 Task types: experiment-run, baseline-evaluation
 Source suggestion: S-0006-03
 Start time: 2026-04-30T00:55:11Z
+End time: 2026-05-01T04:43:00Z
 
 #### Motivation
 
@@ -1607,6 +1608,75 @@ S-0007-02 and S-0005-06 by consolidation.
    to detect a 5pp effect at α=0.05 with paired test?
 5. Are there per-domain (physics / chemistry / biology) effect-size differences worth surfacing to
    the next brainstorm?
+
+### Results Summary
+
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0012_phase2_abc_smoke_frontierscience&quot;
+---
+### Results Summary — Phase 2 A/B/C Smoke (FrontierScience-Olympiad)
+
+#### Summary
+
+All three agent conditions (scope-aware ReAct A, scope-unaware Plan-and-Solve B, scope-mismatched
+Plan-and-Solve C) solved near-zero FrontierScience-Olympiad problems with claude-haiku-4-5 and no
+tools: A solved 1/40 (2.5%), B solved 0/40, C solved 0/11 (budget halted at 11 rows). The paired
+McNemar test across the 6 fully overlapping rows yields p=1.0 for all pairs — the null is not
+rejected, and the smoke confirms that FrontierScience-Olympiad is beyond haiku capacity without tool
+use.
+
+#### Metrics
+
+* **task_success_rate**: A=0.025 (1/40), B=0.000 (0/40), C=0.000 (0/11)
+* **overconfident_error_rate**: A=0.647, B=0.000\*, C=0.000\* (\*collapsed — no final_confidence in
+  Plan-and-Solve trajectories; not comparable to A)
+* **avg_decisions_per_task**: A=1.20, B=6.53, C=26.0
+
+| Metric | A: scope-aware ReAct (N=40) | B: scope-unaware Plan-Solve (N=40) | C: scope-mismatched (N=11) |
+| --- | --- | --- | --- |
+| `task_success_rate` | **0.025** (1/40) | 0.000 (0/40) | 0.000 (0/11) |
+| `overconfident_error_rate` | **0.647** | 0.000 \* | 0.000 \* |
+| `avg_decisions_per_task` | **1.20** | 6.53 | 26.0 |
+
+\* Plan-and-Solve trajectories do not emit `final_confidence`; the Xiong2024 aggregator records zero
+overconfident errors by construction. Not comparable to A.
+
+#### Statistical Tests
+
+All McNemar paired tests (6 overlapping pairs, 0 discordant pairs): p = 1.0 (exact binomial, no
+discordant). None of the pre-registered hypotheses can be confirmed or refuted at this sample size.
+Confirmatory-N estimate for a 5 pp effect: **N = 157**.
+
+#### Budget
+
+Total spend: **$18.37** (halted above $18 cap). 665 claude-haiku-4-5 calls via local Claude Code CLI
+with minimal system prompt (`--tools &quot;&quot; --setting-sources &quot;&quot;`). System prompt suppression reduced
+per-call cost from ~$0.10 to ~$0.005 (25× reduction enabling 84+ rows within the $18 cap; C
+condition cost ~4× per row due to long Plan-and-Solve trajectories).
+
+#### Key Findings
+
+* **FrontierScience-Olympiad is too hard for haiku without tool use.** The benchmark requires
+  multi-step scientific reasoning that exceeds no-tool haiku capacity regardless of granularity
+  conditioning.
+* **Granularity conditioning effect is inconclusive** at N=40 with p=1.0. The smoke is underpowered
+  for RQ1/RQ2/RQ5; a confirmatory run needs N≥157 paired rows and likely a stronger model (sonnet).
+* **Metric 2 cannot be compared across conditions** until Plan-and-Solve is extended to emit
+  `final_confidence`. This is the most actionable methodological finding.
+* **Per-row checkpointing and system-prompt override** are the two engineering techniques that made
+  this smoke possible within the $18 budget constraint.
+
+#### Verification
+
+All verificators passed:
+
+* `verify_task_metrics` — PASSED (explicit-variant format, 3 condition variants)
+* `verify_task_results` — PASSED after adding required sections
+* `verify_task_folder` — PASSED (no files outside task folder)
+* `verify_task_file` — PASSED (task.json valid)
+* Predictions verificators for phase2-smoke-a, phase2-smoke-b, phase2-smoke-c — all PASSED
+* Library verificator for phase2_smoke_harness_v1 — PASSED
 
 ## Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels
 ID: t0013_brainstorm_results_4

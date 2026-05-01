@@ -1,11 +1,36 @@
 # Suggestions: `benchmark-swebench`
 
-3 suggestion(s) in category
-[`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) **3 open** (3 medium).
+4 suggestion(s) in category
+[`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) **4 open** (1 high, 3
+medium).
 
 [Back to all suggestions](../README.md)
 
 ---
+
+## High Priority
+
+<details>
+<summary>🧪 <strong>Confirmatory Phase 2 run: sonnet on SWE-bench Verified or
+tau-bench</strong> (S-0012-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0012-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0012_phase2_abc_smoke_frontierscience`](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) |
+| **Source paper** | — |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) |
+
+The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B:
+0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects
+invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50%
+accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2)
+claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from
+this smoke. This is the highest-priority next experiment for RQ1/RQ5.
+
+</details>
 
 ## Medium Priority
 
