@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0024-05",
+  "correcting_task": "t0024_brainstorm_results_7",
+  "target_task": "t0010_matched_mismatch_library",
+  "target_kind": "suggestion",
+  "target_id": "S-0010-01",
+  "action": "update",
+  "changes": {
+    "priority": "medium"
+  },
+  "file_changes": null,
+  "rationale": "C-adversarial dropped from the immediate experimental slate to fit the $26.12 remaining budget; partial coverage by C-random remains in the planned phase2 ABC successor task. Demoted from high to medium so it can be reincluded after the t0025 literature survey reframes the agent-iteration design."
+}

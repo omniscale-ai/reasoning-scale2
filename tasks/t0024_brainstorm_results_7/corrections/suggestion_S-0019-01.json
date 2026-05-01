@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0024-02",
+  "correcting_task": "t0024_brainstorm_results_7",
+  "target_task": "t0019_v2_judge_calibration_sonnet",
+  "target_kind": "suggestion",
+  "target_id": "S-0019-01",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "file_changes": null,
+  "rationale": "Confirmatory v3 schema iteration is not on the critical path to RQ answers within the remaining $26.12 budget. The brainstorm-7 slate redirects spend to a literature-survey refresh (t0025) that informs the next agent-iteration design. Schema-version iteration can be revisited after the literature survey reframes the design space."
+}

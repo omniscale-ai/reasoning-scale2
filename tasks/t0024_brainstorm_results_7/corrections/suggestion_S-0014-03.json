@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0024-01",
+  "correcting_task": "t0024_brainstorm_results_7",
+  "target_task": "t0014_v2_annotator_sonnet_rerun",
+  "target_kind": "suggestion",
+  "target_id": "S-0014-03",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "file_changes": null,
+  "rationale": "Covered by t0019 model-rotated judge run (sonnet judge against haiku-graded trajectories), which produced the +37.3 pp model-rotated delta. The suggestion's research question (does the schema effect survive a stronger judge?) has been answered. Closing as superseded."
+}

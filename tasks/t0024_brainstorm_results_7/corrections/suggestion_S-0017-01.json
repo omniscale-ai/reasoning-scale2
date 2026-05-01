@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0024-03",
+  "correcting_task": "t0024_brainstorm_results_7",
+  "target_task": "t0017_literature_hierarchical_agents_and_judges",
+  "target_kind": "suggestion",
+  "target_id": "S-0017-01",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "file_changes": null,
+  "rationale": "Trust-or-Escalate selective-evaluation library would consume ~$5-10 of setup spend without yielding RQ-level evidence within the remaining budget. The Trust-or-Escalate paper itself is on the t0025 literature-survey reading list; if its methodology becomes load-bearing for a future experiment, the library can be reproposed with concrete RQ coverage."
+}
