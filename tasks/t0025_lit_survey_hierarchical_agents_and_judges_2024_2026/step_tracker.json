@@ -14,7 +14,7 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify task dependencies (none for this task).",
-      "status": "pending",
+      "status": "not_started",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/002_check-deps/"
@@ -23,7 +23,7 @@
       "step": 3,
       "name": "init-folders",
       "description": "Initialize the mandatory task folder structure.",
-      "status": "pending",
+      "status": "not_started",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/003_init-folders/"
@@ -32,7 +32,7 @@
       "step": 4,
       "name": "research-papers",
       "description": "Skipped: this task IS the literature survey; the 10 target papers are listed in the task description.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/004_research-papers/"
@@ -41,7 +41,7 @@
       "step": 5,
       "name": "research-internet",
       "description": "Skipped: paper identity resolution and metadata collection are part of the add-paper skill in implementation.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/005_research-internet/"
@@ -50,7 +50,7 @@
       "step": 6,
       "name": "research-code",
       "description": "Skipped: literature survey produces paper assets only; no prior task code is consumed.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/006_research-code/"
@@ -59,7 +59,7 @@
       "step": 7,
       "name": "planning",
       "description": "Write plan/plan.md describing how 10 papers will be added in parallel via add-paper sub-agents and how the synthesis will be produced.",
-      "status": "pending",
+      "status": "not_started",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
@@ -68,7 +68,7 @@
       "step": 8,
       "name": "setup-machines",
       "description": "Skipped: no remote compute required.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/008_setup-machines/"
@@ -77,7 +77,7 @@
       "step": 9,
       "name": "implementation",
       "description": "Add 10 paper assets via add-paper sub-agents (parallelism capped at 3 concurrent), then write results/results_summary.md and results/results_detailed.md syntheses.",
-      "status": "pending",
+      "status": "not_started",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/009_implementation/"
@@ -86,7 +86,7 @@
       "step": 10,
       "name": "teardown",
       "description": "Skipped: no remote compute to tear down.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/010_teardown/"
@@ -95,7 +95,7 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Skipped: not in literature-survey optional step list; the synthesis step in implementation already maps findings to candidate experiments.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/011_creative-thinking/"
@@ -104,7 +104,7 @@
       "step": 12,
       "name": "results",
       "description": "Verify results files exist and pass verify_task_results.",
-      "status": "pending",
+      "status": "not_started",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/012_results/"
@@ -113,7 +113,7 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Skipped: this entire task is a literature comparison; comparison is folded into results_detailed.md.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/013_compare-literature/"
@@ -122,7 +122,7 @@
       "step": 14,
       "name": "suggestions",
       "description": "Write results/suggestions.json with follow-up suggestions derived from the synthesis.",
-      "status": "pending",
+      "status": "not_started",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/014_suggestions/"
@@ -131,7 +131,7 @@
       "step": 15,
       "name": "reporting",
       "description": "Open PR, run pre-merge verificator, merge, refresh overview/.",
-      "status": "pending",
+      "status": "not_started",
       "started_at": null,
       "completed_at": null,
       "log_file": "logs/steps/015_reporting/"
