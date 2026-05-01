@@ -1,0 +1,19 @@
+{
+  "spec_version": 4,
+  "task_id": "t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "task_index": 25,
+  "name": "Literature Survey: Hierarchical Agents and LLM-as-Judge (2024-2026)",
+  "short_description": "Survey of 10 papers (2024-2026) on hierarchical agents, search/planning, benchmarks, LLM-as-judge, plus the options framework.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "paper": 10
+  },
+  "task_types": [
+    "literature-survey"
+  ],
+  "source_suggestion": null
+}
