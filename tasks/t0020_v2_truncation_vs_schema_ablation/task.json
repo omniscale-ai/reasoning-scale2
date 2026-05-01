@@ -5,9 +5,9 @@
   "name": "v2 Truncation vs Schema Ablation",
   "short_description": "Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [],
-  "start_time": null,
+  "start_time": "2026-05-01T14:06:25Z",
   "end_time": null,
   "expected_assets": {
     "predictions": 1,
