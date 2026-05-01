@@ -1,0 +1,5 @@
+branch: task/t0021_plan_and_solve_v2_with_final_confidence
+base_branch: main
+base_commit: 33b0dc3d12b090cdcca3be1a2746776aaa4e5822
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence
+created_at: 2026-05-01T14:03:02Z
