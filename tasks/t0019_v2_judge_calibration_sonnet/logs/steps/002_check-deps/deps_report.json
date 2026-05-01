@@ -1,0 +1,9 @@
+{
+  "task_id": "t0019_v2_judge_calibration_sonnet",
+  "checked_at": "2026-05-01T14:07:00Z",
+  "result": "passed",
+  "dependencies": [],
+  "errors": 0,
+  "warnings": 0,
+  "note": "task.json declares no dependencies. Inputs are read indirectly from completed tasks t0014 (v2-sonnet annotations + judges), t0009 (v2-haiku annotations + judges), and t0005 (v1-sonnet annotations + judges) plus the t0015 corrections overlay. The verificator confirmed 0 errors and 0 warnings."
+}
