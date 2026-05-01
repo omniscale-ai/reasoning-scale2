@@ -23,9 +23,9 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create task folder structure (assets/predictions, assets/answer, etc.).",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:07:35Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:08:03Z",
       "log_file": "logs/steps/003_init-folders/"
     },
     {
