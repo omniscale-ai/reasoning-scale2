@@ -95,10 +95,10 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Skipped: mechanical library extension; the protocol and smoke design are already fixed.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/011_creative-thinking/"
     },
     {
       "step": 12,
