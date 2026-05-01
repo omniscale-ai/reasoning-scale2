@@ -5,10 +5,10 @@
   "name": "v2 Judge Calibration with Sonnet (Substantive + Familial Bias)",
   "short_description": "Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [],
   "start_time": "2026-05-01T14:02:34Z",
-  "end_time": null,
+  "end_time": "2026-05-01T17:55:02Z",
   "expected_assets": {
     "predictions": 1,
     "answer": 1

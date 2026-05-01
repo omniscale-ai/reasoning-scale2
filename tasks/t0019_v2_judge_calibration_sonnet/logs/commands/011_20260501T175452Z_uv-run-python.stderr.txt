@@ -1,0 +1,2 @@
+usage: verify_logs.py [-h] task_id
+verify_logs.py: error: unrecognized arguments: --task-id

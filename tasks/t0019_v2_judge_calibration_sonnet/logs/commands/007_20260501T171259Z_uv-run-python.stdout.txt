@@ -1,0 +1,9 @@
+Pool size: 55 rows. Running prompt_kind=substantive with model=claude-sonnet-4-6 workers=2 limit=5.
+Purging 5 failed prior outcomes from substantive_outcomes.jsonl so they can be retried.
+Using transport: cli
+[1/5] v2-sonnet-0015 FrontierScience-Olympiad  verdict=acceptable cost=$0.1783 elapsed=5.75s running=$0.1783
+[2/5] v2-sonnet-0001 FrontierScience-Olympiad  verdict=acceptable cost=$0.1790 elapsed=6.51s running=$0.3573
+[3/5] v2-sonnet-0017 FrontierScience-Olympiad  verdict=acceptable cost=$0.1737 elapsed=5.57s running=$0.5310
+[4/5] v2-sonnet-0030 SWE-bench Verified        verdict=acceptable cost=$0.1726 elapsed=5.04s running=$0.7037
+[5/5] v2-sonnet-0027 SWE-bench Verified        verdict=acceptable cost=$0.1939 elapsed=25.80s running=$0.8976
+DONE substantive: judged=5 acceptable=5 needs_revision=0 parse_fail=0 call_fail=0 total_cost=$0.8976 total_elapsed=48.68s

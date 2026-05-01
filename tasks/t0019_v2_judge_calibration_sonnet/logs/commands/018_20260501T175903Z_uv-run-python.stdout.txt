@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0019_v2_judge_calibration_sonnet/tasks/t0019_v2_judge_calibration_sonnet/task.json
+
+[33m[1mWARNINGS:[0m
+[33m  TC-W005 warning: No merged PR found for branch 'task/t0019_v2_judge_calibration_sonnet'[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
+

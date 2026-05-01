@@ -1,0 +1,121 @@
+{
+  "variants": [
+    {
+      "variant_id": "v1-sonnet.original-haiku",
+      "label": "v1-sonnet judged by original-haiku",
+      "dimensions": {
+        "annotator": "v1-sonnet",
+        "judge_label": "original-haiku",
+        "judge_prompt_version": "original_haiku",
+        "judge_model": "claude-haiku-4-5"
+      },
+      "metrics": {
+        "task_success_rate": 0.3333
+      }
+    },
+    {
+      "variant_id": "v1-sonnet.substantive-sonnet",
+      "label": "v1-sonnet judged by substantive-sonnet",
+      "dimensions": {
+        "annotator": "v1-sonnet",
+        "judge_label": "substantive-sonnet",
+        "judge_prompt_version": "substantive",
+        "judge_model": "claude-sonnet-4-6"
+      },
+      "metrics": {
+        "task_success_rate": 0.6667
+      }
+    },
+    {
+      "variant_id": "v1-sonnet.model-rotated-sonnet",
+      "label": "v1-sonnet judged by model-rotated-sonnet",
+      "dimensions": {
+        "annotator": "v1-sonnet",
+        "judge_label": "model-rotated-sonnet",
+        "judge_prompt_version": "model_rotated",
+        "judge_model": "claude-sonnet-4-6"
+      },
+      "metrics": {
+        "task_success_rate": 0.5833
+      }
+    },
+    {
+      "variant_id": "v2-haiku.original-haiku",
+      "label": "v2-haiku judged by original-haiku",
+      "dimensions": {
+        "annotator": "v2-haiku",
+        "judge_label": "original-haiku",
+        "judge_prompt_version": "original_haiku",
+        "judge_model": "claude-haiku-4-5"
+      },
+      "metrics": {
+        "task_success_rate": 0.913
+      }
+    },
+    {
+      "variant_id": "v2-haiku.substantive-sonnet",
+      "label": "v2-haiku judged by substantive-sonnet",
+      "dimensions": {
+        "annotator": "v2-haiku",
+        "judge_label": "substantive-sonnet",
+        "judge_prompt_version": "substantive",
+        "judge_model": "claude-sonnet-4-6"
+      },
+      "metrics": {
+        "task_success_rate": 0.913
+      }
+    },
+    {
+      "variant_id": "v2-haiku.model-rotated-sonnet",
+      "label": "v2-haiku judged by model-rotated-sonnet",
+      "dimensions": {
+        "annotator": "v2-haiku",
+        "judge_label": "model-rotated-sonnet",
+        "judge_prompt_version": "model_rotated",
+        "judge_model": "claude-sonnet-4-6"
+      },
+      "metrics": {
+        "task_success_rate": 0.9565
+      }
+    },
+    {
+      "variant_id": "v2-sonnet.original-haiku",
+      "label": "v2-sonnet judged by original-haiku",
+      "dimensions": {
+        "annotator": "v2-sonnet",
+        "judge_label": "original-haiku",
+        "judge_prompt_version": "original_haiku",
+        "judge_model": "claude-haiku-4-5"
+      },
+      "metrics": {
+        "task_success_rate": 0.9
+      }
+    },
+    {
+      "variant_id": "v2-sonnet.substantive-sonnet",
+      "label": "v2-sonnet judged by substantive-sonnet",
+      "dimensions": {
+        "annotator": "v2-sonnet",
+        "judge_label": "substantive-sonnet",
+        "judge_prompt_version": "substantive",
+        "judge_model": "claude-sonnet-4-6"
+      },
+      "metrics": {
+        "task_success_rate": 1.0
+      }
+    },
+    {
+      "variant_id": "v2-sonnet.model-rotated-sonnet",
+      "label": "v2-sonnet judged by model-rotated-sonnet",
+      "dimensions": {
+        "annotator": "v2-sonnet",
+        "judge_label": "model-rotated-sonnet",
+        "judge_prompt_version": "model_rotated",
+        "judge_model": "claude-sonnet-4-6"
+      },
+      "metrics": {
+        "task_success_rate": 1.0
+      }
+    }
+  ]
+}
