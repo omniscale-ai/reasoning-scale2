@@ -1,0 +1,19 @@
+{
+  "spec_version": 4,
+  "task_id": "t0017_literature_hierarchical_agents_and_judges",
+  "task_index": 17,
+  "name": "Literature: Hierarchical Agents and LLM-as-Judge",
+  "short_description": "Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "paper": 10
+  },
+  "task_types": [
+    "literature-survey"
+  ],
+  "source_suggestion": null
+}
