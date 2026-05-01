@@ -2,18 +2,17 @@
   "spec_version": 4,
   "task_id": "t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
   "task_index": 25,
-  "name": "Literature Survey: Hierarchical Agents and LLM-as-Judge (2024-2026)",
-  "short_description": "Survey of 10 papers (2024-2026) on hierarchical agents, search/planning, benchmarks, LLM-as-judge, plus the options framework.",
+  "name": "Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)",
+  "short_description": "Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 from existing t0017 paper summaries plus t0014/t0019/t0020 findings.",
   "long_description_file": "task_description.md",
-  "status": "intervention_blocked",
+  "status": "in_progress",
   "dependencies": [],
   "start_time": "2026-05-01T21:10:07Z",
   "end_time": null,
-  "expected_assets": {
-    "paper": 10
-  },
+  "expected_assets": {},
   "task_types": [
-    "literature-survey"
+    "literature-survey",
+    "answer-question"
   ],
   "source_suggestion": null
 }

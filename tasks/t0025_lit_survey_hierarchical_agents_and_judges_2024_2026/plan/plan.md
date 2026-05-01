@@ -2,11 +2,19 @@
 
 ## Objective
 
-Add 10 paper assets covering hierarchical / granularity-aware LLM agents, search and planning
-structure, reasoning structure discovery, agent benchmarks, the foundational options framework, and
-LLM-as-judge methodology. Produce a synthesis writeup that maps the survey findings to the project's
-RQ1, RQ2, RQ4, and RQ5 so Brainstorm Session 8 can scope the next agent-iteration experiment within
-the remaining budget.
+**Re-scoped 2026-05-01 after intervention `intervention/duplicate_papers.md` resolved**: drop the
+asset-addition half of the task (all 10 target papers already exist under
+`t0017_literature_hierarchical_agents_and_judges`). Produce a synthesis answering the project's
+Research Questions RQ1-RQ5 directly, drawing on the existing 10 t0017 paper summaries plus prior
+project findings from t0014, t0019, t0020. The synthesis feeds Brainstorm Session 8 by giving it
+explicit per-RQ verdicts (strong support / partial support / no direct evidence / contradictory) and
+residual-uncertainty notes that scope the next Phase 2 A/B/C experiment within the remaining ~$23
+budget.
+
+The original objective (kept here for audit) was to add 10 paper assets covering hierarchical /
+granularity-aware LLM agents, search and planning structure, reasoning structure discovery, agent
+benchmarks, the foundational options framework, and LLM-as-judge methodology. That half is now a
+no-op because all 10 papers were already added by t0017.
 
 ## Approach
 
@@ -104,9 +112,9 @@ None. The survey reads only published literature; no upstream task assets are re
 
 ## Expected Assets
 
-10 paper assets in `tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/assets/paper/`,
-each passing `verify_paper_asset` with zero errors. The `task.json` `expected_assets` field is
-`{"paper": 10}`.
+**Re-scoped**: no paper assets are produced (all 10 already exist under t0017). The `task.json`
+`expected_assets` field is now `{}`. The deliverables are the two synthesis files
+`results/results_summary.md` and `results/results_detailed.md`.
 
 ## Time Estimation
 

@@ -2,10 +2,32 @@
 spec_version: "1"
 task_id: "t0025_lit_survey_hierarchical_agents_and_judges_2024_2026"
 created_at: "2026-05-01T21:25:00Z"
+resolved_at: "2026-05-01T21:55:00Z"
 intervention_kind: "scope_conflict"
-status: "open"
+status: "resolved"
+resolution: "user_redirected_to_synthesis_only"
 ---
 # Intervention: All 10 Target Papers Already Exist in the Project
+
+## Resolution (2026-05-01)
+
+Researcher decision: pivot the task scope to **answering the project's Research Questions (RQ1-RQ5)
+directly**, using the existing 10 paper summaries under
+`tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/<paper_id>/summary.md` plus the
+prior project findings from t0014, t0019, t0020 as the evidence base. Drop the asset-addition half
+of the task entirely.
+
+This is a stronger version of the previously offered Option B:
+* `task.json` `expected_assets` → `{}` (no new paper assets).
+* `task.json` `task_types` keeps `["literature-survey"]` and adds `["answer-question"]` to reflect
+  the RQ-answering deliverable.
+* `task_description.md` rewritten to describe the RQ-by-RQ synthesis deliverable.
+* Implementation step (step 9) writes `results/results_summary.md` and `results/results_detailed.md`
+  structured around RQ1-RQ5, with explicit per-RQ verdicts (strong support / partial support / no
+  direct evidence / contradictory) and residual-uncertainty notes flagging which RQs require Phase 2
+  A/B/C empirical experiments still to be run.
+
+The original three-option list below is preserved for audit purposes.
 
 ## Summary
 
