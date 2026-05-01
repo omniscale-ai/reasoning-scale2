@@ -1,0 +1,264 @@
+{
+  "spec_version": "1",
+  "task_id": "t0020_v2_truncation_vs_schema_ablation",
+  "captured_at": "2026-05-01T14:56:57Z",
+  "checked_roots": [
+    {
+      "source_kind": "codex",
+      "root_path": "/Users/lysaniuk/.codex/sessions",
+      "exists": true,
+      "candidate_file_count": 0,
+      "matched_file_count": 0
+    },
+    {
+      "source_kind": "claude_code",
+      "root_path": "/Users/lysaniuk/.claude/projects",
+      "exists": true,
+      "candidate_file_count": 10068,
+      "matched_file_count": 40
+    }
+  ],
+  "copied_sessions": [
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/05925b09-cdc6-4f63-b739-e4bda2717f3d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__05925b09-cdc6-4f63-b739-e4bda2717f3d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/0835b556-5995-4153-b7e4-013ceca43423.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__0835b556-5995-4153-b7e4-013ceca43423.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/0a447913-85c7-430b-9e9c-2e50c1581ab0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__0a447913-85c7-430b-9e9c-2e50c1581ab0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/115b5970-8662-48cf-bd9c-f484b66e4037.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__115b5970-8662-48cf-bd9c-f484b66e4037.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/14e709c0-7c7c-4c66-937e-8b8db2ae1984.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__14e709c0-7c7c-4c66-937e-8b8db2ae1984.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/19ffc528-a4ba-438e-bdce-740922f7a1c0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__19ffc528-a4ba-438e-bdce-740922f7a1c0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/1f5dccf4-f4dd-46a8-9590-79b8166b42c5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__1f5dccf4-f4dd-46a8-9590-79b8166b42c5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/2bcd858d-a9af-444b-8b44-164672656a0d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__2bcd858d-a9af-444b-8b44-164672656a0d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/3095db14-adc9-42d7-ba1f-e9238b339ca5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__3095db14-adc9-42d7-ba1f-e9238b339ca5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/3a5288c3-f064-4dad-ae32-ba68defbabe7.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__3a5288c3-f064-4dad-ae32-ba68defbabe7.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/3befc5c5-eae0-495f-a16a-9d21f45df026.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__3befc5c5-eae0-495f-a16a-9d21f45df026.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/439e7185-4a50-47b8-b221-284c20f97e87.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__439e7185-4a50-47b8-b221-284c20f97e87.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/46d20182-f8d0-4885-9ed1-fcbc833e8307.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__46d20182-f8d0-4885-9ed1-fcbc833e8307.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/472002ad-4b8d-4b0c-b9c5-92ddc6c79dcd.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__472002ad-4b8d-4b0c-b9c5-92ddc6c79dcd.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/49256728-7f13-4b4b-98f8-b94ec9adf14c.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__49256728-7f13-4b4b-98f8-b94ec9adf14c.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/4e8c3220-166e-4727-8b00-10703f9dbc87.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__4e8c3220-166e-4727-8b00-10703f9dbc87.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/5487c467-65d1-4ebb-b89b-cea699f70717.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__5487c467-65d1-4ebb-b89b-cea699f70717.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/57df6701-ad02-408d-801e-1e240bc3715a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__57df6701-ad02-408d-801e-1e240bc3715a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/57e4b0f2-7bae-408c-8682-cf0ad5d00389.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__57e4b0f2-7bae-408c-8682-cf0ad5d00389.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/5d31e8cf-3e36-4f95-9c02-c051f5269321.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__5d31e8cf-3e36-4f95-9c02-c051f5269321.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/69634674-3c56-495e-8e81-2804c70ea440.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__69634674-3c56-495e-8e81-2804c70ea440.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/7d2f519f-5639-4d87-8218-59fa1efa3216.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__7d2f519f-5639-4d87-8218-59fa1efa3216.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/891b9296-0b7a-49eb-b5d3-6bcde69efc3a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__891b9296-0b7a-49eb-b5d3-6bcde69efc3a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/8df8c6ae-9017-4b34-94c9-a1989bd1c7ad.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__8df8c6ae-9017-4b34-94c9-a1989bd1c7ad.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/9258773f-e73b-4540-9c63-8d51cd3c2174.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__9258773f-e73b-4540-9c63-8d51cd3c2174.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/94c41498-176c-4fc5-a9cb-c925fc2b7d24.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__94c41498-176c-4fc5-a9cb-c925fc2b7d24.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/a84330b3-36d8-40b3-8e35-3e90fe7cab60.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__a84330b3-36d8-40b3-8e35-3e90fe7cab60.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/ac7347f2-d8f6-4edd-b8e3-1180df5e6d8d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__ac7347f2-d8f6-4edd-b8e3-1180df5e6d8d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/ac9dcaf1-1d57-4863-868a-93e225a0fab9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__ac9dcaf1-1d57-4863-868a-93e225a0fab9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/ae3176b9-0a7e-45cc-ae0e-aac94efe5241.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__ae3176b9-0a7e-45cc-ae0e-aac94efe5241.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/ba2755b1-7154-434b-9d50-0844d6e3fe25.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__ba2755b1-7154-434b-9d50-0844d6e3fe25.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/ba91a290-3837-40e7-bb8a-837a36293479.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__ba91a290-3837-40e7-bb8a-837a36293479.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/bcd97097-3467-4958-8078-32d39ca1b657.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__bcd97097-3467-4958-8078-32d39ca1b657.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/d050a8cf-6af8-46c1-912d-a5de6b6501be.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__d050a8cf-6af8-46c1-912d-a5de6b6501be.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/d7b3655e-ca5f-4a89-99c5-534619963a0a.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__d7b3655e-ca5f-4a89-99c5-534619963a0a.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/d90fdb14-391c-4808-8d2a-6e2959561ba5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__d90fdb14-391c-4808-8d2a-6e2959561ba5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/dcc6e84e-37ec-410a-bc2b-5dcfa8f9013e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__dcc6e84e-37ec-410a-bc2b-5dcfa8f9013e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/deea143c-bec4-4c19-a59b-222b0f297459.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__deea143c-bec4-4c19-a59b-222b0f297459.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/ec8119f5-0e58-41d5-99b6-b28f255b7c06.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__ec8119f5-0e58-41d5-99b6-b28f255b7c06.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation/ed28df10-dfa8-4f86-a205-8fa2f69ab819.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0020-v2-truncation-vs-schema-ablation__ed28df10-dfa8-4f86-a205-8fa2f69ab819.jsonl",
+      "matched_by": "task_id_content"
+    }
+  ],
+  "errors": []
+}
