@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0020_v2_truncation_vs_schema_ablation/tasks/t0020_v2_truncation_vs_schema_ablation/task.json
+
+[31m[1mERRORS:[0m
+[31m  PM-E002 error: No open PR found for branch 'task/t0020_v2_truncation_vs_schema_ablation'. Use --pr-number to specify explicitly.[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+

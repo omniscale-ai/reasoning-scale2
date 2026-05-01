@@ -1,0 +1,23 @@
+{
+  "predictions_count": 1,
+  "predictions": [
+    {
+      "predictions_id": "v2-truncated-ablation",
+      "name": "v2 tree-schema annotations on truncated 1500-char problems (haiku judge verdicts)",
+      "model_id": null,
+      "model_description": "Annotator and judge are both claude-haiku-4-5 (Anthropic) accessed via the local Claude Code CLI. The annotator emits the v2 tree schema (global, subtasks[], global_atomics, gold_actions). The judge issues a binary acceptable / needs revision verdict. Both prompts truncate the problem text to 1500 chars with an explicit 'Problem (truncated to 1500 chars):' header.",
+      "dataset_ids": [
+        "hierarchical-annotation-v1"
+      ],
+      "prediction_format": "jsonl",
+      "instance_count": 20,
+      "description_path": "description.md",
+      "categories": [
+        "benchmark-annotation",
+        "hierarchical-planning"
+      ],
+      "created_by_task": "t0020_v2_truncation_vs_schema_ablation",
+      "date_created": "2026-05-01"
+    }
+  ]
+}

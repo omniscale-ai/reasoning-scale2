@@ -1,0 +1,2 @@
+Captured 40 session transcript(s) into /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0020_v2_truncation_vs_schema_ablation/tasks/t0020_v2_truncation_vs_schema_ablation/logs/sessions.
+Wrote capture report to /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0020_v2_truncation_vs_schema_ablation/tasks/t0020_v2_truncation_vs_schema_ablation/logs/sessions/capture_report.json.

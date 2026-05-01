@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0020_v2_truncation_vs_schema_ablation/tasks/t0020_v2_truncation_vs_schema_ablation/task.json
+
+[33m[1mWARNINGS:[0m
+[33m  TC-W005 warning: No merged PR found for branch 'task/t0020_v2_truncation_vs_schema_ablation'[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
+

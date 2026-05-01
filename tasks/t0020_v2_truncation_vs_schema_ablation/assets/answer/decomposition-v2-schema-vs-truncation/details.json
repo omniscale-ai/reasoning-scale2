@@ -1,0 +1,25 @@
+{
+  "spec_version": "2",
+  "answer_id": "decomposition-v2-schema-vs-truncation",
+  "question": "How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?",
+  "short_title": "v2 schema vs truncation decomposition",
+  "short_answer_path": "short_answer.md",
+  "full_answer_path": "full_answer.md",
+  "categories": [
+    "benchmark-annotation",
+    "hierarchical-planning"
+  ],
+  "answer_methods": [
+    "code-experiment"
+  ],
+  "source_paper_ids": [],
+  "source_urls": [],
+  "source_task_ids": [
+    "t0005_hierarchical_annotation_pilot_v1",
+    "t0009_hierarchical_annotation_v2",
+    "t0014_v2_annotator_sonnet_rerun"
+  ],
+  "confidence": "medium",
+  "created_by_task": "t0020_v2_truncation_vs_schema_ablation",
+  "date_created": "2026-05-01"
+}

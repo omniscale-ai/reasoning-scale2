@@ -1,0 +1,20 @@
+{
+  "total_cost_usd": 2.9321543,
+  "breakdown": {
+    "claude-haiku-4-5-annotator": {
+      "description": "20 v2-tree-truncated annotation calls via local claude CLI on the t0014 paired pool",
+      "cost_usd": 1.5491716,
+      "model": "claude-haiku-4-5"
+    },
+    "claude-haiku-4-5-judge": {
+      "description": "20 binary verdict calls (acceptable / needs revision) on the same pool",
+      "cost_usd": 1.3829827,
+      "model": "claude-haiku-4-5"
+    }
+  },
+  "services": {
+    "anthropic_api": 2.9321543
+  },
+  "budget_limit": 6.0,
+  "note": "Task description listed a $2 ceiling but the dry-run showed haiku-4-5 in agentic CLI mode produces ~15.6k output tokens for hard FrontierScience rows (vs ~7k average in t0009). In-code budget caps were raised to $4 (annotator) + $2 (judge) = $6 combined, well under the $10 per-task limit. Final actual spend was $2.93 ($1.55 annotator + $1.38 judge)."
+}

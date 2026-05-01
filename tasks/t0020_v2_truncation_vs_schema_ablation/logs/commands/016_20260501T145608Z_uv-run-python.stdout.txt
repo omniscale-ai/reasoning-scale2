@@ -1,0 +1,21 @@
+{
+  "answer_count": 1,
+  "answers": [
+    {
+      "answer_id": "decomposition-v2-schema-vs-truncation",
+      "question": "How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?",
+      "short_title": "v2 schema vs truncation decomposition",
+      "categories": [
+        "benchmark-annotation",
+        "hierarchical-planning"
+      ],
+      "answer_methods": [
+        "code-experiment"
+      ],
+      "confidence": "medium",
+      "created_by_task": "t0020_v2_truncation_vs_schema_ablation",
+      "date_created": "2026-05-01",
+      "short_answer": "The v2 tree schema explains essentially all of the gap: switching from flat-v1 to tree-v2 while\nholding the 1500-char truncation constant lifts the haiku judge accept rate from 33% to 90%, a +57\npp jump (95% Wilson CI on the difference: +23 pp to +77 pp). Adding the full untruncated problem\ntext on top of the v2 schema lifts accept from 90% to 95%, a further +5 pp (95% CI -15 pp to +26\npp), which is not statistically significant. The headline +62 pp v2-full vs v1-truncated gap is\ntherefore ~92% pure-schema and ~8% pure-text-length on the 20-row matched pool."
+    }
+  ]
+}

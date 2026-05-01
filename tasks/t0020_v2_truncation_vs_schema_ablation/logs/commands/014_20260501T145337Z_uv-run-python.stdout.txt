@@ -1,0 +1,11 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0020_v2_truncation_vs_schema_ablation/tasks/t0020_v2_truncation_vs_schema_ablation/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 010_20260501T145257Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 011_20260501T145317Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 4 warning(s)
+

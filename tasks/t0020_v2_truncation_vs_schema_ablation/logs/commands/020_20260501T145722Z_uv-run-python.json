@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0020_v2_truncation_vs_schema_ablation",
+  "command": "uv run python -m arf.scripts.verificators.verify_pr_premerge t0020_v2_truncation_vs_schema_ablation",
+  "exit_code": 1,
+  "duration_seconds": 0.479,
+  "started_at": "2026-05-01T14:57:22Z",
+  "completed_at": "2026-05-01T14:57:22Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0020_v2_truncation_vs_schema_ablation",
+  "stdout_file": "020_20260501T145722Z_uv-run-python.stdout.txt",
+  "stderr_file": "020_20260501T145722Z_uv-run-python.stderr.txt",
+  "stdout_lines": 8,
+  "stderr_lines": 0,
+  "truncated": false
+}
