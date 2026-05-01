@@ -131,10 +131,10 @@
       "step": 15,
       "name": "reporting",
       "description": "Final pre-PR verifications: asset verificators, verify_task_complete, verify_pr_premerge.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-01T14:52:53Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/015_reporting/"
     }
   ]
 }
