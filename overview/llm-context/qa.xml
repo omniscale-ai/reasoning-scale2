@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="qa" generated_at_utc="2026-05-01T04:45:51Z">
+<llm_context_archive preset_id="qa" generated_at_utc="2026-05-01T12:08:03Z">
   <archive_summary>
     <title>Questions and Answers</title>
     <description>Question-centric preset with the full answer corpus and compact project state.</description>
     <use_case>Answer review, follow-up questioning, and project knowledge-base chats.</use_case>
     <section_count>4</section_count>
-    <char_count>24184</char_count>
-    <byte_count>24239</byte_count>
-    <estimated_tokens>6046</estimated_tokens>
+    <char_count>25269</char_count>
+    <byte_count>25326</byte_count>
+    <estimated_tokens>6317</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -142,9 +142,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
+        <id>t0017_literature_hierarchical_agents_and_judges</id>
       </source_ids>
       <content>
-Completed tasks: 16
+Completed tasks: 17
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -241,6 +242,12 @@ ID: t0016_brainstorm_results_5
 Completed: 2026-04-30
 Short description: Brainstorm 5: pure backlog cleanup after t0014 schema-vs-model deconfound — reject 3 redundant suggestions, reprioritize 5; no new tasks.
 Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm session 5 was a pure backlog cleanup pass after t0014 (v2 sonnet rerun deconfound) and t0015 (proxy benchmark relabel) merged. Eight corrections were issued: three rejections, five priority changes. No new tasks were created and no existing tasks were modified. Session Overview * **Session number**: 5 * **Date**: 2026-04-30 * **Duration**: ~30 minutes * **Mode**: Pure cleanup (no new tasks, no task updates) * **Researcher budget envelope**: &lt; $5 total (no API spend; planning only) Decisions Rejections (3) | Suggestion | Source task | Rationale | | --- | --- | --- | | S-0005-04 | t0005 | Superseded by t0015 proxy-relabel...
+
+## Literature: Hierarchical Agents and LLM-as-Judge
+ID: t0017_literature_hierarchical_agents_and_judges
+Completed: 2026-05-01
+Short description: Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.
+Result summary: Results Summary: Literature Survey on Hierarchical Agents and LLM-as-Judge Summary Completed a literature survey of ten papers covering hierarchical / granularity-aware LLM agents, search-and-planning structure, reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology — plus the foundational options-framework paper (Sutton 1999) as a brief theory anchor. All ten paper assets pass the v3 paper-asset verificator with zero errors and zero warnings. The synthesis below groups findings by the five themes defined in `task_description.md` and identifies which backlog suggestions and prior tasks the survey strengthens or weakens. Metrics * **10 paper assets created** out of a...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">

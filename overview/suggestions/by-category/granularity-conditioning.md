@@ -1,8 +1,8 @@
 # Suggestions: `granularity-conditioning`
 
-19 suggestion(s) in category
-[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **15 open**
-(5 high, 6 medium, 4 low), **4 closed**.
+21 suggestion(s) in category
+[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **17 open**
+(5 high, 8 medium, 4 low), **4 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -141,6 +141,33 @@ confirmatory N would decrease proportionally.
 </details>
 
 <details>
+<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
+in the next ABC-condition run</strong> (S-0017-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2401.13178`](../../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2401.13178/) |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/) |
+
+t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
+with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
+conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
+with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
+Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
+missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
+specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
+success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
+scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
+confirmatory run) producing legible results. Estimated effort: 1-2 days of
+metric-implementation work.
+
+</details>
+
+<details>
 <summary>📂 <strong>Fix task_id collision in FrontierScience-Olympiad pilot
 dataset</strong> (S-0012-04)</summary>
 
@@ -243,6 +270,31 @@ both libraries' TRAJECTORY_RECORD_FIELDS tuples and asserts they are identical, 
 test that runs both libraries on the same toy problem and verifies the trajectory JSON shapes
 round-trip through a single Pydantic loader. If they diverge, file a correction in the
 later-merged task. This is the cheapest insurance against silent schema drift.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Use SELF-DISCOVER reasoning scaffolds as the scope-aware (A)
+condition prompt template</strong> (S-0017-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-03` |
+| **Kind** | technique |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2402.03620`](../../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2402.03620/) |
+| **Categories** | [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning structure --
+selected from atomic reasoning modules and composed once per task type, then re-used across
+instances -- transfers across model families and outperforms CoT-Self-Consistency at 10-40x
+lower inference cost. The IMPLEMENT step (explicit JSON key-value scaffold) is the largest
+ablation contributor. This is a near-zero-cost upgrade to our scope-aware (A) condition
+prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScience-Olympiad,
+SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family.
+Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope:
+any retraining; this is purely a prompting change.
 
 </details>
 

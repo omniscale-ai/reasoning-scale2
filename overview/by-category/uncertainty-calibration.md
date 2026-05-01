@@ -5,13 +5,63 @@ probabilities.
 
 [Back to Dashboard](../README.md)
 
-**Detail pages**: [Papers (1)](../papers/by-category/uncertainty-calibration.md) |
-[Suggestions (7)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
+**Detail pages**: [Papers (2)](../papers/by-category/uncertainty-calibration.md) |
+[Suggestions (8)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
 (2)](../libraries/by-category/uncertainty-calibration.md)
 
 ---
 
-## Papers (1)
+## Papers (2)
+
+<details>
+<summary>🏤 <strong>Trust or Escalate: LLM Judges with Provable Guarantees for Human
+Agreement</strong> — Jung et al., 2024</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `10.48550_arXiv.2407.18370` |
+| **Authors** | Jaehun Jung, Faeze Brahman, Yejin Choi |
+| **Venue** | ICLR 2025 (conference) |
+| **DOI** | `10.48550/arXiv.2407.18370` |
+| **URL** | https://arxiv.org/abs/2407.18370 |
+| **Date added** | 2026-05-01 |
+| **Categories** | [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/) |
+| **Added by** | [`t0017_literature_hierarchical_agents_and_judges`](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Full summary** | [`summary.md`](../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2407.18370/summary.md) |
+
+Jung, Brahman, and Choi address a central reliability gap in LLM-as-judge evaluation: when
+used at scale to grade pairs of model generations, even GPT-4-class judges have no provable
+bound on their agreement with humans, yet downstream leaderboards and benchmarks treat their
+verdicts as ground truth. The authors reframe evaluation as a **selective classification with
+risk control** problem, deriving a fixed-sequence multiple-testing procedure that calibrates a
+confidence threshold lambda on a small human-labeled calibration set and yields an exact
+binomial upper bound on selective disagreement risk.
+
+Methodologically, the paper contributes three components. **Selective evaluation** provides
+the formal P(agreement | non-abstention) >= 1 - alpha guarantee; **Simulated Annotators**
+produces high-quality unsupervised confidence estimates by prompting the judge with diverse
+few-shot annotator personas and aggregating cross-simulation agreement; and **Cascaded
+Selective Evaluation** chains weak-to-strong judges so that easy instances are decided cheaply
+and only hard instances escalate, with the risk-control proof composing across cascade stages.
+
+Empirically, on TL;DR, ChatArena, and Auto-J, the cascade achieves 90%+ guarantee success rate
+at target agreement levels (0.85, 0.9) where GPT-4 alone has 0% guarantee success rate.
+Coverage remains in the 55-65% range, but the routing concentrates GPT-4 calls on the hardest
+17-44% of instances, cutting evaluation cost by 78-87% versus a GPT-4-only baseline. Simulated
+Annotators roughly halves ECE for GPT-4 (0.217 to 0.095 on AlpacaEval) and improves both ECE
+and accuracy for Mistral-7B (ECE 0.374 to 0.075). The abstention policy correlates with
+human-perceived subjectivity (IAA 0.815 abstained vs. 0.902 evaluated) rather than shallow
+features.
+
+For this project on hierarchical agents and judges, the paper is highly load-bearing. It
+supplies (i) a formal abstention/escalation primitive directly applicable to agent-as-judge
+evaluation of multi-step trajectories, (ii) Simulated Annotators as a strong, cheap baseline
+confidence measure to compare any new uncertainty methods against, and (iii) a worked-out
+cost-vs-coverage trade-off showing that mixed cascades can deliver higher empirical
+reliability than monolithic GPT-4 judging at a fraction of the API cost. Adopting calibrated
+selective evaluation should be a default for any judge-driven metric we report.
+
+</details>
 
 <details>
 <summary>🏤 <strong>Can LLMs Express Their Uncertainty? An Empirical Evaluation of
@@ -56,17 +106,38 @@ condition's confidence elicitation.
 
 </details>
 
-## Tasks (1)
+## Tasks (2)
 
 | # | Task | Status | Completed |
 |---|------|--------|-----------|
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
+| 0017 | [Literature: Hierarchical Agents and LLM-as-Judge](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) | completed | 2026-05-01 01:40 |
 
 ## Answers (0)
 
 No answers in this category.
 
-## Suggestions (5 open, 2 closed)
+## Suggestions (6 open, 2 closed)
+
+<details>
+<summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
+agreement study</strong> (S-0017-01)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0017_literature_hierarchical_agents_and_judges](../../tasks/t0017_literature_hierarchical_agents_and_judges/)
+
+S-0009-03 calls for a multi-judge agreement study; Jung2024 ("Trust or Escalate", ICLR 2025)
+provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1)
+Simulated Annotators on top of the project's existing judge LLM to produce ensemble-based
+confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing
+(Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free
+guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on
+ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor
+that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
+annotation rerun. Deliverable: a small library that wraps the existing judge call with
+confidence + abstain semantics, exposed to t0009-style annotation tasks.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Add an ablation: tree-schema-with-truncated-text to isolate the

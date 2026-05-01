@@ -1,7 +1,7 @@
 # Suggestions: `uncertainty-calibration`
 
-7 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **5 open** (1
+8 suggestion(s) in category
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **6 open** (2
 high, 1 medium, 3 low), **2 closed**.
 
 [Back to all suggestions](../README.md)
@@ -30,6 +30,32 @@ Run a third condition: the v2 tree schema but truncate the problem to 1500 chars
 annotator and judge prompts. If accept rate drops materially below v2-full-text on
 FrontierScience-Olympiad, truncation is the dominant cause; if it stays at v2-full-text
 levels, the schema is the dominant cause. Cost ~$2 with haiku.
+
+</details>
+
+<details>
+<summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
+agreement study</strong> (S-0017-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-01` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2407.18370`](../../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2407.18370/) |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+S-0009-03 calls for a multi-judge agreement study; Jung2024 ("Trust or Escalate", ICLR 2025)
+provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1)
+Simulated Annotators on top of the project's existing judge LLM to produce ensemble-based
+confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing
+(Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free
+guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on
+ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor
+that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
+annotation rerun. Deliverable: a small library that wraps the existing judge call with
+confidence + abstain semantics, exposed to t0009-style annotation tasks.
 
 </details>
 

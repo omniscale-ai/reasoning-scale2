@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-05-01T04:45:51Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-05-01T12:08:03Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>34</section_count>
-    <char_count>253674</char_count>
-    <byte_count>254260</byte_count>
-    <estimated_tokens>63418</estimated_tokens>
+    <section_count>37</section_count>
+    <char_count>284437</char_count>
+    <byte_count>285087</byte_count>
+    <estimated_tokens>71109</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -143,9 +143,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0014_v2_annotator_sonnet_rerun</id>
         <id>t0015_correct_proxy_benchmark_labels</id>
         <id>t0016_brainstorm_results_5</id>
+        <id>t0017_literature_hierarchical_agents_and_judges</id>
       </source_ids>
       <content>
-Completed tasks: 16
+Completed tasks: 17
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -242,6 +243,12 @@ ID: t0016_brainstorm_results_5
 Completed: 2026-04-30
 Short description: Brainstorm 5: pure backlog cleanup after t0014 schema-vs-model deconfound — reject 3 redundant suggestions, reprioritize 5; no new tasks.
 Result summary: Results Summary: t0016_brainstorm_results_5 Summary Brainstorm session 5 was a pure backlog cleanup pass after t0014 (v2 sonnet rerun deconfound) and t0015 (proxy benchmark relabel) merged. Eight corrections were issued: three rejections, five priority changes. No new tasks were created and no existing tasks were modified. Session Overview * **Session number**: 5 * **Date**: 2026-04-30 * **Duration**: ~30 minutes * **Mode**: Pure cleanup (no new tasks, no task updates) * **Researcher budget envelope**: &lt; $5 total (no API spend; planning only) Decisions Rejections (3) | Suggestion | Source task | Rationale | | --- | --- | --- | | S-0005-04 | t0005 | Superseded by t0015 proxy-relabel...
+
+## Literature: Hierarchical Agents and LLM-as-Judge
+ID: t0017_literature_hierarchical_agents_and_judges
+Completed: 2026-05-01
+Short description: Literature survey of recent papers on hierarchical/granularity-aware LLM agents and LLM-as-judge methodology, plus the foundational options-framework paper.
+Result summary: Results Summary: Literature Survey on Hierarchical Agents and LLM-as-Judge Summary Completed a literature survey of ten papers covering hierarchical / granularity-aware LLM agents, search-and-planning structure, reasoning-structure discovery, agent benchmarks, and LLM-as-judge methodology — plus the foundational options-framework paper (Sutton 1999) as a brief theory anchor. All ten paper assets pass the v3 paper-asset verificator with zero errors and zero warnings. The synthesis below groups findings by the five themes defined in `task_description.md` and identifies which backlog suggestions and prior tasks the survey strengthens or weakens. Metrics * **10 paper assets created** out of a...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -4458,6 +4465,603 @@ No research required for brainstorming session.
 #### References
 
 No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0017_literature_hierarchical_agents_and_judges-research_papers" source_kind="file">
+      <title>t0017_literature_hierarchical_agents_and_judges — Literature: Hierarchical Agents and LLM-as-Judge — research_papers.md</title>
+      <source_name>research_papers.md</source_name>
+      <source_ids>
+        <id>t0017_literature_hierarchical_agents_and_judges</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0017_literature_hierarchical_agents_and_judges/research/research_papers.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0017_literature_hierarchical_agents_and_judges&quot;
+research_stage: &quot;papers&quot;
+papers_reviewed: 0
+papers_cited: 0
+categories_consulted:
+  - &quot;hierarchical-planning&quot;
+  - &quot;granularity-conditioning&quot;
+  - &quot;agent-evaluation&quot;
+  - &quot;uncertainty-calibration&quot;
+  - &quot;benchmark-annotation&quot;
+date_completed: &quot;2026-05-01&quot;
+status: &quot;partial&quot;
+---
+#### Task Objective
+
+Identify the seed of relevant prior work already in this project before adding the ten target papers
+(P1-P10) on hierarchical / granularity-aware LLM agents and LLM-as-judge methodology, so that the
+new survey extends rather than duplicates existing assets. The task scope, defined in
+`task_description.md`, covers five themes: hierarchical / granularity-aware agents (P1, P2, P3,
+P10), search-and-planning structure (P4, P5), reasoning-structure discovery (P6), agent benchmarks
+(P7, P8), and LLM-as-judge methodology (P9).
+
+#### Category Selection Rationale
+
+Five project categories from `meta/categories/` map to the survey&#x27;s five themes. The core
+methodological themes are `hierarchical-planning` (P1-P3, P10 plus the search papers P4, P5),
+`granularity-conditioning` (P1, P3, P10 — granularity of preference signals and credit assignment),
+and `uncertainty-calibration` (P9 — calibrated thresholds for selective judging). The benchmark
+themes are `agent-evaluation` (P7, P8 — fine-grained taxonomy and progress-rate metric) and
+`benchmark-annotation` (P8 — large-scale subgoal annotation methodology). Categories
+`benchmark-frontierscience`, `benchmark-workarena`, `benchmark-swebench`, and `benchmark-taubench`
+were not consulted because the four roadmap benchmarks are out of scope for this survey.
+
+#### Key Findings
+
+##### Existing Project Corpus Has No Overlap With the Ten Target Papers
+
+`aggregate_papers --format json --detail short` was run before any `/add-paper` invocation. None of
+the ten target papers (P1-P10) was present in the project. The pre-existing paper corpus is
+concentrated on benchmark-design and annotation-methodology references seeded by t0002, t0007, and
+t0009; it does not include the hierarchical-RL, search, reasoning-structure, embodied-agent, or
+LLM-as-judge references this task targets. No deduplication corrections were needed and no prior
+paper had to be cited to inform the new additions.
+
+##### Identity Resolution Used the Canonical Slug Utility With Two Documented Fallbacks
+
+For each of the ten papers, the resolved DOI (or arXiv-derived DOI) was compared against every
+existing `paper_id` and `title` (lower-cased, stripped of punctuation). All ten resolved IDs were
+new. Eight papers received a canonical DOI-based slug from `arf.scripts.utils.doi_to_slug`. Two used
+the `no-doi_&lt;Author&gt;&lt;Year&gt;_&lt;slug&gt;` fallback per the v3 paper specification: `Sutton1999` because its
+DOI `10.1016/S0004-3702(99)00052-1` contains parentheses that the slug utility rejects, and
+`Gao2026` (HPL, ICLR 2026) because the paper has no registered DOI yet. The canonical DOI is
+preserved in `details.json` for `Sutton1999`; for `Gao2026` the DOI field is `null` and the
+OpenReview URL is preserved in the `url` field.
+
+##### Synthesis Across the Existing Corpus Was Not Possible
+
+Because no prior paper in the project&#x27;s existing corpus falls within the five themes of this survey,
+this stage cannot perform cross-paper synthesis from the existing corpus. The synthesis sections
+that would normally appear here — scope-by-scope contrasts, cross-paper coverage analysis, and
+citation-graph notes — are deferred to the analysis step that consumes the ten new paper assets
+directly. The `status: partial` frontmatter flag reflects this honest gap.
+
+#### Methodology Insights
+
+* The aggregator-first deduplication step is critical and inexpensive. Running `aggregate_papers`
+  before `/add-paper` adds about 2 seconds and prevents the entire ten-paper-adds-already-present
+  failure mode that wastes much more time downstream.
+* The two non-DOI cases (`Sutton1999`, `Gao2026`) confirm that the `no-doi_&lt;Author&gt;&lt;Year&gt;_&lt;slug&gt;`
+  fallback is the correct default for both pre-DOI-era refereed papers and newest-conference papers
+  that have not yet been assigned a DOI.
+* `pypdf` was the only added dependency for this task, used by the per-paper agent that summarised
+  Sutton 1999 from the full text rather than the abstract. Per CLAUDE.md rule 3, top-level Python
+  tooling files are the only legitimate non-task changes.
+
+#### Gaps and Limitations
+
+* This research-papers stage cannot synthesise across an existing corpus — the prior corpus does not
+  overlap the survey scope. The synthesis sections that would normally appear here are deferred to
+  the analysis step which works directly off the ten new paper assets.
+* The survey is restricted to ten papers chosen at the start of the task; it is not exhaustive. A
+  follow-up task could add 2024-2026 papers on inverse-RL judges, judge ensembles beyond `Jung2024`,
+  and additional embodied-agent benchmarks beyond `Li2024` and `Ma2024`.
+
+#### Recommendations for This Task
+
+1. Skip cross-paper synthesis at the research-papers stage; defer all synthesis to the analysis
+   stage that consumes the ten new paper assets.
+2. Use `/add-paper` in parallel for all ten papers; expected wall-clock with parallel execution is
+   under 20 minutes.
+3. For the two non-DOI papers, use `no-doi_&lt;Author&gt;&lt;Year&gt;_&lt;slug&gt;` and preserve the raw DOI string in
+   `details.json` `doi` (where available, e.g., `10.1016/S0004-3702(99)00052-1` for Sutton 1999).
+4. After all ten paper additions, re-run `meta.asset_types.paper.verificator` per paper and the
+   project-level aggregators (`aggregate_papers`, `aggregate_categories`) to confirm nothing in the
+   shared corpus drifted.
+
+#### Paper Index
+
+The corpus did not contain any of the ten target papers before this task. The Paper Index for the
+ten new assets is the at-a-glance table in `results/results_detailed.md`. The full per-paper
+metadata lives in `assets/paper/&lt;paper_id&gt;/details.json` and the canonical summaries in
+`assets/paper/&lt;paper_id&gt;/summary.md`.
+      </content>
+    </section>
+    <section id="t0017_literature_hierarchical_agents_and_judges-research_internet" source_kind="file">
+      <title>t0017_literature_hierarchical_agents_and_judges — Literature: Hierarchical Agents and LLM-as-Judge — research_internet.md</title>
+      <source_name>research_internet.md</source_name>
+      <source_ids>
+        <id>t0017_literature_hierarchical_agents_and_judges</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0017_literature_hierarchical_agents_and_judges/research/research_internet.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0017_literature_hierarchical_agents_and_judges&quot;
+research_stage: &quot;internet&quot;
+searches_conducted: 12
+sources_cited: 10
+papers_discovered: 10
+date_completed: &quot;2026-05-01&quot;
+status: &quot;complete&quot;
+---
+#### Task Objective
+
+Resolve identity, fetch metadata, and download PDFs for the ten target papers (P1-P10) on
+hierarchical / granularity-aware LLM agents and LLM-as-judge methodology. Internet research in this
+task is bounded by the identity-resolution and download phases of the `/add-paper` skill — there is
+no exploratory web search beyond what is needed to add the ten pre-specified papers.
+
+#### Gaps Addressed
+
+The Gaps and Limitations section of `research_papers.md` flags two issues that internet research
+addresses directly:
+
+1. **No overlap with existing corpus** — Resolved by sourcing all ten papers from public arXiv,
+   OpenReview, NeurIPS proceedings, and a public university course-page mirror. None needed any
+   private or paywalled access.
+2. **One paper has a parenthesised DOI** — Resolved by using a public mirror
+   (`https://people.cs.umass.edu/~barto/courses/cs687/Sutton-Precup-Singh-AIJ99.pdf`) for
+   `Sutton1999` while preserving the original DOI `10.1016/S0004-3702(99)00052-1` in `details.json`.
+   The canonical slug utility&#x27;s parentheses-rejection behaviour is unchanged; the `no-doi_` fallback
+   is documented as the correct workaround.
+
+#### Search Strategy
+
+**Sources searched**: arXiv, OpenReview (ICLR 2026 accepted papers), NeurIPS 2024 main track and
+NeurIPS 2024 D&amp;B track, ICML 2024 proceedings, CrossRef Works API, Semantic Scholar Graph API,
+OpenAlex Works API, ScienceDirect article landing page, and a UMass public course mirror for the
+1999 paper.
+
+**Queries executed** (12 total):
+
+*Hierarchical / granularity-aware agents thread (P1, P2, P3, P10):*
+
+1. `&quot;Hierarchical Preference Learning&quot; &quot;Long-Horizon LLM Agents&quot; ICLR 2026 OpenReview`
+2. `ArCHer &quot;hierarchical multi-turn RL&quot; language model agents arXiv 2402.19446`
+3. `&quot;Reinforcing LLM Agents&quot; &quot;Action Decomposition&quot; POAD BAD NeurIPS 2024 arXiv 2405.15821`
+4. `Sutton Precup Singh &quot;options&quot; &quot;semi-MDP&quot; temporal abstraction Artificial Intelligence 1999`
+
+*Search and planning structure thread (P4, P5):*
+
+5. `&quot;Can Graph Learning Improve Planning&quot; LLM agents NeurIPS 2024 arXiv 2405.19119`
+6. `&quot;LATS&quot; &quot;Language Agent Tree Search&quot; Monte Carlo ICML 2024 arXiv 2310.04406`
+
+*Reasoning structure discovery thread (P6):*
+
+7. `SELF-DISCOVER reasoning structure compose modules NeurIPS 2024 arXiv 2402.03620`
+
+*Agent benchmarks thread (P7, P8):*
+
+8. `&quot;Embodied Agent Interface&quot; goal interpretation subgoal decomposition NeurIPS 2024 arXiv 2410.07166`
+9. `AgentBoard progress rate subgoal annotation NeurIPS 2024 D&amp;B arXiv 2401.13178`
+
+*LLM-as-judge methodology thread (P9):*
+
+10. `&quot;Trust or Escalate&quot; LLM judge provable guarantees human agreement Simulated Annotators arXiv 2407.18370`
+
+*Identity follow-ups (after candidate IDs were known):*
+
+11. `Sutton-Precup-Singh-AIJ99.pdf people.cs.umass.edu Barto course mirror`
+12. `Wu graph learning planning author affiliation Semantic Scholar OpenAlex`
+
+**Date range**: 1999 (the foundational options paper) and 2024-2026 (modern hierarchical-agent and
+judge-methodology references). No restriction on author or country.
+
+**Inclusion criteria**: A source must be (a) a peer-reviewed paper, an accepted conference paper, or
+a foundational refereed-journal paper, (b) directly cover one of the five themes, and (c) be
+retrievable via a public arXiv URL, conference proceedings page, or public university mirror.
+
+#### Key Findings
+
+##### All Ten Papers Were Retrievable as PDF Without Failure
+
+No download failed; every asset has `download_status: &quot;success&quot;` and at least one file in `files/`.
+The arXiv-first identity resolution succeeded for the eight modern papers in a single pass. The two
+pre-arXiv-era and not-yet-DOI-registered cases (`Sutton1999`, `Gao2026`) required one additional
+source each: a UMass course mirror for `Sutton1999` and the OpenReview ICLR 2026 accepted-paper list
+for `Gao2026`.
+
+##### Two Non-DOI Cases Were Anticipated and Handled by Specification
+
+`Sutton1999` and `Gao2026` use the `no-doi_&lt;Author&gt;&lt;Year&gt;_&lt;slug&gt;` fallback. The original DOI string
+is preserved in `details.json` for `Sutton1999`. For `Gao2026` the DOI field is `null` and the `url`
+field carries the OpenReview link. Both cases match the v3 paper-asset specification&#x27;s explicit
+guidance for non-DOI papers and were caught by the `/add-paper` skill&#x27;s own identity resolution
+phase rather than by trial-and-error.
+
+##### Author Country Resolution Has a Long Tail That Semantic Scholar Closes
+
+Eight papers were straightforward; for `Wen2024` and `Wu2024` two co-authors had only first-author
+institutions on arXiv, and Semantic Scholar filled the gap. Following the `/add-paper` rule, no
+country was guessed when uncertain — the remaining unknowns are recorded as `null` in `details.json`
+`country`. This produced one PA-W007 warning during a draft addition that was closed by adding
+country codes for the remaining institutions.
+
+#### Methodology Insights
+
+* The arXiv-first identity resolution is the most efficient path for 2024-2026 ML conference papers;
+  CrossRef and Semantic Scholar are used to enrich rather than to bootstrap identity.
+* For pre-2010 RL theory papers (`Sutton1999`), the search strategy must include both the canonical
+  DOI on the publisher page and a public university course-page mirror, because the publisher PDF is
+  paywalled.
+* For very-recent conference papers (ICLR 2026, NeurIPS 2024), the venue&#x27;s accepted-paper page is
+  the canonical disambiguation source when arXiv has multiple versions or revisions.
+* The per-paper agent benefits from full-PDF text extraction (via `pypdf`) over abstract-only
+  summarisation when summarising older or theory-dense papers — for `Sutton1999` the resulting
+  summary is materially better than the abstract-only path used for some papers in t0002.
+
+#### Discovered Papers
+
+##### [Gao2026]
+
+* **Title**: Solving the Granularity Mismatch: Hierarchical Preference Learning for Long-Horizon LLM
+  Agents
+* **Year**: 2026
+* **Venue**: ICLR 2026
+* **DOI**: none (not yet registered)
+* **URL**: OpenReview ICLR 2026 accepted-paper page
+* **Suggested categories**: `hierarchical-planning`, `granularity-conditioning`
+* **Why download**: P1 of the survey; introduces hierarchical preference learning over LLM-clustered
+  sub-task action groups; bias-variance argument (Proposition 1) directly justifies mid-granularity
+  signals.
+
+##### [Zhou2024] (ArCHer)
+
+* **Title**: ArCHer: Training Language Model Agents via Hierarchical Multi-Turn RL
+* **Year**: 2024
+* **Venue**: ICML 2024
+* **DOI**: `10.48550/arXiv.2402.19446`
+* **URL**: https://arxiv.org/abs/2402.19446
+* **Suggested categories**: `hierarchical-planning`
+* **Why download**: P2; demonstrates utterance-level off-policy critic + token-level on-policy
+  actor; gains scale from 100M to 7B parameters.
+
+##### [Wen2024]
+
+* **Title**: Reinforcing LLM Agents via Policy Optimization with Action Decomposition
+* **Year**: 2024
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2405.15821`
+* **URL**: https://arxiv.org/abs/2405.15821
+* **Suggested categories**: `granularity-conditioning`, `hierarchical-planning`
+* **Why download**: P3; formalises token-level credit assignment in free-form action spaces (POAD
+  with BAD), keeping `gamma_w = 1` inside an action.
+
+##### [Wu2024]
+
+* **Title**: Can Graph Learning Improve Planning in LLM-based Agents?
+* **Year**: 2024
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2405.19119`
+* **URL**: https://arxiv.org/abs/2405.19119
+* **Suggested categories**: `hierarchical-planning`
+* **Why download**: P4; reframes LLM-agent planning as graph decision-making; reduces hallucination
+  from &gt;20% to &lt;1% by restricting candidates to actual graph nodes.
+
+##### [Zhou2024a] (LATS)
+
+* **Title**: LATS: Language Agent Tree Search Unifies Reasoning, Acting, and Planning
+* **Year**: 2024
+* **Venue**: ICML 2024
+* **DOI**: `10.48550/arXiv.2310.04406`
+* **URL**: https://arxiv.org/abs/2310.04406
+* **Suggested categories**: `hierarchical-planning`, `agent-evaluation`
+* **Why download**: P5; tree search expands fewer nodes than RAP and ToT at higher accuracy; useful
+  as a strong planning baseline for the scope-aware (A) condition.
+
+##### [Zhou2024b] (SELF-DISCOVER)
+
+* **Title**: SELF-DISCOVER: Large Language Models Self-Compose Reasoning Structures
+* **Year**: 2024
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2402.03620`
+* **URL**: https://arxiv.org/abs/2402.03620
+* **Suggested categories**: `hierarchical-planning`, `agent-evaluation`
+* **Why download**: P6; structure (what to think about) beats wording (what words to use); JSON
+  scaffold IMPLEMENT step is the largest single contributor in ablations.
+
+##### [Li2024]
+
+* **Title**: Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making
+* **Year**: 2024
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2410.07166`
+* **URL**: https://arxiv.org/abs/2410.07166
+* **Suggested categories**: `agent-evaluation`
+* **Why download**: P7; fine-grained error taxonomy (hallucination, affordance, missing/extra/wrong-
+  order steps, precondition/effect errors) directly applicable to ABC-condition diagnostics.
+
+##### [Ma2024]
+
+* **Title**: AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents
+* **Year**: 2024
+* **Venue**: NeurIPS 2024 Datasets and Benchmarks
+* **DOI**: `10.48550/arXiv.2401.13178`
+* **URL**: https://arxiv.org/abs/2401.13178
+* **Suggested categories**: `agent-evaluation`, `benchmark-annotation`
+* **Why download**: P8; introduces &quot;progress rate&quot; (Pearson rho &gt; 0.95 vs humans across 1013
+  environments); hard/easy split based on subgoal count.
+
+##### [Jung2024]
+
+* **Title**: Trust or Escalate: LLM Judges with Provable Guarantees for Human Agreement
+* **Year**: 2024 (arXiv); 2025 (ICLR Oral)
+* **Venue**: ICLR 2025 Oral
+* **DOI**: `10.48550/arXiv.2407.18370`
+* **URL**: https://arxiv.org/abs/2407.18370
+* **Suggested categories**: `uncertainty-calibration`, `agent-evaluation`
+* **Why download**: P9; selective LLM judging with calibrated thresholds; 75% of pairwise judging on
+  ChatArena delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor.
+
+##### [Sutton1999]
+
+* **Title**: Between MDPs and Semi-MDPs: A Framework for Temporal Abstraction in Reinforcement
+  Learning
+* **Year**: 1999
+* **Venue**: Artificial Intelligence (Elsevier)
+* **DOI**: `10.1016/S0004-3702(99)00052-1` (parentheses force `no-doi_` fallback for the slug)
+* **URL**: https://people.cs.umass.edu/~barto/courses/cs687/Sutton-Precup-Singh-AIJ99.pdf
+* **Suggested categories**: `hierarchical-planning`, `granularity-conditioning`
+* **Why download**: P10; theory anchor — options as `&lt;I, pi, beta&gt;` triples + SMDP equivalence +
+  interruption + subgoal pseudo-rewards map onto the project&#x27;s three-level hierarchy.
+
+#### Recommendations for This Task
+
+1. Default future RL/options-theory references that may also have parenthesised DOIs to the
+   `no-doi_` fallback rather than relaxing the `doi_to_slug` allowed-character set; the slug is
+   purely a folder name and the DOI is preserved in `details.json`.
+2. For ICLR/NeurIPS papers without registered DOIs, use OpenReview IDs or arXiv IDs to disambiguate
+   the canonical version.
+3. Run `meta.asset_types.paper.verificator` per paper after every addition; the verificator catches
+   missing-country (PA-W007), invalid country code (PA-W010), and abstract-too-short (PA-W008)
+   warnings that internet research can resolve cheaply.
+4. Use `pypdf`-driven full-PDF text extraction for theory papers and pre-arXiv-era papers; the
+   resulting summaries are materially better than the abstract-only path.
+
+#### Source Index
+
+##### [Gao2026]
+
+* **Type**: paper
+* **Title**: Solving the Granularity Mismatch: Hierarchical Preference Learning for Long-Horizon LLM
+  Agents
+* **Year**: 2026
+* **Venue**: ICLR 2026
+* **DOI**: none (not yet registered)
+* **URL**: OpenReview ICLR 2026 accepted-paper page
+* **Peer-reviewed**: yes (ICLR 2026)
+* **Relevance**: P1; bias-variance argument (Proposition 1) is the cleanest theoretical
+  justification for mid-granularity preference signals on long-horizon tasks.
+
+##### [Zhou2024]
+
+* **Type**: paper
+* **Title**: ArCHer: Training Language Model Agents via Hierarchical Multi-Turn RL
+* **Year**: 2024
+* **Venue**: ICML 2024
+* **DOI**: `10.48550/arXiv.2402.19446`
+* **URL**: https://arxiv.org/abs/2402.19446
+* **Peer-reviewed**: yes (ICML 2024)
+* **Relevance**: P2; utterance-level off-policy critic + token-level on-policy actor; gains scale
+  from 100M to 7B parameters.
+
+##### [Wen2024]
+
+* **Type**: paper
+* **Title**: Reinforcing LLM Agents via Policy Optimization with Action Decomposition
+* **Year**: 2024
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2405.15821`
+* **URL**: https://arxiv.org/abs/2405.15821
+* **Peer-reviewed**: yes (NeurIPS 2024)
+* **Relevance**: P3; POAD with BAD; correct way to do token-level credit assignment in free-form
+  action spaces (`gamma_w = 1` inside an action).
+
+##### [Wu2024]
+
+* **Type**: paper
+* **Title**: Can Graph Learning Improve Planning in LLM-based Agents?
+* **Year**: 2024
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2405.19119`
+* **URL**: https://arxiv.org/abs/2405.19119
+* **Peer-reviewed**: yes (NeurIPS 2024)
+* **Relevance**: P4; reframes LLM-agent planning as graph decision-making; reduces hallucination
+  from &gt;20% to &lt;1% by restricting candidates to graph nodes.
+
+##### [Zhou2024a]
+
+* **Type**: paper
+* **Title**: LATS: Language Agent Tree Search Unifies Reasoning, Acting, and Planning
+* **Year**: 2024
+* **Venue**: ICML 2024
+* **DOI**: `10.48550/arXiv.2310.04406`
+* **URL**: https://arxiv.org/abs/2310.04406
+* **Peer-reviewed**: yes (ICML 2024)
+* **Relevance**: P5; tree search expands fewer nodes than RAP and ToT at higher accuracy; strong
+  planning baseline for the scope-aware (A) condition.
+
+##### [Zhou2024b]
+
+* **Type**: paper
+* **Title**: SELF-DISCOVER: Large Language Models Self-Compose Reasoning Structures
+* **Year**: 2024
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2402.03620`
+* **URL**: https://arxiv.org/abs/2402.03620
+* **Peer-reviewed**: yes (NeurIPS 2024)
+* **Relevance**: P6; structure (what to think about) beats wording; JSON-scaffold IMPLEMENT step is
+  the largest single contributor in ablations; transfers across model families.
+
+##### [Li2024]
+
+* **Type**: paper
+* **Title**: Embodied Agent Interface: Benchmarking LLMs for Embodied Decision Making
+* **Year**: 2024
+* **Venue**: NeurIPS 2024
+* **DOI**: `10.48550/arXiv.2410.07166`
+* **URL**: https://arxiv.org/abs/2410.07166
+* **Peer-reviewed**: yes (NeurIPS 2024)
+* **Relevance**: P7; fine-grained error taxonomy directly applicable to ABC-condition diagnostics.
+
+##### [Ma2024]
+
+* **Type**: paper
+* **Title**: AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents
+* **Year**: 2024
+* **Venue**: NeurIPS 2024 Datasets and Benchmarks
+* **DOI**: `10.48550/arXiv.2401.13178`
+* **URL**: https://arxiv.org/abs/2401.13178
+* **Peer-reviewed**: yes (NeurIPS 2024 D&amp;B)
+* **Relevance**: P8; &quot;progress rate&quot; metric (Pearson rho &gt; 0.95 vs humans across 1013 environments)
+  with hard/easy split based on subgoal count; six-dimensional sub-skill scoring.
+
+##### [Jung2024]
+
+* **Type**: paper
+* **Title**: Trust or Escalate: LLM Judges with Provable Guarantees for Human Agreement
+* **Year**: 2024 (arXiv); 2025 (ICLR Oral)
+* **Venue**: ICLR 2025 Oral
+* **DOI**: `10.48550/arXiv.2407.18370`
+* **URL**: https://arxiv.org/abs/2407.18370
+* **Peer-reviewed**: yes (ICLR 2025 Oral)
+* **Relevance**: P9; selective LLM judging with calibrated thresholds and finite-sample,
+  distribution-free guarantees on human agreement.
+
+##### [Sutton1999]
+
+* **Type**: paper
+* **Title**: Between MDPs and Semi-MDPs: A Framework for Temporal Abstraction in Reinforcement
+  Learning
+* **Year**: 1999
+* **Venue**: Artificial Intelligence (Elsevier)
+* **DOI**: `10.1016/S0004-3702(99)00052-1` (parentheses force `no-doi_` fallback for the slug)
+* **URL**: https://people.cs.umass.edu/~barto/courses/cs687/Sutton-Precup-Singh-AIJ99.pdf
+* **Peer-reviewed**: yes (Elsevier *Artificial Intelligence*)
+* **Relevance**: P10; theory anchor — options as `&lt;I, pi, beta&gt;` triples + SMDP equivalence +
+  interruption + subgoal pseudo-rewards map onto the project&#x27;s three-level hierarchy.
+      </content>
+    </section>
+    <section id="t0017_literature_hierarchical_agents_and_judges-research_code" source_kind="file">
+      <title>t0017_literature_hierarchical_agents_and_judges — Literature: Hierarchical Agents and LLM-as-Judge — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0017_literature_hierarchical_agents_and_judges</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0017_literature_hierarchical_agents_and_judges/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0017_literature_hierarchical_agents_and_judges&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 3
+tasks_cited: 3
+libraries_found: 0
+libraries_relevant: 0
+date_completed: &quot;2026-05-01&quot;
+status: &quot;complete&quot;
+---
+#### Task Objective
+
+Identify any prior code, libraries, datasets, or other assets in this project that could inform the
+current literature-survey task. The survey covers hierarchical / granularity-aware LLM agents,
+LLM-as-judge methodology, and the foundational options framework. Its outputs are paper assets and
+synthesis documents — there is no implementation beyond running the `/add-paper` skill.
+
+#### Library Landscape
+
+The library aggregator
+(`uv run python -u -m arf.scripts.aggregators.aggregate_libraries --format json`) reports
+`library_count: 0`. No project-internal libraries have been registered yet under `assets/library/`,
+so there is nothing to import or extend. Adjacent project utilities used during the task are
+framework code, not registered libraries:
+
+* `arf.scripts.utils.doi_to_slug` — canonical DOI-to-folder-name conversion. Confirms that
+  parenthesised DOIs are rejected and require the `no-doi_` fallback (relevant for `Sutton1999`).
+* `meta.asset_types.paper.verificator` — the canonical paper-asset verifier invoked in Phase 6 of
+  `/add-paper`. Used once per paper.
+* `arf.scripts.aggregators.aggregate_papers` — used to confirm pre-existing-corpus non-overlap with
+  the ten target papers.
+
+#### Key Findings
+
+* **No reusable project library was found.** This task is pure metadata + summary work; it produces
+  ten paper assets and a synthesis document, no library, model, or dataset.
+* **One top-level dependency was added.** `pypdf` was added as a dev dependency to `pyproject.toml`
+  (and `uv.lock` was regenerated) so the per-paper agent could extract full PDF text for the Sutton
+  1999 summary. Per CLAUDE.md rule 3 this is a permitted top-level change. The dependency now stays
+  installed and benefits any future literature-survey or full-text-extraction task.
+* **Three prior tasks are conceptually adjacent.** t0009 (hierarchical annotation v2), t0014 (v2
+  annotator sonnet rerun), and t0012 (phase-2 ABC smoke) are the tasks whose findings this survey
+  most directly strengthens or informs (see the &quot;Pointers Back to Backlog&quot; section in
+  `results/results_summary.md`). None of them produced reusable code for the literature-survey
+  workflow itself.
+
+#### Reusable Code and Assets
+
+* `arf.scripts.utils.doi_to_slug` — invoked once per DOI; no modifications needed.
+* `meta.asset_types.paper.verificator` — invoked once per paper; no modifications needed.
+* `arf/skills/add-paper/SKILL.md` — the canonical workflow used ten times in parallel; no
+  modifications needed.
+* `pypdf` (added as a dev dependency) — installed once at the top level; available to any future
+  task that needs PDF text extraction.
+
+No task-specific Python code (under `tasks/&lt;task_id&gt;/code/`) was written for this task.
+
+#### Lessons Learned
+
+* The `/add-paper` skill scales cleanly to ten parallel runs; each per-paper agent is independent
+  and there are no cross-paper write conflicts.
+* For papers older than the modern arXiv era, the per-paper agent benefits from full-PDF text
+  extraction (via `pypdf`) over abstract-only summarisation. The Sutton 1999 summary is materially
+  better for it.
+* Initial category assignments are easy to get wrong on prompting / reasoning-structure papers
+  (`Zhou2024b`&#x27;s SELF-DISCOVER initially used invented slugs). Always pass the per-paper agent the
+  output of `aggregate_categories --format json` and require category slugs to come from
+  `meta/categories/`.
+
+#### Recommendations for This Task
+
+1. Do not create a `tasks/t0017_.../code/` directory; this is a literature-survey task with no
+   implementation.
+2. Run `verify_paper_asset` once per paper, then re-run `aggregate_papers` and
+   `aggregate_categories` after all ten papers are added to confirm shared-corpus integrity.
+3. Future literature-survey tasks should reuse the now-installed `pypdf` dependency rather than
+   reinstall it.
+4. Future summarisation tasks that need to extract text from older paywalled papers should follow
+   the `Sutton1999` pattern: use a public mirror for download, preserve the original DOI in
+   `details.json`, and use the `no-doi_` fallback only when the DOI itself is invalid for slug
+   conversion.
+
+#### Task Index
+
+* [`t0009_hierarchical_annotation_v2`] — strengthened by P1 (`Gao2026`), P2 (`Zhou2024` ArCHer), P3
+  (`Wen2024`), and P10 (`Sutton1999`); reinforced by P7 (`Li2024`) and P8 (`Ma2024`).
+* [`t0014_v2_annotator_sonnet_rerun`] — strengthened by `Gao2026` Proposition 1 (bias-variance
+  argument for mid-granularity preference signals).
+* [`t0012_phase2_abc_smoke_frontierscience`] — informed by P10 (options framework as ABC frame), P7
+  (error taxonomy), and P8 (progress-rate metric).
       </content>
     </section>
   </sections>

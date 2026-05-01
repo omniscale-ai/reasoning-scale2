@@ -1,6 +1,6 @@
 # Research Suggestions Backlog
 
-54 suggestions **45 open** (15 high, 17 medium, 13 low), **9 closed**.
+57 suggestions **48 open** (16 high, 19 medium, 13 low), **9 closed**.
 
 **Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
 [`benchmark-annotation`](by-category/benchmark-annotation.md),
@@ -84,6 +84,32 @@ $50-200 range, the cost differential dominates: a 200-row sonnet annotation pass
 $40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
 annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
 judge bias.
+
+</details>
+
+<details>
+<summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
+agreement study</strong> (S-0017-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-01` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2407.18370`](../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2407.18370/) |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+S-0009-03 calls for a multi-judge agreement study; Jung2024 ("Trust or Escalate", ICLR 2025)
+provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1)
+Simulated Annotators on top of the project's existing judge LLM to produce ensemble-based
+confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing
+(Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free
+guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on
+ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor
+that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
+annotation rerun. Deliverable: a small library that wraps the existing judge call with
+confidence + abstain semantics, exposed to t0009-style annotation tasks.
 
 </details>
 
@@ -420,6 +446,33 @@ confirmatory N would decrease proportionally.
 </details>
 
 <details>
+<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
+in the next ABC-condition run</strong> (S-0017-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2401.13178`](../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2401.13178/) |
+| **Categories** | [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`benchmark-frontierscience`](../../meta/categories/benchmark-frontierscience/) |
+
+t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
+with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
+conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
+with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
+Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
+missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
+specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
+success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
+scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
+confirmatory run) producing legible results. Estimated effort: 1-2 days of
+metric-implementation work.
+
+</details>
+
+<details>
 <summary>📚 <strong>Build benchmark-specific tool registries for the four roadmap
 benchmarks</strong> (S-0006-01)</summary>
 
@@ -720,6 +773,31 @@ The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivi
 re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo
 distributions; this informs whether the 4-8 boundary is too narrow for Phase 2's atomic-edit
 experiments.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Use SELF-DISCOVER reasoning scaffolds as the scope-aware (A)
+condition prompt template</strong> (S-0017-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0017-03` |
+| **Kind** | technique |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0017_literature_hierarchical_agents_and_judges`](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Source paper** | [`10.48550_arXiv.2402.03620`](../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2402.03620/) |
+| **Categories** | [`granularity-conditioning`](../../meta/categories/granularity-conditioning/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning structure --
+selected from atomic reasoning modules and composed once per task type, then re-used across
+instances -- transfers across model families and outperforms CoT-Self-Consistency at 10-40x
+lower inference cost. The IMPLEMENT step (explicit JSON key-value scaffold) is the largest
+ablation contributor. This is a near-zero-cost upgrade to our scope-aware (A) condition
+prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScience-Olympiad,
+SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family.
+Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope:
+any retraining; this is purely a prompting change.
 
 </details>
 

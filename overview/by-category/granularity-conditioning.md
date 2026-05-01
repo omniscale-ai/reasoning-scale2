@@ -5,15 +5,119 @@ subtask, atomic).
 
 [Back to Dashboard](../README.md)
 
-**Detail pages**: [Papers (4)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (18)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
+**Detail pages**: [Papers (6)](../papers/by-category/granularity-conditioning.md) |
+[Suggestions (20)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
 (3)](../datasets/by-category/granularity-conditioning.md) | [Libraries
 (4)](../libraries/by-category/granularity-conditioning.md) | [Predictions
 (2)](../predictions/by-category/granularity-conditioning.md)
 
 ---
 
-## Papers (4)
+## Papers (6)
+
+<details>
+<summary>🏤 <strong>Solving the Granularity Mismatch: Hierarchical Preference
+Learning for Long-Horizon LLM Agents</strong> — Gao et al., 2026</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `no-doi_Gao2026_hierarchical-preference-learning-llm-agents` |
+| **Authors** | Heyang Gao, Zexu Sun, Erxue Min, Hengyi Cai, Shuaiqiang Wang, Dawei Yin, Xu Chen |
+| **Venue** | ICLR 2026 (conference) |
+| **DOI** | — |
+| **URL** | https://openreview.net/forum?id=s8usvGHYlk |
+| **Date added** | 2026-05-01 |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/) |
+| **Added by** | [`t0017_literature_hierarchical_agents_and_judges`](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Full summary** | [`summary.md`](../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/no-doi_Gao2026_hierarchical-preference-learning-llm-agents/summary.md) |
+
+Gao et al. tackle a real and well-defined problem in offline alignment of long-horizon LLM
+agents: trajectory-level DPO is too coarse to attribute failure to a specific sub-task, and
+step-level DPO is too noisy to capture the value of multi-step behaviour. They name this the
+granularity mismatch and frame their solution, Hierarchical Preference Learning (HPL), as a
+multi-resolution loss combined with a structured training schedule, rather than a single new
+objective.
+
+Methodologically, HPL has four moving parts: an LLM-driven segmenter that splits expert
+trajectories into semantically coherent action groups, a procedure that generates contrasting
+suboptimal groups via behaviour-cloned rollouts, a hierarchical DPO loss that sums
+trajectory-, step-, and group-level DPO terms, and a dual-layer curriculum that orders
+preference pairs by group length and reward gap. The curriculum runs in three phases and is
+shown to be necessary in ablations. A bias-variance proposition gives theoretical grounding to
+the choice of group-level granularity.
+
+The empirical story is unambiguous. On three standard agent benchmarks (ALFWorld, WebShop,
+InterCode-SQL) and two base models (Qwen2.5-1.5B / 7B), HPL beats SFT, ETO, and IPR. The
+Qwen2.5-7B average rises from 63.84 (IPR) to 67.81 (HPL), with the largest gain on ALFWorld
+seen (+10.71) and unseen (+8.96). Ablations cleanly localise the gain: the group-level DPO
+term is the single most important component, the semantic segmenter beats fixed-length
+alternatives, and the two-axis curriculum contributes about a full average point.
+
+For this project, HPL is directly relevant in three ways. First, the granularity-mismatch
+framing maps onto our scope-aware / scope-unaware / scope-mismatched conditions: HPL's group
+level is exactly the subtask level in our hierarchy. Second, semantic action-group
+segmentation is a methodology we can borrow when annotating gold actions at the subtask level
+on FrontierScience-Olympiad, WorkArena++, tau-bench, and SWE-bench Verified. Third, HPL
+provides a recent, strong, reproducible baseline if any downstream task in our pipeline trains
+a scope-aware policy. Limitations: HPL relies on GPT-4o for segmentation (cost and licence
+implications) and on the existence of expert demonstrations, neither of which transfers
+automatically to settings without high-quality demos.
+
+</details>
+
+<details>
+<summary>🏤 <strong>Reinforcing Language Agents via Policy Optimization with Action
+Decomposition</strong> — Wen et al., 2024</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `10.48550_arXiv.2405.15821` |
+| **Authors** | Muning Wen, Ziyu Wan, Weinan Zhang, Jun Wang, Ying Wen |
+| **Venue** | NeurIPS 2024 (conference) |
+| **DOI** | `10.48550/arXiv.2405.15821` |
+| **URL** | https://arxiv.org/abs/2405.15821 |
+| **Date added** | 2026-05-01 |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/) |
+| **Added by** | [`t0017_literature_hierarchical_agents_and_judges`](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) |
+| **Full summary** | [`summary.md`](../../tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/10.48550_arXiv.2405.15821/summary.md) |
+
+Wen et al. confront a structural tension in RL fine-tuning of LLM agents: action-level methods
+(GLAM, TWOSOME) must hand-prune the action space and fail to assign credit to specific tokens
+inside an action, while naive token-level methods that embed token generation into the MDP
+implicitly assume that later tokens are more important than earlier ones. The paper makes this
+informal complaint formal by deriving a closed-form expression for the discrepancy between
+action-level and naive token-level Bellman updates, splitting the discount factor into gamma_a
+and gamma_w and showing the discrepancy is proportional to (1 - gamma_w^{|a_t|-j}).
+
+The fix is the Bellman backup with Action Decomposition (BAD): set gamma_w = 1 and only apply
+gamma_a at the action boundary, which the authors prove recovers the action-level optimum
+exactly while still giving per-token credit. They package BAD inside PPO as POAD, with a
+critic loss that explicitly splits intra-action and inter-action errors and an actor loss that
+uses per-token clipped ratios and GAE-estimated per-token advantages. The complexity drops
+from O(|V|^|a|) to O(|a| * |V|).
+
+Empirically, POAD wins on three families of tasks. On Overcooked and VirtualHome it converges
+faster and more stably than TWOSOME and beats NTPO clearly. On 8 unseen Food Preparation
+variants it wins 7 of 8 against TWOSOME, NTPO, and the LLaMA2-7B base model. Most importantly,
+on the new DataSciCoding benchmark, where TWOSOME is inapplicable because the action space is
+unrestricted, POAD-Best with CodeLLaMA-7B beats CAAFE with GPT-4 on every one of six datasets
+while training in under three hours on a single A100. Ablations on gamma_w track the
+theoretical prediction that the NTPO-vs-POAD gap widens as gamma_w drops, and the LLM
+Evaluation Harness shows no loss of base language ability.
+
+For our project, this paper is directly relevant in three ways. First, it gives the most
+rigorous existing answer to "what is the right granularity for assigning credit inside an LLM
+agent's action," which is the formal counterpart of the v2 hierarchical-annotation result from
+t0009 and t0014. Second, the length-dependence of the action-level/token-level discrepancy
+predicts that any scope-aware vs scope-mismatched ABC condition that varies action length will
+see widening performance gaps under TWOSOME-style updates - a useful theoretical anchor for
+our Phase 2 ABC analysis. Third, POAD's unrestricted-action-space results on DataSciCoding
+suggest that, if we ever move beyond evaluation into RL fine-tuning of judges or agents,
+BAD/POAD is the principled starting point. The main caveat is that POAD requires a
+quantitative reward function, which is not available in our annotation-only pipeline; this
+aligns with the authors' own listed limitation.
+
+</details>
 
 <details>
 <summary>🏤 <strong>Reflexion: Language Agents with Verbal Reinforcement
@@ -182,17 +286,18 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 </details>
 
-## Tasks (1)
+## Tasks (2)
 
 | # | Task | Status | Completed |
 |---|------|--------|-----------|
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
+| 0017 | [Literature: Hierarchical Agents and LLM-as-Judge](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) | completed | 2026-05-01 01:40 |
 
 ## Answers (0)
 
 No answers in this category.
 
-## Suggestions (14 open, 4 closed)
+## Suggestions (16 open, 4 closed)
 
 <details>
 <summary>📚 <strong>Extend scope_unaware_planandsolve_v1 to emit
@@ -269,6 +374,46 @@ model-specific or generalizes across providers. The harness's model_call.py abst
 makes this a configuration change rather than a code change. Defer until the confirmatory N
 result is available from S-0012-02 to avoid spending budget before the primary hypothesis is
 tested.
+
+</details>
+
+<details>
+<summary>📊 <strong>Adopt AgentBoard progress-rate metric and EAI error taxonomy
+in the next ABC-condition run</strong> (S-0017-02)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0017_literature_hierarchical_agents_and_judges](../../tasks/t0017_literature_hierarchical_agents_and_judges/)
+
+t0012's smoke showed that all three ABC conditions hit the floor on FrontierScience-Olympiad
+with claude-haiku-4-5 (A: 2.5%, B: 0%, C: 0%), so binary task success cannot distinguish the
+conditions. Ma2024 (AgentBoard, NeurIPS 2024 D&B) defines a subgoal-coverage "progress rate"
+with Pearson rho > 0.95 against humans across 1013 environments; Li2024 (Embodied Agent
+Interface, NeurIPS 2024) defines a fine-grained error taxonomy (hallucination, affordance,
+missing/extra/wrong-order steps, precondition/effect errors) that attributes failures to
+specific modes. Adopt both: progress rate becomes a stronger Metric 1 candidate than binary
+success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A) and
+scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
+confirmatory run) producing legible results. Estimated effort: 1-2 days of
+metric-implementation work.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Use SELF-DISCOVER reasoning scaffolds as the scope-aware (A)
+condition prompt template</strong> (S-0017-03)</summary>
+
+**Kind**: technique | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0017_literature_hierarchical_agents_and_judges](../../tasks/t0017_literature_hierarchical_agents_and_judges/)
+
+Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning structure --
+selected from atomic reasoning modules and composed once per task type, then re-used across
+instances -- transfers across model families and outperforms CoT-Self-Consistency at 10-40x
+lower inference cost. The IMPLEMENT step (explicit JSON key-value scaffold) is the largest
+ablation contributor. This is a near-zero-cost upgrade to our scope-aware (A) condition
+prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScience-Olympiad,
+SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family.
+Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope:
+any retraining; this is purely a prompting change.
 
 </details>
 
