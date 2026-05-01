@@ -5,10 +5,10 @@
   "name": "Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)",
   "short_description": "Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 from existing t0017 paper summaries plus t0014/t0019/t0020 findings.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [],
   "start_time": "2026-05-01T21:10:07Z",
-  "end_time": null,
+  "end_time": "2026-05-01T21:46:00Z",
   "expected_assets": {},
   "task_types": [
     "literature-survey",
