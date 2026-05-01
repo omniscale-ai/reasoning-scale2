@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0019_v2_judge_calibration_sonnet/tasks/t0019_v2_judge_calibration_sonnet/task.json
+
+[31m[1mERRORS:[0m
+[31m  PM-E002 error: No open PR found for branch 'task/t0019_v2_judge_calibration_sonnet'. Use --pr-number to specify explicitly.[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+
