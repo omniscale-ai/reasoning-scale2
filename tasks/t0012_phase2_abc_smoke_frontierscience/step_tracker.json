@@ -104,9 +104,9 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md, results_detailed.md, metrics.json (3 variants), images/ charts.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T04:37:21Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T04:42:19Z",
       "log_file": "logs/steps/012_results/"
     },
     {
