@@ -77,10 +77,10 @@
       "step": 9,
       "name": "implementation",
       "description": "Run haiku annotator on the t0014 pool with 1500-char truncated problems, then haiku judge with 1500-char truncated problems. Build the predictions asset; compute the decomposition.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-01T14:19:45Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/009_implementation/"
     },
     {
       "step": 10,

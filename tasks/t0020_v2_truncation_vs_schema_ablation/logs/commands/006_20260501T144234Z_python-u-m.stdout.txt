@@ -1,0 +1,2 @@
+Wrote tasks/t0020_v2_truncation_vs_schema_ablation/results/images/accept_rate_three_way.png
+Wrote tasks/t0020_v2_truncation_vs_schema_ablation/results/images/decomposition.png

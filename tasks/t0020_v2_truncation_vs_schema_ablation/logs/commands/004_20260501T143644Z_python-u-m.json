@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0020_v2_truncation_vs_schema_ablation",
+  "command": "python -u -m tasks.t0020_v2_truncation_vs_schema_ablation.code.v2_truncated_judge --workers 4",
+  "exit_code": 0,
+  "duration_seconds": 101.451,
+  "started_at": "2026-05-01T14:36:44Z",
+  "completed_at": "2026-05-01T14:38:26Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0020_v2_truncation_vs_schema_ablation",
+  "stdout_file": "004_20260501T143644Z_python-u-m.stdout.txt",
+  "stderr_file": "004_20260501T143644Z_python-u-m.stderr.txt",
+  "stdout_lines": 22,
+  "stderr_lines": 0,
+  "truncated": false
+}

@@ -1,0 +1,174 @@
+{
+  "model": "claude-haiku-4-5",
+  "rows_judged": 20,
+  "rows_skipped": 0,
+  "rows_acceptable": 18,
+  "rows_needs_revision": 2,
+  "rows_parse_failure": 0,
+  "rows_call_failure": 0,
+  "total_cost_usd": 1.3829827499999998,
+  "budget_cap_usd": 2.0,
+  "problem_excerpt_limit": 1500,
+  "per_call": [
+    {
+      "pilot_row_index": 27,
+      "task_id": "swe_sphinx-doc__sphinx-11510",
+      "benchmark": "SWE-bench Verified",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.066479
+    },
+    {
+      "pilot_row_index": 1,
+      "task_id": "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447",
+      "benchmark": "FrontierScience-Olympiad",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.07323550000000001
+    },
+    {
+      "pilot_row_index": 47,
+      "task_id": "swe_psf__requests-1766",
+      "benchmark": "SWE-bench Verified",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06667999999999999
+    },
+    {
+      "pilot_row_index": 17,
+      "task_id": "fs_eec8840a-2d00-4e70-b043-0da51bd1b288",
+      "benchmark": "FrontierScience-Olympiad",
+      "verdict": "needs revision",
+      "notes": "ok",
+      "cost_usd": 0.07921525000000001
+    },
+    {
+      "pilot_row_index": 15,
+      "task_id": "fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57",
+      "benchmark": "FrontierScience-Olympiad",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.08342775
+    },
+    {
+      "pilot_row_index": 43,
+      "task_id": "swe_pytest-dev__pytest-7521",
+      "benchmark": "SWE-bench Verified",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06716625
+    },
+    {
+      "pilot_row_index": 30,
+      "task_id": "swe_scikit-learn__scikit-learn-12585",
+      "benchmark": "SWE-bench Verified",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.07087249999999999
+    },
+    {
+      "pilot_row_index": 77,
+      "task_id": "m2w_0790c8be-6e6d-4e2a-9c13-43ac9367da4c",
+      "benchmark": "WorkArena++",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06913375
+    },
+    {
+      "pilot_row_index": 45,
+      "task_id": "swe_mwaskom__seaborn-3069",
+      "benchmark": "SWE-bench Verified",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.07417549999999999
+    },
+    {
+      "pilot_row_index": 76,
+      "task_id": "m2w_e437082b-8383-4322-aa58-a6a683113970",
+      "benchmark": "WorkArena++",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06316125
+    },
+    {
+      "pilot_row_index": 39,
+      "task_id": "swe_matplotlib__matplotlib-24627",
+      "benchmark": "SWE-bench Verified",
+      "verdict": "needs revision",
+      "notes": "ok",
+      "cost_usd": 0.07847675
+    },
+    {
+      "pilot_row_index": 75,
+      "task_id": "m2w_f385156c-4f2e-410f-bc73-7ec6d0f44448",
+      "benchmark": "WorkArena++",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06841475
+    },
+    {
+      "pilot_row_index": 81,
+      "task_id": "m2w_2b29b7d1-bd80-4d2c-a491-9dfc89827e84",
+      "benchmark": "WorkArena++",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.065658
+    },
+    {
+      "pilot_row_index": 92,
+      "task_id": "m2w_b73503a7-e4e1-43f7-bfc0-866e7003615f",
+      "benchmark": "WorkArena++",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.064122
+    },
+    {
+      "pilot_row_index": 68,
+      "task_id": "he_HumanEval_135",
+      "benchmark": "tau-bench",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.063236
+    },
+    {
+      "pilot_row_index": 49,
+      "task_id": "he_HumanEval_144",
+      "benchmark": "tau-bench",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.061802
+    },
+    {
+      "pilot_row_index": 84,
+      "task_id": "m2w_17fffbee-e41b-46e4-ab75-675b263ca7b7",
+      "benchmark": "WorkArena++",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06607299999999999
+    },
+    {
+      "pilot_row_index": 67,
+      "task_id": "he_HumanEval_136",
+      "benchmark": "tau-bench",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06540825
+    },
+    {
+      "pilot_row_index": 56,
+      "task_id": "he_HumanEval_91",
+      "benchmark": "tau-bench",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06662399999999999
+    },
+    {
+      "pilot_row_index": 71,
+      "task_id": "he_HumanEval_76",
+      "benchmark": "tau-bench",
+      "verdict": "acceptable",
+      "notes": "ok",
+      "cost_usd": 0.06962125
+    }
+  ]
+}

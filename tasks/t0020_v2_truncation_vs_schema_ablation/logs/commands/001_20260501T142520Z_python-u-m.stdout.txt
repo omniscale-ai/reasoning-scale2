@@ -1,0 +1,4 @@
+Selected 20 rows from t0014 sonnet pool (target=20)
+[idx=1 of 1] FrontierScience-Olympiad task_id=fs_4225f097-0cee-4e43-b5b9-6ef notes=ok cost=$0.1614 running=$0.1614
+Wrote tasks/t0020_v2_truncation_vs_schema_ablation/code/_outputs/v2_truncated_annotator_costs.json (running_total=$0.1614, complete_rows=1)
+DONE. annotated=1, skipped=0, parse_failures=0, call_failures=0, complete_hierarchy=1, total_cost=$0.1614

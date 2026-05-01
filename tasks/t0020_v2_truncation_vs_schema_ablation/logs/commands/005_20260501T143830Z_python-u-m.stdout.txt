@@ -1,0 +1,3 @@
+Wrote tasks/t0020_v2_truncation_vs_schema_ablation/code/_outputs/three_way_comparison.json and tasks/t0020_v2_truncation_vs_schema_ablation/code/_outputs/three_way_table.md
+  n_truncated=20, n_full_paired=20, n_v1=12
+  Aggregate: pure-schema Δ=+57%, pure-text Δ=+5%, headline Δ=+62%

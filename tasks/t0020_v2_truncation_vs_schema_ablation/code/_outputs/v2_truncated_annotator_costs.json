@@ -1,0 +1,193 @@
+{
+  "model": "claude-haiku-4-5",
+  "rows_annotated": 20,
+  "rows_skipped": 1,
+  "rows_with_parse_failure": 0,
+  "rows_with_call_failure": 0,
+  "rows_with_complete_hierarchy": 20,
+  "total_cost_usd": 1.5491716,
+  "budget_cap_usd": 4.0,
+  "problem_excerpt_limit": 1500,
+  "per_call": [
+    {
+      "pilot_row_index": 1,
+      "task_id": "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 15579,
+      "cost_usd": 0.16141475,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 47,
+      "task_id": "swe_psf__requests-1766",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 1795,
+      "cost_usd": 0.06582875,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 27,
+      "task_id": "swe_sphinx-doc__sphinx-11510",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 5072,
+      "cost_usd": 0.08286725,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 43,
+      "task_id": "swe_pytest-dev__pytest-7521",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2868,
+      "cost_usd": 0.07190225,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 15,
+      "task_id": "fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 9128,
+      "cost_usd": 0.10298650000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 45,
+      "task_id": "swe_mwaskom__seaborn-3069",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 2829,
+      "cost_usd": 0.0711125,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 30,
+      "task_id": "swe_scikit-learn__scikit-learn-12585",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 4646,
+      "cost_usd": 0.08043425,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 39,
+      "task_id": "swe_matplotlib__matplotlib-24627",
+      "benchmark": "SWE-bench Verified",
+      "input_tokens": 10,
+      "output_tokens": 1793,
+      "cost_usd": 0.0656835,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 77,
+      "task_id": "m2w_0790c8be-6e6d-4e2a-9c13-43ac9367da4c",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2713,
+      "cost_usd": 0.0699745,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 17,
+      "task_id": "fs_eec8840a-2d00-4e70-b043-0da51bd1b288",
+      "benchmark": "FrontierScience-Olympiad",
+      "input_tokens": 10,
+      "output_tokens": 12887,
+      "cost_usd": 0.12140975,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 75,
+      "task_id": "m2w_f385156c-4f2e-410f-bc73-7ec6d0f44448",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2987,
+      "cost_usd": 0.07131475,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 76,
+      "task_id": "m2w_e437082b-8383-4322-aa58-a6a683113970",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2800,
+      "cost_usd": 0.07044075000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 68,
+      "task_id": "he_HumanEval_135",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 1672,
+      "cost_usd": 0.064959,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 84,
+      "task_id": "m2w_17fffbee-e41b-46e4-ab75-675b263ca7b7",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2681,
+      "cost_usd": 0.06981725,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 92,
+      "task_id": "m2w_b73503a7-e4e1-43f7-bfc0-866e7003615f",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2846,
+      "cost_usd": 0.07071124999999999,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 49,
+      "task_id": "he_HumanEval_144",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2274,
+      "cost_usd": 0.068103,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 67,
+      "task_id": "he_HumanEval_136",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2460,
+      "cost_usd": 0.0689935,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 56,
+      "task_id": "he_HumanEval_91",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 2588,
+      "cost_usd": 0.0695845,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 71,
+      "task_id": "he_HumanEval_76",
+      "benchmark": "tau-bench",
+      "input_tokens": 10,
+      "output_tokens": 5034,
+      "cost_usd": 0.08188050000000001,
+      "notes": "ok"
+    },
+    {
+      "pilot_row_index": 81,
+      "task_id": "m2w_2b29b7d1-bd80-4d2c-a491-9dfc89827e84",
+      "benchmark": "WorkArena++",
+      "input_tokens": 10,
+      "output_tokens": 2446,
+      "cost_usd": 0.0197531,
+      "notes": "ok"
+    }
+  ]
+}
