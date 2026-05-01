@@ -1,0 +1,5 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0019_v2_judge_calibration_sonnet/tasks/t0019_v2_judge_calibration_sonnet/results/metrics.json
+
+[32m[1mPASSED[0m — no errors or warnings
+

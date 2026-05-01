@@ -1,0 +1,27 @@
+Pool size: 55 rows. Running prompt_kind=substantive with model=claude-sonnet-4-6 workers=1 limit=5.
+  [retry] RateLimitError attempt=1/5; sleeping 2.0s
+  [retry] RateLimitError attempt=2/5; sleeping 4.0s
+  [retry] RateLimitError attempt=3/5; sleeping 8.0s
+  [retry] RateLimitError attempt=4/5; sleeping 16.0s
+[1/5] v2-sonnet-0001 FrontierScience-Olympiad  verdict=None cost=$0.0000 elapsed=0.00s running=$0.0000
+  [retry] RateLimitError attempt=1/5; sleeping 2.0s
+  [retry] RateLimitError attempt=2/5; sleeping 4.0s
+  [retry] RateLimitError attempt=3/5; sleeping 8.0s
+  [retry] RateLimitError attempt=4/5; sleeping 16.0s
+[2/5] v2-sonnet-0015 FrontierScience-Olympiad  verdict=None cost=$0.0000 elapsed=0.00s running=$0.0000
+  [retry] RateLimitError attempt=1/5; sleeping 2.0s
+  [retry] RateLimitError attempt=2/5; sleeping 4.0s
+  [retry] RateLimitError attempt=3/5; sleeping 8.0s
+  [retry] RateLimitError attempt=4/5; sleeping 16.0s
+[3/5] v2-sonnet-0017 FrontierScience-Olympiad  verdict=None cost=$0.0000 elapsed=0.00s running=$0.0000
+  [retry] RateLimitError attempt=1/5; sleeping 2.0s
+  [retry] RateLimitError attempt=2/5; sleeping 4.0s
+  [retry] RateLimitError attempt=3/5; sleeping 8.0s
+  [retry] RateLimitError attempt=4/5; sleeping 16.0s
+[4/5] v2-sonnet-0027 SWE-bench Verified        verdict=None cost=$0.0000 elapsed=0.00s running=$0.0000
+  [retry] RateLimitError attempt=1/5; sleeping 2.0s
+  [retry] RateLimitError attempt=2/5; sleeping 4.0s
+  [retry] RateLimitError attempt=3/5; sleeping 8.0s
+  [retry] RateLimitError attempt=4/5; sleeping 16.0s
+[5/5] v2-sonnet-0030 SWE-bench Verified        verdict=None cost=$0.0000 elapsed=0.00s running=$0.0000
+DONE substantive: judged=5 acceptable=0 needs_revision=0 parse_fail=0 call_fail=5 total_cost=$0.0000 total_elapsed=0.00s

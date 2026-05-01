@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0019_v2_judge_calibration_sonnet",
+  "command": "uv run python -u -m arf.scripts.verificators.verify_suggestions t0019_v2_judge_calibration_sonnet",
+  "exit_code": 0,
+  "duration_seconds": 0.271,
+  "started_at": "2026-05-01T17:59:19Z",
+  "completed_at": "2026-05-01T17:59:19Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0019_v2_judge_calibration_sonnet",
+  "stdout_file": "022_20260501T175919Z_uv-run-python.stdout.txt",
+  "stderr_file": "022_20260501T175919Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}

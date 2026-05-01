@@ -1,0 +1,58 @@
+Pool size: 55 rows. Running prompt_kind=model_rotated with model=claude-sonnet-4-6 workers=2 limit=None.
+Using transport: cli
+[1/55] v2-sonnet-0001 FrontierScience-Olympiad  verdict=acceptable cost=$0.1778 elapsed=7.06s running=$0.1778
+[2/55] v2-sonnet-0015 FrontierScience-Olympiad  verdict=acceptable cost=$0.1782 elapsed=7.67s running=$0.3560
+[3/55] v2-sonnet-0017 FrontierScience-Olympiad  verdict=acceptable cost=$0.1732 elapsed=6.67s running=$0.5292
+[4/55] v2-sonnet-0030 SWE-bench Verified        verdict=acceptable cost=$0.1725 elapsed=7.26s running=$0.7018
+[5/55] v2-sonnet-0027 SWE-bench Verified        verdict=acceptable cost=$0.1849 elapsed=15.38s running=$0.8867
+[6/55] v2-sonnet-0043 SWE-bench Verified        verdict=acceptable cost=$0.1752 elapsed=7.79s running=$1.0619
+[7/55] v2-sonnet-0039 SWE-bench Verified        verdict=acceptable cost=$0.1830 elapsed=12.88s running=$1.2449
+[8/55] v2-sonnet-0047 SWE-bench Verified        verdict=acceptable cost=$0.1703 elapsed=6.29s running=$1.4152
+[9/55] v2-sonnet-0045 SWE-bench Verified        verdict=acceptable cost=$0.1752 elapsed=6.23s running=$1.5904
+[10/55] v2-sonnet-0049 tau-bench                 verdict=acceptable cost=$0.1696 elapsed=5.88s running=$1.7600
+[11/55] v2-sonnet-0056 tau-bench                 verdict=acceptable cost=$0.1682 elapsed=5.71s running=$1.9281
+[12/55] v2-sonnet-0067 tau-bench                 verdict=acceptable cost=$0.1693 elapsed=6.92s running=$2.0974
+[13/55] v2-sonnet-0068 tau-bench                 verdict=acceptable cost=$0.1694 elapsed=5.52s running=$2.2668
+[14/55] v2-sonnet-0071 tau-bench                 verdict=acceptable cost=$0.1690 elapsed=7.44s running=$2.4358
+[15/55] v2-sonnet-0075 WorkArena++               verdict=acceptable cost=$0.1702 elapsed=7.41s running=$2.6060
+[16/55] v2-sonnet-0077 WorkArena++               verdict=acceptable cost=$0.1709 elapsed=7.52s running=$2.7769
+[17/55] v2-sonnet-0076 WorkArena++               verdict=acceptable cost=$0.1711 elapsed=9.10s running=$2.9481
+[18/55] v2-sonnet-0081 WorkArena++               verdict=acceptable cost=$0.1704 elapsed=10.02s running=$3.1184
+[19/55] v2-sonnet-0084 WorkArena++               verdict=acceptable cost=$0.1757 elapsed=12.41s running=$3.2942
+[20/55] v2-sonnet-0092 WorkArena++               verdict=acceptable cost=$0.1723 elapsed=5.42s running=$3.4665
+[21/55] v2-haiku-0007 FrontierScience-Olympiad  verdict=acceptable cost=$0.1976 elapsed=31.29s running=$3.6641
+[22/55] v2-haiku-0001 FrontierScience-Olympiad  verdict=acceptable cost=$0.2003 elapsed=39.11s running=$3.8644
+[23/55] v2-haiku-0008 FrontierScience-Olympiad  verdict=acceptable cost=$0.1830 elapsed=22.18s running=$4.0474
+[24/55] v2-haiku-0015 FrontierScience-Olympiad  verdict=acceptable cost=$0.1786 elapsed=7.10s running=$4.2260
+[25/55] v2-haiku-0017 FrontierScience-Olympiad  verdict=acceptable cost=$0.1729 elapsed=7.32s running=$4.3989
+[26/55] v2-haiku-0014 FrontierScience-Olympiad  verdict=needs revision cost=$0.2052 elapsed=35.44s running=$4.6041
+[27/55] v2-haiku-0030 SWE-bench Verified        verdict=acceptable cost=$0.1725 elapsed=6.68s running=$4.7766
+[28/55] v2-haiku-0039 SWE-bench Verified        verdict=acceptable cost=$0.1727 elapsed=7.89s running=$4.9493
+[29/55] v2-haiku-0027 SWE-bench Verified        verdict=acceptable cost=$0.1804 elapsed=13.96s running=$5.1297
+[30/55] v2-haiku-0043 SWE-bench Verified        verdict=acceptable cost=$0.1750 elapsed=6.04s running=$5.3047
+[31/55] v2-haiku-0047 SWE-bench Verified        verdict=acceptable cost=$0.1707 elapsed=6.40s running=$5.4754
+[32/55] v2-haiku-0049 HumanEval                 verdict=acceptable cost=$0.1685 elapsed=7.09s running=$5.6439
+[33/55] v2-haiku-0045 SWE-bench Verified        verdict=acceptable cost=$0.1804 elapsed=15.03s running=$5.8243
+[34/55] v2-haiku-0056 HumanEval                 verdict=acceptable cost=$0.1686 elapsed=5.54s running=$5.9929
+[35/55] v2-haiku-0067 HumanEval                 verdict=acceptable cost=$0.1686 elapsed=5.81s running=$6.1615
+[36/55] v2-haiku-0068 HumanEval                 verdict=acceptable cost=$0.1678 elapsed=5.83s running=$6.3293
+[37/55] v2-haiku-0071 HumanEval                 verdict=acceptable cost=$0.1685 elapsed=6.94s running=$6.4979
+[38/55] v2-haiku-0075 Mind2Web                  verdict=acceptable cost=$0.1707 elapsed=5.83s running=$6.6686
+[39/55] v2-haiku-0077 Mind2Web                  verdict=acceptable cost=$0.1703 elapsed=6.07s running=$6.8388
+[40/55] v2-haiku-0076 Mind2Web                  verdict=acceptable cost=$0.1718 elapsed=7.47s running=$7.0107
+[41/55] v2-haiku-0081 Mind2Web                  verdict=acceptable cost=$0.1713 elapsed=5.51s running=$7.1819
+[42/55] v2-haiku-0084 Mind2Web                  verdict=acceptable cost=$0.1697 elapsed=5.38s running=$7.3517
+[43/55] v2-haiku-0092 Mind2Web                  verdict=acceptable cost=$0.1711 elapsed=6.99s running=$7.5228
+[44/55] v1-sonnet-0001 FrontierScience-Olympiad  verdict=acceptable cost=$0.1691 elapsed=6.07s running=$7.6920
+[45/55] v1-sonnet-0002 SWE-bench Verified        verdict=needs revision cost=$0.1957 elapsed=30.49s running=$7.8877
+[46/55] v1-sonnet-0000 FrontierScience-Olympiad  verdict=acceptable cost=$0.2080 elapsed=45.96s running=$8.0957
+[47/55] v1-sonnet-0003 SWE-bench Verified        verdict=acceptable cost=$0.1707 elapsed=6.84s running=$8.2664
+[48/55] v1-sonnet-0005 tau-bench                 verdict=acceptable cost=$0.1680 elapsed=6.17s running=$8.4344
+[49/55] v1-sonnet-0006 tau-bench                 verdict=needs revision cost=$0.1665 elapsed=7.17s running=$8.6008
+[50/55] v1-sonnet-0004 SWE-bench Verified        verdict=needs revision cost=$0.1818 elapsed=17.82s running=$8.7826
+[51/55] v1-sonnet-0007 tau-bench                 verdict=acceptable cost=$0.1682 elapsed=5.72s running=$8.9508
+[52/55] v1-sonnet-0008 WorkArena++               verdict=acceptable cost=$0.1667 elapsed=5.27s running=$9.1176
+[53/55] v1-sonnet-0010 WorkArena++               verdict=acceptable cost=$0.1658 elapsed=6.10s running=$9.2834
+[54/55] v1-sonnet-0009 WorkArena++               verdict=needs revision cost=$0.1750 elapsed=12.62s running=$9.4584
+[55/55] v1-sonnet-0011 FrontierScience-Olympiad  verdict=needs revision cost=$0.1673 elapsed=7.53s running=$9.6257
+DONE model_rotated: judged=55 acceptable=49 needs_revision=6 parse_fail=0 call_fail=0 total_cost=$9.6257 total_elapsed=585.24s

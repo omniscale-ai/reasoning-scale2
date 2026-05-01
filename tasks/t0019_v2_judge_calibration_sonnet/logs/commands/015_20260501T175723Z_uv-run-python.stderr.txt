@@ -1,0 +1,2 @@
+usage: verify_step.py [-h] [--step-number STEP_NUMBER] task_id [step_id]
+verify_step.py: error: Provide step_id or --step-number

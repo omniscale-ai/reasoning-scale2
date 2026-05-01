@@ -1,0 +1,4 @@
+Loaded 55 pool rows.
+  v1-sonnet: 12
+  v2-haiku: 23
+  v2-sonnet: 20
