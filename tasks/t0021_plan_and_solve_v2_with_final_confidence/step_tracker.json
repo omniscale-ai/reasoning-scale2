@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0007 scope-unaware Plan-and-Solve library and t0012 ABC smoke harness to identify the v1 entry point and trajectory schema.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:07:07Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:14:58Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
