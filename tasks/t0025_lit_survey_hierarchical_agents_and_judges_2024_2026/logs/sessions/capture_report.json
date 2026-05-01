@@ -1,0 +1,23 @@
+{
+  "spec_version": "1",
+  "task_id": "t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "captured_at": "2026-05-01T21:52:45Z",
+  "checked_roots": [
+    {
+      "source_kind": "codex",
+      "root_path": "/Users/lysaniuk/.codex/sessions",
+      "exists": true,
+      "candidate_file_count": 0,
+      "matched_file_count": 0
+    },
+    {
+      "source_kind": "claude_code",
+      "root_path": "/Users/lysaniuk/.claude/projects",
+      "exists": true,
+      "candidate_file_count": 10575,
+      "matched_file_count": 0
+    }
+  ],
+  "copied_sessions": [],
+  "errors": []
+}

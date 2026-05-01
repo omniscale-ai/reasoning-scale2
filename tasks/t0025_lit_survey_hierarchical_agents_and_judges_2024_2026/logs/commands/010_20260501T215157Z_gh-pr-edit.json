@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "command": "gh pr edit 40 --title t0025: lit-survey re-scoped to RQ1-RQ5 synthesis --body ## Summary\n\n* Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 (all 10 source papers were already in the t0017 inventory).\n* Synthesizes literature-derived verdicts and prior-project evidence (t0014, t0019, t0020) for each RQ; recommends a Phase 2 next-experiment design within the remaining budget.\n* Produces 6 follow-up suggestions S-0025-01..06: high-priority calibration A/B (S-01), high-priority judge replacement (S-04), AgentBoard progress-rate adoption (S-02), half-scale three-arm A/B/C pilot for RQ5 (S-03), process improvement (S-05), and deferred group-level DPO experiment (S-06).\n\n## Assets Produced\n\n* No new asset folders. The task is a synthesis over existing t0017 paper assets.\n* `expected_assets: {}` in `task.json` (re-scope).\n\n## Verification\n\n* `verify_task_file` passes (1 expected `TF-W005` warning for empty `expected_assets`).\n* `verify_task_results` passes (0 errors, 0 warnings).\n* `verify_logs` passes (0 errors, 3 expected non-blocking warnings: `LG-W004` from one intentional first-fail in step 12, `LG-W007`/`LG-W008` for optional session capture).\n* `verify_pr_premerge` to be re-run after the reporting step_log + task.json status commit.\n\n## Test plan\n\n- [x] Re-scope intervention file documented (`intervention/duplicate_papers.md`).\n- [x] Per-RQ verdicts in `results/results_detailed.md`.\n- [x] Six follow-up suggestions in `results/suggestions.json`.\n- [x] All step logs present and verified.\n- [ ] Reporting step completed and PR merged.",
+  "exit_code": 0,
+  "duration_seconds": 1.762,
+  "started_at": "2026-05-01T21:51:57Z",
+  "completed_at": "2026-05-01T21:51:59Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "stdout_file": "010_20260501T215157Z_gh-pr-edit.stdout.txt",
+  "stderr_file": "010_20260501T215157Z_gh-pr-edit.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

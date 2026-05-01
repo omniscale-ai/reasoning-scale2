@@ -1,124 +1,94 @@
-# Literature Survey: Hierarchical Agents and LLM-as-Judge (2024-2026)
+# Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)
 
 ## Motivation
 
-Brainstorm Session 7 (t0024) cancelled the originally planned phase 2 ABC sonnet experiment (t0023,
-$40-45 estimate exceeds remaining budget) and rescoped the next move toward a focused literature
-refresh. The earlier project surveys (t0002 granularity-conditioning, t0017 hierarchical agents and
-judges) were authored before the t0014, t0019, and t0020 findings revealed that the haiku judge
-anchors heavily on model identity and that the v2 schema effect collapses by ~25-35 pp under
-stronger judges.
+This task was originally planned as a 10-paper literature survey of 2024-2026 work on hierarchical
+agents and LLM-as-judge methodology. During implementation prestep, an `aggregate_papers` check
+found that **all 10 target papers were already added to the project under
+`t0017_literature_hierarchical_agents_and_judges`**. The `add-paper` skill's duplicate-stop rule
+forbids re-adding any of them.
 
-This task brings the project's reading current with 2024-2026 work on hierarchical /
-granularity-aware LLM agents, agent search and planning structure, reasoning-structure discovery,
-agent benchmarks, and LLM-as-judge methodology. The synthesis section is intended to feed directly
-into Brainstorm Session 8, which will scope the next agent-iteration experiment given the remaining
-~$23 budget after this survey.
+The intervention file `intervention/duplicate_papers.md` documents the conflict and three resolution
+options. The researcher chose to drop the asset-addition half of the task entirely and pivot the
+remaining work to **answering the project's five Research Questions directly**, using the existing
+10 paper summaries plus prior project findings from t0014, t0019, and t0020 as the evidence base.
 
 ## Scope
 
-Ten papers, organized by theme:
+Produce a synthesis structured around the project's RQ1-RQ5:
 
-### Hierarchical / granularity-aware agents (4 papers)
+* **RQ1**. Does explicit granularity conditioning yield higher final task success than an otherwise
+  identical scope-unaware agent on the composite benchmark?
+* **RQ2**. Does explicit granularity conditioning reduce the overconfident error rate, i.e. the
+  fraction of incorrect actions taken with high confidence?
+* **RQ3**. On low-level tasks, does granularity conditioning improve accuracy in distinguishing "can
+  execute now" from "must request information"?
+* **RQ4**. Are gains concentrated in states where local execution requires information not needed
+  for higher-level planning (sub-hypothesis 1)?
+* **RQ5**. Do scope-mismatched agents perform strictly worse than both scope-aware and scope-unaware
+  baselines (sub-hypothesis 2)?
 
-These papers most directly inform the project's RQ1 (granularity → success) and RQ4 (info-asymmetric
-states):
-
-1. "Solving the Granularity Mismatch: Hierarchical Preference Learning for Long-Horizon LLM Agents"
-   — ICLR 2026.
-2. "ArCHer: Training Language Model Agents via Hierarchical Multi-Turn RL" — ICML 2024.
-3. "Reinforcing LLM Agents via Policy Optimization with Action Decomposition" — NeurIPS 2024.
-4. Sutton, Precup & Singh 1999. "Between MDPs and Semi-MDPs: A framework for temporal abstraction in
-   reinforcement learning." (foundational options-framework theory anchor)
-
-### Search and planning structure (2 papers)
-
-Inform candidate experiment designs that compose granularity with explicit planning:
-
-5. "Can Graph Learning Improve Planning in LLM-based Agents?" — NeurIPS 2024.
-6. "LATS: Language Agent Tree Search" — ICML 2024.
-
-### Reasoning structure discovery (1 paper)
-
-Method for self-discovered task-specific reasoning structures (an alternative axis to the
-hand-designed v2 schema in t0014/t0019):
-
-7. SELF-DISCOVER — NeurIPS 2024.
-
-### Agent benchmarks (2 papers)
-
-Inform RQ3 / RQ4 / benchmark choice for the next experiment:
-
-8. Embodied Agent Interface — NeurIPS 2024.
-9. AgentBoard — NeurIPS 2024 Datasets and Benchmarks.
-
-### LLM-as-judge methodology (1 paper)
-
-Directly addresses the t0019 finding (judge anchoring) and informs the design of the next-step judge
-protocol:
-
-10. "Trust or Escalate: LLM Judges with Provable Guarantees for Human Agreement."
+For each RQ, the synthesis reports:
+1. The current best answer the project can defend (verdict: **strong support**, **partial support**,
+   **no direct evidence**, or **contradictory**), based on the union of the existing evidence base.
+2. Specific evidence from the 10 t0017 papers, cited by `citation_key` and headline numbers.
+3. Specific evidence from prior project tasks t0014, t0019, t0020 — paying particular attention that
+   those tasks studied **annotation and judging** of hierarchical schemas, not the runtime A/B/C
+   agent conditioning that RQ1-RQ5 directly target. Indirect signal is reported as such.
+4. Residual uncertainty: which parts of the RQ remain open and what experimental evidence (Phase 2
+   A/B/C runs) would be needed to close them.
 
 ## Approach
 
-For each paper, follow the `add-paper` skill (`arf/skills/add-paper/SKILL.md`):
-
-1. Resolve identity (DOI / arXiv ID / canonical paper ID).
-2. Collect full metadata (CrossRef + Semantic Scholar + OpenAlex).
-3. Download the PDF into `assets/paper/<paper_id>/files/`.
-4. Write `details.json` per `meta/asset_types/paper/specification.md` v3.
-5. Read the full paper and write the canonical summary document with all 9 mandatory sections.
-6. Run `verify_paper_asset` and fix any errors.
-
-Paper-add invocations are independent and may run in parallel via sub-agents. After all 10 papers
-are added, write the `results/results_summary.md` synthesis that maps findings to candidate
-next-experiment designs (this is the only payload of this task that informs Brainstorm Session 8).
+1. Read all 10 paper summaries under
+   `tasks/t0017_literature_hierarchical_agents_and_judges/assets/paper/<paper_id>/summary.md`.
+2. Read prior task results: `tasks/t0014_v2_annotator_sonnet_rerun/results/results_summary.md`,
+   `tasks/t0019_v2_judge_calibration_sonnet/results/results_summary.md`,
+   `tasks/t0020_v2_truncation_vs_schema_ablation/results/results_summary.md`.
+3. Cross-tabulate evidence by RQ.
+4. Write `results/results_summary.md` with a one-paragraph verdict per RQ and a single comparison
+   table at the end.
+5. Write `results/results_detailed.md` with the full evidence per RQ: literature evidence section,
+   prior-project-task evidence section, residual-uncertainty section, and a final "next-experiment
+   design" subsection mapping uncertainty to candidate Phase 2 designs.
 
 ## Cost Estimation
 
-Total: ~$3.
+Total: ~$0.50.
 
-* PDF downloads: free.
-* Paper reading + summarization: 10 papers × ~$0.20-0.30 per paper for sonnet to read full PDF and
-  produce a thorough summary ≈ $2-3.
-* Synthesis writeup: ~$0.30.
-* Buffer: ~$0.30.
-
-Hard cap enforced: halt if projection at 5 papers in exceeds $5.
+* No paper downloads, no `add-paper` invocations.
+* One sub-agent reads 10 paper summaries and produces a structured evidence table (~$0.20).
+* Synthesis writeup uses cached evidence; orchestrator-only (~$0.30).
 
 ## Expected Outputs
 
-* 10 paper assets in `assets/paper/`, each passing `verify_paper_asset` with zero errors.
-* `results/results_summary.md` with: per-paper one-paragraph takeaway, cross-paper synthesis, and a
-  "next-experiment design candidates" section explicitly mapping findings to the project's RQ1, RQ2,
-  RQ4, RQ5.
-* `results/results_detailed.md` with theme-grouped synthesis and a comparison table of the surveyed
-  methods against the project's t0014/t0019/t0020 findings.
-
-## Hard Kill Switches
-
-* Cost: halt if projection exceeds $5 after 5 papers.
-* Download: if more than 2 of 10 papers cannot be downloaded after exhausting the standard sources,
-  halt and produce abstract-based summaries plus a triage note documenting which papers failed and
-  why.
+* `results/results_summary.md` — one paragraph per RQ, with a single end-of-document comparison
+  table summarising verdicts and primary supporting citation keys.
+* `results/results_detailed.md` — full per-RQ evidence sections plus next-experiment design
+  candidates derived from the residual-uncertainty notes.
+* No new asset folders.
 
 ## Dependencies
 
-None. The survey reads only published literature; no upstream task assets are required.
+None. The synthesis reads only files in `tasks/t0017_*/`, `tasks/t0014_*/`, `tasks/t0019_*/`,
+`tasks/t0020_*/`, and the project's `description.md`.
 
 ## Risks & Fallbacks
 
-* Risk: paywall blocks more than 2 papers. Fallback: write abstract-based summaries with
-  `download_status: "failed"` and `download_failure_reason` populated, per `add-paper` Phase 3.
-* Risk: a paper turns out to be unrelated after reading. Fallback: keep the asset (it is still
-  documented project knowledge) and note the irrelevance in the synthesis.
-* Risk: multiple parallel paper-add agents collide on category creation. Fallback: serialize the
-  category-touching steps; the rest of the asset construction can stay parallel.
+* Risk: the 10 t0017 paper summaries contain insufficient detail to ground a particular RQ verdict.
+  Fallback: mark that RQ as **no direct evidence** and explicitly document what the closest analog
+  from the literature does say.
+* Risk: t0014/t0019/t0020 prior findings are conflated with RQ1-RQ5. Mitigation: those tasks studied
+  annotation and judging, not the runtime agent under A/B/C conditioning. The synthesis must keep
+  that distinction explicit.
+* Risk: the synthesis produces an over-confident verdict where RQs require empirical Phase 2 data
+  the project has not yet collected. Mitigation: the **residual uncertainty** subsection per RQ is
+  mandatory; verdicts are bounded by the evidence and explicitly downgraded where direct empirical
+  measurements are missing.
 
 ## Time Estimation
 
-~4-6 hours of agent execution (10 papers × ~30-40 min each, with parallelism cutting wall-clock to
-~2-3 hours).
+~30-45 minutes of agent execution.
 
 ## Assets Needed
 
@@ -126,24 +96,24 @@ None.
 
 ## Expected Assets
 
-10 paper assets in `assets/paper/`.
+None. The deliverable is the synthesis written to `results/`.
 
 ## Remote Machines
 
-None. All work runs against external APIs (CrossRef, Semantic Scholar, OpenAlex, arXiv) and the LLM
-API.
+None.
 
 ## Verification Criteria
 
-* All 10 paper assets pass `verify_paper_asset` with zero errors.
-* `verify_task_results` passes for the task.
+* `results/results_summary.md` contains a section for each of RQ1, RQ2, RQ3, RQ4, RQ5 with an
+  explicit verdict label and primary supporting citations.
+* `results/results_detailed.md` contains, for each RQ, both literature evidence and prior-project
+  evidence sections, plus a residual-uncertainty subsection.
+* `verify_task_results` passes with zero errors.
 * `verify_logs` passes for all step folders.
-* `results_summary.md` explicitly maps survey findings to RQ1, RQ2, RQ4, RQ5 design implications for
-  Brainstorm Session 8.
+* `verify_task_file` passes for the re-scoped `task.json`.
+* `verify_pr_premerge` passes before merge.
 
 ## Categories
 
-Categories will be assigned per paper based on the project's `meta/categories/` registry. Likely
-categories include `hierarchical-agents`, `agent-benchmarks`, `llm-as-judge`, `reasoning-structure`,
-`agent-planning`, `reinforcement-learning`. Any missing categories will be created via
-`/add-category` before the paper assets are written.
+This task does not produce paper assets or other categorised assets, so no `meta/categories/`
+membership is required.

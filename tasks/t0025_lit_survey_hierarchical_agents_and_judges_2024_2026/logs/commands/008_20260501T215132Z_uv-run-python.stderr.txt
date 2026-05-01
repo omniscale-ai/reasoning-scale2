@@ -1,0 +1,4 @@
+usage: verify_pr_premerge.py [-h] [--pr-number PR_NUMBER] [--timeout TIMEOUT]
+                             [--quick]
+                             task_id
+verify_pr_premerge.py: error: the following arguments are required: task_id

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "command": "uv run python -u -m arf.scripts.utils.capture_task_sessions t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "exit_code": 2,
+  "duration_seconds": 0.071,
+  "started_at": "2026-05-01T21:52:39Z",
+  "completed_at": "2026-05-01T21:52:39Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "stdout_file": "016_20260501T215239Z_uv-run-python.stdout.txt",
+  "stderr_file": "016_20260501T215239Z_uv-run-python.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 3,
+  "truncated": false
+}

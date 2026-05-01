@@ -1,0 +1,8 @@
+{
+  "total_cost_usd": 0.20,
+  "currency": "USD",
+  "breakdown": {
+    "synthesis_subagent": 0.20
+  },
+  "note": "Re-scoped task. Original plan estimated ~$3 for 10 paper additions plus synthesis. After the duplicate-papers intervention pivot, the only paid call was a single sub-agent that read the 10 t0017 paper summaries and produced the cross-tabulated evidence map. Cost is approximate; no explicit envelope-reported total available because the sub-agent ran inside the orchestrator's session."
+}

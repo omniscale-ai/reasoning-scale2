@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "command": "gh pr create --base main --head task/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026 --title t0025 lit survey re-scoped: synthesize RQ1-RQ5 answers --body ## Summary\n\n* Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 (all 10 source papers were already in the t0017 inventory).\n* Synthesizes literature-derived verdicts and prior-project evidence (t0014, t0019, t0020) for each RQ; produces a recommended Phase 2 next-experiment design within the ~$23 remaining budget.\n* Produces 6 follow-up suggestions (S-0025-01 .. S-0025-06) covering a high-priority calibration A/B, a high-priority judge replacement, AgentBoard progress-rate adoption, a half-scale three-arm A/B/C pilot, a process improvement, and a deferred group-level DPO experiment.\n\n## Test plan\n\n- [x] verify_task_file passes (1 expected TF-W005 warning for empty expected_assets)\n- [x] verify_task_results passes (0 errors, 0 warnings)\n- [x] verify_logs passes (0 errors, 3 expected non-blocking warnings)\n- [ ] verify_pr_premerge passes\n- [ ] PR merged into main and overview/ refreshed",
+  "exit_code": 0,
+  "duration_seconds": 1.945,
+  "started_at": "2026-05-01T21:47:45Z",
+  "completed_at": "2026-05-01T21:47:47Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "stdout_file": "007_20260501T214745Z_gh-pr-create.stdout.txt",
+  "stderr_file": "007_20260501T214745Z_gh-pr-create.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

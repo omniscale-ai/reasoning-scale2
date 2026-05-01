@@ -1,0 +1,9 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/results
+
+[31m[1mERRORS:[0m
+[31m  TR-E006 error: results_summary.md is missing mandatory section: ## Metrics[0m
+[31m  TR-E007 error: results_detailed.md is missing mandatory section: ## Task Requirement Coverage[0m
+
+[31m[1mFAILED[0m — 2 error(s), 0 warning(s)
+

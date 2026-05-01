@@ -1,0 +1,2 @@
+Captured 0 session transcript(s) into /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/logs/sessions.
+Wrote capture report to /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/logs/sessions/capture_report.json.
