@@ -1,7 +1,7 @@
 # Suggestions: `hierarchical-planning`
 
-24 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **17 open** (4
+25 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **18 open** (5
 high, 10 medium, 3 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
@@ -9,6 +9,30 @@ high, 10 medium, 3 low), **7 closed**.
 ---
 
 ## High Priority
+
+<details>
+<summary>🧪 <strong>Confirmatory v2 vs v1 schema sweep with fresh annotations and
+a third sonnet judge</strong> (S-0019-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0019-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0019_v2_judge_calibration_sonnet`](../../../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+Run a confirmatory experiment that re-annotates a fresh n>=80 row pool (not the t0014 pool)
+under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three
+independent sonnet configurations: substantive critic, model-rotated original prompt, and a
+new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band
+unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool
+overlapped with t0014. A fresh-pool replication at the planned n>=80 would tighten the
+per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30
+pp or commit it above +45 pp.
+
+</details>
 
 <details>
 <summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human

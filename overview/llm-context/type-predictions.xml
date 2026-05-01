@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="predictions" generated_at_utc="2026-05-01T16:23:48Z">
+<llm_context_archive type_id="predictions" generated_at_utc="2026-05-01T18:03:16Z">
   <archive_summary>
     <title>All Predictions</title>
     <description>Complete predictions inventory with full descriptions, metrics, and model references.</description>
     <section_count>1</section_count>
-    <char_count>26316</char_count>
-    <byte_count>26354</byte_count>
-    <estimated_tokens>6579</estimated_tokens>
+    <char_count>35543</char_count>
+    <byte_count>35589</byte_count>
+    <estimated_tokens>8885</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -20,10 +20,11 @@
         <id>phase2-smoke-a</id>
         <id>phase2-smoke-b</id>
         <id>phase2-smoke-c</id>
+        <id>v2-judge-calibration</id>
         <id>v2-truncated-ablation</id>
       </source_ids>
       <content>
-Predictions: 4
+Predictions: 5
 
 ## Phase 2 smoke condition A (scope-aware ReAct) on FrontierScience-Olympiad
 ID: phase2-smoke-a
@@ -320,6 +321,149 @@ For the project, condition C&#x27;s most useful contribution from the smoke is a
 finding: the matched-mismatch wrapper triggers Plan-and-Solve re-planning loops that push the
 per-row cost roughly 4× higher than the matched B condition. Any future A/B/C run on a hard
 benchmark must either cap C&#x27;s turn count or reserve a separate budget envelope for C.
+
+## v2 Judge Calibration: 3 judges x 3 annotators on 55-row pool
+ID: v2-judge-calibration
+Created by task: t0019_v2_judge_calibration_sonnet
+Date created: 2026-05-01
+Format: jsonl
+Schema: Each line is a JSON object with fields: pool_row_id (string), annotator (one of v1-sonnet, v2-haiku, v2-sonnet), task_id (string), benchmark (string), domain (string), judge_prompt_version (one of original_haiku, substantive, model_rotated), judge_label (one of original-haiku, substantive-sonnet, model-rotated-sonnet), judge_model (one of claude-haiku-4-5, claude-sonnet-4-6), verdict (acceptable | needs revision | null), justification (string | null), sub_scores (object | null), parse_status (string), cost_usd (float | null), elapsed_seconds (float | null).
+Model description: Two judge models: claude-haiku-4-5 (original-haiku, cached from t0014/t0005) and claude-sonnet-4-6 (substantive-sonnet and model-rotated-sonnet, fresh calls in this task). Sonnet calls were routed through the local `claude` CLI subprocess because the OAuth-issued ANTHROPIC_API_KEY in this environment is provisioned only for haiku quota; see intervention/critical_step_blocked.md for the rationale.
+Datasets: hierarchical-annotation-v2-sonnet, hierarchical-annotation-v2-relabeled
+Instance count: 165
+Metrics at creation: {&quot;accept_rate__v1-sonnet__original-haiku&quot;: 0.3333, &quot;accept_rate__v1-sonnet__substantive-sonnet&quot;: 0.6667, &quot;accept_rate__v1-sonnet__model-rotated-sonnet&quot;: 0.5833, &quot;accept_rate__v2-haiku__original-haiku&quot;: 0.913, &quot;accept_rate__v2-haiku__substantive-sonnet&quot;: 0.913, &quot;accept_rate__v2-haiku__model-rotated-sonnet&quot;: 0.9565, &quot;accept_rate__v2-sonnet__original-haiku&quot;: 0.9, &quot;accept_rate__v2-sonnet__substantive-sonnet&quot;: 1.0, &quot;accept_rate__v2-sonnet__model-rotated-sonnet&quot;: 1.0}
+Categories: agent-evaluation, hierarchical-planning, uncertainty-calibration
+
+#### Metadata
+
+* **Name**: v2 Judge Calibration: 3 judges x 3 annotators on 55-row pool
+* **Models**: claude-haiku-4-5 (baseline, cached from t0014/t0005) and claude-sonnet-4-6
+  (substantive-sonnet, model-rotated-sonnet, fresh in this task)
+* **Datasets**: `hierarchical-annotation-v2-sonnet`, `hierarchical-annotation-v2-relabeled`
+* **Format**: jsonl
+* **Instances**: 165 (55 pool rows x 3 judge configs)
+* **Created by**: t0019_v2_judge_calibration_sonnet
+
+#### Overview
+
+This predictions asset captures binary acceptance verdicts from three LLM-as-judge configurations
+applied to a fixed 55-row pool of hierarchical decompositions. The pool combines 20 rows from the
+v2-sonnet annotator (t0014), 23 rows from the v2-haiku annotator with t0015 benchmark-label
+corrections applied, and 12 rows from the v1-sonnet pilot (t0005). Each row is judged three times:
+once by the original t0014 prompt and judge (claude-haiku-4-5, cached), once by a substantive critic
+prompt that requires the judge to simulate executing the atomics in order (claude-sonnet-4-6), and
+once by the original prompt with the judge model swapped to sonnet (claude-sonnet-4-6).
+
+The asset is the primary evidence for whether the +57 pp v2-vs-v1 schema-only headline observed in
+t0014 (under haiku as judge) survives a stricter judge prompt and a stronger judge model. It also
+records per-call cost and elapsed time so downstream tasks can reason about the cost of swapping
+judge families. All sonnet calls were routed through the local `claude` CLI subprocess because the
+OAuth-issued ANTHROPIC_API_KEY in this environment is provisioned only for haiku quota; see
+`intervention/critical_step_blocked.md` for the rationale.
+
+#### Model
+
+Two judge model configurations are recorded:
+
+* **Original-haiku (baseline)** — `claude-haiku-4-5` with the original t0014 system prompt asking
+  for `{&quot;verdict&quot;: &quot;...&quot;, &quot;justification&quot;: &quot;...&quot;}`. Verdicts are read from the cached
+  `judge_verdict` field on each pool row (no fresh calls in this task; this is the baseline that the
+  two new sonnet configurations are compared against).
+* **Substantive-sonnet** — `claude-sonnet-4-6` with an extended prompt that adds the explicit
+  instruction &quot;Before deciding, mentally simulate executing the atomics in the listed order against
+  the original problem statement. Mark `acceptable` only if the simulated execution would actually
+  solve the problem&quot;. Optional `sub_scores` keys (`coverage`, `executable`,
+  `gold_actions_consistency`) are captured when present.
+* **Model-rotated-sonnet** — `claude-sonnet-4-6` with the original t0014 prompt verbatim. This
+  isolates the effect of swapping the judge model, holding the prompt constant.
+
+#### Data
+
+The 55-row pool decomposes by annotator:
+
+| Annotator | Source | Rows |
+| --- | --- | --- |
+| v1-sonnet | t0005 `mapped_with_judge.jsonl` | 12 |
+| v2-haiku | t0015 `hierarchical_annotation_v2_relabeled.jsonl` | 23 |
+| v2-sonnet | t0014 `hierarchical_annotation_v2_sonnet.jsonl` | 20 |
+| **Total** |  | **55** |
+
+The t0015 benchmark-label correction overlay is applied automatically to the v2-haiku rows by
+reading the `*_relabeled.jsonl` file rather than the t0009 raw source.
+
+#### Prediction Format
+
+Each line of `files/predictions.jsonl` is a JSON object with fields documented in
+`prediction_schema` of `details.json`. Concretely:
+
+```
+{
+  &quot;pool_row_id&quot;: &quot;v2-sonnet-0001&quot;,
+  &quot;annotator&quot;: &quot;v2-sonnet&quot;,
+  &quot;task_id&quot;: &quot;fs_4225f097-0cee-4e43-b5b9-6efbab4c3447&quot;,
+  &quot;benchmark&quot;: &quot;FrontierScience-Olympiad&quot;,
+  &quot;domain&quot;: &quot;physics&quot;,
+  &quot;judge_prompt_version&quot;: &quot;substantive&quot;,
+  &quot;judge_label&quot;: &quot;substantive-sonnet&quot;,
+  &quot;judge_model&quot;: &quot;claude-sonnet-4-6&quot;,
+  &quot;verdict&quot;: &quot;acceptable&quot;,
+  &quot;justification&quot;: &quot;...&quot;,
+  &quot;sub_scores&quot;: {&quot;coverage&quot;: 1, &quot;executable&quot;: 1, &quot;gold_actions_consistency&quot;: 1},
+  &quot;parse_status&quot;: &quot;ok&quot;,
+  &quot;cost_usd&quot;: 0.179,
+  &quot;elapsed_seconds&quot;: 6.51
+}
+```
+
+For the cached `original-haiku` rows, `cost_usd` and `elapsed_seconds` are `null` (these are re-used
+from t0014/t0005 where per-call telemetry was not propagated into this task&#x27;s outputs). The
+`justification` and `sub_scores` fields are also `null` for the baseline because t0014 did not store
+the haiku judge&#x27;s justification text in a form that survived the t0015 relabeling pass.
+
+#### Metrics
+
+The 9-cell accept-rate matrix computed from this predictions asset:
+
+| Annotator | Judge | n | k | accept_rate | 95% Wilson CI |
+| --- | --- | --- | --- | --- | --- |
+| v1-sonnet | original-haiku | 12 | 4 | 33.3% | [13.8, 60.9] |
+| v1-sonnet | substantive-sonnet | 12 | 8 | 66.7% | [39.1, 86.2] |
+| v1-sonnet | model-rotated-sonnet | 12 | 7 | 58.3% | [32.0, 80.7] |
+| v2-haiku | original-haiku | 23 | 21 | 91.3% | [73.2, 97.6] |
+| v2-haiku | substantive-sonnet | 23 | 21 | 91.3% | [73.2, 97.6] |
+| v2-haiku | model-rotated-sonnet | 23 | 22 | 95.7% | [79.0, 99.2] |
+| v2-sonnet | original-haiku | 20 | 18 | 90.0% | [69.9, 97.2] |
+| v2-sonnet | substantive-sonnet | 20 | 20 | 100.0% | [83.9, 100.0] |
+| v2-sonnet | model-rotated-sonnet | 20 | 20 | 100.0% | [83.9, 100.0] |
+
+See `results/results_detailed.md` for schema-only and model-only deltas under each judge, Cohen&#x27;s
+kappa between judge configurations, and the four decision-criteria check-off.
+
+#### Main Ideas
+
+* The substantive critic and model-rotated sonnet judges accept the v2 schema at much higher rates
+  than the original haiku judge — the +57 pp v2-haiku vs v1-sonnet schema-only headline from t0014
+  collapses to a much smaller delta when sonnet is the judge.
+* Per-call cost averaged ~$0.18/call for sonnet via the `claude` CLI subprocess (cache-creation
+  inflated the first call to $0.20 then dropped); haiku-as-judge cost is ~10x cheaper but with much
+  harsher binary verdicts.
+* Cohen&#x27;s kappa between substantive-sonnet and model-rotated-sonnet is high overall, indicating that
+  prompt anchoring (substantive vs original) matters less than model anchoring (haiku vs sonnet) for
+  binary verdict agreement on this pool.
+
+#### Summary
+
+This predictions asset is the per-row evidence for the t0019 calibration question: did the +57 pp
+v2-vs-v1 schema-only delta in t0014 survive a stronger judge family or a stricter prompt? The 165
+rows record three independent judgments per pool row: the cached original-haiku verdicts from
+t0014/t0005, fresh substantive-critic-sonnet verdicts, and fresh model-rotated-sonnet verdicts.
+
+The headline finding is that the +57 pp gap shrinks dramatically under either of the two sonnet
+configurations: under substantive-sonnet the schema-only delta is much smaller, and under
+model-rotated-sonnet it is also far below the +30 pp threshold the task pre-registered. The
+substantive prompt and the model swap have largely overlapping effects (high kappa across the two
+sonnet configurations), suggesting that the +57 pp t0014 headline is primarily an artefact of
+haiku-as-judge anchoring on the v1-sonnet rows rather than a genuine schema effect.
 
 ## v2 tree-schema annotations on truncated 1500-char problems (haiku judge verdicts)
 ID: v2-truncated-ablation

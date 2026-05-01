@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T16:23:48Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-01T18:03:16Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>91341</char_count>
-    <byte_count>91412</byte_count>
-    <estimated_tokens>22835</estimated_tokens>
+    <char_count>89919</char_count>
+    <byte_count>89990</byte_count>
+    <estimated_tokens>22479</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -145,12 +145,13 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
+        <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0020_v2_truncation_vs_schema_ablation</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
       </source_ids>
       <content>
-Completed tasks: 21
+Completed tasks: 22
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -260,6 +261,12 @@ Completed: 2026-05-01
 Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
 Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
 
+## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+ID: t0019_v2_judge_calibration_sonnet
+Completed: 2026-05-01
+Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
+Result summary: Results Summary: v2 Judge Calibration with Sonnet Summary Re-judged the same 55-row hierarchy pool from t0014 (12 v1-sonnet + 23 v2-haiku + 20 v2-sonnet) under three judge configurations: the cached t0014 original-haiku verdicts as baseline, a substantive critic prompt on `claude-sonnet-4-6`, and a model-rotated original-prompt judge on `claude-sonnet-4-6`. The headline finding is that the +57 pp v2-vs-v1 schema-only gap from t0014 **partially survives** under sonnet judges: **+24.6 pp** under the substantive critic and **+37.3 pp** under the model-rotated judge, vs the **+58.0 pp** baseline. Neither pre-registered extreme decision criterion (drops below +30 pp on both sonnet judges, or...
+
 ## v2 Truncation vs Schema Ablation
 ID: t0020_v2_truncation_vs_schema_ablation
 Completed: 2026-05-01
@@ -283,139 +290,10 @@ Result summary: Results Summary: ABC Harness Progress Rate and Error Taxonomy Su
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0019_v2_judge_calibration_sonnet</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
-ID: t0019_v2_judge_calibration_sonnet
-Status: in_progress
-Effective date: 2026-05-01
-Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
-
-#### Motivation
-
-t0014 produced a schema-only delta of **+57 pp** for v2 over v1, well above Zhou2022&#x27;s +16 pp and
-Boisvert2024&#x27;s +25 pp published bands, and a model-only delta of **-1 pp** that sits below
-Xiong2024&#x27;s lower edge (0 pp). Two plausible threats to validity remain:
-
-1. **Judge anchoring** (S-0014-02): the haiku judge may be partially scoring &quot;the model produced a
-   parseable tree with subtask-to-atomic edges&quot; rather than &quot;the decomposition is substantively
-   right&quot;. If so, the +57 pp gap to literature is a judge artefact, not a schema effect.
-2. **Familial bias** (S-0014-03): the haiku judge gives the v2-haiku annotator a same-family
-   agreement bonus (~5-10 pp per Xiong2024). If so, the -1 pp model-only delta is masking a real
-   sonnet annotator advantage.
-
-Both threats can be tested at the same 43-row pool used in t0014 by swapping the judge prompt and
-judge model. Defending the +57 pp schema-only headline before scaling to a confirmatory experiment
-is the cheapest paper-defensible step on the critical path.
-
-This task covers `S-0014-02` (primary) and `S-0014-03` (secondary).
-
-#### Scope
-
-Re-judge **the same 43 v2 rows** that t0014 produced (20 v2-sonnet + 23 v2-haiku) plus the matched
-20 v1-sonnet rows from t0009/t0014, under two new judge configurations:
-
-* **Substantive critic** prompt (S-0014-02): the judge simulates execution (&quot;verify each atomic,
-  executed in order, would actually solve the problem&quot;) and outputs a binary accept/reject plus a
-  per-criterion sub-score.
-* **Model-rotated** judge (S-0014-03): keep the original t0014 judge prompt, swap the judge model
-  from haiku to claude-sonnet-4-6.
-
-Both judges run against the same row pool. Combined output is a 4-condition matrix per row:
-
-| Condition | Annotator | Judge Prompt | Judge Model |
-| --- | --- | --- | --- |
-| Baseline (from t0014) | v1-sonnet / v2-haiku / v2-sonnet | original | haiku |
-| Substantive | v1-sonnet / v2-haiku / v2-sonnet | substantive critic | sonnet |
-| Model-rotated | v1-sonnet / v2-haiku / v2-sonnet | original | sonnet |
-
-This task does not re-annotate. It only re-judges. Annotation rows from t0014 are read in via the
-existing predictions overlay applied by t0015.
-
-#### Deliverables
-
-1. **Predictions asset** (`assets/predictions/v2_judge_calibration/`): per-row judge verdicts under
-   the substantive and model-rotated conditions, plus the cached baseline t0014/t0015 verdicts as
-   reference. Includes prompt-version and judge-model fields per row.
-2. **Answer asset** (`assets/answer/.../`) addressing the question: &quot;Does the v2 schema retain a 30+
-   pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or is the +57 pp
-   t0014 headline an artefact of haiku judge anchoring?&quot;
-3. **Reported metrics** in `results/metrics.json` using the explicit multi-variant format, one
-   variant per (annotator x judge-prompt x judge-model) cell. Each cell reports:
-   * `accept_rate`
-   * `accept_rate_stderr` (Wilson 95% CI)
-   * `efficiency_inference_cost_per_item_usd`
-   * `efficiency_inference_time_per_item_seconds`
-4. **Comparison table** in `results/results_detailed.md` showing the schema-only and model-only
-   deltas under all three judge configurations side by side, with explicit deltas vs t0014.
-
-#### Models and Configurations
-
-* **Annotator outputs** (already produced; not re-run): claude-sonnet-4-6 v1 (20 rows), haiku v2 (23
-  rows), sonnet v2 (20 rows). All from t0014.
-* **Substantive critic judge**: claude-sonnet-4-6 with the new prompt template.
-* **Model-rotated judge**: claude-sonnet-4-6 with the original t0014 judge prompt.
-
-Total judge calls: 43 rows x 2 new judge configurations = **86 sonnet judge calls**.
-
-#### Cost Estimate
-
-* Sonnet input ~5k tokens per call x 86 = **~430k input tokens**.
-* Sonnet output ~600 tokens per call x 86 = **~52k output tokens**.
-* At claude-sonnet-4-6 pricing (approximately $3/M in, $15/M out): **about $2.05** sonnet spend.
-* Reserve for retry/repair: **+$1**.
-* Total: **~$3-5**.
-
-This sits well within the remaining $51 budget.
-
-#### Decision Criteria
-
-After this task:
-
-* If schema-only delta drops below **+30 pp** under the substantive judge, the +57 pp t0014 headline
-  is partly judge-anchoring; reset the headline to the substantive number and revisit S-0014-01 (v3
-  schema iteration).
-* If schema-only delta stays at or above **+45 pp** under both new judges, the schema effect is
-  robust; commit to the t0023 confirmatory run as planned.
-* If model-only delta swings to **at least +5 pp** under the sonnet judge, the t0014 -1 pp result is
-  a haiku familial bias, and v2-sonnet should be the production annotator going forward.
-* If model-only delta stays within +/-2 pp under the sonnet judge, the v2 schema does the work and
-  sonnet annotation is not worth the cost premium.
-
-#### Dependencies
-
-None on uncompleted tasks. Reads from t0014&#x27;s predictions and t0015&#x27;s correction overlay; both are
-merged.
-
-#### Source Suggestion
-
-This task covers `S-0014-02` (primary) and `S-0014-03` (secondary). Both suggestions remain active
-as `source_suggestion` until t0019 results are merged; the secondary will be marked covered in the
-next brainstorm round if the data answers it.
-
-#### Risks and Fallbacks
-
-* **Substantive judge is slow or unstable**: if per-row judge time exceeds 30 s, drop sub-criteria
-  and use a binary verdict only.
-* **Sonnet judge disagrees with itself across the two prompt variants on the same row**: log per-row
-  agreement; report Cohen&#x27;s kappa across (substantive, model-rotated) at the same model. This is a
-  free signal about prompt-vs-anchoring effects.
-* **The t0014 row pool has masked instances** (we know 3 sonnet timeouts exist; S-0014-05 was
-  rejected): exclude those rows from all conditions consistently and report the effective n.
-
-#### Verification Criteria
-
-* Predictions asset passes `verify_predictions_asset.py`.
-* Answer asset passes `verify_answer_asset.py`.
-* `results/metrics.json` contains all 9 cells (3 annotators x 3 judge configs) with accept_rate and
-  stderr.
-* `results/results_detailed.md` contains a side-by-side delta table and an explicit
-  decision-criteria check-off against the four bullets above.
-* Cost in `results/costs.json` is at or below **$5**.
+Planned or active tasks: 1
 
 ## Phase 2 Confirmatory ABC Run with Sonnet on SWE-bench
 ID: t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -580,9 +458,10 @@ the phase-randomized control is in scope only if budget permits.
       <source_name>aggregate_answers_full</source_name>
       <source_ids>
         <id>decomposition-v2-schema-vs-truncation</id>
+        <id>does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges</id>
       </source_ids>
       <content>
-Answers: 1
+Answers: 2
 
 ## How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?
 ID: decomposition-v2-schema-vs-truncation
@@ -591,6 +470,14 @@ Confidence: medium
 Categories: benchmark-annotation, hierarchical-planning
 
 The v2 tree schema explains essentially all of the gap: switching from flat-v1 to tree-v2 while holding the 1500-char truncation constant lifts the haiku judge accept rate from 33% to 90%, a +57 pp jump (95% Wilson CI on the difference: +23 pp to +77 pp). Adding the full untruncated problem text on top of the v2 schema lifts accept from 90% to 95%, a further +5 pp (95% CI -15 pp to +26 pp), which is not statistically significant. The headline +62 pp v2-full vs v1-truncated gap is therefore ~92% pure-schema and ~8% pure-text-length on the 20-row matched pool.
+
+## Does the v2 schema retain a 30+ pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or is the +57 pp t0014 headline an artefact of haiku judge anchoring?
+ID: does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges
+Created by: t0019_v2_judge_calibration_sonnet on 2026-05-01
+Confidence: low
+Categories: agent-evaluation, hierarchical-planning, uncertainty-calibration
+
+The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 pp and under model-rotated-sonnet it is +37.3 pp, vs the t0014 baseline of +58.0 pp. The +57 pp headline does not cleanly survive a stronger judge, but neither does it collapse below +30 pp on both configurations; the answer depends on which sonnet judge configuration is treated as canonical.
       </content>
     </section>
     <section id="open-suggestions" source_kind="aggregator">
@@ -613,6 +500,7 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0012-01</id>
         <id>S-0012-02</id>
         <id>S-0017-01</id>
+        <id>S-0019-01</id>
         <id>S-0020-01</id>
         <id>S-0021-02</id>
         <id>S-0022-02</id>
@@ -637,6 +525,8 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0012-04</id>
         <id>S-0017-02</id>
         <id>S-0017-03</id>
+        <id>S-0019-02</id>
+        <id>S-0019-03</id>
         <id>S-0020-02</id>
         <id>S-0020-03</id>
         <id>S-0021-01</id>
@@ -654,12 +544,13 @@ The v2 tree schema explains essentially all of the gap: switching from flat-v1 t
         <id>S-0015-02</id>
         <id>S-0012-03</id>
         <id>S-0012-05</id>
+        <id>S-0019-04</id>
         <id>S-0020-04</id>
         <id>S-0020-05</id>
         <id>S-0021-03</id>
       </source_ids>
       <content>
-Open suggestions: 60
+Open suggestions: 64
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -772,6 +663,13 @@ Priority: high
 Kind: evaluation
 Source task: t0017_literature_hierarchical_agents_and_judges
 S-0009-03 calls for a multi-judge agreement study; Jung2024 (&quot;Trust or Escalate&quot;, ICLR 2025) provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1) Simulated Annotators on top of the project&#x27;s existing judge LLM to produce ensemble-based confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing (Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor that GPT-4 alone never reaches, so this is also...
+
+## Confirmatory v2 vs v1 schema sweep with fresh annotations and a third sonnet judge
+ID: S-0019-01
+Priority: high
+Kind: experiment
+Source task: t0019_v2_judge_calibration_sonnet
+Run a confirmatory experiment that re-annotates a fresh n&gt;=80 row pool (not the t0014 pool) under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three independent sonnet configurations: substantive critic, model-rotated original prompt, and a new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool overlapped with t0014. A fresh-pool replication at the planned n&gt;=80 would tighten the per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30 pp or commit it above +45 pp.
 
 ## Re-judge the remaining 8 v1 paired rows to tighten the pure-schema CI
 ID: S-0020-01
@@ -941,6 +839,20 @@ Kind: technique
 Source task: t0017_literature_hierarchical_agents_and_judges
 Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning structure -- selected from atomic reasoning modules and composed once per task type, then re-used across instances -- transfers across model families and outperforms CoT-Self-Consistency at 10-40x lower inference cost. The IMPLEMENT step (explicit JSON key-value scaffold) is the largest ablation contributor. This is a near-zero-cost upgrade to our scope-aware (A) condition prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScience-Olympiad, SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family. Predicts a measurable improvement on RQ1/RQ5 even without...
 
+## Provision a sonnet-quota Anthropic API key to drop per-call cost ~7x
+ID: S-0019-02
+Priority: medium
+Kind: library
+Source task: t0019_v2_judge_calibration_sonnet
+Acquire an Anthropic API key with claude-sonnet-4-6 quota and switch JUDGE_TRANSPORT back from the claude CLI subprocess to the Anthropic SDK. The current OAuth-issued key in this environment lacks sonnet quota, forcing the CLI fallback at ~$0.18/call (cache-creation overhead) instead of the ~$0.024/call SDK + cache-hit projection. Provisioning a sonnet-capable key would let S-0019-01&#x27;s confirmatory sweep run within the original $5 budget envelope and unblock larger-n experiments without per-task cap raises. This is a project-level service request, not a research experiment.
+
+## Substantive critic vs original prompt: 50-row prompt-only ablation at fixed model
+ID: S-0019-03
+Priority: medium
+Kind: evaluation
+Source task: t0019_v2_judge_calibration_sonnet
+Run a focused n=50 ablation that holds the judge model fixed at claude-sonnet-4-6 and varies only the system prompt between the substantive critic (with simulate-execution instruction) and the original t0014 prompt. The current task found a Cohen&#x27;s kappa of 0.626 between the two prompts on the same model, with one row (v2-haiku-0007) where the substantive prompt caught a dimensional-analysis error the original prompt missed and two rows (v1-sonnet-0002, v1-sonnet-0004) where the substantive prompt accepted structural-but-executable trees the original rejected. A larger ablation would quantify how often each prompt mode wins, which would inform whether the substantive critic should become the...
+
 ## Sonnet judge rerun on the v2-tree-truncated condition to confirm schema effect is not haiku-specific
 ID: S-0020-02
 Priority: medium
@@ -1059,6 +971,13 @@ Priority: low
 Kind: experiment
 Source task: t0012_phase2_abc_smoke_frontierscience
 The smoke used only claude-haiku-4-5. Replicating on GPT-4o and Gemini 1.5 Pro (both now available via project API keys) would test whether the granularity conditioning effect is model-specific or generalizes across providers. The harness&#x27;s model_call.py abstraction layer makes this a configuration change rather than a code change. Defer until the confirmatory N result is available from S-0012-02 to avoid spending budget before the primary hypothesis is tested.
+
+## Cross-vendor judge: replicate the schema-only delta with GPT-4 and Gemini judges
+ID: S-0019-04
+Priority: low
+Kind: experiment
+Source task: t0019_v2_judge_calibration_sonnet
+Test the family-bias hypothesis at the judge stage by re-judging the same 55-row pool under GPT-4o and Gemini-2.5 with the same substantive critic prompt, and comparing the schema-only delta to the +24.6 / +37.3 pp Anthropic numbers from this task. Xiong2024 reports within-family acceptance bonuses of 5-10 pp; if the cross-vendor schema-only delta lands close to the substantive-sonnet +24.6 pp, the v2-sonnet familial bias hypothesis (kappa=1.0 on the v2-sonnet cell) gains support; if it lands close to +37 pp, prompt strictness dominates over model family.
 
 ## Truncation-budget sweep to map the marginal value of additional context
 ID: S-0020-04

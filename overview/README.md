@@ -4,15 +4,15 @@
   <a href="papers/"><img src="https://img.shields.io/badge/Papers-21-4169E1" alt="Papers"></a>
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-8-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
-  <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-4-9370DB" alt="Predictions"></a>
+  <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-5-9370DB" alt="Predictions"></a>
   <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-7-20B2AA" alt="Libraries"></a>
-  <a href="answers/"><img src="https://img.shields.io/badge/Answers-1-CD853F" alt="Answers"></a>
+  <a href="answers/"><img src="https://img.shields.io/badge/Answers-2-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-23-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-70-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-74-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-3-DC143C" alt="Results"></a>
@@ -30,15 +30,15 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (8K) |
-[full](llm-context/full.xml) (88K) | [roadmap](llm-context/roadmap.xml) (23K) |
-[results](llm-context/results-deep-dive.xml) (74K) |
-[assets](llm-context/literature-and-assets.xml) (16K)
+[full](llm-context/full.xml) (99K) | [roadmap](llm-context/roadmap.xml) (22K) |
+[results](llm-context/results-deep-dive.xml) (85K) |
+[assets](llm-context/literature-and-assets.xml) (17K)
 
-*Last updated: 2026-05-01 16:23 UTC*
+*Last updated: 2026-05-01 18:03 UTC*
 
-* **Budget**: **$55** spent of $100
-* **Remaining**: **$45**
-* **Usage**: `███████████░░░░░░░░░` 54.6%
+* **Budget**: **$74** spent of $100
+* **Remaining**: **$26**
+* **Usage**: `███████████████░░░░░` 73.9%
 
 ---
 
@@ -48,11 +48,9 @@ No daily news yet.
 
 ---
 
-## [In Progress (1)](tasks/by-status/in_progress.md)
+## [In Progress (0)](tasks/by-status/in_progress.md)
 
-| # | Task | Started |
-|---|------|---------|
-| 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | 2026-05-01 14:02 |
+No tasks in progress.
 
 ---
 
@@ -70,11 +68,12 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (21 total)](tasks/by-status/completed.md)
+## [Recently Completed (22 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
 | 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`results`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/results_detailed.md) | 2026-05-01 20:40 |
+| 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | [`results`](../tasks/t0019_v2_judge_calibration_sonnet/results/results_detailed.md) | 2026-05-01 17:55 |
 | 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`results`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/results_detailed.md) | 2026-05-01 17:10 |
 | 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
 | 0018 | [Brainstorm session 6: paper-driven slate after t0017 literature survey](../overview/tasks/task_pages/t0018_brainstorm_results_6.md) | [`results`](../tasks/t0018_brainstorm_results_6/results/results_detailed.md) | 2026-05-01 13:30 |
@@ -83,9 +82,8 @@ No blocked tasks.
 | 0014 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`results`](../tasks/t0014_v2_annotator_sonnet_rerun/results/results_detailed.md) | 2026-04-30 23:59 |
 | 0016 | [Brainstorm session 5: prune backlog after t0014 deconfound](../overview/tasks/task_pages/t0016_brainstorm_results_5.md) | [`results`](../tasks/t0016_brainstorm_results_5/results/results_detailed.md) | 2026-04-30 22:30 |
 | 0015 | [Correct proxy-benchmark labels in t0009 v2 dataset](../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) | [`results`](../tasks/t0015_correct_proxy_benchmark_labels/results/results_detailed.md) | 2026-04-30 19:32 |
-| 0013 | [Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels](../overview/tasks/task_pages/t0013_brainstorm_results_4.md) | [`results`](../tasks/t0013_brainstorm_results_4/results/results_detailed.md) | 2026-04-30 18:00 |
 
-*11 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*12 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -95,19 +93,22 @@ No blocked tasks.
 
 | # | Task | Variant | Value |
 |---|------|---------|-------|
-| 1 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | v2 tree schema, full untruncated problem text | **0.95** |
-| 2 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | v2 tree schema, problem truncated to 1500 chars | **0.9** |
-| 3 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | v1 flat schema, problem truncated to 1500 chars | **0.3333** |
-| 4 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition A: scope-aware ReAct | **0.025** |
-| 5 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition B: scope-unaware Plan-and-Solve | **0.0** |
-| 6 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition C: scope-mismatched (random) | **0.0** |
-| 7 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition A: scope-aware ReAct | **0.0** |
-| 8 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition B: scope-unaware Plan-and-Solve v2 | **0.0** |
-| 9 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition C: scope-mismatched (random) | **0.0** |
+| 1 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v2-sonnet judged by substantive-sonnet | **1.0** |
+| 2 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v2-sonnet judged by model-rotated-sonnet | **1.0** |
+| 3 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v2-haiku judged by model-rotated-sonnet | **0.9565** |
+| 4 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | v2 tree schema, full untruncated problem text | **0.95** |
+| 5 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v2-haiku judged by original-haiku | **0.913** |
+| 6 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v2-haiku judged by substantive-sonnet | **0.913** |
+| 7 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v2-sonnet judged by original-haiku | **0.9** |
+| 8 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | v2 tree schema, problem truncated to 1500 chars | **0.9** |
+| 9 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v1-sonnet judged by substantive-sonnet | **0.6667** |
+| 10 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v1-sonnet judged by model-rotated-sonnet | **0.5833** |
+
+*8 more results → [all results](metrics-results/)*
 
 ---
 
-## [Recent Suggestions (56 open)](suggestions/)
+## [Recent Suggestions (60 open)](suggestions/)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -195,6 +196,77 @@ any retraining; this is purely a prompting change.
 </details>
 
 <details>
+<summary>🧪 <strong>Confirmatory v2 vs v1 schema sweep with fresh annotations and
+a third sonnet judge</strong> (S-0019-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0019_v2_judge_calibration_sonnet](../tasks/t0019_v2_judge_calibration_sonnet/)
+
+Run a confirmatory experiment that re-annotates a fresh n>=80 row pool (not the t0014 pool)
+under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three
+independent sonnet configurations: substantive critic, model-rotated original prompt, and a
+new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band
+unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool
+overlapped with t0014. A fresh-pool replication at the planned n>=80 would tighten the
+per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30
+pp or commit it above +45 pp.
+
+</details>
+
+<details>
+<summary>📚 <strong>Provision a sonnet-quota Anthropic API key to drop per-call cost
+~7x</strong> (S-0019-02)</summary>
+
+**Kind**: library | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0019_v2_judge_calibration_sonnet](../tasks/t0019_v2_judge_calibration_sonnet/)
+
+Acquire an Anthropic API key with claude-sonnet-4-6 quota and switch JUDGE_TRANSPORT back from
+the claude CLI subprocess to the Anthropic SDK. The current OAuth-issued key in this
+environment lacks sonnet quota, forcing the CLI fallback at ~$0.18/call (cache-creation
+overhead) instead of the ~$0.024/call SDK + cache-hit projection. Provisioning a
+sonnet-capable key would let S-0019-01's confirmatory sweep run within the original $5 budget
+envelope and unblock larger-n experiments without per-task cap raises. This is a project-level
+service request, not a research experiment.
+
+</details>
+
+<details>
+<summary>📊 <strong>Substantive critic vs original prompt: 50-row prompt-only
+ablation at fixed model</strong> (S-0019-03)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0019_v2_judge_calibration_sonnet](../tasks/t0019_v2_judge_calibration_sonnet/)
+
+Run a focused n=50 ablation that holds the judge model fixed at claude-sonnet-4-6 and varies
+only the system prompt between the substantive critic (with simulate-execution instruction)
+and the original t0014 prompt. The current task found a Cohen's kappa of 0.626 between the two
+prompts on the same model, with one row (v2-haiku-0007) where the substantive prompt caught a
+dimensional-analysis error the original prompt missed and two rows (v1-sonnet-0002,
+v1-sonnet-0004) where the substantive prompt accepted structural-but-executable trees the
+original rejected. A larger ablation would quantify how often each prompt mode wins, which
+would inform whether the substantive critic should become the production judge or stay as a
+stricter audit.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Cross-vendor judge: replicate the schema-only delta with GPT-4
+and Gemini judges</strong> (S-0019-04)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0019_v2_judge_calibration_sonnet](../tasks/t0019_v2_judge_calibration_sonnet/)
+
+Test the family-bias hypothesis at the judge stage by re-judging the same 55-row pool under
+GPT-4o and Gemini-2.5 with the same substantive critic prompt, and comparing the schema-only
+delta to the +24.6 / +37.3 pp Anthropic numbers from this task. Xiong2024 reports
+within-family acceptance bonuses of 5-10 pp; if the cross-vendor schema-only delta lands close
+to the substantive-sonnet +24.6 pp, the v2-sonnet familial bias hypothesis (kappa=1.0 on the
+v2-sonnet cell) gains support; if it lands close to +37 pp, prompt strictness dominates over
+model family.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
 pure-schema CI</strong> (S-0020-01)</summary>
 
@@ -210,77 +282,11 @@ possible follow-up that materially improves statistical power.
 
 </details>
 
-<details>
-<summary>📊 <strong>Sonnet judge rerun on the v2-tree-truncated condition to confirm
-schema effect is not haiku-specific</strong> (S-0020-02)</summary>
-
-**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
-[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
-
-All three conditions in t0020 use a haiku judge for fairness, but this means the result is
-haiku-judge accept rates rather than ground-truth quality. A sonnet rerun on the
-v2-tree-truncated annotations (existing 20 rows, no new annotator calls) would confirm whether
-the +57 pp pure-schema effect is robust to a stronger judge or whether it shrinks. t0014
-already showed sonnet times out on some rows, so the rerun should set max_turns conservatively
-and accept timeouts as null verdicts rather than retries. Estimated cost ~$3-5 sonnet judge.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Scale the truncated-v2 condition to n=80 to detect a true +5 pp
-pure-text effect if it exists</strong> (S-0020-03)</summary>
-
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
-[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
-
-The pure-text delta on this run is +5 pp with a CI of [-15, +26] pp at n=20. To resolve
-whether the true pure-text effect is zero, +5 pp, or larger, the experiment needs n>=80 per
-condition (Newcombe-Wilson half-width drops to ~10 pp at n=80 vs ~20 pp at n=20). This
-requires running the v2 annotator and judge on 60 additional matched rows from the same
-hierarchical-annotation-v1 source dataset, with both truncated and full conditions. Estimated
-cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would
-either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a
-meaningful contributor.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Truncation-budget sweep to map the marginal value of additional
-context</strong> (S-0020-04)</summary>
-
-**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
-[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
-
-t0020 shows 1500 chars is sufficient on 3 of 4 benchmarks but loses ~17 pp on SWE-bench
-Verified. A finer truncation grid (500 / 1000 / 1500 / 2500 / 5000 / full) on a
-SWE-bench-heavy pool would map where the marginal value of additional context drops to zero.
-This is a single-condition sweep (v2 schema held constant; only the truncation budget varies)
-so the cost scales linearly with the number of budget points. Estimated cost: 6 budgets x 20
-SWE-bench rows x 2 calls per row x ~$0.07 = ~$17.
-
-</details>
-
-<details>
-<summary>📊 <strong>Cost-quality Pareto chart across t0009/t0014/t0020 to inform
-downstream task budgets</strong> (S-0020-05)</summary>
-
-**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-01 | **Source**:
-[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
-
-Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality),
-v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A
-Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply
-communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by
-it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC
-harness budget planning.
-
-</details>
-
-*46 more open suggestions → [open suggestions](suggestions/)*
+*50 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (14)](suggestions/)
+## [High Priority Suggestions (15)](suggestions/)
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -299,6 +305,24 @@ ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-a
 that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
 annotation rerun. Deliverable: a small library that wraps the existing judge call with
 confidence + abstain semantics, exposed to t0009-style annotation tasks.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Confirmatory v2 vs v1 schema sweep with fresh annotations and
+a third sonnet judge</strong> (S-0019-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0019_v2_judge_calibration_sonnet](../tasks/t0019_v2_judge_calibration_sonnet/)
+
+Run a confirmatory experiment that re-annotates a fresh n>=80 row pool (not the t0014 pool)
+under the v1 and v2 schemas with claude-sonnet-4-6 as annotator, then judges with three
+independent sonnet configurations: substantive critic, model-rotated original prompt, and a
+new criterion-decomposed rubric judge. The current task left the +24.6 / +37.3 pp delta band
+unsettled because the two judge configurations disagreed on the +30 pp threshold and the pool
+overlapped with t0014. A fresh-pool replication at the planned n>=80 would tighten the
+per-cell Wilson CIs from +/-24 pp to +/-11 pp, enough to either reset the headline below +30
+pp or commit it above +45 pp.
 
 </details>
 
@@ -436,27 +460,27 @@ explicit access conversation with Epoch AI, plus a fallback to public Olympiad b
 
 </details>
 
-<details>
-<summary>📂 <strong>Provision a ServiceNow developer instance for WorkArena++ live
-evaluation</strong> (S-0003-02)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
-
-WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to
-the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the
-upstream task-class manifest. Provision a free ServiceNow developer instance, request HF
-access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
-decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
-fallback.
-
-</details>
-
-*4 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+*5 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 
-## [Recent Answers (1 total)](answers/)
+## [Recent Answers (2 total)](answers/)
+
+<details>
+<summary><strong>Does the v2 schema retain a 30+ pp accept-rate delta over v1 under
+a substantive judge and under a sonnet judge, or is the +57 pp t0014
+headline an artefact of haiku judge anchoring?</strong></summary>
+
+**Confidence**: low | **Date**: 2026-05-01 | **Full answer**:
+[`does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges`](../tasks/t0019_v2_judge_calibration_sonnet/assets/answer/does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges/)
+
+The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 pp and under
+model-rotated-sonnet it is +37.3 pp, vs the t0014 baseline of +58.0 pp. The +57 pp headline
+does not cleanly survive a stronger judge, but neither does it collapse below +30 pp on both
+configurations; the answer depends on which sonnet judge configuration is treated as
+canonical.
+
+</details>
 
 <details>
 <summary><strong>How much of the +57 pp v2-tree-full vs v1-flat-truncated
@@ -1038,11 +1062,12 @@ No models yet.
 
 ---
 
-## [Latest Predictions (4 total)](predictions/)
+## [Latest Predictions (5 total)](predictions/)
 
 | Name | Source | Created |
 |------|--------|---------|
 | [v2 tree-schema annotations on truncated 1500-char problems (haiku judge verdicts)](../tasks/t0020_v2_truncation_vs_schema_ablation/assets/predictions/v2-truncated-ablation/description.md) | [20](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | 2026-05-01 |
+| [v2 Judge Calibration: 3 judges x 3 annotators on 55-row pool](../tasks/t0019_v2_judge_calibration_sonnet/assets/predictions/v2-judge-calibration/description.md) | [19](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | 2026-05-01 |
 | [Phase 2 smoke condition C (scope-mismatched random) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-c/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
 | [Phase 2 smoke condition B (scope-unaware Plan-and-Solve) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-b/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
 | [Phase 2 smoke condition A (scope-aware ReAct) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-a/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
@@ -1063,11 +1088,12 @@ No models yet.
 
 ---
 
-## [Cost Leaders (7 tasks with spend)](costs/)
+## [Cost Leaders (8 tasks with spend)](costs/)
 
 | Task | Cost | Date |
 |------|------|------|
 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`$21.16`](../tasks/t0014_v2_annotator_sonnet_rerun/results/costs.json) | 2026-04-30 23:59 |
+| [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | [`$19.30`](../tasks/t0019_v2_judge_calibration_sonnet/results/costs.json) | 2026-05-01 17:55 |
 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`$18.37`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/costs.json) | 2026-05-01 04:43 |
 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`$9.10`](../tasks/t0009_hierarchical_annotation_v2/results/costs.json) | 2026-04-30 00:53 |
 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`$2.93`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/costs.json) | 2026-05-01 14:53 |
