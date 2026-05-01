@@ -1,4 +1,4 @@
-# ⏹ Plan-and-Solve v2 with final_confidence Field
+# ⏳ Plan-and-Solve v2 with final_confidence Field
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0021_plan_and_solve_v2_with_final_confidence` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-05-01T14:03:02Z |
 | **Source suggestion** | `S-0012-01` |
 | **Task types** | `write-library` |
 | **Expected assets** | 1 library |

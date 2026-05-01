@@ -1,4 +1,4 @@
-# ⏹ ABC Harness with Progress Rate and EAI Error Taxonomy
+# ⏳ ABC Harness with Progress Rate and EAI Error Taxonomy
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0022_abc_harness_progress_rate_and_error_taxonomy` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-05-01T14:04:29Z |
 | **Source suggestion** | `S-0017-02` |
 | **Task types** | `write-library` |
 | **Expected assets** | 1 library |

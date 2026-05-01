@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T13:56:45Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-01T14:59:17Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>49278</char_count>
-    <byte_count>49287</byte_count>
-    <estimated_tokens>12319</estimated_tokens>
+    <char_count>53516</char_count>
+    <byte_count>53525</byte_count>
+    <estimated_tokens>13379</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -74,9 +74,14 @@
         <id>S-0017-01</id>
         <id>S-0017-02</id>
         <id>S-0017-03</id>
+        <id>S-0020-01</id>
+        <id>S-0020-02</id>
+        <id>S-0020-03</id>
+        <id>S-0020-04</id>
+        <id>S-0020-05</id>
       </source_ids>
       <content>
-Suggestions: 57
+Suggestions: 62
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -730,6 +735,61 @@ Categories: granularity-conditioning, agent-evaluation
 Date added: 2026-05-01
 
 Zhou2024b (SELF-DISCOVER, NeurIPS 2024) shows that a task-conditioned reasoning structure -- selected from atomic reasoning modules and composed once per task type, then re-used across instances -- transfers across model families and outperforms CoT-Self-Consistency at 10-40x lower inference cost. The IMPLEMENT step (explicit JSON key-value scaffold) is the largest ablation contributor. This is a near-zero-cost upgrade to our scope-aware (A) condition prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScience-Olympiad, SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family. Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope: any retraining; this is purely a prompting change.
+
+## Re-judge the remaining 8 v1 paired rows to tighten the pure-schema CI
+ID: S-0020-01
+Status: active
+Priority: high
+Kind: experiment
+Source task: t0020_v2_truncation_vs_schema_ablation
+Categories: benchmark-annotation, hierarchical-planning
+Date added: 2026-05-01
+
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1 judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest possible follow-up that materially improves statistical power.
+
+## Sonnet judge rerun on the v2-tree-truncated condition to confirm schema effect is not haiku-specific
+ID: S-0020-02
+Status: active
+Priority: medium
+Kind: evaluation
+Source task: t0020_v2_truncation_vs_schema_ablation
+Categories: agent-evaluation, hierarchical-planning
+Date added: 2026-05-01
+
+All three conditions in t0020 use a haiku judge for fairness, but this means the result is haiku-judge accept rates rather than ground-truth quality. A sonnet rerun on the v2-tree-truncated annotations (existing 20 rows, no new annotator calls) would confirm whether the +57 pp pure-schema effect is robust to a stronger judge or whether it shrinks. t0014 already showed sonnet times out on some rows, so the rerun should set max_turns conservatively and accept timeouts as null verdicts rather than retries. Estimated cost ~$3-5 sonnet judge.
+
+## Scale the truncated-v2 condition to n=80 to detect a true +5 pp pure-text effect if it exists
+ID: S-0020-03
+Status: active
+Priority: medium
+Kind: experiment
+Source task: t0020_v2_truncation_vs_schema_ablation
+Categories: benchmark-annotation, hierarchical-planning
+Date added: 2026-05-01
+
+The pure-text delta on this run is +5 pp with a CI of [-15, +26] pp at n=20. To resolve whether the true pure-text effect is zero, +5 pp, or larger, the experiment needs n&gt;=80 per condition (Newcombe-Wilson half-width drops to ~10 pp at n=80 vs ~20 pp at n=20). This requires running the v2 annotator and judge on 60 additional matched rows from the same hierarchical-annotation-v1 source dataset, with both truncated and full conditions. Estimated cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a meaningful contributor.
+
+## Truncation-budget sweep to map the marginal value of additional context
+ID: S-0020-04
+Status: active
+Priority: low
+Kind: experiment
+Source task: t0020_v2_truncation_vs_schema_ablation
+Categories: benchmark-annotation, benchmark-swebench
+Date added: 2026-05-01
+
+t0020 shows 1500 chars is sufficient on 3 of 4 benchmarks but loses ~17 pp on SWE-bench Verified. A finer truncation grid (500 / 1000 / 1500 / 2500 / 5000 / full) on a SWE-bench-heavy pool would map where the marginal value of additional context drops to zero. This is a single-condition sweep (v2 schema held constant; only the truncation budget varies) so the cost scales linearly with the number of budget points. Estimated cost: 6 budgets x 20 SWE-bench rows x 2 calls per row x ~$0.07 = ~$17.
+
+## Cost-quality Pareto chart across t0009/t0014/t0020 to inform downstream task budgets
+ID: S-0020-05
+Status: active
+Priority: low
+Kind: evaluation
+Source task: t0020_v2_truncation_vs_schema_ablation
+Categories: agent-evaluation, benchmark-annotation
+Date added: 2026-05-01
+
+Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality), v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC harness budget planning.
       </content>
     </section>
   </sections>

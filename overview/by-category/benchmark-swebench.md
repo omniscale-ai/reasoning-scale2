@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the SWE-bench Verified benchmar
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/benchmark-swebench.md) | [Suggestions
-(4)](../suggestions/by-category/benchmark-swebench.md) | [Datasets
+(5)](../suggestions/by-category/benchmark-swebench.md) | [Datasets
 (1)](../datasets/by-category/benchmark-swebench.md)
 
 ---
@@ -105,7 +105,23 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 
 No answers in this category.
 
-## Suggestions (3 open, 1 closed)
+## Suggestions (4 open, 1 closed)
+
+<details>
+<summary>🧪 <strong>Truncation-budget sweep to map the marginal value of additional
+context</strong> (S-0020-04)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+t0020 shows 1500 chars is sufficient on 3 of 4 benchmarks but loses ~17 pp on SWE-bench
+Verified. A finer truncation grid (500 / 1000 / 1500 / 2500 / 5000 / full) on a
+SWE-bench-heavy pool would map where the marginal value of additional context drops to zero.
+This is a single-condition sweep (v2 schema held constant; only the truncation budget varies)
+so the cost scales linearly with the number of budget points. Estimated cost: 6 budgets x 20
+SWE-bench rows x 2 calls per row x ~$0.07 = ~$17.
+
+</details>
 
 <details>
 <summary>📂 <strong>Build the SWE-bench Verified Docker harness</strong> (S-0002-05)</summary>

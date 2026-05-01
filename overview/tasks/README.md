@@ -1,9 +1,10 @@
 # Project Tasks
 
-23 tasks. ⏹ **5 not_started**, ✅ **18 completed**.
+23 tasks. ⏳ **3 in_progress**, ⏹ **1 not_started**, ✅ **19 completed**.
 
-**Browse by view**: By status: [⏹ `not_started`](by-status/not_started.md), [✅
-`completed`](by-status/completed.md); [By date added](by-date-added/README.md)
+**Browse by view**: By status: [⏳ `in_progress`](by-status/in_progress.md), [⏹
+`not_started`](by-status/not_started.md), [✅ `completed`](by-status/completed.md); [By date
+added](by-date-added/README.md)
 
 ---
 
@@ -11,10 +12,9 @@
 
 ```mermaid
 graph LR
-    t0019_v2_judge_calibration_sonnet["⏹ t0019_v2_judge_calibration_sonnet"]
-    t0020_v2_truncation_vs_schema_ablation["⏹ t0020_v2_truncation_vs_schema_ablation"]
-    t0021_plan_and_solve_v2_with_final_confidence["⏹ t0021_plan_and_solve_v2_with_final_confidence"]
-    t0022_abc_harness_progress_rate_and_error_taxonomy["⏹ t0022_abc_harness_progress_rate_and_error_taxonomy"]
+    t0019_v2_judge_calibration_sonnet["⏳ t0019_v2_judge_calibration_sonnet"]
+    t0021_plan_and_solve_v2_with_final_confidence["⏳ t0021_plan_and_solve_v2_with_final_confidence"]
+    t0022_abc_harness_progress_rate_and_error_taxonomy["⏳ t0022_abc_harness_progress_rate_and_error_taxonomy"]
     t0023_phase2_abc_confirmatory_sonnet_swebench["⏹ t0023_phase2_abc_confirmatory_sonnet_swebench"]
 
     t0021_plan_and_solve_v2_with_final_confidence --> t0023_phase2_abc_confirmatory_sonnet_swebench
@@ -22,6 +22,427 @@ graph LR
 ```
 
 ---
+
+## ⏳ In Progress
+
+<details>
+<summary>⏳ 0019 — <strong>v2 Judge Calibration with Sonnet (Substantive + Familial
+Bias)</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0019_v2_judge_calibration_sonnet` |
+| **Status** | in_progress |
+| **Effective date** | 2026-05-01 |
+| **Dependencies** | — |
+| **Expected assets** | 1 predictions, 1 answer |
+| **Source suggestion** | `S-0014-02` |
+| **Task types** | [`comparative-analysis`](../../meta/task_types/comparative-analysis/), [`data-analysis`](../../meta/task_types/data-analysis/) |
+| **Start time** | 2026-05-01T14:02:34Z |
+| **Task page** | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) |
+| **Task folder** | [`t0019_v2_judge_calibration_sonnet/`](../../tasks/t0019_v2_judge_calibration_sonnet/) |
+
+# v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+
+## Motivation
+
+t0014 produced a schema-only delta of **+57 pp** for v2 over v1, well above Zhou2022's +16 pp
+and Boisvert2024's +25 pp published bands, and a model-only delta of **-1 pp** that sits below
+Xiong2024's lower edge (0 pp). Two plausible threats to validity remain:
+
+1. **Judge anchoring** (S-0014-02): the haiku judge may be partially scoring "the model
+   produced a parseable tree with subtask-to-atomic edges" rather than "the decomposition is
+   substantively right". If so, the +57 pp gap to literature is a judge artefact, not a schema
+   effect.
+2. **Familial bias** (S-0014-03): the haiku judge gives the v2-haiku annotator a same-family
+   agreement bonus (~5-10 pp per Xiong2024). If so, the -1 pp model-only delta is masking a
+   real sonnet annotator advantage.
+
+Both threats can be tested at the same 43-row pool used in t0014 by swapping the judge prompt
+and judge model. Defending the +57 pp schema-only headline before scaling to a confirmatory
+experiment is the cheapest paper-defensible step on the critical path.
+
+This task covers `S-0014-02` (primary) and `S-0014-03` (secondary).
+
+## Scope
+
+Re-judge **the same 43 v2 rows** that t0014 produced (20 v2-sonnet + 23 v2-haiku) plus the
+matched 20 v1-sonnet rows from t0009/t0014, under two new judge configurations:
+
+* **Substantive critic** prompt (S-0014-02): the judge simulates execution ("verify each
+  atomic, executed in order, would actually solve the problem") and outputs a binary
+  accept/reject plus a per-criterion sub-score.
+* **Model-rotated** judge (S-0014-03): keep the original t0014 judge prompt, swap the judge
+  model from haiku to claude-sonnet-4-6.
+
+Both judges run against the same row pool. Combined output is a 4-condition matrix per row:
+
+| Condition | Annotator | Judge Prompt | Judge Model |
+| --- | --- | --- | --- |
+| Baseline (from t0014) | v1-sonnet / v2-haiku / v2-sonnet | original | haiku |
+| Substantive | v1-sonnet / v2-haiku / v2-sonnet | substantive critic | sonnet |
+| Model-rotated | v1-sonnet / v2-haiku / v2-sonnet | original | sonnet |
+
+This task does not re-annotate. It only re-judges. Annotation rows from t0014 are read in via
+the existing predictions overlay applied by t0015.
+
+## Deliverables
+
+1. **Predictions asset** (`assets/predictions/v2_judge_calibration/`): per-row judge verdicts
+   under the substantive and model-rotated conditions, plus the cached baseline t0014/t0015
+   verdicts as reference. Includes prompt-version and judge-model fields per row.
+2. **Answer asset** (`assets/answer/.../`) addressing the question: "Does the v2 schema retain
+   a 30+ pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or
+   is the +57 pp t0014 headline an artefact of haiku judge anchoring?"
+3. **Reported metrics** in `results/metrics.json` using the explicit multi-variant format, one
+   variant per (annotator x judge-prompt x judge-model) cell. Each cell reports:
+   * `accept_rate`
+   * `accept_rate_stderr` (Wilson 95% CI)
+   * `efficiency_inference_cost_per_item_usd`
+   * `efficiency_inference_time_per_item_seconds`
+4. **Comparison table** in `results/results_detailed.md` showing the schema-only and
+   model-only deltas under all three judge configurations side by side, with explicit deltas
+   vs t0014.
+
+## Models and Configurations
+
+* **Annotator outputs** (already produced; not re-run): claude-sonnet-4-6 v1 (20 rows), haiku
+  v2 (23 rows), sonnet v2 (20 rows). All from t0014.
+* **Substantive critic judge**: claude-sonnet-4-6 with the new prompt template.
+* **Model-rotated judge**: claude-sonnet-4-6 with the original t0014 judge prompt.
+
+Total judge calls: 43 rows x 2 new judge configurations = **86 sonnet judge calls**.
+
+## Cost Estimate
+
+* Sonnet input ~5k tokens per call x 86 = **~430k input tokens**.
+* Sonnet output ~600 tokens per call x 86 = **~52k output tokens**.
+* At claude-sonnet-4-6 pricing (approximately $3/M in, $15/M out): **about $2.05** sonnet
+  spend.
+* Reserve for retry/repair: **+$1**.
+* Total: **~$3-5**.
+
+This sits well within the remaining $51 budget.
+
+## Decision Criteria
+
+After this task:
+
+* If schema-only delta drops below **+30 pp** under the substantive judge, the +57 pp t0014
+  headline is partly judge-anchoring; reset the headline to the substantive number and revisit
+  S-0014-01 (v3 schema iteration).
+* If schema-only delta stays at or above **+45 pp** under both new judges, the schema effect
+  is robust; commit to the t0023 confirmatory run as planned.
+* If model-only delta swings to **at least +5 pp** under the sonnet judge, the t0014 -1 pp
+  result is a haiku familial bias, and v2-sonnet should be the production annotator going
+  forward.
+* If model-only delta stays within +/-2 pp under the sonnet judge, the v2 schema does the work
+  and sonnet annotation is not worth the cost premium.
+
+## Dependencies
+
+None on uncompleted tasks. Reads from t0014's predictions and t0015's correction overlay; both
+are merged.
+
+## Source Suggestion
+
+This task covers `S-0014-02` (primary) and `S-0014-03` (secondary). Both suggestions remain
+active as `source_suggestion` until t0019 results are merged; the secondary will be marked
+covered in the next brainstorm round if the data answers it.
+
+## Risks and Fallbacks
+
+* **Substantive judge is slow or unstable**: if per-row judge time exceeds 30 s, drop
+  sub-criteria and use a binary verdict only.
+* **Sonnet judge disagrees with itself across the two prompt variants on the same row**: log
+  per-row agreement; report Cohen's kappa across (substantive, model-rotated) at the same
+  model. This is a free signal about prompt-vs-anchoring effects.
+* **The t0014 row pool has masked instances** (we know 3 sonnet timeouts exist; S-0014-05 was
+  rejected): exclude those rows from all conditions consistently and report the effective n.
+
+## Verification Criteria
+
+* Predictions asset passes `verify_predictions_asset.py`.
+* Answer asset passes `verify_answer_asset.py`.
+* `results/metrics.json` contains all 9 cells (3 annotators x 3 judge configs) with
+  accept_rate and stderr.
+* `results/results_detailed.md` contains a side-by-side delta table and an explicit
+  decision-criteria check-off against the four bullets above.
+* Cost in `results/costs.json` is at or below **$5**.
+
+</details>
+
+<details>
+<summary>⏳ 0021 — <strong>Plan-and-Solve v2 with final_confidence Field</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0021_plan_and_solve_v2_with_final_confidence` |
+| **Status** | in_progress |
+| **Effective date** | 2026-05-01 |
+| **Dependencies** | — |
+| **Expected assets** | 1 library |
+| **Source suggestion** | `S-0012-01` |
+| **Task types** | [`write-library`](../../meta/task_types/write-library/) |
+| **Start time** | 2026-05-01T14:03:02Z |
+| **Task page** | [Plan-and-Solve v2 with final_confidence Field](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Task folder** | [`t0021_plan_and_solve_v2_with_final_confidence/`](../../tasks/t0021_plan_and_solve_v2_with_final_confidence/) |
+
+# Plan-and-Solve v2 with final_confidence Field
+
+## Motivation
+
+The t0007 `scope_unaware_planandsolve_v1` library does not emit a `final_confidence` field on
+trajectory records. As a result, t0012's smoke run collapsed Metric 2
+(overconfident_error_rate) to **0.0** for conditions B and C, making **RQ4 untestable** in any
+confirmatory ABC experiment that reuses this library.
+
+Before scaling to t0023 (sonnet on SWE-bench, N>=157), the library has to emit a verbalized
+confidence label so Metric 2 is non-degenerate. This is a prerequisite library task with
+**zero external API cost**.
+
+This task covers `S-0012-01`.
+
+## Scope
+
+Extend the existing `tasks/t0007_*/code/` library (or the active fork of it) so that every
+trajectory record produced by `scope_unaware_planandsolve_v1` carries a `final_confidence`
+field in the range `[0.0, 1.0]`, populated by a verbalized confidence call following the
+**Xiong2024 section 3.2 protocol**:
+
+* After the model produces its final action / answer for the trajectory, issue **one
+  additional prompt** asking the model to rate its confidence in the just-produced output on a
+  0-1 scale, with explicit anchor-language ("0.0 = certain wrong, 0.5 = coin flip, 1.0 =
+  certain right").
+* Parse the numeric value with a strict regex; on parse failure, retry once with a clearer
+  prompt; on second failure, write `null` and increment a `final_confidence_parse_failures`
+  counter on the trajectory metadata.
+
+The new `final_confidence` field must be emitted by **all three conditions** (A scope-aware, B
+scope-unaware, C scope-mismatched) so paired analysis is well-defined.
+
+## Deliverables
+
+1. **Library asset** (`assets/library/scope_unaware_planandsolve_v2/`) with full
+   `details.json`, canonical description document, and source code under `files/`. The library
+   keeps backward compatibility: the v1 entry point still exists and still returns
+   trajectories without `final_confidence`; the new v2 entry point returns trajectories that
+   always carry the field.
+2. **Unit tests** in `tasks/t0021_*/code/test_*.py`:
+   * `final_confidence` is in `[0.0, 1.0]` whenever the parse succeeds.
+   * `final_confidence` is `null` when the parse fails.
+   * `final_confidence_parse_failures` count matches the number of `null` rows.
+   * Trajectories from all three conditions (A, B, C) carry the field.
+   * The v1 entry point continues to return the legacy schema.
+3. **Smoke validation**: run the v2 library on a 5-row instance pool with claude-haiku-4-5 and
+   confirm Metric 2 (overconfident_error_rate) returns a non-degenerate, non-zero value when
+   at least one row is wrong with high confidence.
+4. **Verbalized confidence prompt template** copied into `assets/library/.../files/prompts/`
+   verbatim, with an inline citation to Xiong2024 §3.2 in the description document.
+
+## Implementation Notes
+
+* **Prompt protocol**: Xiong2024 section 3.2 says: "After answering, on a separate line,
+  output a number between 0 and 1 representing your confidence that your answer is correct,
+  where 0 means certain wrong and 1 means certain correct." Reuse this exact phrasing.
+* **Two-call vs one-call**: prefer the two-call protocol (final answer first, confidence
+  second) to avoid the model conditioning its answer on its own confidence claim. One-call is
+  acceptable only if the cost difference matters at scale.
+* **Caching**: confidence calls must reuse the same conversation prefix as the answer call to
+  avoid double-charging for the prompt context. Use claude prompt caching where available.
+
+## Cost Estimate
+
+* Smoke validation: 5 rows x 3 conditions x 2 calls each (answer + confidence) with
+  claude-haiku-4-5 = **30 calls**.
+* Haiku input ~4k tokens per call x 30 = **~120k input tokens**.
+* Haiku output ~300 tokens per call x 30 = **~9k output tokens**.
+* At haiku pricing: **<$0.20**.
+* Total: **<$1**.
+
+## Decision Criteria
+
+After this task:
+
+* If unit tests and the smoke validation pass, the library is unblocked for t0023.
+* If the confidence parse fails on more than **20%** of haiku rows, raise the parse failure
+  rate in the description document and either tighten the prompt or move to JSON-mode output.
+  Do not ship a library that is unreliable at parsing.
+
+## Dependencies
+
+None. The library will be reused by t0023.
+
+## Source Suggestion
+
+`S-0012-01`.
+
+## Risks and Fallbacks
+
+* **Sonnet-vs-haiku confidence drift**: haiku may produce flat confidence distributions
+  (everything 0.7-0.9). If so, document this and flag it as an interpretability risk for
+  t0023's Metric 2 analysis. The library does not need to fix the model's calibration; it only
+  needs to emit the field.
+* **Refusal rate increase**: adding a confidence call may push some models toward hedging the
+  primary answer. Compare the smoke-run accuracy at A condition to the t0007/t0012 numbers; if
+  accuracy drops by more than 5 pp, run an ablation with the confidence call moved to a
+  separate trajectory.
+
+## Verification Criteria
+
+* Library asset passes `verify_library_asset.py`.
+* Unit tests pass (`uv run pytest tasks/t0021_*/code/`).
+* Smoke validation produces a non-zero, non-1 value for Metric 2 when ground truth shows at
+  least one high-confidence error.
+* `results/metrics.json` records the smoke run's Metric 2 value to confirm the field is wired
+  end-to-end.
+* Cost in `results/costs.json` is at or below **$1**.
+
+</details>
+
+<details>
+<summary>⏳ 0022 — <strong>ABC Harness with Progress Rate and EAI Error
+Taxonomy</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0022_abc_harness_progress_rate_and_error_taxonomy` |
+| **Status** | in_progress |
+| **Effective date** | 2026-05-01 |
+| **Dependencies** | — |
+| **Expected assets** | 1 library |
+| **Source suggestion** | `S-0017-02` |
+| **Task types** | [`write-library`](../../meta/task_types/write-library/) |
+| **Start time** | 2026-05-01T14:04:29Z |
+| **Task page** | [ABC Harness with Progress Rate and EAI Error Taxonomy](../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Task folder** | [`t0022_abc_harness_progress_rate_and_error_taxonomy/`](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/) |
+
+# ABC Harness with Progress Rate and EAI Error Taxonomy
+
+## Motivation
+
+t0012's smoke run on FrontierScience-Olympiad with claude-haiku-4-5 hit the floor across all
+three ABC conditions (A: 2.5%, B: 0%, C: 0%). At the floor, **binary task success cannot
+distinguish** scope-aware from scope-unaware behaviour, so RQ1, RQ2, and RQ5 are invisible no
+matter how big the sample.
+
+t0017 surfaced two literature instruments that fix this:
+
+* **AgentBoard progress rate** (Ma2024, NeurIPS 2024 D&B): subgoal coverage scoring with
+  Pearson rho \> 0.95 against humans across 1013 environments. A continuous metric in `[0, 1]`
+  that gives signal even when no run reaches the terminal goal.
+* **Embodied Agent Interface error taxonomy** (Li2024, NeurIPS 2024): a 6-class per-step
+  taxonomy (hallucination, affordance violation, missing step, extra step, wrong-order step,
+  precondition/effect error) that attributes failures to specific modes.
+
+Both instruments must be in place **before** t0023's confirmatory N>=157 run, otherwise t0023
+risks producing the same uninformative floor result that t0012 produced. This task is a
+zero-API library task that builds the two instruments and validates them on the t0012 sample.
+
+This task covers `S-0017-02`.
+
+## Scope
+
+Build a single library that the existing ABC harness can import and call, exposing two
+functions:
+
+1. `compute_progress_rate(trajectory, environment_subgoals) -> float`
+   * Implements the Ma2024 protocol: a list of subgoals defined per environment, scored 0/1 by
+     a judge model, averaged over the trajectory. Returns a float in `[0, 1]`.
+2. `classify_error(trajectory_step, environment_state) -> ErrorTaxonomyLabel`
+   * Implements the Li2024 protocol: a strict-output judge call that returns one of six labels
+     (`hallucination`, `affordance`, `missing_step`, `extra_step`, `wrong_order`,
+     `precondition_or_effect`) plus an "ok" sentinel for non-error steps.
+
+Both functions delegate to a judge model (default: claude-haiku-4-5; configurable to sonnet).
+Subgoal definitions for FrontierScience-Olympiad and SWE-bench Verified live in a JSON
+side-file in the library asset's `files/` directory. SWE-bench coverage is the priority since
+t0023 runs there.
+
+The library exposes a single high-level entry point `score_trajectory(trajectory, environment)
+-> TrajectoryScore` that returns:
+
+* `task_success: bool`
+* `progress_rate: float`
+* `step_errors: list[ErrorTaxonomyLabel]`
+* `error_distribution: dict[label, count]`
+
+## Deliverables
+
+1. **Library asset** (`assets/library/abc_harness_metrics/`) with `details.json`, canonical
+   description document, source code under `files/`, and subgoal-definition JSON for at least
+   FrontierScience-Olympiad and SWE-bench Verified Lite.
+2. **Unit tests** in `tasks/t0022_*/code/test_*.py`:
+   * Progress rate is `0.0` when no subgoal is hit and `1.0` when all subgoals are hit, on a
+     synthetic trajectory.
+   * Each error taxonomy label is producible on a hand-crafted trajectory step.
+   * The high-level entry point composes the two without raising on a known-good t0012 row.
+3. **Validation against t0012**: replay the t0012 smoke trajectories through the new library
+   and report progress rate and error distribution per ABC condition. Save these as a
+   side-by-side table in `results/results_detailed.md`.
+4. **Subgoal-definition JSON** for SWE-bench Verified Lite covering at least 50 instances (the
+   subset t0023 will use). Use the SWE-bench Verified hint annotations as the seed.
+
+## Implementation Notes
+
+* **Subgoal scoring is a judge call**, not a deterministic check. Cache results to disk keyed
+  by (environment, trajectory hash, subgoal text) so re-runs in t0023 do not re-spend.
+* **Judge prompt** for progress rate: copy the Ma2024 supplementary material §C.2 prompt
+  verbatim where licensing allows; otherwise paraphrase with explicit attribution in the
+  library description document.
+* **Error taxonomy prompt** for `classify_error`: use Li2024's appendix A.4 schema. The
+  classifier returns exactly one label; ties default to `precondition_or_effect`.
+* **Subgoal coverage on SWE-bench**: a "subgoal hit" is operationalised as the agent producing
+  an edit that touches the same file as the gold patch hunk; finer-grained subgoals (line
+  ranges, AST nodes) are out of scope here and can land in a follow-up.
+
+## Cost Estimate
+
+* Validation pass on t0012 smoke trajectories (~40 rows x 3 conditions x ~5 steps each = 600
+  step-classifications + 120 progress-rate scores): **~720 haiku judge calls**.
+* Haiku ~2k tokens in, ~150 tokens out per call: **~1.4M in, ~110k out**.
+* At haiku pricing: **~$1.50**.
+* Reserve: **+$0.50**.
+* Total: **~$2**.
+
+## Decision Criteria
+
+After this task:
+
+* If progress rate on the t0012 sample produces a non-degenerate distribution (mean > 0.05 and
+  stddev > 0.03), the metric is a viable Metric 1 candidate for t0023. Otherwise, document the
+  calibration problem and propose a different subgoal granularity.
+* If the error taxonomy correctly distinguishes condition C trajectories from condition A
+  trajectories on at least **30% of paired steps**, the taxonomy is doing real work and t0023
+  can rely on it. Otherwise, flag and recommend tightening the per-environment subgoal lists
+  before t0023.
+
+## Dependencies
+
+None. Output is consumed by t0023.
+
+## Source Suggestion
+
+`S-0017-02`.
+
+## Risks and Fallbacks
+
+* **Judge cost on t0023 explodes**: t0023 with N=157 x 3 conditions x ~5 steps each = ~2400
+  step-classifications. Plan haiku as the default judge; reserve sonnet for spot-check
+  re-grading on a 20-row stratified sample only.
+* **Subgoal definitions miscalibrate**: the SWE-bench JSON has to be reviewed by hand on a
+  10-instance pilot before t0023 ships.
+
+## Verification Criteria
+
+* Library asset passes `verify_library_asset.py`.
+* Unit tests pass.
+* Subgoal-definition JSON contains entries for at least 50 SWE-bench Verified Lite instances.
+* The t0012 replay produces a per-condition breakdown of progress rate and error distribution
+  in `results/results_detailed.md`.
+* Cost in `results/costs.json` is at or below **$2**.
+
+</details>
 
 ## ⏹ Not Started
 
@@ -202,290 +623,27 @@ variants; the phase-randomized control is in scope only if budget permits.
 
 </details>
 
-<details>
-<summary>⏹ 0022 — <strong>ABC Harness with Progress Rate and EAI Error
-Taxonomy</strong></summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `t0022_abc_harness_progress_rate_and_error_taxonomy` |
-| **Status** | not_started |
-| **Effective date** | 2026-05-01 |
-| **Dependencies** | — |
-| **Expected assets** | 1 library |
-| **Source suggestion** | `S-0017-02` |
-| **Task types** | [`write-library`](../../meta/task_types/write-library/) |
-| **Task page** | [ABC Harness with Progress Rate and EAI Error Taxonomy](../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
-| **Task folder** | [`t0022_abc_harness_progress_rate_and_error_taxonomy/`](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/) |
-
-# ABC Harness with Progress Rate and EAI Error Taxonomy
-
-## Motivation
-
-t0012's smoke run on FrontierScience-Olympiad with claude-haiku-4-5 hit the floor across all
-three ABC conditions (A: 2.5%, B: 0%, C: 0%). At the floor, **binary task success cannot
-distinguish** scope-aware from scope-unaware behaviour, so RQ1, RQ2, and RQ5 are invisible no
-matter how big the sample.
-
-t0017 surfaced two literature instruments that fix this:
-
-* **AgentBoard progress rate** (Ma2024, NeurIPS 2024 D&B): subgoal coverage scoring with
-  Pearson rho \> 0.95 against humans across 1013 environments. A continuous metric in `[0, 1]`
-  that gives signal even when no run reaches the terminal goal.
-* **Embodied Agent Interface error taxonomy** (Li2024, NeurIPS 2024): a 6-class per-step
-  taxonomy (hallucination, affordance violation, missing step, extra step, wrong-order step,
-  precondition/effect error) that attributes failures to specific modes.
-
-Both instruments must be in place **before** t0023's confirmatory N>=157 run, otherwise t0023
-risks producing the same uninformative floor result that t0012 produced. This task is a
-zero-API library task that builds the two instruments and validates them on the t0012 sample.
-
-This task covers `S-0017-02`.
-
-## Scope
-
-Build a single library that the existing ABC harness can import and call, exposing two
-functions:
-
-1. `compute_progress_rate(trajectory, environment_subgoals) -> float`
-   * Implements the Ma2024 protocol: a list of subgoals defined per environment, scored 0/1 by
-     a judge model, averaged over the trajectory. Returns a float in `[0, 1]`.
-2. `classify_error(trajectory_step, environment_state) -> ErrorTaxonomyLabel`
-   * Implements the Li2024 protocol: a strict-output judge call that returns one of six labels
-     (`hallucination`, `affordance`, `missing_step`, `extra_step`, `wrong_order`,
-     `precondition_or_effect`) plus an "ok" sentinel for non-error steps.
-
-Both functions delegate to a judge model (default: claude-haiku-4-5; configurable to sonnet).
-Subgoal definitions for FrontierScience-Olympiad and SWE-bench Verified live in a JSON
-side-file in the library asset's `files/` directory. SWE-bench coverage is the priority since
-t0023 runs there.
-
-The library exposes a single high-level entry point `score_trajectory(trajectory, environment)
--> TrajectoryScore` that returns:
-
-* `task_success: bool`
-* `progress_rate: float`
-* `step_errors: list[ErrorTaxonomyLabel]`
-* `error_distribution: dict[label, count]`
-
-## Deliverables
-
-1. **Library asset** (`assets/library/abc_harness_metrics/`) with `details.json`, canonical
-   description document, source code under `files/`, and subgoal-definition JSON for at least
-   FrontierScience-Olympiad and SWE-bench Verified Lite.
-2. **Unit tests** in `tasks/t0022_*/code/test_*.py`:
-   * Progress rate is `0.0` when no subgoal is hit and `1.0` when all subgoals are hit, on a
-     synthetic trajectory.
-   * Each error taxonomy label is producible on a hand-crafted trajectory step.
-   * The high-level entry point composes the two without raising on a known-good t0012 row.
-3. **Validation against t0012**: replay the t0012 smoke trajectories through the new library
-   and report progress rate and error distribution per ABC condition. Save these as a
-   side-by-side table in `results/results_detailed.md`.
-4. **Subgoal-definition JSON** for SWE-bench Verified Lite covering at least 50 instances (the
-   subset t0023 will use). Use the SWE-bench Verified hint annotations as the seed.
-
-## Implementation Notes
-
-* **Subgoal scoring is a judge call**, not a deterministic check. Cache results to disk keyed
-  by (environment, trajectory hash, subgoal text) so re-runs in t0023 do not re-spend.
-* **Judge prompt** for progress rate: copy the Ma2024 supplementary material §C.2 prompt
-  verbatim where licensing allows; otherwise paraphrase with explicit attribution in the
-  library description document.
-* **Error taxonomy prompt** for `classify_error`: use Li2024's appendix A.4 schema. The
-  classifier returns exactly one label; ties default to `precondition_or_effect`.
-* **Subgoal coverage on SWE-bench**: a "subgoal hit" is operationalised as the agent producing
-  an edit that touches the same file as the gold patch hunk; finer-grained subgoals (line
-  ranges, AST nodes) are out of scope here and can land in a follow-up.
-
-## Cost Estimate
-
-* Validation pass on t0012 smoke trajectories (~40 rows x 3 conditions x ~5 steps each = 600
-  step-classifications + 120 progress-rate scores): **~720 haiku judge calls**.
-* Haiku ~2k tokens in, ~150 tokens out per call: **~1.4M in, ~110k out**.
-* At haiku pricing: **~$1.50**.
-* Reserve: **+$0.50**.
-* Total: **~$2**.
-
-## Decision Criteria
-
-After this task:
-
-* If progress rate on the t0012 sample produces a non-degenerate distribution (mean > 0.05 and
-  stddev > 0.03), the metric is a viable Metric 1 candidate for t0023. Otherwise, document the
-  calibration problem and propose a different subgoal granularity.
-* If the error taxonomy correctly distinguishes condition C trajectories from condition A
-  trajectories on at least **30% of paired steps**, the taxonomy is doing real work and t0023
-  can rely on it. Otherwise, flag and recommend tightening the per-environment subgoal lists
-  before t0023.
-
-## Dependencies
-
-None. Output is consumed by t0023.
-
-## Source Suggestion
-
-`S-0017-02`.
-
-## Risks and Fallbacks
-
-* **Judge cost on t0023 explodes**: t0023 with N=157 x 3 conditions x ~5 steps each = ~2400
-  step-classifications. Plan haiku as the default judge; reserve sonnet for spot-check
-  re-grading on a 20-row stratified sample only.
-* **Subgoal definitions miscalibrate**: the SWE-bench JSON has to be reviewed by hand on a
-  10-instance pilot before t0023 ships.
-
-## Verification Criteria
-
-* Library asset passes `verify_library_asset.py`.
-* Unit tests pass.
-* Subgoal-definition JSON contains entries for at least 50 SWE-bench Verified Lite instances.
-* The t0012 replay produces a per-condition breakdown of progress rate and error distribution
-  in `results/results_detailed.md`.
-* Cost in `results/costs.json` is at or below **$2**.
-
-</details>
+## ✅ Completed
 
 <details>
-<summary>⏹ 0021 — <strong>Plan-and-Solve v2 with final_confidence Field</strong></summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `t0021_plan_and_solve_v2_with_final_confidence` |
-| **Status** | not_started |
-| **Effective date** | 2026-05-01 |
-| **Dependencies** | — |
-| **Expected assets** | 1 library |
-| **Source suggestion** | `S-0012-01` |
-| **Task types** | [`write-library`](../../meta/task_types/write-library/) |
-| **Task page** | [Plan-and-Solve v2 with final_confidence Field](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
-| **Task folder** | [`t0021_plan_and_solve_v2_with_final_confidence/`](../../tasks/t0021_plan_and_solve_v2_with_final_confidence/) |
-
-# Plan-and-Solve v2 with final_confidence Field
-
-## Motivation
-
-The t0007 `scope_unaware_planandsolve_v1` library does not emit a `final_confidence` field on
-trajectory records. As a result, t0012's smoke run collapsed Metric 2
-(overconfident_error_rate) to **0.0** for conditions B and C, making **RQ4 untestable** in any
-confirmatory ABC experiment that reuses this library.
-
-Before scaling to t0023 (sonnet on SWE-bench, N>=157), the library has to emit a verbalized
-confidence label so Metric 2 is non-degenerate. This is a prerequisite library task with
-**zero external API cost**.
-
-This task covers `S-0012-01`.
-
-## Scope
-
-Extend the existing `tasks/t0007_*/code/` library (or the active fork of it) so that every
-trajectory record produced by `scope_unaware_planandsolve_v1` carries a `final_confidence`
-field in the range `[0.0, 1.0]`, populated by a verbalized confidence call following the
-**Xiong2024 section 3.2 protocol**:
-
-* After the model produces its final action / answer for the trajectory, issue **one
-  additional prompt** asking the model to rate its confidence in the just-produced output on a
-  0-1 scale, with explicit anchor-language ("0.0 = certain wrong, 0.5 = coin flip, 1.0 =
-  certain right").
-* Parse the numeric value with a strict regex; on parse failure, retry once with a clearer
-  prompt; on second failure, write `null` and increment a `final_confidence_parse_failures`
-  counter on the trajectory metadata.
-
-The new `final_confidence` field must be emitted by **all three conditions** (A scope-aware, B
-scope-unaware, C scope-mismatched) so paired analysis is well-defined.
-
-## Deliverables
-
-1. **Library asset** (`assets/library/scope_unaware_planandsolve_v2/`) with full
-   `details.json`, canonical description document, and source code under `files/`. The library
-   keeps backward compatibility: the v1 entry point still exists and still returns
-   trajectories without `final_confidence`; the new v2 entry point returns trajectories that
-   always carry the field.
-2. **Unit tests** in `tasks/t0021_*/code/test_*.py`:
-   * `final_confidence` is in `[0.0, 1.0]` whenever the parse succeeds.
-   * `final_confidence` is `null` when the parse fails.
-   * `final_confidence_parse_failures` count matches the number of `null` rows.
-   * Trajectories from all three conditions (A, B, C) carry the field.
-   * The v1 entry point continues to return the legacy schema.
-3. **Smoke validation**: run the v2 library on a 5-row instance pool with claude-haiku-4-5 and
-   confirm Metric 2 (overconfident_error_rate) returns a non-degenerate, non-zero value when
-   at least one row is wrong with high confidence.
-4. **Verbalized confidence prompt template** copied into `assets/library/.../files/prompts/`
-   verbatim, with an inline citation to Xiong2024 §3.2 in the description document.
-
-## Implementation Notes
-
-* **Prompt protocol**: Xiong2024 section 3.2 says: "After answering, on a separate line,
-  output a number between 0 and 1 representing your confidence that your answer is correct,
-  where 0 means certain wrong and 1 means certain correct." Reuse this exact phrasing.
-* **Two-call vs one-call**: prefer the two-call protocol (final answer first, confidence
-  second) to avoid the model conditioning its answer on its own confidence claim. One-call is
-  acceptable only if the cost difference matters at scale.
-* **Caching**: confidence calls must reuse the same conversation prefix as the answer call to
-  avoid double-charging for the prompt context. Use claude prompt caching where available.
-
-## Cost Estimate
-
-* Smoke validation: 5 rows x 3 conditions x 2 calls each (answer + confidence) with
-  claude-haiku-4-5 = **30 calls**.
-* Haiku input ~4k tokens per call x 30 = **~120k input tokens**.
-* Haiku output ~300 tokens per call x 30 = **~9k output tokens**.
-* At haiku pricing: **<$0.20**.
-* Total: **<$1**.
-
-## Decision Criteria
-
-After this task:
-
-* If unit tests and the smoke validation pass, the library is unblocked for t0023.
-* If the confidence parse fails on more than **20%** of haiku rows, raise the parse failure
-  rate in the description document and either tighten the prompt or move to JSON-mode output.
-  Do not ship a library that is unreliable at parsing.
-
-## Dependencies
-
-None. The library will be reused by t0023.
-
-## Source Suggestion
-
-`S-0012-01`.
-
-## Risks and Fallbacks
-
-* **Sonnet-vs-haiku confidence drift**: haiku may produce flat confidence distributions
-  (everything 0.7-0.9). If so, document this and flag it as an interpretability risk for
-  t0023's Metric 2 analysis. The library does not need to fix the model's calibration; it only
-  needs to emit the field.
-* **Refusal rate increase**: adding a confidence call may push some models toward hedging the
-  primary answer. Compare the smoke-run accuracy at A condition to the t0007/t0012 numbers; if
-  accuracy drops by more than 5 pp, run an ablation with the confidence call moved to a
-  separate trajectory.
-
-## Verification Criteria
-
-* Library asset passes `verify_library_asset.py`.
-* Unit tests pass (`uv run pytest tasks/t0021_*/code/`).
-* Smoke validation produces a non-zero, non-1 value for Metric 2 when ground truth shows at
-  least one high-confidence error.
-* `results/metrics.json` records the smoke run's Metric 2 value to confirm the field is wired
-  end-to-end.
-* Cost in `results/costs.json` is at or below **$1**.
-
-</details>
-
-<details>
-<summary>⏹ 0020 — <strong>v2 Truncation vs Schema Ablation</strong></summary>
+<summary>✅ 0020 — <strong>v2 Truncation vs Schema Ablation</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0020_v2_truncation_vs_schema_ablation` |
-| **Status** | not_started |
+| **Status** | completed |
 | **Effective date** | 2026-05-01 |
 | **Dependencies** | — |
 | **Expected assets** | 1 predictions, 1 answer |
 | **Source suggestion** | `S-0009-04` |
 | **Task types** | [`experiment-run`](../../meta/task_types/experiment-run/), [`data-analysis`](../../meta/task_types/data-analysis/) |
+| **Start time** | 2026-05-01T14:06:25Z |
+| **End time** | 2026-05-01T14:53:30Z |
+| **Step progress** | 9/15 |
+| **Key metrics** | Task Success Rate: **0.95** |
 | **Task page** | [v2 Truncation vs Schema Ablation](../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
 | **Task folder** | [`t0020_v2_truncation_vs_schema_ablation/`](../../tasks/t0020_v2_truncation_vs_schema_ablation/) |
+| **Detailed report** | [results_detailed.md](../../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) |
 
 # v2 Truncation vs Schema Ablation
 
@@ -603,155 +761,36 @@ None.
   the same instance ids appear in all three conditions.
 * Cost in `results/costs.json` is at or below **$2**.
 
-</details>
+**Results summary:**
 
-<details>
-<summary>⏹ 0019 — <strong>v2 Judge Calibration with Sonnet (Substantive + Familial
-Bias)</strong></summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `t0019_v2_judge_calibration_sonnet` |
-| **Status** | not_started |
-| **Effective date** | 2026-05-01 |
-| **Dependencies** | — |
-| **Expected assets** | 1 predictions, 1 answer |
-| **Source suggestion** | `S-0014-02` |
-| **Task types** | [`comparative-analysis`](../../meta/task_types/comparative-analysis/), [`data-analysis`](../../meta/task_types/data-analysis/) |
-| **Task page** | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) |
-| **Task folder** | [`t0019_v2_judge_calibration_sonnet/`](../../tasks/t0019_v2_judge_calibration_sonnet/) |
-
-# v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
-
-## Motivation
-
-t0014 produced a schema-only delta of **+57 pp** for v2 over v1, well above Zhou2022's +16 pp
-and Boisvert2024's +25 pp published bands, and a model-only delta of **-1 pp** that sits below
-Xiong2024's lower edge (0 pp). Two plausible threats to validity remain:
-
-1. **Judge anchoring** (S-0014-02): the haiku judge may be partially scoring "the model
-   produced a parseable tree with subtask-to-atomic edges" rather than "the decomposition is
-   substantively right". If so, the +57 pp gap to literature is a judge artefact, not a schema
-   effect.
-2. **Familial bias** (S-0014-03): the haiku judge gives the v2-haiku annotator a same-family
-   agreement bonus (~5-10 pp per Xiong2024). If so, the -1 pp model-only delta is masking a
-   real sonnet annotator advantage.
-
-Both threats can be tested at the same 43-row pool used in t0014 by swapping the judge prompt
-and judge model. Defending the +57 pp schema-only headline before scaling to a confirmatory
-experiment is the cheapest paper-defensible step on the critical path.
-
-This task covers `S-0014-02` (primary) and `S-0014-03` (secondary).
-
-## Scope
-
-Re-judge **the same 43 v2 rows** that t0014 produced (20 v2-sonnet + 23 v2-haiku) plus the
-matched 20 v1-sonnet rows from t0009/t0014, under two new judge configurations:
-
-* **Substantive critic** prompt (S-0014-02): the judge simulates execution ("verify each
-  atomic, executed in order, would actually solve the problem") and outputs a binary
-  accept/reject plus a per-criterion sub-score.
-* **Model-rotated** judge (S-0014-03): keep the original t0014 judge prompt, swap the judge
-  model from haiku to claude-sonnet-4-6.
-
-Both judges run against the same row pool. Combined output is a 4-condition matrix per row:
-
-| Condition | Annotator | Judge Prompt | Judge Model |
-| --- | --- | --- | --- |
-| Baseline (from t0014) | v1-sonnet / v2-haiku / v2-sonnet | original | haiku |
-| Substantive | v1-sonnet / v2-haiku / v2-sonnet | substantive critic | sonnet |
-| Model-rotated | v1-sonnet / v2-haiku / v2-sonnet | original | sonnet |
-
-This task does not re-annotate. It only re-judges. Annotation rows from t0014 are read in via
-the existing predictions overlay applied by t0015.
-
-## Deliverables
-
-1. **Predictions asset** (`assets/predictions/v2_judge_calibration/`): per-row judge verdicts
-   under the substantive and model-rotated conditions, plus the cached baseline t0014/t0015
-   verdicts as reference. Includes prompt-version and judge-model fields per row.
-2. **Answer asset** (`assets/answer/.../`) addressing the question: "Does the v2 schema retain
-   a 30+ pp accept-rate delta over v1 under a substantive judge and under a sonnet judge, or
-   is the +57 pp t0014 headline an artefact of haiku judge anchoring?"
-3. **Reported metrics** in `results/metrics.json` using the explicit multi-variant format, one
-   variant per (annotator x judge-prompt x judge-model) cell. Each cell reports:
-   * `accept_rate`
-   * `accept_rate_stderr` (Wilson 95% CI)
-   * `efficiency_inference_cost_per_item_usd`
-   * `efficiency_inference_time_per_item_seconds`
-4. **Comparison table** in `results/results_detailed.md` showing the schema-only and
-   model-only deltas under all three judge configurations side by side, with explicit deltas
-   vs t0014.
-
-## Models and Configurations
-
-* **Annotator outputs** (already produced; not re-run): claude-sonnet-4-6 v1 (20 rows), haiku
-  v2 (23 rows), sonnet v2 (20 rows). All from t0014.
-* **Substantive critic judge**: claude-sonnet-4-6 with the new prompt template.
-* **Model-rotated judge**: claude-sonnet-4-6 with the original t0014 judge prompt.
-
-Total judge calls: 43 rows x 2 new judge configurations = **86 sonnet judge calls**.
-
-## Cost Estimate
-
-* Sonnet input ~5k tokens per call x 86 = **~430k input tokens**.
-* Sonnet output ~600 tokens per call x 86 = **~52k output tokens**.
-* At claude-sonnet-4-6 pricing (approximately $3/M in, $15/M out): **about $2.05** sonnet
-  spend.
-* Reserve for retry/repair: **+$1**.
-* Total: **~$3-5**.
-
-This sits well within the remaining $51 budget.
-
-## Decision Criteria
-
-After this task:
-
-* If schema-only delta drops below **+30 pp** under the substantive judge, the +57 pp t0014
-  headline is partly judge-anchoring; reset the headline to the substantive number and revisit
-  S-0014-01 (v3 schema iteration).
-* If schema-only delta stays at or above **+45 pp** under both new judges, the schema effect
-  is robust; commit to the t0023 confirmatory run as planned.
-* If model-only delta swings to **at least +5 pp** under the sonnet judge, the t0014 -1 pp
-  result is a haiku familial bias, and v2-sonnet should be the production annotator going
-  forward.
-* If model-only delta stays within +/-2 pp under the sonnet judge, the v2 schema does the work
-  and sonnet annotation is not worth the cost premium.
-
-## Dependencies
-
-None on uncompleted tasks. Reads from t0014's predictions and t0015's correction overlay; both
-are merged.
-
-## Source Suggestion
-
-This task covers `S-0014-02` (primary) and `S-0014-03` (secondary). Both suggestions remain
-active as `source_suggestion` until t0019 results are merged; the secondary will be marked
-covered in the next brainstorm round if the data answers it.
-
-## Risks and Fallbacks
-
-* **Substantive judge is slow or unstable**: if per-row judge time exceeds 30 s, drop
-  sub-criteria and use a binary verdict only.
-* **Sonnet judge disagrees with itself across the two prompt variants on the same row**: log
-  per-row agreement; report Cohen's kappa across (substantive, model-rotated) at the same
-  model. This is a free signal about prompt-vs-anchoring effects.
-* **The t0014 row pool has masked instances** (we know 3 sonnet timeouts exist; S-0014-05 was
-  rejected): exclude those rows from all conditions consistently and report the effective n.
-
-## Verification Criteria
-
-* Predictions asset passes `verify_predictions_asset.py`.
-* Answer asset passes `verify_answer_asset.py`.
-* `results/metrics.json` contains all 9 cells (3 annotators x 3 judge configs) with
-  accept_rate and stderr.
-* `results/results_detailed.md` contains a side-by-side delta table and an explicit
-  decision-criteria check-off against the four bullets above.
-* Cost in `results/costs.json` is at or below **$5**.
+> **Results Summary: v2 Truncation vs Schema Ablation**
+>
+> **Summary**
+>
+> Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated
+> acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the
+> problem text
+> to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree
+> schema
+> explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0);
+> the
+> pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20).
+>
+> **Metrics**
+>
+> * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%]
+> * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%]
+> * **v2-tree-full accept rate**: **95%** (19 / 20), Wilson 95% CI [76.4%, 99.1%]
+> * **Pure-schema delta** (v2-tree-truncated − v1-flat-truncated): **+56.7 pp**,
+>   Newcombe-Wilson 95%
+> CI [+22.5 pp, +77.5 pp]
+> * **Pure-text delta** (v2-tree-full − v2-tree-truncated): **+5.0 pp**, Newcombe-Wilson 95%
+>   CI
+> [-15.0 pp, +25.5 pp]
+> * **Headline delta** (v2-tree-full − v1-flat-truncated): **+61.7 pp**, Newcombe-Wilson 95%
+>   CI
 
 </details>
-
-## ✅ Completed
 
 <details>
 <summary>✅ 0018 — <strong>Brainstorm session 6: paper-driven slate after t0017

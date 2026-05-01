@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-05-01T13:56:45Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-05-01T14:59:17Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>40</section_count>
-    <char_count>290404</char_count>
-    <byte_count>291068</byte_count>
-    <estimated_tokens>72601</estimated_tokens>
+    <section_count>41</section_count>
+    <char_count>302798</char_count>
+    <byte_count>303492</byte_count>
+    <estimated_tokens>75699</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -145,9 +145,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
+        <id>t0020_v2_truncation_vs_schema_ablation</id>
       </source_ids>
       <content>
-Completed tasks: 18
+Completed tasks: 19
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -256,6 +257,12 @@ ID: t0018_brainstorm_results_6
 Completed: 2026-05-01
 Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
 Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
+
+## v2 Truncation vs Schema Ablation
+ID: t0020_v2_truncation_vs_schema_ablation
+Completed: 2026-05-01
+Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
+Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the problem text to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree schema explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0); the pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20). Metrics * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%] * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%] *...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -263,35 +270,28 @@ Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 l
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0019_v2_judge_calibration_sonnet</id>
-        <id>t0020_v2_truncation_vs_schema_ablation</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 5
+Planned or active tasks: 4
 
 ## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 ID: t0019_v2_judge_calibration_sonnet
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-01
 Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
 
-## v2 Truncation vs Schema Ablation
-ID: t0020_v2_truncation_vs_schema_ablation
-Status: not_started
-Effective date: 2026-05-01
-Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
-
 ## Plan-and-Solve v2 with final_confidence Field
 ID: t0021_plan_and_solve_v2_with_final_confidence
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-01
 Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
 
 ## ABC Harness with Progress Rate and EAI Error Taxonomy
 ID: t0022_abc_harness_progress_rate_and_error_taxonomy
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-01
 Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
 
@@ -306,8 +306,19 @@ Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_p
     <section id="questions-and-answers" source_kind="aggregator">
       <title>Questions and Answers</title>
       <source_name>aggregate_answers_full</source_name>
+      <source_ids>
+        <id>decomposition-v2-schema-vs-truncation</id>
+      </source_ids>
       <content>
-Answers: 0
+Answers: 1
+
+## How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?
+ID: decomposition-v2-schema-vs-truncation
+Created by: t0020_v2_truncation_vs_schema_ablation on 2026-05-01
+Confidence: medium
+Categories: benchmark-annotation, hierarchical-planning
+
+The v2 tree schema explains essentially all of the gap: switching from flat-v1 to tree-v2 while holding the 1500-char truncation constant lifts the haiku judge accept rate from 33% to 90%, a +57 pp jump (95% Wilson CI on the difference: +23 pp to +77 pp). Adding the full untruncated problem text on top of the v2 schema lifts accept from 90% to 95%, a further +5 pp (95% CI -15 pp to +26 pp), which is not statistically significant. The headline +62 pp v2-full vs v1-truncated gap is therefore ~92% pure-schema and ~8% pure-text-length on the 20-row matched pool.
       </content>
     </section>
     <section id="t0001_brainstorm_results_1-research_papers" source_kind="file">
@@ -5213,6 +5224,206 @@ No research required for brainstorming session.
 #### References
 
 No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0020_v2_truncation_vs_schema_ablation-research_code" source_kind="file">
+      <title>t0020_v2_truncation_vs_schema_ablation — v2 Truncation vs Schema Ablation — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0020_v2_truncation_vs_schema_ablation</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0020_v2_truncation_vs_schema_ablation/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0020_v2_truncation_vs_schema_ablation&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 5
+tasks_cited: 4
+libraries_found: 5
+libraries_relevant: 0
+date_completed: &quot;2026-05-01&quot;
+status: &quot;complete&quot;
+---
+### Research Code
+
+#### Task Objective
+
+Run one new annotation condition: the v2 tree schema applied to the same instance pool as t0014, but
+with the problem text truncated to 1500 characters in BOTH annotator and judge prompts (matching the
+t0005/t0009 v1 judge truncation exactly). Decompose the t0014 +57 pp v2-vs-v1 accept-rate delta into
+a pure schema effect (text held constant) and a pure text-length effect (schema held constant).
+
+#### Library Landscape
+
+The library aggregator returns 5 libraries (`scope_aware_react_v1`, `scope_unaware_planandsolve_v1`,
+`matched_mismatch_v1`, plus two ABC-related entries). None are relevant to this task — the entire
+pipeline is plain `claude` CLI calls plus JSON parsing on jsonl files. We re-use the well-tested
+annotator/judge pipeline from `[t0014]` by copying its code into our `code/` directory rather than
+importing across tasks (per the cross-task code reuse rule).
+
+#### Key Findings
+
+##### Truncation Mechanism (v1 baseline, t0005)
+
+The v1 judge in `[t0005]` is the canonical &quot;1500-char truncation&quot; reference. Specifically:
+
+* `tasks/t0005_hierarchical_annotation_pilot_v1/code/constants.py:33`:
+  `JUDGE_PROBLEM_EXCERPT_LIMIT: Final[int] = 1500`.
+* The user prompt template inserts `Problem (truncated to {limit} chars):\n{problem_excerpt}\n\n`.
+* `judge_runner.py:55` defines `_truncate(text, *, limit) -&gt; text[:limit] + &quot;…&quot;` — a hard cut with
+  an ellipsis suffix.
+
+The v1 ANNOTATOR also operated on truncated text (the original v1 design), so &quot;v1-flat-truncated&quot;
+truly does mean both annotator and judge saw a 1500-char excerpt. The task description&#x27;s intent is
+to replicate this on the v2 tree schema: clip the same 1500 chars in both prompts.
+
+##### v2 Annotator/Judge Pipeline (t0009, t0014)
+
+`[t0014]` is the most recent v2 pipeline; it uses claude-sonnet-4-6 for annotation and
+claude-haiku-4-5 for judging. `[t0009]` is the v2-haiku reference (annotator = haiku, judge =
+haiku). Both use:
+
+* `ANNOTATOR_USER_TEMPLATE` with `Problem:\n{problem}` (no truncation).
+* `JUDGE_USER_TEMPLATE` with `Full problem:\n{problem}` (no truncation).
+* A `_call_claude_cli()` helper that invokes `claude -p - --model &lt;id&gt; --output-format json`,
+  captures token usage and `total_cost_usd` from the envelope when present.
+* A `ThreadPoolExecutor`-based parallel runner with idempotent jsonl appends (re-reads existing
+  `_pilot_row_index` values to avoid double-spend).
+* A `select_judge_sample.py` that intersects target indices with rows that have complete
+  hierarchies; missing/incomplete rows are dropped and logged.
+
+For this task we copy the t0014 patterns and modify only the two prompt templates (annotator and
+judge) to insert truncation.
+
+##### Sample Pool Alignment
+
+`[t0014]` produced 20 sonnet-judged rows after 3 sonnet timeouts dropped from the t0009 23-row
+stratified sample. Ids analysis:
+
+* 20 sonnet-judged ids ⊂ 23 haiku-judged ids (haiku\\sonnet = `{7, 8, 14}`).
+* This means the same 20 `pilot_row_index` values can be re-used for v2-tree-truncated to enable
+  paired comparison against both v2-tree-full (haiku) and v2-sonnet-full.
+
+The v1 12-judged-row pool from `[t0005]` does not overlap with these 20 by `pilot_row_index` (v1
+used a small 3-per-benchmark sample on different rows). So v1-vs-v2-truncated comparison is
+benchmark-level accept-rate, not row-level paired.
+
+##### Cost Pricing (haiku-4-5)
+
+`[t0014]` constants set `HAIKU_INPUT_COST_PER_MTOK_USD = 0.80` and
+`HAIKU_OUTPUT_COST_PER_MTOK_USD = 4.00`, matching Anthropic&#x27;s published list price as of 2026-04-30.
+A typical haiku call on a v2 problem (2-3k input tokens, ~500 output tokens) costs about
+$0.005-0.01, so 40 haiku annotation + 40 haiku judge calls fits well under the $2 ceiling.
+
+#### Reusable Code and Assets
+
+For each item below, source = `tasks/t0014_v2_annotator_sonnet_rerun/code/`:
+
+* **v2_annotator.py** (~620 lines) — full annotator harness (parallel, idempotent, budget-capped).
+  Reuse method: **copy into task** and modify `ANNOTATOR_USER_TEMPLATE` to truncate the problem at
+  1500 chars. Key signatures:
+  `run_annotator(*, limit: int | None, dry_run: bool, workers: int) -&gt; RunStats`,
+  `_call_claude_cli(*, prompt: str, model: str, system_prompt: str) -&gt; CliCallResult`,
+  `_parse_v2_response(raw_text) -&gt; tuple[hierarchy | None, gold_actions | None, notes]`. Adaptation:
+  change `ANNOTATOR_USER_TEMPLATE` to insert `problem_excerpt` from a `_truncate` helper. Keep
+  parsing logic intact.
+
+* **v2_judge.py** (~370 lines) — judge harness with same parallel/idempotent pattern. Reuse method:
+  **copy into task** and modify `JUDGE_USER_TEMPLATE` to insert truncated problem. Key signatures:
+  `run_judge(*, limit, workers) -&gt; RunStats`, `_judge_one(*, sample_row, model) -&gt; JudgeOutcome`.
+
+* **select_judge_sample.py** (~95 lines) — selects same `_pilot_row_index` set as upstream sample,
+  intersected with rows that have complete hierarchies. Reuse method: **copy into task**, point
+  `V2_HAIKU_JUDGE_SAMPLE_PATH` at the t0014 sonnet judge sample (the 20-row matched pool) and
+  `V2_RAW_OUTPUT` at our truncated annotator output.
+
+* **compute_stats.py** — three-way comparator with Wilson CIs and `_delta_with_ci(a, b)` helper.
+  Reuse method: **copy into task** and adapt to compute the decomposition deltas instead of the
+  schema/model deltas. The Wilson-CI implementation can stay verbatim.
+
+* **t0005 truncation snippet** — lines 33, 55-58 of t0005&#x27;s `constants.py` and `judge_runner.py`.
+  Reuse method: **copy into task** as `JUDGE_PROBLEM_EXCERPT_LIMIT: Final[int] = 1500` and the
+  `_truncate(text, *, limit) -&gt; str` helper. Use the same helper for annotator-side truncation so
+  both prompts see identical clipped text.
+
+* **t0014 sonnet judge sample** (`v2_sonnet_judge_sample.jsonl`, 20 rows) — the matched pool. Read
+  this file to get the `_pilot_row_index` set; for each id pull the original v1 row from
+  `tasks/t0005_hierarchical_annotation_pilot_v1/.../hierarchical_annotation_v1.jsonl` and
+  re-annotate with truncation on. Reuse method: **read-only data access** (no code copy needed).
+
+#### Lessons Learned
+
+* `[t0009]` and `[t0014]` both encountered 3 sonnet/haiku timeouts on the FrontierScience benchmark
+  (long problem text). With a 1500-char truncation in our condition, those calls become cheaper and
+  shorter — call-failure rate should be at least as low as t0009&#x27;s. Still, set a generous timeout
+  (300s) and log call-failures the same way.
+* The `claude` CLI returns `total_cost_usd` in its JSON envelope for haiku-4-5; trust this number
+  over the char-based estimate when present. `[t0014]` validates this pattern.
+* Idempotent jsonl appends (re-read `_pilot_row_index` set on each invocation) prevent double-spend
+  on retries — critical for a task with a $2 ceiling.
+* `[t0014]`&#x27;s `compute_stats.py` uses Wilson 95% CIs for binomial proportions; that&#x27;s the correct
+  test here (small-n with n=20 means Wilson is much better-calibrated than normal approximation).
+
+#### Recommendations for This Task
+
+1. **Code structure**: copy t0014&#x27;s `v2_annotator.py`, `v2_judge.py`, `select_judge_sample.py`, and
+   `compute_stats.py` into `code/`. Rename to `v2_truncated_annotator.py`, `v2_truncated_judge.py`,
+   etc. Modify only the prompt templates and the path constants.
+2. **Truncation**: define `PROBLEM_EXCERPT_LIMIT: Final[int] = 1500` and a
+   `_truncate(text, *, limit)` helper in `constants.py`. Use it in BOTH `ANNOTATOR_USER_TEMPLATE`
+   and `JUDGE_USER_TEMPLATE`.
+3. **Pool**: read `tasks/t0014_v2_annotator_sonnet_rerun/code/_outputs/v2_sonnet_judge_sample.jsonl`
+   to get the 20-id matched pool; re-annotate those 20 rows from the v1 source jsonl with truncation
+   on; then judge with truncation on.
+4. **Reference data**: for the decomposition, intersect with the 20 haiku-judged rows (haiku judged
+   23, sonnet 20 ⊂ 23). Compute v2-tree-full accept rate from t0009&#x27;s `v2_judge_outcomes.jsonl`
+   filtered to those 20 ids. v1-flat-truncated rate is the population 12-row v1 sample (12 different
+   ids, not paired); report as a separate baseline.
+5. **Stats**: Wilson 95% CIs for each rate; difference-of-proportions Wilson CI for the two
+   decomposition deltas (pure-schema = trunc - v1, pure-text = full - trunc).
+6. **Budget**: 20 annotations + 20 judge calls = 40 haiku calls. At ~$0.01 per call this is ~$0.40,
+   well under the $2 ceiling.
+
+#### Task Index
+
+##### [t0005]
+
+* **Task ID**: `t0005_hierarchical_annotation_pilot_v1`
+* **Name**: Hierarchical Annotation Pilot v1
+* **Status**: completed
+* **Relevance**: Source of the canonical 1500-char truncation pattern
+  (`JUDGE_PROBLEM_EXCERPT_LIMIT`, `_truncate` helper) and the v1-flat-truncated baseline 12-row
+  judge sample. We replicate the truncation logic exactly.
+
+##### [t0009]
+
+* **Task ID**: `t0009_hierarchical_annotation_v2`
+* **Name**: Hierarchical Annotation v2
+* **Status**: completed
+* **Relevance**: Produced the v2-tree-full haiku reference (23-row stratified judge sample). Our
+  v2-tree-full reference points are extracted from this task&#x27;s `v2_judge_outcomes.jsonl` for paired
+  comparison.
+
+##### [t0014]
+
+* **Task ID**: `t0014_v2_annotator_sonnet_rerun`
+* **Name**: V2 Annotator Sonnet Rerun
+* **Status**: completed
+* **Relevance**: The most recent v2 pipeline; we copy its annotator, judge, select_judge_sample, and
+  compute_stats code structure verbatim. Its 20-row sonnet judge sample defines our matched instance
+  pool.
+
+##### [t0019]
+
+* **Task ID**: `t0019_v2_judge_calibration`
+* **Name**: V2 Judge Calibration
+* **Status**: in_progress
+* **Relevance**: Addresses the judge-side calibration of the v2 result; this task addresses the
+  input-side. Together they decompose the t0014 +57 pp delta. Our task does NOT depend on t0019 (per
+  `task.json` `dependencies: []`).
       </content>
     </section>
   </sections>

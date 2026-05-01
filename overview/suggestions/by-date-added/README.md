@@ -1,12 +1,12 @@
 # Suggestions by Date Added
 
-57 suggestion(s) grouped by derived added date.
+62 suggestion(s) grouped by derived added date.
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## 2026-05-01 (8)
+## 2026-05-01 (13)
 
 ## High Priority
 
@@ -36,6 +36,28 @@ confidence + abstain semantics, exposed to t0009-style annotation tasks.
 
 </details>
 
+<details>
+<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
+pure-schema CI</strong> (S-0020-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
+t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
+judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
+extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
+half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
+possible follow-up that materially improves statistical power.
+
+</details>
+
 ## Medium Priority
 
 <details>
@@ -56,6 +78,52 @@ task_ids. Multiple rows share the same task_id (different granularity levels of 
 problem), which means the pairing logic treats them as separate predictions for the same task.
 A deduplication or re-keying correction task should produce a version of the dataset with
 unique task_ids per row, or document the intended semantics of multi-row task_ids.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Scale the truncated-v2 condition to n=80 to detect a true +5 pp
+pure-text effect if it exists</strong> (S-0020-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The pure-text delta on this run is +5 pp with a CI of [-15, +26] pp at n=20. To resolve
+whether the true pure-text effect is zero, +5 pp, or larger, the experiment needs n>=80 per
+condition (Newcombe-Wilson half-width drops to ~10 pp at n=80 vs ~20 pp at n=20). This
+requires running the v2 annotator and judge on 60 additional matched rows from the same
+hierarchical-annotation-v1 source dataset, with both truncated and full conditions. Estimated
+cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would
+either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a
+meaningful contributor.
+
+</details>
+
+<details>
+<summary>📊 <strong>Sonnet judge rerun on the v2-tree-truncated condition to confirm
+schema effect is not haiku-specific</strong> (S-0020-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+All three conditions in t0020 use a haiku judge for fairness, but this means the result is
+haiku-judge accept rates rather than ground-truth quality. A sonnet rerun on the
+v2-tree-truncated annotations (existing 20 rows, no new annotator calls) would confirm whether
+the +57 pp pure-schema effect is robust to a stronger judge or whether it shrinks. t0014
+already showed sonnet times out on some rows, so the rerun should set max_turns conservatively
+and accept timeouts as null verdicts rather than retries. Estimated cost ~$3-5 sonnet judge.
 
 </details>
 
@@ -108,6 +176,28 @@ confirmatory N would decrease proportionally.
 </details>
 
 <details>
+<summary>📊 <strong>Cost-quality Pareto chart across t0009/t0014/t0020 to inform
+downstream task budgets</strong> (S-0020-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-05` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) |
+
+Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality),
+v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A
+Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply
+communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by
+it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC
+harness budget planning.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Multi-provider replication: run Phase 2 harness with GPT-4o and
 Gemini 1.5 Pro</strong> (S-0012-05)</summary>
 
@@ -126,6 +216,28 @@ model-specific or generalizes across providers. The harness's model_call.py abst
 makes this a configuration change rather than a code change. Defer until the confirmatory N
 result is available from S-0012-02 to avoid spending budget before the primary hypothesis is
 tested.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Truncation-budget sweep to map the marginal value of additional
+context</strong> (S-0020-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) |
+
+t0020 shows 1500 chars is sufficient on 3 of 4 benchmarks but loses ~17 pp on SWE-bench
+Verified. A finer truncation grid (500 / 1000 / 1500 / 2500 / 5000 / full) on a
+SWE-bench-heavy pool would map where the marginal value of additional context drops to zero.
+This is a single-condition sweep (v2 schema held constant; only the truncation budget varies)
+so the cost scales linearly with the number of budget points. Estimated cost: 6 budgets x 20
+SWE-bench rows x 2 calls per row x ~$0.07 = ~$17.
 
 </details>
 

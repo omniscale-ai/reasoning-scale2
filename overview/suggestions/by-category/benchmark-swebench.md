@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-swebench`
 
-4 suggestion(s) in category
-[`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) **3 open** (3 medium),
-**1 closed**.
+5 suggestion(s) in category
+[`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) **4 open** (3 medium, 1
+low), **1 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -70,6 +70,30 @@ The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivi
 re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo
 distributions; this informs whether the 4-8 boundary is too narrow for Phase 2's atomic-edit
 experiments.
+
+</details>
+
+## Low Priority
+
+<details>
+<summary>🧪 <strong>Truncation-budget sweep to map the marginal value of additional
+context</strong> (S-0020-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-04` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`benchmark-swebench`](../../../meta/categories/benchmark-swebench/) |
+
+t0020 shows 1500 chars is sufficient on 3 of 4 benchmarks but loses ~17 pp on SWE-bench
+Verified. A finer truncation grid (500 / 1000 / 1500 / 2500 / 5000 / full) on a
+SWE-bench-heavy pool would map where the marginal value of additional context drops to zero.
+This is a single-condition sweep (v2 schema held constant; only the truncation budget varies)
+so the cost scales linearly with the number of budget points. Estimated cost: 6 budgets x 20
+SWE-bench rows x 2 calls per row x ~$0.07 = ~$17.
 
 </details>
 

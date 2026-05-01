@@ -1,8 +1,8 @@
-# Metrics Results (3 metrics, 12 results)
+# Metrics Results (3 metrics, 15 results)
 
 ## Key Metrics
 
-* [Task Success Rate](task_success_rate.md) (3 results)
+* [Task Success Rate](task_success_rate.md) (6 results)
 
 ## All Metrics
 

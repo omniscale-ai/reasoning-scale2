@@ -1,4 +1,4 @@
-# ⏹ v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
+# ⏳ v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0019_v2_judge_calibration_sonnet` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-05-01T14:02:34Z |
 | **Source suggestion** | `S-0014-02` |
 | **Task types** | `comparative-analysis`, `data-analysis` |
 | **Expected assets** | 1 predictions, 1 answer |

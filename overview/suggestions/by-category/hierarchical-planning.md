@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-19 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **12 open** (2
-high, 7 medium, 3 low), **7 closed**.
+22 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **15 open** (3
+high, 9 medium, 3 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -48,6 +48,28 @@ slice with a single shared LLM provider, recording trajectory_records.jsonl per 
 computing the registered metrics task_success_rate, avg_decisions_per_task, and
 overconfident_error_rate per condition. The harness must depend on this library only via the
 trajectory schema, never via internal helpers, to preserve isolation.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
+pure-schema CI</strong> (S-0020-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
+t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
+judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
+extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
+half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
+possible follow-up that materially improves statistical power.
 
 </details>
 
@@ -188,6 +210,30 @@ estimate: 4-6 hours of human review time at $50/hour = $200-300.
 </details>
 
 <details>
+<summary>🧪 <strong>Scale the truncated-v2 condition to n=80 to detect a true +5 pp
+pure-text effect if it exists</strong> (S-0020-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The pure-text delta on this run is +5 pp with a CI of [-15, +26] pp at n=20. To resolve
+whether the true pure-text effect is zero, +5 pp, or larger, the experiment needs n>=80 per
+condition (Newcombe-Wilson half-width drops to ~10 pp at n=80 vs ~20 pp at n=20). This
+requires running the v2 annotator and judge on 60 additional matched rows from the same
+hierarchical-annotation-v1 source dataset, with both truncated and full conditions. Estimated
+cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would
+either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a
+meaningful contributor.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Scope a v3 schema iteration motivated by per-benchmark
 schema-only deltas, not aggregate</strong> (S-0014-01)</summary>
 
@@ -209,6 +255,28 @@ but this is potentially confounded with the truncation fix bundled into v2 (S-00
 already adequate. A v3 schema should target SWE/tau-style structured-action tasks specifically
 — e.g., add explicit precondition/postcondition fields to atomics, since the SWE/tau cells
 already saturate the high-level subtask abstraction.
+
+</details>
+
+<details>
+<summary>📊 <strong>Sonnet judge rerun on the v2-tree-truncated condition to confirm
+schema effect is not haiku-specific</strong> (S-0020-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+All three conditions in t0020 use a haiku judge for fairness, but this means the result is
+haiku-judge accept rates rather than ground-truth quality. A sonnet rerun on the
+v2-tree-truncated annotations (existing 20 rows, no new annotator calls) would confirm whether
+the +57 pp pure-schema effect is robust to a stronger judge or whether it shrinks. t0014
+already showed sonnet times out on some rows, so the rerun should set max_turns conservatively
+and accept timeouts as null verdicts rather than retries. Estimated cost ~$3-5 sonnet judge.
 
 </details>
 

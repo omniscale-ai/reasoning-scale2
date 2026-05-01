@@ -4,15 +4,15 @@
   <a href="papers/"><img src="https://img.shields.io/badge/Papers-21-4169E1" alt="Papers"></a>
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-8-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
-  <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-3-9370DB" alt="Predictions"></a>
+  <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-4-9370DB" alt="Predictions"></a>
   <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-5-20B2AA" alt="Libraries"></a>
-  <a href="answers/"><img src="https://img.shields.io/badge/Answers-0-CD853F" alt="Answers"></a>
+  <a href="answers/"><img src="https://img.shields.io/badge/Answers-1-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
   <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-23-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-57-DAA520" alt="Suggestions"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-62-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-3-DC143C" alt="Results"></a>
@@ -30,15 +30,15 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (7K) |
-[full](llm-context/full.xml) (75K) | [roadmap](llm-context/roadmap.xml) (24K) |
-[results](llm-context/results-deep-dive.xml) (59K) |
+[full](llm-context/full.xml) (82K) | [roadmap](llm-context/roadmap.xml) (24K) |
+[results](llm-context/results-deep-dive.xml) (66K) |
 [assets](llm-context/literature-and-assets.xml) (15K)
 
-*Last updated: 2026-05-01 13:56 UTC*
+*Last updated: 2026-05-01 14:59 UTC*
 
-* **Budget**: **$49** spent of $100
-* **Remaining**: **$51**
-* **Usage**: `██████████░░░░░░░░░░` 48.7%
+* **Budget**: **$52** spent of $100
+* **Remaining**: **$48**
+* **Usage**: `██████████░░░░░░░░░░` 51.6%
 
 ---
 
@@ -48,20 +48,19 @@ No daily news yet.
 
 ---
 
-## [In Progress (0)](tasks/by-status/in_progress.md)
+## [In Progress (3)](tasks/by-status/in_progress.md)
 
-No tasks in progress.
+| # | Task | Started |
+|---|------|---------|
+| 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | 2026-05-01 14:04 |
+| 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | 2026-05-01 14:03 |
+| 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | 2026-05-01 14:02 |
 
 ---
 
-## [Ready to Start (4)](tasks/by-status/not_started.md)
+## [Ready to Start (0)](tasks/by-status/not_started.md)
 
-| # | Task | Description | Date Added |
-|---|------|-------------|------------|
-| 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | [`description`](../tasks/t0019_v2_judge_calibration_sonnet/task_description.md) | 2026-05-01 |
-| 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`description`](../tasks/t0020_v2_truncation_vs_schema_ablation/task_description.md) | 2026-05-01 |
-| 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`description`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/task_description.md) | 2026-05-01 |
-| 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`description`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/task_description.md) | 2026-05-01 |
+No tasks ready to start.
 
 ---
 
@@ -73,10 +72,11 @@ No tasks in progress.
 
 ---
 
-## [Recently Completed (18 total)](tasks/by-status/completed.md)
+## [Recently Completed (19 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
 | 0018 | [Brainstorm session 6: paper-driven slate after t0017 literature survey](../overview/tasks/task_pages/t0018_brainstorm_results_6.md) | [`results`](../tasks/t0018_brainstorm_results_6/results/results_detailed.md) | 2026-05-01 13:30 |
 | 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`results`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/results_detailed.md) | 2026-05-01 04:43 |
 | 0017 | [Literature: Hierarchical Agents and LLM-as-Judge](../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) | [`results`](../tasks/t0017_literature_hierarchical_agents_and_judges/results/results_detailed.md) | 2026-05-01 01:40 |
@@ -86,9 +86,8 @@ No tasks in progress.
 | 0013 | [Brainstorm session 4: v2 schema-vs-model confound and proxy-benchmark labels](../overview/tasks/task_pages/t0013_brainstorm_results_4.md) | [`results`](../tasks/t0013_brainstorm_results_4/results/results_detailed.md) | 2026-04-30 18:00 |
 | 0009 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`results`](../tasks/t0009_hierarchical_annotation_v2/results/results_detailed.md) | 2026-04-30 00:53 |
 | 0008 | [Brainstorm session 3: insert v2 re-annotation, plan Phase 2 smoke](../overview/tasks/task_pages/t0008_brainstorm_results_3.md) | [`results`](../tasks/t0008_brainstorm_results_3/results/results_detailed.md) | 2026-04-30 00:00 |
-| 0010 | [Matched-mismatch library: condition C with deliberately wrong granularity tags](../overview/tasks/task_pages/t0010_matched_mismatch_library.md) | [`results`](../tasks/t0010_matched_mismatch_library/results/results_detailed.md) | 2026-04-29 23:46 |
 
-*8 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*9 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -98,13 +97,16 @@ No tasks in progress.
 
 | # | Task | Variant | Value |
 |---|------|---------|-------|
-| 1 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition A: scope-aware ReAct | **0.025** |
-| 2 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition B: scope-unaware Plan-and-Solve | **0.0** |
-| 3 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition C: scope-mismatched (random) | **0.0** |
+| 1 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | v2 tree schema, full untruncated problem text | **0.95** |
+| 2 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | v2 tree schema, problem truncated to 1500 chars | **0.9** |
+| 3 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | v1 flat schema, problem truncated to 1500 chars | **0.3333** |
+| 4 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition A: scope-aware ReAct | **0.025** |
+| 5 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition B: scope-unaware Plan-and-Solve | **0.0** |
+| 6 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition C: scope-mismatched (random) | **0.0** |
 
 ---
 
-## [Recent Suggestions (43 open)](suggestions/)
+## [Recent Suggestions (48 open)](suggestions/)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -192,97 +194,92 @@ any retraining; this is purely a prompting change.
 </details>
 
 <details>
-<summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
-global_atomics</strong> (S-0009-02)</summary>
+<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
+pure-schema CI</strong> (S-0020-01)</summary>
 
-**Kind**: technique | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
 
-The two needs-revision rows on FrontierScience-Olympiad both failed for the same reason: the
-annotator emitted hierarchy.global_atomics correctly but produced gold_actions.global_atomics
-empty or merged into a subtask. This is a structural-mirror inconsistency, not a content
-error. Add a post-parse validator to v2_annotator.py that detects this pattern, re-prompts the
-model on just the gold_actions block (or rejects the row to the parse-failure bucket), and
-logs the rate. This should bring the FrontierScience-Olympiad accept rate from 67% to ~100%
-with zero additional model cost on the happy path.
-
-</details>
-
-<details>
-<summary>📊 <strong>Run a single-blind human review pass on the 115 v2 rows and
-report human-vs-judge agreement (Cohen's kappa)</strong> (S-0009-03)</summary>
-
-**Kind**: evaluation | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
-
-v2 is judged only by a single LLM call per row. The dataset is 'LLM-judge-acceptable' but not
-'human-validated'. To upgrade to v3, recruit 1-2 human annotators to review the same 23-row
-stratified sample (or all 115 rows for higher precision) and emit acceptable/needs-revision
-verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
-+58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
-estimate: 4-6 hours of human review time at $50/hour = $200-300.
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
+t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
+judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
+extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
+half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
+possible follow-up that materially improves statistical power.
 
 </details>
 
 <details>
-<summary>📂 <strong>Expand the v2 dataset from 115 rows to >=200 rows by sampling
-additional benchmark instances</strong> (S-0009-05)</summary>
+<summary>📊 <strong>Sonnet judge rerun on the v2-tree-truncated condition to confirm
+schema effect is not haiku-specific</strong> (S-0020-02)</summary>
 
-**Kind**: dataset | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
-[t0009_hierarchical_annotation_v2](../tasks/t0009_hierarchical_annotation_v2/)
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
 
-The Phase 1 success criterion is >=100 annotated tasks per condition; v2 is at 115 which is
-just over the threshold. The downstream Phase 2 experiments need stratification by difficulty
-AND by benchmark, which becomes statistically thin at 5-6 rows per stratum. Expand to >=200
-rows by sampling 20-25 additional rows from each of the four benchmarks (especially the
-smaller ones: SWE-bench Verified, tau-bench). Re-use v2_annotator.py at the same haiku-CLI
-rate, ~$5-6 added cost. Inherits S-0005-01.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Scope a v3 schema iteration motivated by per-benchmark
-schema-only deltas, not aggregate</strong> (S-0014-01)</summary>
-
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-04-30 | **Source**:
-[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
-
-The aggregate schema-only delta is +57 pp (90% v2-sonnet vs 33% v1-sonnet) but the
-per-benchmark split is bimodal: FrontierScience-Olympiad and WorkArena++ are at +100 pp (0% ->
-100%), while SWE-bench Verified and tau-bench are at +13-17 pp (67% -> 80-83%). The +100 pp
-cells suggest the v2 tree schema converts unsolvable v1 outputs into acceptable v2 outputs,
-but this is potentially confounded with the truncation fix bundled into v2 (S-0009-04). The
-+13-17 pp cells suggest a real but modest schema improvement on benchmarks where v1 was
-already adequate. A v3 schema should target SWE/tau-style structured-action tasks specifically
-— e.g., add explicit precondition/postcondition fields to atomics, since the SWE/tau cells
-already saturate the high-level subtask abstraction.
+All three conditions in t0020 use a haiku judge for fairness, but this means the result is
+haiku-judge accept rates rather than ground-truth quality. A sonnet rerun on the
+v2-tree-truncated annotations (existing 20 rows, no new annotator calls) would confirm whether
+the +57 pp pure-schema effect is robust to a stronger judge or whether it shrinks. t0014
+already showed sonnet times out on some rows, so the rerun should set max_turns conservatively
+and accept timeouts as null verdicts rather than retries. Estimated cost ~$3-5 sonnet judge.
 
 </details>
 
 <details>
-<summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
-hypothesis on the model-only delta</strong> (S-0014-03)</summary>
+<summary>🧪 <strong>Scale the truncated-v2 condition to n=80 to detect a true +5 pp
+pure-text effect if it exists</strong> (S-0020-03)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
-[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
 
-The model-only delta of -1 pp sits below Xiong2024's lower edge (0 pp). Xiong2024 documents
-that judges trained on the same model family as the annotator show a small positive familial
-bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which
-means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row
-v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of
-haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the
-haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near
-zero, sonnet really does provide no annotator-quality lift on this composite. Cost ~$2 with
-sonnet judge on 43 rows.
+The pure-text delta on this run is +5 pp with a CI of [-15, +26] pp at n=20. To resolve
+whether the true pure-text effect is zero, +5 pp, or larger, the experiment needs n>=80 per
+condition (Newcombe-Wilson half-width drops to ~10 pp at n=80 vs ~20 pp at n=20). This
+requires running the v2 annotator and judge on 60 additional matched rows from the same
+hierarchical-annotation-v1 source dataset, with both truncated and full conditions. Estimated
+cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would
+either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a
+meaningful contributor.
 
 </details>
 
-*33 more open suggestions → [open suggestions](suggestions/)*
+<details>
+<summary>🧪 <strong>Truncation-budget sweep to map the marginal value of additional
+context</strong> (S-0020-04)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+t0020 shows 1500 chars is sufficient on 3 of 4 benchmarks but loses ~17 pp on SWE-bench
+Verified. A finer truncation grid (500 / 1000 / 1500 / 2500 / 5000 / full) on a
+SWE-bench-heavy pool would map where the marginal value of additional context drops to zero.
+This is a single-condition sweep (v2 schema held constant; only the truncation budget varies)
+so the cost scales linearly with the number of budget points. Estimated cost: 6 budgets x 20
+SWE-bench rows x 2 calls per row x ~$0.07 = ~$17.
+
+</details>
+
+<details>
+<summary>📊 <strong>Cost-quality Pareto chart across t0009/t0014/t0020 to inform
+downstream task budgets</strong> (S-0020-05)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality),
+v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A
+Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply
+communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by
+it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC
+harness budget planning.
+
+</details>
+
+*38 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (10)](suggestions/)
+## [High Priority Suggestions (11)](suggestions/)
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
@@ -301,6 +298,22 @@ ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-a
 that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
 annotation rerun. Deliverable: a small library that wraps the existing judge call with
 confidence + abstain semantics, exposed to t0009-style annotation tasks.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
+pure-schema CI</strong> (S-0020-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
+t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
+judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
+extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
+half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
+possible follow-up that materially improves statistical power.
 
 </details>
 
@@ -429,28 +442,29 @@ trajectory schema, never via internal helpers, to preserve isolation.
 
 </details>
 
-<details>
-<summary>🧪 <strong>Add a uniform-random vs. adversarial vs. matched ablation to
-t0012</strong> (S-0010-01)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0010_matched_mismatch_library](../tasks/t0010_matched_mismatch_library/)
-
-When t0012 runs the A-vs-B-vs-C harness, include three C-condition variants in addition to A
-and B: matched_mismatch_v1 with mismatch_strategy='random' and seed=0, matched_mismatch_v1
-with mismatch_strategy='adversarial', and a phase-randomised C control (random walk over the
-v2 hierarchy with the correct tag). The three-way ablation decomposes the C-condition gap into
-'phase order matters', 'any wrong tag matters', and 'most-distant wrong tag matters',
-preventing the granularity-mismatch effect from being conflated with a step-order-mismatch
-effect (see research_papers.md, Wang2023 and Zhou2022).
-
-</details>
+*1 more high-priority suggestion → [high-priority suggestions](suggestions/)*
 
 ---
 
-## [Recent Answers (0 total)](answers/)
+## [Recent Answers (1 total)](answers/)
 
-No answers yet.
+<details>
+<summary><strong>How much of the +57 pp v2-tree-full vs v1-flat-truncated
+acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema
+itself versus the full (untruncated) problem text?</strong></summary>
+
+**Confidence**: medium | **Date**: 2026-05-01 | **Full answer**:
+[`decomposition-v2-schema-vs-truncation`](../tasks/t0020_v2_truncation_vs_schema_ablation/assets/answer/decomposition-v2-schema-vs-truncation/)
+
+The v2 tree schema explains essentially all of the gap: switching from flat-v1 to tree-v2
+while holding the 1500-char truncation constant lifts the haiku judge accept rate from 33% to
+90%, a +57 pp jump (95% Wilson CI on the difference: +23 pp to +77 pp). Adding the full
+untruncated problem text on top of the v2 schema lifts accept from 90% to 95%, a further +5 pp
+(95% CI -15 pp to +26 pp), which is not statistically significant. The headline +62 pp v2-full
+vs v1-truncated gap is therefore ~92% pure-schema and ~8% pure-text-length on the 20-row
+matched pool.
+
+</details>
 
 ---
 
@@ -1014,10 +1028,11 @@ No models yet.
 
 ---
 
-## [Latest Predictions (3 total)](predictions/)
+## [Latest Predictions (4 total)](predictions/)
 
 | Name | Source | Created |
 |------|--------|---------|
+| [v2 tree-schema annotations on truncated 1500-char problems (haiku judge verdicts)](../tasks/t0020_v2_truncation_vs_schema_ablation/assets/predictions/v2-truncated-ablation/description.md) | [20](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | 2026-05-01 |
 | [Phase 2 smoke condition C (scope-mismatched random) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-c/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
 | [Phase 2 smoke condition B (scope-unaware Plan-and-Solve) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-b/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
 | [Phase 2 smoke condition A (scope-aware ReAct) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-a/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
@@ -1036,11 +1051,12 @@ No models yet.
 
 ---
 
-## [Cost Leaders (4 tasks with spend)](costs/)
+## [Cost Leaders (5 tasks with spend)](costs/)
 
 | Task | Cost | Date |
 |------|------|------|
 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`$21.16`](../tasks/t0014_v2_annotator_sonnet_rerun/results/costs.json) | 2026-04-30 23:59 |
 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`$18.37`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/costs.json) | 2026-05-01 04:43 |
 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`$9.10`](../tasks/t0009_hierarchical_annotation_v2/results/costs.json) | 2026-04-30 00:53 |
+| [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`$2.93`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/costs.json) | 2026-05-01 14:53 |
 | [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`$0.06`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/costs.json) | 2026-04-29 20:14 |

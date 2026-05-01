@@ -5,7 +5,7 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (14)](../papers/by-category/agent-evaluation.md) | [Suggestions
-(29)](../suggestions/by-category/agent-evaluation.md) | [Datasets
+(31)](../suggestions/by-category/agent-evaluation.md) | [Datasets
 (4)](../datasets/by-category/agent-evaluation.md) | [Libraries
 (4)](../libraries/by-category/agent-evaluation.md) | [Predictions
 (3)](../predictions/by-category/agent-evaluation.md)
@@ -691,7 +691,7 @@ hierarchical-judge designs are exploring.
 
 No answers in this category.
 
-## Suggestions (20 open, 9 closed)
+## Suggestions (22 open, 9 closed)
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
@@ -760,6 +760,38 @@ prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScienc
 SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family.
 Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope:
 any retraining; this is purely a prompting change.
+
+</details>
+
+<details>
+<summary>📊 <strong>Sonnet judge rerun on the v2-tree-truncated condition to confirm
+schema effect is not haiku-specific</strong> (S-0020-02)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+All three conditions in t0020 use a haiku judge for fairness, but this means the result is
+haiku-judge accept rates rather than ground-truth quality. A sonnet rerun on the
+v2-tree-truncated annotations (existing 20 rows, no new annotator calls) would confirm whether
+the +57 pp pure-schema effect is robust to a stronger judge or whether it shrinks. t0014
+already showed sonnet times out on some rows, so the rerun should set max_turns conservatively
+and accept timeouts as null verdicts rather than retries. Estimated cost ~$3-5 sonnet judge.
+
+</details>
+
+<details>
+<summary>📊 <strong>Cost-quality Pareto chart across t0009/t0014/t0020 to inform
+downstream task budgets</strong> (S-0020-05)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality),
+v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A
+Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply
+communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by
+it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC
+harness budget planning.
 
 </details>
 

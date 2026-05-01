@@ -4,9 +4,11 @@ Manual or LLM-assisted gold-action annotation across the three granularity level
 
 [Back to Dashboard](../README.md)
 
-**Detail pages**: [Papers (1)](../papers/by-category/benchmark-annotation.md) | [Suggestions
-(18)](../suggestions/by-category/benchmark-annotation.md) | [Datasets
-(4)](../datasets/by-category/benchmark-annotation.md)
+**Detail pages**: [Papers (1)](../papers/by-category/benchmark-annotation.md) | [Answers
+(1)](../answers/by-category/benchmark-annotation.md) | [Suggestions
+(22)](../suggestions/by-category/benchmark-annotation.md) | [Datasets
+(4)](../datasets/by-category/benchmark-annotation.md) | [Predictions
+(1)](../predictions/by-category/benchmark-annotation.md)
 
 ---
 
@@ -59,11 +61,93 @@ Multimodal or SWE-bench Pro if Verified saturates further before Phase 2 complet
 |---|------|--------|-----------|
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
 
-## Answers (0)
+## Answers (1)
 
-No answers in this category.
+<details>
+<summary><strong>How much of the +57 pp v2-tree-full vs v1-flat-truncated
+acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema
+itself versus the full (untruncated) problem text?</strong></summary>
 
-## Suggestions (12 open, 6 closed)
+**Confidence**: medium | **Date**: 2026-05-01 | **Full answer**:
+[`decomposition-v2-schema-vs-truncation`](../../tasks/t0020_v2_truncation_vs_schema_ablation/assets/answer/decomposition-v2-schema-vs-truncation/)
+
+The v2 tree schema explains essentially all of the gap: switching from flat-v1 to tree-v2
+while holding the 1500-char truncation constant lifts the haiku judge accept rate from 33% to
+90%, a +57 pp jump (95% Wilson CI on the difference: +23 pp to +77 pp). Adding the full
+untruncated problem text on top of the v2 schema lifts accept from 90% to 95%, a further +5 pp
+(95% CI -15 pp to +26 pp), which is not statistically significant. The headline +62 pp v2-full
+vs v1-truncated gap is therefore ~92% pure-schema and ~8% pure-text-length on the 20-row
+matched pool.
+
+</details>
+
+## Suggestions (16 open, 6 closed)
+
+<details>
+<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
+pure-schema CI</strong> (S-0020-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
+t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
+judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
+extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
+half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
+possible follow-up that materially improves statistical power.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Scale the truncated-v2 condition to n=80 to detect a true +5 pp
+pure-text effect if it exists</strong> (S-0020-03)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+The pure-text delta on this run is +5 pp with a CI of [-15, +26] pp at n=20. To resolve
+whether the true pure-text effect is zero, +5 pp, or larger, the experiment needs n>=80 per
+condition (Newcombe-Wilson half-width drops to ~10 pp at n=80 vs ~20 pp at n=20). This
+requires running the v2 annotator and judge on 60 additional matched rows from the same
+hierarchical-annotation-v1 source dataset, with both truncated and full conditions. Estimated
+cost: 60 haiku annotations + 120 haiku judge verdicts at ~$0.07/call = ~$13. The result would
+either confirm the schema-dominance claim with tight bounds or upgrade pure-text to a
+meaningful contributor.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Truncation-budget sweep to map the marginal value of additional
+context</strong> (S-0020-04)</summary>
+
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+t0020 shows 1500 chars is sufficient on 3 of 4 benchmarks but loses ~17 pp on SWE-bench
+Verified. A finer truncation grid (500 / 1000 / 1500 / 2500 / 5000 / full) on a
+SWE-bench-heavy pool would map where the marginal value of additional context drops to zero.
+This is a single-condition sweep (v2 schema held constant; only the truncation budget varies)
+so the cost scales linearly with the number of budget points. Estimated cost: 6 budgets x 20
+SWE-bench rows x 2 calls per row x ~$0.07 = ~$17.
+
+</details>
+
+<details>
+<summary>📊 <strong>Cost-quality Pareto chart across t0009/t0014/t0020 to inform
+downstream task budgets</strong> (S-0020-05)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-01 | **Source**:
+[t0020_v2_truncation_vs_schema_ablation](../../tasks/t0020_v2_truncation_vs_schema_ablation/)
+
+Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality),
+v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A
+Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply
+communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by
+it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC
+harness budget planning.
+
+</details>
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty

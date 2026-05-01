@@ -1,7 +1,7 @@
 # Suggestions: `agent-evaluation`
 
-29 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**20 open** (7 high, 8 medium, 5 low), **9 closed**.
+31 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
+**22 open** (7 high, 9 medium, 6 low), **9 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -327,6 +327,28 @@ later-merged task. This is the cheapest insurance against silent schema drift.
 </details>
 
 <details>
+<summary>📊 <strong>Sonnet judge rerun on the v2-tree-truncated condition to confirm
+schema effect is not haiku-specific</strong> (S-0020-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+All three conditions in t0020 use a haiku judge for fairness, but this means the result is
+haiku-judge accept rates rather than ground-truth quality. A sonnet rerun on the
+v2-tree-truncated annotations (existing 20 rows, no new annotator calls) would confirm whether
+the +57 pp pure-schema effect is robust to a stronger judge or whether it shrinks. t0014
+already showed sonnet times out on some rows, so the rerun should set max_turns conservatively
+and accept timeouts as null verdicts rather than retries. Estimated cost ~$3-5 sonnet judge.
+
+</details>
+
+<details>
 <summary>🔧 <strong>Use SELF-DISCOVER reasoning scaffolds as the scope-aware (A)
 condition prompt template</strong> (S-0017-03)</summary>
 
@@ -392,6 +414,28 @@ numerical computation, retrieval, and code execution for most problems. Adding a
 execution tool and a retrieval tool would lift accuracy above the current floor and make
 A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
 confirmatory N would decrease proportionally.
+
+</details>
+
+<details>
+<summary>📊 <strong>Cost-quality Pareto chart across t0009/t0014/t0020 to inform
+downstream task budgets</strong> (S-0020-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-05` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) |
+
+Three conditions now exist on the same 20-row pool: v1-flat-truncated (cheap, low quality),
+v2-tree-truncated (cheap, high quality), v2-tree-full (expensive, slightly higher quality). A
+Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would crisply
+communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by
+it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC
+harness budget planning.
 
 </details>
 

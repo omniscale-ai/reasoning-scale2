@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-01T13:56:45Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-01T14:59:17Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>73522</char_count>
-    <byte_count>73615</byte_count>
-    <estimated_tokens>18380</estimated_tokens>
+    <char_count>75406</char_count>
+    <byte_count>75499</byte_count>
+    <estimated_tokens>18851</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -149,9 +149,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0016_brainstorm_results_5</id>
         <id>t0017_literature_hierarchical_agents_and_judges</id>
         <id>t0018_brainstorm_results_6</id>
+        <id>t0020_v2_truncation_vs_schema_ablation</id>
       </source_ids>
       <content>
-Completed tasks: 18
+Completed tasks: 19
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -260,6 +261,12 @@ ID: t0018_brainstorm_results_6
 Completed: 2026-05-01
 Short description: Brainstorm 6: paper-asap slate — 5 new tasks (t0019-t0023), 4 reprioritizations, 2 rejections.
 Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 literature findings and t0014 deconfound results into a paper-driven experimental slate. Created 5 new tasks (t0019-t0023) covering RQ1, RQ2, RQ4, RQ5, RQ6, RQ7, and RQ9; applied 5 correction files (3 reprioritizations + 2 rejections); standardized model defaults (haiku for annotation/judging, sonnet for agent runs). Metrics * **5 new tasks created**: t0019, t0020, t0021, t0022, t0023. * **5 corrections applied**: 3 reprioritizations (S-0009-03, S-0003-01, S-0012-03), 2 rejections (S-0014-05, S-0002-09). * **7 suggestions covered by new tasks** (linked via `source_suggestion`): S-0014-02, S-0014-03, S-0009-04, S-0012-01...
+
+## v2 Truncation vs Schema Ablation
+ID: t0020_v2_truncation_vs_schema_ablation
+Completed: 2026-05-01
+Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
+Result summary: Results Summary: v2 Truncation vs Schema Ablation Summary Ran the third condition needed to decompose the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap from t0014. Held the v2 tree schema constant and re-truncated the problem text to 1500 chars in both the haiku annotator and haiku judge prompts. Result: the v2 tree schema explains essentially all of the gap. The pure-schema effect is **+57 pp** (CI excludes 0); the pure-text-length effect is **+5 pp** (CI straddles 0 and is not significant at n=20). Metrics * **v1-flat-truncated accept rate**: **33%** (4 / 12), Wilson 95% CI [13.8%, 60.9%] * **v2-tree-truncated accept rate**: **90%** (18 / 20), Wilson 95% CI [69.9%, 97.2%] *...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -267,35 +274,28 @@ Result summary: Results Summary: Brainstorm Session 6 Summary Translated t0017 l
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
         <id>t0019_v2_judge_calibration_sonnet</id>
-        <id>t0020_v2_truncation_vs_schema_ablation</id>
         <id>t0021_plan_and_solve_v2_with_final_confidence</id>
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
         <id>t0023_phase2_abc_confirmatory_sonnet_swebench</id>
       </source_ids>
       <content>
-Planned or active tasks: 5
+Planned or active tasks: 4
 
 ## v2 Judge Calibration with Sonnet (Substantive + Familial Bias)
 ID: t0019_v2_judge_calibration_sonnet
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-01
 Short description: Re-judge the t0014 43-row v2 sample with two sonnet judge variants (substantive critic, model-rotated) to defend the +57 pp schema-only delta.
 
-## v2 Truncation vs Schema Ablation
-ID: t0020_v2_truncation_vs_schema_ablation
-Status: not_started
-Effective date: 2026-05-01
-Short description: Re-run v2 annotation with the tree schema but problem text truncated to 1500 chars to isolate the truncation fix from the schema upgrade.
-
 ## Plan-and-Solve v2 with final_confidence Field
 ID: t0021_plan_and_solve_v2_with_final_confidence
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-01
 Short description: Extend the t0007 Plan-and-Solve scope-unaware library to emit a verbalized final_confidence field, unblocking RQ4 in confirmatory ABC runs.
 
 ## ABC Harness with Progress Rate and EAI Error Taxonomy
 ID: t0022_abc_harness_progress_rate_and_error_taxonomy
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-01
 Short description: Extend the ABC harness with AgentBoard subgoal progress rate and the Embodied Agent Interface error taxonomy so floor-bound runs still produce signal.
 
@@ -310,8 +310,19 @@ Dependencies: t0021_plan_and_solve_v2_with_final_confidence, t0022_abc_harness_p
     <section id="questions-and-answers" source_kind="aggregator">
       <title>Questions and Answers</title>
       <source_name>aggregate_answers_full</source_name>
+      <source_ids>
+        <id>decomposition-v2-schema-vs-truncation</id>
+      </source_ids>
       <content>
-Answers: 0
+Answers: 1
+
+## How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?
+ID: decomposition-v2-schema-vs-truncation
+Created by: t0020_v2_truncation_vs_schema_ablation on 2026-05-01
+Confidence: medium
+Categories: benchmark-annotation, hierarchical-planning
+
+The v2 tree schema explains essentially all of the gap: switching from flat-v1 to tree-v2 while holding the 1500-char truncation constant lifts the haiku judge accept rate from 33% to 90%, a +57 pp jump (95% Wilson CI on the difference: +23 pp to +77 pp). Adding the full untruncated problem text on top of the v2 schema lifts accept from 90% to 95%, a further +5 pp (95% CI -15 pp to +26 pp), which is not statistically significant. The headline +62 pp v2-full vs v1-truncated gap is therefore ~92% pure-schema and ~8% pure-text-length on the 20-row matched pool.
       </content>
     </section>
     <section id="open-suggestions" source_kind="aggregator">
@@ -334,10 +345,10 @@ Answers: 0
         <id>S-0012-01</id>
         <id>S-0012-02</id>
         <id>S-0017-01</id>
+        <id>S-0020-01</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
-        <id>S-0003-01</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -454,6 +465,13 @@ Kind: evaluation
 Source task: t0017_literature_hierarchical_agents_and_judges
 S-0009-03 calls for a multi-judge agreement study; Jung2024 (&quot;Trust or Escalate&quot;, ICLR 2025) provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1) Simulated Annotators on top of the project&#x27;s existing judge LLM to produce ensemble-based confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing (Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor that GPT-4 alone never reaches, so this is also...
 
+## Re-judge the remaining 8 v1 paired rows to tighten the pure-schema CI
+ID: S-0020-01
+Priority: high
+Kind: experiment
+Source task: t0020_v2_truncation_vs_schema_ablation
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1 judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest possible follow-up that materially improves statistical power.
+
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
 Priority: medium
@@ -474,13 +492,6 @@ Priority: medium
 Kind: experiment
 Source task: t0002_literature_survey_granularity_conditioning
 The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
-
-## Negotiate Epoch AI access for full FrontierMath benchmark
-ID: S-0003-01
-Priority: medium
-Kind: dataset
-Source task: t0003_download_benchmark_subsets
-FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses 40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per the t0002 fallback plan.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
