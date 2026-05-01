@@ -104,8 +104,8 @@
       "step": 12,
       "name": "results",
       "description": "Verify results files exist and pass verify_task_results.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-01T21:43:18Z",
       "completed_at": null,
       "log_file": "logs/steps/012_results/"
     },
