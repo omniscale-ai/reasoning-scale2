@@ -5,9 +5,9 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0022_abc_harness_progress_rate_and_error_taxonomy branch from main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:04:45Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:06:34Z",
       "log_file": "logs/steps/001_create-branch/"
     },
     {
