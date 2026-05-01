@@ -131,9 +131,9 @@
       "step": 15,
       "name": "reporting",
       "description": "Open PR, run pre-merge verificator, merge, refresh overview/.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T21:45:40Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T21:53:20Z",
       "log_file": "logs/steps/015_reporting/"
     }
   ]
