@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0014 judge code and helpers; identify reusable patterns and the prompt-build/parse logic.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:08:20Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:15:26Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
