@@ -1,5 +1,11 @@
 # Results Detailed: Brainstorm Session 6
 
+## Summary
+
+Brainstorm Session 6 produced a 5-task experimental slate (t0019-t0023) covering 7 of 10 research
+questions, plus 5 suggestion corrections (3 priority demotions, 2 rejections). Total budget
+commitment ~$38, fitting within the remaining $51 project budget.
+
 ## Methodology
 
 * Date: 2026-05-01
@@ -66,6 +72,26 @@ t0022 are complete.
 
 7 of 10 RQs receive direct evidence from this slate. RQ3, RQ8, RQ10 deferred to a future brainstorm
 once the core RQ1/2/5/7 story holds at N>=157.
+
+## Verification
+
+* All 5 child task files (t0019-t0023) pass `verify_task_file` with 0 errors and 0 warnings.
+* All 5 correction files pass `verify_corrections` with 0 errors.
+* Brainstorm task structure (4 phases, step logs) follows `human-brainstorm` skill conventions.
+* `verify_task_results` and `verify_logs` pass on this task folder.
+* Task index ordering invariant satisfied: brainstorm task t0018 has lower index than child tasks
+  t0019-t0023 (per Phase 3 step 19 of the human-brainstorm skill).
+
+## Limitations
+
+* Brainstorm sessions are planning artifacts, not experimental results. No metrics, no compute
+  spend, no empirical findings. Decisions are quality-controlled only by reviewer judgement.
+* The slate's expected-value reasoning depends on t0017's literature claims (Wang2023, Boisvert2024,
+  Xiong2024 effect-size predictions); if those numbers do not transfer, t0023 may still hit the
+  floor and force a paper-pivot.
+* Source-suggestion coverage is single-valued in `task.json`: secondary suggestions covered by t0019
+  (S-0014-03) and t0023 (S-0010-01) are recorded only in the task descriptions.
+* RQ3, RQ8, RQ10 remain unaddressed; the next brainstorm after t0023 results land must scope them.
 
 ## Files Created
 
