@@ -86,10 +86,10 @@
       "step": 10,
       "name": "teardown",
       "description": "Skipped: no remote machines were provisioned.",
-      "status": "pending",
+      "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/010_teardown/"
     },
     {
       "step": 11,
