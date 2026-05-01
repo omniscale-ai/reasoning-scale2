@@ -1,0 +1,378 @@
+{
+  "spec_version": "1",
+  "task_id": "t0021_plan_and_solve_v2_with_final_confidence",
+  "captured_at": "2026-05-01T16:21:58Z",
+  "checked_roots": [
+    {
+      "source_kind": "codex",
+      "root_path": "/Users/lysaniuk/.codex/sessions",
+      "exists": true,
+      "candidate_file_count": 0,
+      "matched_file_count": 0
+    },
+    {
+      "source_kind": "claude_code",
+      "root_path": "/Users/lysaniuk/.claude/projects",
+      "exists": true,
+      "candidate_file_count": 10458,
+      "matched_file_count": 59
+    }
+  ],
+  "copied_sessions": [
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/01c48faf-7761-44e9-b424-20e7b76db16b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__01c48faf-7761-44e9-b424-20e7b76db16b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/040146e7-f7c0-4c23-99da-ee01f0fbb2a4.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__040146e7-f7c0-4c23-99da-ee01f0fbb2a4.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/05060a5a-e05b-4c6f-9d10-dc30dc568079.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__05060a5a-e05b-4c6f-9d10-dc30dc568079.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/0bd230eb-5c4e-406a-8d13-73cc14247356.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__0bd230eb-5c4e-406a-8d13-73cc14247356.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/0d9c624a-a9d0-46aa-8390-b1db1c225718.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__0d9c624a-a9d0-46aa-8390-b1db1c225718.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/16e5b987-a803-4ad5-8f50-da4de9a0c485.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__16e5b987-a803-4ad5-8f50-da4de9a0c485.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/17455ccb-3243-4d42-91ec-f8aeefcec364.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__17455ccb-3243-4d42-91ec-f8aeefcec364.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/17d3f678-bbf5-4401-a10d-bc61a359d2a5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__17d3f678-bbf5-4401-a10d-bc61a359d2a5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/1a6d65b8-35bb-4dd8-97d1-3e61bfc488fc.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__1a6d65b8-35bb-4dd8-97d1-3e61bfc488fc.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/1e9329ba-08f0-4f53-83f1-325dad8251ac.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__1e9329ba-08f0-4f53-83f1-325dad8251ac.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/27c8edb1-5407-4478-a28e-e18f380c207f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__27c8edb1-5407-4478-a28e-e18f380c207f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/2e197194-55ee-4ab4-81de-5183976c1793.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__2e197194-55ee-4ab4-81de-5183976c1793.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/3010c6c7-d36a-46de-8788-1745a9243543.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__3010c6c7-d36a-46de-8788-1745a9243543.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/324063df-be67-4cdf-ab7b-000a0fa96f06.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__324063df-be67-4cdf-ab7b-000a0fa96f06.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/32a04f70-684b-465f-8e4c-597df0c7920f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__32a04f70-684b-465f-8e4c-597df0c7920f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/3ce09fd4-6549-42b0-ae29-891abb684430.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__3ce09fd4-6549-42b0-ae29-891abb684430.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/4116ed8c-f6ec-4834-91f8-885e9fb3f8f7.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__4116ed8c-f6ec-4834-91f8-885e9fb3f8f7.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/43acd185-b39b-4a14-944e-2404b9db5704.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__43acd185-b39b-4a14-944e-2404b9db5704.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/44cabd74-7d23-4d7b-8926-3d8652815bf5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__44cabd74-7d23-4d7b-8926-3d8652815bf5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/55004deb-6e58-43e3-b661-1426c28292c5.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__55004deb-6e58-43e3-b661-1426c28292c5.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/559a9f4c-5c8f-47d4-b525-39d6e7060124.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__559a9f4c-5c8f-47d4-b525-39d6e7060124.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/5cc9011f-588a-4cff-a21e-164f6901198b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__5cc9011f-588a-4cff-a21e-164f6901198b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/5f77c8f4-8c30-4dd6-8d6c-473f9bbbac03.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__5f77c8f4-8c30-4dd6-8d6c-473f9bbbac03.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/5f7948f5-161e-45af-8f98-158946979e7b.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__5f7948f5-161e-45af-8f98-158946979e7b.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/6a8bb5c8-53d3-46bb-b84b-9b1124e46d3f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__6a8bb5c8-53d3-46bb-b84b-9b1124e46d3f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/7159b72f-9aa1-400a-8890-599f7a5e9005.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__7159b72f-9aa1-400a-8890-599f7a5e9005.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/75920427-209a-4d3f-b40e-f42343116a47.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__75920427-209a-4d3f-b40e-f42343116a47.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/832cfd53-9b2e-429a-9511-96785628bb97.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__832cfd53-9b2e-429a-9511-96785628bb97.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/83555a29-8b23-41e4-9230-3e884265d9d0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__83555a29-8b23-41e4-9230-3e884265d9d0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/85ee274f-c22b-4186-b274-885f95f1c276.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__85ee274f-c22b-4186-b274-885f95f1c276.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/87ab7258-d5c4-4593-af4b-9a21c6dcc220.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__87ab7258-d5c4-4593-af4b-9a21c6dcc220.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/8909fe12-a4d8-4304-8d76-932b4db4da3e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__8909fe12-a4d8-4304-8d76-932b4db4da3e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/8e5a4864-2532-4fe6-9da8-e592e4d5ee93.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__8e5a4864-2532-4fe6-9da8-e592e4d5ee93.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/97144220-1e33-4299-9f3e-5894104f0125.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__97144220-1e33-4299-9f3e-5894104f0125.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/9c6d6060-071c-4718-a2b4-03608374a3da.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__9c6d6060-071c-4718-a2b4-03608374a3da.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/a02a7d18-cda8-4657-869c-72f40be03e76.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__a02a7d18-cda8-4657-869c-72f40be03e76.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/a323aea5-c9f0-4d51-ba4b-013ded575959.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__a323aea5-c9f0-4d51-ba4b-013ded575959.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/aae6fb6e-290f-412a-9c74-2edb7eedc945.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__aae6fb6e-290f-412a-9c74-2edb7eedc945.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/b50fee7e-4558-4900-8563-53630fa40ab3.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__b50fee7e-4558-4900-8563-53630fa40ab3.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/b77b84b2-fe18-4141-9e1b-4f69184b839d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__b77b84b2-fe18-4141-9e1b-4f69184b839d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/b8f6f023-a49a-4c61-954c-76cdaaeab068.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__b8f6f023-a49a-4c61-954c-76cdaaeab068.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/b957a815-c229-4575-abec-e0cd61415706.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__b957a815-c229-4575-abec-e0cd61415706.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/b964c28c-248f-4e1d-8673-72270b259f0f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__b964c28c-248f-4e1d-8673-72270b259f0f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/bc8b21b8-1e64-4303-9163-6ec472cc58a8.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__bc8b21b8-1e64-4303-9163-6ec472cc58a8.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/bea24b78-fcb7-4e23-870d-414b89dba479.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__bea24b78-fcb7-4e23-870d-414b89dba479.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/befb5308-ecfd-4faa-80b0-2ac1df961573.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__befb5308-ecfd-4faa-80b0-2ac1df961573.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/c23e54d7-c3a2-4a47-ae48-4378706cf63f.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__c23e54d7-c3a2-4a47-ae48-4378706cf63f.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/c32206c8-257d-455a-a8c2-566ce81fd705.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__c32206c8-257d-455a-a8c2-566ce81fd705.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/c80908f5-4362-4990-8087-602457898cbd.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__c80908f5-4362-4990-8087-602457898cbd.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/d56987fe-7910-444b-a17d-f1233f48cd70.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__d56987fe-7910-444b-a17d-f1233f48cd70.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/d9c2d7d0-9170-418f-9130-33dc942bd984.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__d9c2d7d0-9170-418f-9130-33dc942bd984.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/e25bf4b0-1ee4-4fe2-8ab7-dd1318541ca0.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__e25bf4b0-1ee4-4fe2-8ab7-dd1318541ca0.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/e53bde12-bf1b-4e2c-8fe4-504908895490.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__e53bde12-bf1b-4e2c-8fe4-504908895490.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/e5a14f7e-ff4a-4482-a2a8-b2f57eb23e0d.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__e5a14f7e-ff4a-4482-a2a8-b2f57eb23e0d.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/e6147934-7570-489b-8b3f-905def52e338.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__e6147934-7570-489b-8b3f-905def52e338.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/e818601c-9434-4745-9e91-519a98caf0f6.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__e818601c-9434-4745-9e91-519a98caf0f6.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/eeccf4de-1cb6-422c-8543-cbdb1e2b24d9.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__eeccf4de-1cb6-422c-8543-cbdb1e2b24d9.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/f86c7fa5-e95f-4a69-8998-4d16f5b5f47e.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__f86c7fa5-e95f-4a69-8998-4d16f5b5f47e.jsonl",
+      "matched_by": "task_id_content"
+    },
+    {
+      "source_kind": "claude_code",
+      "source_path": "/Users/lysaniuk/.claude/projects/-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence/f9f0a3d2-c271-4496-ac0a-bbe4f2658415.jsonl",
+      "copied_path": "logs/sessions/claude_code__-Users-lysaniuk-Documents-reasoning-scale2-worktrees-t0021-plan-and-solve-v2-with-final-confidence__f9f0a3d2-c271-4496-ac0a-bbe4f2658415.jsonl",
+      "matched_by": "task_id_content"
+    }
+  ],
+  "errors": []
+}

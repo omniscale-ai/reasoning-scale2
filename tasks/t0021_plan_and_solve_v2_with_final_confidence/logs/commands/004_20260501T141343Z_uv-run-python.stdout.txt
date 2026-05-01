@@ -1,0 +1,8 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence/tasks/t0021_plan_and_solve_v2_with_final_confidence/research/research_code.md
+
+[33m[1mWARNINGS:[0m
+[33m  RC-W002 warning: Task Index entry [t0006] references task 't0006_chain_of_thought_baseline' which does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
+

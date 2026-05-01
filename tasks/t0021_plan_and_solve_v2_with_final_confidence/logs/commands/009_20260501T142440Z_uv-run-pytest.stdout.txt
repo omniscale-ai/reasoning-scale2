@@ -1,0 +1,39 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0 -- /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 16 items
+
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_parse_final_confidence_picks_last_match PASSED [  6%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_parse_final_confidence_accepts_one PASSED [ 12%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_parse_final_confidence_accepts_zero PASSED [ 18%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_parse_final_confidence_returns_none_for_non_numeric PASSED [ 25%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_parse_final_confidence_returns_none_for_out_of_range_only FAILED [ 31%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_parse_final_confidence_takes_last_when_prose_has_numbers PASSED [ 37%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_elicit_returns_value_on_first_try PASSED [ 43%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_elicit_retries_once_on_first_parse_failure PASSED [ 50%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_elicit_returns_none_after_double_failure PASSED [ 56%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_run_emits_field_when_parse_succeeds PASSED [ 62%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_run_retries_once_then_parses PASSED [ 68%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_run_emits_null_when_parse_fails_twice PASSED [ 75%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_run_skips_confidence_when_no_final_answer PASSED [ 81%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_v1_legacy_schema_unchanged PASSED [ 87%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_trajectory_record_v2_has_seven_fields PASSED [ 93%]
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_agent_result_v2_field_names PASSED [100%]
+
+=================================== FAILURES ===================================
+________ test_parse_final_confidence_returns_none_for_out_of_range_only ________
+
+    def test_parse_final_confidence_returns_none_for_out_of_range_only() -> None:
+        # 1.5 is out of range, so the regex does not match it; only 0/0.x/1/1.0+ are matched.
+        # No valid token in this string -> None.
+>       assert parse_final_confidence("My confidence is 1.5") is None
+E       AssertionError: assert 1.0 is None
+E        +  where 1.0 = parse_final_confidence('My confidence is 1.5')
+
+tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED tasks/t0021_plan_and_solve_v2_with_final_confidence/code/test_planandsolve_v2.py::test_parse_final_confidence_returns_none_for_out_of_range_only
+========================= 1 failed, 15 passed in 0.03s =========================

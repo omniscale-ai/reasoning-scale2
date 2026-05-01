@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0021_plan_and_solve_v2_with_final_confidence",
+  "command": "uv run pytest tasks/t0021_plan_and_solve_v2_with_final_confidence/code/ -v",
+  "exit_code": 1,
+  "duration_seconds": 0.813,
+  "started_at": "2026-05-01T14:24:40Z",
+  "completed_at": "2026-05-01T14:24:40Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0021_plan_and_solve_v2_with_final_confidence",
+  "stdout_file": "009_20260501T142440Z_uv-run-pytest.stdout.txt",
+  "stderr_file": "009_20260501T142440Z_uv-run-pytest.stderr.txt",
+  "stdout_lines": 39,
+  "stderr_lines": 0,
+  "truncated": false
+}

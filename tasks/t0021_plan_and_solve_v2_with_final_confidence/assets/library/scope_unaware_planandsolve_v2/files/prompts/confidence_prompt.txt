@@ -1,0 +1,14 @@
+You just answered the following problem.
+
+Problem:
+{problem}
+
+Your final answer:
+{final_answer}
+
+Now rate how confident you are that your final answer is correct. Output a single number between 0 and 1 on its own line, where:
+  0 means you are completely sure the answer is wrong,
+  0.5 means you are completely unsure,
+  1 means you are completely sure the answer is correct.
+
+Confidence (a single number between 0 and 1):
