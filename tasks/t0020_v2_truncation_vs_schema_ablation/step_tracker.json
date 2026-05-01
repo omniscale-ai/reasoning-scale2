@@ -59,10 +59,10 @@
       "step": 7,
       "name": "planning",
       "description": "Plan the implementation: paths.py, constants.py with truncation, v2_truncated_annotator.py, v2_truncated_judge.py, compute_stats.py for 3-way comparison and decomposition with Wilson 95% CIs.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-01T14:13:55Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/007_planning/"
     },
     {
       "step": 8,
