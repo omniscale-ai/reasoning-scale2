@@ -32,31 +32,31 @@ two synthesis documents:
 ### Category Plan
 
 The project's existing categories include `hierarchical-planning`, `agent-evaluation`,
-`granularity-conditioning`, and `uncertainty-calibration`, which cover most of the surveyed work.
-The following four categories are missing and must be created via `/add-category` before any paper
-asset is written, so per-paper sub-agents do not race on category creation:
+`granularity-conditioning`, `uncertainty-calibration`, and the per-source `benchmark-*` tags.
+**Constraint discovered during implementation prestep**: `meta/` is not in the verificator's
+`ALLOWED_OUTSIDE_FILES`, so new categories cannot be created from a task branch — only the existing
+set is usable. The four originally planned new categories (`llm-as-judge`, `reasoning-structure`,
+`agent-planning`, `reinforcement-learning`) are deferred to a future infrastructure PR on `main`.
 
-* `llm-as-judge` — covers Trust or Escalate; future tasks on judge calibration will reuse it.
-* `reasoning-structure` — covers SELF-DISCOVER and any future reasoning-structure work.
-* `agent-planning` — covers LATS and GraphPlanner; complements `hierarchical-planning` (which is
-  about the three-level annotation hierarchy specific to this project).
-* `reinforcement-learning` — covers ArCHer, the action-decomposition paper, and the options-
-  framework anchor.
+Per the paper-asset spec, an empty `categories: []` list is allowed when no existing category fits.
+Papers whose primary themes (reinforcement learning, reasoning structure, LLM-as-judge methodology,
+agent search/planning) have no matching existing category receive an empty list rather than a
+forced-fit assignment.
 
-### Per-Paper Mapping
+### Per-Paper Mapping (revised — existing categories only)
 
 | # | Paper | Theme | Categories |
 | --- | --- | --- | --- |
-| 1 | Solving the Granularity Mismatch (ICLR 2026) | Hierarchical agents | hierarchical-planning, granularity-conditioning, reinforcement-learning |
-| 2 | ArCHer (ICML 2024) | Hierarchical agents | hierarchical-planning, reinforcement-learning |
-| 3 | Action Decomposition (NeurIPS 2024) | Hierarchical agents | hierarchical-planning, reinforcement-learning |
-| 4 | Sutton, Precup & Singh 1999 (options) | Foundational theory | reinforcement-learning, hierarchical-planning |
-| 5 | Graph Learning for Planning (NeurIPS 2024) | Search/planning | agent-planning, hierarchical-planning |
-| 6 | LATS (ICML 2024) | Search/planning | agent-planning, reinforcement-learning |
-| 7 | SELF-DISCOVER (NeurIPS 2024) | Reasoning structure | reasoning-structure |
+| 1 | Solving the Granularity Mismatch (ICLR 2026) | Hierarchical agents | hierarchical-planning, granularity-conditioning |
+| 2 | ArCHer (ICML 2024) | Hierarchical agents | hierarchical-planning |
+| 3 | Action Decomposition (NeurIPS 2024) | Hierarchical agents | hierarchical-planning |
+| 4 | Sutton, Precup & Singh 1999 (options) | Foundational theory | hierarchical-planning |
+| 5 | Graph Learning for Planning (NeurIPS 2024) | Search/planning | hierarchical-planning |
+| 6 | LATS (ICML 2024) | Search/planning | hierarchical-planning |
+| 7 | SELF-DISCOVER (NeurIPS 2024) | Reasoning structure | [] |
 | 8 | Embodied Agent Interface (NeurIPS 2024) | Agent benchmark | agent-evaluation, hierarchical-planning |
 | 9 | AgentBoard (NeurIPS 2024 D&B) | Agent benchmark | agent-evaluation |
-| 10 | Trust or Escalate | LLM-as-judge | llm-as-judge, uncertainty-calibration |
+| 10 | Trust or Escalate | LLM-as-judge | uncertainty-calibration |
 
 ## Cost Estimation
 
@@ -75,7 +75,8 @@ fire but is monitored after each paper.
 The remaining steps after `planning` are:
 
 1. **Implementation (step 9)**:
-   * Create the 4 missing categories via `/add-category`.
+   * Use the existing-categories-only mapping above (new categories are deferred to a future
+     infrastructure PR — they cannot be created from a task branch under the file-isolation rule).
    * For each of the 10 papers, spawn an `/add-paper` sub-agent. Run at most 3 sub-agents in
      parallel.
    * After each paper, the sub-agent runs `verify_paper_asset` itself and fixes errors.
@@ -118,9 +119,10 @@ each passing `verify_paper_asset` with zero errors. The `task.json` `expected_as
   `download_status: "failed"` and `download_failure_reason` populated, per `add-paper` Phase 3.
 * **Risk**: A paper turns out to be unrelated after reading. **Fallback**: Keep the asset (it is
   still documented project knowledge) and note the irrelevance in the synthesis.
-* **Risk**: Multiple parallel paper-add agents collide on category creation. **Fallback**:
-  Pre-create the four missing categories before the parallel batch begins; the rest of the asset
-  construction is independent.
+* **Risk**: Multiple parallel paper-add agents collide on category creation. **Mitigation**: New
+  category creation is deferred (blocked by file-isolation rule on task branches). All 10 papers use
+  only the project's existing categories or `[]` when no fit exists, removing the collision surface
+  entirely.
 * **Risk**: A specific paper (e.g., the Sutton-Precup-Singh 1999 options framework) is hard to reach
   via DOI resolution. **Fallback**: Use the `no-doi_AuthorYear_slug` paper-ID convention and
   download from arXiv mirrors or institutional repositories; if unreachable, fall back to abstract-
