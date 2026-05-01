@@ -131,9 +131,9 @@
       "step": 15,
       "name": "reporting",
       "description": "Final verification, session capture, mark task completed.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T16:00:35Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T16:02:45Z",
       "log_file": "logs/steps/015_reporting/"
     }
   ]
