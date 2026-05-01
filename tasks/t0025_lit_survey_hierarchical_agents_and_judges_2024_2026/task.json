@@ -5,7 +5,7 @@
   "name": "Literature Survey: Hierarchical Agents and LLM-as-Judge (2024-2026)",
   "short_description": "Survey of 10 papers (2024-2026) on hierarchical agents, search/planning, benchmarks, LLM-as-judge, plus the options framework.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "intervention_blocked",
   "dependencies": [],
   "start_time": "2026-05-01T21:10:07Z",
   "end_time": null,
