@@ -5,9 +5,9 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0021_plan_and_solve_v2_with_final_confidence branch from main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-01T14:04:18Z",
-      "completed_at": null,
+      "completed_at": "2026-05-01T14:05:41Z",
       "log_file": "logs/steps/001_create-branch/"
     },
     {
