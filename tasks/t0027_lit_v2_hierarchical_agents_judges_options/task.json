@@ -1,0 +1,21 @@
+{
+  "spec_version": 4,
+  "task_id": "t0027_lit_v2_hierarchical_agents_judges_options",
+  "task_index": 27,
+  "name": "Literature Survey v2: Hierarchical Agents, Judges, Options Framework",
+  "short_description": "Re-survey 10 specific papers (2024-2026) on hierarchical agents, LLM-as-judge methodology, and options framework to inform next-iteration annotation, calibration, and judge design.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [
+    "t0017_literature_hierarchical_agents_and_judges"
+  ],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "paper": 10
+  },
+  "task_types": [
+    "literature-survey"
+  ],
+  "source_suggestion": null
+}
