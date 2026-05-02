@@ -3,6 +3,17 @@
 This is the detailed companion to `results_summary.md`. It documents methodology, per-variant
 metrics, statistical tests, calibration, judge agreement, and per-subset breakdowns.
 
+## Summary
+
+The full A/B/C × {SWE-bench, Tau-bench, FrontierScience} sweep ran against `claude-sonnet-4-6` with
+a paired McNemar test on each pair, an Expected Calibration Error on variant B's verbalized
+`final_confidence`, and a sonnet/opus inter-judge agreement check on a 30-instance random subset per
+variant. RQ5's strict inequality `success(A) > success(B) > success(C)` is **rejected**: A and B tie
+(paired McNemar p ≈ 1.0, 6/6 discordant) and the adversarial-mismatched variant C significantly
+beats B (p = 0.019, paired N=130) — in the opposite direction of RQ5. RQ3 (judge agreement 0.917 /
+0.978) and RQ4 (B's ECE = 0.43 on n=49) are answered cleanly. The runtime cost came in at $26.07
+across 390 trajectories, well under the $135 cap.
+
 ## Methodology
 
 ### Sweep configuration
@@ -173,10 +184,14 @@ aggregator but excluded from the per-item efficiency figure above.
   `tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/code/{paths,instance_loader, anthropic_shim,runner,judge,calibration,mcnemar,metrics,full_runner,main,plot_results}.py`.
 * Smoke test: `tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/code/test_smoke.py`.
 
-## Verification Criteria
+## Verification
 
 * `rq5_strict_inequality_supported` is present in `results/metrics.json` and equals `false`.
 * `mcnemar_p_a_vs_b` ≈ 1.000, `mcnemar_p_b_vs_c` < 0.025.
-* `final_confidence_ece` reported with `n_total > 0`.
-* `judge_agreement_with_program` and `inter_judge_agreement` reported with sample sizes.
-* All four charts present in `results/images/`.
+* `final_confidence_ece` reported with `n_total > 0` (n = 49).
+* `judge_agreement_with_program` (n = 120) and `inter_judge_agreement` (n = 89) reported with sample
+  sizes.
+* All four charts present in `results/images/`: `success_rate_overall.png`,
+  `success_rate_by_subset.png`, `calibration_reliability.png`, `mcnemar_discordants.png`.
+* Paired N=130 set documented; the same 17 instance ids are missing across A, B, C, so the paired
+  McNemar tests remain valid.

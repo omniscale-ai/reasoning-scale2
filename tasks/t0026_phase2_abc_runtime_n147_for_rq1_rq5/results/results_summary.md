@@ -1,10 +1,14 @@
 # t0026 Phase 2 A/B/C Runtime — Results Summary
 
-## Headline
+## Summary
 
 The strict double inequality `success(A) > success(B) > success(C)` posited by RQ5 is **not
 supported**. On the paired N=130 set (the same 130 instances run by every variant), variants A and B
-are statistically tied, and the adversarial-mismatched variant C significantly outperforms B.
+are statistically tied, and the adversarial-mismatched variant C significantly outperforms B. The
+sweep ran the full A/B/C × {SWE-bench, Tau-bench, FrontierScience} grid against `claude-sonnet-4-6`
+with a paired McNemar test on each pair, an Expected Calibration Error on variant B's verbalized
+`final_confidence`, and a sonnet/opus inter-judge agreement check. RQ3 (judge ↔ program-truth
+agreement) and RQ4 (B's calibration) are answered cleanly. RQ1, RQ2, RQ5 are rejected by the data.
 
 | Pair | discordant (1st-only) | discordant (2nd-only) | McNemar p | Bonferroni alpha |
 | --- | --- | --- | --- | --- |
@@ -89,3 +93,33 @@ land more often on the judge-friendly short answer.
 * Predictions assets: `assets/predictions/{a-scope-aware,b-plan-and-solve,c-mismatched}/`
 * Charts:
   `results/images/{success_rate_by_subset,success_rate_overall,calibration_reliability,mcnemar_discordants}.png`
+
+## Metrics
+
+| Metric | Value | Notes |
+| --- | --- | --- |
+| `success_rate_a` | 0.0408 | 6 / 147 |
+| `success_rate_b` | 0.0408 | 6 / 147 |
+| `success_rate_c` | 0.1156 | 17 / 147 |
+| `mcnemar_p_a_vs_b` | 1.000 | exact binomial, paired N=130 |
+| `mcnemar_p_b_vs_c` | 0.019 | exact binomial, paired N=130 (Bonferroni α = 0.025) |
+| `rq5_strict_inequality_supported` | false | both pairwise tests must clear α; only B vs C does, in the wrong direction |
+| `final_confidence_ece` | 0.4302 | n = 49, 10-bin equal-width ECE on variant B |
+| `judge_agreement_with_program` | 0.9167 | n = 120; sonnet judge vs programmatic ground truth |
+| `inter_judge_agreement` | 0.9775 | n = 89; sonnet vs opus on the inter-judge slice |
+| `efficiency_inference_cost_per_item_usd` | 0.066 | runs only, averaged across A+B+C |
+
+Full machine-readable payload: `results/metrics.json`.
+
+## Verification
+
+* `rq5_strict_inequality_supported` is present in `results/metrics.json` and equals `false`.
+* `mcnemar_p_a_vs_b` ≈ 1.000 and `mcnemar_p_b_vs_c` < 0.025 (Bonferroni-adjusted alpha for two
+  pairwise tests).
+* `final_confidence_ece` is reported with `n_total > 0` (n = 49).
+* `judge_agreement_with_program` and `inter_judge_agreement` are reported with sample sizes (n = 120
+  and n = 89 respectively).
+* All four headline charts present in `results/images/`: `success_rate_overall.png`,
+  `success_rate_by_subset.png`, `calibration_reliability.png`, `mcnemar_discordants.png`.
+* Paired N=130 set is documented in the Caveats section above (17 instances filtered by the
+  resumable-checkpoint path; same ids missing across A, B, C, so paired tests remain valid).
