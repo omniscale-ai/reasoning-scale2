@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Write plan.md: instance manifest, harness orchestration, judge wiring, cost reestimation, risks.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-02T06:46:55Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
