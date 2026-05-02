@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "command": "git commit -m t0026_phase2_abc_runtime_n147_for_rq1_rq5 [results]: capture command logs from results commit",
+  "exit_code": 0,
+  "duration_seconds": 0.093,
+  "started_at": "2026-05-02T14:43:03Z",
+  "completed_at": "2026-05-02T14:43:03Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "stdout_file": "006_20260502T144303Z_git-commit-m.stdout.txt",
+  "stderr_file": "006_20260502T144303Z_git-commit-m.stderr.txt",
+  "stdout_lines": 8,
+  "stderr_lines": 0,
+  "truncated": false
+}
