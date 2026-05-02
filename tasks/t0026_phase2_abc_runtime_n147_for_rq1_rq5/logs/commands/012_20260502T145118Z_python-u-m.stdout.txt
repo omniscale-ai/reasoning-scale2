@@ -1,0 +1,11 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0026_phase2_abc_runtime_n147_for_rq1_rq5/tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/task.json
+
+[31m[1mERRORS:[0m
+[31m  TC-E004 error: Step 'reporting' has status 'in_progress', not finished[0m
+
+[33m[1mWARNINGS:[0m
+[33m  TC-W005 warning: No merged PR found for branch 'task/t0026_phase2_abc_runtime_n147_for_rq1_rq5'[0m
+
+[31m[1mFAILED[0m — 1 error(s), 1 warning(s)
+

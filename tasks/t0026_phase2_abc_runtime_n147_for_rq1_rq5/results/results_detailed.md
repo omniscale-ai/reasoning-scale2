@@ -186,12 +186,70 @@ aggregator but excluded from the per-item efficiency figure above.
 
 ## Verification
 
-* `rq5_strict_inequality_supported` is present in `results/metrics.json` and equals `false`.
-* `mcnemar_p_a_vs_b` ≈ 1.000, `mcnemar_p_b_vs_c` < 0.025.
-* `final_confidence_ece` reported with `n_total > 0` (n = 49).
-* `judge_agreement_with_program` (n = 120) and `inter_judge_agreement` (n = 89) reported with sample
-  sizes.
+* `rq5_strict_inequality_supported = false` is documented in `results_summary.md` and derives from
+  the McNemar pair (B vs C, p = 0.019, C wins).
+* `mcnemar_p_a_vs_b` ≈ 1.000 and `mcnemar_p_b_vs_c` < 0.025 are recorded in
+  `data/mcnemar_results.json` (paired N = 130).
+* `final_confidence_ece = 0.4302` (n = 49) is recorded in `data/calibration.json`.
+* `judge_agreement_with_program` (n = 120) and `inter_judge_agreement` (n = 89) are recorded in
+  `data/judge_agreement.json`.
 * All four charts present in `results/images/`: `success_rate_overall.png`,
   `success_rate_by_subset.png`, `calibration_reliability.png`, `mcnemar_discordants.png`.
-* Paired N=130 set documented; the same 17 instance ids are missing across A, B, C, so the paired
+* Paired N = 130 set documented; the same 17 instance ids are missing across A, B, C, so the paired
   McNemar tests remain valid.
+* `results/metrics.json` uses the explicit-variant format and reports only registered metric keys
+  (`task_success_rate`, `overconfident_error_rate`); RQ-specific values (McNemar p-values, ECE,
+  judge agreement) live in the corresponding `data/*.json` payloads cited above.
+
+## Limitations
+
+* **Tau-bench numbers are a harness floor, not a benchmark score.** The harness exposes a single
+  stub `python_exec` tool; the published Tau-bench retail/airline tool stack is not wired in. All
+  three Tau-bench rates (A 0.0%, B 2.3%, C 10.3%) should be read as "describe what you would do"
+  scores, not Tau-bench performance.
+* **Paired sample is N = 130, not N = 147.** The resumable-checkpoint path filtered 17 pre-existing
+  trajectory files (from a prior corrupted partial run) at variant load time. The same 17 instance
+  ids are missing across A, B, and C, so the paired McNemar tests remain statistically valid, but
+  the per-variant `success_rate_*` denominators use N = 147 to keep the absolute rates honest about
+  what was attempted.
+* **Single model under test.** Every variant runs `claude-sonnet-4-6`. The C > B inversion may not
+  survive on a stronger model where B's plan parser sees fewer malformed plans. This run cannot
+  separate "B's scaffold is brittle" from "Sonnet's plan-emission is brittle."
+* **SWE-bench is reasoning-only.** Patches are not executed in Docker; programmatic ground truth
+  reduces to exact-match patch comparison plus the judge fallback. The 30% A SWE-bench rate is
+  therefore a reasoning-only ceiling, not a SWE-bench Verified leaderboard score.
+* **Variant C is structurally A-with-noise, not B-with-extra-degradation.** The matched-mismatch
+  wrapper delegates to `scope_aware_react` with a perturbed strategy label, which means C inherits
+  A's tool registry and A's robustness — not B's plan-parser fragility. The C > B inversion observed
+  here is mechanically driven by this wrapper choice and would likely flip if the wrapper delegated
+  to `plan_and_solve_v2` instead. See suggestion `S-0026-02`.
+* **Calibration is variant-B-only.** A and C do not emit a `final_confidence` field, so RQ4 is
+  answered for B only. The ECE = 0.43 result does not generalize.
+
+## Files Created
+
+* `results/results_summary.md` — human-readable summary with metrics and verification block.
+* `results/results_detailed.md` — this file.
+* `results/compare_literature.md` — comparison against ReAct (Yao2022), Plan-and-Solve (Wang2023),
+  the SWE-bench Verified leaderboard neighborhood (Jimenez2024), and a Tau-bench retail baseline.
+* `results/metrics.json` — explicit-variant format with `task_success_rate` for A/B/C and
+  `overconfident_error_rate` for B.
+* `results/suggestions.json` — six follow-up suggestions (`S-0026-01` … `S-0026-06`).
+* `results/costs.json` — per-service breakdown ($26.07 total).
+* `results/remote_machines_used.json` — empty list (this task ran locally).
+* `results/images/success_rate_overall.png` — overall A/B/C success rate.
+* `results/images/success_rate_by_subset.png` — per-subset A/B/C bars (SWE-bench, Tau-bench,
+  FrontierScience).
+* `results/images/calibration_reliability.png` — reliability diagram for variant B.
+* `results/images/mcnemar_discordants.png` — paired discordant counts for A vs B and B vs C.
+* `data/instance_manifest.json` — 147 instance ids (20 SWE-bench + 87 Tau-bench + 40
+  FrontierScience).
+* `data/runs/{a,b,c}/trajectory_<instance_id>.json` — 390 trajectory files (130 per variant after
+  resumable-checkpoint filtering).
+* `data/judges/{sonnet,opus}_{a,b,c}.json` — judge dump per variant per model.
+* `data/mcnemar_results.json` — paired McNemar payload (counts, statistic, p-value).
+* `data/calibration.json` — bin-level calibration for variant B's `final_confidence`.
+* `data/judge_agreement.json` — `judge_agreement_with_program` and `inter_judge_agreement`.
+* `code/{paths,instance_loader,anthropic_shim,runner,judge,calibration,mcnemar,metrics,full_runner,main,plot_results}.py`
+  — full pipeline.
+* `code/test_smoke.py` — smoke test.

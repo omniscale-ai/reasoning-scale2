@@ -1,0 +1,11 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0026_phase2_abc_runtime_n147_for_rq1_rq5/tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/results
+
+[33m[1mWARNINGS:[0m
+[33m  TR-W003 warning: ## Metrics section has 0 bullet points, fewer than 3[0m
+[33m  TR-W007 warning: ## Verification section does not mention any verificator results[0m
+[33m  TR-W013 warning: results_detailed.md is missing ## Examples section (mandatory for experiment-type tasks)[0m
+[33m  TR-W005 warning: costs.json total_cost_usd (38.61) does not match sum of breakdown values (77.21)[0m
+
+[33m[1mPASSED[0m — 0 error(s), 4 warning(s)
+

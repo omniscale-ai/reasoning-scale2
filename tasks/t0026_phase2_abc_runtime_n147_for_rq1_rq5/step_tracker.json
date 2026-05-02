@@ -131,8 +131,8 @@
       "step": 15,
       "name": "reporting",
       "description": "Final reporting step: ensure all assets verified, mark task done, prepare PR.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-02T14:46:08Z",
       "completed_at": null,
       "log_file": "logs/steps/015_reporting/"
     }

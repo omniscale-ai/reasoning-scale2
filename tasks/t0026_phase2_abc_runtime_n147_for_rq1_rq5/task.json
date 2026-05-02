@@ -5,7 +5,7 @@
   "name": "Phase 2 A/B/C Runtime (N=147) for RQ1-RQ5",
   "short_description": "Run A (scope-aware ReAct) / B (Plan-and-Solve v2) / C (mismatched-scope) on 20 SWE-bench + 87 Tau-bench + 40 FrontierScience instances to answer RQ1-RQ5.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0003_download_benchmark_subsets",
     "t0006_scope_aware_react_library",
@@ -16,7 +16,7 @@
     "t0022_abc_harness_progress_rate_and_error_taxonomy"
   ],
   "start_time": "2026-05-02T06:34:50Z",
-  "end_time": null,
+  "end_time": "2026-05-02T14:50:45Z",
   "expected_assets": {
     "predictions": 3
   },
