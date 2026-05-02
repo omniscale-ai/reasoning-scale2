@@ -77,9 +77,9 @@
       "step": 9,
       "name": "implementation",
       "description": "Build instance manifest, run A/B/C variants on N=147, run judges, write predictions assets.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-02T06:50:15Z",
-      "completed_at": null,
+      "completed_at": "2026-05-02T14:30:59Z",
       "log_file": "logs/steps/009_implementation/"
     },
     {
