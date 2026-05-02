@@ -113,9 +113,9 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Compare A/B/C runtime numbers against published baselines surveyed by t0017/t0025.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-02T14:43:30Z",
-      "completed_at": null,
+      "completed_at": "2026-05-02T14:44:50Z",
       "log_file": "logs/steps/013_compare-literature/"
     },
     {
