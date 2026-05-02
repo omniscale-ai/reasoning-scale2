@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T08:50:29Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/feature_selection/_sequential.py",
+    "prompt": "Show the complete fit method of SequentialFeatureSelector starting from the method definition, line by line, especially the lines around cv = check_cv and how cv is used in the loop"
+  },
+  "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/feature_selection/_sequential.py",
+  "prompt": "Show the complete fit method of SequentialFeatureSelector starting from the method definition, line by line, especially the lines around cv = check_cv and how cv is used in the loop"
+}

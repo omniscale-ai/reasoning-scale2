@@ -1,0 +1,11 @@
+{
+  "instance_id": "tau-retail-0047",
+  "subset": "taubench",
+  "variant": "b",
+  "final_answer": null,
+  "final_confidence": null,
+  "cost_usd": 0.004809,
+  "trajectory": {
+    "error": "MalformedPlanError: No numbered plan steps were found in the planner output. Expected lines starting with '1.' or '1)'."
+  }
+}

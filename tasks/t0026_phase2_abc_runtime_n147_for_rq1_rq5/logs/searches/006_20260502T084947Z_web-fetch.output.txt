@@ -1,0 +1,8 @@
+{
+  "bytes": 112630,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# How `check_cv` Handles Iterables and Generators\n\nBased on the source code provided, the `check_cv` function handles iterables or generators by wrapping them in a `_CVIterableWrapper` class.\n\n## Key Handling Mechanism\n\nWhen an iterable or generator is passed to `check_cv`, the function recognizes it as neither an integer nor a CV splitter object. The code then wraps it using:\n\n```python\n_CVIterableWrapper(cv)\n```\n\n## The Wrapper Class\n\nThe `_CVIterableWrapper` class converts the iterable into a list and provides standard cross-validator methods:\n\n- **Conversion**: `self.cv = list(cv)` - transforms the iterable into a list for reliable access\n- **Split counting**: `get_n_splits()` returns `len(self.cv)`, counting the number of train/test pairs\n- **Iteration**: The `split()` method yields each `(train, test)` pair from the stored list\n\n## Why This Approach\n\nThis wrapper enables backward compatibility with \"old style cv objects and iterables\" by standardizing their interface to match scikit-learn's `BaseCrossValidator` protocol. This allows users to pass custom iterables that generate train/test indices without implementing the full cross-validator interface.",
+  "durationMs": 4040,
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/model_selection/_split.py"
+}

@@ -1,0 +1,8 @@
+{
+  "bytes": 390388,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# SequentialFeatureSelector fit() Method and CV Parameter Usage\n\n## The fit() Method\n\nThe `fit()` method learns which features to select from training data X. It accepts X (training vectors), y (target values, optional for unsupervised learning), and metadata routing parameters.\n\n## How CV is Used\n\nThe method processes the `cv` parameter through these steps:\n\n1. **Validation**: `cv = check_cv(self.cv, y, classifier=is_classifier(self.estimator))` converts the cv parameter into a proper cross-validation splitter object.\n\n2. **Cross-validation Strategy**: According to the documentation, the cv parameter \"Determines the cross-validation splitting strategy.\" It accepts:\n   - None (uses default 5-fold cross validation)\n   - Integer (specifies number of folds)\n   - CV splitter objects\n   - Iterables yielding train/test splits\n\n3. **Feature Evaluation**: The validated cv object is passed to `_get_best_new_feature_score()`, which uses it in `cross_val_score()` to evaluate each candidate feature's performance across folds.\n\n4. **Greedy Selection**: The method iteratively selects features based on their cross-validation scores, with the cv parameter determining how each feature's score is computed through repeated train-test splits.",
+  "durationMs": 4321,
+  "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/feature_selection/_sequential.py"
+}

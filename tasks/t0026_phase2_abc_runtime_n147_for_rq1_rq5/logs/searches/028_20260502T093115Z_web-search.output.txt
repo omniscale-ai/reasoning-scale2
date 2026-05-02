@@ -1,0 +1,52 @@
+{
+  "query": "SymPy sets.py ProductSet is_subset github",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_014g3FXifTAKwZUtawTiuhNr",
+      "content": [
+        {
+          "title": "sympy/sympy/sets/fancysets.py at master \u00b7 sympy/sympy",
+          "url": "https://github.com/sympy/sympy/blob/master/sympy/sets/fancysets.py"
+        },
+        {
+          "title": "sympy/sympy/sets/sets.py at master \u00b7 sympy/sympy",
+          "url": "https://github.com/sympy/sympy/blob/master/sympy/sets/sets.py"
+        },
+        {
+          "title": "Sets - SymPy 1.14.0 documentation",
+          "url": "https://docs.sympy.org/latest/modules/sets.html"
+        },
+        {
+          "title": "Set operations with Python set compared to SymPy's FiniteSet",
+          "url": "https://doingmathwithpython.github.io/Sets-in-SymPy-and-built-in-Python-sets.html"
+        },
+        {
+          "title": "Sets \u2014 SymPy 0.7.4.1 documentation",
+          "url": "https://omz-software.com/pythonista/sympy/modules/sets.html"
+        },
+        {
+          "title": "SymPy - Sets",
+          "url": "https://www.tutorialspoint.com/sympy/sympy_sets.htm"
+        },
+        {
+          "title": "sets.py | searchcode",
+          "url": "https://searchcode.com/total-file/242607871/sympy/sets/sets.py/"
+        },
+        {
+          "title": "sympy/sympy/combinatorics/subsets.py at master \u00b7 sympy/sympy",
+          "url": "https://github.com/sympy/sympy/blob/master/sympy/combinatorics/subsets.py"
+        },
+        {
+          "title": "Release Notes for 0.7.2 \u00b7 sympy/sympy Wiki \u00b7 GitHub",
+          "url": "https://github.com/sympy/sympy/wiki/Release-Notes-for-0.7.2"
+        },
+        {
+          "title": "sympy/sympy/solvers/solveset.py at master \u00b7 sympy/sympy",
+          "url": "https://github.com/sympy/sympy/blob/master/sympy/solvers/solveset.py"
+        }
+      ]
+    },
+    "Based on the web search results, I found relevant information about SymPy's sets module and ProductSet. Here's what I found:\n\nA ProductSet represents the set of tuples of elements of other sets.\n\nThe Set class is the base class for any kind of set in SymPy, which includes properties like `is_ProductSet`.\n\nRegarding the `is_subset` method, you can use `is_subset()` to check if one set is a subset of another, for example: `Interval(0, 0.5).is_subset(Interval(0, 1))` returns `True`.\n\nThe search results point to the GitHub repository at https://github.com/sympy/sympy/blob/master/sympy/sets/sets.py where the Set base class and related set operations are defined. The ProductSet class is mentioned as representing Cartesian products, and the is_subset method is available on Set instances to test subset relationships.\n\nIf you're looking for specific implementation details of `ProductSet.is_subset()` in the sets.py file, you may want to directly browse that GitHub file or check the SymPy documentation for more detailed API information."
+  ],
+  "durationSeconds": 5.090411375000003
+}

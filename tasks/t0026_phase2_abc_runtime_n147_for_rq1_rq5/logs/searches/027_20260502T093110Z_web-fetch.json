@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:31:10Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/tests/test_ast.py",
+    "prompt": "Show the complete test_String function with all assertion code"
+  },
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/tests/test_ast.py",
+  "prompt": "Show the complete test_String function with all assertion code"
+}

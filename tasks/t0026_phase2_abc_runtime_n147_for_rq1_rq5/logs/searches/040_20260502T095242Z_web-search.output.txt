@@ -1,0 +1,52 @@
+{
+  "query": "Sphinx autodoc :meta public: variables bug sphinx-doc/sphinx-8593",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01UrRzx9PkKxMUfTM8uaxGaS",
+      "content": [
+        {
+          "title": "autodoc: `:meta public:` does not effect to variables \u00b7 Issue #8592 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8592"
+        },
+        {
+          "title": "sphinx.ext.autodoc \u2013 Include documentation from docstrings \u2014 Sphinx documentation",
+          "url": "https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html"
+        },
+        {
+          "title": "Autodoc can't detect module variables \u00b7 Issue #1980 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/1980"
+        },
+        {
+          "title": "Autosummary does not respect autodoc's :meta public: \u00b7 Issue #8922 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8922"
+        },
+        {
+          "title": "`:meta private:` not honored after field containing indented text \u00b7 Issue #11728 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/11728"
+        },
+        {
+          "title": "Sphinx 3.5 \u2014 Sphinx documentation",
+          "url": "https://www.sphinx-doc.org/en/master/changes/3.5.html"
+        },
+        {
+          "title": "Docstring metadata ignored for attributes \u00b7 Issue #8180 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8180"
+        },
+        {
+          "title": "autodata could not create document for instance variables with type annotation \u00b7 Issue #8443 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8443"
+        },
+        {
+          "title": "autodoc: a docsting having metadata only should be treated as undocumented \u00b7 Issue #8597 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8597"
+        },
+        {
+          "title": "Instance variables link to other variables of the same name in the project \u00b7 Issue #5977 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/5977"
+        }
+      ]
+    },
+    "Based on the search results, I found information about this issue:\n\nThe bug in Sphinx issue #8592 describes that autodoc's `:meta public:` directive does not affect variables. In the reproduction case, a module variable `_foo` with a doc comment containing `:meta public:` is expected to be shown in the built document, but it is not shown.\n\nThis issue was fixed in Sphinx 3.5, as it appears in the list of fixed bugs for that release. The core problem was that metadata in the docstrings (or doc-comments) of attributes was being ignored, so `:meta public:` did not make an attribute whose name starts with an underscore public.\n\nAdditionally, there's a related issue (#8180) that addresses the same problem more broadly: autodoc's filter_members function did not properly look up the docstring/doc-comments for attributes when searching for metadata."
+  ],
+  "durationSeconds": 5.119391540999997
+}

@@ -1,0 +1,8 @@
+{
+  "bytes": 7667,
+  "code": 200,
+  "codeText": "OK",
+  "result": "I cannot find the `filter_members` method implementation in the provided web page content. \n\nThe content shows imports, configuration setup, and directive registration for Sphinx's autodoc extension, but does not include the actual `filter_members` method code or any logic checking for underscore prefixes or meta public metadata.\n\nTo locate this method, you would need to examine the source files referenced in the imports, particularly those from `sphinx.ext.autodoc._legacy_class_based._documenters` or other autodoc modules.",
+  "durationMs": 1776,
+  "url": "https://raw.githubusercontent.com/sphinx-doc/sphinx/master/sphinx/ext/autodoc/__init__.py"
+}

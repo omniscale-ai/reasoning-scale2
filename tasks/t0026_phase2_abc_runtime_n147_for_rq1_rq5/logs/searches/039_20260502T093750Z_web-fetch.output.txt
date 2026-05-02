@@ -1,0 +1,8 @@
+{
+  "bytes": 17749,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# CDS Table Reader Source Code\n\nThis is the complete raw source code for `cds.py`, an ASCII table reader module for CDS/Vizier format tables in Astropy.\n\n## Key Components\n\n**Module Purpose**: Reads and parses CDS (Catalogue Data System) and MRT (Machine-Readable Table) format astronomical data files.\n\n**Main Classes**:\n\n1. **CdsHeader** - Parses column definitions from CDS headers\n2. **CdsData** - Handles data line processing\n3. **Cds** - Primary reader class\n\n## Notable Features\n\nThe implementation handles several CDS-specific requirements:\n\n- Recognizes section delimiters (dashes/equals) that separate metadata sections\n- Parses \"Byte-by-byte Description\" format specifications\n- Supports separate ReadMe files for header information\n- Manages column units and descriptions with special null value handling\n- Processes multi-line column descriptions\n- Handles split data files (e.g., \"file.dat.00\", \"file.dat.01\")\n- Implements `data_start='guess'` parameter for uncertain data boundaries\n\nThe code includes comprehensive docstrings with usage examples showing how to read tables from local files and remote FTP sources.\n\n**License**: 3-clause BSD style (see LICENSE.rst)",
+  "durationMs": 3826,
+  "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/io/ascii/cds.py"
+}

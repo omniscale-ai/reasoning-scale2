@@ -1,0 +1,8 @@
+{
+  "bytes": 57818,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# CodegenAST Class Definition\n\n## Class Definition\n\nBased on the provided code, `CodegenAST` is defined as:\n\n```python\nclass CodegenAST(Basic):\n    __slots__ = ()\n```\n\n## Relationship to Basic\n\n`CodegenAST` extends `sympy.core.basic.Basic`, serving as the foundation for all Abstract Syntax Tree node types in the codegen module. It inherits from Basic but adds no new attributes (empty `__slots__`).\n\n## Key Points\n\n**No custom `__new__` method**: `CodegenAST` itself doesn't define `__new__`. However, its subclass `Token` implements a sophisticated `__new__` that handles:\n\n- Attribute construction through `_construct_<attr>` methods\n- Default value handling\n- Validation of arguments\n- Separation of attributes into Basic constructor args vs. instance-only attributes\n\n**Inheritance hierarchy**: The actual AST types inherit from `Token` (which inherits from `CodegenAST`), allowing them to leverage `Token`'s flexible initialization system while maintaining compatibility with SymPy's expression framework through `Basic`.\n\nThis design enables code generation nodes to function both as SymPy expressions and as structured syntax tree elements.",
+  "durationMs": 3983,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/ast.py"
+}

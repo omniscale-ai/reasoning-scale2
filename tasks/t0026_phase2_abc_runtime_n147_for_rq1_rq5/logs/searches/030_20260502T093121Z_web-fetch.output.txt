@@ -1,0 +1,8 @@
+{
+  "bytes": 688027,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# SymPy Set Class Definitions\n\n## Set Class Definition\n**Line 76** - Base class for all set types\n```python\n@sympify_method_args\nclass Set(Basic, EvalfMixin):\n```\n\n## is_subset Method\n**Lines 1127-1161** - Membership testing method\n```python\ndef is_subset(self, other):\n    \"\"\"Returns True if ``self`` is a subset of ``other``.\"\"\"\n```\nChecks equality, handles empty sets, and dispatches to subclass rules and external handlers.\n\n## ProductSet Class Definition\n**Line 1576** - Cartesian product representation\n```python\nclass ProductSet(Set):\n    \"\"\"Represents a Cartesian Product of Sets.\"\"\"\n```\nMarked with `is_ProductSet = True` attribute.\n\n## Complement Class Definition\nNot visible in the provided content excerpt. The file contains 2829 lines total, but the displayed portion ends around line 900. The Complement class definition appears later in the file beyond what was shown in this GitHub page view.",
+  "durationMs": 4124,
+  "url": "https://github.com/sympy/sympy/blob/master/sympy/sets/sets.py"
+}

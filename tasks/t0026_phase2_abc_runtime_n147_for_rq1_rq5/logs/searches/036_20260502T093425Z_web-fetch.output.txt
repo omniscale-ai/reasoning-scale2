@@ -1,0 +1,8 @@
+{
+  "bytes": 7820,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# CDS Unit Parser Grammar and Tokenization\n\n## Tokenizer Rules\n\nThe lexer defines these tokens:\n- **Operators**: `PRODUCT` (`.`), `DIVISION` (`/`), `X` (`x` or `\u00d7`)\n- **Delimiters**: `OPEN_PAREN`, `CLOSE_PAREN`, `OPEN_BRACKET`, `CLOSE_BRACKET`\n- **Values**: `FLOAT`, `INT`, `UNIT`, `DIMENSIONLESS`\n\n## Grammar Rules\n\nThe parser implements these production rules:\n\n```\nmain : factor combined_units\n     | combined_units\n     | DIMENSIONLESS\n     | OPEN_BRACKET combined_units CLOSE_BRACKET\n     | factor\n\ncombined_units : product_of_units\n               | division_of_units\n\ndivision_of_units : DIVISION unit_expression\n                  | combined_units DIVISION unit_expression\n```\n\n## Handling Multiple Division Separators\n\nMultiple `/` operators are processed recursively through the `division_of_units` rule. The grammar structure allows chaining: `\"combined_units DIVISION unit_expression\"` enables expressions like `A / B / C` to parse as `(A / B) / C` through left-associative recursion.\n\nCritically, division can appear at the start (\"`DIVISION unit_expression`\"), allowing expressions beginning with `/` to represent purely denominator units, such as `\"/m\"` for inverse meters.\n\nThe parser processes these through standard shift-reduce operations via the yacc parser generator, handling operator precedence through grammar rule organization.",
+  "durationMs": 4289,
+  "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/units/format/cds.py"
+}

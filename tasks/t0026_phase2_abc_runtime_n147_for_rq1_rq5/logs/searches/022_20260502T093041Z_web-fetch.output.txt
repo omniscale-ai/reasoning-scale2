@@ -1,0 +1,8 @@
+{
+  "bytes": 665850,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Analysis of String Class in sympy/codegen/ast.py\n\n## String Class Definition\n\nThe `String` class is defined as an atomic token inheriting from both `Atom` and `Token`:\n\n```python\nclass String(Atom, Token):\n    \"\"\"SymPy object representing a string.\"\"\"\n    __slots__ = _fields = ('text',)\n    not_in_args = ['text']\n    is_Atom = True\n```\n\n## Key Design Characteristic\n\nThe crucial aspect relates to **Basic class args invariance**. The `not_in_args` attribute specifies: \"Attributes listed in the class attribute `not_in_args` are not passed to :class:`~.Basic`.\"\n\nThis means the `text` attribute is **excluded from Basic's args**, despite being defined as a field. This prevents the string content from becoming part of the symbolic expression's hashable identity.\n\n## Constructor and Methods\n\nThe class uses `_construct_text` for validation rather than a custom `__init__`:\n\n```python\n@classmethod\ndef _construct_text(cls, text):\n    if not isinstance(text, str):\n        raise TypeError(\"Argument text is not a string type.\")\n    return text\n```\n\nThe `kwargs()` method returns an empty dictionary:\n\n```python\ndef kwargs(self, exclude=(), apply=None):\n    return {}\n```\n\nThis design maintains **args immutability** while storing mutable string data separately from Basic's core symbolic structure.",
+  "durationMs": 5319,
+  "url": "https://github.com/sympy/sympy/blob/master/sympy/codegen/ast.py"
+}

@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T10:30:30Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html",
+    "prompt": "Find the documentation about :meta public: and :meta private: directives. How does it explain the behavior with underscore-prefixed names?"
+  },
+  "url": "https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html",
+  "prompt": "Find the documentation about :meta public: and :meta private: directives. How does it explain the behavior with underscore-prefixed names?"
+}

@@ -1,0 +1,652 @@
+{
+  "astropy__astropy-14369": {
+    "success": false,
+    "rationale": "The agent provided no final answer.",
+    "raw_response": "RATIONALE: The agent provided no final answer.\nVERDICT: FAIL"
+  },
+  "django__django-11400": {
+    "success": true,
+    "rationale": "The agent correctly identifies both issues and provides concrete code fixes: falling back to `field.remote_field.model._meta.ordering` in `field_admin_ordering` when no ModelAdmin is registered, and passing `ordering` to `field.get_choices` in `RelatedOnlyFieldListFilter.field_choices`.",
+    "raw_response": "RATIONALE: The agent correctly identifies both issues and provides concrete code fixes: falling back to `field.remote_field.model._meta.ordering` in `field_admin_ordering` when no ModelAdmin is registered, and passing `ordering` to `field.get_choices` in `RelatedOnlyFieldListFilter.field_choices`.\nVERDICT: PASS"
+  },
+  "pylint-dev__pylint-4551": {
+    "success": false,
+    "rationale": "The agent's final answer is empty, providing no solution to the problem.",
+    "raw_response": "RATIONALE: The agent's final answer is empty, providing no solution to the problem.\nVERDICT: FAIL"
+  },
+  "pylint-dev__pylint-4661": {
+    "success": false,
+    "rationale": "The agent's answer only describes where to make the change and provides a code snippet, but explicitly states \"Pylint is not installed or present in this repository, so I can't directly modify its source\" \u2014 meaning no actual code change was made to the repository to fix the failing test `tests/lint/unittest_lint.py::test_pylint_home`.",
+    "raw_response": "RATIONALE: The agent's answer only describes where to make the change and provides a code snippet, but explicitly states \"Pylint is not installed or present in this repository, so I can't directly modify its source\" \u2014 meaning no actual code change was made to the repository to fix the failing test `tests/lint/unittest_lint.py::test_pylint_home`.\nVERDICT: FAIL"
+  },
+  "pytest-dev__pytest-7236": {
+    "success": true,
+    "rationale": "The agent correctly identifies the root cause and provides the exact code fix with `_is_skipped` guard checking `__unittest_skip__` on both the test method and class, matching what the actual fix requires.",
+    "raw_response": "RATIONALE: The agent correctly identifies the root cause and provides the exact code fix with `_is_skipped` guard checking `__unittest_skip__` on both the test method and class, matching what the actual fix requires.\nVERDICT: PASS"
+  },
+  "pytest-dev__pytest-5840": {
+    "success": false,
+    "rationale": "The agent's final answer is empty, so it cannot have solved the task.",
+    "raw_response": "RATIONALE: The agent's final answer is empty, so it cannot have solved the task.\nVERDICT: FAIL"
+  },
+  "scikit-learn__scikit-learn-11310": {
+    "success": false,
+    "rationale": "The agent's final answer is empty, so it cannot have addressed the task.",
+    "raw_response": "RATIONALE: The agent's final answer is empty, so it cannot have addressed the task.\nVERDICT: FAIL"
+  },
+  "django__django-15128": {
+    "success": false,
+    "rationale": "The agent correctly identifies the root cause but only provides broken pseudocode with non-existent methods and incorrect approaches, never delivering an actual working code fix to the Django source file.",
+    "raw_response": "RATIONALE: The agent correctly identifies the root cause but only provides broken pseudocode with non-existent methods and incorrect approaches, never delivering an actual working code fix to the Django source file.\nVERDICT: FAIL"
+  },
+  "pylint-dev__pylint-6528": {
+    "success": true,
+    "rationale": "The agent correctly identifies the root cause in `pylint/utils/__init__.py`'s `expand_modules` function, provides the exact code change needed (`dirs[:] = [...]` to prune ignored directories during `os.walk`), and explains why each ignore flag was failing \u2014 meeting the standard for a concrete code-pointing explanation.",
+    "raw_response": "RATIONALE: The agent correctly identifies the root cause in `pylint/utils/__init__.py`'s `expand_modules` function, provides the exact code change needed (`dirs[:] = [...]` to prune ignored directories during `os.walk`), and explains why each ignore flag was failing \u2014 meeting the standard for a concrete code-pointing explanation.\nVERDICT: PASS"
+  },
+  "scikit-learn__scikit-learn-25973": {
+    "success": false,
+    "rationale": "The agent's final answer is empty, so it failed to provide any solution.",
+    "raw_response": "RATIONALE: The agent's final answer is empty, so it failed to provide any solution.\nVERDICT: FAIL"
+  },
+  "django__django-11138": {
+    "success": true,
+    "rationale": "The agent correctly identifies the root cause (hardcoded 'UTC' in MySQL/Oracle/SQLite operations), names the exact files to modify, and provides concrete code showing `self.connection.timezone_name` replacing the hardcoded value plus the no-op optimization when source == destination timezone, which addresses both bugs described in the issue.",
+    "raw_response": "RATIONALE: The agent correctly identifies the root cause (hardcoded 'UTC' in MySQL/Oracle/SQLite operations), names the exact files to modify, and provides concrete code showing `self.connection.timezone_name` replacing the hardcoded value plus the no-op optimization when source == destination timezone, which addresses both bugs described in the issue.\nVERDICT: PASS"
+  },
+  "scikit-learn__scikit-learn-25232": {
+    "success": true,
+    "rationale": "The agent correctly identifies all three required code changes (adding `fill_value=None` parameter to `__init__`, storing `self.fill_value = fill_value`, and passing `fill_value=self.fill_value` to `SimpleImputer`) with concrete, specific code-pointing changes that would make the failing test pass.",
+    "raw_response": "RATIONALE: The agent correctly identifies all three required code changes (adding `fill_value=None` parameter to `__init__`, storing `self.fill_value = fill_value`, and passing `fill_value=self.fill_value` to `SimpleImputer`) with concrete, specific code-pointing changes that would make the failing test pass.\nVERDICT: PASS"
+  },
+  "scikit-learn__scikit-learn-14496": {
+    "success": false,
+    "rationale": "The agent correctly identifies the exact fix needed (int(round(max(2, min_samples * n_samples)))) and points to the right file and line, but admits it cannot apply the fix because the scikit-learn source is not present in this repository, meaning no actual code change was made.",
+    "raw_response": "RATIONALE: The agent correctly identifies the exact fix needed (int(round(max(2, min_samples * n_samples)))) and points to the right file and line, but admits it cannot apply the fix because the scikit-learn source is not present in this repository, meaning no actual code change was made.\nVERDICT: FAIL"
+  },
+  "sphinx-doc__sphinx-8593": {
+    "success": false,
+    "rationale": "The agent provided no final answer at all.",
+    "raw_response": "RATIONALE: The agent provided no final answer at all.\nVERDICT: FAIL"
+  },
+  "pydata__xarray-6992": {
+    "success": true,
+    "rationale": "The agent correctly identifies the root cause (stale `_coord_names` after `reset_index(drop=True)`), points to the exact file and line (`xarray/core/dataset.py ~line 368`), and provides concrete, correct code-level fixes for `DataVariables.__len__`, `_replace`, and `reset_index` that would resolve the `ValueError: __len__() should return >= 0`.",
+    "raw_response": "RATIONALE: The agent correctly identifies the root cause (stale `_coord_names` after `reset_index(drop=True)`), points to the exact file and line (`xarray/core/dataset.py ~line 368`), and provides concrete, correct code-level fixes for `DataVariables.__len__`, `_replace`, and `reset_index` that would resolve the `ValueError: __len__() should return >= 0`.\nVERDICT: PASS"
+  },
+  "sympy__sympy-13852": {
+    "success": false,
+    "rationale": "The agent provided no final answer.",
+    "raw_response": "RATIONALE: The agent provided no final answer.\nVERDICT: FAIL"
+  },
+  "django__django-13344": {
+    "success": false,
+    "rationale": "The agent correctly identifies the root cause but proposes an `__acall__` method which is not a valid Django async middleware protocol \u2014 Django's ASGI handler dispatches via `__call__` with coroutine detection, not `__acall__`, so the fix would not make the failing tests pass.",
+    "raw_response": "RATIONALE: The agent correctly identifies the root cause but proposes an `__acall__` method which is not a valid Django async middleware protocol \u2014 Django's ASGI handler dispatches via `__call__` with coroutine detection, not `__acall__`, so the fix would not make the failing tests pass.\nVERDICT: FAIL"
+  },
+  "sympy__sympy-19495": {
+    "success": false,
+    "rationale": "The agent's final answer is empty, so there is no solution to evaluate.",
+    "raw_response": "RATIONALE: The agent's final answer is empty, so there is no solution to evaluate.\nVERDICT: FAIL"
+  },
+  "sympy__sympy-22456": {
+    "success": false,
+    "rationale": "The agent provided no final answer at all.",
+    "raw_response": "RATIONALE: The agent provided no final answer at all.\nVERDICT: FAIL"
+  },
+  "tau-airline-0002": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not access any airline booking tools and deferred the user to contact customer service, providing no concrete outcome or savings amount.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not access any airline booking tools and deferred the user to contact customer service, providing no concrete outcome or savings amount.\nVERDICT: FAIL"
+  },
+  "tau-airline-0009": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the task due to missing tools and deferred to a different environment, producing no concrete outcomes.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the task due to missing tools and deferred to a different environment, producing no concrete outcomes.\nVERDICT: FAIL"
+  },
+  "tau-airline-0023": {
+    "success": false,
+    "rationale": "The agent explicitly states it was unable to complete the changes because the required tools are not available, producing no concrete outcome.",
+    "raw_response": "RATIONALE: The agent explicitly states it was unable to complete the changes because the required tools are not available, producing no concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-airline-0022": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the task due to missing airline tools, producing no concrete outcome such as a flight change confirmation or booking update.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the task due to missing airline tools, producing no concrete outcome such as a flight change confirmation or booking update.\nVERDICT: FAIL"
+  },
+  "tau-airline-0014": {
+    "success": false,
+    "rationale": "The agent gave up and deferred to a human rather than completing any concrete action, naming no outcome.",
+    "raw_response": "RATIONALE: The agent gave up and deferred to a human rather than completing any concrete action, naming no outcome.\nVERDICT: FAIL"
+  },
+  "tau-airline-0029": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the task due to missing tools and deferred to other channels rather than taking any concrete action.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the task due to missing tools and deferred to other channels rather than taking any concrete action.\nVERDICT: FAIL"
+  },
+  "tau-airline-0027": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no concrete outcome or confirmation of any actions taken.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no concrete outcome or confirmation of any actions taken.\nVERDICT: FAIL"
+  },
+  "tau-airline-0031": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no concrete outcome or confirmation of any action taken.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no concrete outcome or confirmation of any action taken.\nVERDICT: FAIL"
+  },
+  "tau-airline-0026": {
+    "success": false,
+    "rationale": "The agent did not perform any of the requested actions (cancellations or upgrade) and instead deferred to external resources, providing no concrete outcome.",
+    "raw_response": "RATIONALE: The agent did not perform any of the requested actions (cancellations or upgrade) and instead deferred to external resources, providing no concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-airline-0032": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the booking due to missing tools and produced no concrete outcome.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the booking due to missing tools and produced no concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-airline-0046": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, which means it failed to address the task.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, which means it failed to address the task.\nVERDICT: FAIL"
+  },
+  "sympy__sympy-20438": {
+    "success": false,
+    "rationale": "The agent correctly identifies the file (`sympy/sets/sets.py`), class (`ProductSet`), and provides concrete code (`_eval_is_subset`) that would fix `b.is_subset(c)` returning `None`; however, the agent only describes the fix without evidence of actually implementing it, and doesn't address the `test_Eq` failing test involving the `Complement.equals` AttributeError.",
+    "raw_response": "RATIONALE: The agent correctly identifies the file (`sympy/sets/sets.py`), class (`ProductSet`), and provides concrete code (`_eval_is_subset`) that would fix `b.is_subset(c)` returning `None`; however, the agent only describes the fix without evidence of actually implementing it, and doesn't address the `test_Eq` failing test involving the `Complement.equals` AttributeError.\n\nVERDICT: FAIL"
+  },
+  "tau-retail-0000": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, which means the exchange request was never addressed.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, which means the exchange request was never addressed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0007": {
+    "success": false,
+    "rationale": "The agent produced no final answer whatsoever, leaving the output completely empty.",
+    "raw_response": "RATIONALE: The agent produced no final answer whatsoever, leaving the output completely empty.\nVERDICT: FAIL"
+  },
+  "tau-retail-0009": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, providing no concrete outcome or confirmation of any action taken.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, providing no concrete outcome or confirmation of any action taken.\nVERDICT: FAIL"
+  },
+  "tau-retail-0008": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output at all.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output at all.\nVERDICT: FAIL"
+  },
+  "tau-retail-0010": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, which means it failed to address the user's request in any concrete way.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, which means it failed to address the user's request in any concrete way.\nVERDICT: FAIL"
+  },
+  "tau-retail-0005": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, which means it failed to address the task or provide any concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, which means it failed to address the task or provide any concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0011": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all \u2014 the field is empty, so there is nothing to evaluate.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all \u2014 the field is empty, so there is nothing to evaluate.\nVERDICT: FAIL"
+  },
+  "tau-retail-0001": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not process the exchange due to missing tools and deferred the task to a human/other system, producing no concrete outcome.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not process the exchange due to missing tools and deferred the task to a human/other system, producing no concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0012": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, providing no concrete outcome, confirmation, or actions taken for any of the requested operations.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, providing no concrete outcome, confirmation, or actions taken for any of the requested operations.\nVERDICT: FAIL"
+  },
+  "tau-retail-0014": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing nothing to address the user's request to cancel or return gaming-related items.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing nothing to address the user's request to cancel or return gaming-related items.\nVERDICT: FAIL"
+  },
+  "tau-retail-0017": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, so there is no evidence the address change was completed or even attempted.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, so there is no evidence the address change was completed or even attempted.\nVERDICT: FAIL"
+  },
+  "tau-retail-0015": {
+    "success": false,
+    "rationale": "The agent produced no output at all, providing no evidence that the boots were modified to size 8 or that the material was retrieved.",
+    "raw_response": "RATIONALE: The agent produced no output at all, providing no evidence that the boots were modified to size 8 or that the material was retrieved.\nVERDICT: FAIL"
+  },
+  "tau-retail-0013": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, so it cannot have satisfied the task.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, so it cannot have satisfied the task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0022": {
+    "success": false,
+    "rationale": "The agent described the steps it would take but explicitly stated the required tools are not available and no actual changes were made, making this a deferred/gave-up response rather than a concrete completed action.",
+    "raw_response": "RATIONALE: The agent described the steps it would take but explicitly stated the required tools are not available and no actual changes were made, making this a deferred/gave-up response rather than a concrete completed action.\nVERDICT: FAIL"
+  },
+  "tau-retail-0006": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, meaning it produced no concrete outcome or confirmation of any action taken.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, meaning it produced no concrete outcome or confirmation of any action taken.\nVERDICT: FAIL"
+  },
+  "tau-retail-0018": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, so nothing was accomplished.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, so nothing was accomplished.\nVERDICT: FAIL"
+  },
+  "tau-retail-0019": {
+    "success": false,
+    "rationale": "The agent's final answer is just a customer message/request draft, not a completed action with concrete outcomes like actual savings amounts or confirmations of returns/exchanges processed.",
+    "raw_response": "RATIONALE: The agent's final answer is just a customer message/request draft, not a completed action with concrete outcomes like actual savings amounts or confirmations of returns/exchanges processed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0034": {
+    "success": false,
+    "rationale": "The agent failed to perform the task, instead explaining it lacks the right tools and offering alternatives rather than producing a concrete outcome like a refund amount or address change.",
+    "raw_response": "RATIONALE: The agent failed to perform the task, instead explaining it lacks the right tools and offering alternatives rather than producing a concrete outcome like a refund amount or address change.\nVERDICT: FAIL"
+  },
+  "tau-retail-0026": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no concrete outcome, tracking number, or confirmation of a return request.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no concrete outcome, tracking number, or confirmation of a return request.\nVERDICT: FAIL"
+  },
+  "tau-retail-0035": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output whatsoever.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output whatsoever.\nVERDICT: FAIL"
+  },
+  "tau-retail-0039": {
+    "success": false,
+    "rationale": "The agent produced no output at all, so it cannot have satisfied any part of the task.",
+    "raw_response": "RATIONALE: The agent produced no output at all, so it cannot have satisfied any part of the task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0027": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, so there is nothing to evaluate.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, so there is nothing to evaluate.\nVERDICT: FAIL"
+  },
+  "tau-retail-0040": {
+    "success": false,
+    "rationale": "The agent explicitly admitted it could not complete the task and provided no concrete outcomes (no gift card balance, no payment method identified, no action taken).",
+    "raw_response": "RATIONALE: The agent explicitly admitted it could not complete the task and provided no concrete outcomes (no gift card balance, no payment method identified, no action taken).\nVERDICT: FAIL"
+  },
+  "tau-retail-0044": {
+    "success": false,
+    "rationale": "The agent gave up and deferred to human customer service without providing the requested information (cheapest desk lamp price, amount of refund to gift card).",
+    "raw_response": "RATIONALE: The agent gave up and deferred to human customer service without providing the requested information (cheapest desk lamp price, amount of refund to gift card).\nVERDICT: FAIL"
+  },
+  "tau-retail-0033": {
+    "success": false,
+    "rationale": "The agent gave up and failed to perform any of the requested actions, citing lack of tools rather than attempting to complete the task.",
+    "raw_response": "RATIONALE: The agent gave up and failed to perform any of the requested actions, citing lack of tools rather than attempting to complete the task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0045": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output at all.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output at all.\nVERDICT: FAIL"
+  },
+  "tau-retail-0047": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing nothing at all.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing nothing at all.\nVERDICT: FAIL"
+  },
+  "tau-retail-0048": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output at all.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output at all.\nVERDICT: FAIL"
+  },
+  "tau-retail-0029": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the task and provided no concrete outcomes, values, or confirmations for either exchange request.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the task and provided no concrete outcomes, values, or confirmations for either exchange request.\nVERDICT: FAIL"
+  },
+  "tau-retail-0043": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, providing no information about the order address, tracking number, transit status, tablet storage, or address change.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, providing no information about the order address, tracking number, transit status, tablet storage, or address change.\nVERDICT: FAIL"
+  },
+  "tau-retail-0051": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output or action taken.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output or action taken.\nVERDICT: FAIL"
+  },
+  "tau-retail-0046": {
+    "success": false,
+    "rationale": "The agent's \"final answer\" is merely an opening prompt asking for the order ID, with no return processed, no refund amount provided, and no task completed.",
+    "raw_response": "RATIONALE: The agent's \"final answer\" is merely an opening prompt asking for the order ID, with no return processed, no refund amount provided, and no task completed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0052": {
+    "success": false,
+    "rationale": "The agent explicitly stated it cannot complete the task due to missing tools and only described what would need to be done, without taking any concrete action or producing a specific outcome.",
+    "raw_response": "RATIONALE: The agent explicitly stated it cannot complete the task due to missing tools and only described what would need to be done, without taking any concrete action or producing a specific outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0053": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output whatsoever.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output whatsoever.\nVERDICT: FAIL"
+  },
+  "tau-retail-0060": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no concrete outcome or confirmation.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no concrete outcome or confirmation.\nVERDICT: FAIL"
+  },
+  "tau-retail-0059": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output whatsoever, so it cannot have addressed the user's requests or provided the expected refund total (164.28) or order total (625.60).",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output whatsoever, so it cannot have addressed the user's requests or provided the expected refund total (164.28) or order total (625.60).\nVERDICT: FAIL"
+  },
+  "tau-retail-0056": {
+    "success": false,
+    "rationale": "The agent produced only a customer message template rather than actually investigating the order status and taking concrete action (cancel, modify, or confirm no action needed).",
+    "raw_response": "RATIONALE: The agent produced only a customer message template rather than actually investigating the order status and taking concrete action (cancel, modify, or confirm no action needed).\nVERDICT: FAIL"
+  },
+  "tau-retail-0058": {
+    "success": false,
+    "rationale": "The agent produced a scripted interaction plan that addresses all key requirements (coffee machine pressure priorities, laptop exchange to cheapest i7+, payment preference order) but did not actually execute the task or achieve any concrete outcome like an order modification confirmation.",
+    "raw_response": "RATIONALE: The agent produced a scripted interaction plan that addresses all key requirements (coffee machine pressure priorities, laptop exchange to cheapest i7+, payment preference order) but did not actually execute the task or achieve any concrete outcome like an order modification confirmation.\nVERDICT: FAIL"
+  },
+  "tau-retail-0064": {
+    "success": false,
+    "rationale": "The agent produced no final answer whatsoever, leaving the field completely empty.",
+    "raw_response": "RATIONALE: The agent produced no final answer whatsoever, leaving the field completely empty.\nVERDICT: FAIL"
+  },
+  "tau-retail-0061": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, providing no concrete outcome or action taken.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, providing no concrete outcome or action taken.\nVERDICT: FAIL"
+  },
+  "tau-retail-0068": {
+    "success": false,
+    "rationale": "The agent explicitly stated it was unable to complete any of the requested tasks due to missing tools, producing no concrete outcomes.",
+    "raw_response": "RATIONALE: The agent explicitly stated it was unable to complete any of the requested tasks due to missing tools, producing no concrete outcomes.\nVERDICT: FAIL"
+  },
+  "tau-retail-0066": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the task and gave no concrete outcome such as a modified order, return, or cancellation.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the task and gave no concrete outcome such as a modified order, return, or cancellation.\nVERDICT: FAIL"
+  },
+  "tau-retail-0063": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output at all.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output at all.\nVERDICT: FAIL"
+  },
+  "tau-retail-0087": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the task due to missing tools, with no concrete outcome achieved.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the task due to missing tools, with no concrete outcome achieved.\nVERDICT: FAIL"
+  },
+  "tau-retail-0062": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output whatsoever.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output whatsoever.\nVERDICT: FAIL"
+  },
+  "tau-retail-0069": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, providing no concrete outcome, confirmation, or action taken regarding the laptop return request.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, providing no concrete outcome, confirmation, or action taken regarding the laptop return request.\nVERDICT: FAIL"
+  },
+  "tau-retail-0025": {
+    "success": false,
+    "rationale": "The agent produced no final answer, which means the task was not completed.",
+    "raw_response": "RATIONALE: The agent produced no final answer, which means the task was not completed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0104": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output at all.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output at all.\nVERDICT: FAIL"
+  },
+  "tau-retail-0146": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output or confirmation of any actions taken.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output or confirmation of any actions taken.\nVERDICT: FAIL"
+  },
+  "tau-retail-0105": {
+    "success": false,
+    "rationale": "The agent's final answer is only the opening message of the conversation and does not include any concrete outcomes such as completed returns, order modifications, or the expected tracking number (286422338955).",
+    "raw_response": "RATIONALE: The agent's final answer is only the opening message of the conversation and does not include any concrete outcomes such as completed returns, order modifications, or the expected tracking number (286422338955).\nVERDICT: FAIL"
+  },
+  "tau-airline-0034": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output whatsoever.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output whatsoever.\nVERDICT: FAIL"
+  },
+  "tau-retail-0139": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output at all to address the multiple requested order modifications, returns, address changes, and cancellations.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output at all to address the multiple requested order modifications, returns, address changes, and cancellations.\nVERDICT: FAIL"
+  },
+  "tau-retail-0067": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output at all.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output at all.\nVERDICT: FAIL"
+  },
+  "tau-retail-0197": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all \u2014 the field is completely empty.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all \u2014 the field is completely empty.\nVERDICT: FAIL"
+  },
+  "tau-airline-0040": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output or action at all.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output or action at all.\nVERDICT: FAIL"
+  },
+  "tau-retail-0176": {
+    "success": false,
+    "rationale": "The agent explicitly stated it was unable to execute tool calls and produced no concrete actions, only a reasoning summary of what should be done.",
+    "raw_response": "RATIONALE: The agent explicitly stated it was unable to execute tool calls and produced no concrete actions, only a reasoning summary of what should be done.\nVERDICT: FAIL"
+  },
+  "tau-retail-0314": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all \u2014 the response field is completely empty.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all \u2014 the response field is completely empty.\nVERDICT: FAIL"
+  },
+  "tau-retail-0203": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the requested actions due to missing tools, and only described what it would do hypothetically rather than actually performing any of the required operations.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the requested actions due to missing tools, and only described what it would do hypothetically rather than actually performing any of the required operations.\nVERDICT: FAIL"
+  },
+  "tau-retail-0248": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, providing no confirmation of any actions taken or outcomes achieved.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, providing no confirmation of any actions taken or outcomes achieved.\nVERDICT: FAIL"
+  },
+  "tau-retail-0334": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all \u2014 the response field is completely empty, so no concrete outcome was named or action confirmed.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all \u2014 the response field is completely empty, so no concrete outcome was named or action confirmed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0351": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all \u2014 the response is completely empty.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all \u2014 the response is completely empty.\nVERDICT: FAIL"
+  },
+  "tau-retail-0329": {
+    "success": false,
+    "rationale": "The agent produced no output at all, which constitutes a complete failure to address the task.",
+    "raw_response": "RATIONALE: The agent produced no output at all, which constitutes a complete failure to address the task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0245": {
+    "success": false,
+    "rationale": "The agent produced no final answer, which means it failed to address any part of the user's task.",
+    "raw_response": "RATIONALE: The agent produced no final answer, which means it failed to address any part of the user's task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0445": {
+    "success": false,
+    "rationale": "The agent failed to complete any of the requested order management tasks and explicitly stated it could not perform them due to missing tools.",
+    "raw_response": "RATIONALE: The agent failed to complete any of the requested order management tasks and explicitly stated it could not perform them due to missing tools.\nVERDICT: FAIL"
+  },
+  "tau-retail-0427": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the task due to missing tools, providing no concrete outcome for any of the requested order changes.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the task due to missing tools, providing no concrete outcome for any of the requested order changes.\nVERDICT: FAIL"
+  },
+  "tau-retail-0451": {
+    "success": false,
+    "rationale": "The agent produced no final answer whatsoever, leaving the response completely empty.",
+    "raw_response": "RATIONALE: The agent produced no final answer whatsoever, leaving the response completely empty.\nVERDICT: FAIL"
+  },
+  "tau-retail-0331": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, which means it failed to address any of the requested actions.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, which means it failed to address any of the requested actions.\nVERDICT: FAIL"
+  },
+  "tau-retail-0415": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, producing no output whatsoever.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, producing no output whatsoever.\nVERDICT: FAIL"
+  },
+  "tau-retail-0431": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not complete the task because the required tools were unavailable, and no concrete actions were taken.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not complete the task because the required tools were unavailable, and no concrete actions were taken.\nVERDICT: FAIL"
+  },
+  "tau-retail-0305": {
+    "success": false,
+    "rationale": "The agent produced no output at all, which means it failed to address any part of the multi-part task.",
+    "raw_response": "RATIONALE: The agent produced no output at all, which means it failed to address any part of the multi-part task.\nVERDICT: FAIL"
+  },
+  "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96": {
+    "success": false,
+    "rationale": "The agent's final answer is empty, so it cannot satisfy any part of the evaluation criteria.",
+    "raw_response": "RATIONALE: The agent's final answer is empty, so it cannot satisfy any part of the evaluation criteria.\nVERDICT: FAIL"
+  },
+  "fs_1875e781-bd89-4528-8bc3-94b7b436402f": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, with no calculations, formulas, or values provided.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, with no calculations, formulas, or values provided.\nVERDICT: FAIL"
+  },
+  "fs_0f13c295-7991-43dc-a79f-d8f3d3fc0d57": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f": {
+    "success": false,
+    "rationale": "The agent provided no final answer.",
+    "raw_response": "RATIONALE: The agent provided no final answer.\nVERDICT: FAIL"
+  },
+  "fs_1e2f4cbe-4a38-4dd3-9378-14df40f7599f": {
+    "success": false,
+    "rationale": "The agent's final answer is empty, so it cannot be evaluated.",
+    "raw_response": "RATIONALE: The agent's final answer is empty, so it cannot be evaluated.\nVERDICT: FAIL"
+  },
+  "fs_1eca2503-b141-4f9f-ab10-e27d272c93b0": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing, so it cannot be evaluated.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing, so it cannot be evaluated.\nVERDICT: FAIL"
+  },
+  "fs_27c865e6-1c87-489b-b7ea-b197fe3356ba": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6": {
+    "success": false,
+    "rationale": "The agent provided no final answer.",
+    "raw_response": "RATIONALE: The agent provided no final answer.\nVERDICT: FAIL"
+  },
+  "tau-retail-0464": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, meaning no concrete outcome, confirmation, or action was reported.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, meaning no concrete outcome, confirmation, or action was reported.\nVERDICT: FAIL"
+  },
+  "fs_1dba0086-bca8-4b25-8843-e6e428f9284d": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing, so it cannot be evaluated.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing, so it cannot be evaluated.\nVERDICT: FAIL"
+  },
+  "fs_60ff38cc-fb55-4c3c-b75c-f59dde5de0c3": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, containing no content whatsoever.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, containing no content whatsoever.\nVERDICT: FAIL"
+  },
+  "fs_5ef8b29d-7665-45e6-a26a-bd4a27f450ad": {
+    "success": false,
+    "rationale": "The agent provided no final answer.",
+    "raw_response": "RATIONALE: The agent provided no final answer.\nVERDICT: FAIL"
+  },
+  "fs_7e32b7a6-9340-4a41-8c1f-89a0a91a6d3f": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "fs_676e50c1-cea4-4361-81e1-d4409a23422c": {
+    "success": false,
+    "rationale": "The agent's final answer is empty, so it fails trivially.",
+    "raw_response": "RATIONALE: The agent's final answer is empty, so it fails trivially.\nVERDICT: FAIL"
+  },
+  "fs_af50243e-3a60-4460-9536-f9a02c4f8eb8": {
+    "success": false,
+    "rationale": "The agent provided no final answer at all.",
+    "raw_response": "RATIONALE: The agent provided no final answer at all.\nVERDICT: FAIL"
+  },
+  "fs_a74ccc5b-fd37-49fa-b784-871dbcc41e9e": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing, so it cannot be evaluated.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing, so it cannot be evaluated.\nVERDICT: FAIL"
+  },
+  "fs_b75893ef-5c56-4d43-9ae1-8c9caaf32ee2": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty, providing no answer to the problem.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty, providing no answer to the problem.\nVERDICT: FAIL"
+  },
+  "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty.\nVERDICT: FAIL"
+  },
+  "fs_d3acd2cb-8477-4630-b8bb-b4bc22670dc8": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing, so it cannot be evaluated as correct.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing, so it cannot be evaluated as correct.\nVERDICT: FAIL"
+  },
+  "fs_eec8840a-2d00-4e70-b043-0da51bd1b288": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "fs_dcfa830a-3f87-43eb-9ec7-6649fcdd0473": {
+    "success": false,
+    "rationale": "The agent provided no final answer at all.",
+    "raw_response": "RATIONALE: The agent provided no final answer at all.\nVERDICT: FAIL"
+  },
+  "fs_f12a8706-3ddd-4255-9234-0655babceb8e": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d": {
+    "success": false,
+    "rationale": "The agent provided no final answer.",
+    "raw_response": "RATIONALE: The agent provided no final answer.\nVERDICT: FAIL"
+  },
+  "fs_7c94f50a-0896-450f-8d55-00c98aca5158": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing, so it cannot be evaluated.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing, so it cannot be evaluated.\nVERDICT: FAIL"
+  },
+  "fs_ecb58594-7fd9-4a94-b799-0f1c13acb752": {
+    "success": false,
+    "rationale": "The agent's final answer is completely empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is completely empty/missing.\nVERDICT: FAIL"
+  },
+  "fs_f7b49518-6e84-44e3-9480-4cf91d149702": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "tau-retail-0130": {
+    "success": false,
+    "rationale": "The agent explicitly stated it could not execute any of the required actions and only described what should be done, without actually performing any of the four requested operations.",
+    "raw_response": "RATIONALE: The agent explicitly stated it could not execute any of the required actions and only described what should be done, without actually performing any of the four requested operations.\nVERDICT: FAIL"
+  },
+  "tau-retail-0166": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, leaving the response completely empty.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, leaving the response completely empty.\nVERDICT: FAIL"
+  }
+}

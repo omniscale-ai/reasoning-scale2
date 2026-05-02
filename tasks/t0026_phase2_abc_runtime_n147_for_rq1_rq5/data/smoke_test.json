@@ -1,0 +1,12 @@
+{
+  "model_id": "claude-sonnet-4-6",
+  "prompt": "Reply with the single word: ready",
+  "response": "ready",
+  "cost_snapshot": {
+    "prompt_tokens": 3,
+    "completion_tokens": 4,
+    "cost_usd": 6.9e-05,
+    "n_calls": 1,
+    "parse_failures": 0
+  }
+}

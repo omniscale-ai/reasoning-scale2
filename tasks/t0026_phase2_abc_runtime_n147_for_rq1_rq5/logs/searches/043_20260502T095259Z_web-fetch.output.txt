@@ -1,0 +1,8 @@
+{
+  "bytes": 7667,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# filter_members Method\n\nThe content you provided doesn't include the `filter_members` method implementation or code handling `:meta public:` directives.\n\nThe page shows imports from `sphinx.ext.autodoc._legacy_class_based._documenters` where `DataDocumenter` and similar classes are defined, but the actual method implementations aren't included in this excerpt.\n\nTo find this functionality, you would need to examine:\n\n1. **The actual documenter classes** in `sphinx/ext/autodoc/_legacy_class_based/_documenters.py`\n2. **The directive implementation** in the referenced modules\n\nBased on the structure shown, the `filter_members` method would likely:\n- Reside in the base `Documenter` class\n- Use member inspection to evaluate visibility rules\n- Check for special metadata attributes like `:meta public:` to override default filtering\n- Filter underscore-prefixed members according to configured options\n\nThe specific logic for underscore filtering and metadata handling isn't visible in this excerpt. You'd need to access the actual source code files imported here to see the implementation details.",
+  "durationMs": 3632,
+  "url": "https://raw.githubusercontent.com/sphinx-doc/sphinx/master/sphinx/ext/autodoc/__init__.py"
+}

@@ -1,0 +1,46 @@
+{
+  "instance_id": "tau-retail-0130",
+  "subset": "taubench",
+  "variant": "b",
+  "final_answer": null,
+  "final_confidence": null,
+  "cost_usd": 0.027303,
+  "trajectory": [
+    {
+      "turn_index": 0,
+      "granularity": "unspecified",
+      "thought": "",
+      "action": "python_exec({\"code\": \"change_order_address(order_id='#W3746173', address1='137 Willow Lane', address2='Suite 127', city='Charlotte', state='NC', country='USA', zip='28249')\"})",
+      "observation": "<no output>",
+      "confidence": null,
+      "final_confidence": null
+    },
+    {
+      "turn_index": 1,
+      "granularity": "unspecified",
+      "thought": "",
+      "action": "python_exec({\"code\": \"change_order_payment(order_id='#W3746173', payment_method_id='credit_card_7898168')\"})",
+      "observation": "<no output>",
+      "confidence": null,
+      "final_confidence": null
+    },
+    {
+      "turn_index": 2,
+      "granularity": "unspecified",
+      "thought": "",
+      "action": "python_exec({\"code\": \"modify_pending_order_items(order_id='#W3746173', item_ids=['makeup_kit_item_id'], new_item_data=[{}], payment_method_id='credit_card_7898168')\"})",
+      "observation": "<no output>",
+      "confidence": null,
+      "final_confidence": null
+    },
+    {
+      "turn_index": 3,
+      "granularity": "unspecified",
+      "thought": "",
+      "action": "python_exec({\"code\": \"cancel_pending_order(order_id='#W1416704', reason='ordered by mistake')\"})",
+      "observation": "<no output>",
+      "confidence": null,
+      "final_confidence": null
+    }
+  ]
+}

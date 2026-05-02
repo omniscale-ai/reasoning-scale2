@@ -1,0 +1,8 @@
+{
+  "bytes": 285945,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Code Patch for Issue #8180\n\nThe proposed fix modifies the `filter_members` method in `sphinx/ext/autodoc/__init__.py` around **line 647-665**.\n\n## Key Changes\n\nThe patch restructures how docstring metadata is extracted for attributes:\n\n**Before:** The method called `getdoc()` to retrieve documentation, then extracted metadata from it.\n\n**After:** The method first checks if the member exists in `attr_docs` (the attribute documentation dictionary). If found, it uses that documentation directly. Only if not found does it fall back to the `getdoc()` approach.\n\n## Specific Line Changes\n\n- **Lines 650-665:** Wrapped the existing `getdoc()` logic in an `else` block\n- **Lines 649-651:** Added conditional check: `if (namespace, membername) in attr_docs:`\n- **Line 650:** Direct assignment: `doc = '\\n'.join(attr_docs[(namespace, membername)])`\n\nThis ensures that docstring metadata like `:meta public:` in attribute doc-comments is properly recognized and processed, allowing underscore-prefixed attributes to be documented when explicitly marked as public.",
+  "durationMs": 977878,
+  "url": "https://github.com/sphinx-doc/sphinx/issues/8180"
+}

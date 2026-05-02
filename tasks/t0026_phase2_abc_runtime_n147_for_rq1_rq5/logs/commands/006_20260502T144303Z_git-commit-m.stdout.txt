@@ -1,0 +1,8 @@
+[task/t0026_phase2_abc_runtime_n147_for_rq1_rq5 14861bb] t0026_phase2_abc_runtime_n147_for_rq1_rq5 [results]: capture command logs from results commit
+ 6 files changed, 34 insertions(+)
+ create mode 100644 tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/logs/commands/004_20260502T144247Z_git-commit-m.json
+ create mode 100644 tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/logs/commands/004_20260502T144247Z_git-commit-m.stderr.txt
+ create mode 100644 tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/logs/commands/004_20260502T144247Z_git-commit-m.stdout.txt
+ create mode 100644 tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/logs/commands/005_20260502T144253Z_python-m-arf-scripts-utils-poststep.json
+ create mode 100644 tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/logs/commands/005_20260502T144253Z_python-m-arf-scripts-utils-poststep.stderr.txt
+ create mode 100644 tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/logs/commands/005_20260502T144253Z_python-m-arf-scripts-utils-poststep.stdout.txt

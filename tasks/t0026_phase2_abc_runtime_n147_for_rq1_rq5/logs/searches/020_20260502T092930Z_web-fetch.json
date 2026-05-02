@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:29:30Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+    "prompt": "Explain whether cv splitter objects are stateful and what happens when the same cv object is passed to cross_val_score multiple times in a loop"
+  },
+  "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+  "prompt": "Explain whether cv splitter objects are stateful and what happens when the same cv object is passed to cross_val_score multiple times in a loop"
+}

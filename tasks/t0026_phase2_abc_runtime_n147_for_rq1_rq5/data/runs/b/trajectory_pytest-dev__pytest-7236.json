@@ -1,0 +1,19 @@
+{
+  "instance_id": "pytest-dev__pytest-7236",
+  "subset": "swebench",
+  "variant": "b",
+  "final_answer": "The `_pytest/unittest.py` diff between tags `5.4.1` and `5.4.2` reveals the exact regression. In 5.4.1, `runtest()` used a complex `wrapped_testMethod` / `_GetOutOf_testPartExecutor` approach where `tearDown` was only scheduled for explicit invocation (`_needs_explicit_tearDown = True`) when a **non-skip exception** occurred \u2014 `unittest.SkipTest` was re-raised directly, bypassing the flag. That meant `tearDown` was never called for skipped tests.",
+  "final_confidence": 0.4,
+  "cost_usd": 0.09381,
+  "trajectory": [
+    {
+      "turn_index": 0,
+      "granularity": "unspecified",
+      "thought": "I have the exact diff. Now I can provide the definitive answer for Step 1.",
+      "action": "finish",
+      "observation": "The `_pytest/unittest.py` diff between tags `5.4.1` and `5.4.2` reveals the exact regression. In 5.4.1, `runtest()` used a complex `wrapped_testMethod` / `_GetOutOf_testPartExecutor` approach where `tearDown` was only scheduled for explicit invocation (`_needs_explicit_tearDown = True`) when a **non-skip exception** occurred \u2014 `unittest.SkipTest` was re-raised directly, bypassing the flag. That meant `tearDown` was never called for skipped tests.",
+      "confidence": null,
+      "final_confidence": 0.4
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "query": "\"is_private\" \"meta\" autodoc Sphinx sphinx-doc/sphinx",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01VvJ12SnBY9jfG6bWT64SyG",
+      "content": []
+    },
+    "The search didn't return any results. This could be because:\n\n1. The exact phrase combination is too specific and doesn't appear in indexed web content\n2. The content may be in documentation pages that are less frequently indexed\n3. The query might benefit from being less restrictive\n\nWould you like me to try a modified search? For example, I could search for:\n- Just \"is_private autodoc Sphinx\" \n- \"autodoc meta Sphinx documentation\"\n- \"sphinx-doc/sphinx is_private\"\n\nOr if you can provide more context about what you're looking for, I can tailor the search better."
+  ],
+  "durationSeconds": 2.9362631249999978
+}

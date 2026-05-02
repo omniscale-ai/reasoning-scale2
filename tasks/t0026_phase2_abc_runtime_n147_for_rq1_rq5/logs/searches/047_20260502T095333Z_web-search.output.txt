@@ -1,0 +1,20 @@
+{
+  "query": "\"attr_docs\" \"filter_members\" site:github.com/sphinx-doc/sphinx",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01TeEZX1hMwZxWDumRWWXZHJ",
+      "content": [
+        {
+          "title": "autodoc private-members doesn't work for class attributes \u00b7 Issue #1362 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/1362"
+        },
+        {
+          "title": "Docstring metadata ignored for attributes \u00b7 Issue #8180 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8180"
+        }
+      ]
+    },
+    "The search found two relevant GitHub issues from the Sphinx documentation project:\n\n1. **Issue #1362** - The `Documenter.filter_members` method should take a look at `attr_docs` in case of `private_members`. The `special-members` option seems to have the same problem.\n\n2. **Issue #8180** - This issue discusses a related problem where metadata in the docstrings (or doc-comments) of attributes is ignored; for example, `:meta public:` does not make an attribute whose name starts with an underscore public. The issue includes a proposed code fix that modifies how `filter_members` handles `attr_docs` when processing attribute documentation.\n\nBoth issues relate to how Sphinx's autodoc extension handles the `attr_docs` and `filter_members` functionality when documenting class attributes and their metadata."
+  ],
+  "durationSeconds": 4.293675792000009
+}

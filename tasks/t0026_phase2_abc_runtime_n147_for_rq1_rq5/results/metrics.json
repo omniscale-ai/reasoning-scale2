@@ -1,0 +1,44 @@
+{
+  "variants": [
+    {
+      "variant_id": "a-scope-aware",
+      "label": "A — scope-aware ReAct",
+      "dimensions": {
+        "variant": "a",
+        "scaffold": "scope_aware_react",
+        "model": "claude-sonnet-4-6",
+        "n_paired": 130
+      },
+      "metrics": {
+        "task_success_rate": 0.04081632653061224
+      }
+    },
+    {
+      "variant_id": "b-plan-and-solve",
+      "label": "B — Plan-and-Solve v2",
+      "dimensions": {
+        "variant": "b",
+        "scaffold": "plan_and_solve_v2",
+        "model": "claude-sonnet-4-6",
+        "n_paired": 130
+      },
+      "metrics": {
+        "task_success_rate": 0.04081632653061224,
+        "overconfident_error_rate": 0.75
+      }
+    },
+    {
+      "variant_id": "c-mismatched-adversarial",
+      "label": "C — mismatched-strategy adversarial",
+      "dimensions": {
+        "variant": "c",
+        "scaffold": "matched_mismatch_adversarial_over_scope_aware_react",
+        "model": "claude-sonnet-4-6",
+        "n_paired": 130
+      },
+      "metrics": {
+        "task_success_rate": 0.11564625850340136
+      }
+    }
+  ]
+}

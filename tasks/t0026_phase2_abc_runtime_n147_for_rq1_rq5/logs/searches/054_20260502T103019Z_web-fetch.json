@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T10:30:19Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://github.com/sphinx-doc/sphinx/pull/7473",
+    "prompt": "Show me the code changes in this PR. What is the exact implementation of checking for :meta public: and how does it interact with underscore filtering?"
+  },
+  "url": "https://github.com/sphinx-doc/sphinx/pull/7473",
+  "prompt": "Show me the code changes in this PR. What is the exact implementation of checking for :meta public: and how does it interact with underscore filtering?"
+}

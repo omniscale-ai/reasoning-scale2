@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:30:54Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/core/basic.py",
+    "prompt": "Explain how Basic class handles args and the invariance expr.func(*expr.args) == expr. Show the __new__ method and how args is set"
+  },
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/core/basic.py",
+  "prompt": "Explain how Basic class handles args and the invariance expr.func(*expr.args) == expr. Show the __new__ method and how args is set"
+}

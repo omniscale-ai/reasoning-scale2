@@ -1,0 +1,8 @@
+{
+  "bytes": 25287,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# CDS ASCII Table Reader/Writer Module\n\nThe file `cds.py` is a licensed component of the Astropy library that implements classes for reading and writing CDS/Vizier table formats.\n\n## Key Components\n\n**Main Classes:**\n- `CdsHeader`: Processes header information from CDS/MRV formatted tables\n- `CdsData`: Handles data extraction from these formats\n- `Cds`: The primary reader class for the complete CDS format\n\n## Functionality Overview\n\nThe module parses astronomical catalog data structured with section delimiters (dashes or equal signs). The parser identifies \"Byte-by-byte Description\" sections that specify column metadata including:\n- Column positions and formats\n- Unit information\n- Data type mappings (e, f, i, a for float, integer, string types)\n- Column descriptions\n\n## Notable Features\n\nThe implementation handles several practical scenarios:\n- Tables split across multiple data files with numbering patterns\n- External ReadMe files paired with data files\n- Missing value indicators (dashes of varying lengths)\n- Continuation lines in column descriptions\n- Unit parsing with warnings for unrecognized units\n\nThe module provides \"a table description and the table data\" that \"can be in separate files as a ReadMe file plus data file(s), or combined in a single file.\"",
+  "durationMs": 5676,
+  "url": "https://api.github.com/repos/astropy/astropy/contents/astropy/io/ascii/cds.py"
+}

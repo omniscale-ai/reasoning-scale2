@@ -1,0 +1,52 @@
+{
+  "query": "scikit-learn check_cv function implementation cv iterator generator 2025",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01UTKKmiYQ5JUu2nisek5B87",
+      "content": [
+        {
+          "title": "check_cv \u2014 scikit-learn 1.8.0 documentation",
+          "url": "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.check_cv.html"
+        },
+        {
+          "title": "3.1. Cross-validation: evaluating estimator performance \u2014 scikit-learn 1.8.0 documentation",
+          "url": "https://scikit-learn.org/stable/modules/cross_validation.html"
+        },
+        {
+          "title": "3.1. Cross-validation: evaluating estimator performance \u2014 scikit-learn 0.15-git documentation",
+          "url": "https://scikit-learn.org/0.15/modules/cross_validation.html"
+        },
+        {
+          "title": "Creating Custom Cross-Validation Generators in Scikit-learn - GeeksforGeeks",
+          "url": "https://www.geeksforgeeks.org/machine-learning/creating-custom-cross-validation-generators-in-scikit-learn/"
+        },
+        {
+          "title": "data-independent CV iterators \u00b7 Issue #2904 \u00b7 scikit-learn/scikit-learn",
+          "url": "https://github.com/scikit-learn/scikit-learn/issues/2904"
+        },
+        {
+          "title": "sklearn.cross_validation.check_cv \u2014 scikit-learn 0.15-git documentation",
+          "url": "https://scikit-learn.org/0.15/modules/generated/sklearn.cross_validation.check_cv.html"
+        },
+        {
+          "title": "scikit-learn/sklearn/model_selection/tests/test_search.py at main \u00b7 scikit-learn/scikit-learn",
+          "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/model_selection/tests/test_search.py"
+        },
+        {
+          "title": "KFold \u2014 scikit-learn 1.8.0 documentation",
+          "url": "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html"
+        },
+        {
+          "title": "sklearn.cross_validation.check_cv \u2014 scikit-learn 0.16.1 documentation",
+          "url": "https://scikit-learn.org/0.16/modules/generated/sklearn.cross_validation.check_cv.html"
+        },
+        {
+          "title": "GridSearchCV \u2014 scikit-learn 1.8.0 documentation",
+          "url": "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html"
+        }
+      ]
+    },
+    "Based on the search results, here's information about scikit-learn's `check_cv` function and CV iterator generators:\n\n## check_cv Function\n\nThe `check_cv` function determines the cross-validation splitting strategy. Possible inputs for cv are: None (to use the default 5-fold cross validation), an integer (to specify the number of folds), a CV splitter, or an iterable that generates (train, test) splits.\n\n## CV Iterator Generators\n\nA custom cross-validation generator in Scikit-learn is essentially an iterable that yields train-test splits, where each split is a tuple containing two arrays: the training indices and the test indices.\n\nAn iterable can yield (train, test) splits as arrays of indices.\n\nThe search results show that scikit-learn supports both reusable CV splitter objects (like `KFold`) and generator-type iterables. The `.split()` method of KFold returns a GeneratorType that can be passed as a cv parameter.\n\nFor more detailed implementation information or recent changes specific to 2025, the official scikit-learn 1.8.0 documentation (found in the search results) would be the most reliable source."
+  ],
+  "durationSeconds": 5.120727125000005
+}

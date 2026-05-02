@@ -1,0 +1,8 @@
+{
+  "bytes": 166143,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# CV Splitter Statefulness in scikit-learn\n\nBased on the documentation provided, **CV splitter objects are stateless** in terms of their split generation. Here's what happens when the same CV object is passed to `cross_val_score` multiple times:\n\n## Key Behavior\n\nWhen you use the same CV splitter object in multiple calls to `cross_val_score`, the splitter will **generate the same splits each time if `random_state` is set**, but **different splits on each iteration if `random_state` is `None`**.\n\n## Documentation Evidence\n\nThe documentation explicitly states:\n\n> The `random_state` parameter defaults to `None`, meaning that the shuffling will be different every time `KFold(..., shuffle=True)` is iterated. However, `GridSearchCV` will use the same shuffling for each set of parameters validated by a single call to its `fit` method.\n\n## Practical Implications\n\n**With `random_state=None`** (default):\n```python\ncv = KFold(n_splits=5, shuffle=True)  # random_state=None by default\nscores1 = cross_val_score(clf, X, y, cv=cv)  # Different splits\nscores2 = cross_val_score(clf, X, y, cv=cv)  # Different splits again\n```\n\n**With `random_state=42`** (reproducible):\n```python\ncv = KFold(n_splits=5, shuffle=True, random_state=42)\nscores1 = cross_val_score(clf, X, y, cv=cv)  # Same splits\nscores2 = cross_val_score(clf, X, y, cv=cv)  # Same splits\n```\n\nThe CV objects themselves don't maintain state between calls; rather, the `random_state` parameter controls whether identical splits are regenerated or new random splits are created on each iteration.",
+  "durationMs": 4547,
+  "url": "https://scikit-learn.org/stable/modules/cross_validation.html"
+}

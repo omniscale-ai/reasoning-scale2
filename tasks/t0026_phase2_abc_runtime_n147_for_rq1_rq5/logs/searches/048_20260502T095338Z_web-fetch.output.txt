@@ -1,0 +1,8 @@
+{
+  "bytes": 337859,
+  "code": 200,
+  "codeText": "OK",
+  "result": "I cannot find the `filter_members` method, the specific code checking `meta public` for underscore-prefixed members, or detailed implementation of the `DataDocumenter` class in the provided web page content.\n\nThe page shows only the imports and setup function from `sphinx/ext/autodoc/__init__.py`. While it imports `DataDocumenter` from `sphinx.ext.autodoc._legacy_class_based._documenters`, the actual implementation code with filtering logic is not displayed.\n\nTo locate this code, you would need to view the source files directly, such as the `_documenters.py` or related files in the autodoc extension directory on GitHub.",
+  "durationMs": 2735,
+  "url": "https://github.com/sphinx-doc/sphinx/blob/master/sphinx/ext/autodoc/__init__.py"
+}

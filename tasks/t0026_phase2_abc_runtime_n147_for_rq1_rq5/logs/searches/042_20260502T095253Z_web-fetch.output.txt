@@ -1,0 +1,8 @@
+{
+  "bytes": 285945,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Docstring Metadata Bug for Attributes in Sphinx\n\n## The Bug\n\n\"Metadata in the docstrings (or doc-comments) of attributes is ignored; for example, `:meta public:` does not make an attribute whose name starts with an underscore public.\"\n\nWhen using Sphinx's autodoc extension, metadata annotations in attribute docstrings were not being recognized, causing attributes marked with directives like `:meta public:` to remain undocumented.\n\n## Root Cause\n\nThe `Documenter.filter_members` method in the autodoc extension failed to properly retrieve docstrings for attributes when searching for metadata. The method was not checking the `attr_docs` dictionary\u2014which stores documentation comments for attributes\u2014before attempting to extract metadata.\n\n## The Fix\n\nThe proposed patch modified the metadata extraction logic to prioritize checking `attr_docs` first. When processing an attribute, the code now:\n\n1. Checks if the attribute has documentation in `attr_docs`\n2. If found, uses that documentation directly\n3. Only falls back to standard `getdoc()` retrieval if no doc-comment exists\n\nThis ensures that metadata annotations in attribute doc-comments are properly discovered and processed during documentation generation.",
+  "durationMs": 4413,
+  "url": "https://github.com/sphinx-doc/sphinx/issues/8180"
+}

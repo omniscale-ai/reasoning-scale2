@@ -1,0 +1,8 @@
+{
+  "bytes": 21751,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Tests for the String Class\n\nThe test function for the `String` class is `test_String()`, which verifies:\n\n1. **Atomicity**: `String` instances are atoms\n2. **Equality**: Two `String` objects with identical text are equal\n3. **Text attribute**: The `.text` property returns the string content\n4. **Reconstruction**: `func(**kwargs())` and `func(*args)` both reconstruct the object\n5. **Subclassing**: Subclasses like `Signifier` are not equal to the base `String` class despite identical text\n6. **String representation**: \n   - `str(String('foo'))` returns `'foo'`\n   - `repr(String('foo'))` returns `\"String('foo')\"`\n\nThe test demonstrates that `String` behaves as an immutable, reconstructible AST node with standard comparison and serialization properties.",
+  "durationMs": 2956,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/tests/test_ast.py"
+}

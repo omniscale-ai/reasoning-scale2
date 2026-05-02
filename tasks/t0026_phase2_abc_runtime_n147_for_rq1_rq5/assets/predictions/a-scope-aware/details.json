@@ -1,0 +1,36 @@
+{
+  "spec_version": "2",
+  "predictions_id": "a-scope-aware",
+  "name": "Variant A: Scope-Aware ReAct (atomic granularity)",
+  "short_description": "Scope-Aware ReAct agent operating at atomic granularity over a paired N=147 instance manifest spanning SWE-bench Verified, Tau-bench, and FrontierScience Olympiad.",
+  "description_path": "description.md",
+  "model_id": null,
+  "model_description": "claude-sonnet-4-6 via Anthropic API (CLI transport). max_turns=10, max_tokens=4096.",
+  "dataset_ids": [
+    "swebench-verified-subset",
+    "taubench-subset",
+    "frontierscience-olympiad-subset"
+  ],
+  "prediction_format": "jsonl",
+  "prediction_schema": "Each line is a JSON object with fields: instance_id (str), subset (str), variant (str), final_answer (str|null), final_confidence (float|null), cost_usd (float), trajectory_path (str|null), judge_sonnet_success (bool), judge_sonnet_rationale (str), judge_opus_success (bool|null), judge_opus_rationale (str|null).",
+  "instance_count": 147,
+  "metrics_at_creation": {
+    "success_rate_judge_sonnet": 0.04081632653061224,
+    "n_success": 6,
+    "n_instances": 147,
+    "total_cost_usd": 4.596921
+  },
+  "files": [
+    {
+      "path": "files/predictions_variant_a.jsonl",
+      "description": "Per-instance predictions for variant a on the paired N=147 manifest (SWE+Tau+FS) with sonnet and opus judge verdicts attached.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "agent-evaluation",
+    "llm-as-judge"
+  ],
+  "created_by_task": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "date_created": "2026-05-02"
+}

@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:31:17Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/ast.py",
+    "prompt": "Show the complete Token.__new__ method implementation from start to finish, including all the logic for handling args, kwargs, not_in_args, and calling Basic.__new__"
+  },
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/ast.py",
+  "prompt": "Show the complete Token.__new__ method implementation from start to finish, including all the logic for handling args, kwargs, not_in_args, and calling Basic.__new__"
+}

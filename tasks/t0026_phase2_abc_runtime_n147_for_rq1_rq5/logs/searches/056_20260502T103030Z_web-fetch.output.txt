@@ -1,0 +1,8 @@
+{
+  "bytes": 65358,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Documentation of `:meta public:` and `:meta private:`\n\nBased on the documentation provided, here's how these directives handle underscore-prefixed names:\n\n**Private members (default behavior):**\nBy default, autodoc treats names with leading underscores as private. The documentation states: \"autodoc considers a member private if its docstring contains `:meta private:`\"\n\n**Overriding private designation:**\nThe key insight is that you can mark an underscore-prefixed name as public. As explained: \"autodoc considers a member public if its docstring contains `:meta public:` in its Info field lists, even if it starts with an underscore.\"\n\n**Example provided:**\n```python\ndef _my_function(my_arg, my_other_arg):\n    \"\"\"blah blah blah\n    :meta public:\n    \"\"\"\n```\n\nThe documentation clarifies that the `:meta public:` annotation explicitly overrides the default assumption that underscore-prefixed names are private, allowing such members to be documented as public entities. This provides flexibility for cases where developers intentionally want to expose what would normally be considered internal implementations.",
+  "durationMs": 4288,
+  "url": "https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html"
+}

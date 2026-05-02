@@ -1,0 +1,8 @@
+{
+  "bytes": 48222,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# ConditionSet Class Definition\n\nI've reviewed the provided code content, which contains definitions for various set classes including `Rationals`, `Naturals`, `Integers`, `Reals`, `ImageSet`, `Range`, `ComplexRegion`, `CartesianComplexRegion`, `PolarComplexRegion`, and `Complexes`.\n\nHowever, **the `ConditionSet` class definition is not present in the provided web page content**. The code excerpt does not include this class or any of its methods such as `__new__`, `subs`, `_subs`, or `_eval_subs`.\n\nTo locate the `ConditionSet` class, you would need to:\n- Check additional source files from the SymPy library\n- Search the SymPy repository for files containing \"ConditionSet\"\n- Review the complete sets module documentation\n\nThe content provided focuses on other set implementations but does not cover the `ConditionSet` class you're looking for.",
+  "durationMs": 3631,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/fancysets.py"
+}

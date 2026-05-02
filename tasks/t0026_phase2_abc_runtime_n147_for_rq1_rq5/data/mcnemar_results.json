@@ -1,0 +1,20 @@
+{
+  "alpha_bonferroni": 0.025,
+  "a_vs_b": {
+    "discordant_b": 6,
+    "discordant_c": 6,
+    "statistic": 6.0,
+    "p_value": 0.9999999999999988,
+    "method": "exact_binomial"
+  },
+  "b_vs_c": {
+    "discordant_b": 4,
+    "discordant_c": 15,
+    "statistic": 4.0,
+    "p_value": 0.019210815429687566,
+    "method": "exact_binomial"
+  },
+  "p_a_vs_b": 0.9999999999999988,
+  "p_b_vs_c": 0.019210815429687566,
+  "rq5_strict_inequality_supported": false
+}
