@@ -1,0 +1,5 @@
+branch: task/t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+base_branch: main
+base_commit: 63bf65df8730fd86c1d329451faeca1cd4bfd4b9
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+created_at: 2026-05-02T17:07:24Z
