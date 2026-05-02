@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Survey libraries from t0006/t0010/t0021/t0022 and aggregators from t0011 to plan harness wiring.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-02T06:40:02Z",
-      "completed_at": null,
+      "completed_at": "2026-05-02T06:44:57Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
