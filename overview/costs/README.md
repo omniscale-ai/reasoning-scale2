@@ -1,22 +1,22 @@
 # Project Costs
 
-Spent $74.08 of $100.00 USD. $25.92 remains overall and $25.92 remains before the 100% stop
+Spent $112.69 of $200.00 USD. $87.31 remains overall and $87.31 remains before the 100% stop
 threshold.
 
 ## Budget Summary
 
 | Field | Value |
 |-------|-------|
-| Total budget | $100.00 USD |
-| Total spent | $74.08 USD |
-| Budget left | $25.92 USD |
-| Budget left before stop threshold | $25.92 USD |
-| Spent percent | 74.08% |
-| Warn threshold | 80% ($80.00) |
-| Stop threshold | 100% ($100.00) |
+| Total budget | $200.00 USD |
+| Total spent | $112.69 USD |
+| Budget left | $87.31 USD |
+| Budget left before stop threshold | $87.31 USD |
+| Spent percent | 56.35% |
+| Warn threshold | 80% ($160.00) |
+| Stop threshold | 100% ($200.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 24 |
-| Tasks with non-zero spend | 9 |
+| Tasks with cost records | 25 |
+| Tasks with non-zero spend | 10 |
 | Skipped tasks | 1 |
 
 ## Service Totals
@@ -29,11 +29,18 @@ threshold.
 
 | Key | Cost (USD) |
 |-----|------------|
+| `runs_total_usd` | $26.07 |
 | `annotator_sonnet_4_6` | $19.77 |
 | `claude-haiku-4-5` | $18.91 |
+| `runs_variant_c_usd` | $12.54 |
+| `judge_total_estimated_usd` | $12.53 |
 | `substantive_sonnet_judge` | $9.68 |
 | `model_rotated_sonnet_judge` | $9.63 |
+| `runs_variant_b_usd` | $9.07 |
 | `annotator_haiku_4_5` | $7.42 |
+| `judge_opus_estimated_usd` | $6.68 |
+| `judge_sonnet_estimated_usd` | $5.85 |
+| `runs_variant_a_usd` | $4.47 |
 | `judge_haiku_4_5` | $3.08 |
 | `claude-haiku-4-5_progress_rate_judge` | $1.55 |
 | `claude-haiku-4-5-annotator` | $1.55 |
@@ -57,6 +64,7 @@ threshold.
 | [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | completed | $0.54 | $1.00 | no |
 | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | completed | $2.42 | $2.00 | yes |
 | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | completed | $0.20 | $10.00 | no |
+| [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | completed | $38.61 | $10.00 | yes |
 
 ## Skipped Tasks
 

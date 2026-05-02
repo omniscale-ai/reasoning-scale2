@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-05-01T21:53:55Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-05-02T14:56:06Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>2542</char_count>
-    <byte_count>2542</byte_count>
-    <estimated_tokens>635</estimated_tokens>
+    <char_count>2811</char_count>
+    <byte_count>2811</byte_count>
+    <estimated_tokens>702</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -17,18 +17,25 @@
       <title>Project Costs (Full Detail)</title>
       <source_name>aggregate_costs_full</source_name>
       <content>
-Total budget: $100.00
-Total spent: $74.08
-Budget remaining: $25.92
-Spent: 74.1%
+Total budget: $200.00
+Total spent: $112.69
+Budget remaining: $87.31
+Spent: 56.3%
 
 ### Cost Breakdown by Category
 
+* runs_total_usd: $26.07
 * annotator_sonnet_4_6: $19.77
 * claude-haiku-4-5: $18.91
+* runs_variant_c_usd: $12.54
+* judge_total_estimated_usd: $12.53
 * substantive_sonnet_judge: $9.68
 * model_rotated_sonnet_judge: $9.63
+* runs_variant_b_usd: $9.07
 * annotator_haiku_4_5: $7.42
+* judge_opus_estimated_usd: $6.68
+* judge_sonnet_estimated_usd: $5.85
+* runs_variant_a_usd: $4.47
 * judge_haiku_4_5: $3.08
 * claude-haiku-4-5_progress_rate_judge: $1.55
 * claude-haiku-4-5-annotator: $1.55
@@ -67,6 +74,7 @@ Spent: 74.1%
 * t0022_abc_harness_progress_rate_and_error_taxonomy: $2.42
 * t0024_brainstorm_results_7: $0.00
 * t0025_lit_survey_hierarchical_agents_and_judges_2024_2026: $0.20
+* t0026_phase2_abc_runtime_n147_for_rq1_rq5: $38.61
       </content>
     </section>
   </sections>

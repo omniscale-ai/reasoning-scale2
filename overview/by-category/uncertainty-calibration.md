@@ -7,7 +7,7 @@ probabilities.
 
 **Detail pages**: [Papers (2)](../papers/by-category/uncertainty-calibration.md) | [Answers
 (1)](../answers/by-category/uncertainty-calibration.md) | [Suggestions
-(15)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
+(16)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
 (3)](../libraries/by-category/uncertainty-calibration.md) | [Predictions
 (1)](../predictions/by-category/uncertainty-calibration.md)
 
@@ -133,7 +133,22 @@ canonical.
 
 </details>
 
-## Suggestions (12 open, 3 closed)
+## Suggestions (13 open, 3 closed)
+
+<details>
+<summary>🔧 <strong>Recalibrate variant B's verbalized final_confidence</strong>
+(S-0026-03)</summary>
+
+**Kind**: technique | **Priority**: medium | **Date**: 2026-05-02 | **Source**:
+[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+
+Variant B's 10-bin Expected Calibration Error is 0.43 (n=49) and the [0.9, 1.0] bin succeeds
+at only 25%. Add a calibration head — temperature scaling, isotonic regression, or a learned
+post-hoc calibrator over the four content features (subset, plan_length, n_actions,
+judge_program_agreement_proxy) — and report ECE on a held-out slice of the same 130-instance
+paired set.
+
+</details>
 
 <details>
 <summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge

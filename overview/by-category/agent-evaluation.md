@@ -6,10 +6,10 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 
 **Detail pages**: [Papers (14)](../papers/by-category/agent-evaluation.md) | [Answers
 (1)](../answers/by-category/agent-evaluation.md) | [Suggestions
-(47)](../suggestions/by-category/agent-evaluation.md) | [Datasets
+(51)](../suggestions/by-category/agent-evaluation.md) | [Datasets
 (4)](../datasets/by-category/agent-evaluation.md) | [Libraries
 (5)](../libraries/by-category/agent-evaluation.md) | [Predictions
-(4)](../predictions/by-category/agent-evaluation.md)
+(7)](../predictions/by-category/agent-evaluation.md)
 
 ---
 
@@ -706,7 +706,67 @@ canonical.
 
 </details>
 
-## Suggestions (38 open, 9 closed)
+## Suggestions (42 open, 9 closed)
+
+<details>
+<summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally
+distinct from A</strong> (S-0026-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-02 | **Source**:
+[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+
+Variant C beat B (paired McNemar p = 0.019) but only because the 'adversarial' wrapper
+delegates to scope_aware_react with a perturbed strategy label, making C structurally
+A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so
+the adversarial variant operates on top of B's plan-and-solve scaffold, not A's, then re-run
+the B vs C pair on the same paired set to test whether the inversion survives.
+
+</details>
+
+<details>
+<summary>📊 <strong>Wire a real Tau-bench tool registry to escape the harness
+floor</strong> (S-0026-04)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-02 | **Source**:
+[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+
+Tau-bench numbers in this sweep are a harness floor, not a benchmark score: A=0.0%, B=2.3%,
+C=10.3% on a stub python_exec only. Port the published Tau-bench retail/airline tool stack (or
+a minimal viable subset) into the harness and rerun the A/B/C grid on the Tau-bench subset
+(n=87). The Tau-bench leg of the comparison currently dominates the absolute-rate gap with
+literature.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run the same A/B/C grid on Opus to test whether scaffold rankings
+are model-invariant</strong> (S-0026-05)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-02 | **Source**:
+[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+
+All current results are Sonnet-only. The C > B inversion may flip on a stronger model where
+B's plan parser sees fewer malformed plans and where C's longer reasoning chains finish more
+often. Repeat the 130-instance paired sweep with claude-opus-4-7 as the model under test
+(judges remain sonnet primary + opus inter-judge) and report whether mcnemar_p_a_vs_b and
+mcnemar_p_b_vs_c keep the same sign.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Recover the 17 missing instances per variant for a full N=147
+paired set</strong> (S-0026-06)</summary>
+
+**Kind**: technique | **Priority**: low | **Date**: 2026-05-02 | **Source**:
+[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+
+The resumable-checkpoint path filtered 17 instances per variant from a corrupted earlier run,
+dropping the paired sample from N=147 to N=130. Add a 'force-rerun' flag to full_runner.py
+that re-emits trajectories for those ids and rerun A/B/C on the missing 17. The McNemar tests
+are statistically valid as-is, but the absolute success rates would be unbiased on the full
+N=147.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for

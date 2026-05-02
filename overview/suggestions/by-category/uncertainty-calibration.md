@@ -1,8 +1,8 @@
 # Suggestions: `uncertainty-calibration`
 
-15 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **12 open** (5
-high, 2 medium, 5 low), **3 closed**.
+16 suggestion(s) in category
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **13 open** (5
+high, 3 medium, 5 low), **3 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -152,6 +152,27 @@ concentrates rather than just a single number. Should be a small follow-up: buck
 CalibrationRecord by predicted_confidence, compute |accuracy - mean_confidence| within each
 bucket, weight by bucket size. Output should be both a scalar ECE value and a list of
 (bucket_lower, bucket_upper, accuracy, mean_confidence, count) tuples for plotting.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Recalibrate variant B's verbalized final_confidence</strong>
+(S-0026-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-03` |
+| **Kind** | technique |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+Variant B's 10-bin Expected Calibration Error is 0.43 (n=49) and the [0.9, 1.0] bin succeeds
+at only 25%. Add a calibration head — temperature scaling, isotonic regression, or a learned
+post-hoc calibrator over the four content features (subset, plan_length, n_actions,
+judge_program_agreement_proxy) — and report ECE on a held-out slice of the same 130-instance
+paired set.
 
 </details>
 

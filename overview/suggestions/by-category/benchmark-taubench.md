@@ -1,7 +1,7 @@
 # Suggestions: `benchmark-taubench`
 
-2 suggestion(s) in category
-[`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) **2 open** (2 medium).
+3 suggestion(s) in category
+[`benchmark-taubench`](../../../meta/categories/benchmark-taubench/) **3 open** (3 medium).
 
 [Back to all suggestions](../README.md)
 
@@ -50,5 +50,26 @@ demonstrates that single-rollout pass@1 systematically overstates agent reliabil
 project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement
 task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout
 luck.
+
+</details>
+
+<details>
+<summary>📊 <strong>Wire a real Tau-bench tool registry to escape the harness
+floor</strong> (S-0026-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-04` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-taubench`](../../../meta/categories/benchmark-taubench/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Tau-bench numbers in this sweep are a harness floor, not a benchmark score: A=0.0%, B=2.3%,
+C=10.3% on a stub python_exec only. Port the published Tau-bench retail/airline tool stack (or
+a minimal viable subset) into the harness and rerun the A/B/C grid on the Tau-bench subset
+(n=87). The Tau-bench leg of the comparison currently dominates the absolute-rate gap with
+literature.
 
 </details>

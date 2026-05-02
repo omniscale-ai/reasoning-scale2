@@ -1,7 +1,7 @@
 # Suggestions: `hierarchical-planning`
 
-26 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **19 open** (5
+27 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **20 open** (6
 high, 10 medium, 4 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
@@ -51,6 +51,27 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Make the Plan-and-Solve v2 plan parser fault-tolerant</strong>
+(S-0026-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-01` |
+| **Kind** | technique |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
+instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
+function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
+B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
+symmetric.
 
 </details>
 

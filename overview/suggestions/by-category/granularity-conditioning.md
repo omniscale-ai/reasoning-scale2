@@ -1,8 +1,8 @@
 # Suggestions: `granularity-conditioning`
 
-26 suggestion(s) in category
-[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **19 open**
-(4 high, 9 medium, 6 low), **7 closed**.
+27 suggestion(s) in category
+[`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **20 open**
+(5 high, 9 medium, 6 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -51,6 +51,27 @@ normalized task success and overconfident-error-rate (incorrect actions taken wi
 self-reported confidence above a threshold). This is the cheapest design that produces RQ1 +
 RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23
 budget.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally
+distinct from A</strong> (S-0026-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+
+Variant C beat B (paired McNemar p = 0.019) but only because the 'adversarial' wrapper
+delegates to scope_aware_react with a perturbed strategy label, making C structurally
+A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so
+the adversarial variant operates on top of B's plan-and-solve scaffold, not A's, then re-run
+the B vs C pair on the same paired set to test whether the inversion survives.
 
 </details>
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-overview" generated_at_utc="2026-05-01T21:53:55Z">
+<llm_context_archive preset_id="project-overview" generated_at_utc="2026-05-02T14:56:06Z">
   <archive_summary>
     <title>Project Overview</title>
     <description>Compact starter context for general project chats.</description>
     <use_case>General orientation, quick status questions, and lightweight strategy chats.</use_case>
     <section_count>4</section_count>
-    <char_count>34560</char_count>
-    <byte_count>34629</byte_count>
-    <estimated_tokens>8640</estimated_tokens>
+    <char_count>35640</char_count>
+    <byte_count>35714</byte_count>
+    <estimated_tokens>8910</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -150,9 +150,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
         <id>t0024_brainstorm_results_7</id>
         <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
+        <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
       </source_ids>
       <content>
-Completed tasks: 24
+Completed tasks: 25
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -297,6 +298,12 @@ ID: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
 Completed: 2026-05-01
 Short description: Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 from existing t0017 paper summaries plus t0014/t0019/t0020 findings.
 Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0025_lit_survey_hierarchical_agents_and_judges_2024_2026&quot; date_completed: &quot;2026-05-01&quot; status: &quot;complete&quot; --- Results Summary: Best-Available Answers to RQ1-RQ5 Summary This task was re-scoped after the implementation prestep discovered that all 10 originally planned paper assets already exist under `t0017_literature_hierarchical_agents_and_judges`. Rather than duplicate them, the task now answers the project&#x27;s five Research Questions (RQ1-RQ5) directly, using the existing t0017 paper summaries plus prior project findings from t0014, t0019, and t0020 as evidence. The headline finding is that **RQ1 and RQ4 have strong external-literature support, RQ2/RQ3/RQ5...
+
+## Phase 2 A/B/C Runtime (N=147) for RQ1-RQ5
+ID: t0026_phase2_abc_runtime_n147_for_rq1_rq5
+Completed: 2026-05-02
+Short description: Run A (scope-aware ReAct) / B (Plan-and-Solve v2) / C (mismatched-scope) on 20 SWE-bench + 87 Tau-bench + 40 FrontierScience instances to answer RQ1-RQ5.
+Result summary: t0026 Phase 2 A/B/C Runtime — Results Summary Summary The strict double inequality `success(A) &gt; success(B) &gt; success(C)` posited by RQ5 is **not supported**. On the paired N=130 set (the same 130 instances run by every variant), variants A and B are statistically tied, and the adversarial-mismatched variant C significantly outperforms B. The sweep ran the full A/B/C × {SWE-bench, Tau-bench, FrontierScience} grid against `claude-sonnet-4-6` with a paired McNemar test on each pair, an Expected Calibration Error on variant B&#x27;s verbalized `final_confidence`, and a sonnet/opus inter-judge agreement check. RQ3 (judge ↔ program-truth agreement) and RQ4 (B&#x27;s calibration) are answered cleanly. RQ1...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">

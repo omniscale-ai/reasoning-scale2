@@ -1,6 +1,6 @@
 # Research Suggestions Backlog
 
-80 suggestions **66 open** (15 high, 30 medium, 21 low), **14 closed**.
+86 suggestions **72 open** (17 high, 33 medium, 22 low), **14 closed**.
 
 **Browse by view**: By category: [`agent-evaluation`](by-category/agent-evaluation.md),
 [`benchmark-annotation`](by-category/benchmark-annotation.md),
@@ -112,6 +112,27 @@ Cohen's kappa) between the human rater and the LLM annotator.
 </details>
 
 <details>
+<summary>🔧 <strong>Make the Plan-and-Solve v2 plan parser fault-tolerant</strong>
+(S-0026-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-01` |
+| **Kind** | technique |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../meta/categories/hierarchical-planning/) |
+
+Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
+instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
+function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
+B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
+symmetric.
+
+</details>
+
+<details>
 <summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
 pipeline</strong> (S-0002-04)</summary>
 
@@ -217,6 +238,27 @@ judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did no
 extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
 half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
 possible follow-up that materially improves statistical power.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally
+distinct from A</strong> (S-0026-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../meta/categories/granularity-conditioning/) |
+
+Variant C beat B (paired McNemar p = 0.019) but only because the 'adversarial' wrapper
+delegates to scope_aware_react with a perturbed strategy label, making C structurally
+A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so
+the adversarial variant operates on top of B's plan-and-solve scaffold, not A's, then re-run
+the B vs C pair on the same paired set to test whether the inversion survives.
 
 </details>
 
@@ -710,6 +752,27 @@ service request, not a research experiment.
 </details>
 
 <details>
+<summary>🔧 <strong>Recalibrate variant B's verbalized final_confidence</strong>
+(S-0026-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-03` |
+| **Kind** | technique |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../meta/categories/uncertainty-calibration/) |
+
+Variant B's 10-bin Expected Calibration Error is 0.43 (n=49) and the [0.9, 1.0] bin succeeds
+at only 25%. Add a calibration head — temperature scaling, isotonic regression, or a learned
+post-hoc calibrator over the four content features (subset, plan_length, n_actions,
+judge_program_agreement_proxy) — and report ECE on a held-out slice of the same 130-instance
+paired set.
+
+</details>
+
+<details>
 <summary>🔧 <strong>Reconcile WorkArena++ flat-action sequences with the three-level
 schema</strong> (S-0005-03)</summary>
 
@@ -817,6 +880,27 @@ stratified sample (or all 115 rows for higher precision) and emit acceptable/nee
 verdicts. Compute Cohen's kappa between human and the haiku judge to estimate how much of the
 +58% v2-vs-v1 aggregate gain is real quality vs judge-LLM agreement-with-itself. Budget
 estimate: 4-6 hours of human review time at $50/hour = $200-300.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run the same A/B/C grid on Opus to test whether scaffold rankings
+are model-invariant</strong> (S-0026-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+All current results are Sonnet-only. The C > B inversion may flip on a stronger model where
+B's plan parser sees fewer malformed plans and where C's longer reasoning chains finish more
+often. Repeat the 130-instance paired sweep with claude-opus-4-7 as the model under test
+(judges remain sonnet primary + opus inter-judge) and report whether mcnemar_p_a_vs_b and
+mcnemar_p_b_vs_c keep the same sign.
 
 </details>
 
@@ -1025,6 +1109,27 @@ prompt: produce one SELF-DISCOVER structure per benchmark family (FrontierScienc
 SWE-bench Verified, tau-bench, WorkArena++), then re-use it across all rows of that family.
 Predicts a measurable improvement on RQ1/RQ5 even without re-running annotation. Out of scope:
 any retraining; this is purely a prompting change.
+
+</details>
+
+<details>
+<summary>📊 <strong>Wire a real Tau-bench tool registry to escape the harness
+floor</strong> (S-0026-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-04` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-taubench`](../../meta/categories/benchmark-taubench/), [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+Tau-bench numbers in this sweep are a harness floor, not a benchmark score: A=0.0%, B=2.3%,
+C=10.3% on a stub python_exec only. Port the published Tau-bench retail/airline tool stack (or
+a minimal viable subset) into the harness and rerun the A/B/C grid on the Tau-bench subset
+(n=87). The Tau-bench leg of the comparison currently dominates the absolute-rate gap with
+literature.
 
 </details>
 
@@ -1402,6 +1507,27 @@ the other benchmarks. Re-run those three rows with a 600s or 900s CLI timeout (o
 Anthropic API which has no per-call wall-clock cap) and re-judge. If all three pass, FS
 aggregate v2-sonnet stays at 100% on n=6 and the +33 pp model-only delta becomes more
 credible. Cost <$1.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Recover the 17 missing instances per variant for a full N=147
+paired set</strong> (S-0026-06)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-06` |
+| **Kind** | technique |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../meta/categories/agent-evaluation/) |
+
+The resumable-checkpoint path filtered 17 instances per variant from a corrupted earlier run,
+dropping the paired sample from N=147 to N=130. Add a 'force-rerun' flag to full_runner.py
+that re-emits trajectories for those ids and rerun A/B/C on the missing 17. The McNemar tests
+are statistically valid as-is, but the absolute success rates would be unbiased on the full
+N=147.
 
 </details>
 

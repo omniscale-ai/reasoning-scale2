@@ -6,7 +6,7 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 
 **Detail pages**: [Papers (14)](../papers/by-category/hierarchical-planning.md) | [Answers
 (2)](../answers/by-category/hierarchical-planning.md) | [Suggestions
-(26)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
+(27)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
 (4)](../datasets/by-category/hierarchical-planning.md) | [Libraries
 (4)](../libraries/by-category/hierarchical-planning.md) | [Predictions
 (2)](../predictions/by-category/hierarchical-planning.md)
@@ -751,7 +751,22 @@ matched pool.
 
 </details>
 
-## Suggestions (19 open, 7 closed)
+## Suggestions (20 open, 7 closed)
+
+<details>
+<summary>🔧 <strong>Make the Plan-and-Solve v2 plan parser fault-tolerant</strong>
+(S-0026-01)</summary>
+
+**Kind**: technique | **Priority**: high | **Date**: 2026-05-02 | **Source**:
+[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+
+Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
+instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
+function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
+B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
+symmetric.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Confirmatory v2 vs v1 schema sweep with fresh annotations and

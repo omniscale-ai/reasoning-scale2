@@ -6,7 +6,7 @@ subtask, atomic).
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (6)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (25)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
+[Suggestions (26)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
 (3)](../datasets/by-category/granularity-conditioning.md) | [Libraries
 (5)](../libraries/by-category/granularity-conditioning.md) | [Predictions
 (2)](../predictions/by-category/granularity-conditioning.md)
@@ -297,7 +297,22 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (18 open, 7 closed)
+## Suggestions (19 open, 7 closed)
+
+<details>
+<summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally
+distinct from A</strong> (S-0026-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-02 | **Source**:
+[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+
+Variant C beat B (paired McNemar p = 0.019) but only because the 'adversarial' wrapper
+delegates to scope_aware_react with a perturbed strategy label, making C structurally
+A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so
+the adversarial variant operates on top of B's plan-and-solve scaffold, not A's, then re-run
+the B vs C pair on the same paired set to test whether the inversion survives.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for

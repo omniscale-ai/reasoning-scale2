@@ -5,7 +5,7 @@ Per-source tag for tasks and assets sourced from the tau-bench tool-use benchmar
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (1)](../papers/by-category/benchmark-taubench.md) | [Suggestions
-(2)](../suggestions/by-category/benchmark-taubench.md) | [Datasets
+(3)](../suggestions/by-category/benchmark-taubench.md) | [Datasets
 (1)](../datasets/by-category/benchmark-taubench.md)
 
 ---
@@ -65,7 +65,22 @@ scope-conditioning gains must be robust to single-rollout luck.
 
 No answers in this category.
 
-## Suggestions (2 open, 0 closed)
+## Suggestions (3 open, 0 closed)
+
+<details>
+<summary>📊 <strong>Wire a real Tau-bench tool registry to escape the harness
+floor</strong> (S-0026-04)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-02 | **Source**:
+[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+
+Tau-bench numbers in this sweep are a harness floor, not a benchmark score: A=0.0%, B=2.3%,
+C=10.3% on a stub python_exec only. Port the published Tau-bench retail/airline tool stack (or
+a minimal viable subset) into the harness and rerun the A/B/C grid on the Tau-bench subset
+(n=87). The Tau-bench leg of the comparison currently dominates the absolute-rate gap with
+literature.
+
+</details>
 
 <details>
 <summary>📊 <strong>Register pass^k as a project metric for reliability

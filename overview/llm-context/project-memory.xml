@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-01T21:53:55Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-02T14:56:06Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>82339</char_count>
-    <byte_count>82446</byte_count>
-    <estimated_tokens>20584</estimated_tokens>
+    <char_count>83410</char_count>
+    <byte_count>83522</byte_count>
+    <estimated_tokens>20852</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -155,9 +155,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0022_abc_harness_progress_rate_and_error_taxonomy</id>
         <id>t0024_brainstorm_results_7</id>
         <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
+        <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
       </source_ids>
       <content>
-Completed tasks: 24
+Completed tasks: 25
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -302,6 +303,12 @@ ID: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
 Completed: 2026-05-01
 Short description: Re-scoped from a 10-paper survey to a synthesis answering RQ1-RQ5 from existing t0017 paper summaries plus t0014/t0019/t0020 findings.
 Result summary: --- spec_version: &quot;2&quot; task_id: &quot;t0025_lit_survey_hierarchical_agents_and_judges_2024_2026&quot; date_completed: &quot;2026-05-01&quot; status: &quot;complete&quot; --- Results Summary: Best-Available Answers to RQ1-RQ5 Summary This task was re-scoped after the implementation prestep discovered that all 10 originally planned paper assets already exist under `t0017_literature_hierarchical_agents_and_judges`. Rather than duplicate them, the task now answers the project&#x27;s five Research Questions (RQ1-RQ5) directly, using the existing t0017 paper summaries plus prior project findings from t0014, t0019, and t0020 as evidence. The headline finding is that **RQ1 and RQ4 have strong external-literature support, RQ2/RQ3/RQ5...
+
+## Phase 2 A/B/C Runtime (N=147) for RQ1-RQ5
+ID: t0026_phase2_abc_runtime_n147_for_rq1_rq5
+Completed: 2026-05-02
+Short description: Run A (scope-aware ReAct) / B (Plan-and-Solve v2) / C (mismatched-scope) on 20 SWE-bench + 87 Tau-bench + 40 FrontierScience instances to answer RQ1-RQ5.
+Result summary: t0026 Phase 2 A/B/C Runtime — Results Summary Summary The strict double inequality `success(A) &gt; success(B) &gt; success(C)` posited by RQ5 is **not supported**. On the paired N=130 set (the same 130 instances run by every variant), variants A and B are statistically tied, and the adversarial-mismatched variant C significantly outperforms B. The sweep ran the full A/B/C × {SWE-bench, Tau-bench, FrontierScience} grid against `claude-sonnet-4-6` with a paired McNemar test on each pair, an Expected Calibration Error on variant B&#x27;s verbalized `final_confidence`, and a sonnet/opus inter-judge agreement check. RQ3 (judge ↔ program-truth agreement) and RQ4 (B&#x27;s calibration) are answered cleanly. RQ1...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -360,8 +367,8 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0022-05</id>
         <id>S-0025-01</id>
         <id>S-0025-04</id>
-        <id>S-0002-01</id>
-        <id>S-0002-05</id>
+        <id>S-0026-01</id>
+        <id>S-0026-02</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -492,19 +499,19 @@ Kind: evaluation
 Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
 t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer, SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM judge from the gradient.
 
-## Register pass^k as a project metric for reliability reporting
-ID: S-0002-01
-Priority: medium
-Kind: evaluation
-Source task: t0002_literature_survey_granularity_conditioning
-tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.
+## Make the Plan-and-Solve v2 plan parser fault-tolerant
+ID: S-0026-01
+Priority: high
+Kind: technique
+Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
+Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output / function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off symmetric.
 
-## Build the SWE-bench Verified Docker harness
-ID: S-0002-05
-Priority: medium
-Kind: dataset
-Source task: t0002_literature_survey_granularity_conditioning
-SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
+## Reframe the matched-mismatch wrapper so C is structurally distinct from A
+ID: S-0026-02
+Priority: high
+Kind: experiment
+Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
+Variant C beat B (paired McNemar p = 0.019) but only because the &#x27;adversarial&#x27; wrapper delegates to scope_aware_react with a perturbed strategy label, making C structurally A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so the adversarial variant operates on top of B&#x27;s plan-and-solve scaffold, not A&#x27;s, then re-run the B vs C pair on the same paired set to test whether the inversion survives.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
