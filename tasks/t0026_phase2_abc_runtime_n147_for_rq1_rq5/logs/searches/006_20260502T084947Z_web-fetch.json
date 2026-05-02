@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T08:49:47Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/model_selection/_split.py",
+    "prompt": "Find the check_cv function and show how it handles iterables or generators"
+  },
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/model_selection/_split.py",
+  "prompt": "Find the check_cv function and show how it handles iterables or generators"
+}

@@ -1,0 +1,11 @@
+{
+  "instance_id": "astropy__astropy-14369",
+  "subset": "swebench",
+  "variant": "b",
+  "final_answer": null,
+  "final_confidence": null,
+  "cost_usd": 0.017588999999999997,
+  "trajectory": {
+    "error": "RuntimeError: claude CLI exited 1: (no stderr)"
+  }
+}

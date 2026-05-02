@@ -1,0 +1,8 @@
+{
+  "bytes": 390380,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# SequentialFeatureSelector.fit() Method Implementation\n\nBased on the code provided, here's the complete `fit` method with focus on cross-validation handling:\n\n## CV Initialization and Usage\n\nThe method handles cross-validation through these key steps:\n\n**Line 274:** CV object is created with validation:\n```python\ncv = check_cv(self.cv, y, classifier=is_classifier(self.estimator))\n```\n\nThis validates the `cv` parameter against the target variable and estimator type, converting it to a proper cross-validation splitter.\n\n**Lines 288-289:** The validated `cv` is passed to the helper method:\n```python\nnew_feature_idx, new_score = self._get_best_new_feature_score(\n    cloned_estimator, X, y, cv, current_mask, **params\n)\n```\n\n**Lines 327-333:** Within `_get_best_new_feature_score`, the `cv` object is forwarded to `cross_val_score`:\n```python\nscores[feature_idx] = cross_val_score(\n    estimator,\n    X_new,\n    y,\n    cv=cv,\n    scoring=self.scoring,\n    n_jobs=self.n_jobs,\n    params=params,\n).mean()\n```\n\n## Key Pattern\n\nThe validated `cv` splitter is reused across all feature selection iterations, ensuring \"the splits will be the same across calls\" as documented in the docstring parameters section.",
+  "durationMs": 4349,
+  "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/feature_selection/_sequential.py"
+}

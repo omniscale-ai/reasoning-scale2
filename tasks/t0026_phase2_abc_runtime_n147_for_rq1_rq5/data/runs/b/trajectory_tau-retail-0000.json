@@ -1,0 +1,19 @@
+{
+  "instance_id": "tau-retail-0000",
+  "subset": "taubench",
+  "variant": "b",
+  "final_answer": "",
+  "final_confidence": 0.5,
+  "cost_usd": 0.042686999999999996,
+  "trajectory": [
+    {
+      "turn_index": 0,
+      "granularity": "unspecified",
+      "thought": "",
+      "action": "finish",
+      "observation": "",
+      "confidence": null,
+      "final_confidence": 0.5
+    }
+  ]
+}

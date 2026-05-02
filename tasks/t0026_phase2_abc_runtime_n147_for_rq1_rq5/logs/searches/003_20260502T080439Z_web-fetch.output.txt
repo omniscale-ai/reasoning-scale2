@@ -1,0 +1,8 @@
+{
+  "bytes": 28775,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Unit Parsing Code Analysis\n\nBased on the provided file content, here's the unit parsing implementation:\n\n## Primary Unit Parsing Section\n\nThe main unit parsing occurs in the `write_byte_by_byte()` method of the `MrtHeader` class. The relevant code snippet is:\n\n```python\n# Set column unit\nif col.unit is not None:\n    col_unit = col.unit.to_string(\"cds\")\nelif col.name.lower().find(\"magnitude\") > -1:\n    col_unit = \"mag\"\nelse:\n    col_unit = \"---\"\n```\n\n## Key Unit Handling Logic\n\n**Standard Units**: When a column has a unit attribute, the code converts it to CDS format using `col.unit.to_string(\"cds\")`. This leverages Astropy's unit system.\n\n**Magnitude Detection**: The implementation includes special handling for magnitude columns. It checks column names containing \"magnitude\" (case-insensitive) and assigns the unit as \"mag\" when no explicit unit is set.\n\n**Default Fallback**: Columns without units default to \"---\", indicating dimensionless or unitless data.\n\n## Import Dependencies\n\nThe unit system relies on this import statement:\n```python\nfrom astropy import units as u\n```\n\nThis dependency enables integration with Astropy's comprehensive unit framework, allowing the MRT writer to handle diverse scientific units consistently within the CDS standard format.",
+  "durationMs": 4018,
+  "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/io/ascii/mrt.py"
+}

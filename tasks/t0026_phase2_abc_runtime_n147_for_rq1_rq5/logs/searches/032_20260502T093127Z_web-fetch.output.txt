@@ -1,0 +1,8 @@
+{
+  "bytes": 57818,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Atom Class Definition\n\nThe `Atom` class is not explicitly defined in the provided code. However, it is referenced as a parent class in the `String` class definition:\n\n```python\nclass String(Atom, Token):\n```\n\nThe `Atom` class appears to come from SymPy's core module (likely `sympy.core.expr`), as indicated by the imports at the top of the file. The docstring for `String` notes that it is \"Atomic object which is not an expression (as opposed to Symbol).\"\n\nThe code includes a comment that hints at `Atom`'s role: \"to be removed when Atom is given a suitable func\" appears near the `String.func` property definition, suggesting `Atom` is a base class from SymPy's expression hierarchy that represents indivisible symbolic objects.",
+  "durationMs": 3021,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/ast.py"
+}

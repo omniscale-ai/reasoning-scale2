@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:52:48Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://github.com/sphinx-doc/sphinx/issues/8592",
+    "prompt": "What is the bug about :meta public: for variables? What is the reproduction case? What is the fix?"
+  },
+  "url": "https://github.com/sphinx-doc/sphinx/issues/8592",
+  "prompt": "What is the bug about :meta public: for variables? What is the reproduction case? What is the fix?"
+}

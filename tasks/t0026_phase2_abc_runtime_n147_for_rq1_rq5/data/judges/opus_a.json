@@ -1,0 +1,152 @@
+{
+  "sympy__sympy-22456": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot demonstrate the required code fix.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot demonstrate the required code fix.\nVERDICT: FAIL"
+  },
+  "scikit-learn__scikit-learn-25973": {
+    "success": false,
+    "rationale": "The agent's final answer is empty.",
+    "raw_response": "RATIONALE: The agent's final answer is empty.\nVERDICT: FAIL"
+  },
+  "tau-airline-0029": {
+    "success": false,
+    "rationale": "The agent gave up and deferred to a human/external channel without taking the requested action.",
+    "raw_response": "RATIONALE: The agent gave up and deferred to a human/external channel without taking the requested action.\nVERDICT: FAIL"
+  },
+  "django__django-11400": {
+    "success": true,
+    "rationale": "The agent identifies both bugs and provides concrete code changes\u2014falling back to `field.remote_field.model._meta.ordering` in `field_admin_ordering` and passing `ordering=self.field_admin_ordering(...)` to `field.get_choices` in `RelatedOnlyFieldListFilter.field_choices`\u2014matching the expected fix.",
+    "raw_response": "RATIONALE: The agent identifies both bugs and provides concrete code changes\u2014falling back to `field.remote_field.model._meta.ordering` in `field_admin_ordering` and passing `ordering=self.field_admin_ordering(...)` to `field.get_choices` in `RelatedOnlyFieldListFilter.field_choices`\u2014matching the expected fix.\nVERDICT: PASS"
+  },
+  "django__django-11138": {
+    "success": true,
+    "rationale": "The agent identifies the correct fix with concrete code pointers (replacing hardcoded 'UTC' with connection.timezone_name in _convert_sql_to_tz and skipping CONVERT_TZ when source==destination) across MySQL/Oracle/SQLite, matching the gold task.",
+    "raw_response": "RATIONALE: The agent identifies the correct fix with concrete code pointers (replacing hardcoded 'UTC' with connection.timezone_name in _convert_sql_to_tz and skipping CONVERT_TZ when source==destination) across MySQL/Oracle/SQLite, matching the gold task.\nVERDICT: PASS"
+  },
+  "pylint-dev__pylint-6528": {
+    "success": true,
+    "rationale": "The answer correctly identifies the root cause and points to the specific function (`expand_modules`) and the concrete fix (filtering `dirs` in-place during `os.walk` against ignore_list, ignore_list_re, and ignore_list_paths_re), addressing all three ignore flags.",
+    "raw_response": "RATIONALE: The answer correctly identifies the root cause and points to the specific function (`expand_modules`) and the concrete fix (filtering `dirs` in-place during `os.walk` against ignore_list, ignore_list_re, and ignore_list_paths_re), addressing all three ignore flags.\nVERDICT: PASS"
+  },
+  "tau-retail-0012": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the task or name a concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the task or name a concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-airline-0032": {
+    "success": false,
+    "rationale": "The agent gave up and deferred to a human, producing no concrete booking outcome.",
+    "raw_response": "RATIONALE: The agent gave up and deferred to a human, producing no concrete booking outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0019": {
+    "success": false,
+    "rationale": "The agent merely restated the user's request without taking action or providing concrete savings values.",
+    "raw_response": "RATIONALE: The agent merely restated the user's request without taking action or providing concrete savings values.\nVERDICT: FAIL"
+  },
+  "tau-retail-0039": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it cannot be said to have addressed the request or named a concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it cannot be said to have addressed the request or named a concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0058": {
+    "success": false,
+    "rationale": "The agent only drafted a script for what to say to a customer service agent rather than actually executing the exchange or producing a concrete outcome like a confirmation or order modification.",
+    "raw_response": "RATIONALE: The agent only drafted a script for what to say to a customer service agent rather than actually executing the exchange or producing a concrete outcome like a confirmation or order modification.\nVERDICT: FAIL"
+  },
+  "tau-retail-0305": {
+    "success": false,
+    "rationale": "The agent produced no final answer addressing the user's requests.",
+    "raw_response": "RATIONALE: The agent produced no final answer addressing the user's requests.\nVERDICT: FAIL"
+  },
+  "tau-retail-0314": {
+    "success": false,
+    "rationale": "The agent produced no final answer addressing the requested address changes and item modifications.",
+    "raw_response": "RATIONALE: The agent produced no final answer addressing the requested address changes and item modifications.\nVERDICT: FAIL"
+  },
+  "tau-retail-0248": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, so it did not address the task or name any concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, so it did not address the task or name any concrete outcome.\nVERDICT: FAIL"
+  },
+  "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96": {
+    "success": false,
+    "rationale": "judge call failed: RuntimeError: claude CLI exited 1: (no stderr)",
+    "raw_response": ""
+  },
+  "tau-airline-0040": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it failed to address the user's request or name any concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it failed to address the user's request or name any concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0009": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so nothing addresses the task.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so nothing addresses the task.\nVERDICT: FAIL"
+  },
+  "fs_1ca773ca-3f07-4426-8086-d1f3591cdf5f": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot be evaluated as successful.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot be evaluated as successful.\nVERDICT: FAIL"
+  },
+  "fs_1eca2503-b141-4f9f-ab10-e27d272c93b0": {
+    "success": false,
+    "rationale": "The agent provided no final answer, which fails per the empty-answer rule.",
+    "raw_response": "RATIONALE: The agent provided no final answer, which fails per the empty-answer rule.\nVERDICT: FAIL"
+  },
+  "pylint-dev__pylint-4551": {
+    "success": false,
+    "rationale": "The agent's final answer is empty.",
+    "raw_response": "RATIONALE: The agent's final answer is empty.\nVERDICT: FAIL"
+  },
+  "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot match the gold answer of 19.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot match the gold answer of 19.\nVERDICT: FAIL"
+  },
+  "fs_af50243e-3a60-4460-9536-f9a02c4f8eb8": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "tau-retail-0015": {
+    "success": false,
+    "rationale": "The agent produced no final answer addressing the task.",
+    "raw_response": "RATIONALE: The agent produced no final answer addressing the task.\nVERDICT: FAIL"
+  },
+  "fs_7e32b7a6-9340-4a41-8c1f-89a0a91a6d3f": {
+    "success": false,
+    "rationale": "The agent's final answer is empty.",
+    "raw_response": "RATIONALE: The agent's final answer is empty.\nVERDICT: FAIL"
+  },
+  "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d": {
+    "success": false,
+    "rationale": "The agent provided no final answer, which is an automatic fail.",
+    "raw_response": "RATIONALE: The agent provided no final answer, which is an automatic fail.\nVERDICT: FAIL"
+  },
+  "fs_ecb58594-7fd9-4a94-b799-0f1c13acb752": {
+    "success": false,
+    "rationale": "The agent's final answer is empty.",
+    "raw_response": "RATIONALE: The agent's final answer is empty.\nVERDICT: FAIL"
+  },
+  "fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c": {
+    "success": false,
+    "rationale": "The agent's final answer is empty.",
+    "raw_response": "RATIONALE: The agent's final answer is empty.\nVERDICT: FAIL"
+  },
+  "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447": {
+    "success": false,
+    "rationale": "The agent's final answer is empty.",
+    "raw_response": "RATIONALE: The agent's final answer is empty.\nVERDICT: FAIL"
+  },
+  "tau-retail-0014": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it failed to address the user's request or name any concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it failed to address the user's request or name any concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-airline-0014": {
+    "success": false,
+    "rationale": "The agent deferred to a human and did not take any concrete action or produce a concrete outcome.",
+    "raw_response": "RATIONALE: The agent deferred to a human and did not take any concrete action or produce a concrete outcome.\nVERDICT: FAIL"
+  }
+}

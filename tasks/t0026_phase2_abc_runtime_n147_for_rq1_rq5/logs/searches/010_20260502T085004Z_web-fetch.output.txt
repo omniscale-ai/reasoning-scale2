@@ -1,0 +1,8 @@
+{
+  "bytes": 728957,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Search Results for check_cv Function\n\nBased on the provided web page content from scikit-learn's `_split.py` file, **the `check_cv` function definition is not visible in the displayed excerpt**.\n\n## What the Page Shows\n\nThe page displays lines 1-1000 of the `_split.py` module, which includes:\n\n- Import statements and module documentation\n- Base cross-validator classes like `BaseCrossValidator`\n- Specific CV splitters: `LeaveOneOut`, `LeavePOut`, `KFold`, `GroupKFold`, `StratifiedKFold`, and `StratifiedGroupKFold`\n\nThe `__all__` export list (lines 24-38) mentions `\"check_cv\"` as a public API function, confirming it exists in this module.\n\n## Where to Find It\n\nTo locate the complete `check_cv` implementation with handling for iterable inputs and `_CVIterableWrapper`, you would need to:\n\n1. View the full file using the \"Raw\" download option\n2. Scroll past line 1000 in the GitHub interface\n3. Search the scikit-learn repository documentation for the function's complete definition\n\nThe excerpt provided cuts off before reaching this function's implementation.",
+  "durationMs": 4427,
+  "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/model_selection/_split.py?plain=1"
+}

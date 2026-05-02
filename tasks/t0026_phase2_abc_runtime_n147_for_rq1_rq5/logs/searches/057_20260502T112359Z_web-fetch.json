@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T11:23:59Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/fancysets.py",
+    "prompt": "Find the ConditionSet class definition and all its methods including __new__, subs, _subs, _eval_subs"
+  },
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/fancysets.py",
+  "prompt": "Find the ConditionSet class definition and all its methods including __new__, subs, _subs, _eval_subs"
+}

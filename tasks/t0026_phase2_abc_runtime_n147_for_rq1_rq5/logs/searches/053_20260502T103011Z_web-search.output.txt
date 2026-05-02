@@ -1,0 +1,52 @@
+{
+  "query": "\"startswith('_')\" \"meta public\" OR \"meta private\" site:github.com/sphinx-doc/sphinx",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_011xb3nQNVAgyeHqSG1JojbX",
+      "content": [
+        {
+          "title": "Autosummary does not respect autodoc's :meta public: \u00b7 Issue #8922 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8922"
+        },
+        {
+          "title": "Let autosummary respect `:meta private:` \u00b7 Issue #8700 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8700"
+        },
+        {
+          "title": "Docstring metadata ignored for attributes \u00b7 Issue #8180 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8180"
+        },
+        {
+          "title": "`:meta private:` not honored after field containing indented text \u00b7 Issue #11728 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/11728"
+        },
+        {
+          "title": "autodoc: `:meta public:` does not effect to variables \u00b7 Issue #8592 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8592"
+        },
+        {
+          "title": "Add support for :meta public: by eric-wieser \u00b7 Pull Request #7473 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/pull/7473"
+        },
+        {
+          "title": "sphinx.domain.python.filter_meta_fields fails to remove more than one meta-field from a field_list \u00b7 Issue #10456 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/10456"
+        },
+        {
+          "title": "sphinx/CHANGES at v3.0.4 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/blob/v3.0.4/CHANGES"
+        },
+        {
+          "title": "sphinx/CHANGES at v3.1.2 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/blob/v3.1.2/CHANGES"
+        },
+        {
+          "title": "sphinx/CHANGES at v3.5.2 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/blob/v3.5.2/CHANGES"
+        }
+      ]
+    },
+    "I found several relevant results from the Sphinx documentation repository. The search results show discussions about how Sphinx's autodoc and autosummary extensions handle metadata directives like `:meta public:` and `:meta private:` for controlling whether items that start with an underscore should be documented.\n\nHere's a summary of what I found:\n\n**Key Issues and Features:**\n\nIn autosummary, \"public\" means that the name does not start with an underscore. However, there were multiple feature requests to extend this behavior:\n\n1. **:meta public: support** - A common use case is a class like `namedtuple`, which has a public `_replace` method that is so-named in order not to conflict with arbitrary user-provided attributes. This feature was added via a merged pull request.\n\n2. **:meta private: support** - Autodoc allows inserting `:meta private:` as a way to declare a function private, however, autosummary does not do so.\n\n3. **Issues with attributes** - Metadata in the docstrings of attributes is ignored; for example, `:meta public:` does not make an attribute whose name starts with an underscore public.\n\n4. **Variables support** - Autodoc's `:meta public:` does not effect to variables.\n\n5. **Parsing bug** - If a field list contains more than one \"meta\"-field, the generated documentation shows all but the first meta-field due to a bug in the `filter_meta_fields` function.\n\nThe search results indicate these were ongoing issues in Sphinx's handling of metadata directives for controlling documentation visibility."
+  ],
+  "durationSeconds": 6.920514124999987
+}

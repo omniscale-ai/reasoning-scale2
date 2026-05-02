@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T08:04:28Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://api.github.com/repos/astropy/astropy/contents/astropy/io/ascii",
+    "prompt": "List all files in the ascii directory, especially CDS-related ones"
+  },
+  "url": "https://api.github.com/repos/astropy/astropy/contents/astropy/io/ascii",
+  "prompt": "List all files in the ascii directory, especially CDS-related ones"
+}

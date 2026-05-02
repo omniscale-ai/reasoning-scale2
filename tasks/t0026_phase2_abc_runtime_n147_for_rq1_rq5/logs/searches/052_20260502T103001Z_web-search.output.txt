@@ -1,0 +1,52 @@
+{
+  "query": "site:github.com sphinx-doc/sphinx filter_members \"private_members\" underscore",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01Kv9GzWHPpU9kshBCsnWD5h",
+      "content": [
+        {
+          "title": "Private members not documented without :undoc-members: \u00b7 Issue #4091 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/4091"
+        },
+        {
+          "title": "A \".. private:: True/False\" directive to override whether autodoc/autosummary treat a member as private (regardless of underscores) \u00b7 Issue #6830 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/6830"
+        },
+        {
+          "title": "Docstring metadata ignored for attributes \u00b7 Issue #8180 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8180"
+        },
+        {
+          "title": "autodoc private-members doesn't work for class attributes \u00b7 Issue #1362 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/1362"
+        },
+        {
+          "title": "Special member is not documented with automodule \u00b7 Issue #9175 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/9175"
+        },
+        {
+          "title": "[autodoc] Private (double-underscore) inner class not documented \u00b7 Issue #11181 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/11181"
+        },
+        {
+          "title": "Support defining specific `:private-members:` for autodoc \u00b7 Issue #8034 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8034"
+        },
+        {
+          "title": "provide option to include private and special members \u00b7 Issue #176 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/176"
+        },
+        {
+          "title": "`sphinx.ext.autosummary` - document private objects? \u00b7 Issue #12858 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/12858"
+        },
+        {
+          "title": "Sphinx autodoc includes imported modules even when :private-members: is not set \u00b7 Issue #7848 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/7848"
+        }
+      ]
+    },
+    "I found several GitHub issues related to `filter_members`, `private_members`, and underscore-prefixed members in the sphinx-doc/sphinx repository. The search results show discussions about various issues with how Sphinx's autodoc extension handles private members:\n\nThe `autodoc.Documenter.filter_members` does not properly look up the docstring/doc-comments for attributes when searching for metadata.\n\nDocumenter.filter_members should take a look at attr_docs in case of private_members, and special-members seems to have the same problem.\n\nThe issues also reveal related challenges:\n\n- If :undoc-members: is removed, the _baz entry does not show up in the output despite it being a documented member\n- The :private-members: option does not allow specification of which private members to document; the current behavior is to document all private members\n\nThese issues span from 2015 to as recently as 2024, indicating ongoing discussion and development around how Sphinx handles filtering and documentation of private members (those starting with underscores)."
+  ],
+  "durationSeconds": 3.611024915999995
+}

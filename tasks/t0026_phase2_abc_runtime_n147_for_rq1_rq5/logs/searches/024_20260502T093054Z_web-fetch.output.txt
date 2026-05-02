@@ -1,0 +1,8 @@
+{
+  "bytes": 76909,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# How Basic Class Handles Args and the Invariance\n\n## Setting Args in __new__\n\nThe `Basic.__new__` method initializes args during object creation:\n\n```python\ndef __new__(cls, *args):\n    obj = object.__new__(cls)\n    obj._assumptions = cls.default_assumptions\n    obj._mhash = None\n    obj._args = args  # all items in args must be Basic objects\n    return obj\n```\n\nAll positional arguments passed to a Basic subclass constructor are stored directly in the `_args` tuple. This design ensures consistency across all SymPy objects.\n\n## Args Property\n\nThe public interface accesses arguments through a property that returns `_args`:\n\n```python\n@property\ndef args(self) -> tuple[Basic, ...]:\n    \"\"\"Returns a tuple of arguments of 'self'.\"\"\"\n    return self._args\n```\n\nThe documentation emphasizes: \"Never use internal methods or variables (the ones prefixed with `_`)\" and directs users to access `self.args` instead of `self._args`.\n\n## The Invariance: expr.func(*expr.args) == expr\n\nThis fundamental invariance holds because:\n\n1. **func property** returns the class: `return self.__class__`\n2. **Reconstruction** passes all args to the constructor, which stores them identically\n3. **Equality** is based on class type and `_hashable_content()`, which defaults to `_args`\n\nThis means reconstructing an expression from its function and arguments always yields an equivalent object, preserving the expression's structure and identity.",
+  "durationMs": 4336,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/core/basic.py"
+}

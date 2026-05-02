@@ -1,0 +1,8 @@
+{
+  "bytes": 17749,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# CDS/MRT Format Unit Parsing Overview\n\nThe unit parsing in this CDS/MRT table reader occurs in the `CdsHeader.get_cols()` method. Here's how it works:\n\n## Unit Parsing Logic\n\nThe code extracts unit information from the column definition line using this regex pattern:\n\n```python\nre_col_def = re.compile(\n    r\"\"\"\\s*\n        (?P<start> \\d+ \\s* -)? \\s*\n        (?P<end>   \\d+)        \\s+\n        (?P<format> [\\w.]+)     \\s+\n        (?P<units> \\S+)        \\s+\n        (?P<name>  \\S+)\n        (\\s+ (?P<descr> \\S.*))?\"\"\",\n    re.VERBOSE,\n)\n```\n\nAfter extracting the unit string, the code handles it as follows:\n\n```python\nunit = match.group(\"units\")\nif unit == \"---\":\n    col.unit = None  # \"---\" is the marker for no unit in CDS/MRT table\nelse:\n    try:\n        col.unit = Unit(unit, format=\"cds\", parse_strict=\"warn\")\n    except UnitsWarning:\n        col.unit = UnrecognizedUnit(unit)\n```\n\n## Key Points\n\n- **Special marker**: The string \"---\" explicitly indicates no unit is present\n- **Unit parsing**: Units are parsed using Astropy's `Unit` class with `format=\"cds\"` parameter\n- **Warning handling**: `UnitsWarning` exceptions are caught and converted to `UnrecognizedUnit` objects\n- **Re-parsing**: After initial parsing, units are re-parsed to ensure warnings are properly raised for actual errors",
+  "durationMs": 4867,
+  "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/io/ascii/cds.py"
+}

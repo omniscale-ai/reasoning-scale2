@@ -1,0 +1,8 @@
+{
+  "bytes": 13977,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# The `_get_best_new_feature_score` Method\n\nHere is the complete method exactly as it appears in the source:\n\n```python\ndef _get_best_new_feature_score(self, estimator, X, y, cv, current_mask, **params):\n    # Return the best new feature and its score to add to the current_mask,\n    # i.e. return the best new feature and its score to add (resp. remove)\n    # when doing forward selection (resp. backward selection).\n    # Feature will be added if the current score and past score are greater\n    # than tol when n_feature is auto,\n    candidate_feature_indices = np.flatnonzero(~current_mask)\n    scores = {}\n    for feature_idx in candidate_feature_indices:\n        candidate_mask = current_mask.copy()\n        candidate_mask[feature_idx] = True\n        if self.direction == \"backward\":\n            candidate_mask = ~candidate_mask\n        X_new = X[:, candidate_mask]\n        scores[feature_idx] = cross_val_score(\n            estimator,\n            X_new,\n            y,\n            cv=cv,\n            scoring=self.scoring,\n            n_jobs=self.n_jobs,\n            params=params,\n        ).mean()\n    new_feature_idx = max(scores, key=lambda feature_idx: scores[feature_idx])\n    return new_feature_idx, scores[new_feature_idx]\n```\n\n**How `cv` is used:** The `cv` parameter is passed directly to `cross_val_score()`, which uses it to determine the cross-validation splitting strategy for evaluating each candidate feature combination.",
+  "durationMs": 2242,
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/feature_selection/_sequential.py"
+}

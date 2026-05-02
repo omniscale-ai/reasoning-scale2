@@ -1,0 +1,8 @@
+{
+  "bytes": 7827,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# ConditionSet Class Definition Summary\n\nBased on the provided code, here's what's included in the ConditionSet class:\n\n## Key Methods Present\n\n**`__new__`**: Initializes a ConditionSet with a symbol, condition, and base_set. Includes validation that the condition evaluates to a boolean and handles special cases like empty sets and nested ConditionSets.\n\n**`_contains`**: Determines membership by checking if a value satisfies the condition and belongs to the base set. Uses \"ok_sig\" helper to validate tuple signatures.\n\n**`as_relational`**: Converts the ConditionSet to a relational expression combining the condition and base set membership using a Lambda function.\n\n**`_eval_subs`**: Handles substitution by prioritizing base set changes and preventing substitution of bound symbols. The method distinguishes between symbol-like and non-symbol-like replacements.\n\n**`_kind`**: Returns a SetKind based on the symbol's kind property.\n\n## Properties\n\n- `sym`, `condition`, `base_set`: Access individual components via tuple unpacking\n- `free_symbols`: Excludes the bound symbol from condition symbols\n- `bound_symbols`: Returns flattened bound symbols\n\nThe class inherits from `Set` and manages mathematical sets defined by conditions on symbolic variables.",
+  "durationMs": 3739,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/conditionset.py"
+}

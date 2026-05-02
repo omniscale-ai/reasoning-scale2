@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:30:41Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://github.com/sympy/sympy/blob/master/sympy/codegen/ast.py",
+    "prompt": "Find the String class definition, __new__, __init__, kwargs() method, and how it relates to Basic class args invariance"
+  },
+  "url": "https://github.com/sympy/sympy/blob/master/sympy/codegen/ast.py",
+  "prompt": "Find the String class definition, __new__, __init__, kwargs() method, and how it relates to Basic class args invariance"
+}

@@ -1,0 +1,8 @@
+{
+  "bytes": 112630,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Cross-Validation Splitters in scikit-learn\n\nBased on the documentation provided, here's a concise overview of the key components:\n\n## Core Classes\n\nThe module contains several cross-validation splitter classes organized by strategy:\n\n**Leave-One-Out Methods:**\n- `LeaveOneOut`: Each sample becomes a test set individually\n- `LeavePOut`: Tests on all distinct samples of size p\n- `LeaveOneGroupOut`: Leaves out one group at a time\n- `LeavePGroupsOut`: Leaves out p groups at a time\n\n**K-Fold Variants:**\n- `KFold`: Splits data into k consecutive folds\n- `StratifiedKFold`: Preserves class distribution across folds\n- `GroupKFold`: Non-overlapping groups across folds\n- `StratifiedGroupKFold`: Combines stratification with group constraints\n- `TimeSeriesSplit`: For time-ordered data with accumulating training sets\n\n**Shuffle-Based Methods:**\n- `ShuffleSplit`: Random permutation splitting\n- `StratifiedShuffleSplit`: Stratified random splitting\n- `GroupShuffleSplit`: Group-based shuffle splitting\n\n**Repeated Variants:**\n- `RepeatedKFold`: Repeats K-Fold n times\n- `RepeatedStratifiedKFold`: Repeats stratified K-Fold n times\n\n## Key Functions\n\nThe `check_cv()` function \"determines the cross-validation splitting strategy\" by accepting integers, CV splitters, or iterables. It automatically selects `StratifiedKFold` for classification tasks when appropriate.\n\nThe `train_test_split()` function provides a simple way to split datasets into training and testing subsets with optional stratification and shuffling.",
+  "durationMs": 4278,
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/model_selection/_split.py"
+}

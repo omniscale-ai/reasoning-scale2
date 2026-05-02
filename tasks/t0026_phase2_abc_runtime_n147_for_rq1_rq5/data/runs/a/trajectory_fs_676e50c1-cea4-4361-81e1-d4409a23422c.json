@@ -1,0 +1,21 @@
+{
+  "instance_id": "fs_676e50c1-cea4-4361-81e1-d4409a23422c",
+  "subset": "frontsci",
+  "variant": "a",
+  "final_answer": "",
+  "final_confidence": null,
+  "cost_usd": 0.149436,
+  "trajectory": [
+    {
+      "turn_index": 0,
+      "granularity": "atomic",
+      "thought": "This is a detailed biochemistry/neuroscience question requiring deep reasoning about TDP-43 structure, stress granule biology, LLPS, and how specific molecular alterations affect aggregation. I can answer this comprehensively from domain knowledge without any tool calls.",
+      "action": {
+        "name": "Finish",
+        "args": {}
+      },
+      "observation": "",
+      "confidence": 0.88
+    }
+  ]
+}

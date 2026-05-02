@@ -1,0 +1,8 @@
+{
+  "bytes": 13977,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# CV Parameter Handling in SequentialFeatureSelector.fit()\n\nThe `fit` method handles the `cv` parameter through a call to `check_cv`:\n\n```python\ncv = check_cv(self.cv, y, classifier=is_classifier(self.estimator))\n```\n\nThis line validates and converts the `cv` parameter into a proper cross-validation splitter object. The `check_cv` function receives:\n- `self.cv` (the user-provided value, default is 5)\n- `y` (target values)\n- `classifier=is_classifier(self.estimator)` (determines if stratified splitting should be used)\n\nAccording to the documentation, when `cv` is an integer or `None`, the function automatically selects either `StratifiedKFold` or `KFold` based on whether the estimator is a classifier and the nature of the target variable.\n\nThe validated `cv` object is then passed to `cross_val_score()` within the `_get_best_new_feature_score()` method during the iterative feature selection process.",
+  "durationMs": 2822,
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/feature_selection/_sequential.py"
+}

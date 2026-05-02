@@ -1,0 +1,139 @@
+--- running full sweep ---
+  variant a: 119 pre-existing, 28 to run (of 147 total)
+    variant a: 5/28 done, elapsed 23.3s
+    variant a: 10/28 done, elapsed 362.1s
+    variant a: 15/28 done, elapsed 626.5s
+    variant a: 20/28 done, elapsed 724.2s
+    variant a: 25/28 done, elapsed 1086.1s
+    variant a: 28/28 done, elapsed 1086.2s
+  variant a complete: 147 predictions, elapsed 1086.2s, cost so far $0.1531
+  variant b: 22 pre-existing, 125 to run (of 147 total)
+    variant b: 5/125 done, elapsed 378.7s
+    variant b: 10/125 done, elapsed 582.8s
+    variant b: 15/125 done, elapsed 733.2s
+    variant b: 20/125 done, elapsed 765.5s
+    variant b: 25/125 done, elapsed 854.6s
+    variant b: 30/125 done, elapsed 925.0s
+    variant b: 35/125 done, elapsed 967.1s
+    variant b: 40/125 done, elapsed 1074.0s
+    variant b: 45/125 done, elapsed 1210.5s
+    variant b: 50/125 done, elapsed 1284.4s
+    variant b: 55/125 done, elapsed 1447.2s
+    variant b: 60/125 done, elapsed 1519.8s
+    variant b: 65/125 done, elapsed 1707.0s
+    variant b: 70/125 done, elapsed 1819.3s
+    variant b: 75/125 done, elapsed 1950.0s
+    variant b: 80/125 done, elapsed 2030.3s
+    variant b: 85/125 done, elapsed 2073.6s
+    variant b: 90/125 done, elapsed 2172.6s
+    variant b: 95/125 done, elapsed 2420.9s
+    variant b: 100/125 done, elapsed 2672.8s
+    variant b: 105/125 done, elapsed 2786.9s
+    variant b: 110/125 done, elapsed 3056.5s
+    variant b: 115/125 done, elapsed 3294.0s
+    variant b: 120/125 done, elapsed 3601.1s
+    variant b: 125/125 done, elapsed 3949.2s
+  variant b complete: 147 predictions, elapsed 3949.2s, cost so far $8.3558
+  variant c: 0 pre-existing, 147 to run (of 147 total)
+    variant c: 5/147 done, elapsed 362.5s
+    variant c: 10/147 done, elapsed 724.7s
+    variant c: 15/147 done, elapsed 864.1s
+    variant c: 20/147 done, elapsed 1112.5s
+    variant c: 25/147 done, elapsed 1400.2s
+    variant c: 30/147 done, elapsed 1716.9s
+    variant c: 35/147 done, elapsed 1772.0s
+    variant c: 40/147 done, elapsed 2055.1s
+    variant c: 45/147 done, elapsed 2124.7s
+    variant c: 50/147 done, elapsed 2290.9s
+    variant c: 55/147 done, elapsed 2514.1s
+    variant c: 60/147 done, elapsed 2759.2s
+    variant c: 65/147 done, elapsed 2874.7s
+    variant c: 70/147 done, elapsed 3107.2s
+    variant c: 75/147 done, elapsed 3202.2s
+    variant c: 80/147 done, elapsed 3364.6s
+    variant c: 85/147 done, elapsed 3556.7s
+    variant c: 90/147 done, elapsed 3697.9s
+    variant c: 95/147 done, elapsed 3778.3s
+    variant c: 100/147 done, elapsed 3919.0s
+    variant c: 105/147 done, elapsed 3964.3s
+    variant c: 110/147 done, elapsed 4031.0s
+    variant c: 115/147 done, elapsed 4368.9s
+    variant c: 120/147 done, elapsed 4494.3s
+    variant c: 125/147 done, elapsed 4769.4s
+    variant c: 130/147 done, elapsed 4959.4s
+    variant c: 135/147 done, elapsed 5234.0s
+    variant c: 140/147 done, elapsed 5433.6s
+    variant c: 145/147 done, elapsed 5683.7s
+    variant c: 147/147 done, elapsed 5725.9s
+  variant c complete: 147 predictions, elapsed 5725.9s, cost so far $21.6717
+runs cost: $21.6717
+--- judging ---
+  judge sonnet/a: 0 cached, 147 new (model=claude-sonnet-4-6)
+    sonnet/a 10/147 done, cost so far $21.6895
+    sonnet/a 20/147 done, cost so far $21.7403
+    sonnet/a 30/147 done, cost so far $21.7495
+    sonnet/a 40/147 done, cost so far $21.8038
+    sonnet/a 50/147 done, cost so far $21.8204
+    sonnet/a 60/147 done, cost so far $21.8367
+    sonnet/a 70/147 done, cost so far $21.8566
+    sonnet/a 80/147 done, cost so far $21.8693
+    sonnet/a 90/147 done, cost so far $21.8882
+    sonnet/a 100/147 done, cost so far $21.9013
+    sonnet/a 110/147 done, cost so far $21.9103
+    sonnet/a 120/147 done, cost so far $21.9156
+    sonnet/a 130/147 done, cost so far $21.9210
+    sonnet/a 140/147 done, cost so far $21.9266
+    sonnet/a 147/147 done, cost so far $21.9325
+  judge opus/a: 0 cached, 44 new (model=claude-opus-4-7)
+    opus/a 10/44 done, cost so far $21.9853
+    opus/a 20/44 done, cost so far $22.0129
+    opus/a 30/44 done, cost so far $22.0363
+    opus/a 40/44 done, cost so far $22.0659
+    opus/a 44/44 done, cost so far $22.0789
+  judge sonnet/b: 0 cached, 147 new (model=claude-sonnet-4-6)
+    sonnet/b 10/147 done, cost so far $22.0903
+    sonnet/b 20/147 done, cost so far $22.1194
+    sonnet/b 30/147 done, cost so far $22.1247
+    sonnet/b 40/147 done, cost so far $22.1345
+    sonnet/b 50/147 done, cost so far $22.1428
+    sonnet/b 60/147 done, cost so far $22.1467
+    sonnet/b 70/147 done, cost so far $22.1628
+    sonnet/b 80/147 done, cost so far $22.1669
+    sonnet/b 90/147 done, cost so far $22.1736
+    sonnet/b 100/147 done, cost so far $22.1778
+    sonnet/b 110/147 done, cost so far $22.1877
+    sonnet/b 120/147 done, cost so far $22.1981
+    sonnet/b 130/147 done, cost so far $22.2061
+    sonnet/b 140/147 done, cost so far $22.2674
+    sonnet/b 147/147 done, cost so far $22.2719
+  judge opus/b: 0 cached, 40 new (model=claude-opus-4-7)
+    opus/b 10/40 done, cost so far $22.3064
+    opus/b 20/40 done, cost so far $22.3312
+    opus/b 30/40 done, cost so far $22.3581
+    opus/b 40/40 done, cost so far $22.3927
+  judge sonnet/c: 0 cached, 147 new (model=claude-sonnet-4-6)
+    sonnet/c 10/147 done, cost so far $22.4009
+    sonnet/c 20/147 done, cost so far $22.4164
+    sonnet/c 30/147 done, cost so far $22.4602
+    sonnet/c 40/147 done, cost so far $22.4780
+    sonnet/c 50/147 done, cost so far $22.5231
+    sonnet/c 60/147 done, cost so far $22.5421
+    sonnet/c 70/147 done, cost so far $22.5757
+    sonnet/c 80/147 done, cost so far $22.5981
+    sonnet/c 90/147 done, cost so far $22.6158
+    sonnet/c 100/147 done, cost so far $22.6588
+    sonnet/c 110/147 done, cost so far $22.6718
+    sonnet/c 120/147 done, cost so far $22.6772
+    sonnet/c 130/147 done, cost so far $22.6902
+    sonnet/c 140/147 done, cost so far $22.7884
+    sonnet/c 147/147 done, cost so far $22.8207
+  judge opus/c: 0 cached, 36 new (model=claude-opus-4-7)
+    opus/c 10/36 done, cost so far $22.8640
+    opus/c 20/36 done, cost so far $22.9087
+    opus/c 30/36 done, cost so far $22.9454
+    opus/c 36/36 done, cost so far $22.9680
+judges cost: $22.9680
+--- writing predictions assets ---
+--- computing and writing metric outputs ---
+full sweep complete: total cost $22.9680, n_calls=1897, parse_failures=0
+rq5_strict_inequality_supported = False

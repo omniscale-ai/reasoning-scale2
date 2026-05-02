@@ -1,0 +1,8 @@
+{
+  "bytes": 390380,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# SequentialFeatureSelector.fit() Method Analysis\n\nHere's the complete `fit` method from the source, focusing on the `cv` handling:\n\n## Method Definition (lines 229-286)\n\nThe method begins with parameter validation and data preparation:\n\n```python\ndef fit(self, X, y=None, **params):\n```\n\n## Key CV Processing Section\n\n**Line 265:** The cross-validation object is initialized:\n```python\ncv = check_cv(self.cv, y, classifier=is_classifier(self.estimator))\n```\n\nThis converts the `self.cv` parameter (which could be an integer like 5, a CV splitter, or None) into a proper cross-validation generator object. The function checks if the estimator is a classifier to apply appropriate stratification.\n\n## CV Usage in the Loop\n\n**Lines 276-284:** The main feature selection loop uses `cv`:\n\n```python\nfor _ in range(n_iterations):\n    new_feature_idx, new_score = self._get_best_new_feature_score(\n        cloned_estimator, X, y, cv, current_mask, **params\n    )\n```\n\nThe `cv` object is passed to `_get_best_new_feature_score()`, which then passes it to `cross_val_score()` for evaluating candidate features.\n\n## Cross-Validation Score Computation\n\nWithin `_get_best_new_feature_score()` (lines 296-313), `cv` is utilized:\n\n```python\nscores[feature_idx] = cross_val_score(\n    estimator,\n    X_new,\n    y,\n    cv=cv,\n    scoring=self.scoring,\n    n_jobs=self.n_jobs,\n    params=params,\n).mean()\n```\n\nThe validated `cv` object splits the data into folds for evaluating each candidate feature's predictive performance.",
+  "durationMs": 4323,
+  "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/feature_selection/_sequential.py"
+}

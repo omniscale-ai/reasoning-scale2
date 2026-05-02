@@ -1,0 +1,11 @@
+{
+  "instance_id": "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447",
+  "subset": "frontsci",
+  "variant": "c",
+  "final_answer": null,
+  "final_confidence": null,
+  "cost_usd": 0.0,
+  "trajectory": {
+    "error": "TimeoutExpired: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 180.0 seconds"
+  }
+}

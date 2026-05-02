@@ -1,0 +1,8 @@
+{
+  "bytes": 20144,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Files in the ASCII Directory\n\nThe `astropy/io/ascii/` directory contains 23 items:\n\n## Core Modules\n- `__init__.py` - Package initialization\n- `core.py` - Main functionality (66,609 bytes)\n- `ui.py` - User interface (41,001 bytes)\n- `connect.py` - Connection utilities\n\n## Format-Specific Readers\n- `basic.py` - Basic ASCII format\n- `fastbasic.py` - Fast basic format implementation\n- `fixedwidth.py` - Fixed-width column parsing\n- `html.py` - HTML table parsing\n- `latex.py` - LaTeX table format\n- `rst.py` - ReStructuredText tables\n\n## CDS and Astronomical Formats\n- **`cds.py`** - CDS (Centre de Donn\u00e9es Astronomiques de Strasbourg) format (17,749 bytes)\n- `ipac.py` - IPAC format (21,010 bytes)\n- `daophot.py` - DAOPHOT format\n- `mesa.py` - MESA stellar evolution format\n- `qdp.py` - QDP format (20,885 bytes)\n- `sextractor.py` - SExtractor catalog format\n- `mrt.py` - Machine-Readable Table format (28,775 bytes)\n- `tdat.py` - TDAT format (31,336 bytes)\n\n## Special Formats\n- `ecsv.py` - Enhanced Character Separated Values (21,538 bytes)\n- `docs.py` - Documentation utilities\n- `misc.py` - Miscellaneous utilities\n\n## Build & Tests\n- `setup_package.py` - Package setup configuration\n- `cparser.pyx` - Cython parser module\n- `src/` - Source directory\n- `tests/` - Test suite\n\nThe **CDS format module** is the primary CDS-related file in this directory.",
+  "durationMs": 4752,
+  "url": "https://api.github.com/repos/astropy/astropy/contents/astropy/io/ascii"
+}

@@ -1,0 +1,8 @@
+{
+  "bytes": 728859,
+  "code": 200,
+  "codeText": "OK",
+  "result": "I appreciate your request, but I cannot provide the complete implementation of the `check_cv` function or the `_CVIterableWrapper` class based on the content shown. \n\nThe webpage displays only the first ~1000 lines of the `_split.py` file (3079 lines total), which covers various cross-validator classes like `LeaveOneOut`, `KFold`, `StratifiedKFold`, and `StratifiedGroupKFold`. The actual `check_cv` function and `_CVIterableWrapper` class implementations are located further down in the file, beyond what's visible in this excerpt.\n\nTo access these implementations, you would need to:\n\n1. **View the raw file directly** by clicking the \"Raw\" button on GitHub\n2. **Clone the scikit-learn repository** and examine the file locally\n3. **Search the file** for \"def check_cv\" and \"class _CVIterableWrapper\" to find their line numbers\n\nThe page shows a \"[View remainder of file in raw view]\" link at the bottom, which would allow you to see the rest of the file content including these specific components.",
+  "durationMs": 3872,
+  "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/model_selection/_split.py"
+}

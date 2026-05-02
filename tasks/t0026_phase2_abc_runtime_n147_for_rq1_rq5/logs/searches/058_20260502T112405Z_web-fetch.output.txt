@@ -1,0 +1,8 @@
+{
+  "bytes": 81857,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# ConditionSet Class Definition\n\nBased on the provided web page content, **the ConditionSet class definition is not present in this document**. \n\nThe page contains code from `sympy/sets/sets.py` and includes class definitions for:\n- `Set` (base class)\n- `ProductSet`\n- `Interval`\n- `Union`\n- `Intersection`\n- `Complement`\n- `EmptySet`\n- `UniversalSet`\n- `FiniteSet`\n- `SymmetricDifference`\n- `DisjointUnion`\n- `SetKind`\n\nHowever, there are **references to ConditionSet** in the documentation strings. For example, the `contains` method docstring mentions: \"an unevaluated `Contains` expression (or, as in the case of ConditionSet and a union of FiniteSet/Intervals, an expression indicating the conditions for containment).\"\n\nTo locate the `ConditionSet` class definition and its methods (`__new__`, `subs`, `_subs`, `_eval_subs`), you would need to examine the `sympy/sets/conditionset.py` file, which is not included in the provided content.",
+  "durationMs": 3580,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/sets.py"
+}

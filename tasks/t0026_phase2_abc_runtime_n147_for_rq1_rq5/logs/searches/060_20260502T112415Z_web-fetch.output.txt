@@ -1,0 +1,8 @@
+{
+  "bytes": 7827,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# ConditionSet Class Analysis\n\nBased on the provided content, here's what's present in the file:\n\n## Available Methods with Line Numbers\n\n**`__new__` method**: Lines 42-145 (approximately)\n- Initializes ConditionSet with symbol, condition, and base_set\n- Performs validation and flattening of nested ConditionSet structures\n\n**`_eval_subs` method**: Lines 179-195 (approximately)\n- Handles substitution logic with special treatment for bound symbols\n- Uses `adummy` as a placeholder to detect changes to bound variables\n\n## Missing Methods\n\nThe file excerpt **does not include**:\n- A `subs` method (direct override)\n- A `_subs` method (alternative implementation)\n- The parent `Basic` class definition or its subs fallback mechanism\n\n## Key Implementation Detail\n\nThe `_eval_subs` implementation demonstrates that \"when old matches the bound symbol, substitution is prevented to maintain the integrity of the set's bound variable\" (paraphrased from lines 189-190).\n\nThe class relies on SymPy's inheritance chain, where if `_eval_subs` doesn't handle a case, the parent `Basic` class's subs machinery would process the request. However, that parent implementation is not shown in the provided excerpt.",
+  "durationMs": 3787,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/conditionset.py"
+}

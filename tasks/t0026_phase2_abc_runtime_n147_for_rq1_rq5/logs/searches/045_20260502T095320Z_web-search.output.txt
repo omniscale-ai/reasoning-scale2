@@ -1,0 +1,24 @@
+{
+  "query": "site:github.com sphinx-doc/sphinx \"8180\" OR \"8592\" pull request meta public attr_docs fix",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01AVHJXe7d4BUEAeXVoxKMSC",
+      "content": [
+        {
+          "title": "Docstring metadata ignored for attributes \u00b7 Issue #8180 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8180"
+        },
+        {
+          "title": "autodoc: `:meta public:` does not effect to variables \u00b7 Issue #8592 \u00b7 sphinx-doc/sphinx",
+          "url": "https://github.com/sphinx-doc/sphinx/issues/8592"
+        },
+        {
+          "title": "Cross-document reference - internal link markdown to restructured text \u00b7 Issue #8592 \u00b7 jgm/pandoc",
+          "url": "https://github.com/jgm/pandoc/issues/8592"
+        }
+      ]
+    },
+    "Based on the search results, I found information about two related issues in the sphinx-doc/sphinx repository:\n\n1. **Issue #8180** - \"Metadata in the docstrings (or doc-comments) of attributes is ignored; for example, :meta public: does not make an attribute whose name starts with an underscore public.\"\n\n2. **Issue #8592** - \":meta public: does not effect to variables\". The issue demonstrates that variables with `:meta public:` docstring metadata are not shown in the built document.\n\nBoth issues relate to the same underlying problem: the `attr_docs` metadata from docstrings was not being properly recognized in the autodoc extension. The search results show code changes addressing this by checking if `(namespace, membername) in attr_docs` before processing the documentation.\n\nNote: The search results show the issues themselves but don't display detailed information about the specific pull request(s) that fixed them. If you need more details about the actual pull request(s) that resolved these issues, I can perform an additional search."
+  ],
+  "durationSeconds": 11.799191624999992
+}

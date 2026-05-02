@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T08:04:34Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/io/ascii/cds.py",
+    "prompt": "Show the entire file content, focusing on unit parsing code"
+  },
+  "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/io/ascii/cds.py",
+  "prompt": "Show the entire file content, focusing on unit parsing code"
+}

@@ -1,0 +1,147 @@
+{
+  "pydata__xarray-6992": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "tau-airline-0009": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the user's request.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the user's request.\nVERDICT: FAIL"
+  },
+  "tau-airline-0014": {
+    "success": false,
+    "rationale": "The agent declined to perform the task and deferred citing missing tools, providing no concrete outcome.",
+    "raw_response": "RATIONALE: The agent declined to perform the task and deferred citing missing tools, providing no concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-airline-0031": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the user's request.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the user's request.\nVERDICT: FAIL"
+  },
+  "sympy__sympy-22456": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot demonstrate the required code change.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot demonstrate the required code change.\nVERDICT: FAIL"
+  },
+  "tau-airline-0002": {
+    "success": false,
+    "rationale": "The agent failed to access any system, did not perform the downgrade, and provided no savings amount.",
+    "raw_response": "RATIONALE: The agent failed to access any system, did not perform the downgrade, and provided no savings amount.\nVERDICT: FAIL"
+  },
+  "django__django-11400": {
+    "success": false,
+    "rationale": "The agent did not provide any code-pointing fix and instead declared the task inapplicable to its environment.",
+    "raw_response": "RATIONALE: The agent did not provide any code-pointing fix and instead declared the task inapplicable to its environment.\nVERDICT: FAIL"
+  },
+  "tau-retail-0013": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the user's request.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the user's request.\nVERDICT: FAIL"
+  },
+  "tau-retail-0062": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so the task was not addressed.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so the task was not addressed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0066": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so the task was not addressed.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so the task was not addressed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0104": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the task or provide any concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the task or provide any concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0000": {
+    "success": false,
+    "rationale": "The agent produced no final answer at all, so the task was not addressed.",
+    "raw_response": "RATIONALE: The agent produced no final answer at all, so the task was not addressed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0176": {
+    "success": false,
+    "rationale": "The agent produced no final answer addressing the customer-service task.",
+    "raw_response": "RATIONALE: The agent produced no final answer addressing the customer-service task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0334": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the task or name any concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the task or name any concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0445": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the user's request.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the user's request.\nVERDICT: FAIL"
+  },
+  "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96": {
+    "success": false,
+    "rationale": "judge call failed: RuntimeError: claude CLI exited 1: (no stderr)",
+    "raw_response": ""
+  },
+  "tau-retail-0427": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the request or provide any concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the request or provide any concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0035": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it did not address the request or name any concrete outcome.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it did not address the request or name any concrete outcome.\nVERDICT: FAIL"
+  },
+  "fs_1875e781-bd89-4528-8bc3-94b7b436402f": {
+    "success": false,
+    "rationale": "The agent's final answer is incoherent boilerplate with no actual computed values for the requested letters.",
+    "raw_response": "RATIONALE: The agent's final answer is incoherent boilerplate with no actual computed values for the requested letters.\nVERDICT: FAIL"
+  },
+  "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot match the gold value of 19.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot match the gold value of 19.\nVERDICT: FAIL"
+  },
+  "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447": {
+    "success": false,
+    "rationale": "The agent's expression does not match the gold answer of -B_0 (which follows from the thin-disk limit d\u226aR where B_0 is dominated by surface effects).",
+    "raw_response": "RATIONALE: The agent's expression does not match the gold answer of -B_0 (which follows from the thin-disk limit d\u226aR where B_0 is dominated by surface effects).\nVERDICT: FAIL"
+  },
+  "fs_8b695bb3-ea3c-4372-9222-9f0b79a68b6c": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot be judged as having addressed the gold task.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot be judged as having addressed the gold task.\nVERDICT: FAIL"
+  },
+  "tau-airline-0027": {
+    "success": false,
+    "rationale": "The agent refused the task entirely, took no action, and named no concrete outcome.",
+    "raw_response": "RATIONALE: The agent refused the task entirely, took no action, and named no concrete outcome.\nVERDICT: FAIL"
+  },
+  "fs_ecb58594-7fd9-4a94-b799-0f1c13acb752": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot match the gold answer (NaBiO3).",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot match the gold answer (NaBiO3).\nVERDICT: FAIL"
+  },
+  "fs_f12a8706-3ddd-4255-9234-0655babceb8e": {
+    "success": false,
+    "rationale": "The agent provided no final answer, which per the rules is an automatic FAIL.",
+    "raw_response": "RATIONALE: The agent provided no final answer, which per the rules is an automatic FAIL.\nVERDICT: FAIL"
+  },
+  "tau-retail-0046": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it failed to address the user's request.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it failed to address the user's request.\nVERDICT: FAIL"
+  },
+  "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it fails by the empty-answer rule.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it fails by the empty-answer rule.\nVERDICT: FAIL"
+  },
+  "tau-retail-0006": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so the task was not addressed.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so the task was not addressed.\nVERDICT: FAIL"
+  },
+  "tau-retail-0040": {
+    "success": false,
+    "rationale": "The agent produced no final answer, failing to address the user's request.",
+    "raw_response": "RATIONALE: The agent produced no final answer, failing to address the user's request.\nVERDICT: FAIL"
+  }
+}

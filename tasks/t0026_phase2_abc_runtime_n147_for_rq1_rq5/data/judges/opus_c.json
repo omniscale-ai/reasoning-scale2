@@ -1,0 +1,152 @@
+{
+  "django__django-13344": {
+    "success": false,
+    "rationale": "The agent's final answer is empty/missing.",
+    "raw_response": "RATIONALE: The agent's final answer is empty/missing.\nVERDICT: FAIL"
+  },
+  "scikit-learn__scikit-learn-14496": {
+    "success": false,
+    "rationale": "The agent provided no final answer, which per the rules is an automatic fail.",
+    "raw_response": "RATIONALE: The agent provided no final answer, which per the rules is an automatic fail.\nVERDICT: FAIL"
+  },
+  "astropy__astropy-14369": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot be judged as having addressed the gold fix.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot be judged as having addressed the gold fix.\nVERDICT: FAIL"
+  },
+  "django__django-11138": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot be evaluated as successful.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot be evaluated as successful.\nVERDICT: FAIL"
+  },
+  "django__django-15128": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot be considered to have addressed the bug fix.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot be considered to have addressed the bug fix.\nVERDICT: FAIL"
+  },
+  "pytest-dev__pytest-7236": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot have addressed the required code fix.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot have addressed the required code fix.\nVERDICT: FAIL"
+  },
+  "scikit-learn__scikit-learn-25973": {
+    "success": true,
+    "rationale": "The agent identifies the root cause (one-shot generator exhaustion) and proposes the correct library-side fix (materialize cv via list() in SFS.fit), which matches the gold fix, though it leans more on the user-side workaround than a concrete patch.",
+    "raw_response": "RATIONALE: The agent identifies the root cause (one-shot generator exhaustion) and proposes the correct library-side fix (materialize cv via list() in SFS.fit), which matches the gold fix, though it leans more on the user-side workaround than a concrete patch.\nVERDICT: PASS"
+  },
+  "pydata__xarray-6992": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot have addressed the code-fix task.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot have addressed the code-fix task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0011": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so the task was not addressed.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so the task was not addressed.\nVERDICT: FAIL"
+  },
+  "sympy__sympy-20438": {
+    "success": true,
+    "rationale": "The agent identifies the correct file (sympy/sets/sets.py) and provides a concrete `_eval_is_subset` implementation for ProductSet that addresses the gold task, plus a reasonable guard for the simplify AttributeError.",
+    "raw_response": "RATIONALE: The agent identifies the correct file (sympy/sets/sets.py) and provides a concrete `_eval_is_subset` implementation for ProductSet that addresses the gold task, plus a reasonable guard for the simplify AttributeError.\nVERDICT: PASS"
+  },
+  "tau-retail-0012": {
+    "success": false,
+    "rationale": "The agent's answer is about an unrelated role-play profile and does not address cancelling the orders, changing the address, or modifying the items requested.",
+    "raw_response": "RATIONALE: The agent's answer is about an unrelated role-play profile and does not address cancelling the orders, changing the address, or modifying the items requested.\nVERDICT: FAIL"
+  },
+  "tau-retail-0034": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it failed to address the task.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it failed to address the task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0019": {
+    "success": false,
+    "rationale": "The agent only restated the request as a customer query and did not provide any concrete outcome, savings values, or confirmed action.",
+    "raw_response": "RATIONALE: The agent only restated the request as a customer query and did not provide any concrete outcome, savings values, or confirmed action.\nVERDICT: FAIL"
+  },
+  "tau-retail-0039": {
+    "success": false,
+    "rationale": "The agent did not provide the cheapest t-shirt price (expected 46.66) or confirm the address update; it only restated the user's requests without delivering any concrete outcome.",
+    "raw_response": "RATIONALE: The agent did not provide the cheapest t-shirt price (expected 46.66) or confirm the address update; it only restated the user's requests without delivering any concrete outcome.\nVERDICT: FAIL"
+  },
+  "tau-retail-0062": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it cannot have addressed the user's request.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it cannot have addressed the user's request.\nVERDICT: FAIL"
+  },
+  "tau-retail-0013": {
+    "success": false,
+    "rationale": "The agent produced no final answer, so it failed to address the task.",
+    "raw_response": "RATIONALE: The agent produced no final answer, so it failed to address the task.\nVERDICT: FAIL"
+  },
+  "tau-retail-0058": {
+    "success": false,
+    "rationale": "The agent produced a hypothetical roleplay script with placeholders instead of actually performing lookups or naming concrete items, prices, or confirmed actions.",
+    "raw_response": "RATIONALE: The agent produced a hypothetical roleplay script with placeholders instead of actually performing lookups or naming concrete items, prices, or confirmed actions.\nVERDICT: FAIL"
+  },
+  "tau-retail-0314": {
+    "success": true,
+    "rationale": "The agent's answer addresses all four requested changes with concrete addresses, item modifications, and payment method.",
+    "raw_response": "RATIONALE: The agent's answer addresses all four requested changes with concrete addresses, item modifications, and payment method.\nVERDICT: PASS"
+  },
+  "tau-retail-0197": {
+    "success": false,
+    "rationale": "The agent only restated the action plan rather than confirming any actions were executed, which is a deferral without concrete outcomes.",
+    "raw_response": "RATIONALE: The agent only restated the action plan rather than confirming any actions were executed, which is a deferral without concrete outcomes.\nVERDICT: FAIL"
+  },
+  "tau-retail-0245": {
+    "success": true,
+    "rationale": "The agent listed all five requested actions with concrete tool calls and confirmed outcomes for each.",
+    "raw_response": "RATIONALE: The agent listed all five requested actions with concrete tool calls and confirmed outcomes for each.\nVERDICT: PASS"
+  },
+  "fs_4225f097-0cee-4e43-b5b9-6efbab4c3447": {
+    "success": false,
+    "rationale": "The agent provided no final answer, which per the rules is an automatic fail.",
+    "raw_response": "RATIONALE: The agent provided no final answer, which per the rules is an automatic fail.\nVERDICT: FAIL"
+  },
+  "fs_27c865e6-1c87-489b-b7ea-b197fe3356ba": {
+    "success": false,
+    "rationale": "The agent provided no final answer, which automatically fails per the rules.",
+    "raw_response": "RATIONALE: The agent provided no final answer, which automatically fails per the rules.\nVERDICT: FAIL"
+  },
+  "fs_ecb58594-7fd9-4a94-b799-0f1c13acb752": {
+    "success": true,
+    "rationale": "The agent's final answer NaBiO3 matches the gold answer (sodium bismuthate).",
+    "raw_response": "RATIONALE: The agent's final answer NaBiO3 matches the gold answer (sodium bismuthate).\nVERDICT: PASS"
+  },
+  "fs_eec8840a-2d00-4e70-b043-0da51bd1b288": {
+    "success": true,
+    "rationale": "The agent's answer SO\u2082Cl\u2082 matches the gold answer sulfuryl chloride.",
+    "raw_response": "RATIONALE: The agent's answer SO\u2082Cl\u2082 matches the gold answer sulfuryl chloride.\nVERDICT: PASS"
+  },
+  "fs_f12a8706-3ddd-4255-9234-0655babceb8e": {
+    "success": true,
+    "rationale": "The agent correctly identifies disproportionation and matches the gold E = 0.08 V.",
+    "raw_response": "RATIONALE: The agent correctly identifies disproportionation and matches the gold E = 0.08 V.\nVERDICT: PASS"
+  },
+  "fs_422512ca-5a0c-4a23-b987-7fa2eb2024e6": {
+    "success": false,
+    "rationale": "The agent provided no final answer, so it cannot match the gold value of 19.",
+    "raw_response": "RATIONALE: The agent provided no final answer, so it cannot match the gold value of 19.\nVERDICT: FAIL"
+  },
+  "fs_f3ba1aae-2fc3-4d9b-a5a3-42bb91de4d7d": {
+    "success": false,
+    "rationale": "The agent provided no final answer, which fails per the empty-answer rule.",
+    "raw_response": "RATIONALE: The agent provided no final answer, which fails per the empty-answer rule.\nVERDICT: FAIL"
+  },
+  "tau-retail-0305": {
+    "success": true,
+    "rationale": "The agent enumerated each requested order action with concrete parameters and named tool calls, providing a clear outcome rather than deferring.",
+    "raw_response": "RATIONALE: The agent enumerated each requested order action with concrete parameters and named tool calls, providing a clear outcome rather than deferring.\nVERDICT: PASS"
+  },
+  "tau-retail-0331": {
+    "success": false,
+    "rationale": "The agent only restated the requested actions as a planned sequence without confirming any were executed or producing concrete outcomes.",
+    "raw_response": "RATIONALE: The agent only restated the requested actions as a planned sequence without confirming any were executed or producing concrete outcomes.\nVERDICT: FAIL"
+  },
+  "tau-retail-0464": {
+    "success": true,
+    "rationale": "The agent confirmed concrete actions for both orders, including address updates and item modifications with payment method specified.",
+    "raw_response": "RATIONALE: The agent confirmed concrete actions for both orders, including address updates and item modifications with payment method specified.\nVERDICT: PASS"
+  }
+}

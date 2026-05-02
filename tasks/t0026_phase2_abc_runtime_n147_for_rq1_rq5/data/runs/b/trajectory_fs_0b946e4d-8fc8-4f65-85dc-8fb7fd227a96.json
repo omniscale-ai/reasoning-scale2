@@ -1,0 +1,11 @@
+{
+  "instance_id": "fs_0b946e4d-8fc8-4f65-85dc-8fb7fd227a96",
+  "subset": "frontsci",
+  "variant": "b",
+  "final_answer": null,
+  "final_confidence": null,
+  "cost_usd": 0.0,
+  "trajectory": {
+    "error": "RuntimeError: claude CLI exited 1: (no stderr)"
+  }
+}

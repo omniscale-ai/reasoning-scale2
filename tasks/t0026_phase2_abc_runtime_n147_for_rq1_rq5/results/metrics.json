@@ -1,0 +1,36 @@
+{
+  "success_rate_a": 0.04081632653061224,
+  "success_rate_a_swebench": 0.3,
+  "success_rate_a_taubench": 0.0,
+  "success_rate_a_frontsci": 0.0,
+  "success_rate_b": 0.04081632653061224,
+  "success_rate_b_swebench": 0.0,
+  "success_rate_b_taubench": 0.022988505747126436,
+  "success_rate_b_frontsci": 0.1,
+  "success_rate_c": 0.11564625850340136,
+  "success_rate_c_swebench": 0.05,
+  "success_rate_c_taubench": 0.10344827586206896,
+  "success_rate_c_frontsci": 0.175,
+  "final_confidence_ece": 0.43020408163265306,
+  "final_confidence_ece_n": 49,
+  "judge_agreement_with_program": 0.9166666666666666,
+  "judge_agreement_with_program_n": 120,
+  "inter_judge_agreement": 0.9775280898876404,
+  "inter_judge_agreement_n": 89,
+  "mcnemar_p_a_vs_b": 0.9999999999999988,
+  "mcnemar_p_b_vs_c": 0.019210815429687566,
+  "rq5_strict_inequality_supported": false,
+  "bonferroni_alpha": 0.025,
+  "efficiency_inference_cost_per_item_usd": 0.06593085034013606,
+  "efficiency_inference_time_per_item_seconds": null,
+  "_meta": {
+    "subsets": [
+      "swebench",
+      "taubench",
+      "frontsci"
+    ],
+    "subset_swebench": "swebench",
+    "subset_taubench": "taubench",
+    "subset_frontsci": "frontsci"
+  }
+}

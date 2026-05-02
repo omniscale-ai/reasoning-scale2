@@ -1,0 +1,8 @@
+{
+  "bytes": 17749,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Unit Parsing in CDS Format\n\nBased on the provided code, here's how unit parsing is handled:\n\n## Unit Parsing Mechanism\n\nThe code uses Astropy's `Unit` class with CDS-specific formatting:\n\n```python\ncol.unit = Unit(unit, format=\"cds\", parse_strict=\"warn\")\n```\n\nThe parser accepts unit strings from the CDS table header and converts them using the `\"cds\"` format specification. The `parse_strict=\"warn\"` setting allows flexibility while raising warnings for ambiguous inputs.\n\n## Handling Special Cases\n\n**No Unit Marker:** The string `\"---\"` explicitly indicates no unit:\n```python\nif unit == \"---\":\n    col.unit = None\n```\n\n**Unrecognized Units:** When parsing fails, the code catches exceptions and creates an `UnrecognizedUnit` object, enabling graceful degradation rather than complete failure.\n\n## Multiple Separator Handling\n\nThe provided code does **not explicitly show grammar rules or regex patterns for handling multiple '/' separators** in unit strings. The unit parsing delegates to Astropy's `Unit` class with CDS format, but the actual separator handling logic isn't visible in this excerpt.\n\nThe only regex patterns shown relate to column definition parsing (byte ranges, format codes, labels), not unit composition. For detailed unit separator behavior, you would need to consult Astropy's units documentation or source code.",
+  "durationMs": 4787,
+  "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/io/ascii/cds.py"
+}

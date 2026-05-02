@@ -1,0 +1,52 @@
+{
+  "query": "Pylint --recursive option _expand_files implementation",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_015YnethX2LeW2xfuWKvt7GG",
+      "content": [
+        {
+          "title": "Lint all files in a directory by expanding arguments by matusvalo \u00b7 Pull Request #5682 \u00b7 pylint-dev/pylint",
+          "url": "https://github.com/pylint-dev/pylint/pull/5682"
+        },
+        {
+          "title": "Frequently Asked Questions \u2014 Pylint 2.13.9 documentation",
+          "url": "https://pylint.pycqa.org/en/v2.13.9/faq.html"
+        },
+        {
+          "title": "Running Pylint \u2014 Pylint 2.13.9 documentation",
+          "url": "https://pylint.pycqa.org/en/v2.13.9/user_guide/run.html"
+        },
+        {
+          "title": "Frequently Asked Questions \u2014 Pylint 1.5.4 documentation",
+          "url": "https://docs.pylint.org/faq.html"
+        },
+        {
+          "title": "Frequently Asked Questions \u2014 Pylint 1.6.5 documentation",
+          "url": "https://docs.pylint.org/en/1.6.0/faq.html"
+        },
+        {
+          "title": "Running Pylint - Pylint 4.1.0-dev0 documentation",
+          "url": "https://pylint.readthedocs.io/en/latest/user_guide/usage/run.html"
+        },
+        {
+          "title": "pylint-runner \u00b7 PyPI",
+          "url": "https://pypi.org/project/pylint-runner/"
+        },
+        {
+          "title": "Running PyLint recursively on my folders of python files \u00b7 Issue #3084 \u00b7 pylint-dev/pylint",
+          "url": "https://github.com/PyCQA/pylint/issues/3084"
+        },
+        {
+          "title": "Running Pylint - Pylint 3.2.7 documentation",
+          "url": "https://pylint.readthedocs.io/en/v3.2.7/user_guide/usage/run.html"
+        },
+        {
+          "title": "Running Pylint - Pylint 4.0.4 documentation",
+          "url": "https://pylint.readthedocs.io/en/stable/user_guide/usage/run.html"
+        }
+      ]
+    },
+    "Based on the search results, here's what I found about the Pylint `--recursive` option and its relationship with file expansion:\n\n## The `--recursive` Option\n\nThe `--recursive` option works by expanding arguments containing directories with all modules and packages inside that directory. This option makes pylint attempt to discover all modules (files ending with .py extension) and all explicit packages (all directories containing a __init__.py file).\n\n## Usage and Purpose\n\nIn order to run pylint over all modules and packages within the provided subtree of a directory, the `--recursive=y` option must be provided. Without this option, pylint won't automatically scan subdirectories for Python files.\n\n## Implementation Context\n\nThe search results reference a pull request (#5682) that implemented this functionality. The implementation includes test additions, code cleanup, type annotations and docstrings.\n\nHowever, the search results don't contain detailed information about the specific `_expand_files` implementation details. The results show that this feature exists and is used for directory expansion, but specific code implementation details about the `_expand_files` method itself are not available in these search results. For more technical implementation details, you may want to check the Pylint GitHub repository directly or examine the source code for the file/directory expansion logic."
+  ],
+  "durationSeconds": 6.195737166999999
+}

@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:53:38Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://github.com/sphinx-doc/sphinx/blob/master/sphinx/ext/autodoc/__init__.py",
+    "prompt": "Find the filter_members method, DataDocumenter class, and how underscore-prefixed members are filtered. Show me the exact code that checks meta public"
+  },
+  "url": "https://github.com/sphinx-doc/sphinx/blob/master/sphinx/ext/autodoc/__init__.py",
+  "prompt": "Find the filter_members method, DataDocumenter class, and how underscore-prefixed members are filtered. Show me the exact code that checks meta public"
+}

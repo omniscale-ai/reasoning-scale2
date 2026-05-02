@@ -1,0 +1,21 @@
+{
+  "instance_id": "tau-retail-0017",
+  "subset": "taubench",
+  "variant": "a",
+  "final_answer": "",
+  "final_confidence": null,
+  "cost_usd": 0.012591000000000001,
+  "trajectory": [
+    {
+      "turn_index": 0,
+      "granularity": "atomic",
+      "thought": "I need to help change the delivery address for order #W8665881 to add Suite 641. As Fatima Johnson, I want to provide only the minimum necessary information. I should use a customer service tool or directly state the address change request without revealing extra personal details.",
+      "action": {
+        "name": "Finish",
+        "args": {}
+      },
+      "observation": "",
+      "confidence": 0.72
+    }
+  ]
+}

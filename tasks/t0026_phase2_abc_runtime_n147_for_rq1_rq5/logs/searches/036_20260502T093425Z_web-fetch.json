@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:34:25Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/units/format/cds.py",
+    "prompt": "Show the grammar rules, tokenizer, and parser functions. How are multiple '/' separators handled in parsing unit strings"
+  },
+  "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/units/format/cds.py",
+  "prompt": "Show the grammar rules, tokenizer, and parser functions. How are multiple '/' separators handled in parsing unit strings"
+}

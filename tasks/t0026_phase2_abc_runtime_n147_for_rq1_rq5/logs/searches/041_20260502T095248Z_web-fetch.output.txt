@@ -1,0 +1,8 @@
+{
+  "bytes": 263438,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Bug Summary: `:meta public:` Not Working for Variables\n\n## The Bug\nThe `:meta public:` directive in Sphinx's autodoc extension fails to make private variables (those starting with underscore) appear in generated documentation, despite the metadata tag's intended purpose.\n\n## Reproduction Case\n```python\n# example.py\n_foo = None  #: :meta public:\n\n# index.rst\n.. automodule:: example\n   :members:\n```\n\nWhen building documentation with this setup, the variable `_foo` does not appear in the output, even though the `:meta public:` comment explicitly marks it for inclusion.\n\n## Expected Behavior\nAccording to the issue reporter, \"variables marked with `:meta public:` should be shown on the built document\" like other documented members.\n\n## Root Cause & Fix\nThe issue indicates that autodoc's handling of the `:meta public:` metadata tag does not properly affect variable visibility decisions. While the page doesn't specify the exact fix implemented, the bug was assigned to milestone 3.5.0, suggesting the developers identified and resolved this inconsistency in how metadata directives apply to module-level variables versus functions or classes.",
+  "durationMs": 4022,
+  "url": "https://github.com/sphinx-doc/sphinx/issues/8592"
+}

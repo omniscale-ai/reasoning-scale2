@@ -1,0 +1,3 @@
+smoke test wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0026_phase2_abc_runtime_n147_for_rq1_rq5/tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/data/smoke_test.json
+response: ready
+cost: $0.000069, n_calls=1

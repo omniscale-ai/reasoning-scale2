@@ -1,0 +1,8 @@
+{
+  "bytes": 285945,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Issue #8180: Docstring Metadata Ignored for Attributes\n\n## Issue Description\n\nThe bug report describes a problem where metadata in docstrings of class attributes is not being recognized by Sphinx's autodoc extension. Specifically, metadata directives like `:meta public:` don't function for attributes with names starting with underscores.\n\n## Code Snippet (Minimal Example)\n\n```python\nclass Foo:\n    #: A class attribute whose name starts with an underscore.\n    #:\n    #: :meta public:\n    _bar = 12\n```\n\nThe attribute `_bar` fails to appear in generated documentation despite the `:meta public:` directive.\n\n## Root Cause Analysis\n\nThe bug occurs in the `filter_members` method of `autodoc.Documenter`. The patch provided identifies that when processing attributes, the code fails to properly check `attr_docs` (which contains doc-comments) before attempting to extract metadata. Instead, it only looks at the member's `__doc__` attribute, which attributes typically lack.\n\nThe fix prioritizes checking \"doc-comments for attributes\" before falling back to `__doc__`, ensuring metadata like `:meta public:` is properly discovered and applied.\n\n## Linked Pull Requests\n\nThe page content provided does not reference any merged pull requests addressing this issue, though it was assigned to milestone 5.0.0.",
+  "durationMs": 5732,
+  "url": "https://github.com/sphinx-doc/sphinx/issues/8180"
+}

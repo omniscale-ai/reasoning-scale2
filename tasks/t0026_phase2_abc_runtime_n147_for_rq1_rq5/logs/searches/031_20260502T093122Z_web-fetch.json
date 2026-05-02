@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T09:31:22Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/ast.py",
+    "prompt": "Show the CodegenAST class definition and how it relates to Basic, specifically show its __new__ method if it has one"
+  },
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/ast.py",
+  "prompt": "Show the CodegenAST class definition and how it relates to Basic, specifically show its __new__ method if it has one"
+}

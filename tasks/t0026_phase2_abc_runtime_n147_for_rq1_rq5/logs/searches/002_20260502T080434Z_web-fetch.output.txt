@@ -1,0 +1,8 @@
+{
+  "bytes": 17749,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Unit Parsing in CDS Table Reader\n\nThe unit parsing code appears in the `CdsHeader.get_cols()` method. Here's the relevant section:\n\n## Unit Parsing Logic\n\n```python\nunit = match.group(\"units\")\nif unit == \"---\":\n    col.unit = None\nelse:\n    try:\n        col.unit = Unit(unit, format=\"cds\", parse_strict=\"warn\")\n    except UnitsWarning:\n        col.unit = UnrecognizedUnit(unit)\n```\n\n**Key characteristics:**\n\n1. **Special marker handling**: The code treats `\"---\"` as a placeholder indicating no unit exists, setting `col.unit` to `None`.\n\n2. **CDS format parsing**: Units are parsed using Astropy's `Unit` class with `format=\"cds\"` and `parse_strict=\"warn\"` parameters, enabling lenient parsing while issuing warnings for unrecognized formats.\n\n3. **Error recovery**: When a `UnitsWarning` is raised (converted to an error), the parser gracefully falls back to creating an `UnrecognizedUnit` object rather than failing completely.\n\n4. **Re-validation**: After initial processing, the code re-parses the unit to ensure any actual errors are properly raised: `col.unit = Unit(unit, format=\"cds\", parse_strict=\"warn\")`\n\nThis approach allows the reader to handle both standard astronomical units and non-standard unit strings without breaking the parsing pipeline.",
+  "durationMs": 4237,
+  "url": "https://raw.githubusercontent.com/astropy/astropy/main/astropy/io/ascii/cds.py"
+}

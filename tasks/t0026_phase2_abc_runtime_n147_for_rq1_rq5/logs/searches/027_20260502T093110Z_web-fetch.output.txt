@@ -1,0 +1,8 @@
+{
+  "bytes": 21751,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# test_String Function\n\nHere is the complete `test_String` function from the provided code:\n\n```python\ndef test_String():\n    st = String('foobar')\n    assert st.is_Atom\n    assert st == String('foobar')\n    assert st.text == 'foobar'\n    assert st.func(**st.kwargs()) == st\n    assert st.func(*st.args) == st\n\n    class Signifier(String):\n        pass\n\n    si = Signifier('foobar')\n    assert si != st\n    assert si.text == st.text\n    s = String('foo')\n    assert str(s) == 'foo'\n    assert repr(s) == \"String('foo')\"\n```\n\n**Key assertions tested:**\n- String instances are atomic objects\n- String equality comparison works correctly\n- The `.text` attribute retrieves stored content\n- Reconstruction via `func()` preserves object identity\n- Subclasses of String with identical text are not equal\n- String `str()` representation outputs plain text\n- String `repr()` format shows the constructor syntax",
+  "durationMs": 2930,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/codegen/tests/test_ast.py"
+}
