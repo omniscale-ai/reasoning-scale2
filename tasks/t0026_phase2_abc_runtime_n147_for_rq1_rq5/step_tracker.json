@@ -23,8 +23,8 @@
       "step": 3,
       "name": "init-folders",
       "description": "Initialize the mandatory task folder structure with research/, plan/, results/, assets/, etc.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-02T06:39:04Z",
       "completed_at": null,
       "log_file": "logs/steps/003_init-folders/"
     },
