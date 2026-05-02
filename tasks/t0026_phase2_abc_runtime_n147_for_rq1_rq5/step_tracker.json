@@ -104,9 +104,9 @@
       "step": 12,
       "name": "results",
       "description": "Compute metrics, McNemar tests, ECE, judge agreement; write results_summary, results_detailed, plots.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-02T14:34:26Z",
-      "completed_at": null,
+      "completed_at": "2026-05-02T14:43:18Z",
       "log_file": "logs/steps/012_results/"
     },
     {
