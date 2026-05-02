@@ -95,9 +95,9 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Out-of-the-box analysis: alternative explanations for any null results, ablation ideas, follow-ups.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-02T14:31:05Z",
-      "completed_at": null,
+      "completed_at": "2026-05-02T14:34:08Z",
       "log_file": "logs/steps/011_creative-thinking/"
     },
     {
