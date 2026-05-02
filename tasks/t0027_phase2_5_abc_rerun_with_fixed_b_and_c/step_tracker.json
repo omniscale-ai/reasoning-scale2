@@ -5,9 +5,9 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0027_phase2_5_abc_rerun_with_fixed_b_and_c branch from main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-02T17:07:24Z",
-      "completed_at": null,
+      "completed_at": "2026-05-02T17:09:24Z",
       "log_file": "logs/steps/001_create-branch/"
     },
     {
