@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0010 matched_mismatch, t0021 plan_and_solve_v2, and t0026 ABC harness to plan v3 / v2 forks and predictions reuse.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-02T17:11:02Z",
-      "completed_at": null,
+      "completed_at": "2026-05-02T17:20:03Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
