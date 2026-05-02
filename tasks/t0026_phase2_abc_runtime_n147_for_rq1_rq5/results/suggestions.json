@@ -1,4 +1,66 @@
 {
   "spec_version": "2",
-  "suggestions": []
+  "suggestions": [
+    {
+      "id": "S-0026-01",
+      "title": "Make the Plan-and-Solve v2 plan parser fault-tolerant",
+      "description": "Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output / function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off symmetric.",
+      "kind": "technique",
+      "priority": "high",
+      "source_task": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+      "source_paper": null,
+      "categories": ["hierarchical-planning"],
+      "status": "active"
+    },
+    {
+      "id": "S-0026-02",
+      "title": "Reframe the matched-mismatch wrapper so C is structurally distinct from A",
+      "description": "Variant C beat B (paired McNemar p = 0.019) but only because the 'adversarial' wrapper delegates to scope_aware_react with a perturbed strategy label, making C structurally A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so the adversarial variant operates on top of B's plan-and-solve scaffold, not A's, then re-run the B vs C pair on the same paired set to test whether the inversion survives.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+      "source_paper": null,
+      "categories": ["agent-evaluation", "granularity-conditioning"]
+    },
+    {
+      "id": "S-0026-03",
+      "title": "Recalibrate variant B's verbalized final_confidence",
+      "description": "Variant B's 10-bin Expected Calibration Error is 0.43 (n=49) and the [0.9, 1.0] bin succeeds at only 25%. Add a calibration head — temperature scaling, isotonic regression, or a learned post-hoc calibrator over the four content features (subset, plan_length, n_actions, judge_program_agreement_proxy) — and report ECE on a held-out slice of the same 130-instance paired set.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+      "source_paper": null,
+      "categories": ["uncertainty-calibration"]
+    },
+    {
+      "id": "S-0026-04",
+      "title": "Wire a real Tau-bench tool registry to escape the harness floor",
+      "description": "Tau-bench numbers in this sweep are a harness floor, not a benchmark score: A=0.0%, B=2.3%, C=10.3% on a stub python_exec only. Port the published Tau-bench retail/airline tool stack (or a minimal viable subset) into the harness and rerun the A/B/C grid on the Tau-bench subset (n=87). The Tau-bench leg of the comparison currently dominates the absolute-rate gap with literature.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+      "source_paper": null,
+      "categories": ["benchmark-taubench", "agent-evaluation"]
+    },
+    {
+      "id": "S-0026-05",
+      "title": "Run the same A/B/C grid on Opus to test whether scaffold rankings are model-invariant",
+      "description": "All current results are Sonnet-only. The C > B inversion may flip on a stronger model where B's plan parser sees fewer malformed plans and where C's longer reasoning chains finish more often. Repeat the 130-instance paired sweep with claude-opus-4-7 as the model under test (judges remain sonnet primary + opus inter-judge) and report whether mcnemar_p_a_vs_b and mcnemar_p_b_vs_c keep the same sign.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+      "source_paper": null,
+      "categories": ["agent-evaluation"]
+    },
+    {
+      "id": "S-0026-06",
+      "title": "Recover the 17 missing instances per variant for a full N=147 paired set",
+      "description": "The resumable-checkpoint path filtered 17 instances per variant from a corrupted earlier run, dropping the paired sample from N=147 to N=130. Add a 'force-rerun' flag to full_runner.py that re-emits trajectories for those ids and rerun A/B/C on the missing 17. The McNemar tests are statistically valid as-is, but the absolute success rates would be unbiased on the full N=147.",
+      "kind": "technique",
+      "priority": "low",
+      "source_task": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+      "source_paper": null,
+      "categories": ["agent-evaluation"]
+    }
+  ]
 }
