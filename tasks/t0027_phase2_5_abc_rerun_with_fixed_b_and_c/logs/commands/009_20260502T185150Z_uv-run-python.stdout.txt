@@ -1,0 +1,5 @@
+smoke run for variant 'b': 5 FrontierScience paired instances
+  variant b: 5/5 done, cost $1.5788, elapsed 213.2s
+smoke variant b complete: cost $1.5788, runs=5, parser_failures=0, projected_full=$61.57
+recovery_path_counts: {'unknown': 1, 'clean': 4}
+SMOKE GATE FAIL: variant b projected full cost $61.57 > per-stream cap $25.00; halting.

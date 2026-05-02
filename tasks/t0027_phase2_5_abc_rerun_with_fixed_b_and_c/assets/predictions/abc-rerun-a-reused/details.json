@@ -1,0 +1,37 @@
+{
+  "spec_version": "2",
+  "predictions_id": "abc-rerun-a-reused",
+  "name": "Variant A (reused pointer to t0026 a-scope-aware predictions)",
+  "short_description": "Pointer asset that re-uses t0026's variant-A scope-aware ReAct predictions for the paired t0027 analysis without re-running A. The actual predictions JSONL lives in tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/assets/predictions/a-scope-aware/files/.",
+  "description_path": "description.md",
+  "model_id": null,
+  "model_description": "claude-sonnet-4-6 via Anthropic API (CLI transport), max_turns=10, max_tokens=4096. Inherited verbatim from t0026's a-scope-aware predictions; t0027 does not re-run variant A. B and C in t0027 also run on claude-sonnet-4-6, so all three variants share the same model and the A-vs-B and A-vs-C McNemar comparisons isolate scaffold/parser differences cleanly. The original t0027 task description erroneously stated claude-opus-4-7 for B/C; that was a transcription error caught during implementation by inspecting t0026's paths.py and corrected.",
+  "dataset_ids": [
+    "swebench-verified-subset",
+    "taubench-subset",
+    "frontierscience-olympiad-subset"
+  ],
+  "prediction_format": "jsonl",
+  "prediction_schema": "Each line is a JSON object identical to the t0026 a-scope-aware schema: instance_id (str), subset (str), variant (str), final_answer (str|null), final_confidence (float|null; null for variant A), cost_usd (float), trajectory_path (str|null), judge_sonnet_success (bool), judge_sonnet_rationale (str), judge_opus_success (bool|null), judge_opus_rationale (str|null). The actual records live in the t0026 source asset; this folder only contains a pointer.json file that names the source path. Consumers must read tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/assets/predictions/a-scope-aware/files/predictions_variant_a.jsonl directly.",
+  "instance_count": 147,
+  "metrics_at_creation": {
+    "success_rate_judge_sonnet": 0.04081632653061224,
+    "n_success": 6,
+    "n_instances_inherited_from_t0026": 147,
+    "n_paired_used_in_t0027_analysis": 130,
+    "total_cost_usd": 0.0
+  },
+  "files": [
+    {
+      "path": "files/pointer.json",
+      "description": "Pointer file naming the t0026 source predictions directory and JSONL path; consumers must read the source path directly to access per-instance predictions.",
+      "format": "json"
+    }
+  ],
+  "categories": [
+    "agent-evaluation",
+    "llm-as-judge"
+  ],
+  "created_by_task": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "date_created": "2026-05-02"
+}

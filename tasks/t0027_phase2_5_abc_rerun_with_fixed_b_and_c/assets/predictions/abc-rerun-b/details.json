@@ -1,0 +1,31 @@
+{
+  "spec_version": "2",
+  "predictions_id": "abc-rerun-b",
+  "name": "Variant B (re-run): plan_and_solve_v3 with bounded plan-recovery chain",
+  "short_description": "Re-run of variant B on the 130 paired t0026 instances using the new plan_and_solve_v3 library, which adds a 3-attempt plan-parse fallback chain (clean -> re-prompt -> JSON-mode) to fix the MalformedPlanError defect (S-0026-01) that collapsed 16/130 paired runs in t0026.",
+  "description_path": "description.md",
+  "model_id": null,
+  "model_description": "claude-sonnet-4-6 via Anthropic API (CLI transport). max_turns=10, max_tokens=4096. The agent is plan_and_solve_v3 (built in this task as an upgrade to t0021's plan_and_solve_v2) which introduces a bounded 3-attempt plan-parse recovery chain: attempt 1 is the standard PS+ template; attempt 2 re-prompts with a corrective preamble; attempt 3 forces JSON-mode parsing as a structural fallback. The agent only re-raises MalformedPlanError if all three attempts fail. The first/second/third attempt outcome is recorded in the per-instance plan_parser_recovery_path field. Note: model is claude-sonnet-4-6 to match what t0026 actually ran; the original t0027 task description erroneously stated claude-opus-4-7 and was corrected after discovering the mismatch via t0026's paths.py.",
+  "dataset_ids": [
+    "swebench-verified-subset",
+    "taubench-subset",
+    "frontierscience-olympiad-subset"
+  ],
+  "prediction_format": "jsonl",
+  "prediction_schema": "Each line is a JSON object with fields: instance_id (str), subset (str), variant (str), final_answer (str|null), final_confidence (float|null; 0..1 verbalised confidence), cost_usd (float), trajectory_path (str|null; absolute path to the per-instance trajectory JSON in data/runs/b/), judge_sonnet_success (bool), judge_sonnet_rationale (str), plan_parser_recovery_path (str; one of 'clean', 'reprompt', 'json_mode', 'all_failed', 'unknown'), plan_parser_attempts (int; 1..3), raised_malformed_plan_error (bool; True iff all three plan-parse attempts failed and the agent re-raised).",
+  "instance_count": 130,
+  "metrics_at_creation": null,
+  "files": [
+    {
+      "path": "files/predictions_variant_b.jsonl",
+      "description": "Per-instance predictions for variant B on the 130-paired set (SWE+Tau+FS) with the primary sonnet judge verdict attached and the new plan_parser_recovery_path/plan_parser_attempts fields recording the v3 fallback-chain outcome for each instance.",
+      "format": "jsonl"
+    }
+  ],
+  "categories": [
+    "agent-evaluation",
+    "llm-as-judge"
+  ],
+  "created_by_task": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "date_created": "2026-05-02"
+}

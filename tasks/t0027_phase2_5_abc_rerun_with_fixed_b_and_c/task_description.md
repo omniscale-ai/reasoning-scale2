@@ -70,7 +70,8 @@ inspecting one trajectory file per instance.
 ### Step 3 — Re-run A/B/C on the 130 paired instances
 
 * Reuse `tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/data/instance_manifest.json` as the paired
-  manifest. Same 130 instances, same provider (Anthropic), same model (`claude-opus-4-7`), same
+  manifest. Same 130 instances, same provider (Anthropic), same model (`claude-sonnet-4-6` — matches
+  what t0026 actually ran; the original task description erroneously said `claude-opus-4-7`), same
   per-instance budget caps.
 * **A is not re-run.** t0026's A trajectories are valid for this paired analysis. We re-use them by
   reference (predictions asset id from t0026) rather than re-generating.
@@ -106,12 +107,12 @@ inspecting one trajectory file per instance.
 
 | Item | Estimate |
 | --- | --- |
-| B re-run, 130 instances, claude-opus-4-7 | $14-18 |
-| C re-run, 130 instances, claude-opus-4-7 | $14-18 |
+| B re-run, 130 instances, claude-sonnet-4-6 | $7-10 |
+| C re-run, 130 instances, claude-sonnet-4-6 | $7-10 |
 | A re-use (no re-run) | $0 |
-| Calibration self-consistency (3 samples × B + C) | $4-6 |
+| Calibration self-consistency (3 samples × B + C) | $3-5 |
 | Plan-parser repro / smoke / overhead | $2-3 |
-| **Total** | **$34-45** |
+| **Total** | **$19-28** |
 
 Cap at $50. Project budget remaining at the end of t0026: ~$109. No GPUs, no remote machines, single
 Anthropic provider.

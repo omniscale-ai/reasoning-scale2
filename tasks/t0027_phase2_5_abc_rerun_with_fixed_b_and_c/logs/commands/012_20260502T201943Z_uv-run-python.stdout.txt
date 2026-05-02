@@ -1,0 +1,13 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/predictions/abc-rerun-b
+
+[31m[1mERRORS:[0m
+[31m  PR-E003 error: files/ directory is empty: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/predictions/abc-rerun-b/files[0m
+[31m  PR-E008 error: Listed file does not exist: 'files/predictions_variant_b.jsonl'[0m
+
+[33m[1mWARNINGS:[0m
+[33m  PR-W005 warning: Category 'llm-as-judge' does not exist in meta/categories/[0m
+[33m  PR-W014 warning: model_id is null (no model asset linked)[0m
+
+[31m[1mFAILED[0m — 2 error(s), 2 warning(s)
+

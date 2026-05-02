@@ -109,12 +109,18 @@ enforcement, and trajectory shape. The comparative-analysis guidelines drive the
 
 | Item | Estimate |
 | --- | --- |
-| B re-run, 130 instances, `claude-opus-4-7` | $14-18 |
-| C re-run, 130 instances, `claude-opus-4-7` | $14-18 |
+| B re-run, 130 instances, `claude-sonnet-4-6` | $7-10 |
+| C re-run, 130 instances, `claude-sonnet-4-6` | $7-10 |
 | A re-use (no re-run) | $0 |
-| Calibration: 3-sample self-consistency over B and C | $4-6 |
+| Calibration: 3-sample self-consistency over B and C | $3-5 |
 | Smoke + parser-fix repro + plan-parse fallback overhead | $2-3 |
-| **Total** | **$34-45** |
+| **Total** | **$19-28** |
+
+Model under test corrected from `claude-opus-4-7` (as written in the original task description) to
+`claude-sonnet-4-6` to match what t0026 actually ran. Reusing t0026's A predictions while running
+B/C on Opus would have been a confounded comparison; the spirit of the task ("same model, same
+provider as t0026") requires Sonnet. The first smoke attempt under Opus projected $61.57/stream
+against the $25/stream cap, confirming Opus is incompatible with the $50 task cap on N=130.
 
 Project budget remaining: ~$87 at the start of t0027 (per `aggregate_costs`). Per-task cap: $50
 declared in `task_description.md`. Hard stop in the harness if cumulative spend exceeds $50.
@@ -211,9 +217,9 @@ charts (Steps 7-8).
 
 ## Remote Machines
 
-None required. The task uses only the Anthropic API (`claude-opus-4-7`) and runs the harness locally
-on the agent's host. No GPU compute, no vast.ai provisioning, no remote SSH. The `teardown` step is
-therefore also skipped.
+None required. The task uses only the Anthropic API (`claude-sonnet-4-6`) and runs the harness
+locally on the agent's host. No GPU compute, no vast.ai provisioning, no remote SSH. The `teardown`
+step is therefore also skipped.
 
 ## Assets Needed
 
