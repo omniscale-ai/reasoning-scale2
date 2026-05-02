@@ -1,0 +1,18 @@
+{
+  "total_cost_usd": 38.61,
+  "breakdown": {
+    "runs_variant_a_usd": 4.4659,
+    "runs_variant_b_usd": 9.0684,
+    "runs_variant_c_usd": 12.5386,
+    "runs_total_usd": 26.0728,
+    "judge_sonnet_estimated_usd": 5.85,
+    "judge_opus_estimated_usd": 6.68,
+    "judge_total_estimated_usd": 12.53
+  },
+  "notes": [
+    "Runs cost is the exact sum of cost_usd over 390 per-instance trajectory files (130 instances * 3 variants).",
+    "Judge cost is an estimate at Anthropic published rates: 390 sonnet calls (3 variants * 130 paired instances) at ~$0.015/call and 89 opus inter-judge calls at ~$0.075/call. The runtime CostTracker tracked these in-memory but the total was not persisted to disk; the estimate uses the per-call shape (~3000 input + ~400 output tokens).",
+    "Hard budget cap was $135; actual project spend is well under cap.",
+    "No remote machine costs (local-only sweep)."
+  ]
+}
