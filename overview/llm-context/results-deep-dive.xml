@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-03T11:52:59Z">
+<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-03T12:18:50Z">
   <archive_summary>
     <title>Results Deep Dive</title>
     <description>Completed-task result summaries plus all detailed results reports.</description>
     <use_case>Performance analysis, experiment comparison, and result interpretation.</use_case>
     <section_count>32</section_count>
-    <char_count>449262</char_count>
-    <byte_count>451063</byte_count>
-    <estimated_tokens>112315</estimated_tokens>
+    <char_count>449686</char_count>
+    <byte_count>451487</byte_count>
+    <estimated_tokens>112421</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -334,9 +334,10 @@ Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 
       <source_ids>
         <id>t0029_rq1_discordance_rich_resample</id>
         <id>t0030_rq4_info_asymmetry_stratification</id>
+        <id>t0032_no_anthropic_rq1_path_decision</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
+Planned or active tasks: 3
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
@@ -351,6 +352,13 @@ Status: not_started
 Effective date: 2026-05-03
 Short description: Stratify t0029 paired sample by subset and concordance; test if granularity gains concentrate where info asymmetry is highest. Zero API cost.
 Dependencies: t0029_rq1_discordance_rich_resample
+
+## No-Anthropic RQ1 path decision
+ID: t0032_no_anthropic_rq1_path_decision
+Status: not_started
+Effective date: 2026-05-03
+Short description: Choose one RQ1 execution path under permanent no-Anthropic constraint: existing-only verdict, local rerun, alternate provider, or stop.
+Dependencies: t0027_phase2_5_abc_rerun_with_fixed_b_and_c, t0031_rq1_rq4_no_new_api_salvage
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
