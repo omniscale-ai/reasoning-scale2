@@ -131,8 +131,8 @@
       "step": 15,
       "name": "reporting",
       "description": "Capture sessions, mark task completed, run all final verificators, push, PR, premerge, merge, refresh overview.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T14:05:06Z",
       "completed_at": null,
       "log_file": "logs/steps/015_reporting/"
     }
