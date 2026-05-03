@@ -5,14 +5,14 @@
   "name": "RQ1 discordance-rich paired resample with hard $35 cap",
   "short_description": "Resample paired A vs B to reach >=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.",
   "long_description_file": "task_description.md",
-  "status": "intervention_blocked",
+  "status": "cancelled",
   "dependencies": [
     "t0010_matched_mismatch_library",
     "t0021_plan_and_solve_v2_with_final_confidence",
     "t0027_phase2_5_abc_rerun_with_fixed_b_and_c"
   ],
   "start_time": "2026-05-03T09:55:36Z",
-  "end_time": null,
+  "end_time": "2026-05-03T14:21:00Z",
   "expected_assets": {
     "predictions": 2
   },

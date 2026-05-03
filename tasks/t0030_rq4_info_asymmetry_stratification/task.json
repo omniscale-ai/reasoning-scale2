@@ -5,12 +5,12 @@
   "name": "RQ4 info-asymmetry stratification analysis on t0029 outputs",
   "short_description": "Stratify t0029 paired sample by subset and concordance; test if granularity gains concentrate where info asymmetry is highest. Zero API cost.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "cancelled",
   "dependencies": [
     "t0029_rq1_discordance_rich_resample"
   ],
   "start_time": null,
-  "end_time": null,
+  "end_time": "2026-05-03T14:21:00Z",
   "expected_assets": {
     "answer": 1
   },
