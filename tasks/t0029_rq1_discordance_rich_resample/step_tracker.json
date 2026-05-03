@@ -23,8 +23,8 @@
       "step": 3,
       "name": "init-folders",
       "description": "Initialize task folder structure including assets/predictions/{arm-a,arm-b}.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T10:01:11Z",
       "completed_at": null,
       "log_file": "logs/steps/003_init-folders/"
     },
