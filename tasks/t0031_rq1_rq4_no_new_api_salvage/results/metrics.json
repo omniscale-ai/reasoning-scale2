@@ -1,14 +1,5 @@
 {
   "task_success_rate": null,
   "overconfident_error_rate": null,
-  "avg_decisions_per_task": null,
-  "discordance_rate_t0027": 0.09230769230769231,
-  "expected_discordant_n_at_cap": 32,
-  "new_pairs_admitted_at_cap": 218,
-  "power_at_p1_0_55": 0.08163464506976634,
-  "power_at_p1_0_60": 0.20486175272181555,
-  "power_at_p1_0_65": 0.40473417108921755,
-  "power_at_p1_0_70": 0.6440177486549022,
-  "power_at_p1_0_75": 0.8464053667616979,
-  "power_at_p1_0_80": 0.9594790863767627
+  "avg_decisions_per_task": null
 }
