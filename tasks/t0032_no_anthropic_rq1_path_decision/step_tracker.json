@@ -113,9 +113,9 @@
       "step": 13,
       "name": "results",
       "description": "Write results bundle (results_summary.md headline labels the chosen path; results_detailed.md embeds the comparison table; metrics/costs/remote_machines).",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T13:58:43Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T14:03:45Z",
       "log_file": "logs/steps/013_results/"
     },
     {
