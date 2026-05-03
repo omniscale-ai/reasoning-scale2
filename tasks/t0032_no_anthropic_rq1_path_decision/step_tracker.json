@@ -5,9 +5,9 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0032_no_anthropic_rq1_path_decision worktree and write branch_info.txt + step_tracker.json.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T13:20:00Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T13:21:17Z",
       "log_file": "logs/steps/001_create-branch/"
     },
     {
