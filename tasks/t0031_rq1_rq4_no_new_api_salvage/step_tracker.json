@@ -23,9 +23,9 @@
       "step": 3,
       "name": "init-folders",
       "description": "Initialize task folder structure (no new asset subfolders since expected_assets is empty).",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T11:19:11Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T11:19:45Z",
       "log_file": "logs/steps/003_init-folders/"
     },
     {
