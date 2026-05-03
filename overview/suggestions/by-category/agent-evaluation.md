@@ -1,7 +1,7 @@
 # Suggestions: `agent-evaluation`
 
 59 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**49 open** (9 high, 25 medium, 15 low), **10 closed**.
+**48 open** (8 high, 25 medium, 15 low), **11 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -56,28 +56,6 @@ ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-a
 that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
 annotation rerun. Deliverable: a small library that wraps the existing judge call with
 confidence + abstain semantics, exposed to t0009-style annotation tasks.
-
-</details>
-
-<details>
-<summary>📊 <strong>Close t0029 / t0030 via correction as no-longer-actionable under
-no-Anthropic constraint</strong> (S-0032-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0032-01` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-03 |
-| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
-execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
-follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
-project memory marks as permanently unavailable. Emit a downstream correction task that flips
-both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
-no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
 
 </details>
 
@@ -1145,6 +1123,30 @@ success, and the EAI taxonomy becomes the per-row diagnostic when scope-aware (A
 scope-mismatched (C) conditions diverge. This is a precondition for S-0012-02 (sonnet
 confirmatory run) producing legible results. Estimated effort: 1-2 days of
 metric-implementation work.
+
+</details>
+
+<details>
+<summary>✅ <s>Close t0029 / t0030 via correction as no-longer-actionable under
+no-Anthropic constraint</s> — covered by <a
+href="../../../tasks/t0034_cancel_t0029_t0030_no_anthropic/"><code>t0034_cancel_t0029_t0030_no_anthropic</code></a>
+(S-0032-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0032-01` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
+execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
+follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
+project memory marks as permanently unavailable. Emit a downstream correction task that flips
+both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
+no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
 
 </details>
 

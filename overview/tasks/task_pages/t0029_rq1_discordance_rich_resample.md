@@ -1,4 +1,4 @@
-# ⚠️ RQ1 discordance-rich paired resample with hard $35 cap
+# ❌ RQ1 discordance-rich paired resample with hard $35 cap
 
 [Back to all tasks](../README.md)
 
@@ -7,8 +7,10 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0029_rq1_discordance_rich_resample` |
-| **Status** | ⚠️ intervention_blocked |
+| **Status** | ❌ cancelled |
 | **Started** | 2026-05-03T09:55:36Z |
+| **Completed** | 2026-05-03T14:21:00Z |
+| **Duration** | 4h 25m |
 | **Dependencies** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md), [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
 | **Source suggestion** | `S-0025-04` |
 | **Task types** | `experiment-run`, `comparative-analysis` |

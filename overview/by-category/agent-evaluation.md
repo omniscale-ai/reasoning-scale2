@@ -725,7 +725,7 @@ canonical.
 
 </details>
 
-## Suggestions (49 open, 10 closed)
+## Suggestions (48 open, 11 closed)
 
 <details>
 <summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
@@ -812,22 +812,6 @@ scratchpad-style ablations, and in any future scaffold that asks the model for s
 intermediate output. Refactor the recovery chain into a shared utility under assets/library/
 and adopt it in every scaffold that does structured-output parsing, then verify on a small
 sweep that no new scaffold emits raised_malformed_plan_error.
-
-</details>
-
-<details>
-<summary>📊 <strong>Close t0029 / t0030 via correction as no-longer-actionable under
-no-Anthropic constraint</strong> (S-0032-01)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-03 | **Source**:
-[t0032_no_anthropic_rq1_path_decision](../../tasks/t0032_no_anthropic_rq1_path_decision/)
-
-Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
-execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
-follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
-project memory marks as permanently unavailable. Emit a downstream correction task that flips
-both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
-no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
 
 </details>
 

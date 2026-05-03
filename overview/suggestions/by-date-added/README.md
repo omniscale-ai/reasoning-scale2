@@ -11,28 +11,6 @@
 ## High Priority
 
 <details>
-<summary>📊 <strong>Close t0029 / t0030 via correction as no-longer-actionable under
-no-Anthropic constraint</strong> (S-0032-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0032-01` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-03 |
-| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
-execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
-follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
-project memory marks as permanently unavailable. Emit a downstream correction task that flips
-both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
-no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
-
-</details>
-
-<details>
 <summary>🧪 <strong>Decide a no-Anthropic RQ1 execution path</strong> (S-0031-01)</summary>
 
 | Field | Value |
@@ -292,6 +270,32 @@ diverge on the same instance. Tag each discordant pair by failure mode (planning
 misuse, retrieval gap, formatting, etc.) and benchmark stratum. The output is one short
 markdown asset; the task is zero-cost (reads existing trajectories from t0026/t0027) and feeds
 back into RQ1 reporting and future agent-design suggestions.
+
+</details>
+
+## Closed
+
+<details>
+<summary>✅ <s>Close t0029 / t0030 via correction as no-longer-actionable under
+no-Anthropic constraint</s> — covered by <a
+href="../../../tasks/t0034_cancel_t0029_t0030_no_anthropic/"><code>t0034_cancel_t0029_t0030_no_anthropic</code></a>
+(S-0032-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0032-01` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
+execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
+follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
+project memory marks as permanently unavailable. Emit a downstream correction task that flips
+both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
+no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
 
 </details>
 

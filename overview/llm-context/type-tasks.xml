@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="tasks" generated_at_utc="2026-05-03T14:08:41Z">
+<llm_context_archive type_id="tasks" generated_at_utc="2026-05-03T14:29:48Z">
   <archive_summary>
     <title>All Tasks</title>
     <description>Complete task data with full descriptions, results summaries, dependencies, and status.</description>
     <section_count>1</section_count>
-    <char_count>302226</char_count>
-    <byte_count>303331</byte_count>
-    <estimated_tokens>75556</estimated_tokens>
+    <char_count>311420</char_count>
+    <byte_count>312561</byte_count>
+    <estimated_tokens>77855</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -50,9 +50,10 @@
         <id>t0031_rq1_rq4_no_new_api_salvage</id>
         <id>t0032_no_anthropic_rq1_path_decision</id>
         <id>t0033_realign_t0031_t0029_no_anthropic</id>
+        <id>t0034_cancel_t0029_t0030_no_anthropic</id>
       </source_ids>
       <content>
-Total tasks: 33
+Total tasks: 34
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -4629,13 +4630,14 @@ Cross-task counts captured in this session:
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
-Status: intervention_blocked
+Status: cancelled
 Effective date: 2026-05-03
 Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
 Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
 Task types: experiment-run, comparative-analysis
 Source suggestion: S-0025-04
 Start time: 2026-05-03T09:55:36Z
+End time: 2026-05-03T14:21:00Z
 
 #### Motivation
 
@@ -4746,11 +4748,12 @@ each instance was selected.
 
 ## RQ4 info-asymmetry stratification analysis on t0029 outputs
 ID: t0030_rq4_info_asymmetry_stratification
-Status: not_started
+Status: cancelled
 Effective date: 2026-05-03
 Short description: Stratify t0029 paired sample by subset and concordance; test if granularity gains concentrate where info asymmetry is highest. Zero API cost.
 Dependencies: t0029_rq1_discordance_rich_resample
 Task types: data-analysis, answer-question
+End time: 2026-05-03T14:21:00Z
 
 #### Motivation
 
@@ -5572,6 +5575,161 @@ in `metrics.json`. No paid API spend, no remote machines, and no quantitative ou
 The replacement-path decision for RQ1 is owned by `t0032_no_anthropic_rq1_path_decision`. Whatever
 path t0032 picks will determine whether `S-0031-02` activates as a real cap-reconsideration or is
 auto-rejected. No new follow-up suggestions are emitted from this task.
+
+## Cancel t0029 and t0030 under no-Anthropic constraint
+ID: t0034_cancel_t0029_t0030_no_anthropic
+Status: completed
+Effective date: 2026-05-03
+Short description: Cancel t0029 and t0030 via the corrections overlay, following t0032 option-(a) verdict that no Anthropic-backed RQ1 continuation is viable.
+Dependencies: t0032_no_anthropic_rq1_path_decision
+Task types: correction
+Source suggestion: S-0032-01
+Start time: 2026-05-03T14:18:02Z
+End time: 2026-05-03T14:27:30Z
+
+#### Motivation
+
+This task is a mechanical consequence of `t0032_no_anthropic_rq1_path_decision`&#x27;s option-(a)
+verdict. It is **not** a re-evaluation of t0029 / t0030&#x27;s original design.
+
+* The auto-memory and the project&#x27;s standing operating constraint both record that
+  `ANTHROPIC_API_KEY` is permanently unavailable. This is the durable posture, not a temporary
+  outage.
+* `t0029_rq1_discordance_rich_resample` was paused with status `intervention_blocked` waiting on
+  Anthropic provider access for a 218-pair Sonnet rerun (~$26.54 budget reserved).
+* `t0030_rq4_info_asymmetry_stratification` has status `not_started` and a hard upstream dependency
+  on t0029&#x27;s outputs, so it cannot launch as long as t0029 stays blocked.
+* `t0032_no_anthropic_rq1_path_decision` (merged in PR #50) locked in **option (a) —
+  existing-results-only verdict** as the recommended RQ1 execution path, explicitly because no
+  Anthropic-backed continuation is viable.
+
+With option (a) on the books, t0029&#x27;s Sonnet rerun and t0030&#x27;s downstream RQ4 stratification cannot
+be unblocked. Leaving them in `intervention_blocked` / `not_started` keeps surfacing them in
+runnable / uncovered aggregator views and misrepresents the project&#x27;s actual no-Anthropic posture.
+
+Cancelling them now:
+
+1. Frees the ~$26.54 budget reserved for t0029.
+2. Removes both tasks from `--uncovered` aggregator views and from the runnable next-action lists.
+3. Makes the project&#x27;s task ledger reflect the actual no-Anthropic posture — i.e., that the RQ1 path
+   forward is the t0033-level realignment of existing results, not a paused Sonnet rerun.
+
+This task implements the cancellation. It does not alter any of the original locked plans, research,
+or results files for t0029 / t0030 — those remain on the historical record as pre-registered and
+no-longer-executable under the no-Anthropic constraint.
+
+#### Scope
+
+The work is mechanical and consists of mutating two task statuses plus a short rationale note:
+
+1. **t0029 (intervention_blocked → cancelled).** Status is **not** `not_started`, so per the
+   corrections-overlay rule the change must go through this task&#x27;s `corrections/` folder, not a
+   direct edit to `tasks/t0029_rq1_discordance_rich_resample/task.json`. Write a correction file
+   following `arf/specifications/corrections_specification.md` with `action: &quot;update&quot;` and
+   `changes: {&quot;status&quot;: &quot;cancelled&quot;}`. The rationale field must explicitly cite t0032&#x27;s option-(a)
+   verdict and the no-Anthropic constraint as the trigger, and must clarify that the 218-pair Sonnet
+   rerun plan is preserved as historical / pre-registered, **not** retracted.
+
+2. **t0030 (not_started → cancelled).** Status is currently `not_started`, so the brainstorm rule
+   allows direct editing of `tasks/t0030_rq4_info_asymmetry_stratification/task.json`. Either route
+   is acceptable; prefer the **corrections overlay** for symmetry with t0029 and so both
+   cancellations live in one place. Whichever route is used, the rationale must record that the
+   trigger is t0032&#x27;s verdict and the upstream dependency on t0029&#x27;s outputs (which will never be
+   produced).
+
+3. **Rationale note.** Inside this task&#x27;s `corrections/` folder, write a short markdown note (e.g.,
+   `corrections/rationale.md`) documenting that:
+
+   * The cancellation is a downstream consequence of t0032&#x27;s option-(a) verdict, not a failure of
+     t0029 / t0030&#x27;s original design.
+   * The locked plans for both tasks are retained on the historical record under no-Anthropic
+     conditions and should be cited verbatim in any future no-Anthropic literature comparison.
+   * The cancellation is permanent for as long as the no-Anthropic constraint holds.
+
+4. **Overview refresh.** After the PR merges, run `arf.scripts.overview.materialize` so the
+   `runnable-actions`, `not_started`, and `intervention_blocked` views drop t0029 / t0030.
+
+#### Out of Scope (Explicit Non-Goals)
+
+* **Do NOT launch new experiments.** No paid API calls, no remote compute, no Sonnet runs.
+* **Do NOT resume the old `t0027_phase2_5_abc_rerun_with_fixed_b_and_c` B-run loop** in any form.
+  That loop was retired before t0028 / t0029 existed; reviving it is out of scope for this and any
+  other no-Anthropic task.
+* **Do NOT modify any of t0029&#x27;s or t0030&#x27;s plan / research / results / corrections / log files.**
+  The immutability rule still applies. The only mutation is the `status` field, expressed via this
+  task&#x27;s corrections overlay (or, for t0030, optionally a direct task.json edit).
+* **Do NOT propose replacement experiments here.** That belongs in S-0032-02 / S-0032-03 follow-ups,
+  not in this correction task.
+
+#### Approach
+
+This is a pure correction task. The anticipated step list (canonical step IDs only — no research,
+planning, setup-machines, teardown, creative-thinking, or compare-literature steps):
+
+1. `create-branch` — preflight
+2. `check-deps` — preflight (verifies t0032 is `completed`)
+3. `init-folders` — preflight (creates the standard task folder skeleton)
+4. `implementation` — write the two correction files plus `corrections/rationale.md`; if the t0030
+   change is implemented as a direct edit instead, also stage the edit to
+   `tasks/t0030_rq4_info_asymmetry_stratification/task.json`. Run `verify_corrections` and
+   `verify_task_file` for any direct-edited task.
+5. `results` — write `results_summary.md` / `results_detailed.md` recording the two status flips and
+   the rationale. `metrics.json` is `{}`. `costs.json` is zero. `remote_machines_used.json` is `[]`.
+6. `suggestions` — none expected; record an empty `suggestions.json`.
+7. `reporting` — final verificator sweep, PR, merge, post-merge `arf.scripts.overview.materialize`
+   on `main`.
+
+#### Verification Criteria
+
+* `verify_corrections` passes with **0 errors** on this task&#x27;s `corrections/` folder.
+* If t0030 is direct-edited, `verify_task_file` passes with 0 errors on
+  `t0030_rq4_info_asymmetry_stratification`.
+* After post-merge overview refresh:
+  * `aggregate_tasks --status cancelled` includes both `t0029_rq1_discordance_rich_resample` and
+    `t0030_rq4_info_asymmetry_stratification`.
+  * `aggregate_tasks --status intervention_blocked` no longer lists t0029.
+  * `aggregate_tasks --status not_started` no longer lists t0030.
+  * `aggregate_suggestions --uncovered` no longer surfaces S-0032-01 as actionable (covered by this
+    task via `source_suggestion`).
+* `corrections/rationale.md` cites `t0032_no_anthropic_rq1_path_decision` as the trigger and the
+  permanent no-Anthropic constraint as the reason cancellation is durable.
+
+#### Expected Assets
+
+None. This task produces no new datasets, papers, libraries, models, predictions, or answers. It
+only mutates the status field of two pre-existing tasks via the corrections overlay (and,
+optionally, a direct task.json edit for the `not_started` t0030).
+
+### Results Summary
+
+#### Summary
+
+Flipped two task statuses to `cancelled` as the durable consequence of t0032&#x27;s option-(a)
+existing-results-only verdict and the permanent absence of `ANTHROPIC_API_KEY`. t0029 moved from
+`intervention_blocked` and t0030 from `not_started`. The corrections overlay could not express
+either change because its target_kind set has no `task` entry, so both edits were direct task.json
+mutations (status + end_time only) authorized by the user. A rationale document captures the
+reasoning chain and the framework constraint.
+
+#### Metrics
+
+* **Tasks cancelled**: **2** (t0029, t0030)
+* **t0029 status flip**: `intervention_blocked` → **`cancelled`**, end_time set to
+  **`2026-05-03T14:21:00Z`**
+* **t0030 status flip**: `not_started` → **`cancelled`**, end_time set to **`2026-05-03T14:21:00Z`**
+* **Correction JSON files written**: **0** (overlay does not support `task` target_kind)
+* **Rationale documents written**: **1** (`corrections/rationale.md`)
+* **Budget freed by cancelling t0029**: **~$26.54** (Sonnet rerun reservation; non-recoverable under
+  no-Anthropic)
+* **Files outside t0034 mutated**: **2** (only the two upstream `task.json` status / end_time
+  fields; no other fields, plans, research, or results were touched)
+
+#### Verification
+
+* `verify_task_file.py` on `t0029_rq1_discordance_rich_resample` — PASSED (0 errors, 0 warnings)
+* `verify_task_file.py` on `t0030_rq4_info_asymmetry_stratification` — PASSED (0 errors, 0 warnings)
+* `aggregate_tasks --ids t0029_rq1_discordance_rich_resample t0030_rq4_info_asymmetry_stratification`
+  — both report status `cancelled` with effective_date `2026-05-03`
       </content>
     </section>
   </sections>

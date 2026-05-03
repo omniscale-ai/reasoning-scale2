@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-33-4682B4" alt="Tasks"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-34-4682B4" alt="Tasks"></a>
   <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-98-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (11K)
-| [full](llm-context/full.xml) (136K) | [roadmap](llm-context/roadmap.xml) (28K) |
-[results](llm-context/results-deep-dive.xml) (119K) |
-[assets](llm-context/literature-and-assets.xml) (19K)
+| [full](llm-context/full.xml) (137K) | [roadmap](llm-context/roadmap.xml) (26K) |
+[results](llm-context/results-deep-dive.xml) (121K) |
+[assets](llm-context/literature-and-assets.xml) (20K)
 
-*Last updated: 2026-05-03 14:08 UTC*
+*Last updated: 2026-05-03 14:29 UTC*
 
 * **Budget**: **$133** spent of $200
 * **Remaining**: **$67**
@@ -60,26 +60,17 @@ No tasks ready to start.
 
 ---
 
-## [Blocked Tasks (1)](tasks/)
+## [Blocked Tasks (0)](tasks/)
 
-| # | Task | Blocked By |
-|---|------|------------|
-| 0030 | [RQ4 info-asymmetry stratification analysis on t0029 outputs](../overview/tasks/task_pages/t0030_rq4_info_asymmetry_stratification.md) | [`t0029_rq1_discordance_rich_resample`](../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
+No blocked tasks.
 
 ---
 
-## Intervention Blocked (1)
-
-| # | Task |
-|---|------|
-| 0029 | [RQ1 discordance-rich paired resample with hard $35 cap](../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
-
----
-
-## [Recently Completed (30 total)](tasks/by-status/completed.md)
+## [Recently Completed (31 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0034 | [Cancel t0029 and t0030 under no-Anthropic constraint](../overview/tasks/task_pages/t0034_cancel_t0029_t0030_no_anthropic.md) | [`results`](../tasks/t0034_cancel_t0029_t0030_no_anthropic/results/results_detailed.md) | 2026-05-03 14:27 |
 | 0032 | [No-Anthropic RQ1 path decision](../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) | [`results`](../tasks/t0032_no_anthropic_rq1_path_decision/results/results_detailed.md) | 2026-05-03 14:05 |
 | 0033 | [Realign t0031 suggestions and t0029 status under no-Anthropic constraint](../overview/tasks/task_pages/t0033_realign_t0031_t0029_no_anthropic.md) | [`results`](../tasks/t0033_realign_t0031_t0029_no_anthropic/results/results_detailed.md) | 2026-05-03 13:15 |
 | 0031 | [RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs](../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) | [`results`](../tasks/t0031_rq1_rq4_no_new_api_salvage/results/results_detailed.md) | 2026-05-03 11:47 |
@@ -89,9 +80,8 @@ No tasks ready to start.
 | 0025 | [Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)](../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | [`results`](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/results/results_detailed.md) | 2026-05-01 21:46 |
 | 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`results`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/results_detailed.md) | 2026-05-01 20:40 |
 | 0024 | [Brainstorm session 7: rescope around RQ answers after t0019 calibration finding](../overview/tasks/task_pages/t0024_brainstorm_results_7.md) | [`results`](../tasks/t0024_brainstorm_results_7/results/results_detailed.md) | 2026-05-01 19:30 |
-| 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | [`results`](../tasks/t0019_v2_judge_calibration_sonnet/results/results_detailed.md) | 2026-05-01 17:55 |
 
-*20 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*21 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -116,7 +106,7 @@ No tasks ready to start.
 
 ---
 
-## [Recent Suggestions (82 open)](suggestions/)
+## [Recent Suggestions (81 open)](suggestions/)
 
 <details>
 <summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
@@ -278,26 +268,28 @@ ambiguity.
 </details>
 
 <details>
-<summary>📊 <strong>Close t0029 / t0030 via correction as no-longer-actionable under
-no-Anthropic constraint</strong> (S-0032-01)</summary>
+<summary>🧪 <strong>Spend released RQ1 budget on cost-tracker fix, bootstrap CIs, and
+RQ4 stratification follow-ups</strong> (S-0032-02)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
 [t0032_no_anthropic_rq1_path_decision](../tasks/t0032_no_anthropic_rq1_path_decision/)
 
-Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
-execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
-follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
-project memory marks as permanently unavailable. Emit a downstream correction task that flips
-both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
-no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
+With option (a) locked in, the ~$26.54 reserved for the t0029 218-pair rerun is released.
+Reinvest it in three cost-free or near-zero analyses directly motivated by t0032's
+creative-thinking pass: (1) implement S-0031-03 to fix per-instance cost tracking so future
+paired runs report Sonnet cost reliably; (2) compute 95% bootstrap confidence intervals around
+the per-stratum McNemar cells from t0031 (SWE-bench 6/0, FrontierScience 0/5, tau-bench 1 of
+84) to harden the conclusion that arms differ qualitatively by benchmark; (3) re-stratify the
+existing 130-pair t0031 sample by trace length / tool-call count for the RQ4
+efficiency-vs-accuracy story without any new paid API call.
 
 </details>
 
-*72 more open suggestions → [open suggestions](suggestions/)*
+*71 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (14)](suggestions/)
+## [High Priority Suggestions (13)](suggestions/)
 
 <details>
 <summary>🧪 <strong>Decide a no-Anthropic RQ1 execution path</strong> (S-0031-01)</summary>
@@ -334,22 +326,6 @@ switching to a stratified resample (oversampling SWE-bench and FrontSci where th
 lives), or accepting the futility and pursuing RQ4 stratification first. If t0032 recommends
 'existing-results-only verdict' (option a) or 'project-level stop' (option d), this suggestion
 should be marked rejected by a follow-up correction.
-
-</details>
-
-<details>
-<summary>📊 <strong>Close t0029 / t0030 via correction as no-longer-actionable under
-no-Anthropic constraint</strong> (S-0032-01)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-03 | **Source**:
-[t0032_no_anthropic_rq1_path_decision](../tasks/t0032_no_anthropic_rq1_path_decision/)
-
-Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
-execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
-follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
-project memory marks as permanently unavailable. Emit a downstream correction task that flips
-both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
-no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
 
 </details>
 
@@ -475,7 +451,23 @@ explicit access conversation with Epoch AI, plus a fallback to public Olympiad b
 
 </details>
 
-*4 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+<details>
+<summary>📂 <strong>Provision a ServiceNow developer instance for WorkArena++ live
+evaluation</strong> (S-0003-02)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
+
+WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to
+the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the
+upstream task-class manifest. Provision a free ServiceNow developer instance, request HF
+access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
+decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
+fallback.
+
+</details>
+
+*3 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 

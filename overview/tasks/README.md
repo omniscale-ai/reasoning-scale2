@@ -1,253 +1,190 @@
 # Project Tasks
 
-33 tasks. ⏹ **1 not_started**, ⚠️ **1 intervention_blocked**, ✅ **30 completed**, ❌ **1
-cancelled**.
+34 tasks. ✅ **31 completed**, ❌ **3 cancelled**.
 
-**Browse by view**: By status: [⏹ `not_started`](by-status/not_started.md), [⚠️
-`intervention_blocked`](by-status/intervention_blocked.md), [✅
-`completed`](by-status/completed.md), [❌ `cancelled`](by-status/cancelled.md); [By date
-added](by-date-added/README.md)
+**Browse by view**: By status: [✅ `completed`](by-status/completed.md), [❌
+`cancelled`](by-status/cancelled.md); [By date added](by-date-added/README.md)
 
 ---
 
 ## Dependency Graph
 
-```mermaid
-graph LR
-    t0010_matched_mismatch_library["✅ t0010_matched_mismatch_library"]
-    t0021_plan_and_solve_v2_with_final_confidence["✅ t0021_plan_and_solve_v2_with_final_confidence"]
-    t0027_phase2_5_abc_rerun_with_fixed_b_and_c["✅ t0027_phase2_5_abc_rerun_with_fixed_b_and_c"]
-    t0029_rq1_discordance_rich_resample["⚠️ t0029_rq1_discordance_rich_resample"]
-    t0030_rq4_info_asymmetry_stratification["⏹ t0030_rq4_info_asymmetry_stratification"]
-
-    t0010_matched_mismatch_library --> t0027_phase2_5_abc_rerun_with_fixed_b_and_c
-    t0021_plan_and_solve_v2_with_final_confidence --> t0027_phase2_5_abc_rerun_with_fixed_b_and_c
-    t0010_matched_mismatch_library --> t0029_rq1_discordance_rich_resample
-    t0021_plan_and_solve_v2_with_final_confidence --> t0029_rq1_discordance_rich_resample
-    t0027_phase2_5_abc_rerun_with_fixed_b_and_c --> t0029_rq1_discordance_rich_resample
-    t0029_rq1_discordance_rich_resample --> t0030_rq4_info_asymmetry_stratification
-```
+All tasks completed.
 
 ---
 
-## ⏹ Not Started
-
-<details>
-<summary>⏹ 0030 — <strong>RQ4 info-asymmetry stratification analysis on t0029
-outputs</strong></summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `t0030_rq4_info_asymmetry_stratification` |
-| **Status** | not_started |
-| **Effective date** | 2026-05-03 |
-| **Dependencies** | [`t0029_rq1_discordance_rich_resample`](../../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
-| **Expected assets** | 1 answer |
-| **Source suggestion** | — |
-| **Task types** | [`data-analysis`](../../meta/task_types/data-analysis/), [`answer-question`](../../meta/task_types/answer-question/) |
-| **Task page** | [RQ4 info-asymmetry stratification analysis on t0029 outputs](../../overview/tasks/task_pages/t0030_rq4_info_asymmetry_stratification.md) |
-| **Task folder** | [`t0030_rq4_info_asymmetry_stratification/`](../../tasks/t0030_rq4_info_asymmetry_stratification/) |
-
-# RQ4 Info-Asymmetry Stratification Analysis
-
-## Motivation
-
-RQ4 asks: **does the gain from granularity-aware scope conditioning concentrate in instances
-where information asymmetry between the agent and the task is highest?**
-
-t0027 produced suggestive but underpowered evidence: per-subset success rates were
-A=0/B=0.012/C=0.036 on taubench and A=0/B=0.192/C=0.154 on frontsci, hinting that gains might
-concentrate in frontsci (where the agent has the largest information gap to close). The total
-sample of 12 discordant pairs in t0027 makes any subset-level claim premature.
-
-This task piggy-backs on t0029's discordance-rich resample to deliver an RQ4 verdict at zero
-additional API cost: it consumes t0029's predictions and runs a stratified analysis only.
-
-## Scope
-
-In scope:
-
-* Read t0029's predictions assets for arm A and arm B.
-* Define "information asymmetry" operationally per subset using existing metadata in
-  `t0010_matched_mismatch_library` (e.g., gold-context length, hidden-state count,
-  human-judgement disagreement scores).
-* Compute per-stratum (subset × asymmetry-tertile) discordant counts and granularity-gain
-  rates (B success - A success).
-* Run stratified McNemar / proportion tests with Bonferroni correction across the strata.
-* Produce a stratification table and at least one figure (subset × asymmetry tertile).
-* Write an answer asset for RQ4 with confidence assessment and the explicit caveat if the
-  t0029 sample fell short of the >= 30 discordant-pair target.
-
-Out of scope:
-
-* Any new API calls or remote compute.
-* RQ1 verdict (delivered by t0029).
-* RQ5 verdict (deferred to a later wave).
-* Building a new info-asymmetry metric — reuse only what is already in
-  `t0010_matched_mismatch_library` and t0027's harness logs.
-
-## Method
-
-1. Load t0029 predictions for arm A and arm B keyed by paired instance ID.
-2. Join against `t0010_matched_mismatch_library` to recover per-instance metadata (subset,
-   asymmetry signals).
-3. Define info-asymmetry tertiles per subset (low / mid / high) using the chosen signal.
-4. Compute granularity-gain rate per stratum: `success_rate(B) - success_rate(A)`.
-5. Test the joint hypothesis "gain rate is higher in high-asymmetry strata than low-asymmetry
-   strata" via stratified McNemar (per subset) plus a Cochran-Mantel-Haenszel-style overall
-   test, with Bonferroni-adjusted alpha = 0.025.
-6. Write the answer asset following `meta/asset_types/answer/specification.md`.
-
-## Deliverables
-
-* `assets/answer/rq4-info-asymmetry-stratification/` answer asset with a confidence rating and
-  the verdict (full / partial / inconclusive).
-* `results/results_summary.md` and `results/results_detailed.md` with the stratification table
-  and figure embedded.
-* `results/metrics.json` with per-stratum granularity-gain rates and the joint test p value.
-* `results/images/rq4_stratification.png` (subset × asymmetry tertile heatmap or grouped bar).
-
-## Cross-references
-
-* Source: t0028 brainstorm session 8.
-* Depends on: t0029.
-* Builds on: t0010_matched_mismatch_library (subset metadata).
-* Source suggestion: none (analysis-only follow-up).
-
-</details>
-
-## ⚠️ Intervention Blocked
-
-<details>
-<summary>⚠️ 0029 — <strong>RQ1 discordance-rich paired resample with hard $35
-cap</strong></summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `t0029_rq1_discordance_rich_resample` |
-| **Status** | intervention_blocked |
-| **Effective date** | 2026-05-03 |
-| **Dependencies** | [`t0010_matched_mismatch_library`](../../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md), [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
-| **Expected assets** | 2 predictions |
-| **Source suggestion** | `S-0025-04` |
-| **Task types** | [`experiment-run`](../../meta/task_types/experiment-run/), [`comparative-analysis`](../../meta/task_types/comparative-analysis/) |
-| **Start time** | 2026-05-03T09:55:36Z |
-| **Task page** | [RQ1 discordance-rich paired resample with hard $35 cap](../../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
-| **Task folder** | [`t0029_rq1_discordance_rich_resample/`](../../tasks/t0029_rq1_discordance_rich_resample/) |
-
-# RQ1 Discordance-Rich Paired Resample (Hard $35 Cap)
-
-## Motivation
-
-t0027's Phase 2.5 A/B/C re-run on 130 paired instances produced an underpowered RQ1 verdict:
-
-* A=B=6 successes (4.62%); C=7 (5.38%).
-* McNemar discordant pairs A vs B: **6 vs 6**, exact-binomial p=1.0.
-* McNemar discordant pairs A vs C (RQ5): **4 vs 5**, p=1.0.
-
-With only 12 discordant pairs, no realistic effect size could have produced a significant
-verdict. RQ1 ("does adding granularity-aware scope conditioning improve task success vs the
-scope-unaware baseline?") cannot be answered from t0027 alone.
-
-This task closes the power gap with a discordance-rich resample of A vs B and reports an RQ1
-verdict (or a partial verdict with explicit power caveat if the budget cap is hit first).
-
-This task covers source suggestion **S-0025-04** and follow-up suggestion **S-0027-05**.
-
-## Scope
-
-In scope:
-
-* Run **arm A** (Plan-and-Solve baseline) and **arm B** (scope-aware ReAct) on a paired sample
-  of instances drawn from the project's three subsets (SWE-bench Verified, taubench,
-  frontsci), prioritising selection criteria that increase the expected number of discordant
-  pairs.
-* Reuse the t0027 fault-tolerant arm-B harness and the t0021 Plan-and-Solve v2 implementation
-  as the canonical libraries.
-* Compute McNemar paired exact-binomial test on the resulting discordant counts; report effect
-  size, 95% CI, and the per-subset breakdown.
-* Save full predictions assets for both arms so t0030 (RQ4 stratification) can run without any
-  additional API spend.
-
-Out of scope:
-
-* Arm C (deferred to a later wave).
-* Calibrator work / RQ2 (deferred — see S-0027-01 demoted to MEDIUM in t0028).
-* RQ3 instrumentation (deferred).
-* Any C-arm rebuild (S-0027-02 demoted to MEDIUM in t0028).
-
-## Hard Cost Cap and Abort Rule
-
-**Cap**: $35.00 USD. Track spend live in `results/costs.json` after each batch of API calls
-and in the harness. The budget verificator must show this task does not exceed $35 in
-`effective_budget_limit_usd`.
-
-**Abort rule**: if the cap is hit (>= $35.00 cumulative) and the running discordant-pair count
-is **< 30**, halt all further API calls and proceed directly to the analysis step. Report a
-**partial RQ1 verdict** with:
-
-* Observed discordant counts (b, c).
-* McNemar exact-binomial p value at the partial sample.
-* Explicit power caveat: "with N_discordant = X, this analysis has power Y to detect an
-  odds-ratio of Z; failure to reject H0 does not establish equivalence."
-* No replacement task launched in the same wave (preserved budget and suggestion backlog for
-  the next brainstorm session).
-
-The guardrail must be implemented in the harness, not just documented — the experiment runner
-must check `cumulative_cost_usd >= 35.00` after every batch and exit cleanly if true.
-
-## Sampling Strategy
-
-Goal: reach **>= 30 discordant pairs** between A and B.
-
-Approach (pre-registered, in priority order):
-
-1. **Stratified resample from t0027's 130 paired instances**: prioritise re-running on the 12
-   discordant pairs from t0027 plus instances flagged by t0027's recovery distribution as
-   "unknown" (B=29, C=33) where one arm's outcome is uncertain.
-2. **Expand within-subset coverage**: draw additional paired instances from
-   `t0010_matched_mismatch_library` first from frontsci (where t0027 showed the largest
-   per-subset gap: B=0.192 vs A=0.000), then taubench, then SWE-bench Verified.
-3. **Concentrate on harder difficulty bands**: t0027's per-subset table suggests A=0 outside
-   SWE-bench, so RQ1 discordance is entirely driven by B≠0 outcomes; sample with bias toward
-   instances where B is more likely to succeed and A more likely to fail.
-
-Pre-register the sampling rule in `plan/plan.md` before any API call. The experiment must
-record how each instance was selected.
-
-## Method
-
-* Use the **same Plan-and-Solve v2 (t0021)** library as arm A.
-* Use the **same fault-tolerant scope-aware ReAct (t0027 final)** library as arm B.
-* Use **claude-sonnet-4-6** with the fixed temperature and decoding settings from t0027.
-* Re-run a paired instance only if it does not already have a usable A and B prediction in the
-  t0027 predictions assets — if both arms succeeded cleanly in t0027, reuse those predictions.
-* Persist every API call and per-instance cost in `results/costs.json`.
-
-## Deliverables
-
-* `results/results_summary.md` and `results/results_detailed.md` with the McNemar verdict
-  (full or partial).
-* `results/metrics.json` with `mcnemar_b_count`, `mcnemar_c_count`, `mcnemar_p_value`,
-  `mcnemar_effect_size`, `mcnemar_ci_lower`, `mcnemar_ci_upper`, `discordant_pairs_total`,
-  `paired_n_total`, plus per-subset breakdowns.
-* `results/predictions/arm_a/` and `results/predictions/arm_b/` predictions assets covering
-  all paired instances actually run.
-* `results/suggestions.json` describing follow-up tasks for whatever RQ remains open (RQ2
-  calibrator, RQ3 instrumentation, RQ5 C rebuild) — no replacement task launched in this wave.
-* Per-subset stratification table (also reused by t0030).
-
-## Cross-references
-
-* Source: t0028 brainstorm session 8.
-* Source suggestion: S-0025-04.
-* Covers: S-0027-05.
-* Builds on: t0021 (Plan-and-Solve v2), t0027 (fault-tolerant arm B and harness).
-* Feeds: t0030 (RQ4 info-asymmetry stratification).
-
-</details>
-
 ## ✅ Completed
+
+<details>
+<summary>✅ 0034 — <strong>Cancel t0029 and t0030 under no-Anthropic
+constraint</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0034_cancel_t0029_t0030_no_anthropic` |
+| **Status** | completed |
+| **Effective date** | 2026-05-03 |
+| **Dependencies** | [`t0032_no_anthropic_rq1_path_decision`](../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
+| **Expected assets** | — |
+| **Source suggestion** | `S-0032-01` |
+| **Task types** | [`correction`](../../meta/task_types/correction/) |
+| **Start time** | 2026-05-03T14:18:02Z |
+| **End time** | 2026-05-03T14:27:30Z |
+| **Step progress** | 7/15 |
+| **Task page** | [Cancel t0029 and t0030 under no-Anthropic constraint](../../overview/tasks/task_pages/t0034_cancel_t0029_t0030_no_anthropic.md) |
+| **Task folder** | [`t0034_cancel_t0029_t0030_no_anthropic/`](../../tasks/t0034_cancel_t0029_t0030_no_anthropic/) |
+| **Detailed report** | [results_detailed.md](../../tasks/t0034_cancel_t0029_t0030_no_anthropic/results/results_detailed.md) |
+
+# Cancel t0029 and t0030 under no-Anthropic constraint
+
+## Motivation
+
+This task is a mechanical consequence of `t0032_no_anthropic_rq1_path_decision`'s option-(a)
+verdict. It is **not** a re-evaluation of t0029 / t0030's original design.
+
+* The auto-memory and the project's standing operating constraint both record that
+  `ANTHROPIC_API_KEY` is permanently unavailable. This is the durable posture, not a temporary
+  outage.
+* `t0029_rq1_discordance_rich_resample` was paused with status `intervention_blocked` waiting
+  on Anthropic provider access for a 218-pair Sonnet rerun (~$26.54 budget reserved).
+* `t0030_rq4_info_asymmetry_stratification` has status `not_started` and a hard upstream
+  dependency on t0029's outputs, so it cannot launch as long as t0029 stays blocked.
+* `t0032_no_anthropic_rq1_path_decision` (merged in PR #50) locked in **option (a) —
+  existing-results-only verdict** as the recommended RQ1 execution path, explicitly because no
+  Anthropic-backed continuation is viable.
+
+With option (a) on the books, t0029's Sonnet rerun and t0030's downstream RQ4 stratification
+cannot be unblocked. Leaving them in `intervention_blocked` / `not_started` keeps surfacing
+them in runnable / uncovered aggregator views and misrepresents the project's actual
+no-Anthropic posture.
+
+Cancelling them now:
+
+1. Frees the ~$26.54 budget reserved for t0029.
+2. Removes both tasks from `--uncovered` aggregator views and from the runnable next-action
+   lists.
+3. Makes the project's task ledger reflect the actual no-Anthropic posture — i.e., that the
+   RQ1 path forward is the t0033-level realignment of existing results, not a paused Sonnet
+   rerun.
+
+This task implements the cancellation. It does not alter any of the original locked plans,
+research, or results files for t0029 / t0030 — those remain on the historical record as
+pre-registered and no-longer-executable under the no-Anthropic constraint.
+
+## Scope
+
+The work is mechanical and consists of mutating two task statuses plus a short rationale note:
+
+1. **t0029 (intervention_blocked → cancelled).** Status is **not** `not_started`, so per the
+   corrections-overlay rule the change must go through this task's `corrections/` folder, not
+   a direct edit to `tasks/t0029_rq1_discordance_rich_resample/task.json`. Write a correction
+   file following `arf/specifications/corrections_specification.md` with `action: "update"`
+   and `changes: {"status": "cancelled"}`. The rationale field must explicitly cite t0032's
+   option-(a) verdict and the no-Anthropic constraint as the trigger, and must clarify that
+   the 218-pair Sonnet rerun plan is preserved as historical / pre-registered, **not**
+   retracted.
+
+2. **t0030 (not_started → cancelled).** Status is currently `not_started`, so the brainstorm
+   rule allows direct editing of `tasks/t0030_rq4_info_asymmetry_stratification/task.json`.
+   Either route is acceptable; prefer the **corrections overlay** for symmetry with t0029 and
+   so both cancellations live in one place. Whichever route is used, the rationale must record
+   that the trigger is t0032's verdict and the upstream dependency on t0029's outputs (which
+   will never be produced).
+
+3. **Rationale note.** Inside this task's `corrections/` folder, write a short markdown note
+   (e.g., `corrections/rationale.md`) documenting that:
+
+   * The cancellation is a downstream consequence of t0032's option-(a) verdict, not a failure
+     of t0029 / t0030's original design.
+   * The locked plans for both tasks are retained on the historical record under no-Anthropic
+     conditions and should be cited verbatim in any future no-Anthropic literature comparison.
+   * The cancellation is permanent for as long as the no-Anthropic constraint holds.
+
+4. **Overview refresh.** After the PR merges, run `arf.scripts.overview.materialize` so the
+   `runnable-actions`, `not_started`, and `intervention_blocked` views drop t0029 / t0030.
+
+## Out of Scope (Explicit Non-Goals)
+
+* **Do NOT launch new experiments.** No paid API calls, no remote compute, no Sonnet runs.
+* **Do NOT resume the old `t0027_phase2_5_abc_rerun_with_fixed_b_and_c` B-run loop** in any
+  form. That loop was retired before t0028 / t0029 existed; reviving it is out of scope for
+  this and any other no-Anthropic task.
+* **Do NOT modify any of t0029's or t0030's plan / research / results / corrections / log
+  files.** The immutability rule still applies. The only mutation is the `status` field,
+  expressed via this task's corrections overlay (or, for t0030, optionally a direct task.json
+  edit).
+* **Do NOT propose replacement experiments here.** That belongs in S-0032-02 / S-0032-03
+  follow-ups, not in this correction task.
+
+## Approach
+
+This is a pure correction task. The anticipated step list (canonical step IDs only — no
+research, planning, setup-machines, teardown, creative-thinking, or compare-literature steps):
+
+1. `create-branch` — preflight
+2. `check-deps` — preflight (verifies t0032 is `completed`)
+3. `init-folders` — preflight (creates the standard task folder skeleton)
+4. `implementation` — write the two correction files plus `corrections/rationale.md`; if the
+   t0030 change is implemented as a direct edit instead, also stage the edit to
+   `tasks/t0030_rq4_info_asymmetry_stratification/task.json`. Run `verify_corrections` and
+   `verify_task_file` for any direct-edited task.
+5. `results` — write `results_summary.md` / `results_detailed.md` recording the two status
+   flips and the rationale. `metrics.json` is `{}`. `costs.json` is zero.
+   `remote_machines_used.json` is `[]`.
+6. `suggestions` — none expected; record an empty `suggestions.json`.
+7. `reporting` — final verificator sweep, PR, merge, post-merge
+   `arf.scripts.overview.materialize` on `main`.
+
+## Verification Criteria
+
+* `verify_corrections` passes with **0 errors** on this task's `corrections/` folder.
+* If t0030 is direct-edited, `verify_task_file` passes with 0 errors on
+  `t0030_rq4_info_asymmetry_stratification`.
+* After post-merge overview refresh:
+  * `aggregate_tasks --status cancelled` includes both `t0029_rq1_discordance_rich_resample`
+    and `t0030_rq4_info_asymmetry_stratification`.
+  * `aggregate_tasks --status intervention_blocked` no longer lists t0029.
+  * `aggregate_tasks --status not_started` no longer lists t0030.
+  * `aggregate_suggestions --uncovered` no longer surfaces S-0032-01 as actionable (covered by
+    this task via `source_suggestion`).
+* `corrections/rationale.md` cites `t0032_no_anthropic_rq1_path_decision` as the trigger and
+  the permanent no-Anthropic constraint as the reason cancellation is durable.
+
+## Expected Assets
+
+None. This task produces no new datasets, papers, libraries, models, predictions, or answers.
+It only mutates the status field of two pre-existing tasks via the corrections overlay (and,
+optionally, a direct task.json edit for the `not_started` t0030).
+
+**Results summary:**
+
+> **Results Summary: Cancel t0029 and t0030 under no-Anthropic constraint**
+>
+> **Summary**
+>
+> Flipped two task statuses to `cancelled` as the durable consequence of t0032's option-(a)
+> existing-results-only verdict and the permanent absence of `ANTHROPIC_API_KEY`. t0029 moved
+> from
+> `intervention_blocked` and t0030 from `not_started`. The corrections overlay could not
+> express
+> either change because its target_kind set has no `task` entry, so both edits were direct
+> task.json
+> mutations (status + end_time only) authorized by the user. A rationale document captures the
+> reasoning chain and the framework constraint.
+>
+> **Metrics**
+>
+> * **Tasks cancelled**: **2** (t0029, t0030)
+> * **t0029 status flip**: `intervention_blocked` → **`cancelled`**, end_time set to
+> **`2026-05-03T14:21:00Z`**
+> * **t0030 status flip**: `not_started` → **`cancelled`**, end_time set to
+>   **`2026-05-03T14:21:00Z`**
+> * **Correction JSON files written**: **0** (overlay does not support `task` target_kind)
+> * **Rationale documents written**: **1** (`corrections/rationale.md`)
+> * **Budget freed by cancelling t0029**: **~$26.54** (Sonnet rerun reservation;
+>   non-recoverable under
+
+</details>
 
 <details>
 <summary>✅ 0033 — <strong>Realign t0031 suggestions and t0029 status under
@@ -5158,5 +5095,220 @@ variants; the phase-randomized control is in scope only if budget permits.
   literature-comparison table.
 * Cost in `results/costs.json` is documented with the per-stage breakdown above and is at or
   below the agreed limit (currently ~$45).
+
+</details>
+
+<details>
+<summary>❌ 0029 — <strong>RQ1 discordance-rich paired resample with hard $35
+cap</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0029_rq1_discordance_rich_resample` |
+| **Status** | cancelled |
+| **Effective date** | 2026-05-03 |
+| **Dependencies** | [`t0010_matched_mismatch_library`](../../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0021_plan_and_solve_v2_with_final_confidence`](../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md), [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Expected assets** | 2 predictions |
+| **Source suggestion** | `S-0025-04` |
+| **Task types** | [`experiment-run`](../../meta/task_types/experiment-run/), [`comparative-analysis`](../../meta/task_types/comparative-analysis/) |
+| **Start time** | 2026-05-03T09:55:36Z |
+| **End time** | 2026-05-03T14:21:00Z |
+| **Task page** | [RQ1 discordance-rich paired resample with hard $35 cap](../../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
+| **Task folder** | [`t0029_rq1_discordance_rich_resample/`](../../tasks/t0029_rq1_discordance_rich_resample/) |
+
+# RQ1 Discordance-Rich Paired Resample (Hard $35 Cap)
+
+## Motivation
+
+t0027's Phase 2.5 A/B/C re-run on 130 paired instances produced an underpowered RQ1 verdict:
+
+* A=B=6 successes (4.62%); C=7 (5.38%).
+* McNemar discordant pairs A vs B: **6 vs 6**, exact-binomial p=1.0.
+* McNemar discordant pairs A vs C (RQ5): **4 vs 5**, p=1.0.
+
+With only 12 discordant pairs, no realistic effect size could have produced a significant
+verdict. RQ1 ("does adding granularity-aware scope conditioning improve task success vs the
+scope-unaware baseline?") cannot be answered from t0027 alone.
+
+This task closes the power gap with a discordance-rich resample of A vs B and reports an RQ1
+verdict (or a partial verdict with explicit power caveat if the budget cap is hit first).
+
+This task covers source suggestion **S-0025-04** and follow-up suggestion **S-0027-05**.
+
+## Scope
+
+In scope:
+
+* Run **arm A** (Plan-and-Solve baseline) and **arm B** (scope-aware ReAct) on a paired sample
+  of instances drawn from the project's three subsets (SWE-bench Verified, taubench,
+  frontsci), prioritising selection criteria that increase the expected number of discordant
+  pairs.
+* Reuse the t0027 fault-tolerant arm-B harness and the t0021 Plan-and-Solve v2 implementation
+  as the canonical libraries.
+* Compute McNemar paired exact-binomial test on the resulting discordant counts; report effect
+  size, 95% CI, and the per-subset breakdown.
+* Save full predictions assets for both arms so t0030 (RQ4 stratification) can run without any
+  additional API spend.
+
+Out of scope:
+
+* Arm C (deferred to a later wave).
+* Calibrator work / RQ2 (deferred — see S-0027-01 demoted to MEDIUM in t0028).
+* RQ3 instrumentation (deferred).
+* Any C-arm rebuild (S-0027-02 demoted to MEDIUM in t0028).
+
+## Hard Cost Cap and Abort Rule
+
+**Cap**: $35.00 USD. Track spend live in `results/costs.json` after each batch of API calls
+and in the harness. The budget verificator must show this task does not exceed $35 in
+`effective_budget_limit_usd`.
+
+**Abort rule**: if the cap is hit (>= $35.00 cumulative) and the running discordant-pair count
+is **< 30**, halt all further API calls and proceed directly to the analysis step. Report a
+**partial RQ1 verdict** with:
+
+* Observed discordant counts (b, c).
+* McNemar exact-binomial p value at the partial sample.
+* Explicit power caveat: "with N_discordant = X, this analysis has power Y to detect an
+  odds-ratio of Z; failure to reject H0 does not establish equivalence."
+* No replacement task launched in the same wave (preserved budget and suggestion backlog for
+  the next brainstorm session).
+
+The guardrail must be implemented in the harness, not just documented — the experiment runner
+must check `cumulative_cost_usd >= 35.00` after every batch and exit cleanly if true.
+
+## Sampling Strategy
+
+Goal: reach **>= 30 discordant pairs** between A and B.
+
+Approach (pre-registered, in priority order):
+
+1. **Stratified resample from t0027's 130 paired instances**: prioritise re-running on the 12
+   discordant pairs from t0027 plus instances flagged by t0027's recovery distribution as
+   "unknown" (B=29, C=33) where one arm's outcome is uncertain.
+2. **Expand within-subset coverage**: draw additional paired instances from
+   `t0010_matched_mismatch_library` first from frontsci (where t0027 showed the largest
+   per-subset gap: B=0.192 vs A=0.000), then taubench, then SWE-bench Verified.
+3. **Concentrate on harder difficulty bands**: t0027's per-subset table suggests A=0 outside
+   SWE-bench, so RQ1 discordance is entirely driven by B≠0 outcomes; sample with bias toward
+   instances where B is more likely to succeed and A more likely to fail.
+
+Pre-register the sampling rule in `plan/plan.md` before any API call. The experiment must
+record how each instance was selected.
+
+## Method
+
+* Use the **same Plan-and-Solve v2 (t0021)** library as arm A.
+* Use the **same fault-tolerant scope-aware ReAct (t0027 final)** library as arm B.
+* Use **claude-sonnet-4-6** with the fixed temperature and decoding settings from t0027.
+* Re-run a paired instance only if it does not already have a usable A and B prediction in the
+  t0027 predictions assets — if both arms succeeded cleanly in t0027, reuse those predictions.
+* Persist every API call and per-instance cost in `results/costs.json`.
+
+## Deliverables
+
+* `results/results_summary.md` and `results/results_detailed.md` with the McNemar verdict
+  (full or partial).
+* `results/metrics.json` with `mcnemar_b_count`, `mcnemar_c_count`, `mcnemar_p_value`,
+  `mcnemar_effect_size`, `mcnemar_ci_lower`, `mcnemar_ci_upper`, `discordant_pairs_total`,
+  `paired_n_total`, plus per-subset breakdowns.
+* `results/predictions/arm_a/` and `results/predictions/arm_b/` predictions assets covering
+  all paired instances actually run.
+* `results/suggestions.json` describing follow-up tasks for whatever RQ remains open (RQ2
+  calibrator, RQ3 instrumentation, RQ5 C rebuild) — no replacement task launched in this wave.
+* Per-subset stratification table (also reused by t0030).
+
+## Cross-references
+
+* Source: t0028 brainstorm session 8.
+* Source suggestion: S-0025-04.
+* Covers: S-0027-05.
+* Builds on: t0021 (Plan-and-Solve v2), t0027 (fault-tolerant arm B and harness).
+* Feeds: t0030 (RQ4 info-asymmetry stratification).
+
+</details>
+
+<details>
+<summary>❌ 0030 — <strong>RQ4 info-asymmetry stratification analysis on t0029
+outputs</strong></summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `t0030_rq4_info_asymmetry_stratification` |
+| **Status** | cancelled |
+| **Effective date** | 2026-05-03 |
+| **Dependencies** | [`t0029_rq1_discordance_rich_resample`](../../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
+| **Expected assets** | 1 answer |
+| **Source suggestion** | — |
+| **Task types** | [`data-analysis`](../../meta/task_types/data-analysis/), [`answer-question`](../../meta/task_types/answer-question/) |
+| **End time** | 2026-05-03T14:21:00Z |
+| **Task page** | [RQ4 info-asymmetry stratification analysis on t0029 outputs](../../overview/tasks/task_pages/t0030_rq4_info_asymmetry_stratification.md) |
+| **Task folder** | [`t0030_rq4_info_asymmetry_stratification/`](../../tasks/t0030_rq4_info_asymmetry_stratification/) |
+
+# RQ4 Info-Asymmetry Stratification Analysis
+
+## Motivation
+
+RQ4 asks: **does the gain from granularity-aware scope conditioning concentrate in instances
+where information asymmetry between the agent and the task is highest?**
+
+t0027 produced suggestive but underpowered evidence: per-subset success rates were
+A=0/B=0.012/C=0.036 on taubench and A=0/B=0.192/C=0.154 on frontsci, hinting that gains might
+concentrate in frontsci (where the agent has the largest information gap to close). The total
+sample of 12 discordant pairs in t0027 makes any subset-level claim premature.
+
+This task piggy-backs on t0029's discordance-rich resample to deliver an RQ4 verdict at zero
+additional API cost: it consumes t0029's predictions and runs a stratified analysis only.
+
+## Scope
+
+In scope:
+
+* Read t0029's predictions assets for arm A and arm B.
+* Define "information asymmetry" operationally per subset using existing metadata in
+  `t0010_matched_mismatch_library` (e.g., gold-context length, hidden-state count,
+  human-judgement disagreement scores).
+* Compute per-stratum (subset × asymmetry-tertile) discordant counts and granularity-gain
+  rates (B success - A success).
+* Run stratified McNemar / proportion tests with Bonferroni correction across the strata.
+* Produce a stratification table and at least one figure (subset × asymmetry tertile).
+* Write an answer asset for RQ4 with confidence assessment and the explicit caveat if the
+  t0029 sample fell short of the >= 30 discordant-pair target.
+
+Out of scope:
+
+* Any new API calls or remote compute.
+* RQ1 verdict (delivered by t0029).
+* RQ5 verdict (deferred to a later wave).
+* Building a new info-asymmetry metric — reuse only what is already in
+  `t0010_matched_mismatch_library` and t0027's harness logs.
+
+## Method
+
+1. Load t0029 predictions for arm A and arm B keyed by paired instance ID.
+2. Join against `t0010_matched_mismatch_library` to recover per-instance metadata (subset,
+   asymmetry signals).
+3. Define info-asymmetry tertiles per subset (low / mid / high) using the chosen signal.
+4. Compute granularity-gain rate per stratum: `success_rate(B) - success_rate(A)`.
+5. Test the joint hypothesis "gain rate is higher in high-asymmetry strata than low-asymmetry
+   strata" via stratified McNemar (per subset) plus a Cochran-Mantel-Haenszel-style overall
+   test, with Bonferroni-adjusted alpha = 0.025.
+6. Write the answer asset following `meta/asset_types/answer/specification.md`.
+
+## Deliverables
+
+* `assets/answer/rq4-info-asymmetry-stratification/` answer asset with a confidence rating and
+  the verdict (full / partial / inconclusive).
+* `results/results_summary.md` and `results/results_detailed.md` with the stratification table
+  and figure embedded.
+* `results/metrics.json` with per-stratum granularity-gain rates and the joint test p value.
+* `results/images/rq4_stratification.png` (subset × asymmetry tertile heatmap or grouped bar).
+
+## Cross-references
+
+* Source: t0028 brainstorm session 8.
+* Depends on: t0029.
+* Builds on: t0010_matched_mismatch_library (subset metadata).
+* Source suggestion: none (analysis-only follow-up).
 
 </details>
