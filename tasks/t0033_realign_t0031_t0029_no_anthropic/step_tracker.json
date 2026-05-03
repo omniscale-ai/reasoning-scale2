@@ -113,8 +113,8 @@
       "step": 13,
       "name": "reporting",
       "description": "Close out task: run final verificators, push, open PR, merge, refresh overview.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T13:15:16Z",
       "completed_at": null,
       "log_file": "logs/steps/013_reporting/"
     }
