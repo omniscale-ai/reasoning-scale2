@@ -1,0 +1,24 @@
+{
+  "task_id": "t0029_rq1_discordance_rich_resample",
+  "checked_at": "2026-05-03T10:00:45Z",
+  "result": "passed",
+  "dependencies": [
+    {
+      "task_id": "t0010_matched_mismatch_library",
+      "status": "completed",
+      "satisfied": true
+    },
+    {
+      "task_id": "t0021_plan_and_solve_v2_with_final_confidence",
+      "status": "completed",
+      "satisfied": true
+    },
+    {
+      "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+      "status": "completed",
+      "satisfied": true
+    }
+  ],
+  "errors": 0,
+  "warnings": 0
+}
