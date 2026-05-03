@@ -1,0 +1,5 @@
+branch: task/t0029_rq1_discordance_rich_resample
+base_branch: main
+base_commit: 856d714
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0029_rq1_discordance_rich_resample
+created_at: 2026-05-03T09:55:36Z
