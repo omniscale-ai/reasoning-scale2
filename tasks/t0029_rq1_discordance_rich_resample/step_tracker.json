@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Pre-register sampling rule, cost cap guardrail, and McNemar analysis plan.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T10:14:19Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },

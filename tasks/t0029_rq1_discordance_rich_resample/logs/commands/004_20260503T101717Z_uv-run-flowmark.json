@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0029_rq1_discordance_rich_resample",
+  "command": "uv run flowmark --inplace --nobackup tasks/t0029_rq1_discordance_rich_resample/plan/plan.md",
+  "exit_code": 0,
+  "duration_seconds": 0.107,
+  "started_at": "2026-05-03T10:17:17Z",
+  "completed_at": "2026-05-03T10:17:17Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0029_rq1_discordance_rich_resample",
+  "stdout_file": "004_20260503T101717Z_uv-run-flowmark.stdout.txt",
+  "stderr_file": "004_20260503T101717Z_uv-run-flowmark.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 0,
+  "truncated": false
+}
