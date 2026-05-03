@@ -14,8 +14,8 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify both dependencies (t0027, t0031) are completed via verify_task_dependencies.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T13:21:18Z",
       "completed_at": null,
       "log_file": "logs/steps/002_check-deps/"
     },
