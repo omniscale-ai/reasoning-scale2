@@ -1,4 +1,4 @@
-# ⏹ RQ4 info-asymmetry stratification analysis on t0029 outputs
+# ❌ RQ4 info-asymmetry stratification analysis on t0029 outputs
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0030_rq4_info_asymmetry_stratification` |
-| **Status** | ⏹ not_started |
+| **Status** | ❌ cancelled |
+| **Completed** | 2026-05-03T14:21:00Z |
 | **Dependencies** | [`t0029_rq1_discordance_rich_resample`](../../../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
 | **Task types** | `data-analysis`, `answer-question` |
 | **Expected assets** | 1 answer |

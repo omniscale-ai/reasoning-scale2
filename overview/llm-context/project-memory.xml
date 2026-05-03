@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-03T14:08:41Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-03T14:29:48Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>91917</char_count>
-    <byte_count>92052</byte_count>
-    <estimated_tokens>22979</estimated_tokens>
+    <char_count>92027</char_count>
+    <byte_count>92164</byte_count>
+    <estimated_tokens>23006</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -161,9 +161,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0031_rq1_rq4_no_new_api_salvage</id>
         <id>t0032_no_anthropic_rq1_path_decision</id>
         <id>t0033_realign_t0031_t0029_no_anthropic</id>
+        <id>t0034_cancel_t0029_t0030_no_anthropic</id>
       </source_ids>
       <content>
-Completed tasks: 30
+Completed tasks: 31
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -344,31 +345,19 @@ ID: t0033_realign_t0031_t0029_no_anthropic
 Completed: 2026-05-03
 Short description: Correct two t0031 suggestions and flip t0029 to intervention_blocked on permanent provider unavailability.
 Result summary: T0031/T0029 NO-ANTHROPIC REALIGNMENT — CORRECTIONS APPLIED Summary This task realigned two t0031 follow-up suggestions and one upstream task&#x27;s status under the permanent no-Anthropic constraint. It produced no metrics, no quantitative results, and no paid spend. Three artefacts changed state on disk: * `S-0031-01` (&quot;Unblock t0029 by provisioning ANTHROPIC_API_KEY&quot;) was redirected via correction `C-0033-01` to &quot;Decide a no-Anthropic RQ1 execution path&quot;, pointing at `t0032_no_anthropic_rq1_path_decision` as the decision owner. * `S-0031-02` (&quot;Reconsider $35 cap given preliminary futility&quot;) was reframed via correction `C-0033-02` so the cap-reconsideration is explicitly conditional on a future...
+
+## Cancel t0029 and t0030 under no-Anthropic constraint
+ID: t0034_cancel_t0029_t0030_no_anthropic
+Completed: 2026-05-03
+Short description: Cancel t0029 and t0030 via the corrections overlay, following t0032 option-(a) verdict that no Anthropic-backed RQ1 continuation is viable.
+Result summary: Results Summary: Cancel t0029 and t0030 under no-Anthropic constraint Summary Flipped two task statuses to `cancelled` as the durable consequence of t0032&#x27;s option-(a) existing-results-only verdict and the permanent absence of `ANTHROPIC_API_KEY`. t0029 moved from `intervention_blocked` and t0030 from `not_started`. The corrections overlay could not express either change because its target_kind set has no `task` entry, so both edits were direct task.json mutations (status + end_time only) authorized by the user. A rationale document captures the reasoning chain and the framework constraint. Metrics * **Tasks cancelled**: **2** (t0029, t0030) * **t0029 status flip**: `intervention_blocked` →...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
-      <source_ids>
-        <id>t0029_rq1_discordance_rich_resample</id>
-        <id>t0030_rq4_info_asymmetry_stratification</id>
-      </source_ids>
       <content>
-Planned or active tasks: 2
-
-## RQ1 discordance-rich paired resample with hard $35 cap
-ID: t0029_rq1_discordance_rich_resample
-Status: intervention_blocked
-Effective date: 2026-05-03
-Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
-Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
-
-## RQ4 info-asymmetry stratification analysis on t0029 outputs
-ID: t0030_rq4_info_asymmetry_stratification
-Status: not_started
-Effective date: 2026-05-03
-Short description: Stratify t0029 paired sample by subset and concordance; test if granularity gains concentrate where info asymmetry is highest. Zero API cost.
-Dependencies: t0029_rq1_discordance_rich_resample
+Planned or active tasks: 0
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
