@@ -1,0 +1,12 @@
+tasks/t0034_cancel_t0029_t0030_no_anthropic/assets/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/code/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/corrections/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/intervention/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/logs/commands/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/logs/searches/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/logs/sessions/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/logs/steps/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/plan/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/research/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/results/
+tasks/t0034_cancel_t0029_t0030_no_anthropic/results/images/
