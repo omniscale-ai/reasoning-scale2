@@ -1,0 +1,32 @@
+{
+  "spec_version": "2",
+  "answer_id": "no-anthropic-rq1-path-a",
+  "question": "Which RQ1 execution path do we follow under the permanent no-Anthropic constraint: (a) existing-results-only verdict, (b) local / open-weight rerun, (c) alternative paid provider, or (d) project-level underpowered / provider-blocked stop?",
+  "short_title": "No-Anthropic RQ1 path: option (a) existing-results-only verdict",
+  "short_answer_path": "short_answer.md",
+  "full_answer_path": "full_answer.md",
+  "categories": [
+    "agent-evaluation",
+    "uncertainty-calibration"
+  ],
+  "answer_methods": [
+    "code-experiment",
+    "internet"
+  ],
+  "source_paper_ids": [],
+  "source_urls": [
+    "https://openai.com/api/pricing/",
+    "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://www.anthropic.com/pricing"
+  ],
+  "source_task_ids": [
+    "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+    "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+    "t0028_brainstorm_results_8",
+    "t0029_rq1_discordance_rich_resample",
+    "t0031_rq1_rq4_no_new_api_salvage"
+  ],
+  "confidence": "high",
+  "created_by_task": "t0032_no_anthropic_rq1_path_decision",
+  "date_created": "2026-05-03"
+}

@@ -1,0 +1,4 @@
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0032_no_anthropic_rq1_path_decision/tasks/t0032_no_anthropic_rq1_path_decision/code/decision_inputs.json
+discordance: n_paired=130, n_discordant=12, a_only=6, b_only=6, mcnemar_p_two_sided=1.0
+per_arm_costs: a=0.0344, b=0.0727, c=0.0718, paired=0.1071
+option_costs: c_per_pair=0.07, c_total=15.26

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0032_no_anthropic_rq1_path_decision",
+  "command": "uv run flowmark --inplace --nobackup tasks/t0032_no_anthropic_rq1_path_decision/code/comparison_table.md",
+  "exit_code": 0,
+  "duration_seconds": 0.096,
+  "started_at": "2026-05-03T13:50:49Z",
+  "completed_at": "2026-05-03T13:50:49Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0032_no_anthropic_rq1_path_decision",
+  "stdout_file": "028_20260503T135049Z_uv-run-flowmark.stdout.txt",
+  "stderr_file": "028_20260503T135049Z_uv-run-flowmark.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 0,
+  "truncated": false
+}

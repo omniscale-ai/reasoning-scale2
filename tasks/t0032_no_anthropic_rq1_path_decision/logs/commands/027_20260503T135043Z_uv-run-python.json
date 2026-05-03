@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0032_no_anthropic_rq1_path_decision",
+  "command": "uv run python -u -m tasks.t0032_no_anthropic_rq1_path_decision.code.build_comparison_table",
+  "exit_code": 0,
+  "duration_seconds": 0.053,
+  "started_at": "2026-05-03T13:50:43Z",
+  "completed_at": "2026-05-03T13:50:43Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0032_no_anthropic_rq1_path_decision",
+  "stdout_file": "027_20260503T135043Z_uv-run-python.stdout.txt",
+  "stderr_file": "027_20260503T135043Z_uv-run-python.stderr.txt",
+  "stdout_lines": 2,
+  "stderr_lines": 0,
+  "truncated": false
+}
