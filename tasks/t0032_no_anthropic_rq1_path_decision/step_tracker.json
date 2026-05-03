@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Inventory existing t0027 paired N=130 outputs and t0031 power grid / discordance / RQ4 tables that the decision rests on.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T13:28:29Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T13:36:07Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
