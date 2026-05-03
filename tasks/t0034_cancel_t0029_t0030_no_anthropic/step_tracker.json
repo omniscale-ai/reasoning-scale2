@@ -23,9 +23,9 @@
       "step": 3,
       "name": "init-folders",
       "description": "Initialize the standard task folder skeleton.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T14:19:49Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T14:20:21Z",
       "log_file": "logs/steps/003_init-folders/"
     },
     {
