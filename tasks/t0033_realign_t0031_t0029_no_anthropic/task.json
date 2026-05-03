@@ -5,11 +5,11 @@
   "name": "Realign t0031 suggestions and t0029 status under no-Anthropic constraint",
   "short_description": "Correct two t0031 suggestions and flip t0029 to intervention_blocked on permanent provider unavailability.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [
     "t0031_rq1_rq4_no_new_api_salvage"
   ],
-  "start_time": null,
+  "start_time": "2026-05-03T13:07:25Z",
   "end_time": null,
   "expected_assets": {},
   "task_types": [
