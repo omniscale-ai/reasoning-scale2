@@ -77,9 +77,9 @@
       "step": 9,
       "name": "implementation",
       "description": "Direct-edit t0029 and t0030 task.json status to cancelled; write corrections/rationale.md documenting the framework constraint and the no-Anthropic rationale.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T14:20:58Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T14:24:29Z",
       "log_file": "logs/steps/009_implementation/"
     },
     {
