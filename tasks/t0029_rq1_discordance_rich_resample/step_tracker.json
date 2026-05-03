@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0027 fault-tolerant arm-B harness, t0021 Plan-and-Solve v2, t0010 paired library.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T10:02:18Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T10:13:46Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
