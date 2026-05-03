@@ -1,12 +1,12 @@
-# Metrics Results (3 metrics, 48 results)
+# Metrics Results (3 metrics, 51 results)
 
 ## Key Metrics
 
-* [Task Success Rate](task_success_rate.md) (25 results)
+* [Task Success Rate](task_success_rate.md) (26 results)
 
 ## All Metrics
 
 | Metric | Results |
 |--------|---------|
-| [Average Decisions per Task](avg_decisions_per_task.md) | 13 |
-| [Overconfident Error Rate](overconfident_error_rate.md) | 10 |
+| [Average Decisions per Task](avg_decisions_per_task.md) | 14 |
+| [Overconfident Error Rate](overconfident_error_rate.md) | 11 |

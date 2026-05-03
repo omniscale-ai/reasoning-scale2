@@ -92,6 +92,30 @@ pp or commit it above +45 pp.
 </details>
 
 <details>
+<summary>🧪 <strong>Decide a no-Anthropic RQ1 execution path</strong> (S-0031-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0031-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0031_rq1_rq4_no_new_api_salvage`](../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) |
+| **Source paper** | — |
+| **Categories** | — |
+
+Anthropic API access is unavailable indefinitely, so the t0029 locked plan cannot be executed
+and 'unblock t0029 by provisioning ANTHROPIC_API_KEY' is no longer actionable. RQ1 instead
+needs an execution/verdict path that does not require Anthropic access. The decision is owned
+by t0032_no_anthropic_rq1_path_decision, which compares four options: (a) accept the existing
+t0027/t0031 evidence as the final verdict, (b) re-run on locally available open-weight models,
+(c) substitute a non-Anthropic paid provider under a tight budget, or (d) close RQ1 with an
+explicit 'underpowered, provider-blocked' stop. The chosen path must be costed as a USD point
+estimate, must explicitly state its comparability with the t0027 labelled-arm baseline, and
+must not assume Anthropic access becomes available.
+
+</details>
+
+<details>
 <summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
 review</strong> (S-0005-01)</summary>
 
@@ -211,11 +235,16 @@ fallback.
 | **Source paper** | — |
 | **Categories** | — |
 
-t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant
-n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <= 0.65. A future
-brainstorm should weigh raising the cap, switching to a stratified resample (oversampling
-SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing
-RQ4 stratification first.
+t0031 shows that at the t0027 discordance rate (~9.2%), the locked t0029 $35 cap yields
+expected discordant n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <=
+0.65. The original cap was sized for Anthropic-policy execution, which is no longer available
+indefinitely. This cap-reconsideration is therefore conditional: it applies only if
+t0032_no_anthropic_rq1_path_decision recommends a future paid execution path on a
+non-Anthropic provider. In that case the reconsideration should weigh raising the cap,
+switching to a stratified resample (oversampling SWE-bench and FrontSci where the discordance
+lives), or accepting the futility and pursuing RQ4 stratification first. If t0032 recommends
+'existing-results-only verdict' (option a) or 'project-level stop' (option d), this suggestion
+should be marked rejected by a follow-up correction.
 
 </details>
 
@@ -262,26 +291,6 @@ haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet
 haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near
 zero, sonnet really does provide no annotator-quality lift on this composite. Cost ~$2 with
 sonnet judge on 43 rows.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Unblock t0029 by provisioning ANTHROPIC_API_KEY</strong>
-(S-0031-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0031-01` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-03 |
-| **Source task** | [`t0031_rq1_rq4_no_new_api_salvage`](../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) |
-| **Source paper** | — |
-| **Categories** | — |
-
-t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently
-intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap
-is informative only when the conditional B-wins rate p1 >= 0.75; provisioning the key and
-running t0029 is the next step.
 
 </details>
 

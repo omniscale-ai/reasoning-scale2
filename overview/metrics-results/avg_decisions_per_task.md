@@ -1,6 +1,6 @@
 # Average Decisions per Task
 
-**Key**: `avg_decisions_per_task` | **Unit**: count | **Results**: 13
+**Key**: `avg_decisions_per_task` | **Unit**: count | **Results**: 14
 
 [Back to all metrics](README.md)
 
@@ -19,3 +19,4 @@
 | 11 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | B — plan_and_solve_v3 with bounded plan-recovery chain | — |
 | 12 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | C — matched_mismatch_v2 over plan_and_solve_v3 (adversarial) | — |
 | 13 | [RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs](../../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) | — | — |
+| 14 | [Realign t0031 suggestions and t0029 status under no-Anthropic constraint](../../../overview/tasks/task_pages/t0033_realign_t0031_t0029_no_anthropic.md) | — | — |

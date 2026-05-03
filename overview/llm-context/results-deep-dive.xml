@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-03T13:07:13Z">
+<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-03T13:17:17Z">
   <archive_summary>
     <title>Results Deep Dive</title>
     <description>Completed-task result summaries plus all detailed results reports.</description>
     <use_case>Performance analysis, experiment comparison, and result interpretation.</use_case>
-    <section_count>32</section_count>
-    <char_count>450082</char_count>
-    <byte_count>451883</byte_count>
-    <estimated_tokens>112520</estimated_tokens>
+    <section_count>33</section_count>
+    <char_count>458017</char_count>
+    <byte_count>459852</byte_count>
+    <estimated_tokens>114504</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -155,9 +155,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
         <id>t0028_brainstorm_results_8</id>
         <id>t0031_rq1_rq4_no_new_api_salvage</id>
+        <id>t0033_realign_t0031_t0029_no_anthropic</id>
       </source_ids>
       <content>
-Completed tasks: 28
+Completed tasks: 29
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -326,6 +327,12 @@ ID: t0031_rq1_rq4_no_new_api_salvage
 Completed: 2026-05-03
 Short description: Run no-new-API preliminary RQ1/RQ4 analyses on existing t0026/t0027 outputs to extract salvage evidence while t0029 is intervention_blocked.
 Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 RQ1/RQ4 No-New-API Preliminary Salvage This task spends **$0.00** of new API budget. It runs four bounded analyses on the already-on-disk outputs of `t0026_phase2_abc_runtime_n147_for_rq1_rq5` and `t0027_phase2_5_abc_rerun_with_fixed_b_and_c`. The labelled-arm convention follows `t0028`: arm A = Plan-and-Solve baseline, arm B = scope-aware ReAct, arm C = matched-mismatch. Summary Re-derived the t0027 paired discordance rate at **12/130 = 9.23%** (symmetric: 6 arm-A wins vs 6 arm-B wins, McNemar two-sided p = 1.0000). Stratified RQ4 shows discordance is concentrated in opposite directions on SWE-bench (6/20 arm-B wins) and...
+
+## Realign t0031 suggestions and t0029 status under no-Anthropic constraint
+ID: t0033_realign_t0031_t0029_no_anthropic
+Completed: 2026-05-03
+Short description: Correct two t0031 suggestions and flip t0029 to intervention_blocked on permanent provider unavailability.
+Result summary: T0031/T0029 NO-ANTHROPIC REALIGNMENT — CORRECTIONS APPLIED Summary This task realigned two t0031 follow-up suggestions and one upstream task&#x27;s status under the permanent no-Anthropic constraint. It produced no metrics, no quantitative results, and no paid spend. Three artefacts changed state on disk: * `S-0031-01` (&quot;Unblock t0029 by provisioning ANTHROPIC_API_KEY&quot;) was redirected via correction `C-0033-01` to &quot;Decide a no-Anthropic RQ1 execution path&quot;, pointing at `t0032_no_anthropic_rq1_path_decision` as the decision owner. * `S-0031-02` (&quot;Reconsider $35 cap given preliminary futility&quot;) was reframed via correction `C-0033-02` so the cap-reconsideration is explicitly conditional on a future...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -335,14 +342,13 @@ Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 
         <id>t0029_rq1_discordance_rich_resample</id>
         <id>t0030_rq4_info_asymmetry_stratification</id>
         <id>t0032_no_anthropic_rq1_path_decision</id>
-        <id>t0033_realign_t0031_t0029_no_anthropic</id>
       </source_ids>
       <content>
-Planned or active tasks: 4
+Planned or active tasks: 3
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
-Status: in_progress
+Status: intervention_blocked
 Effective date: 2026-05-03
 Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
 Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
@@ -360,13 +366,6 @@ Status: not_started
 Effective date: 2026-05-03
 Short description: Choose one RQ1 execution path under permanent no-Anthropic constraint: existing-only verdict, local rerun, alternate provider, or stop.
 Dependencies: t0027_phase2_5_abc_rerun_with_fixed_b_and_c, t0031_rq1_rq4_no_new_api_salvage
-
-## Realign t0031 suggestions and t0029 status under no-Anthropic constraint
-ID: t0033_realign_t0031_t0029_no_anthropic
-Status: not_started
-Effective date: 2026-05-03
-Short description: Correct two t0031 suggestions and flip t0029 to intervention_blocked on permanent provider unavailability.
-Dependencies: t0031_rq1_rq4_no_new_api_salvage
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -7139,6 +7138,146 @@ produced judged outcomes.
 * `results/images/log_audit_failure_breakdown.png`
 * `results/metrics.json`, `results/costs.json`, `results/remote_machines_used.json`,
   `results/suggestions.json`
+      </content>
+    </section>
+    <section id="t0033_realign_t0031_t0029_no_anthropic-results-detailed" source_kind="file">
+      <title>t0033_realign_t0031_t0029_no_anthropic — Realign t0031 suggestions and t0029 status under no-Anthropic constraint — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0033_realign_t0031_t0029_no_anthropic</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0033_realign_t0031_t0029_no_anthropic/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+#### Summary
+
+Two correction files realign t0031&#x27;s high-priority follow-up suggestions to the permanent
+no-Anthropic reality, and a direct cross-task edit of `t0029_rq1_discordance_rich_resample` records
+its true state (`intervention_blocked` on permanent provider unavailability) along with an
+intervention markdown file. No paid spend, no remote machines, no metrics, and no new follow-up
+suggestions. The replacement-path decision for RQ1 is owned by
+`t0032_no_anthropic_rq1_path_decision`.
+
+#### Methodology
+
+* **Machine**: local laptop. No remote machines provisioned.
+* **Runtime**: &lt; 5 minutes of agent time across all 13 steps (3 active, 6 skipped, 4 reporting).
+* **Wall-clock**: started 2026-05-03T13:07:33Z, implementation complete 2026-05-03T13:10:59Z.
+* **Cost**: $0.00 paid-API spend. The task only edits framework artefacts.
+* **Workers**: single-threaded.
+
+#### Inputs
+
+* `tasks/t0031_rq1_rq4_no_new_api_salvage/results/suggestions.json` — the canonical source of
+  `S-0031-01`, `S-0031-02`, `S-0031-03`. Read-only; not modified.
+* `tasks/t0029_rq1_discordance_rich_resample/task.json` — `status` field directly edited.
+* `tasks/t0032_no_anthropic_rq1_path_decision/task.json` — read-only reference; the new `S-0031-01`
+  description points at this task as the no-Anthropic decision owner.
+* `arf/specifications/corrections_specification.md` (v3) — schema for the two correction files.
+
+#### Implementation Detail
+
+##### `corrections/suggestion_S-0031-01.json` (`C-0033-01`)
+
+* `target_kind`: `suggestion`
+* `target_task`: `t0031_rq1_rq4_no_new_api_salvage`
+* `target_id`: `S-0031-01`
+* `action`: `update`
+* `changes`: replaces both `title` and `description`. New title: &quot;Decide a no-Anthropic RQ1
+  execution path.&quot; New description redirects the suggestion to t0032 and enumerates the four options
+  that task evaluates.
+* `priority` and `kind` are deliberately not in `changes` so the original `priority: high` and
+  `kind: experiment` are preserved.
+
+##### `corrections/suggestion_S-0031-02.json` (`C-0033-02`)
+
+* `target_kind`: `suggestion`
+* `target_task`: `t0031_rq1_rq4_no_new_api_salvage`
+* `target_id`: `S-0031-02`
+* `action`: `update`
+* `changes`: rewrites `description` only. The new description makes the cap-reconsideration
+  explicitly conditional on a future non-Anthropic paid execution path. It also specifies that if
+  t0032 picks option (a) &quot;existing-results-only verdict&quot; or option (d) &quot;project-level stop&quot;, a
+  follow-up correction should mark this suggestion `rejected`.
+* `priority: high` and `kind: evaluation` preserved.
+
+##### `tasks/t0029_rq1_discordance_rich_resample/task.json` (cross-task direct edit)
+
+* Field changed: `status` from `in_progress` to `intervention_blocked`.
+* Fields preserved: `start_time` (`2026-05-03T09:55:36Z`), `end_time` (`null`), `dependencies`,
+  `expected_assets`, `task_types`, `source_suggestion`.
+* `task_description.md` deliberately not modified — the locked pre-registered plan stays on the
+  record as historical.
+
+##### `tasks/t0029_rq1_discordance_rich_resample/intervention/anthropic_provider_unavailable.md`
+
+New file. States that Anthropic provider access is unavailable indefinitely, names the locked $35
+cap and pre-registered design as preserved-but-not-executable, transfers replacement-path ownership
+to t0032, and documents resolution criteria (block stays under options a/d; may be re-opened or
+replaced under options b/c).
+
+#### What is intentionally not done
+
+* `S-0031-03` (&quot;Fix the cost-tracker boundary that produces unknown parser-recovery&quot;) — untouched.
+  It remains a valid medium-priority library suggestion independent of the Anthropic constraint.
+* `t0030_rq4_info_asymmetry_stratification` — not launched. Its preconditions are gated on whichever
+  path t0032 chooses.
+* `t0032_no_anthropic_rq1_path_decision` — read-only here. Its scope is owned by itself.
+* `task_description.md` of t0029 — not modified.
+
+#### Cross-Task Edit Justification
+
+The corrections specification v3 (`arf/specifications/corrections_specification.md`) lists target
+kinds `suggestion`, `paper`, `answer`, `dataset`, `library`, `model`, `predictions` — there is no
+`task` target kind. The t0029 status flip therefore cannot be expressed as a correction file. The
+framework-correct alternative is a direct edit of t0029&#x27;s `task.json` from this task&#x27;s branch. This
+is permissible because t0029 has status `in_progress`, not `completed`, so rule 5 of `CLAUDE.md`
+(&quot;nothing in a completed task folder may be changed; use the corrections mechanism in later tasks&quot;)
+does not apply. The risks-and-fallbacks section of `task_description.md` documents what to do if
+`verify_pr_premerge` rejects the cross-task edit (escalate to user, do not silently revert).
+
+#### Verification
+
+* `verify_corrections t0033_realign_t0031_t0029_no_anthropic` — passed (0 errors, 0 warnings).
+* `verify_task_dependencies t0033_realign_t0031_t0029_no_anthropic` — passed via prestep.
+* `verify_task_file t0033_realign_t0031_t0029_no_anthropic` — passed at task creation (1 warning:
+  TF-W005 `expected_assets` empty, expected for a correction task).
+* Reporting-step verificators (`verify_task_results`, `verify_suggestions`, etc.) run in step 13.
+
+#### Limitations
+
+* This task does not verify by running the aggregator that `S-0031-01` and `S-0031-02` are now
+  presented in their corrected effective form. That happens automatically once the PR merges and
+  `aggregate_suggestions` is re-run, and is left as the post-merge sanity check in the PR body.
+* The intervention file is human-readable Markdown; there is no machine-readable schema enforcing
+  intervention metadata in this project&#x27;s framework version, so the file&#x27;s structure is
+  conventional.
+
+#### Files Created
+
+* `corrections/suggestion_S-0031-01.json`
+* `corrections/suggestion_S-0031-02.json`
+* `tasks/t0029_rq1_discordance_rich_resample/intervention/anthropic_provider_unavailable.md`
+* `results/results_summary.md`
+* `results/results_detailed.md`
+* `results/metrics.json`
+* `results/suggestions.json`
+* `results/costs.json`
+* `results/remote_machines_used.json`
+
+#### Files Modified
+
+* `tasks/t0029_rq1_discordance_rich_resample/task.json` — `status` field only.
+
+#### Next Steps
+
+* `t0032_no_anthropic_rq1_path_decision` runs next and produces a single `answer` asset with the
+  recommended RQ1 path. That decision determines whether `S-0031-02` activates or is auto-rejected
+  by a follow-up correction.
+* If t0032 picks option (a) or (d), a follow-up corrections task should mark `S-0031-02`
+  `status: rejected`.
+* No new suggestions are emitted from this task.
       </content>
     </section>
   </sections>

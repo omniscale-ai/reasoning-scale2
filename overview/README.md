@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (10K)
-| [full](llm-context/full.xml) (130K) | [roadmap](llm-context/roadmap.xml) (31K) |
-[results](llm-context/results-deep-dive.xml) (113K) |
+| [full](llm-context/full.xml) (131K) | [roadmap](llm-context/roadmap.xml) (29K) |
+[results](llm-context/results-deep-dive.xml) (115K) |
 [assets](llm-context/literature-and-assets.xml) (19K)
 
-*Last updated: 2026-05-03 13:07 UTC*
+*Last updated: 2026-05-03 13:17 UTC*
 
 * **Budget**: **$133** spent of $200
 * **Remaining**: **$67**
@@ -48,20 +48,17 @@ No daily news yet.
 
 ---
 
-## [In Progress (1)](tasks/by-status/in_progress.md)
+## [In Progress (0)](tasks/by-status/in_progress.md)
 
-| # | Task | Started |
-|---|------|---------|
-| 0029 | [RQ1 discordance-rich paired resample with hard $35 cap](../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) | 2026-05-03 09:55 |
+No tasks in progress.
 
 ---
 
-## [Ready to Start (2)](tasks/by-status/not_started.md)
+## [Ready to Start (1)](tasks/by-status/not_started.md)
 
 | # | Task | Description | Date Added |
 |---|------|-------------|------------|
 | 0032 | [No-Anthropic RQ1 path decision](../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) | [`description`](../tasks/t0032_no_anthropic_rq1_path_decision/task_description.md) | 2026-05-03 |
-| 0033 | [Realign t0031 suggestions and t0029 status under no-Anthropic constraint](../overview/tasks/task_pages/t0033_realign_t0031_t0029_no_anthropic.md) | [`description`](../tasks/t0033_realign_t0031_t0029_no_anthropic/task_description.md) | 2026-05-03 |
 
 ---
 
@@ -73,10 +70,19 @@ No daily news yet.
 
 ---
 
-## [Recently Completed (28 total)](tasks/by-status/completed.md)
+## Intervention Blocked (1)
+
+| # | Task |
+|---|------|
+| 0029 | [RQ1 discordance-rich paired resample with hard $35 cap](../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
+
+---
+
+## [Recently Completed (29 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0033 | [Realign t0031 suggestions and t0029 status under no-Anthropic constraint](../overview/tasks/task_pages/t0033_realign_t0031_t0029_no_anthropic.md) | [`results`](../tasks/t0033_realign_t0031_t0029_no_anthropic/results/results_detailed.md) | 2026-05-03 13:15 |
 | 0031 | [RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs](../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) | [`results`](../tasks/t0031_rq1_rq4_no_new_api_salvage/results/results_detailed.md) | 2026-05-03 11:47 |
 | 0028 | [Brainstorm 8: close RQ1/RQ4 via discordance-rich resample under $35 cap](../overview/tasks/task_pages/t0028_brainstorm_results_8.md) | [`results`](../tasks/t0028_brainstorm_results_8/results/results_detailed.md) | 2026-05-03 09:30 |
 | 0027 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | [`results`](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/results_detailed.md) | 2026-05-03 08:07 |
@@ -86,9 +92,8 @@ No daily news yet.
 | 0024 | [Brainstorm session 7: rescope around RQ answers after t0019 calibration finding](../overview/tasks/task_pages/t0024_brainstorm_results_7.md) | [`results`](../tasks/t0024_brainstorm_results_7/results/results_detailed.md) | 2026-05-01 19:30 |
 | 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | [`results`](../tasks/t0019_v2_judge_calibration_sonnet/results/results_detailed.md) | 2026-05-01 17:55 |
 | 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`results`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/results_detailed.md) | 2026-05-01 17:10 |
-| 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
 
-*18 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*19 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -109,7 +114,7 @@ No daily news yet.
 | 9 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v1-sonnet judged by substantive-sonnet | **0.6667** |
 | 10 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v1-sonnet judged by model-rotated-sonnet | **0.5833** |
 
-*15 more results → [all results](metrics-results/)*
+*16 more results → [all results](metrics-results/)*
 
 ---
 
@@ -222,16 +227,20 @@ sweep that no new scaffold emits raised_malformed_plan_error.
 </details>
 
 <details>
-<summary>🧪 <strong>Unblock t0029 by provisioning ANTHROPIC_API_KEY</strong>
-(S-0031-01)</summary>
+<summary>🧪 <strong>Decide a no-Anthropic RQ1 execution path</strong> (S-0031-01)</summary>
 
 **Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
 [t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
 
-t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently
-intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap
-is informative only when the conditional B-wins rate p1 >= 0.75; provisioning the key and
-running t0029 is the next step.
+Anthropic API access is unavailable indefinitely, so the t0029 locked plan cannot be executed
+and 'unblock t0029 by provisioning ANTHROPIC_API_KEY' is no longer actionable. RQ1 instead
+needs an execution/verdict path that does not require Anthropic access. The decision is owned
+by t0032_no_anthropic_rq1_path_decision, which compares four options: (a) accept the existing
+t0027/t0031 evidence as the final verdict, (b) re-run on locally available open-weight models,
+(c) substitute a non-Anthropic paid provider under a tight budget, or (d) close RQ1 with an
+explicit 'underpowered, provider-blocked' stop. The chosen path must be costed as a USD point
+estimate, must explicitly state its comparability with the t0027 labelled-arm baseline, and
+must not assume Anthropic access becomes available.
 
 </details>
 
@@ -242,11 +251,16 @@ running t0029 is the next step.
 **Kind**: evaluation | **Priority**: high | **Date**: 2026-05-03 | **Source**:
 [t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
 
-t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant
-n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <= 0.65. A future
-brainstorm should weigh raising the cap, switching to a stratified resample (oversampling
-SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing
-RQ4 stratification first.
+t0031 shows that at the t0027 discordance rate (~9.2%), the locked t0029 $35 cap yields
+expected discordant n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <=
+0.65. The original cap was sized for Anthropic-policy execution, which is no longer available
+indefinitely. This cap-reconsideration is therefore conditional: it applies only if
+t0032_no_anthropic_rq1_path_decision recommends a future paid execution path on a
+non-Anthropic provider. In that case the reconsideration should weigh raising the cap,
+switching to a stratified resample (oversampling SWE-bench and FrontSci where the discordance
+lives), or accepting the futility and pursuing RQ4 stratification first. If t0032 recommends
+'existing-results-only verdict' (option a) or 'project-level stop' (option d), this suggestion
+should be marked rejected by a follow-up correction.
 
 </details>
 
@@ -287,16 +301,20 @@ the B vs C pair on the same paired set to test whether the inversion survives.
 ## [High Priority Suggestions (13)](suggestions/)
 
 <details>
-<summary>🧪 <strong>Unblock t0029 by provisioning ANTHROPIC_API_KEY</strong>
-(S-0031-01)</summary>
+<summary>🧪 <strong>Decide a no-Anthropic RQ1 execution path</strong> (S-0031-01)</summary>
 
 **Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
 [t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
 
-t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently
-intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap
-is informative only when the conditional B-wins rate p1 >= 0.75; provisioning the key and
-running t0029 is the next step.
+Anthropic API access is unavailable indefinitely, so the t0029 locked plan cannot be executed
+and 'unblock t0029 by provisioning ANTHROPIC_API_KEY' is no longer actionable. RQ1 instead
+needs an execution/verdict path that does not require Anthropic access. The decision is owned
+by t0032_no_anthropic_rq1_path_decision, which compares four options: (a) accept the existing
+t0027/t0031 evidence as the final verdict, (b) re-run on locally available open-weight models,
+(c) substitute a non-Anthropic paid provider under a tight budget, or (d) close RQ1 with an
+explicit 'underpowered, provider-blocked' stop. The chosen path must be costed as a USD point
+estimate, must explicitly state its comparability with the t0027 labelled-arm baseline, and
+must not assume Anthropic access becomes available.
 
 </details>
 
@@ -307,11 +325,16 @@ running t0029 is the next step.
 **Kind**: evaluation | **Priority**: high | **Date**: 2026-05-03 | **Source**:
 [t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
 
-t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant
-n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <= 0.65. A future
-brainstorm should weigh raising the cap, switching to a stratified resample (oversampling
-SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing
-RQ4 stratification first.
+t0031 shows that at the t0027 discordance rate (~9.2%), the locked t0029 $35 cap yields
+expected discordant n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <=
+0.65. The original cap was sized for Anthropic-policy execution, which is no longer available
+indefinitely. This cap-reconsideration is therefore conditional: it applies only if
+t0032_no_anthropic_rq1_path_decision recommends a future paid execution path on a
+non-Anthropic provider. In that case the reconsideration should weigh raising the cap,
+switching to a stratified resample (oversampling SWE-bench and FrontSci where the discordance
+lives), or accepting the futility and pursuing RQ4 stratification first. If t0032 recommends
+'existing-results-only verdict' (option a) or 'project-level stop' (option d), this suggestion
+should be marked rejected by a follow-up correction.
 
 </details>
 

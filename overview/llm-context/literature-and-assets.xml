@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-03T13:07:13Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-03T13:17:17Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>75557</char_count>
-    <byte_count>75676</byte_count>
-    <estimated_tokens>18889</estimated_tokens>
+    <char_count>76248</char_count>
+    <byte_count>76369</byte_count>
+    <estimated_tokens>19062</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -158,9 +158,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
         <id>t0028_brainstorm_results_8</id>
         <id>t0031_rq1_rq4_no_new_api_salvage</id>
+        <id>t0033_realign_t0031_t0029_no_anthropic</id>
       </source_ids>
       <content>
-Completed tasks: 28
+Completed tasks: 29
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -329,6 +330,12 @@ ID: t0031_rq1_rq4_no_new_api_salvage
 Completed: 2026-05-03
 Short description: Run no-new-API preliminary RQ1/RQ4 analyses on existing t0026/t0027 outputs to extract salvage evidence while t0029 is intervention_blocked.
 Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 RQ1/RQ4 No-New-API Preliminary Salvage This task spends **$0.00** of new API budget. It runs four bounded analyses on the already-on-disk outputs of `t0026_phase2_abc_runtime_n147_for_rq1_rq5` and `t0027_phase2_5_abc_rerun_with_fixed_b_and_c`. The labelled-arm convention follows `t0028`: arm A = Plan-and-Solve baseline, arm B = scope-aware ReAct, arm C = matched-mismatch. Summary Re-derived the t0027 paired discordance rate at **12/130 = 9.23%** (symmetric: 6 arm-A wins vs 6 arm-B wins, McNemar two-sided p = 1.0000). Stratified RQ4 shows discordance is concentrated in opposite directions on SWE-bench (6/20 arm-B wins) and...
+
+## Realign t0031 suggestions and t0029 status under no-Anthropic constraint
+ID: t0033_realign_t0031_t0029_no_anthropic
+Completed: 2026-05-03
+Short description: Correct two t0031 suggestions and flip t0029 to intervention_blocked on permanent provider unavailability.
+Result summary: T0031/T0029 NO-ANTHROPIC REALIGNMENT — CORRECTIONS APPLIED Summary This task realigned two t0031 follow-up suggestions and one upstream task&#x27;s status under the permanent no-Anthropic constraint. It produced no metrics, no quantitative results, and no paid spend. Three artefacts changed state on disk: * `S-0031-01` (&quot;Unblock t0029 by provisioning ANTHROPIC_API_KEY&quot;) was redirected via correction `C-0033-01` to &quot;Decide a no-Anthropic RQ1 execution path&quot;, pointing at `t0032_no_anthropic_rq1_path_decision` as the decision owner. * `S-0031-02` (&quot;Reconsider $35 cap given preliminary futility&quot;) was reframed via correction `C-0033-02` so the cap-reconsideration is explicitly conditional on a future...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -338,14 +345,13 @@ Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 
         <id>t0029_rq1_discordance_rich_resample</id>
         <id>t0030_rq4_info_asymmetry_stratification</id>
         <id>t0032_no_anthropic_rq1_path_decision</id>
-        <id>t0033_realign_t0031_t0029_no_anthropic</id>
       </source_ids>
       <content>
-Planned or active tasks: 4
+Planned or active tasks: 3
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
-Status: in_progress
+Status: intervention_blocked
 Effective date: 2026-05-03
 Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
 Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
@@ -363,13 +369,6 @@ Status: not_started
 Effective date: 2026-05-03
 Short description: Choose one RQ1 execution path under permanent no-Anthropic constraint: existing-only verdict, local rerun, alternate provider, or stop.
 Dependencies: t0027_phase2_5_abc_rerun_with_fixed_b_and_c, t0031_rq1_rq4_no_new_api_salvage
-
-## Realign t0031 suggestions and t0029 status under no-Anthropic constraint
-ID: t0033_realign_t0031_t0029_no_anthropic
-Status: not_started
-Effective date: 2026-05-03
-Short description: Correct two t0031 suggestions and flip t0029 to intervention_blocked on permanent provider unavailability.
-Dependencies: t0031_rq1_rq4_no_new_api_salvage
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
