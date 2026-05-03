@@ -86,7 +86,7 @@ confirmatory N would decrease proportionally.
 <summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
 5-task pilot before t0023</strong> (S-0022-02)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
 
 Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012

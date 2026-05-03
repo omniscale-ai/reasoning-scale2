@@ -793,7 +793,7 @@ pp or commit it above +45 pp.
 <summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
 pure-schema CI</strong> (S-0020-01)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0020_v2_truncation_vs_schema_ablation](../../tasks/t0020_v2_truncation_vs_schema_ablation/)
 
 The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
@@ -860,7 +860,7 @@ from the wrapper, the scope mismatch, or the v1 planner itself.
 <summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
 abc_harness_metrics</strong> (S-0022-05)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
 
 The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at

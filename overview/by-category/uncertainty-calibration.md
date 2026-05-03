@@ -133,13 +133,13 @@ canonical.
 
 </details>
 
-## Suggestions (14 open, 3 closed)
+## Suggestions (13 open, 4 closed)
 
 <details>
 <summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
 calibrator over v3 features</strong> (S-0027-01)</summary>
 
-**Kind**: technique | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+**Kind**: technique | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
 [t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
 
 After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
@@ -246,7 +246,7 @@ model family.
 <summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
 confirmatory run</strong> (S-0021-02)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0021_plan_and_solve_v2_with_final_confidence](../../tasks/t0021_plan_and_solve_v2_with_final_confidence/)
 
 The v2 library now emits final_confidence on every trajectory across all three conditions,
@@ -290,22 +290,6 @@ normalized task success and overconfident-error-rate (incorrect actions taken wi
 self-reported confidence above a threshold). This is the cheapest design that produces RQ1 +
 RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23
 budget.
-
-</details>
-
-<details>
-<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
-for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
-
-t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
-haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
-judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
-Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
-SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
-judge from the gradient.
 
 </details>
 

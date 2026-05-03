@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-27-4682B4" alt="Tasks"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-30-4682B4" alt="Tasks"></a>
   <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-92-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
@@ -29,12 +29,12 @@
 [hierarchical-planning](by-category/hierarchical-planning.md) |
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
-**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (9K) |
-[full](llm-context/full.xml) (120K) | [roadmap](llm-context/roadmap.xml) (24K) |
-[results](llm-context/results-deep-dive.xml) (107K) |
+**[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (10K)
+| [full](llm-context/full.xml) (124K) | [roadmap](llm-context/roadmap.xml) (26K) |
+[results](llm-context/results-deep-dive.xml) (110K) |
 [assets](llm-context/literature-and-assets.xml) (18K)
 
-*Last updated: 2026-05-03 08:50 UTC*
+*Last updated: 2026-05-03 09:33 UTC*
 
 * **Budget**: **$133** spent of $200
 * **Remaining**: **$67**
@@ -54,22 +54,27 @@ No tasks in progress.
 
 ---
 
-## [Ready to Start (0)](tasks/by-status/not_started.md)
+## [Ready to Start (1)](tasks/by-status/not_started.md)
 
-No tasks ready to start.
-
----
-
-## [Blocked Tasks (0)](tasks/)
-
-No blocked tasks.
+| # | Task | Description | Date Added |
+|---|------|-------------|------------|
+| 0029 | [RQ1 discordance-rich paired resample with hard $35 cap](../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) | [`description`](../tasks/t0029_rq1_discordance_rich_resample/task_description.md) | 2026-05-03 |
 
 ---
 
-## [Recently Completed (26 total)](tasks/by-status/completed.md)
+## [Blocked Tasks (1)](tasks/)
+
+| # | Task | Blocked By |
+|---|------|------------|
+| 0030 | [RQ4 info-asymmetry stratification analysis on t0029 outputs](../overview/tasks/task_pages/t0030_rq4_info_asymmetry_stratification.md) | [`t0029_rq1_discordance_rich_resample`](../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
+
+---
+
+## [Recently Completed (27 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0028 | [Brainstorm 8: close RQ1/RQ4 via discordance-rich resample under $35 cap](../overview/tasks/task_pages/t0028_brainstorm_results_8.md) | [`results`](../tasks/t0028_brainstorm_results_8/results/results_detailed.md) | 2026-05-03 09:30 |
 | 0027 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | [`results`](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/results_detailed.md) | 2026-05-03 08:07 |
 | 0026 | [Phase 2 A/B/C Runtime (N=147) for RQ1-RQ5](../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | [`results`](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/results/results_detailed.md) | 2026-05-02 14:50 |
 | 0025 | [Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)](../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | [`results`](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/results/results_detailed.md) | 2026-05-01 21:46 |
@@ -79,9 +84,8 @@ No blocked tasks.
 | 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`results`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/results_detailed.md) | 2026-05-01 17:10 |
 | 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
 | 0018 | [Brainstorm session 6: paper-driven slate after t0017 literature survey](../overview/tasks/task_pages/t0018_brainstorm_results_6.md) | [`results`](../tasks/t0018_brainstorm_results_6/results/results_detailed.md) | 2026-05-01 13:30 |
-| 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`results`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/results_detailed.md) | 2026-05-01 04:43 |
 
-*16 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*17 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -106,13 +110,13 @@ No blocked tasks.
 
 ---
 
-## [Recent Suggestions (77 open)](suggestions/)
+## [Recent Suggestions (76 open)](suggestions/)
 
 <details>
 <summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
 calibrator over v3 features</strong> (S-0027-01)</summary>
 
-**Kind**: technique | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+**Kind**: technique | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
 [t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
 
 After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
@@ -130,7 +134,7 @@ predictor.
 <summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
 behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
 [t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
 
 matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
@@ -274,47 +278,11 @@ mcnemar_p_b_vs_c keep the same sign.
 
 </details>
 
-*67 more open suggestions → [open suggestions](suggestions/)*
+*66 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (18)](suggestions/)
-
-<details>
-<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
-calibrator over v3 features</strong> (S-0027-01)</summary>
-
-**Kind**: technique | **Priority**: high | **Date**: 2026-05-03 | **Source**:
-[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
-
-After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
-matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
-actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
-scaling first, then isotonic regression as a stretch) over the four content features used in
-t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
-telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
-same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
-predictor.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
-behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
-[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
-
-matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
-structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
-(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
-adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
-meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
-plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
-critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
-stronger structural difference produces a discordance pattern that can move McNemar.
-
-</details>
+## [High Priority Suggestions (11)](suggestions/)
 
 <details>
 <summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally
@@ -370,73 +338,6 @@ pp or commit it above +45 pp.
 </details>
 
 <details>
-<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
-pure-schema CI</strong> (S-0020-01)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0020_v2_truncation_vs_schema_ablation](../tasks/t0020_v2_truncation_vs_schema_ablation/)
-
-The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
-t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
-judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
-extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
-half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
-possible follow-up that materially improves statistical power.
-
-</details>
-
-<details>
-<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
-confirmatory run</strong> (S-0021-02)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0021_plan_and_solve_v2_with_final_confidence](../tasks/t0021_plan_and_solve_v2_with_final_confidence/)
-
-The v2 library now emits final_confidence on every trajectory across all three conditions,
-which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
-reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
-addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
-informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
-Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
-shifts or just accuracy shifts.
-
-</details>
-
-<details>
-<summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
-5-task pilot before t0023</strong> (S-0022-02)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0022_abc_harness_progress_rate_and_error_taxonomy](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
-
-Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012
-gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored
-0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate
-progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5
-verifiable intermediate states each (e.g., "derived intermediate equation X", "identified
-relevant principle Y"). If hand-tightening doubles the non-zero rate, roll the recipe out to
-all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
-abc_harness_metrics</strong> (S-0022-05)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0022_abc_harness_progress_rate_and_error_taxonomy](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
-
-The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
-the floor where binary task success failed in t0012. Schedule t0023 to consume
-abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
-error labels into the existing harness output, and report progress-rate means and
-error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
-responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
-task was built for.
-
-</details>
-
-<details>
 <summary>🧪 <strong>Phase 2 calibration-focused A/B with explicit confidence
 elicitation (recommended Candidate 2)</strong> (S-0025-01)</summary>
 
@@ -453,7 +354,102 @@ budget.
 
 </details>
 
-*8 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+<details>
+<summary>🧪 <strong>Rotate the judge model to test the haiku-vs-haiku familial bias
+hypothesis on the model-only delta</strong> (S-0014-03)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+The model-only delta of -1 pp sits below Xiong2024's lower edge (0 pp). Xiong2024 documents
+that judges trained on the same model family as the annotator show a small positive familial
+bias (~5-10 pp). Our judge is held on haiku to keep apples-to-apples with t0009/t0005, which
+means v2-haiku has a familial-agreement advantage over v2-sonnet. Re-judge the same 20-row
+v2-sonnet sample and 23-row v2-haiku sample with claude-sonnet-4-6 as the judge instead of
+haiku. If the model-only delta swings positive (e.g., +5-10 pp) under the sonnet judge, the
+haiku-vs-haiku familial bias is masking a real sonnet annotator advantage. If it stays near
+zero, sonnet really does provide no annotator-quality lift on this composite. Cost ~$2 with
+sonnet judge on 43 rows.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Adopt a haiku-default annotation policy for Phase 2: model swap
+is not justified</strong> (S-0014-04)</summary>
+
+**Kind**: technique | **Priority**: high | **Date**: 2026-04-30 | **Source**:
+[t0014_v2_annotator_sonnet_rerun](../tasks/t0014_v2_annotator_sonnet_rerun/)
+
+Under the t0014 measurement, haiku and sonnet annotators produce statistically
+indistinguishable accept rates under the v2 tree schema (90% sonnet vs 91% haiku, CIs overlap
+completely). Sonnet annotation costs ~$0.20 per call vs haiku ~$0.02 per call (10x via Claude
+Code CLI; 7-8x via direct API). For Phase 2 ABC/main-experiment annotation budgets in the
+$50-200 range, the cost differential dominates: a 200-row sonnet annotation pass would cost
+$40 vs $5 for haiku, with no measurable accept-rate benefit. Adopt haiku as the default
+annotator unless and until S-0014-02 or S-0014-03 surfaces a real sonnet advantage masked by
+judge bias.
+
+</details>
+
+<details>
+<summary>📂 <strong>Negotiate FrontierMath access via Epoch AI evaluation
+pipeline</strong> (S-0002-04)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0002_literature_survey_granularity_conditioning](../tasks/t0002_literature_survey_granularity_conditioning/)
+
+FrontierMath [Glazer2024] uses contamination-resistant unpublished problems hosted via Epoch
+AI's evaluation pipeline; the raw problems are not publicly downloadable. The project needs an
+explicit access conversation with Epoch AI, plus a fallback to public Olympiad benchmarks
+(MATH-500, AIME) if access is denied or delayed. Schedule this as a planning task before Phase
+1 to avoid blocking the FrontierScience-Olympiad slot of the composite benchmark.
+
+</details>
+
+<details>
+<summary>📂 <strong>Provision a ServiceNow developer instance for WorkArena++ live
+evaluation</strong> (S-0003-02)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0003_download_benchmark_subsets](../tasks/t0003_download_benchmark_subsets/)
+
+WorkArena++ instance enumeration requires a live ServiceNow developer instance plus access to
+the gated `ServiceNow/WorkArena-Instances` HuggingFace dataset. This task captures only the
+upstream task-class manifest. Provision a free ServiceNow developer instance, request HF
+access, install browsergym-workarena, and produce an instance-level subset filtered to 4-8
+decisions per task. Until then, the Mind2Web pilot proxy is frozen as the de-facto Phase 2
+fallback.
+
+</details>
+
+<details>
+<summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
+review</strong> (S-0005-01)</summary>
+
+**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter
+retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
+a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
+Cohen's kappa) between the human rater and the LLM annotator.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
+experiments</strong> (S-0005-06)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
+[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
+
+The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
+that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
+prompts (B vs G/S/A from the project's research questions).
+
+</details>
+
+*1 more high-priority suggestion → [high-priority suggestions](suggestions/)*
 
 ---
 

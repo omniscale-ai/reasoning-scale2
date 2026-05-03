@@ -2,37 +2,13 @@
 
 28 suggestion(s) in category
 [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) **21 open**
-(6 high, 9 medium, 6 low), **7 closed**.
+(4 high, 10 medium, 7 low), **7 closed**.
 
 [Back to all suggestions](../README.md)
 
 ---
 
 ## High Priority
-
-<details>
-<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
-behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0027-02` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-03 |
-| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
-
-matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
-structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
-(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
-adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
-meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
-plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
-critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
-stronger structural difference produces a discordance pattern that can move McNemar.
-
-</details>
 
 <details>
 <summary>🧪 <strong>Phase 2 A-vs-B-vs-C evaluation harness</strong> (S-0007-02)</summary>
@@ -96,29 +72,6 @@ delegates to scope_aware_react with a perturbed strategy label, making C structu
 A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so
 the adversarial variant operates on top of B's plan-and-solve scaffold, not A's, then re-run
 the B vs C pair on the same paired set to test whether the inversion survives.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
-abc_harness_metrics</strong> (S-0022-05)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0022-05` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
-
-The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
-the floor where binary task success failed in t0012. Schedule t0023 to consume
-abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
-error labels into the existing harness output, and report progress-rate means and
-error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
-responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
-task was built for.
 
 </details>
 
@@ -226,6 +179,30 @@ task_ids. Multiple rows share the same task_id (different granularity levels of 
 problem), which means the pairing logic treats them as separate predictions for the same task.
 A deduplication or re-keying correction task should produce a version of the dataset with
 unique task_ids per row, or document the intended semantics of multi-row task_ids.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
+behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+
+matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
+structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
+(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
+adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
+meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
+plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
+critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
+stronger structural difference produces a discordance pattern that can move McNemar.
 
 </details>
 
@@ -468,6 +445,29 @@ global' adversarial maps and report the per-step contribution. If the two choice
 materially, document the chosen direction and the empirical justification in
 matched_mismatch_v1's description.md. If they do not differ, lock the current choice and
 remove the ambiguity note.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
+abc_harness_metrics</strong> (S-0022-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0022-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
+the floor where binary task success failed in t0012. Schedule t0023 to consume
+abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
+error labels into the existing harness output, and report progress-rate means and
+error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
+responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
+task was built for.
 
 </details>
 

@@ -1,8 +1,8 @@
 # Suggestions: `benchmark-annotation`
 
 22 suggestion(s) in category
-[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **16 open** (4 high,
-8 medium, 4 low), **6 closed**.
+[`benchmark-annotation`](../../../meta/categories/benchmark-annotation/) **16 open** (3 high,
+8 medium, 5 low), **6 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -51,28 +51,6 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
-pure-schema CI</strong> (S-0020-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0020-01` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
-| **Source paper** | — |
-| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
-
-The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
-t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
-judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
-extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
-half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
-possible follow-up that materially improves statistical power.
 
 </details>
 
@@ -332,6 +310,28 @@ Pareto chart with cost-per-row on the x-axis and accept rate on the y-axis would
 communicate that v2-tree-truncated is on the Pareto frontier and v2-tree-full is dominated by
 it once the +5 pp gain is weighed against the ~2x cost. Useful as input to the t0022 ABC
 harness budget planning.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
+pure-schema CI</strong> (S-0020-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
+t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
+judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
+extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
+half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
+possible follow-up that materially improves statistical power.
 
 </details>
 

@@ -303,7 +303,7 @@ No answers in this category.
 <summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
 behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
 [t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
 
 matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
@@ -401,7 +401,7 @@ any retraining; this is purely a prompting change.
 <summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
 abc_harness_metrics</strong> (S-0022-05)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
 
 The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at

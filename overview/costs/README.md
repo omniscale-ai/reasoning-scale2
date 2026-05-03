@@ -15,9 +15,9 @@ threshold.
 | Warn threshold | 80% ($160.00) |
 | Stop threshold | 100% ($200.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 26 |
+| Tasks with cost records | 27 |
 | Tasks with non-zero spend | 11 |
-| Skipped tasks | 1 |
+| Skipped tasks | 3 |
 
 ## Service Totals
 
@@ -55,7 +55,7 @@ threshold.
 | `variant_c_judge` | $0.13 |
 | `anthropic_api` | $0.06 |
 
-15 task cost record(s) are zero-cost and omitted from the main spend table.
+16 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 
@@ -78,3 +78,5 @@ threshold.
 | Task ID | Reason |
 |---------|--------|
 | `t0023_phase2_abc_confirmatory_sonnet_swebench` | results/costs.json is missing or invalid |
+| `t0029_rq1_discordance_rich_resample` | results/costs.json is missing or invalid |
+| `t0030_rq4_info_asymmetry_stratification` | results/costs.json is missing or invalid |

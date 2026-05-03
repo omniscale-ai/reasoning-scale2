@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-03T08:50:39Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-03T09:33:23Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>85954</char_count>
-    <byte_count>86073</byte_count>
-    <estimated_tokens>21488</estimated_tokens>
+    <char_count>86862</char_count>
+    <byte_count>86983</byte_count>
+    <estimated_tokens>21715</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -157,9 +157,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
         <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
         <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
+        <id>t0028_brainstorm_results_8</id>
       </source_ids>
       <content>
-Completed tasks: 26
+Completed tasks: 27
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -316,13 +317,37 @@ ID: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
 Completed: 2026-05-03
 Short description: Fix B&#x27;s plan parser (S-0026-01), redesign C to delegate to plan_and_solve (S-0026-02), then re-run A/B/C on the 130 paired instances to get real RQ1 and RQ5 answers.
 Result summary: Results Summary — t0027 Phase 2.5 A/B/C re-run Summary Forked t0021&#x27;s plan-and-solve v2 into a fault-tolerant `plan_and_solve_v3` (bounded 3-attempt plan-parse recovery) and t0010&#x27;s mismatch wrapper into `matched_mismatch_v2` (now delegating to v3), re-ran B and C on t0026&#x27;s 130 paired instances under claude-sonnet-4-6, and recomputed paired McNemar (Bonferroni α=0.025) for RQ1 (A vs B) and RQ5 (B vs C) plus 10-bin ECE calibration. Both McNemar tests are **do_not_reject** under Bonferroni; parser-failure rate is **0.0** for both variants (down from t0026&#x27;s B=12%). Total task spend was **$20.7631** (cap $50). Metrics * **Variant A (reused from t0026)** — task_success_rate = **0.0462** (6/130)...
+
+## Brainstorm 8: close RQ1/RQ4 via discordance-rich resample under $35 cap
+ID: t0028_brainstorm_results_8
+Completed: 2026-05-03
+Short description: Brainstorm 8: schedule t0029 RQ1 resample ($35 cap) and t0030 RQ4 stratification analysis; cleanup 8 suggestions.
+Result summary: Brainstorm Session 8 — Results Summary Summary Scheduled a minimum viable wave to close RQ1 and RQ4 within the $66.54 remaining budget after t0027&#x27;s underpowered McNemar verdicts (12 discordant pairs, p=1.0). Created t0029 (`rq1_discordance_rich_resample`, hard $35 cap, abort on cap with partial verdict) and t0030 (`rq4_info_asymmetry_stratification`, zero-API analysis on t0029 outputs). Eight suggestions corrected (2 rejected, 6 demoted). No RQ answered in this session. Headline Decisions * Created **t0029** (`rq1_discordance_rich_resample`) with hard $35 cap. Goal: reach &gt;=30 discordant A vs B pairs for an RQ1 McNemar verdict. Abort rule: if cap is hit before 30 discordant pairs, halt API...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0029_rq1_discordance_rich_resample</id>
+        <id>t0030_rq4_info_asymmetry_stratification</id>
+      </source_ids>
       <content>
-Planned or active tasks: 0
+Planned or active tasks: 2
+
+## RQ1 discordance-rich paired resample with hard $35 cap
+ID: t0029_rq1_discordance_rich_resample
+Status: not_started
+Effective date: 2026-05-03
+Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
+Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+
+## RQ4 info-asymmetry stratification analysis on t0029 outputs
+ID: t0030_rq4_info_asymmetry_stratification
+Status: not_started
+Effective date: 2026-05-03
+Short description: Stratify t0029 paired sample by subset and concordance; test if granularity gains concentrate where info asymmetry is highest. Zero API cost.
+Dependencies: t0029_rq1_discordance_rich_resample
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -368,14 +393,14 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0014-02</id>
         <id>S-0012-01</id>
         <id>S-0012-02</id>
-        <id>S-0020-01</id>
-        <id>S-0021-02</id>
-        <id>S-0022-02</id>
-        <id>S-0022-05</id>
-        <id>S-0025-01</id>
         <id>S-0025-04</id>
         <id>S-0026-01</id>
-        <id>S-0026-02</id>
+        <id>S-0002-01</id>
+        <id>S-0002-05</id>
+        <id>S-0002-08</id>
+        <id>S-0003-01</id>
+        <id>S-0003-03</id>
+        <id>S-0003-04</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -464,41 +489,6 @@ Kind: experiment
 Source task: t0012_phase2_abc_smoke_frontierscience
 The smoke shows FrontierScience-Olympiad is beyond haiku capacity without tools (A: 2.5%, B: 0%, C: 0%). All three conditions are at the floor, making granularity conditioning effects invisible. A confirmatory run requires: (1) a benchmark where the model can achieve 10-50% accuracy without tools (SWE-bench Verified lite or tau-bench at the instance level), (2) claude-sonnet-4-6 instead of haiku, (3) N≥157 paired rows per the confirmatory-N estimate from this smoke. This is the highest-priority next experiment for RQ1/RQ5.
 
-## Re-judge the remaining 8 v1 paired rows to tighten the pure-schema CI
-ID: S-0020-01
-Priority: high
-Kind: experiment
-Source task: t0020_v2_truncation_vs_schema_ablation
-The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1 judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest possible follow-up that materially improves statistical power.
-
-## Track final_confidence vs correctness calibration on the t0023 confirmatory run
-ID: S-0021-02
-Priority: high
-Kind: evaluation
-Source task: t0021_plan_and_solve_v2_with_final_confidence
-The v2 library now emits final_confidence on every trajectory across all three conditions, which unblocks paired calibration analysis. On t0023 (n&gt;=157, sonnet), report per-condition reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration shifts or just accuracy shifts.
-
-## Tighten FrontierScience-Olympiad subgoal lists by hand on a 5-task pilot before t0023
-ID: S-0022-02
-Priority: high
-Kind: evaluation
-Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
-Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012 gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored 0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5 verifiable intermediate states each (e.g., &quot;derived intermediate equation X&quot;, &quot;identified relevant principle Y&quot;). If hand-tightening doubles the non-zero rate, roll the recipe out to all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
-
-## Run t0023&#x27;s confirmatory ABC re-run with N&gt;=157 using abc_harness_metrics
-ID: S-0022-05
-Priority: high
-Kind: experiment
-Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
-The whole purpose of t0022 is to make t0023&#x27;s confirmatory N&gt;=157 ABC re-run produce signal at the floor where binary task success failed in t0012. Schedule t0023 to consume abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step error labels into the existing harness output, and report progress-rate means and error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge responses from t0022 to keep marginal cost low. This is the direct downstream consumer this task was built for.
-
-## Phase 2 calibration-focused A/B with explicit confidence elicitation (recommended Candidate 2)
-ID: S-0025-01
-Priority: high
-Kind: experiment
-Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
-Run a minimum-viable Phase 2 A vs B experiment on a 30-instance subset of the composite benchmark, eliciting agent self-reported confidence at every action and using a sonnet rotated judge plus programmatic graders to break the t0019 anchoring effect. Primary metrics: normalized task success and overconfident-error-rate (incorrect actions taken with self-reported confidence above a threshold). This is the cheapest design that produces RQ1 + RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23 budget.
-
 ## Replace haiku judge with a sonnet-rotated or programmatic grader for all Phase 2 A/B/C scoring
 ID: S-0025-04
 Priority: high
@@ -513,12 +503,47 @@ Kind: technique
 Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output / function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off symmetric.
 
-## Reframe the matched-mismatch wrapper so C is structurally distinct from A
-ID: S-0026-02
-Priority: high
+## Register pass^k as a project metric for reliability reporting
+ID: S-0002-01
+Priority: medium
+Kind: evaluation
+Source task: t0002_literature_survey_granularity_conditioning
+tau-bench [Yao2024] introduces pass^k, a metric that measures whether an agent succeeds across k independent rollouts. The 25-percentage-point gap between pass@1 and pass^8 in retail demonstrates that single-rollout pass@1 systematically overstates agent reliability. The project should register a pass_at_k metric (with k=1, 8) under meta/metrics/ to complement task_success_rate. This enables Phase 4 paper-ready claims to be robust to single-rollout luck.
+
+## Build the SWE-bench Verified Docker harness
+ID: S-0002-05
+Priority: medium
+Kind: dataset
+Source task: t0002_literature_survey_granularity_conditioning
+SWE-bench Verified [OpenAI2024] is the canonical atomic-execution slot in the four-source composite. Its evaluation harness uses Docker per repository to isolate test runs. This task would download the Verified problem set, pull the Docker images, and run a 10-instance smoke test to confirm the harness reproduces published baseline numbers (e.g., one of the early Claude or GPT scores).
+
+## Run a Phase 1 pilot annotation on 20 tasks before scaling to 100
+ID: S-0002-08
+Priority: medium
 Kind: experiment
-Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
-Variant C beat B (paired McNemar p = 0.019) but only because the &#x27;adversarial&#x27; wrapper delegates to scope_aware_react with a perturbed strategy label, making C structurally A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so the adversarial variant operates on top of B&#x27;s plan-and-solve scaffold, not A&#x27;s, then re-run the B vs C pair on the same paired set to test whether the inversion survives.
+Source task: t0002_literature_survey_granularity_conditioning
+The project&#x27;s success criteria require 100 tasks annotated at three granularity levels. Before scaling, run a 20-task pilot to validate the annotation schema, measure inter-annotator agreement, and refine the rubric. WorkArena++ [Boisvert2024] offers the cleanest atomic-vs-compositional structure for the pilot; its synthetic trace generator can supply gold atomic actions, leaving manual annotation effort focused on global and subtask levels.
+
+## Negotiate Epoch AI access for full FrontierMath benchmark
+ID: S-0003-01
+Priority: medium
+Kind: dataset
+Source task: t0003_download_benchmark_subsets
+FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses 40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per the t0002 fallback plan.
+
+## Sensitivity-check the SWE-bench Verified 4-8-hunks subset against [3, 12]
+ID: S-0003-03
+Priority: medium
+Kind: evaluation
+Source task: t0003_download_benchmark_subsets
+The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks. The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo distributions; this informs whether the 4-8 boundary is too narrow for Phase 2&#x27;s atomic-edit experiments.
+
+## Derive step graphs for FrontierScience-Olympiad rows
+ID: S-0003-04
+Priority: medium
+Kind: experiment
+Source task: t0003_download_benchmark_subsets
+FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">

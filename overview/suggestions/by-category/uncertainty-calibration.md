@@ -1,8 +1,8 @@
 # Suggestions: `uncertainty-calibration`
 
 17 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **14 open** (6
-high, 3 medium, 5 low), **3 closed**.
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **13 open** (3
+high, 4 medium, 6 low), **4 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -83,75 +83,6 @@ budget.
 
 </details>
 
-<details>
-<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
-for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0025-04` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
-| **Source paper** | — |
-| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
-haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
-judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
-Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
-SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
-judge from the gradient.
-
-</details>
-
-<details>
-<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
-calibrator over v3 features</strong> (S-0027-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0027-01` |
-| **Kind** | technique |
-| **Date added** | 2026-05-03 |
-| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
-| **Source paper** | — |
-| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
-
-After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
-matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
-actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
-scaling first, then isotonic regression as a stretch) over the four content features used in
-t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
-telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
-same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
-predictor.
-
-</details>
-
-<details>
-<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
-confirmatory run</strong> (S-0021-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0021-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
-| **Source paper** | — |
-| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-The v2 library now emits final_confidence on every trajectory across all three conditions,
-which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
-reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
-addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
-informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
-Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
-shifts or just accuracy shifts.
-
-</details>
-
 ## Medium Priority
 
 <details>
@@ -197,6 +128,30 @@ at only 25%. Add a calibration head — temperature scaling, isotonic regression
 post-hoc calibrator over the four content features (subset, plan_length, n_actions,
 judge_program_agreement_proxy) — and report ECE on a held-out slice of the same 130-instance
 paired set.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
+calibrator over v3 features</strong> (S-0027-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-01` |
+| **Kind** | technique |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
+matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
+actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
+scaling first, then isotonic regression as a stretch) over the four content features used in
+t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
+telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
+same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
+predictor.
 
 </details>
 
@@ -341,6 +296,29 @@ small chart and a recommended threshold for downstream tasks.
 
 </details>
 
+<details>
+<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
+confirmatory run</strong> (S-0021-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0021-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The v2 library now emits final_confidence on every trajectory across all three conditions,
+which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
+reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
+addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
+informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
+Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
+shifts or just accuracy shifts.
+
+</details>
+
 ## Closed
 
 <details>
@@ -412,5 +390,29 @@ verdicts on FrontierScience-Olympiad rows complain about content not present in 
 excerpt. Re-run the audit using the full problem text (or a structured per-section summary)
 and compare accept rates. Predict an absolute accept-rate increase of >=15 percentage points
 on FrontierScience-Olympiad.
+
+</details>
+
+<details>
+<summary>✅ <s>Replace haiku judge with a sonnet-rotated or programmatic grader for
+all Phase 2 A/B/C scoring</s> — covered by <a
+href="../../../tasks/t0029_rq1_discordance_rich_resample/"><code>t0029_rq1_discordance_rich_resample</code></a>
+(S-0025-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0025-04` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
+haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
+judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
+Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
+SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
+judge from the gradient.
 
 </details>

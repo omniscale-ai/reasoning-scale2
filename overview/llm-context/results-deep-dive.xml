@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-03T08:50:39Z">
+<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-03T09:33:23Z">
   <archive_summary>
     <title>Results Deep Dive</title>
     <description>Completed-task result summaries plus all detailed results reports.</description>
     <use_case>Performance analysis, experiment comparison, and result interpretation.</use_case>
-    <section_count>30</section_count>
-    <char_count>429938</char_count>
-    <byte_count>431653</byte_count>
-    <estimated_tokens>107484</estimated_tokens>
+    <section_count>31</section_count>
+    <char_count>439935</char_count>
+    <byte_count>441678</byte_count>
+    <estimated_tokens>109983</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -153,9 +153,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
         <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
         <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
+        <id>t0028_brainstorm_results_8</id>
       </source_ids>
       <content>
-Completed tasks: 26
+Completed tasks: 27
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -312,13 +313,37 @@ ID: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
 Completed: 2026-05-03
 Short description: Fix B&#x27;s plan parser (S-0026-01), redesign C to delegate to plan_and_solve (S-0026-02), then re-run A/B/C on the 130 paired instances to get real RQ1 and RQ5 answers.
 Result summary: Results Summary — t0027 Phase 2.5 A/B/C re-run Summary Forked t0021&#x27;s plan-and-solve v2 into a fault-tolerant `plan_and_solve_v3` (bounded 3-attempt plan-parse recovery) and t0010&#x27;s mismatch wrapper into `matched_mismatch_v2` (now delegating to v3), re-ran B and C on t0026&#x27;s 130 paired instances under claude-sonnet-4-6, and recomputed paired McNemar (Bonferroni α=0.025) for RQ1 (A vs B) and RQ5 (B vs C) plus 10-bin ECE calibration. Both McNemar tests are **do_not_reject** under Bonferroni; parser-failure rate is **0.0** for both variants (down from t0026&#x27;s B=12%). Total task spend was **$20.7631** (cap $50). Metrics * **Variant A (reused from t0026)** — task_success_rate = **0.0462** (6/130)...
+
+## Brainstorm 8: close RQ1/RQ4 via discordance-rich resample under $35 cap
+ID: t0028_brainstorm_results_8
+Completed: 2026-05-03
+Short description: Brainstorm 8: schedule t0029 RQ1 resample ($35 cap) and t0030 RQ4 stratification analysis; cleanup 8 suggestions.
+Result summary: Brainstorm Session 8 — Results Summary Summary Scheduled a minimum viable wave to close RQ1 and RQ4 within the $66.54 remaining budget after t0027&#x27;s underpowered McNemar verdicts (12 discordant pairs, p=1.0). Created t0029 (`rq1_discordance_rich_resample`, hard $35 cap, abort on cap with partial verdict) and t0030 (`rq4_info_asymmetry_stratification`, zero-API analysis on t0029 outputs). Eight suggestions corrected (2 rejected, 6 demoted). No RQ answered in this session. Headline Decisions * Created **t0029** (`rq1_discordance_rich_resample`) with hard $35 cap. Goal: reach &gt;=30 discordant A vs B pairs for an RQ1 McNemar verdict. Abort rule: if cap is hit before 30 discordant pairs, halt API...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0029_rq1_discordance_rich_resample</id>
+        <id>t0030_rq4_info_asymmetry_stratification</id>
+      </source_ids>
       <content>
-Planned or active tasks: 0
+Planned or active tasks: 2
+
+## RQ1 discordance-rich paired resample with hard $35 cap
+ID: t0029_rq1_discordance_rich_resample
+Status: not_started
+Effective date: 2026-05-03
+Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
+Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+
+## RQ4 info-asymmetry stratification analysis on t0029 outputs
+ID: t0030_rq4_info_asymmetry_stratification
+Status: not_started
+Effective date: 2026-05-03
+Short description: Stratify t0029 paired sample by subset and concordance; test if granularity gains concentrate where info asymmetry is highest. Zero API cost.
+Dependencies: t0029_rq1_discordance_rich_resample
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -6780,6 +6805,155 @@ From `task_description.md` &quot;Questions Re-asked&quot;:
 | **REQ-11** | `verify_task_metrics.py`, `verify_task_results.py`, and `verify_pr_premerge.py` pass with 0 errors. | **Done** | All three verificators pass with 0 errors. The `verify_pr_premerge` run is gated by the orchestrator before merge; metrics and results verificators pass at this step. | See `## Verification` |
 | **RQ1** | Does A beat B once B&#x27;s parser is fixed? | **Answered: do_not_reject** | A and B both score 6/130 = 4.62% on the paired set; discordant 6/6; p=1.0 under Bonferroni α=0.025. The fixed parser eliminates the symmetry-via-failure that biased t0026; the residual symmetry on this n cannot reject equality. | `data/mcnemar_results.json` `rq1_a_vs_b` |
 | **RQ5** | Is C strictly worse than B once C delegates to plan_and_solve? | **Answered: do_not_reject** | B and C score 6/130 and 7/130; discordant 4/5; p=1.0 under Bonferroni α=0.025. The mismatch wrapper does not push plan-and-solve below B on this paired set. | `data/mcnemar_results.json` `rq5_b_vs_c` |
+      </content>
+    </section>
+    <section id="t0028_brainstorm_results_8-results-detailed" source_kind="file">
+      <title>t0028_brainstorm_results_8 — Brainstorm 8: close RQ1/RQ4 via discordance-rich resample under $35 cap — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0028_brainstorm_results_8</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0028_brainstorm_results_8/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+#### Summary
+
+Brainstorm session 8 chose a minimum viable wave (t0029 + t0030) to close RQ1 and RQ4 within the
+$66.54 remaining project budget. Hard $35 cap on t0029 with an abort rule that produces a partial
+verdict on cap. Eight suggestion corrections applied (2 rejections, 6 demotions).
+
+#### Methodology
+
+Pure planning session. No API calls, no compute, no remote machines. Decisions captured in step logs
+001-004 and applied via correction files plus two child task scaffolds.
+
+#### Project State at Session Start
+
+* Total spend: $133.46 / $200. Remaining: $66.54.
+* Tasks: 27 (1 cancelled t0023, 26 completed).
+* Uncovered suggestions: 64 (9 HIGH, 35 MEDIUM, 20 LOW).
+* Answer assets: 2 (none directly answer RQ1-RQ5).
+* Tasks completed since Brainstorm Session 7: t0025 (literature survey, $0.20), t0026 (Phase 2
+  N=147, $38.61, over original $10 limit), t0027 (Phase 2.5 N=130, $20.76).
+
+#### Per-RQ Status After t0027
+
+| RQ | Status | Direct evidence | Blocker | Cost to close |
+| --- | --- | --- | --- | --- |
+| RQ1 granularity → success | Underpowered | t0027 6 vs 6 disc., p=1.0 | Need &gt;=30 disc. pairs | ~$21-32 |
+| RQ2 overconfident error rate | Stuck at 100% confidence | t0027 ECE B=0.336 / C=0.374 | Plan-and-Solve floor; need content-driven calibrator + A patch | ~$10-22 |
+| RQ3 execute-now vs request-info | Not operationalised | None | Need decision field in agent output | ~$5-18 |
+| RQ4 info-asymmetric gain | Underpowered | t0027 per-subset rates suggestive | Stratification of &gt;=30 disc. sample | ~$3-5 |
+| RQ5 scope-mismatched strict-worse | Counter-direction | t0027 C=7 vs B=6 | C wrapper not structurally distinct enough | ~$12-32 |
+
+#### Independent Priority Reassessment of HIGH Suggestions
+
+| Suggestion | Original priority | Reassessed | Action |
+| --- | --- | --- | --- |
+| S-0020-01 | high | low | Demote (HIGH→LOW). Pre-Phase-2 instruction-following hypothesis superseded by t0026/t0027 runtime data. |
+| S-0021-02 | high | low | Demote (HIGH→LOW). Plan-and-Solve framing tweaks; floor confirmed content-driven by t0027. |
+| S-0022-02 | high | low | Demote (HIGH→LOW). Progress-rate variant; binding constraint is power, not metric design. |
+| S-0022-05 | high | low | Demote (HIGH→LOW). Error-taxonomy refinement; t0027 already produced first-order recovery distributions. |
+| S-0025-01 | high | rejected | Reject obsolete. Pre-Phase-2 sampling proposal superseded by t0029. |
+| S-0025-04 | high | covered | Source suggestion for t0029. |
+| S-0026-02 | high | rejected | Reject duplicate of S-0027-02. |
+| S-0027-01 | high | medium | Demote. Calibrator deferred to next wave. |
+| S-0027-02 | high | medium | Demote. C structural rebuild deferred to next wave. |
+
+Net: 9 HIGH → 0 HIGH (2 covered, 1 rejected duplicate, 1 rejected obsolete, 4 demoted to LOW, 2
+demoted to MEDIUM).
+
+#### Decision Rationale
+
+The minimum viable wave (t0029 + t0030) was chosen over the full five-RQ closure (TaskA-E, ~$48-104)
+for these reasons:
+
+1. **Budget headroom for cap overruns**: t0026 already overran its $10 limit by 286%. A $35 cap on
+   t0029 with $66 remaining preserves $31 of headroom for unexpected overruns plus the next
+   session&#x27;s wave.
+2. **RQ1 is the headline question**: a project-wide verdict on the main hypothesis is the Phase 4
+   deliverable in `project/description.md`. RQ1 closure has the highest information value per
+   dollar.
+3. **TaskE is free**: piggy-backing t0030 on t0029&#x27;s predictions delivers RQ4 at zero API cost.
+4. **Cap-on-cap guardrail**: the researcher explicitly forbade in-wave replacement tasks if t0029
+   hits the cap. This preserves budget and the suggestion backlog for an informed next session
+   rather than spending blind on RQ2/RQ3/RQ5 before the RQ1 verdict.
+
+#### New Tasks
+
+##### t0029 RQ1 Discordance-Rich Paired Resample
+
+* Status: `not_started`. Source suggestion: S-0025-04. Covers: S-0027-05.
+* Hard $35 cap. Abort rule: if cap hit before 30 discordant pairs, partial verdict + power caveat,
+  no in-wave replacements.
+* Reuses t0021 Plan-and-Solve v2 (arm A) and t0027 fault-tolerant scope-aware ReAct (arm B).
+* Saves predictions assets so t0030 can run with no additional API spend.
+* Dependencies: t0010, t0021, t0027.
+
+##### t0030 RQ4 Info-Asymmetry Stratification
+
+* Status: `not_started`. Source suggestion: none.
+* Zero API cost. Stratifies t0029&#x27;s paired sample by subset and info-asymmetry tertile.
+* Tests whether granularity gain rate (success_rate(B) - success_rate(A)) concentrates in
+  high-asymmetry strata via stratified McNemar / CMH with Bonferroni alpha=0.025.
+* Dependencies: t0029.
+
+#### Suggestion Corrections
+
+| Correction ID | Target | Action | Rationale (short) |
+| --- | --- | --- | --- |
+| C-0028-01 | S-0026-02 | reject | Duplicate of S-0027-02. |
+| C-0028-02 | S-0025-01 | reject | Obsolete; t0029 supersedes. |
+| C-0028-03 | S-0027-01 | priority MEDIUM | Calibrator deferred to next wave. |
+| C-0028-04 | S-0027-02 | priority MEDIUM | C rebuild deferred to next wave. |
+| C-0028-05 | S-0020-01 | priority LOW | Pre-Phase-2 hypothesis superseded. |
+| C-0028-06 | S-0021-02 | priority LOW | Floor is content-driven, not template. |
+| C-0028-07 | S-0022-02 | priority LOW | Power, not metric design, is binding. |
+| C-0028-08 | S-0022-05 | priority LOW | Taxonomy already established. |
+
+#### Verification
+
+* `verify_task_file t0028_brainstorm_results_8` — passed.
+* `verify_corrections t0028_brainstorm_results_8` — passed (0 errors, 0 warnings).
+* `verify_task_file t0029_rq1_discordance_rich_resample` — passed.
+* `verify_task_file t0030_rq4_info_asymmetry_stratification` — passed.
+* `verify_logs t0028_brainstorm_results_8` — passed.
+
+#### Files Created
+
+* `tasks/t0028_brainstorm_results_8/task.json`
+* `tasks/t0028_brainstorm_results_8/task_description.md`
+* `tasks/t0028_brainstorm_results_8/step_tracker.json`
+* `tasks/t0028_brainstorm_results_8/plan/plan.md`
+* `tasks/t0028_brainstorm_results_8/research/{research_papers,research_internet,research_code}.md`
+* `tasks/t0028_brainstorm_results_8/results/{results_summary,results_detailed}.md`
+* `tasks/t0028_brainstorm_results_8/results/{metrics,suggestions,costs,remote_machines_used}.json`
+* `tasks/t0028_brainstorm_results_8/logs/steps/00{1,2,3,4}_*/step_log.md`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0020-01.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0021-02.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0022-02.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0022-05.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0025-01.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0026-02.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0027-01.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0027-02.json`
+* `tasks/t0029_rq1_discordance_rich_resample/{task.json,task_description.md}`
+* `tasks/t0030_rq4_info_asymmetry_stratification/{task.json,task_description.md}`
+
+#### Limitations
+
+* No RQ answered in this session by design.
+* If t0029 hits the cap, the wave produces only a partial RQ1 verdict and a partial RQ4
+  stratification.
+* RQ2, RQ3, RQ5 remain open and depend on a future brainstorm session deciding whether the project
+  continues, based on the RQ1 / RQ4 outcomes.
+
+#### Next Steps
+
+* Execute t0029 (hard $35 cap, abort on cap).
+* Execute t0030 immediately after.
+* Run brainstorm session 9 with t0029 / t0030 results in hand.
       </content>
     </section>
   </sections>

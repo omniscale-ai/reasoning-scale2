@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
 28 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **20 open** (5
-high, 11 medium, 4 low), **8 closed**.
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **20 open** (3
+high, 11 medium, 6 low), **8 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -72,51 +72,6 @@ slice with a single shared LLM provider, recording trajectory_records.jsonl per 
 computing the registered metrics task_success_rate, avg_decisions_per_task, and
 overconfident_error_rate per condition. The harness must depend on this library only via the
 trajectory schema, never via internal helpers, to preserve isolation.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
-pure-schema CI</strong> (S-0020-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0020-01` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
-| **Source paper** | — |
-| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
-
-The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
-t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
-judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
-extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
-half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
-possible follow-up that materially improves statistical power.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
-abc_harness_metrics</strong> (S-0022-05)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0022-05` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
-
-The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
-the floor where binary task success failed in t0012. Schedule t0023 to consume
-abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
-error labels into the existing harness output, and report progress-rate means and
-error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
-responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
-task was built for.
 
 </details>
 
@@ -458,6 +413,51 @@ paper summary, which was itself grounded only in the abstract because the PDF do
 in t0002. A small download-paper task should re-attempt the download against arXiv:2305.04091
 and verify that the prompt text in code/planandsolve.py matches the published version
 verbatim. If it diverges, file a correction.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
+pure-schema CI</strong> (S-0020-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
+t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
+judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
+extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
+half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
+possible follow-up that materially improves statistical power.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
+abc_harness_metrics</strong> (S-0022-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0022-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
+the floor where binary task success failed in t0012. Schedule t0023 to consume
+abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
+error labels into the existing harness output, and report progress-rate means and
+error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
+responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
+task was built for.
 
 </details>
 

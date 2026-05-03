@@ -8,56 +8,6 @@
 
 ## 2026-05-03 (6)
 
-## High Priority
-
-<details>
-<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
-behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0027-02` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-03 |
-| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
-
-matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
-structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
-(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
-adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
-meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
-plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
-critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
-stronger structural difference produces a discordance pattern that can move McNemar.
-
-</details>
-
-<details>
-<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
-calibrator over v3 features</strong> (S-0027-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0027-01` |
-| **Kind** | technique |
-| **Date added** | 2026-05-03 |
-| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
-| **Source paper** | — |
-| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
-
-After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
-matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
-actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
-scaling first, then isotonic regression as a stretch) over the four content features used in
-t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
-telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
-same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
-predictor.
-
-</details>
-
 ## Medium Priority
 
 <details>
@@ -108,6 +58,30 @@ claude-sonnet-4-6 and report whether the McNemar p-values move off symmetric. Th
 </details>
 
 <details>
+<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
+behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+
+matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
+structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
+(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
+adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
+meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
+plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
+critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
+stronger structural difference produces a discordance pattern that can move McNemar.
+
+</details>
+
+<details>
 <summary>🔧 <strong>Instrument recovery_path unconditionally and audit the ~30
 'unknown' trajectories per variant</strong> (S-0027-04)</summary>
 
@@ -128,6 +102,30 @@ emit recovery_path on every trajectory and re-run a small replay over the existi
 artifacts to backfill the field for completed runs. Report the corrected distribution and
 check whether the 29/33 currently-unknown trajectories are dominated by the clean path (most
 likely) or by silent fallbacks.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
+calibrator over v3 features</strong> (S-0027-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-01` |
+| **Kind** | technique |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
+matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
+actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
+scaling first, then isotonic regression as a stretch) over the four content features used in
+t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
+telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
+same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
+predictor.
 
 </details>
 
@@ -368,119 +366,6 @@ normalized task success and overconfident-error-rate (incorrect actions taken wi
 self-reported confidence above a threshold). This is the cheapest design that produces RQ1 +
 RQ2 evidence simultaneously and stays inside the ~$10-14 envelope of the remaining ~$23
 budget.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
-pure-schema CI</strong> (S-0020-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0020-01` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
-| **Source paper** | — |
-| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
-
-The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
-t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
-judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
-extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
-half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
-possible follow-up that materially improves statistical power.
-
-</details>
-
-<details>
-<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
-for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0025-04` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
-| **Source paper** | — |
-| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
-haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
-judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
-Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
-SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
-judge from the gradient.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
-abc_harness_metrics</strong> (S-0022-05)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0022-05` |
-| **Kind** | experiment |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
-| **Source paper** | — |
-| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
-
-The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
-the floor where binary task success failed in t0012. Schedule t0023 to consume
-abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
-error labels into the existing harness output, and report progress-rate means and
-error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
-responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
-task was built for.
-
-</details>
-
-<details>
-<summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
-5-task pilot before t0023</strong> (S-0022-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0022-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
-| **Source paper** | — |
-| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012
-gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored
-0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate
-progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5
-verifiable intermediate states each (e.g., "derived intermediate equation X", "identified
-relevant principle Y"). If hand-tightening doubles the non-zero rate, roll the recipe out to
-all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
-
-</details>
-
-<details>
-<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
-confirmatory run</strong> (S-0021-02)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0021-02` |
-| **Kind** | evaluation |
-| **Date added** | 2026-05-01 |
-| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
-| **Source paper** | — |
-| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
-
-The v2 library now emits final_confidence on every trajectory across all three conditions,
-which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
-reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
-addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
-informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
-Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
-shifts or just accuracy shifts.
 
 </details>
 
@@ -918,6 +803,97 @@ tested.
 </details>
 
 <details>
+<summary>🧪 <strong>Re-judge the remaining 8 v1 paired rows to tighten the
+pure-schema CI</strong> (S-0020-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0020-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0020_v2_truncation_vs_schema_ablation`](../../../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-annotation`](../../../meta/categories/benchmark-annotation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The pure-schema delta CI (+22.5 to +77.5 pp) is dominated by the v1 sample size (n=12) because
+t0005 only judged 12 of the 20 paired rows in its subsampled pool. Re-running the t0005 v1
+judge on the remaining 8 paired indices (rows that t0014 judged but t0005 did not) would
+extend v1 from n=12 to n=20 with no new annotation calls and tighten the pure-schema CI from a
+half-width of ~28 pp to ~14 pp. Cost is ~8 haiku judge calls (~$0.50). This is the cheapest
+possible follow-up that materially improves statistical power.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
+abc_harness_metrics</strong> (S-0022-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0022-05` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
+the floor where binary task success failed in t0012. Schedule t0023 to consume
+abc_harness_metrics: import score_trajectory, log per-trajectory progress_rate and per-step
+error labels into the existing harness output, and report progress-rate means and
+error-distribution mixtures per ABC condition with bootstrap CIs. Reuse the cached judge
+responses from t0022 to keep marginal cost low. This is the direct downstream consumer this
+task was built for.
+
+</details>
+
+<details>
+<summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
+5-task pilot before t0023</strong> (S-0022-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0022-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) |
+| **Source paper** | — |
+| **Categories** | [`benchmark-frontierscience`](../../../meta/categories/benchmark-frontierscience/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012
+gold answers (mean 4.6 per environment). On the 89-row replay, 73 of 89 trajectories scored
+0.0 progress rate, suggesting the subgoals may be too coarse to register intermediate
+progress. Hand-review subgoals for 5 randomly chosen environments, refining them into 3-5
+verifiable intermediate states each (e.g., "derived intermediate equation X", "identified
+relevant principle Y"). If hand-tightening doubles the non-zero rate, roll the recipe out to
+all 26 environments before t0023 ships. Cheap and high-leverage for t0023 signal quality.
+
+</details>
+
+<details>
+<summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
+confirmatory run</strong> (S-0021-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0021-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+The v2 library now emits final_confidence on every trajectory across all three conditions,
+which unblocks paired calibration analysis. On t0023 (n>=157, sonnet), report per-condition
+reliability diagrams (binned confidence vs empirical accuracy), Brier scores, and ECE in
+addition to overconfident_error_rate. This will reveal whether the [0,1] field is actually
+informative for the model or whether it collapses to a flat distribution near 0.7-0.9 (the
+Xiong2024 haiku risk), and whether condition-vs-condition Metric 2 deltas reflect calibration
+shifts or just accuracy shifts.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Truncation-budget sweep to map the marginal value of additional
 context</strong> (S-0020-04)</summary>
 
@@ -1015,6 +991,30 @@ untestable. Extend the library to emit a verbalized confidence label per the Xio
 protocol: add a follow-up call after the final plan step asking the model to rate its
 confidence on a 0-1 scale. This is a prerequisite for any confirmatory A-vs-B-vs-C run that
 wants to test RQ2.
+
+</details>
+
+<details>
+<summary>✅ <s>Replace haiku judge with a sonnet-rotated or programmatic grader for
+all Phase 2 A/B/C scoring</s> — covered by <a
+href="../../../tasks/t0029_rq1_discordance_rich_resample/"><code>t0029_rq1_discordance_rich_resample</code></a>
+(S-0025-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0025-04` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-01 |
+| **Source task** | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/), [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
+haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
+judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
+Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
+SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
+judge from the gradient.
 
 </details>
 

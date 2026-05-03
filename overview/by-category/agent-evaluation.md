@@ -706,13 +706,13 @@ canonical.
 
 </details>
 
-## Suggestions (47 open, 9 closed)
+## Suggestions (46 open, 10 closed)
 
 <details>
 <summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
 behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
 [t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
 
 matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
@@ -1050,7 +1050,7 @@ from the wrapper, the scope mismatch, or the v1 planner itself.
 <summary>📊 <strong>Track final_confidence vs correctness calibration on the t0023
 confirmatory run</strong> (S-0021-02)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0021_plan_and_solve_v2_with_final_confidence](../../tasks/t0021_plan_and_solve_v2_with_final_confidence/)
 
 The v2 library now emits final_confidence on every trajectory across all three conditions,
@@ -1101,7 +1101,7 @@ the t0023 confirmatory ABC re-run.
 <summary>📊 <strong>Tighten FrontierScience-Olympiad subgoal lists by hand on a
 5-task pilot before t0023</strong> (S-0022-02)</summary>
 
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
 
 Current FrontierScience-Olympiad subgoals are derived mechanically from SUBTASK lines in t0012
@@ -1151,7 +1151,7 @@ escalate to sonnet for the headline t0023 numbers and document in t0023's Limita
 <summary>🧪 <strong>Run t0023's confirmatory ABC re-run with N>=157 using
 abc_harness_metrics</strong> (S-0022-05)</summary>
 
-**Kind**: experiment | **Priority**: high | **Date**: 2026-05-01 | **Source**:
+**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
 [t0022_abc_harness_progress_rate_and_error_taxonomy](../../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/)
 
 The whole purpose of t0022 is to make t0023's confirmatory N>=157 ABC re-run produce signal at
@@ -1209,22 +1209,6 @@ RQ5's strict double inequality (C < both A and B) under our prompting framing, r
 arms on a half-scale (15-instance) subset of the composite benchmark, ~$15-20. Lower-priority
 than S-0025-01 because RQ5 is a sub-hypothesis and the strict form is the most expensive to
 falsify.
-
-</details>
-
-<details>
-<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
-for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
-
-t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
-haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
-judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
-Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
-SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
-judge from the gradient.
 
 </details>
 

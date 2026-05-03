@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-03T08:50:39Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-03T09:33:23Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>79597</char_count>
-    <byte_count>79631</byte_count>
-    <estimated_tokens>19899</estimated_tokens>
+    <char_count>79601</char_count>
+    <byte_count>79635</byte_count>
+    <estimated_tokens>19900</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -813,7 +813,7 @@ Test the family-bias hypothesis at the judge stage by re-judging the same 55-row
 ## Re-judge the remaining 8 v1 paired rows to tighten the pure-schema CI
 ID: S-0020-01
 Status: active
-Priority: high
+Priority: low
 Kind: experiment
 Source task: t0020_v2_truncation_vs_schema_ablation
 Categories: benchmark-annotation, hierarchical-planning
@@ -879,7 +879,7 @@ The n=1 smoke for Condition C (matched-mismatch wrapping scope_unaware_planandso
 ## Track final_confidence vs correctness calibration on the t0023 confirmatory run
 ID: S-0021-02
 Status: active
-Priority: high
+Priority: low
 Kind: evaluation
 Source task: t0021_plan_and_solve_v2_with_final_confidence
 Categories: uncertainty-calibration, agent-evaluation
@@ -912,7 +912,7 @@ When the budget guard returns a deterministic fallback (&quot;no&quot; for progr
 ## Tighten FrontierScience-Olympiad subgoal lists by hand on a 5-task pilot before t0023
 ID: S-0022-02
 Status: active
-Priority: high
+Priority: low
 Kind: evaluation
 Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
 Categories: benchmark-frontierscience, agent-evaluation
@@ -945,7 +945,7 @@ Both progress_rate and error_taxonomy judge calls default to claude-haiku-4-5 to
 ## Run t0023&#x27;s confirmatory ABC re-run with N&gt;=157 using abc_harness_metrics
 ID: S-0022-05
 Status: active
-Priority: high
+Priority: low
 Kind: experiment
 Source task: t0022_abc_harness_progress_rate_and_error_taxonomy
 Categories: agent-evaluation, granularity-conditioning, hierarchical-planning
@@ -955,7 +955,7 @@ The whole purpose of t0022 is to make t0023&#x27;s confirmatory N&gt;=157 ABC re
 
 ## Phase 2 calibration-focused A/B with explicit confidence elicitation (recommended Candidate 2)
 ID: S-0025-01
-Status: active
+Status: rejected
 Priority: high
 Kind: experiment
 Source task: t0025_lit_survey_hierarchical_agents_and_judges_2024_2026
@@ -1035,7 +1035,7 @@ Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of
 
 ## Reframe the matched-mismatch wrapper so C is structurally distinct from A
 ID: S-0026-02
-Status: active
+Status: rejected
 Priority: high
 Kind: experiment
 Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
@@ -1091,7 +1091,7 @@ The resumable-checkpoint path filtered 17 instances per variant from a corrupted
 ## Replace verbalized final_confidence with a content-driven calibrator over v3 features
 ID: S-0027-01
 Status: active
-Priority: high
+Priority: medium
 Kind: technique
 Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
 Categories: uncertainty-calibration
@@ -1102,7 +1102,7 @@ After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-
 ## Give matched_mismatch a structurally distinct adversarial behavior, not just a v3 delegation
 ID: S-0027-02
 Status: active
-Priority: high
+Priority: medium
 Kind: experiment
 Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
 Categories: agent-evaluation, granularity-conditioning
