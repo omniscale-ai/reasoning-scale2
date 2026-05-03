@@ -104,9 +104,9 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md, results_detailed.md, metrics.json, McNemar tables and calibration JSON, plus 4 charts.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T07:52:39Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T08:04:33Z",
       "log_file": "logs/steps/012_results/"
     },
     {
