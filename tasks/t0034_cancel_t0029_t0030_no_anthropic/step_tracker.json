@@ -14,10 +14,10 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0032_no_anthropic_rq1_path_decision is completed.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T14:19:27Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/002_check-deps/"
     },
     {
       "step": 3,

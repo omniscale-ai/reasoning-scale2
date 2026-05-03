@@ -1,0 +1,14 @@
+{
+  "task_id": "t0034_cancel_t0029_t0030_no_anthropic",
+  "checked_at": "2026-05-03T14:19:30Z",
+  "result": "passed",
+  "dependencies": [
+    {
+      "task_id": "t0032_no_anthropic_rq1_path_decision",
+      "status": "completed",
+      "satisfied": true
+    }
+  ],
+  "errors": 0,
+  "warnings": 0
+}
