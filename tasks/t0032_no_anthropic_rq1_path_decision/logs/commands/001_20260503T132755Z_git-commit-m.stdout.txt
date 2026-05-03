@@ -1,0 +1,4 @@
+[task/t0032_no_anthropic_rq1_path_decision a0cc0b7] t0032_no_anthropic_rq1_path_decision [research-internet]: Provider pricing scan + per-pair cost anchor
+ 3 files changed, 262 insertions(+), 2 deletions(-)
+ create mode 100644 tasks/t0032_no_anthropic_rq1_path_decision/logs/steps/005_research-internet/step_log.md
+ create mode 100644 tasks/t0032_no_anthropic_rq1_path_decision/research/research_internet.md

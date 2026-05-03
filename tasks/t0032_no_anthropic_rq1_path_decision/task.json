@@ -5,13 +5,13 @@
   "name": "No-Anthropic RQ1 path decision",
   "short_description": "Choose one RQ1 execution path under permanent no-Anthropic constraint: existing-only verdict, local rerun, alternate provider, or stop.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
     "t0031_rq1_rq4_no_new_api_salvage"
   ],
   "start_time": "2026-05-03T13:19:53Z",
-  "end_time": null,
+  "end_time": "2026-05-03T14:05:06Z",
   "expected_assets": {
     "answer": 1
   },

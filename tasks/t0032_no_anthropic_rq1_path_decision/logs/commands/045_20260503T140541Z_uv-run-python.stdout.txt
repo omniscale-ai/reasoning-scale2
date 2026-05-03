@@ -1,0 +1,9 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0032_no_anthropic_rq1_path_decision/tasks/t0032_no_anthropic_rq1_path_decision/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 023_20260503T135018Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 032_20260503T135145Z_uv-run-python.json has non-zero exit code: 1[0m
+
+[33m[1mPASSED[0m — 0 error(s), 2 warning(s)
+

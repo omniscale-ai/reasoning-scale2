@@ -1,0 +1,79 @@
+{
+  "spec_version": "1",
+  "task_id": "t0032_no_anthropic_rq1_path_decision",
+  "discordance": {
+    "n_paired": 130,
+    "n_discordant": 12,
+    "a_only": 6,
+    "b_only": 6,
+    "mcnemar_p_two_sided": 1.0,
+    "per_stratum": {
+      "swe-bench": {
+        "n": 20,
+        "n_discordant": 6,
+        "a_only": 0,
+        "b_only": 6,
+        "both_pass": 0,
+        "both_fail": 14,
+        "mcnemar_p_two_sided": 0.03125
+      },
+      "frontierscience": {
+        "n": 26,
+        "n_discordant": 5,
+        "a_only": 5,
+        "b_only": 0,
+        "both_pass": 0,
+        "both_fail": 21,
+        "mcnemar_p_two_sided": 0.0625
+      },
+      "tau-bench": {
+        "n": 84,
+        "n_discordant": 1,
+        "a_only": 1,
+        "b_only": 0,
+        "both_pass": 0,
+        "both_fail": 83,
+        "mcnemar_p_two_sided": 1.0
+      }
+    }
+  },
+  "power_grid": [
+    {
+      "p1": 0.55,
+      "power": 0.08152678203205714
+    },
+    {
+      "p1": 0.6,
+      "power": 0.20458917725039996
+    },
+    {
+      "p1": 0.65,
+      "power": 0.40473417108921755
+    },
+    {
+      "p1": 0.7,
+      "power": 0.6440177486549022
+    },
+    {
+      "p1": 0.75,
+      "power": 0.8464053667616979
+    },
+    {
+      "p1": 0.8,
+      "power": 0.9589116789764596
+    }
+  ],
+  "per_arm_costs": {
+    "a_per_instance_usd": 0.0344,
+    "b_per_instance_usd": 0.0727,
+    "c_per_instance_usd": 0.0718,
+    "paired_per_instance_usd": 0.1071
+  },
+  "option_costs": {
+    "a_total_usd": 0.0,
+    "b_total_usd": 0.0,
+    "c_per_pair_usd": 0.07,
+    "c_total_usd": 15.26,
+    "d_total_usd": 0.0
+  }
+}

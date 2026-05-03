@@ -1,0 +1,5 @@
+branch: task/t0032_no_anthropic_rq1_path_decision
+base_branch: main
+base_commit: 43bb71a3a5535586f41c7d5b0252bab14d679c18
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0032_no_anthropic_rq1_path_decision
+created_at: 2026-05-03T13:20:00Z

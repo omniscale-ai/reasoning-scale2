@@ -1,0 +1,11 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0032_no_anthropic_rq1_path_decision/tasks/t0032_no_anthropic_rq1_path_decision/task.json
+
+[31m[1mERRORS:[0m
+[31m  TC-E004 error: Step 'reporting' has status 'in_progress', not finished[0m
+
+[33m[1mWARNINGS:[0m
+[33m  TC-W005 warning: No merged PR found for branch 'task/t0032_no_anthropic_rq1_path_decision'[0m
+
+[31m[1mFAILED[0m — 1 error(s), 1 warning(s)
+

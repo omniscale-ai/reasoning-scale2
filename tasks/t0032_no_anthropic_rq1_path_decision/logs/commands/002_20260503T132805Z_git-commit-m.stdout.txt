@@ -1,0 +1,5 @@
+[task/t0032_no_anthropic_rq1_path_decision 0df4b3c] t0032_no_anthropic_rq1_path_decision [research-internet]: Capture run_with_logs artefacts
+ 3 files changed, 19 insertions(+)
+ create mode 100644 tasks/t0032_no_anthropic_rq1_path_decision/logs/commands/001_20260503T132755Z_git-commit-m.json
+ create mode 100644 tasks/t0032_no_anthropic_rq1_path_decision/logs/commands/001_20260503T132755Z_git-commit-m.stderr.txt
+ create mode 100644 tasks/t0032_no_anthropic_rq1_path_decision/logs/commands/001_20260503T132755Z_git-commit-m.stdout.txt

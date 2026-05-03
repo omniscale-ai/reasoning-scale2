@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0032_no_anthropic_rq1_path_decision",
+  "command": "uv run python -m arf.scripts.aggregators.aggregate_answers --format ids",
+  "exit_code": 0,
+  "duration_seconds": 0.111,
+  "started_at": "2026-05-03T13:45:05Z",
+  "completed_at": "2026-05-03T13:45:05Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0032_no_anthropic_rq1_path_decision",
+  "stdout_file": "013_20260503T134505Z_uv-run-python.stdout.txt",
+  "stderr_file": "013_20260503T134505Z_uv-run-python.stderr.txt",
+  "stdout_lines": 2,
+  "stderr_lines": 0,
+  "truncated": false
+}
