@@ -1,0 +1,20 @@
+{
+  "spec_version": 4,
+  "task_id": "t0031_rq1_rq4_no_new_api_salvage",
+  "task_index": 31,
+  "name": "RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs",
+  "short_description": "Run no-new-API preliminary RQ1/RQ4 analyses on existing t0026/t0027 outputs to extract salvage evidence while t0029 is intervention_blocked.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [
+    "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+    "t0027_phase2_5_abc_rerun_with_fixed_b_and_c"
+  ],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {},
+  "task_types": [
+    "data-analysis"
+  ],
+  "source_suggestion": null
+}
