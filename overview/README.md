@@ -11,8 +11,8 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-30-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-92-DAA520" alt="Suggestions"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-31-4682B4" alt="Tasks"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-95-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-3-DC143C" alt="Results"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (10K)
-| [full](llm-context/full.xml) (124K) | [roadmap](llm-context/roadmap.xml) (26K) |
-[results](llm-context/results-deep-dive.xml) (110K) |
-[assets](llm-context/literature-and-assets.xml) (18K)
+| [full](llm-context/full.xml) (126K) | [roadmap](llm-context/roadmap.xml) (27K) |
+[results](llm-context/results-deep-dive.xml) (112K) |
+[assets](llm-context/literature-and-assets.xml) (19K)
 
-*Last updated: 2026-05-03 09:33 UTC*
+*Last updated: 2026-05-03 11:52 UTC*
 
 * **Budget**: **$133** spent of $200
 * **Remaining**: **$67**
@@ -48,17 +48,17 @@ No daily news yet.
 
 ---
 
-## [In Progress (0)](tasks/by-status/in_progress.md)
+## [In Progress (1)](tasks/by-status/in_progress.md)
 
-No tasks in progress.
+| # | Task | Started |
+|---|------|---------|
+| 0029 | [RQ1 discordance-rich paired resample with hard $35 cap](../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) | 2026-05-03 09:55 |
 
 ---
 
-## [Ready to Start (1)](tasks/by-status/not_started.md)
+## [Ready to Start (0)](tasks/by-status/not_started.md)
 
-| # | Task | Description | Date Added |
-|---|------|-------------|------------|
-| 0029 | [RQ1 discordance-rich paired resample with hard $35 cap](../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) | [`description`](../tasks/t0029_rq1_discordance_rich_resample/task_description.md) | 2026-05-03 |
+No tasks ready to start.
 
 ---
 
@@ -70,10 +70,11 @@ No tasks in progress.
 
 ---
 
-## [Recently Completed (27 total)](tasks/by-status/completed.md)
+## [Recently Completed (28 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0031 | [RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs](../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) | [`results`](../tasks/t0031_rq1_rq4_no_new_api_salvage/results/results_detailed.md) | 2026-05-03 11:47 |
 | 0028 | [Brainstorm 8: close RQ1/RQ4 via discordance-rich resample under $35 cap](../overview/tasks/task_pages/t0028_brainstorm_results_8.md) | [`results`](../tasks/t0028_brainstorm_results_8/results/results_detailed.md) | 2026-05-03 09:30 |
 | 0027 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | [`results`](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/results_detailed.md) | 2026-05-03 08:07 |
 | 0026 | [Phase 2 A/B/C Runtime (N=147) for RQ1-RQ5](../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | [`results`](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/results/results_detailed.md) | 2026-05-02 14:50 |
@@ -83,9 +84,8 @@ No tasks in progress.
 | 0019 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | [`results`](../tasks/t0019_v2_judge_calibration_sonnet/results/results_detailed.md) | 2026-05-01 17:55 |
 | 0021 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`results`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/results_detailed.md) | 2026-05-01 17:10 |
 | 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
-| 0018 | [Brainstorm session 6: paper-driven slate after t0017 literature survey](../overview/tasks/task_pages/t0018_brainstorm_results_6.md) | [`results`](../tasks/t0018_brainstorm_results_6/results/results_detailed.md) | 2026-05-01 13:30 |
 
-*17 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*18 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -106,11 +106,11 @@ No tasks in progress.
 | 9 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v1-sonnet judged by substantive-sonnet | **0.6667** |
 | 10 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v1-sonnet judged by model-rotated-sonnet | **0.5833** |
 
-*14 more results → [all results](metrics-results/)*
+*15 more results → [all results](metrics-results/)*
 
 ---
 
-## [Recent Suggestions (76 open)](suggestions/)
+## [Recent Suggestions (79 open)](suggestions/)
 
 <details>
 <summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
@@ -219,6 +219,50 @@ sweep that no new scaffold emits raised_malformed_plan_error.
 </details>
 
 <details>
+<summary>🧪 <strong>Unblock t0029 by provisioning ANTHROPIC_API_KEY</strong>
+(S-0031-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
+
+t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently
+intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap
+is informative only when the conditional B-wins rate p1 >= 0.75; provisioning the key and
+running t0029 is the next step.
+
+</details>
+
+<details>
+<summary>📊 <strong>Reconsider $35 cap given preliminary futility</strong>
+(S-0031-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
+
+t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant
+n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <= 0.65. A future
+brainstorm should weigh raising the cap, switching to a stratified resample (oversampling
+SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing
+RQ4 stratification first.
+
+</details>
+
+<details>
+<summary>📚 <strong>Fix the cost-tracker boundary that produces unknown
+parser-recovery</strong> (S-0031-03)</summary>
+
+**Kind**: library | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
+[t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
+
+t0027 logged 29/130 arm-A and 33/130 arm-C rows with plan_parser_recovery_path='unknown', a
+cost-tracker boundary artefact. Those rows produced trajectories and judged outcomes but their
+recovery label was lost. A small harness fix should record the recovery path even when the
+cost tracker boundary fires, so future audits can certify clean-recovery vs unknown without
+ambiguity.
+
+</details>
+
+<details>
 <summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally
 distinct from A</strong> (S-0026-02)</summary>
 
@@ -233,56 +277,40 @@ the B vs C pair on the same paired set to test whether the inversion survives.
 
 </details>
 
-<details>
-<summary>🔧 <strong>Recalibrate variant B's verbalized final_confidence</strong>
-(S-0026-03)</summary>
-
-**Kind**: technique | **Priority**: medium | **Date**: 2026-05-02 | **Source**:
-[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
-
-Variant B's 10-bin Expected Calibration Error is 0.43 (n=49) and the [0.9, 1.0] bin succeeds
-at only 25%. Add a calibration head — temperature scaling, isotonic regression, or a learned
-post-hoc calibrator over the four content features (subset, plan_length, n_actions,
-judge_program_agreement_proxy) — and report ECE on a held-out slice of the same 130-instance
-paired set.
-
-</details>
-
-<details>
-<summary>📊 <strong>Wire a real Tau-bench tool registry to escape the harness
-floor</strong> (S-0026-04)</summary>
-
-**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-02 | **Source**:
-[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
-
-Tau-bench numbers in this sweep are a harness floor, not a benchmark score: A=0.0%, B=2.3%,
-C=10.3% on a stub python_exec only. Port the published Tau-bench retail/airline tool stack (or
-a minimal viable subset) into the harness and rerun the A/B/C grid on the Tau-bench subset
-(n=87). The Tau-bench leg of the comparison currently dominates the absolute-rate gap with
-literature.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Run the same A/B/C grid on Opus to test whether scaffold rankings
-are model-invariant</strong> (S-0026-05)</summary>
-
-**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-02 | **Source**:
-[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
-
-All current results are Sonnet-only. The C > B inversion may flip on a stronger model where
-B's plan parser sees fewer malformed plans and where C's longer reasoning chains finish more
-often. Repeat the 130-instance paired sweep with claude-opus-4-7 as the model under test
-(judges remain sonnet primary + opus inter-judge) and report whether mcnemar_p_a_vs_b and
-mcnemar_p_b_vs_c keep the same sign.
-
-</details>
-
-*66 more open suggestions → [open suggestions](suggestions/)*
+*69 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (11)](suggestions/)
+## [High Priority Suggestions (13)](suggestions/)
+
+<details>
+<summary>🧪 <strong>Unblock t0029 by provisioning ANTHROPIC_API_KEY</strong>
+(S-0031-01)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
+
+t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently
+intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap
+is informative only when the conditional B-wins rate p1 >= 0.75; provisioning the key and
+running t0029 is the next step.
+
+</details>
+
+<details>
+<summary>📊 <strong>Reconsider $35 cap given preliminary futility</strong>
+(S-0031-02)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0031_rq1_rq4_no_new_api_salvage](../tasks/t0031_rq1_rq4_no_new_api_salvage/)
+
+t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant
+n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <= 0.65. A future
+brainstorm should weigh raising the cap, switching to a stratified resample (oversampling
+SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing
+RQ4 stratification first.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally
@@ -422,34 +450,7 @@ fallback.
 
 </details>
 
-<details>
-<summary>📂 <strong>Hierarchical annotation v2: scale to >=200 rows with full human
-review</strong> (S-0005-01)</summary>
-
-**Kind**: dataset | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with a stricter
-retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
-a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
-Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Use hierarchical-annotation-v1 to seed Phase 2 scope-conditioning
-experiments</strong> (S-0005-06)</summary>
-
-**Kind**: experiment | **Priority**: high | **Date**: 2026-04-29 | **Source**:
-[t0005_hierarchical_annotation_pilot_v1](../tasks/t0005_hierarchical_annotation_pilot_v1/)
-
-The dataset asset is now ready for downstream consumption. Plan a baseline-evaluation task
-that uses the 102 hierarchy-complete rows to compare scope-conditioned vs scope-unaware agent
-prompts (B vs G/S/A from the project's research questions).
-
-</details>
-
-*1 more high-priority suggestion → [high-priority suggestions](suggestions/)*
+*3 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 

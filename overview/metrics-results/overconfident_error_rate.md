@@ -1,6 +1,6 @@
 # Overconfident Error Rate
 
-**Key**: `overconfident_error_rate` | **Unit**: ratio | **Results**: 9
+**Key**: `overconfident_error_rate` | **Unit**: ratio | **Results**: 10
 
 [Back to all metrics](README.md)
 
@@ -15,3 +15,4 @@
 | 7 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition A: scope-aware ReAct | **0.6470588235294118** |
 | 8 | [Phase 2 A/B/C Runtime (N=147) for RQ1-RQ5](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | B — Plan-and-Solve v2 | **0.75** |
 | 9 | [Plan-and-Solve v2 with final_confidence Field](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition A: scope-aware ReAct | **1.0** |
+| 10 | [RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs](../../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) | — | — |

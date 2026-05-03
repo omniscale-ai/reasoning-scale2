@@ -1,6 +1,6 @@
 # Task Success Rate
 
-**Key**: `task_success_rate` | **Unit**: accuracy | **Results**: 24
+**Key**: `task_success_rate` | **Unit**: accuracy | **Results**: 25
 
 [Back to all metrics](README.md)
 
@@ -30,3 +30,4 @@
 | 22 | [Plan-and-Solve v2 with final_confidence Field](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition A: scope-aware ReAct | **0.0** |
 | 23 | [Plan-and-Solve v2 with final_confidence Field](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition B: scope-unaware Plan-and-Solve v2 | **0.0** |
 | 24 | [Plan-and-Solve v2 with final_confidence Field](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition C: scope-mismatched (random) | **0.0** |
+| 25 | [RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs](../../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) | — | — |

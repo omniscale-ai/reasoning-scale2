@@ -1,12 +1,55 @@
 # Suggestions by Date Added
 
-92 suggestion(s) grouped by derived added date.
+95 suggestion(s) grouped by derived added date.
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## 2026-05-03 (6)
+## 2026-05-03 (9)
+
+## High Priority
+
+<details>
+<summary>📊 <strong>Reconsider $35 cap given preliminary futility</strong>
+(S-0031-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0031-02` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0031_rq1_rq4_no_new_api_salvage`](../../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) |
+| **Source paper** | — |
+| **Categories** | — |
+
+t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant
+n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <= 0.65. A future
+brainstorm should weigh raising the cap, switching to a stratified resample (oversampling
+SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing
+RQ4 stratification first.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Unblock t0029 by provisioning ANTHROPIC_API_KEY</strong>
+(S-0031-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0031-01` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0031_rq1_rq4_no_new_api_salvage`](../../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) |
+| **Source paper** | — |
+| **Categories** | — |
+
+t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently
+intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap
+is informative only when the conditional B-wins rate p1 >= 0.75; provisioning the key and
+running t0029 is the next step.
+
+</details>
 
 ## Medium Priority
 
@@ -54,6 +97,27 @@ A/B/C), and now t0027 to build a discordance-rich paired set: select 130 instanc
 two variants disagreed in at least one prior run. Re-run A vs B and B vs C on that set under
 claude-sonnet-4-6 and report whether the McNemar p-values move off symmetric. This decouples
 'no detectable effect' from 'underpowered test' for the next iteration.
+
+</details>
+
+<details>
+<summary>📚 <strong>Fix the cost-tracker boundary that produces unknown
+parser-recovery</strong> (S-0031-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0031-03` |
+| **Kind** | library |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0031_rq1_rq4_no_new_api_salvage`](../../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) |
+| **Source paper** | — |
+| **Categories** | — |
+
+t0027 logged 29/130 arm-A and 33/130 arm-C rows with plan_parser_recovery_path='unknown', a
+cost-tracker boundary artefact. Those rows produced trajectories and judged outcomes but their
+recovery label was lost. A small harness fix should record the recovery path even when the
+cost tracker boundary fires, so future audits can certify clean-recovery vs unknown without
+ambiguity.
 
 </details>
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-03T09:33:23Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-03T11:52:59Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>104541</char_count>
-    <byte_count>104671</byte_count>
-    <estimated_tokens>26135</estimated_tokens>
+    <char_count>107223</char_count>
+    <byte_count>107357</byte_count>
+    <estimated_tokens>26805</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -154,9 +154,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
         <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
         <id>t0028_brainstorm_results_8</id>
+        <id>t0031_rq1_rq4_no_new_api_salvage</id>
       </source_ids>
       <content>
-Completed tasks: 27
+Completed tasks: 28
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -319,6 +320,12 @@ ID: t0028_brainstorm_results_8
 Completed: 2026-05-03
 Short description: Brainstorm 8: schedule t0029 RQ1 resample ($35 cap) and t0030 RQ4 stratification analysis; cleanup 8 suggestions.
 Result summary: Brainstorm Session 8 — Results Summary Summary Scheduled a minimum viable wave to close RQ1 and RQ4 within the $66.54 remaining budget after t0027&#x27;s underpowered McNemar verdicts (12 discordant pairs, p=1.0). Created t0029 (`rq1_discordance_rich_resample`, hard $35 cap, abort on cap with partial verdict) and t0030 (`rq4_info_asymmetry_stratification`, zero-API analysis on t0029 outputs). Eight suggestions corrected (2 rejected, 6 demoted). No RQ answered in this session. Headline Decisions * Created **t0029** (`rq1_discordance_rich_resample`) with hard $35 cap. Goal: reach &gt;=30 discordant A vs B pairs for an RQ1 McNemar verdict. Abort rule: if cap is hit before 30 discordant pairs, halt API...
+
+## RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs
+ID: t0031_rq1_rq4_no_new_api_salvage
+Completed: 2026-05-03
+Short description: Run no-new-API preliminary RQ1/RQ4 analyses on existing t0026/t0027 outputs to extract salvage evidence while t0029 is intervention_blocked.
+Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 RQ1/RQ4 No-New-API Preliminary Salvage This task spends **$0.00** of new API budget. It runs four bounded analyses on the already-on-disk outputs of `t0026_phase2_abc_runtime_n147_for_rq1_rq5` and `t0027_phase2_5_abc_rerun_with_fixed_b_and_c`. The labelled-arm convention follows `t0028`: arm A = Plan-and-Solve baseline, arm B = scope-aware ReAct, arm C = matched-mismatch. Summary Re-derived the t0027 paired discordance rate at **12/130 = 9.23%** (symmetric: 6 arm-A wins vs 6 arm-B wins, McNemar two-sided p = 1.0000). Stratified RQ4 shows discordance is concentrated in opposite directions on SWE-bench (6/20 arm-B wins) and...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -333,7 +340,7 @@ Planned or active tasks: 2
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-03
 Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
 Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
@@ -562,6 +569,8 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0012-02</id>
         <id>S-0025-04</id>
         <id>S-0026-01</id>
+        <id>S-0031-01</id>
+        <id>S-0031-02</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
@@ -601,6 +610,7 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0027-03</id>
         <id>S-0027-04</id>
         <id>S-0027-05</id>
+        <id>S-0031-03</id>
         <id>S-0002-03</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
@@ -627,7 +637,7 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0027-06</id>
       </source_ids>
       <content>
-Open suggestions: 77
+Open suggestions: 80
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -726,6 +736,20 @@ Priority: high
 Kind: technique
 Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output / function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off symmetric.
+
+## Unblock t0029 by provisioning ANTHROPIC_API_KEY
+ID: S-0031-01
+Priority: high
+Kind: experiment
+Source task: t0031_rq1_rq4_no_new_api_salvage
+t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap is informative only when the conditional B-wins rate p1 &gt;= 0.75; provisioning the key and running t0029 is the next step.
+
+## Reconsider $35 cap given preliminary futility
+ID: S-0031-02
+Priority: high
+Kind: evaluation
+Source task: t0031_rq1_rq4_no_new_api_salvage
+t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant n ≈ 32, which gives &lt;50% McNemar power for any conditional B-wins rate &lt;= 0.65. A future brainstorm should weigh raising the cap, switching to a stratified resample (oversampling SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing RQ4 stratification first.
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -999,6 +1023,13 @@ Priority: medium
 Kind: evaluation
 Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
 On the current 130-paired set, RQ1 has only 6 discordant pairs (3 A-only + 3 B-only) and RQ5 has only 5 (1 B-only + 4 C-only) — McNemar power is at the floor by construction. Aggregate the per-instance success bits from t0022 (A vs B), t0023 (sonnet swebench), t0026 (full A/B/C), and now t0027 to build a discordance-rich paired set: select 130 instances where the two variants disagreed in at least one prior run. Re-run A vs B and B vs C on that set under claude-sonnet-4-6 and report whether the McNemar p-values move off symmetric. This decouples &#x27;no detectable effect&#x27; from &#x27;underpowered test&#x27; for the next iteration.
+
+## Fix the cost-tracker boundary that produces unknown parser-recovery
+ID: S-0031-03
+Priority: medium
+Kind: library
+Source task: t0031_rq1_rq4_no_new_api_salvage
+t0027 logged 29/130 arm-A and 33/130 arm-C rows with plan_parser_recovery_path=&#x27;unknown&#x27;, a cost-tracker boundary artefact. Those rows produced trajectories and judged outcomes but their recovery label was lost. A small harness fix should record the recovery path even when the cost tracker boundary fires, so future audits can certify clean-recovery vs unknown without ambiguity.
 
 ## Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++
 ID: S-0002-03

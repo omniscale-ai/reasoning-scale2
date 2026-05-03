@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-03T09:33:23Z">
+<llm_context_archive preset_id="project-memory" generated_at_utc="2026-05-03T11:52:59Z">
   <archive_summary>
     <title>Project Memory</title>
     <description>Mid-size preset intended as a reusable working memory for ongoing chats.</description>
     <use_case>Keeping a durable project memory in medium-size chat sessions.</use_case>
     <section_count>9</section_count>
-    <char_count>86862</char_count>
-    <byte_count>86983</byte_count>
-    <estimated_tokens>21715</estimated_tokens>
+    <char_count>87846</char_count>
+    <byte_count>87971</byte_count>
+    <estimated_tokens>21961</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -158,9 +158,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
         <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
         <id>t0028_brainstorm_results_8</id>
+        <id>t0031_rq1_rq4_no_new_api_salvage</id>
       </source_ids>
       <content>
-Completed tasks: 27
+Completed tasks: 28
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -323,6 +324,12 @@ ID: t0028_brainstorm_results_8
 Completed: 2026-05-03
 Short description: Brainstorm 8: schedule t0029 RQ1 resample ($35 cap) and t0030 RQ4 stratification analysis; cleanup 8 suggestions.
 Result summary: Brainstorm Session 8 — Results Summary Summary Scheduled a minimum viable wave to close RQ1 and RQ4 within the $66.54 remaining budget after t0027&#x27;s underpowered McNemar verdicts (12 discordant pairs, p=1.0). Created t0029 (`rq1_discordance_rich_resample`, hard $35 cap, abort on cap with partial verdict) and t0030 (`rq4_info_asymmetry_stratification`, zero-API analysis on t0029 outputs). Eight suggestions corrected (2 rejected, 6 demoted). No RQ answered in this session. Headline Decisions * Created **t0029** (`rq1_discordance_rich_resample`) with hard $35 cap. Goal: reach &gt;=30 discordant A vs B pairs for an RQ1 McNemar verdict. Abort rule: if cap is hit before 30 discordant pairs, halt API...
+
+## RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs
+ID: t0031_rq1_rq4_no_new_api_salvage
+Completed: 2026-05-03
+Short description: Run no-new-API preliminary RQ1/RQ4 analyses on existing t0026/t0027 outputs to extract salvage evidence while t0029 is intervention_blocked.
+Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 RQ1/RQ4 No-New-API Preliminary Salvage This task spends **$0.00** of new API budget. It runs four bounded analyses on the already-on-disk outputs of `t0026_phase2_abc_runtime_n147_for_rq1_rq5` and `t0027_phase2_5_abc_rerun_with_fixed_b_and_c`. The labelled-arm convention follows `t0028`: arm A = Plan-and-Solve baseline, arm B = scope-aware ReAct, arm C = matched-mismatch. Summary Re-derived the t0027 paired discordance rate at **12/130 = 9.23%** (symmetric: 6 arm-A wins vs 6 arm-B wins, McNemar two-sided p = 1.0000). Stratified RQ4 shows discordance is concentrated in opposite directions on SWE-bench (6/20 arm-B wins) and...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -337,7 +344,7 @@ Planned or active tasks: 2
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-03
 Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
 Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
@@ -395,12 +402,12 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0012-02</id>
         <id>S-0025-04</id>
         <id>S-0026-01</id>
+        <id>S-0031-01</id>
+        <id>S-0031-02</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
         <id>S-0003-01</id>
-        <id>S-0003-03</id>
-        <id>S-0003-04</id>
       </source_ids>
       <content>
 Open suggestions: 20
@@ -503,6 +510,20 @@ Kind: technique
 Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output / function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off symmetric.
 
+## Unblock t0029 by provisioning ANTHROPIC_API_KEY
+ID: S-0031-01
+Priority: high
+Kind: experiment
+Source task: t0031_rq1_rq4_no_new_api_salvage
+t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap is informative only when the conditional B-wins rate p1 &gt;= 0.75; provisioning the key and running t0029 is the next step.
+
+## Reconsider $35 cap given preliminary futility
+ID: S-0031-02
+Priority: high
+Kind: evaluation
+Source task: t0031_rq1_rq4_no_new_api_salvage
+t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant n ≈ 32, which gives &lt;50% McNemar power for any conditional B-wins rate &lt;= 0.65. A future brainstorm should weigh raising the cap, switching to a stratified resample (oversampling SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing RQ4 stratification first.
+
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
 Priority: medium
@@ -530,20 +551,6 @@ Priority: medium
 Kind: dataset
 Source task: t0003_download_benchmark_subsets
 FrontierMath (Glazer et al. 2024) is the closest publicly named analogue to FrontierScience-Olympiad and is gated behind Epoch AI access. The current dataset asset uses 40 pilot rows as the v0 subset. Open a conversation with Epoch AI to obtain bona-fide research access; if access is denied or delayed, add MATH-500 / AIME as a public Olympiad fallback per the t0002 fallback plan.
-
-## Sensitivity-check the SWE-bench Verified 4-8-hunks subset against [3, 12]
-ID: S-0003-03
-Priority: medium
-Kind: evaluation
-Source task: t0003_download_benchmark_subsets
-The current SWE-bench Verified subset filters to 60 instances with exactly 4-8 patch hunks. The full 500 Verified instances have hunks ranging from 1 to 45. Run a sensitivity check by re-filtering with windows [3, 12] and [2, 16] and comparing the difficulty / repo distributions; this informs whether the 4-8 boundary is too narrow for Phase 2&#x27;s atomic-edit experiments.
-
-## Derive step graphs for FrontierScience-Olympiad rows
-ID: S-0003-04
-Priority: medium
-Kind: experiment
-Source task: t0003_download_benchmark_subsets
-FrontierScience-Olympiad pilot rows currently lack per-instance step graphs because Olympiad solutions are graded as final answers. Run a hierarchical-annotation task that decomposes each problem into global / subtask / atomic steps with gold actions at each level, so Phase 2 can apply the canonical 4-8 decisions filter consistently across all four benchmarks.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">

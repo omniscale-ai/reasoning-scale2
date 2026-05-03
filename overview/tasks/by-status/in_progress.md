@@ -1,25 +1,29 @@
-# ⏳ RQ1 discordance-rich paired resample with hard $35 cap
+# ⏳ Tasks: In Progress
+
+1 tasks. ⏳ **1 in_progress**.
 
 [Back to all tasks](../README.md)
 
-## Overview
+---
+
+## ⏳ In Progress
+
+<details>
+<summary>⏳ 0029 — <strong>RQ1 discordance-rich paired resample with hard $35
+cap</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0029_rq1_discordance_rich_resample` |
-| **Status** | ⏳ in_progress |
-| **Started** | 2026-05-03T09:55:36Z |
+| **Status** | in_progress |
+| **Effective date** | 2026-05-03 |
 | **Dependencies** | [`t0010_matched_mismatch_library`](../../../overview/tasks/task_pages/t0010_matched_mismatch_library.md), [`t0021_plan_and_solve_v2_with_final_confidence`](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md), [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
-| **Source suggestion** | `S-0025-04` |
-| **Task types** | `experiment-run`, `comparative-analysis` |
 | **Expected assets** | 2 predictions |
+| **Source suggestion** | `S-0025-04` |
+| **Task types** | [`experiment-run`](../../../meta/task_types/experiment-run/), [`comparative-analysis`](../../../meta/task_types/comparative-analysis/) |
+| **Start time** | 2026-05-03T09:55:36Z |
+| **Task page** | [RQ1 discordance-rich paired resample with hard $35 cap](../../../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md) |
 | **Task folder** | [`t0029_rq1_discordance_rich_resample/`](../../../tasks/t0029_rq1_discordance_rich_resample/) |
-
-<details>
-<summary><strong>Task Description</strong></summary>
-
-*Source:
-[`task_description.md`](../../../tasks/t0029_rq1_discordance_rich_resample/task_description.md)*
 
 # RQ1 Discordance-Rich Paired Resample (Hard $35 Cap)
 

@@ -15,7 +15,7 @@ threshold.
 | Warn threshold | 80% ($160.00) |
 | Stop threshold | 100% ($200.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 27 |
+| Tasks with cost records | 28 |
 | Tasks with non-zero spend | 11 |
 | Skipped tasks | 3 |
 
@@ -55,7 +55,7 @@ threshold.
 | `variant_c_judge` | $0.13 |
 | `anthropic_api` | $0.06 |
 
-16 task cost record(s) are zero-cost and omitted from the main spend table.
+17 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 

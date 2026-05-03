@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-03T09:33:23Z">
+<llm_context_archive type_id="suggestions" generated_at_utc="2026-05-03T11:52:59Z">
   <archive_summary>
     <title>All Suggestions</title>
     <description>Complete suggestion list with full descriptions, priority, and status.</description>
     <section_count>1</section_count>
-    <char_count>79601</char_count>
-    <byte_count>79635</byte_count>
-    <estimated_tokens>19900</estimated_tokens>
+    <char_count>81345</char_count>
+    <byte_count>81381</byte_count>
+    <estimated_tokens>20336</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -109,9 +109,12 @@
         <id>S-0027-04</id>
         <id>S-0027-05</id>
         <id>S-0027-06</id>
+        <id>S-0031-01</id>
+        <id>S-0031-02</id>
+        <id>S-0031-03</id>
       </source_ids>
       <content>
-Suggestions: 92
+Suggestions: 95
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -1153,6 +1156,36 @@ Categories: agent-evaluation
 Date added: 2026-05-03
 
 plan_and_solve_v3&#x27;s 3-attempt recovery chain (clean → reprompt → JSON-mode → degenerate plan) eliminated parser failures (12% in t0026 → 0% in t0027) without measurable cost (~$10 for 130 instances). The same parse-failure path exists in scope_aware_react (multi-tool JSON), in scratchpad-style ablations, and in any future scaffold that asks the model for structured intermediate output. Refactor the recovery chain into a shared utility under assets/library/ and adopt it in every scaffold that does structured-output parsing, then verify on a small sweep that no new scaffold emits raised_malformed_plan_error.
+
+## Unblock t0029 by provisioning ANTHROPIC_API_KEY
+ID: S-0031-01
+Status: active
+Priority: high
+Kind: experiment
+Source task: t0031_rq1_rq4_no_new_api_salvage
+Date added: 2026-05-03
+
+t0029_rq1_discordance_rich_resample is the canonical RQ1 verdict owner and is currently intervention_blocked on credentials. The t0031 power analysis confirms that the locked $35 cap is informative only when the conditional B-wins rate p1 &gt;= 0.75; provisioning the key and running t0029 is the next step.
+
+## Reconsider $35 cap given preliminary futility
+ID: S-0031-02
+Status: active
+Priority: high
+Kind: evaluation
+Source task: t0031_rq1_rq4_no_new_api_salvage
+Date added: 2026-05-03
+
+t0031 shows that at the t0027 discordance rate (~9.2%), the $35 cap yields expected discordant n ≈ 32, which gives &lt;50% McNemar power for any conditional B-wins rate &lt;= 0.65. A future brainstorm should weigh raising the cap, switching to a stratified resample (oversampling SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing RQ4 stratification first.
+
+## Fix the cost-tracker boundary that produces unknown parser-recovery
+ID: S-0031-03
+Status: active
+Priority: medium
+Kind: library
+Source task: t0031_rq1_rq4_no_new_api_salvage
+Date added: 2026-05-03
+
+t0027 logged 29/130 arm-A and 33/130 arm-C rows with plan_parser_recovery_path=&#x27;unknown&#x27;, a cost-tracker boundary artefact. Those rows produced trajectories and judged outcomes but their recovery label was lost. A small harness fix should record the recovery path even when the cost tracker boundary fires, so future audits can certify clean-recovery vs unknown without ambiguity.
       </content>
     </section>
   </sections>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-03T09:33:23Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-03T11:52:59Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>73682</char_count>
-    <byte_count>73799</byte_count>
-    <estimated_tokens>18420</estimated_tokens>
+    <char_count>74737</char_count>
+    <byte_count>74856</byte_count>
+    <estimated_tokens>18684</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -157,9 +157,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
         <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
         <id>t0028_brainstorm_results_8</id>
+        <id>t0031_rq1_rq4_no_new_api_salvage</id>
       </source_ids>
       <content>
-Completed tasks: 27
+Completed tasks: 28
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -322,6 +323,12 @@ ID: t0028_brainstorm_results_8
 Completed: 2026-05-03
 Short description: Brainstorm 8: schedule t0029 RQ1 resample ($35 cap) and t0030 RQ4 stratification analysis; cleanup 8 suggestions.
 Result summary: Brainstorm Session 8 — Results Summary Summary Scheduled a minimum viable wave to close RQ1 and RQ4 within the $66.54 remaining budget after t0027&#x27;s underpowered McNemar verdicts (12 discordant pairs, p=1.0). Created t0029 (`rq1_discordance_rich_resample`, hard $35 cap, abort on cap with partial verdict) and t0030 (`rq4_info_asymmetry_stratification`, zero-API analysis on t0029 outputs). Eight suggestions corrected (2 rejected, 6 demoted). No RQ answered in this session. Headline Decisions * Created **t0029** (`rq1_discordance_rich_resample`) with hard $35 cap. Goal: reach &gt;=30 discordant A vs B pairs for an RQ1 McNemar verdict. Abort rule: if cap is hit before 30 discordant pairs, halt API...
+
+## RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs
+ID: t0031_rq1_rq4_no_new_api_salvage
+Completed: 2026-05-03
+Short description: Run no-new-API preliminary RQ1/RQ4 analyses on existing t0026/t0027 outputs to extract salvage evidence while t0029 is intervention_blocked.
+Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 RQ1/RQ4 No-New-API Preliminary Salvage This task spends **$0.00** of new API budget. It runs four bounded analyses on the already-on-disk outputs of `t0026_phase2_abc_runtime_n147_for_rq1_rq5` and `t0027_phase2_5_abc_rerun_with_fixed_b_and_c`. The labelled-arm convention follows `t0028`: arm A = Plan-and-Solve baseline, arm B = scope-aware ReAct, arm C = matched-mismatch. Summary Re-derived the t0027 paired discordance rate at **12/130 = 9.23%** (symmetric: 6 arm-A wins vs 6 arm-B wins, McNemar two-sided p = 1.0000). Stratified RQ4 shows discordance is concentrated in opposite directions on SWE-bench (6/20 arm-B wins) and...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -336,7 +343,7 @@ Planned or active tasks: 2
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
-Status: not_started
+Status: in_progress
 Effective date: 2026-05-03
 Short description: Resample paired A vs B to reach &gt;=30 discordant pairs for an RQ1 McNemar verdict; hard $35 cap; partial verdict on cap.
 Dependencies: t0010_matched_mismatch_library, t0021_plan_and_solve_v2_with_final_confidence, t0027_phase2_5_abc_rerun_with_fixed_b_and_c
