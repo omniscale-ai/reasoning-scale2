@@ -14,9 +14,9 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0010, t0021, t0027 dependencies are completed and load required assets.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T10:00:30Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T10:00:57Z",
       "log_file": "logs/steps/002_check-deps/"
     },
     {
