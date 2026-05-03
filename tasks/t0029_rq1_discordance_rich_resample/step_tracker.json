@@ -5,9 +5,9 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0029_rq1_discordance_rich_resample worktree branch from main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T09:55:44Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T09:59:59Z",
       "log_file": "logs/steps/001_create-branch/"
     },
     {
