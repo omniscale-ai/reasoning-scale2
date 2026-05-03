@@ -1,7 +1,7 @@
 # Suggestions: `agent-evaluation`
 
-56 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
-**46 open** (8 high, 24 medium, 14 low), **10 closed**.
+59 suggestion(s) in category [`agent-evaluation`](../../../meta/categories/agent-evaluation/)
+**49 open** (9 high, 25 medium, 15 low), **10 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -56,6 +56,28 @@ ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-a
 that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
 annotation rerun. Deliverable: a small library that wraps the existing judge call with
 confidence + abstain semantics, exposed to t0009-style annotation tasks.
+
+</details>
+
+<details>
+<summary>📊 <strong>Close t0029 / t0030 via correction as no-longer-actionable under
+no-Anthropic constraint</strong> (S-0032-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0032-01` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
+execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
+follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
+project memory marks as permanently unavailable. Emit a downstream correction task that flips
+both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
+no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
 
 </details>
 
@@ -624,6 +646,30 @@ and accept timeouts as null verdicts rather than retries. Estimated cost ~$3-5 s
 </details>
 
 <details>
+<summary>🧪 <strong>Spend released RQ1 budget on cost-tracker fix, bootstrap CIs, and
+RQ4 stratification follow-ups</strong> (S-0032-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0032-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+With option (a) locked in, the ~$26.54 reserved for the t0029 218-pair rerun is released.
+Reinvest it in three cost-free or near-zero analyses directly motivated by t0032's
+creative-thinking pass: (1) implement S-0031-03 to fix per-instance cost tracking so future
+paired runs report Sonnet cost reliably; (2) compute 95% bootstrap confidence intervals around
+the per-stratum McNemar cells from t0031 (SWE-bench 6/0, FrontierScience 0/5, tau-bench 1 of
+84) to harden the conclusion that arms differ qualitatively by benchmark; (3) re-stratify the
+existing 130-pair t0031 sample by trace length / tool-call count for the RQ4
+efficiency-vs-accuracy story without any new paid API call.
+
+</details>
+
+<details>
 <summary>📊 <strong>Spot-check Haiku judge calls against Sonnet on a 20-step
 stratified sample</strong> (S-0022-04)</summary>
 
@@ -913,6 +959,28 @@ scratchpad-style ablations, and in any future scaffold that asks the model for s
 intermediate output. Refactor the recovery chain into a shared utility under assets/library/
 and adopt it in every scaffold that does structured-output parsing, then verify on a small
 sweep that no new scaffold emits raised_malformed_plan_error.
+
+</details>
+
+<details>
+<summary>📊 <strong>Qualitative trajectory typology of the 12 t0031 discordant
+pairs</strong> (S-0032-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0032-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+Build a small qualitative typology of the 12 discordant paired instances from t0031 (6 a_only
++ 6 b_only) to characterise how plan-and-solve_v3 (arm A) and matched_mismatch_v2 (arm B)
+diverge on the same instance. Tag each discordant pair by failure mode (planning error, tool
+misuse, retrieval gap, formatting, etc.) and benchmark stratum. The output is one short
+markdown asset; the task is zero-cost (reads existing trajectories from t0026/t0027) and feeds
+back into RQ1 reporting and future agent-design suggestions.
 
 </details>
 

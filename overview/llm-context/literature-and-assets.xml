@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-03T13:17:17Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-03T14:08:41Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>76248</char_count>
-    <byte_count>76369</byte_count>
-    <estimated_tokens>19062</estimated_tokens>
+    <char_count>77899</char_count>
+    <byte_count>78024</byte_count>
+    <estimated_tokens>19474</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -158,10 +158,11 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
         <id>t0028_brainstorm_results_8</id>
         <id>t0031_rq1_rq4_no_new_api_salvage</id>
+        <id>t0032_no_anthropic_rq1_path_decision</id>
         <id>t0033_realign_t0031_t0029_no_anthropic</id>
       </source_ids>
       <content>
-Completed tasks: 29
+Completed tasks: 30
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -331,6 +332,12 @@ Completed: 2026-05-03
 Short description: Run no-new-API preliminary RQ1/RQ4 analyses on existing t0026/t0027 outputs to extract salvage evidence while t0029 is intervention_blocked.
 Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 RQ1/RQ4 No-New-API Preliminary Salvage This task spends **$0.00** of new API budget. It runs four bounded analyses on the already-on-disk outputs of `t0026_phase2_abc_runtime_n147_for_rq1_rq5` and `t0027_phase2_5_abc_rerun_with_fixed_b_and_c`. The labelled-arm convention follows `t0028`: arm A = Plan-and-Solve baseline, arm B = scope-aware ReAct, arm C = matched-mismatch. Summary Re-derived the t0027 paired discordance rate at **12/130 = 9.23%** (symmetric: 6 arm-A wins vs 6 arm-B wins, McNemar two-sided p = 1.0000). Stratified RQ4 shows discordance is concentrated in opposite directions on SWE-bench (6/20 arm-B wins) and...
 
+## No-Anthropic RQ1 path decision
+ID: t0032_no_anthropic_rq1_path_decision
+Completed: 2026-05-03
+Short description: Choose one RQ1 execution path under permanent no-Anthropic constraint: existing-only verdict, local rerun, alternate provider, or stop.
+Result summary: RQ1 PATH DECISION — OPTION (A): EXISTING-RESULTS-ONLY VERDICT Summary Locked in **option (a) — existing-results-only verdict** as the recommended RQ1 execution path under the permanent no-Anthropic constraint. The t0031 re-derivation already yields the formal RQ1 conclusion at $0 with arm-labelling comparability against t0027 / t0028 trivially preserved: 12 / 130 discordant pairs, symmetric 6 / 6 split, two-sided exact-binomial McNemar p = **1.0000**, with a real SWE-bench arm-B advantage and a marginal FrontierScience arm-A advantage that cancel in aggregate. Options (b), (c), and (d) were each rejected on a documented comparability or foreclosure basis; creative-thinking surfaced no...
+
 ## Realign t0031 suggestions and t0029 status under no-Anthropic constraint
 ID: t0033_realign_t0031_t0029_no_anthropic
 Completed: 2026-05-03
@@ -344,10 +351,9 @@ Result summary: T0031/T0029 NO-ANTHROPIC REALIGNMENT — CORRECTIONS APPLIED Sum
       <source_ids>
         <id>t0029_rq1_discordance_rich_resample</id>
         <id>t0030_rq4_info_asymmetry_stratification</id>
-        <id>t0032_no_anthropic_rq1_path_decision</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 2
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
@@ -362,13 +368,6 @@ Status: not_started
 Effective date: 2026-05-03
 Short description: Stratify t0029 paired sample by subset and concordance; test if granularity gains concentrate where info asymmetry is highest. Zero API cost.
 Dependencies: t0029_rq1_discordance_rich_resample
-
-## No-Anthropic RQ1 path decision
-ID: t0032_no_anthropic_rq1_path_decision
-Status: not_started
-Effective date: 2026-05-03
-Short description: Choose one RQ1 execution path under permanent no-Anthropic constraint: existing-only verdict, local rerun, alternate provider, or stop.
-Dependencies: t0027_phase2_5_abc_rerun_with_fixed_b_and_c, t0031_rq1_rq4_no_new_api_salvage
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
@@ -377,9 +376,10 @@ Dependencies: t0027_phase2_5_abc_rerun_with_fixed_b_and_c, t0031_rq1_rq4_no_new_
       <source_ids>
         <id>decomposition-v2-schema-vs-truncation</id>
         <id>does-v2-schema-retain-30pp-delta-under-substantive-and-sonnet-judges</id>
+        <id>no-anthropic-rq1-path-a</id>
       </source_ids>
       <content>
-Answers: 2
+Answers: 3
 
 ## How much of the +57 pp v2-tree-full vs v1-flat-truncated acceptance-rate gap on the matched t0014 pool is due to the v2 tree schema itself versus the full (untruncated) problem text?
 ID: decomposition-v2-schema-vs-truncation
@@ -396,6 +396,14 @@ Confidence: low
 Categories: agent-evaluation, hierarchical-planning, uncertainty-calibration
 
 The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 pp and under model-rotated-sonnet it is +37.3 pp, vs the t0014 baseline of +58.0 pp. The +57 pp headline does not cleanly survive a stronger judge, but neither does it collapse below +30 pp on both configurations; the answer depends on which sonnet judge configuration is treated as canonical.
+
+## Which RQ1 execution path do we follow under the permanent no-Anthropic constraint: (a) existing-results-only verdict, (b) local / open-weight rerun, (c) alternative paid provider, or (d) project-level underpowered / provider-blocked stop?
+ID: no-anthropic-rq1-path-a
+Created by: t0032_no_anthropic_rq1_path_decision on 2026-05-03
+Confidence: high
+Categories: agent-evaluation, uncertainty-calibration
+
+Option (a), the existing-results-only verdict, is the right path. The t0031 re-derivation already yields the formal RQ1 conclusion at $0 with arm-labelling comparability with t0027 / t0028 preserved by construction: 12 / 130 = 9.23% discordance, 6 arm-A wins and 6 arm-B wins, two-sided exact-binomial McNemar p = 1.0000, with a SWE-bench arm-B advantage and a FrontierScience arm-A advantage that cancel in aggregate. Options (b) and (c) replace the policy under each arm label and turn any rerun into a verdict on a new experiment, while option (d) forecloses the verdict that (a) can deliver immediately.
       </content>
     </section>
     <section id="paper-summaries" source_kind="aggregator">
