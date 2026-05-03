@@ -131,10 +131,10 @@
       "step": 15,
       "name": "reporting",
       "description": "Final verificator sweep, PR, merge, post-merge overview materialize.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T14:27:26Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/015_reporting/"
     }
   ]
 }

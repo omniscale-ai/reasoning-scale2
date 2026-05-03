@@ -5,12 +5,12 @@
   "name": "Cancel t0029 and t0030 under no-Anthropic constraint",
   "short_description": "Cancel t0029 and t0030 via the corrections overlay, following t0032 option-(a) verdict that no Anthropic-backed RQ1 continuation is viable.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0032_no_anthropic_rq1_path_decision"
   ],
   "start_time": "2026-05-03T14:18:02Z",
-  "end_time": null,
+  "end_time": "2026-05-03T14:27:30Z",
   "expected_assets": {},
   "task_types": [
     "correction"
