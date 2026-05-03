@@ -95,9 +95,9 @@
       "step": 11,
       "name": "results",
       "description": "Write standard task results; run verify_corrections, verify_task_results, verify_task_dependencies.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T13:11:03Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T13:12:42Z",
       "log_file": "logs/steps/011_results/"
     },
     {
