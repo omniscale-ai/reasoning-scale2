@@ -95,8 +95,8 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Search for at least one non-obvious cost-saver (discordance-only rerun, bootstrap re-resampling, etc.) and decide whether it changes the recommendation.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T13:53:38Z",
       "completed_at": null,
       "log_file": "logs/steps/011_creative-thinking/"
     },
