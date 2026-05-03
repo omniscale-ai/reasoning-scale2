@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:11:09Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/django/django/main/django/core/handlers/base.py",
+    "prompt": "Extract the complete adapt_method_mode method and explain how it wraps sync_to_async and async_to_sync"
+  },
+  "url": "https://raw.githubusercontent.com/django/django/main/django/core/handlers/base.py",
+  "prompt": "Extract the complete adapt_method_mode method and explain how it wraps sync_to_async and async_to_sync"
+}

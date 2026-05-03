@@ -1,0 +1,8 @@
+{
+  "bytes": 319524,
+  "code": 200,
+  "codeText": "OK",
+  "result": "I've reviewed the provided web page content, which shows Django's `django/utils/decorators.py` file from the main branch on GitHub.\n\nHowever, **the content does not include a MiddlewareMixin class or its `__call__` method**. The file shown contains:\n\n- `classonlymethod` class\n- `_update_method_wrapper()` function\n- `_multi_decorate()` function\n- `method_decorator()` function\n- `decorator_from_middleware_with_args()` function\n- `decorator_from_middleware()` function\n- `make_middleware_decorator()` function\n- Middleware capability marking decorators (`sync_and_async_middleware`, `sync_only_middleware`, `async_only_middleware`)\n\nThe MiddlewareMixin class with its `__call__` method and sync/async conversion logic would be located in a different Django file, likely `django/utils/decorators.py` or `django/core/handlers/base.py`, but it's not present in this particular code view.\n\nTo see the MiddlewareMixin implementation and how it handles conversions between sync and async contexts, you would need to access a different source file or a more complete version of the decorators module.",
+  "durationMs": 3958,
+  "url": "https://github.com/django/django/blob/main/django/utils/decorators.py"
+}

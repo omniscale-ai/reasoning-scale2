@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:10:15Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://github.com/django/django/blob/main/django/utils/decorators.py",
+    "prompt": "Show the MiddlewareMixin class and its __call__ method, particularly how it handles sync_to_async and async_to_sync conversions"
+  },
+  "url": "https://github.com/django/django/blob/main/django/utils/decorators.py",
+  "prompt": "Show the MiddlewareMixin class and its __call__ method, particularly how it handles sync_to_async and async_to_sync conversions"
+}

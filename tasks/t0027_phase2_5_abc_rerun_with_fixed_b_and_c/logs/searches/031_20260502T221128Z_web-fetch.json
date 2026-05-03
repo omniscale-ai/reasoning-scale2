@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:11:28Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://code.djangoproject.com/ticket/31928",
+    "prompt": "Show the complete ticket details, the problem description, and the root cause analysis for why the first middleware receives a coroutine instead of HttpResponse"
+  },
+  "url": "https://code.djangoproject.com/ticket/31928",
+  "prompt": "Show the complete ticket details, the problem description, and the root cause analysis for why the first middleware receives a coroutine instead of HttpResponse"
+}

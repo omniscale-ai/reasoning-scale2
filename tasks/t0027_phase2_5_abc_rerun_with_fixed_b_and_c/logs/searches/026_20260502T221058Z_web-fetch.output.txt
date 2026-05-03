@@ -1,0 +1,8 @@
+{
+  "bytes": 13839,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# ASGIHandler Class Overview\n\nBased on the provided content, here's the complete `ASGIHandler` class:\n\n```python\nclass ASGIHandler(base.BaseHandler):\n    \"\"\"Handler for ASGI requests.\"\"\"\n\n    request_class = ASGIRequest\n    chunk_size = 2**16\n\n    def __init__(self):\n        super().__init__()\n        self.load_middleware(is_async=True)\n```\n\n## Key Differences from WSGIHandler\n\nThe code shows that `ASGIHandler` initializes middleware with `\"is_async=True\"`, as stated in the `__init__` method: `\"self.load_middleware(is_async=True)\"`. This differs from traditional WSGI handlers, which typically load middleware in synchronous mode.\n\nThe handler inherits from `base.BaseHandler`, and the `load_middleware()` call accepts an async parameter, enabling asynchronous middleware processing throughout the request lifecycle.\n\nThe rest of the `ASGIHandler` class implements async methods like `__call__`, `handle()`, `read_body()`, and `send_response()` to manage ASGI protocol communication, including streaming responses and handling client disconnections asynchronously.\n\nUnfortunately, the provided content doesn't include WSGIHandler's implementation for direct comparison.",
+  "durationMs": 3216,
+  "url": "https://raw.githubusercontent.com/django/django/main/django/core/handlers/asgi.py"
+}

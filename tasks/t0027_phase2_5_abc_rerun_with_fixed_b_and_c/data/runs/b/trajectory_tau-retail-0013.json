@@ -1,0 +1,18 @@
+{
+  "instance_id": "tau-retail-0013",
+  "subset": "taubench",
+  "variant": "b",
+  "final_answer": null,
+  "final_confidence": null,
+  "cost_usd": 0.021372000000000002,
+  "parser_recovery_path": "all_failed",
+  "parser_attempts": 3,
+  "trajectory": {
+    "plan": [],
+    "trajectory": [],
+    "final_confidence": null,
+    "final_confidence_parse_failures": 0,
+    "plan_parser_recovery_path": "all_failed",
+    "plan_parser_attempts": 3
+  }
+}

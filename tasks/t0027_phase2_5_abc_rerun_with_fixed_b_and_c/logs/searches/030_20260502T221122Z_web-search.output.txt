@@ -1,0 +1,52 @@
+{
+  "query": "Django ASGI middleware process_response receives coroutine instead of HttpResponse",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_012mbMxA12wJ8W791tteVXSx",
+      "content": [
+        {
+          "title": "#31928 (Coroutine passed to the first middleware's process_response() instead of HttpResponse.) \u2013 Django",
+          "url": "https://code.djangoproject.com/ticket/31928"
+        },
+        {
+          "title": "Middleware | Django documentation | Django",
+          "url": "https://docs.djangoproject.com/en/5.0/topics/http/middleware/"
+        },
+        {
+          "title": "The middleware doesn't work properly in asgi mode \u00b7 Issue #381 \u00b7 adamchainz/django-htmx",
+          "url": "https://github.com/adamchainz/django-htmx/issues/381"
+        },
+        {
+          "title": "#32299 (MiddlewareNotUsed leaves undesired side effects when loading middleware in ASGI context) \u2013 Django",
+          "url": "https://code.djangoproject.com/ticket/32299"
+        },
+        {
+          "title": "Asynchronous support | Django documentation | Django",
+          "url": "https://docs.djangoproject.com/en/5.0/topics/async/"
+        },
+        {
+          "title": "ASGI Django with OpencensusMiddleware erroring on all requests with TypeError: object HttpResponse can't be used in 'await' expression \u00b7 Issue #1082 \u00b7 census-instrumentation/opencensus-python",
+          "url": "https://github.com/census-instrumentation/opencensus-python/issues/1082"
+        },
+        {
+          "title": "AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'coroutine'>` - Async/Channels - Django Forum",
+          "url": "https://forum.djangoproject.com/t/assertionerror-expected-a-response-httpresponse-or-httpstreamingresponse-to-be-returned-from-the-view-but-received-a-class-coroutine/22326"
+        },
+        {
+          "title": "Issue in django channels ASGI server - (TypeError: object HttpResponse can't be used in 'await' expression) - Async/Channels - Django Forum",
+          "url": "https://forum.djangoproject.com/t/issue-in-django-channels-asgi-server-typeerror-object-httpresponse-cant-be-used-in-await-expression/38815"
+        },
+        {
+          "title": "Asynchronous support \u2014 Django 3.2.21.dev documentation",
+          "url": "https://django.readthedocs.io/en/3.2.x/topics/async.html"
+        },
+        {
+          "title": "Fixed #30451 -- Added ASGI handler and coroutine-safety. by andrewgodwin \u00b7 Pull Request #11209 \u00b7 django/django",
+          "url": "https://github.com/django/django/pull/11209"
+        }
+      ]
+    },
+    "Based on the search results, I found relevant information about this Django ASGI middleware issue:\n\n## Django ASGI Middleware Coroutine Issue\n\nWhen using ASGI (such as with uvicorn), the first middleware according to the list in settings.py receives a coroutine as its response parameter, while all other middlewares down the line receive a django.http.response.HttpResponse object.\n\nThis was identified as Django issue #31928. The issue can be reproduced by creating a dummy class-based middleware that prints the types of arguments it receives in its process_response method, which shows output like: `<class 'django.core.handlers.asgi.ASGIRequest'> <class 'coroutine'>`\n\n### Root Cause\n\nSecurityMiddleware and the three cache middlewares were not calling super().init() during their initialization or calling the required MiddlewareMixin._async_check() method. This made the middlewares not properly present as coroutine and confused the middleware chain when used in a fully async context.\n\n### Solution\n\nThe issue was fixed by ensuring proper detection of an async get_response in various middlewares. To avoid this problem, ensure that custom middlewares:\n\n1. Call `super().__init__()` in their `__init__` method\n2. Call the required `MiddlewareMixin._async_check()` method \n3. Properly mark themselves as coroutine functions when needed using `asgiref.sync.markcoroutinefunction`\n\nThis ensures the middleware chain properly handles async contexts in ASGI deployments."
+  ],
+  "durationSeconds": 6.600277834000008
+}

@@ -1,0 +1,6 @@
+loaded paired manifest: 130 instances, per_subset={'swebench': 20, 'frontsci': 26, 'taubench': 84}
+loaded predictions: A=130 (t0026), B=130 (t0027), C=130 (t0027)
+paired-filter rows: A=130, B=130, C=130
+wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/data/mcnemar_results.json
+wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/data/calibration.json
+wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/metrics.json

@@ -1,0 +1,76 @@
+{
+  "instance_id": "pytest-dev__pytest-5840",
+  "subset": "swebench",
+  "variant": "c",
+  "final_answer": "Run the following command to downgrade pytest to 5.1.1:",
+  "final_confidence": 0.3,
+  "cost_usd": 0.015828000000000002,
+  "parser_recovery_path": "reprompt",
+  "parser_attempts": 2,
+  "trajectory": {
+    "plan": [
+      "Downgrade pytest to 5.1.1: `pip install pytest==5.1.1`",
+      "If you must stay on 5.1.2+, add the project root to `PYTHONPATH` explicitly before running pytest: `set PYTHONPATH=C:\\Azure\\KMS\\ComponentTest\\Python && pytest ...`",
+      "Alternatively, add a `conftest.py` at the repo root that inserts the correct-cased path into `sys.path` at import time.",
+      "Upgrade to pytest 5.2.0+ where the regression was fixed."
+    ],
+    "trajectory": [
+      {
+        "turn_index": 0,
+        "granularity": "atomic",
+        "thought": "",
+        "action": "finish",
+        "observation": "Run the following command to downgrade pytest to 5.1.1:",
+        "confidence": null,
+        "final_confidence": 0.3
+      }
+    ],
+    "final_confidence": 0.3,
+    "final_confidence_parse_failures": 0,
+    "plan_parser_recovery_path": "reprompt",
+    "plan_parser_attempts": 2,
+    "phases": [
+      {
+        "kind": "global",
+        "correct_tag": "global",
+        "payload": "Solve the following problem end-to-end: 5.1.2 ImportError while loading conftest (windows import folder casing issues)\n5.1.1 works fine. after upgrade to 5.1.2, the path was converted to lower case\r\n`"
+      },
+      {
+        "kind": "subtask",
+        "correct_tag": "subtask",
+        "payload": "Restate the problem and identify the target output type."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Read the problem carefully."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "List any quantities or constraints mentioned in the problem."
+      },
+      {
+        "kind": "subtask",
+        "correct_tag": "subtask",
+        "payload": "Plan the solution and produce a final answer."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Outline the solution steps."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Compute or formulate the final answer."
+      },
+      {
+        "kind": "global_atomic",
+        "correct_tag": "atomic",
+        "payload": "Emit the final answer with a Finish action."
+      }
+    ],
+    "delegate": "scope_unaware_planandsolve_v3"
+  }
+}

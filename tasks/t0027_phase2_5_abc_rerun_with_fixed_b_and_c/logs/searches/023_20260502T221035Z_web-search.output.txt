@@ -1,0 +1,16 @@
+{
+  "query": "site:github.com/django/django \"def load_middleware\" \"is_async\" raw view",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01QU8VRJK9nedszkADe5z9nq",
+      "content": [
+        {
+          "title": "django/django/core/handlers/base.py at main \u00b7 django/django",
+          "url": "https://github.com/django/django/blob/main/django/core/handlers/base.py"
+        }
+      ]
+    },
+    "The search found a result from the Django GitHub repository showing the `load_middleware` method in the `django/core/handlers/base.py` file. The result shows that the `load_middleware` method is defined with an `is_async` parameter, and it's used to populate middleware lists from settings.MIDDLEWARE.\n\nThe search result links to the file directly: https://github.com/django/django/blob/main/django/core/handlers/base.py\n\nYou can visit this link to see the full implementation and context of the `load_middleware` method and how it interacts with async views and raw views."
+  ],
+  "durationSeconds": 2.9343921249999987
+}

@@ -1,0 +1,8 @@
+{
+  "bytes": 376408,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# ASGIHandler Class Overview\n\n## Initialization\n\nThe `ASGIHandler` class initializes by calling its parent class constructor and loading middleware for async mode:\n\n```python\ndef __init__(self):\n    super().__init__()\n    self.load_middleware(is_async=True)\n```\n\nThis setup prepares the middleware chain specifically for asynchronous request handling.\n\n## Class Definition\n\n`ASGIHandler` extends `base.BaseHandler` and serves as the entry point for ASGI requests. It includes:\n\n- **Request class**: `ASGIRequest` for parsing ASGI-format requests\n- **Chunk size**: Set to 2^16 bytes for response body streaming\n- **Callable interface**: The `__call__` method accepts ASGI scope, receive, and send callables\n\n## Response Generation\n\nThe handler uses an inherited method from its parent for async response processing. While the exact `_get_response_async` implementation isn't shown in this file, it's called within the `run_get_response` method:\n\n```python\nresponse = await self.get_response_async(request)\n```\n\nThis method handles routing, middleware execution, and view invocation asynchronously, returning an `HttpResponse` object that gets formatted and sent over ASGI.\n\nThe middleware chain, loaded during initialization with `is_async=True`, wraps this response generation process to apply request/response processing logic.",
+  "durationMs": 4465,
+  "url": "https://github.com/django/django/blob/main/django/core/handlers/asgi.py"
+}

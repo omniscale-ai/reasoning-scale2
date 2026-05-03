@@ -1,0 +1,52 @@
+{
+  "query": "Django ASGIHandler WSGIHandler middleware chain load_middleware",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01EVZDrGdRz9RVf23TKBWBb9",
+      "content": [
+        {
+          "title": "A Guide to ASGI in Django 3.0 and its Performance \u00b7 Arunrocks",
+          "url": "https://arunrocks.com/a-guide-to-asgi-in-django-30-and-its-performance/"
+        },
+        {
+          "title": "Inside Django'9s BaseHandler | Mahmoud Zalt - Tech Blog",
+          "url": "https://zalt.me/blog/2025/09/inside-djangos-basehandler"
+        },
+        {
+          "title": "How to deploy with ASGI | Django documentation | Django",
+          "url": "https://docs.djangoproject.com/en/5.0/howto/deployment/asgi/"
+        },
+        {
+          "title": "Middleware Do You Go? \u00b7 Matt Layman",
+          "url": "https://www.mattlayman.com/understand-django/middleware-do-you-go/"
+        },
+        {
+          "title": "#27796 (Middlewares load twice due to StaticFilesHandler(WSGIHandler)) \u2013 Django",
+          "url": "https://code.djangoproject.com/ticket/27796"
+        },
+        {
+          "title": "django/django/core/handlers/asgi.py at 009fddc96b88a9aee1232d6a2637f2970fdcfb50 \u00b7 django/django",
+          "url": "https://github.com/django/django/blob/009fddc96b88a9aee1232d6a2637f2970fdcfb50/django/core/handlers/asgi.py"
+        },
+        {
+          "title": "How Django Implements WSGI - BackendInterview",
+          "url": "https://backendinterview.com/backend/django/how-django-implements-wsgi"
+        },
+        {
+          "title": "Middleware | Django documentation | Django",
+          "url": "https://docs.djangoproject.com/en/5.0/topics/http/middleware/"
+        },
+        {
+          "title": "How Django Works Internally: The Complete Request Response Cycle - DEV Community",
+          "url": "https://dev.to/alansomathew/how-django-works-internally-the-complete-request-response-cycle-io8"
+        },
+        {
+          "title": "Django Channels doesn\u2019t conform to Django middleware specifications",
+          "url": "https://groups.google.com/g/django-developers/c/AgZFv5y8nq4"
+        }
+      ]
+    },
+    "Based on the search results, here's information about Django's ASGIHandler, WSGIHandler, middleware chain, and load_middleware:\n\n## Handler Architecture\n\nThe WSGIHandler is a subclass of django.core.handlers.base.BaseHandler, which is where Django handles middleware setup. The ASGIHandler calls load_middleware(is_async=True) during initialization.\n\n## Middleware Loading\n\nThe BaseHandler includes a load_middleware method that has the job of iterating through all the middleware listed in your MIDDLEWARE setting and including each middleware in the middleware chain.\n\nload_middleware makes alterations depending on what it can discover about a middleware class, and registers a middleware based on the presence of various hook methods.\n\n## Middleware Chain Structure\n\nAt startup, WSGIHandler instantiates all middleware classes in MIDDLEWARE order and builds the middleware chain as a series of nested callables. The middleware chain represents each instance of Django middleware, layered together, to produce the desired effect of allowing a request and response to pass through each middleware.\n\n## Request Flow\n\nThe middleware chain is constructed in load_middleware(), which adapts each middleware to the target execution mode. Requests enter through get_response() (sync) or get_response_async() (async), and each path sets the URLconf, invokes the middleware chain, and logs errors before returning the response.\n\n## WSGI and ASGI Compatibility\n\nThe WSGIHandler coexists alongside a new ASGIHandler, and runs the system inside a one-off eventloop - keeping it synchronous externally, and asynchronous internally."
+  ],
+  "durationSeconds": 7.9177162910000005
+}

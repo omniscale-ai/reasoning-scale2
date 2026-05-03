@@ -363,6 +363,38 @@ def _persist_trajectory(
     return traj_path
 
 
+def _load_existing_trajectory(
+    *,
+    instance_id: str,
+    subset: str,
+    variant_dir: Path,
+) -> _RerunOutcome | None:
+    traj_path = variant_dir / f"trajectory_{instance_id}.json"
+    if not traj_path.exists():
+        return None
+    try:
+        record: dict[str, Any] = json.loads(traj_path.read_text(encoding="utf-8"))
+        traj_payload = record.get("trajectory", {})
+        raised_malformed = (
+            isinstance(traj_payload, dict)
+            and isinstance(traj_payload.get("error", ""), str)
+            and traj_payload.get("error", "").startswith("MalformedPlanError:")
+        )
+        return _RerunOutcome(
+            instance_id=record["instance_id"],
+            subset=record.get("subset", subset),
+            final_answer=record.get("final_answer"),
+            final_confidence=record.get("final_confidence"),
+            cost_usd=float(record.get("cost_usd", 0.0)),
+            parser_recovery_path=record.get("parser_recovery_path", "unknown"),
+            parser_attempts=int(record.get("parser_attempts", 0)),
+            trajectory_payload=traj_payload,
+            raised_malformed_plan_error=raised_malformed,
+        )
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def _run_variant(
     *,
     variant: RerunVariantId,
@@ -377,7 +409,31 @@ def _run_variant(
     output_dir.mkdir(parents=True, exist_ok=True)
     outcomes_by_iid: dict[str, _RerunOutcome] = {}
     started = time.monotonic()
-    workers = max(1, min(max_workers, len(instances)))
+    remaining: list[Instance] = []
+    for instance in instances:
+        existing = _load_existing_trajectory(
+            instance_id=instance.instance_id,
+            subset=instance.subset,
+            variant_dir=output_dir,
+        )
+        if existing is not None:
+            outcomes_by_iid[instance.instance_id] = existing
+        else:
+            remaining.append(instance)
+    n_resumed = len(instances) - len(remaining)
+    if n_resumed > 0:
+        print(
+            f"  variant {variant}: resume — {n_resumed} trajectories loaded from disk, "
+            f"{len(remaining)} remaining"
+        )
+    if len(remaining) == 0:
+        early_outcomes: list[_RerunOutcome] = [
+            outcomes_by_iid[inst.instance_id]
+            for inst in instances
+            if inst.instance_id in outcomes_by_iid
+        ]
+        return early_outcomes
+    workers = max(1, min(max_workers, len(remaining)))
     with ThreadPoolExecutor(max_workers=workers) as executor:
         future_to_iid = {
             executor.submit(
@@ -389,7 +445,7 @@ def _run_variant(
                 max_turns=max_turns,
                 max_tokens=max_tokens,
             ): instance.instance_id
-            for instance in instances
+            for instance in remaining
         }
         total = len(future_to_iid)
         halt = False

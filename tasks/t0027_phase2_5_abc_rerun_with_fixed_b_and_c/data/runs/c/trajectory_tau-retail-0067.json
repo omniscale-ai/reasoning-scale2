@@ -1,0 +1,61 @@
+{
+  "instance_id": "tau-retail-0067",
+  "subset": "taubench",
+  "variant": "c",
+  "final_answer": null,
+  "final_confidence": null,
+  "cost_usd": 0.017142,
+  "parser_recovery_path": "all_failed",
+  "parser_attempts": 3,
+  "trajectory": {
+    "plan": [],
+    "trajectory": [],
+    "final_confidence": null,
+    "final_confidence_parse_failures": 0,
+    "plan_parser_recovery_path": "all_failed",
+    "plan_parser_attempts": 3,
+    "phases": [
+      {
+        "kind": "global",
+        "correct_tag": "global",
+        "payload": "Solve the following problem end-to-end: You are user noah_ito_3850 living in Seattle WA 98187. Your name is Noah but you go by NoNo. If asked for your zip code, say that it is 98178 first (common mist"
+      },
+      {
+        "kind": "subtask",
+        "correct_tag": "subtask",
+        "payload": "Restate the problem and identify the target output type."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Read the problem carefully."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "List any quantities or constraints mentioned in the problem."
+      },
+      {
+        "kind": "subtask",
+        "correct_tag": "subtask",
+        "payload": "Plan the solution and produce a final answer."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Outline the solution steps."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Compute or formulate the final answer."
+      },
+      {
+        "kind": "global_atomic",
+        "correct_tag": "atomic",
+        "payload": "Emit the final answer with a Finish action."
+      }
+    ],
+    "delegate": "scope_unaware_planandsolve_v3"
+  }
+}

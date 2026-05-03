@@ -1,0 +1,8 @@
+{
+  "bytes": 81842,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Analysis of sklearn model_selection._search\n\n## 1) `if self.refit:` condition\n\n**Line 1445** - Located in the `fit()` method of `BaseSearchCV`:\n\n```python\nif self.refit:\n```\n\nThis conditional block begins the refitting process on the best parameters.\n\n## 2) `self.best_estimator_.fit()` call\n\n**Line 1456** - The fit invocation occurs within the `if self.refit:` block:\n\n```python\nself.best_estimator_.fit(X, y, **routed_params.estimator.fit)\n```\n\nThere is also a conditional call at **line 1454** for cases where `y` is None:\n\n```python\nself.best_estimator_.fit(X, **routed_params.estimator.fit)\n```\n\n## 3) Import time statement\n\n**Line 8** - Time module import at file header:\n\n```python\nimport time\n```\n\nThe `time` module is used subsequently at lines 1450-1452 to measure refitting duration via `time.time()` calls.\n\n## Imports summary\n\nThe file begins with standard library imports (lines 7-14), followed by third-party dependencies from scipy and numpy (lines 16-18), and scikit-learn internal imports (lines 20-46).",
+  "durationMs": 4185,
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/model_selection/_search.py"
+}

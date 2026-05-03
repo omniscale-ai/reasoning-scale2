@@ -1,0 +1,11 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebSearch",
+  "timestamp": "2026-05-02T22:10:23Z",
+  "source": "web-search",
+  "input": {
+    "query": "Django MiddlewareMixin __call__ method github"
+  },
+  "query": "Django MiddlewareMixin __call__ method github"
+}

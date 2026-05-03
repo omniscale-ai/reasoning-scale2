@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:07:33Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://github.com/django/django/blob/main/django/core/handlers/base.py",
+    "prompt": "Show the adapt_method_mode() method and _get_response() and _get_response_async() methods with full code"
+  },
+  "url": "https://github.com/django/django/blob/main/django/core/handlers/base.py",
+  "prompt": "Show the adapt_method_mode() method and _get_response() and _get_response_async() methods with full code"
+}

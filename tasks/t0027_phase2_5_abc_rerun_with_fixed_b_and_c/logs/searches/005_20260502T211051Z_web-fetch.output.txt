@@ -1,0 +1,8 @@
+{
+  "bytes": 695710,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Search Results for `if self.refit:` Block\n\nBased on the provided webpage content from scikit-learn's `_search.py` file, **the code section you're asking about is not visible in the displayed portion**.\n\nThe webpage shows lines 1-1000 of a 2040-line file. The `fit()` method begins around line 1460 (based on the context shown), but the actual implementation details including the `if self.refit:` block and `self.best_estimator_.fit()` call are in the remainder of the file, which is not displayed in this view.\n\n## What's Available:\nThe page shows the method signature starting at approximately line 1430:\n```python\ndef fit(self, X, y=None, **params):\n    \"\"\"Run fit with all sets of parameters...\"\"\"\n```\n\n## Recommendation:\nTo find the exact line numbers and code for:\n- The `if self.refit:` block\n- The `self.best_estimator_.fit()` call\n\nYou would need to:\n1. Click \"View remainder of file in raw view\" link on the GitHub page\n2. Search within the raw file for `if self.refit:` \n3. Or access the file directly from the scikit-learn repository main branch",
+  "durationMs": 4496,
+  "url": "https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/model_selection/_search.py"
+}

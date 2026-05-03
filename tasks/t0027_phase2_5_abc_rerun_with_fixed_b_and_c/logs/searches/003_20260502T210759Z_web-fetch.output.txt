@@ -1,0 +1,8 @@
+{
+  "bytes": 81842,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Location and Content of the \"if self.refit:\" Block\n\n**Line Numbers:** 1460-1475\n\n**Exact Content:**\n\n```python\nif self.refit:\n    # here we clone the estimator as well as the parameters, since\n    # sometimes the parameters themselves might be estimators, e.g.\n    # when we search over different estimators in a pipeline.\n    # ref: https://github.com/scikit-learn/scikit-learn/pull/26786\n    self.best_estimator_ = clone(base_estimator).set_params(\n        **clone(self.best_params_, safe=False)\n    )\n\n    refit_start_time = time.time()\n    if y is not None:\n        self.best_estimator_.fit(X, y, **routed_params.estimator.fit)\n    else:\n        self.best_estimator_.fit(X, **routed_params.estimator.fit)\n    refit_end_time = time.time()\n    self.refit_time_ = refit_end_time - refit_start_time\n\n    if hasattr(self.best_estimator_, \"feature_names_in_\"):\n        self.feature_names_in_ = self.best_estimator_.feature_names_in_\n```\n\nThis block refits the best estimator on the complete dataset and tracks the refitting duration when the `refit` parameter is enabled.",
+  "durationMs": 3895,
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/model_selection/_search.py"
+}

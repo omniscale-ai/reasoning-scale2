@@ -1,0 +1,8 @@
+{
+  "bytes": 81857,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# ProductSet and Set.is_subset Analysis\n\n## ProductSet Class Definition\n\nThe `ProductSet` class is defined starting at line 532. It represents a Cartesian product of sets with the property `is_ProductSet = True`.\n\n## is_subset Method Search Results\n\nI found the base `Set.is_subset` method (lines 398-428) but **could not locate `is_subset` or `_eval_is_subset` methods specifically defined in the ProductSet class**.\n\n### Base Set.is_subset Implementation\n\nThe base class method states: \"Returns True if `self` is a subset of `other`.\" It handles trivial cases, then dispatches to `_eval_is_subset` on both objects and finally uses a multi-dispatch handler from `sympy.sets.handlers.issubset`.\n\n### Relevant ProductSet Methods Found\n\nProductSet defines:\n- `_contains()` method (lines 580-595) for membership testing\n- `_complement()` method (lines 219-231) for set differences\n- `_kind()` method for type information\n\n**Conclusion**: ProductSet inherits `is_subset` from the base `Set` class and does not override `_eval_is_subset`. It relies on the inherited behavior and external handler functions for subset determination.",
+  "durationMs": 4361,
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/sets.py"
+}

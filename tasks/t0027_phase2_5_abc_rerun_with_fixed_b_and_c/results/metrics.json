@@ -1,0 +1,49 @@
+{
+  "variants": [
+    {
+      "variant_id": "abc-rerun-a-reused",
+      "label": "A \u2014 scope-aware ReAct (reused from t0026)",
+      "dimensions": {
+        "variant": "a",
+        "scaffold": "scope_aware_react",
+        "model": "claude-sonnet-4-6",
+        "n_paired": 130,
+        "task_id_origin": "t0026_phase2_abc_runtime_n147_for_rq1_rq5"
+      },
+      "metrics": {
+        "task_success_rate": 0.046153846153846156,
+        "avg_decisions_per_task": null
+      }
+    },
+    {
+      "variant_id": "abc-rerun-b",
+      "label": "B \u2014 plan_and_solve_v3 with bounded plan-recovery chain",
+      "dimensions": {
+        "variant": "b",
+        "scaffold": "plan_and_solve_v3",
+        "model": "claude-sonnet-4-6",
+        "n_paired": 130
+      },
+      "metrics": {
+        "task_success_rate": 0.046153846153846156,
+        "overconfident_error_rate": 0.058823529411764705,
+        "avg_decisions_per_task": null
+      }
+    },
+    {
+      "variant_id": "abc-rerun-c",
+      "label": "C \u2014 matched_mismatch_v2 over plan_and_solve_v3 (adversarial)",
+      "dimensions": {
+        "variant": "c",
+        "scaffold": "matched_mismatch_v2_adversarial_over_plan_and_solve_v3",
+        "model": "claude-sonnet-4-6",
+        "n_paired": 130
+      },
+      "metrics": {
+        "task_success_rate": 0.05384615384615385,
+        "overconfident_error_rate": 0.14285714285714285,
+        "avg_decisions_per_task": null
+      }
+    }
+  ]
+}

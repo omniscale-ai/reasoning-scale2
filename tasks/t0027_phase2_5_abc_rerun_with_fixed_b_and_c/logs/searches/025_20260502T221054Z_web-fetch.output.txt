@@ -1,0 +1,8 @@
+{
+  "bytes": 7314,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# WSGIHandler Class Overview\n\nThe `WSGIHandler` class extends `base.BaseHandler` and serves as the WSGI application entry point for Django.\n\n## Class Definition\n\n```python\nclass WSGIHandler(base.BaseHandler):\n    request_class = WSGIRequest\n```\n\n## __init__ Method\n\nThe initialization is straightforward:\n\n```python\ndef __init__(self, *args, **kwargs):\n    super().__init__(*args, **kwargs)\n    self.load_middleware()\n```\n\nThe constructor calls the parent class initializer, then invokes `self.load_middleware()`.\n\n## Middleware Loading\n\nThe code shows that `load_middleware()` is called during initialization, but the actual implementation of this method is inherited from `base.BaseHandler` (which is imported but not shown in this file).\n\nAccording to the provided source, the handler \"loads middleware\" during instantiation, though the specific mechanics of how middleware is loaded are delegated to the parent `BaseHandler` class and are not detailed in this excerpt.",
+  "durationMs": 2623,
+  "url": "https://raw.githubusercontent.com/django/django/main/django/core/handlers/wsgi.py"
+}

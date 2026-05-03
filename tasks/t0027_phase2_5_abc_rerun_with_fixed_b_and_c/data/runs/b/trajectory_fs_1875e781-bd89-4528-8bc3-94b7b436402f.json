@@ -1,0 +1,90 @@
+{
+  "instance_id": "fs_1875e781-bd89-4528-8bc3-94b7b436402f",
+  "subset": "frontsci",
+  "variant": "b",
+  "final_answer": "## Enzyme Purification Table \u2014 Complete Solution",
+  "final_confidence": 0.8,
+  "cost_usd": 0.3840450000000001,
+  "parser_recovery_path": "clean",
+  "parser_attempts": 1,
+  "trajectory": {
+    "plan": [
+      "Identify the five columns and establish the key formulas linking them (specific activity, total activity, and yield).",
+      "Recognize that **Activity** (col 3) is given in **units/mL** (activity per unit volume), so **Total Activity = Volume \u00d7 Activity**.",
+      "Derive the three working formulas: - **Total Activity** (TA) = Volume (V) \u00d7 Activity (a) - **Specific Activity** (SA) = Activity / Protein concentration = a / c - **Yield** (Y, %) = (TA at step *n* / TA at step 1) \u00d7 100",
+      "Anchor all yield calculations to Step 1 (the reference step, Y = 100%), computing TA\u2081 first.",
+      "For each step, determine which formula applies to each unknown letter: - Unknown in **protein concentration** \u2192 use SA = a/c \u2192 **c = a/SA** - Unknown in **activity** \u2192 use Yield \u2192 **a = (Y/100 \u00d7 TA\u2081) / V** - Unknown in **SA** \u2192 use SA = a/c directly - Unknown in **Volume** \u2192 use Yield \u2192 **V = (Y/100 \u00d7 TA\u2081) / a** - Unknown in **Yield** \u2192 use Y = (V \u00d7 a / TA\u2081) \u00d7 100",
+      "Solve Step 1 (A and B), then Steps 2\u20136 in order, carrying exact intermediate values.",
+      "Round every result to **1 decimal place** only at the final reporting stage. --- ## Solution ### Key Formulas $$\\text{Specific Activity (SA)} = \\frac{\\text{Activity }(a,\\;\\text{units/mL})}{\\text{Protein concentration }(c,\\;\\text{mg/mL})} \\quad \\Rightarrow \\quad \\text{units/mg}$$ $$\\text{Total Activity (TA)} = V \\times a$$ $$\\text{Yield }(\\%) = \\frac{V_n \\times a_n}{V_1 \\times a_1} \\times 100$$ --- ### Step 1 \u2014 Reference Step **Given:** V = 1450 mL, a = 9 units/mL, SA = 0.8 units/mg **Finding A (protein concentration):** $$c = \\frac{a}{SA} = \\frac{9}{0.8} = 11.25 \\;\\text{mg/mL} \\quad \\Rightarrow \\quad \\boxed{A = 11.3 \\;\\text{mg/mL}}$$ **Reference total activity:** $$TA_1 = 1450 \\times 9 = 13{,}050 \\;\\text{units}$$ **Finding B (yield at Step 1):** By definition, the first step is the 100% reference: $$Y_1 = \\frac{13{,}050}{13{,}050} \\times 100 = 100\\% \\quad \\Rightarrow \\quad \\boxed{B = 100.0\\%}$$ --- ### Step 2 **Given:** V = 1450 mL, c = 8 mg/mL, Y = 87.5% **Finding total activity at Step 2:** $$TA_2 = \\frac{87.5}{100} \\times 13{,}050 = 11{,}418.75 \\;\\text{units}$$ **Finding C (activity, units/mL):** $$C = \\frac{TA_2}{V} = \\frac{11{,}418.75}{1450} = 7.875 \\;\\text{units/mL} \\quad \\Rightarrow \\quad \\boxed{C = 7.9 \\;\\text{units/mL}}$$ **Finding D (specific activity):** $$D = \\frac{C}{c} = \\frac{7.875}{8} = 0.984 \\;\\text{units/mg} \\quad \\Rightarrow \\quad \\boxed{D = 1.0 \\;\\text{units/mg}}$$ --- ### Step 3 **Given:** V = 280 mL, a = 30 units/mL, SA = 11 units/mg **Finding E (protein concentration):** $$E = \\frac{a}{SA} = \\frac{30}{11} = 2.727\\;\\text{mg/mL} \\quad \\Rightarrow \\quad \\boxed{E = 2.7 \\;\\text{mg/mL}}$$ **Finding F (yield):** $$TA_3 = 280 \\times 30 = 8{,}400 \\;\\text{units}$$ $$F = \\frac{8{,}400}{13{,}050} \\times 100 = 64.368\\% \\quad \\Rightarrow \\quad \\boxed{F = 64.4\\%}$$ --- ### Step 4 **Given:** a = 900 units/mL, SA = 150 units/mg, Y = 37% **Finding H (protein concentration):** $$H = \\frac{a}{SA} = \\frac{900}{150} = 6.0 \\;\\text{mg/mL} \\quad \\Rightarrow \\quad \\boxed{H = 6.0 \\;\\text{mg/mL}}$$ **Finding G (volume):** $$TA_4 = \\frac{37}{100} \\times 13{,}050 = 4{,}828.5 \\;\\text{units}$$ $$G = \\frac{TA_4}{a} = \\frac{4{,}828.5}{900} = 5.365 \\;\\text{mL} \\quad \\Rightarrow \\quad \\boxed{G = 5.4 \\;\\text{mL}}$$ --- ### Step 5 **Given:** V = 10 mL, c = 2 mg/mL, Y = 32% **Finding I (activity, units/mL):** $$TA_5 = \\frac{32}{100} \\times 13{,}050 = 4{,}176 \\;\\text{units}$$ $$I = \\frac{TA_5}{V} = \\frac{4{,}176}{10} = 417.6 \\;\\text{units/mL} \\quad \\Rightarrow \\quad \\boxed{I = 417.6 \\;\\text{units/mL}}$$ **Finding J (specific activity):** $$J = \\frac{I}{c} = \\frac{417.6}{2} = 208.8 \\;\\text{units/mg} \\quad \\Rightarrow \\quad \\boxed{J = 208.8 \\;\\text{units/mg}}$$ --- ### Step 6 **Given:** V = 5 mL, a = 700 units/mL, SA = 500 units/mg **Finding K (protein concentration):** $$K = \\frac{a}{SA} = \\frac{700}{500} = 1.4 \\;\\text{mg/mL} \\quad \\Rightarrow \\quad \\boxed{K = 1.4 \\;\\text{mg/mL}}$$ **Finding L (yield):** $$TA_6 = 5 \\times 700 = 3{,}500 \\;\\text{units}$$ $$L = \\frac{3{,}500}{13{,}050} \\times 100 = 26.820\\% \\quad \\Rightarrow \\quad \\boxed{L = 26.8\\%}$$ --- ## Completed Purification Table | Step | Volume (mL) | Protein conc. (mg/mL) | Activity (units/mL) | Specific Activity (units/mg) | Yield (%) | |------|-------------|----------------------|---------------------|-----------------------------|-----------| | 1 | 1450 | **11.3** | 9 | 0.8 | **100.0** | | 2 | 1450 | 8 | **7.9** | **1.0** | 87.5 | | 3 | 280 | **2.7** | 30 | 11 | **64.4** | | 4 | **5.4** | **6.0** | 900 | 150 | 37 | | 5 | 10 | 2 | **417.6** | **208.8** | 32 | | 6 | 5 | **1.4** | 700 | 500 | **26.8** | The table behaves as expected: specific activity rises monotonically (0.8 \u2192 500), confirming increasing purity, while yield falls monotonically (100% \u2192 26.8%), reflecting activity loss at each purification step."
+    ],
+    "trajectory": [
+      {
+        "turn_index": 0,
+        "granularity": "unspecified",
+        "thought": "The five columns are Volume (V, mL), Protein concentration (c, mg/mL), Activity (a, units/mL), Specific Activity (SA, units/mg), and Yield (Y, %). The key formulas are: Total Activity TA = V \u00d7 a; Specific Activity SA = a/c; Yield Y(%) = (TA_n/TA_1) \u00d7 100. With TA\u2081 = 1450 \u00d7 9 = 13,050 units as the reference, all unknowns follow directly.",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 1,
+        "granularity": "unspecified",
+        "thought": "The Activity column (col 3) represents activity per unit volume (units/mL), so Total Activity = Volume \u00d7 Activity (units/mL \u00d7 mL = total units). This is the key relationship that links volume and activity to yield calculations. Anchoring to Step 1: TA\u2081 = 1450 \u00d7 9 = 13,050 units.",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 2,
+        "granularity": "unspecified",
+        "thought": "The three working formulas are established:",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 3,
+        "granularity": "unspecified",
+        "thought": "Step 1 is the reference step. TA\u2081 = 1450 \u00d7 9 = 13,050 units. All yields are calculated as (TA\u2099 / 13,050) \u00d7 100. This anchors all subsequent yield and total-activity calculations.",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 4,
+        "granularity": "unspecified",
+        "thought": "This step maps each unknown letter to its formula. No computation needed yet\u2014just establishing the mapping:",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 5,
+        "granularity": "unspecified",
+        "thought": "",
+        "action": "python_exec({\"code\": \"# Purification table solver\\n# Columns: Volume (V), Protein concentration (c), Activity (a), Specific Activity (SA), Yield (Y%)\\n# Formulas:\\n#   Total Activity (TA) = V * a\\n#   Specific Activity (SA) = a / c  =>  c = a / SA\\n#   Yield (%) = (TA_n / TA_1) * 100\\n\\n# --- Step 1: Reference ---\\nV1 = 1450\\na1 = 9\\nSA1 = 0.8\\n\\nA = a1 / SA1  # protein concentration\\nTA1 = V1 * a1  # reference total activity\\nB = (TA1 / TA1) * 100  # yield = 100% by definition\\n\\nprint(f\\\"Step 1:\\\")\\nprint(f\\\"  TA1 (reference) = {V1} x {a1} = {TA1} units\\\")\\nprint(f\\\"  A (protein conc) = {a1} / {SA1} = {A} mg/mL  => rounded: {round(A,1)}\\\")\\nprint(f\\\"  B (yield) = {B}%  => rounded: {round(B,1)}\\\")\\n\\n# --- Step 2 ---\\nV2 = 1450\\nc2 = 8\\nY2 = 87.5\\n\\nTA2 = (Y2 / 100) * TA1\\nC = TA2 / V2  # activity units/mL\\nD = C / c2    # specific activity\\n\\nprint(f\\\"\\\\nStep 2:\\\")\\nprint(f\\\"  TA2 = {Y2}/100 * {TA1} = {TA2} units\\\")\\nprint(f\\\"  C (activity) = {TA2} / {V2} = {C} units/mL  => rounded: {round(C,1)}\\\")\\nprint(f\\\"  D (specific activity) = {C} / {c2} = {D} units/mg  => rounded: {round(D,1)}\\\")\\n\\n# --- Step 3 ---\\nV3 = 280\\na3 = 30\\nSA3 = 11\\n\\nE = a3 / SA3  # protein concentration\\nTA3 = V3 * a3\\nF = (TA3 / TA1) * 100  # yield\\n\\nprint(f\\\"\\\\nStep 3:\\\")\\nprint(f\\\"  TA3 = {V3} x {a3} = {TA3} units\\\")\\nprint(f\\\"  E (protein conc) = {a3} / {SA3} = {E:.4f} mg/mL  => rounded: {round(E,1)}\\\")\\nprint(f\\\"  F (yield) = {TA3} / {TA1} * 100 = {F:.4f}%  => rounded: {round(F,1)}\\\")\\n\\n# --- Step 4 ---\\na4 = 900\\nSA4 = 150\\nY4 = 37\\n\\nH = a4 / SA4  # protein concentration\\nTA4 = (Y4 / 100) * TA1\\nG = TA4 / a4  # volume\\n\\nprint(f\\\"\\\\nStep 4:\\\")\\nprint(f\\\"  TA4 = {Y4}/100 * {TA1} = {TA4} units\\\")\\nprint(f\\\"  H (protein conc) = {a4} / {SA4} = {H} mg/mL  => rounded: {round(H,1)}\\\")\\nprint(f\\\"  G (volume) = {TA4} / {a4} = {G:.4f} mL  => rounded: {round(G,1)}\\\")\\n\\n# --- Step 5 ---\\nV5 = 10\\nc5 = 2\\nY5 = 32\\n\\nTA5 = (Y5 / 100) * TA1\\nI = TA5 / V5  # activity\\nJ = I / c5    # specific activity\\n\\nprint(f\\\"\\\\nStep 5:\\\")\\nprint(f\\\"  TA5 = {Y5}/100 * {TA1} = {TA5} units\\\")\\nprint(f\\\"  I (activity) = {TA5} / {V5} = {I} units/mL  => rounded: {round(I,1)}\\\")\\nprint(f\\\"  J (specific activity) = {I} / {c5} = {J} units/mg  => rounded: {round(J,1)}\\\")\\n\\n# --- Step 6 ---\\nV6 = 5\\na6 = 700\\nSA6 = 500\\n\\nK = a6 / SA6  # protein concentration\\nTA6 = V6 * a6\\nL = (TA6 / TA1) * 100  # yield\\n\\nprint(f\\\"\\\\nStep 6:\\\")\\nprint(f\\\"  TA6 = {V6} x {a6} = {TA6} units\\\")\\nprint(f\\\"  K (protein conc) = {a6} / {SA6} = {K} mg/mL  => rounded: {round(K,1)}\\\")\\nprint(f\\\"  L (yield) = {TA6} / {TA1} * 100 = {L:.4f}%  => rounded: {round(L,1)}\\\")\\n\\nprint(\\\"\\\\n--- Summary of unknowns ---\\\")\\nfor letter, val, unit in [\\n    ('A', A, 'mg/mL'),\\n    ('B', B, '%'),\\n    ('C', C, 'units/mL'),\\n    ('D', D, 'units/mg'),\\n    ('E', E, 'mg/mL'),\\n    ('F', F, '%'),\\n    ('G', G, 'mL'),\\n    ('H', H, 'mg/mL'),\\n    ('I', I, 'units/mL'),\\n    ('J', J, 'units/mg'),\\n    ('K', K, 'mg/mL'),\\n    ('L', L, '%'),\\n]:\\n    print(f\\\"  {letter} = {round(val,1)} {unit}\\\")\\n\"})",
+        "observation": "<no output>",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 6,
+        "granularity": "unspecified",
+        "thought": "",
+        "action": "finish",
+        "observation": "## Enzyme Purification Table \u2014 Complete Solution",
+        "confidence": null,
+        "final_confidence": 0.8
+      }
+    ],
+    "final_confidence": 0.8,
+    "final_confidence_parse_failures": 0,
+    "plan_parser_recovery_path": "clean",
+    "plan_parser_attempts": 1
+  }
+}

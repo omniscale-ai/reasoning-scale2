@@ -1,0 +1,8 @@
+{
+  "bytes": 319514,
+  "code": 200,
+  "codeText": "OK",
+  "result": "I've reviewed the provided code from Django's `decorators.py` file, but I cannot locate a `MiddlewareMixin` class or its `sync_capable` and `async_capable` attributes in the content shown.\n\nWhat the file **does** contain are three decorator functions that set these attributes:\n\n1. **`sync_and_async_middleware(func)`** - \"Mark a middleware factory as returning a hybrid middleware supporting both types of request\" by setting `sync_capable = True` and `async_capable = True`\n\n2. **`sync_only_middleware(func)`** - Sets `sync_capable = True` and `async_capable = False`\n\n3. **`async_only_middleware(func)`** - Sets `sync_capable = False` and `async_capable = True`\n\nThese decorators are applied to middleware factory functions rather than defining a `MiddlewareMixin` class. If you're looking for the `MiddlewareMixin` class definition, it may be located in a different Django file, such as `django/utils/deprecation.py`.",
+  "durationMs": 3364,
+  "url": "https://github.com/django/django/blob/main/django/utils/decorators.py"
+}

@@ -1,0 +1,46 @@
+{
+  "variants": {
+    "b_smoke": {
+      "n_total": 5,
+      "n_malformed_plan_error": 0,
+      "malformed_instance_ids": [],
+      "recovery_path_counts": {
+        "unknown": 2,
+        "clean": 3
+      }
+    },
+    "c_smoke": {
+      "n_total": 5,
+      "n_malformed_plan_error": 0,
+      "malformed_instance_ids": [],
+      "recovery_path_counts": {
+        "unknown": 2,
+        "clean": 3
+      }
+    },
+    "b": {
+      "n_total": 130,
+      "n_malformed_plan_error": 0,
+      "malformed_instance_ids": [],
+      "recovery_path_counts": {
+        "unknown": 29,
+        "clean": 75,
+        "reprompt": 14,
+        "json_fallback": 11,
+        "all_failed": 1
+      }
+    },
+    "c": {
+      "n_total": 130,
+      "n_malformed_plan_error": 0,
+      "malformed_instance_ids": [],
+      "recovery_path_counts": {
+        "unknown": 33,
+        "clean": 70,
+        "reprompt": 18,
+        "all_failed": 2,
+        "json_fallback": 7
+      }
+    }
+  }
+}

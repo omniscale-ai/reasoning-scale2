@@ -1,0 +1,163 @@
+{
+  "instance_id": "fs_1875e781-bd89-4528-8bc3-94b7b436402f",
+  "subset": "frontsci",
+  "variant": "c",
+  "final_answer": "## Enzyme Purification Table \u2014 Complete Solution",
+  "final_confidence": 0.75,
+  "cost_usd": 0.280368,
+  "parser_recovery_path": "clean",
+  "parser_attempts": 1,
+  "trajectory": {
+    "plan": [
+      "**Identify the column definitions and their units**, distinguishing between concentration-based columns (per mL) and totals that require volume multiplication.",
+      "**Derive the key formulas** relating the five columns to one another: - Total Activity (TA) = Activity (units/mL) \u00d7 Volume (mL) - Total Protein (TP) = Protein concentration (mg/mL) \u00d7 Volume (mL) - Specific Activity (SA) = Activity / Protein concentration = TA / TP (units/mg) - Yield (%) = (TA at current step / TA at Step 1) \u00d7 100",
+      "**Anchor the reference value TA\u2081** using Step 1's known Activity and Volume.",
+      "**Solve for A and B** in Step 1 using SA = Activity / Protein concentration and Yield = 100% for the starting material.",
+      "**Solve for C and D** in Step 2 using the given Yield to back-calculate TA\u2082, then divide by Volume for C and by Protein concentration for D.",
+      "**Solve for E and F** in Step 3 using SA = Activity / Protein concentration for E, and TA\u2083 = Activity \u00d7 Volume for the yield F.",
+      "**Solve for G and H** in Step 4 using the given Yield to find TA\u2084, then divide by Activity for G; divide Activity by SA for H.",
+      "**Solve for I and J** in Step 5 using the given Yield for TA\u2085, divide by Volume for I, and divide by Protein concentration for J.",
+      "**Solve for K and L** in Step 6 using SA = Activity / Protein concentration for K, and TA\u2086 = Activity \u00d7 Volume for L.",
+      "**Verify internal consistency**: check that Specific Activity increases monotonically (purification progresses) and Yield decreases monotonically across all steps. --- ## Full Solution ### Column definitions and core formulas | Column | Meaning | Symbol | |--------|---------|--------| | Volume | Volume of fraction (mL) | V | | Protein concentration | [P] in mg/mL | [P] | | Activity | Enzyme activity concentration (units/mL) | [A] | | Specific activity | [A] / [P] = units/mg | SA | | Yield | (TA_step / TA_step1) \u00d7 100% | Y | **Derived quantities:** - Total Activity: TA = [A] \u00d7 V - Total Protein: TP = [P] \u00d7 V - SA = [A] / [P] (equivalently TA / TP) - Y (%) = (TA_step / TA\u2081) \u00d7 100 --- ### Step 1: Anchor TA\u2081, solve A and B **Given:** V = 1450, [A] = 9, SA = 0.8, [P] = A, Yield = B **Formula for SA:** $$SA = \\frac{[A]}{[P]} \\implies 0.8 = \\frac{9}{A} \\implies A = \\frac{9}{0.8} = 11.25$$ $$\\boxed{A = 11.3 \\text{ mg/mL}}$$ **Reference total activity:** $$TA_1 = [A] \\times V = 9 \\times 1450 = 13{,}050 \\text{ units}$$ **Yield at Step 1** (starting material = 100%): $$\\boxed{B = 100.0\\%}$$ --- ### Step 2: Solve C and D **Given:** V = 1450, [P] = 8, Yield = 87.5%, [A] = C, SA = D **Back-calculate TA\u2082 from Yield:** $$TA_2 = \\frac{87.5}{100} \\times 13{,}050 = 11{,}418.75 \\text{ units}$$ **Activity concentration:** $$C = \\frac{TA_2}{V} = \\frac{11{,}418.75}{1450} = 7.875$$ $$\\boxed{C = 7.9 \\text{ units/mL}}$$ **Specific activity:** $$D = \\frac{[A]}{[P]} = \\frac{7.875}{8} = 0.984$$ $$\\boxed{D = 1.0 \\text{ units/mg}}$$ --- ### Step 3: Solve E and F **Given:** V = 280, [A] = 30, SA = 11, [P] = E, Yield = F **Protein concentration from SA:** $$SA = \\frac{[A]}{[P]} \\implies 11 = \\frac{30}{E} \\implies E = \\frac{30}{11} = 2.727$$ $$\\boxed{E = 2.7 \\text{ mg/mL}}$$ **Total activity and Yield:** $$TA_3 = 30 \\times 280 = 8{,}400 \\text{ units}$$ $$F = \\frac{8{,}400}{13{,}050} \\times 100 = 64.367\\%$$ $$\\boxed{F = 64.4\\%}$$ --- ### Step 4: Solve G and H **Given:** [A] = 900, SA = 150, Yield = 37%, Volume = G, [P] = H **Protein concentration from SA:** $$H = \\frac{[A]}{SA} = \\frac{900}{150} = 6.0$$ $$\\boxed{H = 6.0 \\text{ mg/mL}}$$ **Back-calculate TA\u2084 from Yield:** $$TA_4 = \\frac{37}{100} \\times 13{,}050 = 4{,}828.5 \\text{ units}$$ **Volume:** $$G = \\frac{TA_4}{[A]} = \\frac{4{,}828.5}{900} = 5.365$$ $$\\boxed{G = 5.4 \\text{ mL}}$$ --- ### Step 5: Solve I and J **Given:** V = 10, [P] = 2, Yield = 32%, [A] = I, SA = J **Back-calculate TA\u2085 from Yield:** $$TA_5 = \\frac{32}{100} \\times 13{,}050 = 4{,}176 \\text{ units}$$ **Activity concentration:** $$I = \\frac{TA_5}{V} = \\frac{4{,}176}{10} = 417.6$$ $$\\boxed{I = 417.6 \\text{ units/mL}}$$ **Specific activity:** $$J = \\frac{[A]}{[P]} = \\frac{417.6}{2} = 208.8$$ $$\\boxed{J = 208.8 \\text{ units/mg}}$$ --- ### Step 6: Solve K and L **Given:** V = 5, [A] = 700, SA = 500, [P] = K, Yield = L **Protein concentration from SA:** $$K = \\frac{[A]}{SA} = \\frac{700}{500} = 1.4$$ $$\\boxed{K = 1.4 \\text{ mg/mL}}$$ **Total activity and Yield:** $$TA_6 = 700 \\times 5 = 3{,}500 \\text{ units}$$ $$L = \\frac{3{,}500}{13{,}050} \\times 100 = 26.819\\%$$ $$\\boxed{L = 26.8\\%}$$ --- ### Completed Purification Table | Step | Volume (mL) | [Protein] (mg/mL) | Activity (units/mL) | Specific Activity (units/mg) | Yield (%) | |------|-------------|-------------------|---------------------|------------------------------|-----------| | 1 | 1450 | **11.3** | 9 | 0.8 | **100.0** | | 2 | 1450 | 8 | **7.9** | **1.0** | 87.5 | | 3 | 280 | **2.7** | 30 | 11 | **64.4** | | 4 | **5.4** | **6.0** | 900 | 150 | 37 | | 5 | 10 | 2 | **417.6** | **208.8** | 32 | | 6 | 5 | **1.4** | 700 | 500 | **26.8** | ### Consistency Check - **Specific activity** increases monotonically: 0.8 \u2192 1.0 \u2192 11 \u2192 150 \u2192 208.8 \u2192 500 \u2713 (purification progressing) - **Yield** decreases monotonically: 100% \u2192 87.5% \u2192 64.4% \u2192 37% \u2192 32% \u2192 26.8% \u2713 (enzyme lost at each step) - Total activities derived from yield are all \u2264 TA\u2081 = 13,050 units \u2713"
+    ],
+    "trajectory": [
+      {
+        "turn_index": 0,
+        "granularity": "atomic",
+        "thought": "The five columns in the purification table are defined as follows:",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 1,
+        "granularity": "atomic",
+        "thought": "The five columns in the purification table relate to each other through these core formulas:",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 2,
+        "granularity": "global",
+        "thought": "TA\u2081 = Activity \u00d7 Volume = 9 units/mL \u00d7 1450 mL = 13,050 units. This is the reference total activity for all yield calculations. All subsequent yields are expressed as (TA_step / 13,050) \u00d7 100%.",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 3,
+        "granularity": "global",
+        "thought": "Step 1 contains: V = 1450, [A] = 9 units/mL, SA = 0.8 units/mg, [P] = A (unknown), Yield = B (unknown).",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 4,
+        "granularity": "atomic",
+        "thought": "Step 2 uses the Yield to back-calculate TA\u2082, then derives C (activity concentration) and D (specific activity).",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 5,
+        "granularity": "global",
+        "thought": "Step 3 given: V = 280, [A] = 30, SA = 11, [P] = E, Yield = F",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 6,
+        "granularity": "global",
+        "thought": "Step 4 solution is already fully derived in the plan. G = TA\u2084/[A] = (0.37 \u00d7 13050)/900 = 4828.5/900 = 5.365 \u2248 5.4 mL, and H = [A]/SA = 900/150 = 6.0 mg/mL.",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 7,
+        "granularity": "global",
+        "thought": "Step 5 given: V = 10, [P] = 2, Yield = 32%, [A] = I, SA = J",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 8,
+        "granularity": "global",
+        "thought": "Step 6 given: V = 5, [A] = 700, SA = 500, [P] = K, Yield = L",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 9,
+        "granularity": "global",
+        "thought": "",
+        "action": "finish",
+        "observation": "## Enzyme Purification Table \u2014 Complete Solution",
+        "confidence": null,
+        "final_confidence": 0.75
+      }
+    ],
+    "final_confidence": 0.75,
+    "final_confidence_parse_failures": 0,
+    "plan_parser_recovery_path": "clean",
+    "plan_parser_attempts": 1,
+    "phases": [
+      {
+        "kind": "global",
+        "correct_tag": "global",
+        "payload": "Solve the following problem end-to-end: Context: Specific activity and yield of proteins are crucial in determining the purification scheme of an enzyme\nQuestion: Fill in the missing numbers in the mi"
+      },
+      {
+        "kind": "subtask",
+        "correct_tag": "subtask",
+        "payload": "Restate the problem and identify the target output type."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Read the problem carefully."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "List any quantities or constraints mentioned in the problem."
+      },
+      {
+        "kind": "subtask",
+        "correct_tag": "subtask",
+        "payload": "Plan the solution and produce a final answer."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Outline the solution steps."
+      },
+      {
+        "kind": "atomic",
+        "correct_tag": "atomic",
+        "payload": "Compute or formulate the final answer."
+      },
+      {
+        "kind": "global_atomic",
+        "correct_tag": "atomic",
+        "payload": "Emit the final answer with a Finish action."
+      }
+    ],
+    "delegate": "scope_unaware_planandsolve_v3"
+  }
+}
