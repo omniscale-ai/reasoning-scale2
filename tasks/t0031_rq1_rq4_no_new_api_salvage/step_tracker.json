@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Write plan/plan.md for the four bounded no-new-API analyses with $0.00 budget and local CPU only.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T11:25:15Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
