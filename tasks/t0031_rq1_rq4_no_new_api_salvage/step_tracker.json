@@ -131,9 +131,9 @@
       "step": 15,
       "name": "reporting",
       "description": "Run pre-merge verifier, create PR, merge, and refresh overview on main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T11:47:26Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T11:50:36Z",
       "log_file": "logs/steps/015_reporting/"
     }
   ]
