@@ -14,9 +14,9 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0031 dependency is completed.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T13:08:29Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T13:08:46Z",
       "log_file": "logs/steps/002_check-deps/"
     },
     {
