@@ -1,0 +1,5 @@
+branch: task/t0034_cancel_t0029_t0030_no_anthropic
+base_branch: main
+base_commit: 385232bdf48babbfc184f3497b8d2008cd6c24b8
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0034_cancel_t0029_t0030_no_anthropic
+created_at: 2026-05-03T14:18:02Z
