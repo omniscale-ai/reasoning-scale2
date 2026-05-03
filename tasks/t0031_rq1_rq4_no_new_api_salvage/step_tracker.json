@@ -5,9 +5,9 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0031 worktree branch from main and plan the step list.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T11:14:57Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T11:16:23Z",
       "log_file": "logs/steps/001_create-branch/"
     },
     {
