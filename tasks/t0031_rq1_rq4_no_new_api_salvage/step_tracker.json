@@ -50,9 +50,9 @@
       "step": 6,
       "name": "research-code",
       "description": "Inventory t0026/t0027 results, predictions, and logs to anchor the load helper and audit walk.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T11:20:13Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T11:25:04Z",
       "log_file": "logs/steps/006_research-code/"
     },
     {
