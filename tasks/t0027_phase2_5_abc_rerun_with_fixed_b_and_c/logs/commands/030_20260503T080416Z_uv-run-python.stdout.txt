@@ -1,0 +1,58 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 001_20260502T171904Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 006_20260502T184356Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 007_20260502T185115Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 009_20260502T185150Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 011_20260502T201932Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 012_20260502T201943Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 015_20260502T202005Z_uv-run-mypy.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 016_20260502T202023Z_uv-run-mypy.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 027_20260503T080345Z_uv-run-ruff.json has non-zero exit code: 1[0m
+[33m  LG-W002 warning: Search log 001_20260502T210748Z_web-search.json missing fields: step_number, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 002_20260502T210754Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 003_20260502T210759Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 004_20260502T211049Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 005_20260502T211051Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 006_20260502T211057Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 007_20260502T211103Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 008_20260502T211108Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 009_20260502T220700Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 010_20260502T220706Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 011_20260502T220715Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 012_20260502T220723Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 013_20260502T220733Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 014_20260502T220738Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 015_20260502T220742Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 016_20260502T220747Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 017_20260502T220955Z_web-search.json missing fields: step_number, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 018_20260502T221002Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 019_20260502T221009Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 020_20260502T221015Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 021_20260502T221023Z_web-search.json missing fields: step_number, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 022_20260502T221029Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 023_20260502T221035Z_web-search.json missing fields: step_number, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 024_20260502T221049Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 025_20260502T221054Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 026_20260502T221058Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 027_20260502T221103Z_web-search.json missing fields: step_number, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 028_20260502T221109Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 029_20260502T221114Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 030_20260502T221122Z_web-search.json missing fields: step_number, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 031_20260502T221128Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 032_20260502T221135Z_web-search.json missing fields: step_number, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 033_20260502T221141Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 034_20260502T223349Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 035_20260502T223716Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 036_20260502T223723Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 037_20260502T223730Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 038_20260502T223741Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 039_20260502T223749Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W002 warning: Search log 040_20260502T223753Z_web-fetch.json missing fields: step_number, query, results_count, results, error[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 51 warning(s)
+

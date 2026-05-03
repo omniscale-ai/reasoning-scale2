@@ -1,0 +1,2 @@
+tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/run_abc_rerun.py:535: error: Returning Any from function declared to return "dict[str, Any]"  [no-any-return]
+Found 1 error in 1 file (checked 10 source files)

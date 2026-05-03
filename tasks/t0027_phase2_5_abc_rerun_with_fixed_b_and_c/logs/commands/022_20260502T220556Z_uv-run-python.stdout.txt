@@ -1,0 +1,32 @@
+full run for variant 'c': 130 paired instances (target N_PAIRED_EXPECTED=130)
+  variant c: 5/130 done, cost $0.7257, elapsed 319.9s
+  variant c: 10/130 done, cost $0.7257, elapsed 389.4s
+  variant c: 15/130 done, cost $1.4882, elapsed 671.2s
+  variant c: 20/130 done, cost $3.2123, elapsed 944.8s
+  variant c: 25/130 done, cost $4.3002, elapsed 1217.2s
+  variant c: 30/130 done, cost $4.8362, elapsed 1338.3s
+  variant c: 35/130 done, cost $5.0413, elapsed 1599.9s
+  variant c: 40/130 done, cost $5.3652, elapsed 1761.4s
+  variant c: 45/130 done, cost $5.5101, elapsed 1961.0s
+  variant c: 50/130 done, cost $5.5975, elapsed 2007.8s
+  variant c: 55/130 done, cost $5.6778, elapsed 2044.0s
+  variant c: 60/130 done, cost $6.0656, elapsed 2238.7s
+  variant c: 65/130 done, cost $6.3126, elapsed 2320.6s
+  variant c: 70/130 done, cost $6.5200, elapsed 2446.7s
+  variant c: 75/130 done, cost $6.8355, elapsed 2594.8s
+  variant c: 80/130 done, cost $7.3292, elapsed 2744.4s
+  variant c: 85/130 done, cost $7.6268, elapsed 2924.4s
+  variant c: 90/130 done, cost $7.7750, elapsed 3012.2s
+  variant c: 95/130 done, cost $8.0168, elapsed 3152.7s
+  variant c: 100/130 done, cost $8.1785, elapsed 3248.2s
+  variant c: 105/130 done, cost $8.3434, elapsed 3384.3s
+  variant c: 110/130 done, cost $8.7131, elapsed 3546.6s
+  variant c: 115/130 done, cost $8.8533, elapsed 3596.0s
+  variant c: 120/130 done, cost $9.0770, elapsed 3737.8s
+  variant c: 125/130 done, cost $9.2717, elapsed 3872.4s
+  variant c: 130/130 done, cost $9.3392, elapsed 4056.3s
+full variant c agent run complete: cost $9.3392, runs=130, parser_failures=0
+--- judging variant c predictions with primary sonnet judge ---
+variant c judging complete: total cost $9.4692 (agent $9.3392 + judge $0.1300)
+wrote predictions JSONL: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/predictions/abc-rerun-c/files/predictions_variant_c.jsonl
+variant c success rate (sonnet judge): 7/130 = 0.0538

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "command": "uv run flowmark --inplace --nobackup tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/results_summary.md tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/results_detailed.md tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/logs/steps/012_results/step_log.md",
+  "exit_code": 0,
+  "duration_seconds": 0.116,
+  "started_at": "2026-05-03T08:03:38Z",
+  "completed_at": "2026-05-03T08:03:38Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "stdout_file": "026_20260503T080338Z_uv-run-flowmark.stdout.txt",
+  "stderr_file": "026_20260503T080338Z_uv-run-flowmark.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 0,
+  "truncated": false
+}

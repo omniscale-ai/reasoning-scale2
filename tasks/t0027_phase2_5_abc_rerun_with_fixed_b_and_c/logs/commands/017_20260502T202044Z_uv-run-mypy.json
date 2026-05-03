@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "command": "uv run mypy -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.run_abc_rerun -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.run_analysis -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.matched_mismatch_v2 -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.planandsolve_v3 -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.paths -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.anthropic_shim -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.judge -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.calibration -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.mcnemar -m tasks.t0027_phase2_5_abc_rerun_with_fixed_b_and_c.code.instance_loader",
+  "exit_code": 0,
+  "duration_seconds": 0.266,
+  "started_at": "2026-05-02T20:20:44Z",
+  "completed_at": "2026-05-02T20:20:44Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "stdout_file": "017_20260502T202044Z_uv-run-mypy.stdout.txt",
+  "stderr_file": "017_20260502T202044Z_uv-run-mypy.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

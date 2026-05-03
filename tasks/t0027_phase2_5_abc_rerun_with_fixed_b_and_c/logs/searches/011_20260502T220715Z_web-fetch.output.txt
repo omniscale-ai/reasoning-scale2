@@ -1,0 +1,8 @@
+{
+  "bytes": 309674,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# WSGIHandler Class Overview\n\nThe `WSGIHandler` class is Django's WSGI application handler. Here's how it works:\n\n## Initialization\n\n```python\ndef __init__(self, *args, **kwargs):\n    super().__init__(*args, **kwargs)\n    self.load_middleware()\n```\n\nThe handler calls `load_middleware()` during initialization, which builds the middleware chain by invoking the parent class's method. This chain wraps request processing with middleware layers.\n\n## Request Processing\n\nThe `__call__` method handles incoming WSGI requests:\n\n```python\ndef __call__(self, environ, start_response):\n    set_script_prefix(get_script_name(environ))\n    signals.request_started.send(sender=self.__class__, environ=environ)\n    request = self.request_class(environ)\n    response = self.get_response(request)\n```\n\n**Key steps:**\n1. Sets the script prefix from the WSGI environment\n2. Sends a `request_started` signal\n3. Creates a `WSGIRequest` object from the WSGI environ dictionary\n4. Calls `get_response()` (inherited from `BaseHandler`) to process the request through the middleware chain\n\nThe response headers are then formatted and passed to `start_response()` for WSGI compliance. If file streaming is supported, it wraps the response appropriately.\n\nThe middleware chain itself is built in the parent `BaseHandler` class via `load_middleware()`.",
+  "durationMs": 3565,
+  "url": "https://github.com/django/django/blob/main/django/core/handlers/wsgi.py"
+}

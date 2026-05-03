@@ -1,0 +1,53 @@
+{
+  "spec_version": "2",
+  "library_id": "plan_and_solve_v3",
+  "name": "Plan-and-Solve v3 (Fault-Tolerant Plan Parser)",
+  "version": "0.3.0",
+  "short_description": "Forks Plan-and-Solve v2 (t0021) by adding a re-prompt and JSON-mode fallback chain when the planner emits an unparseable numbered list, addressing S-0026-01.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/planandsolve_v3.py"
+  ],
+  "entry_points": [
+    {
+      "name": "PlanAndSolveAgentV3",
+      "kind": "class",
+      "module": "code/planandsolve_v3.py",
+      "description": "Plan-and-Solve v3 agent: v2 with a fault-tolerant plan-parsing prefix and the same verbalized-confidence postlude."
+    },
+    {
+      "name": "AgentResultV3",
+      "kind": "class",
+      "module": "code/planandsolve_v3.py",
+      "description": "Aggregate result with the v2 fields plus plan_parser_recovery_path and plan_parser_attempts diagnostics."
+    },
+    {
+      "name": "_robust_parse_plan",
+      "kind": "function",
+      "module": "code/planandsolve_v3.py",
+      "description": "Standalone planner helper that drives the three-attempt fallback chain (clean / re-prompt / JSON-fallback)."
+    },
+    {
+      "name": "REPROMPT_PLAN_PROMPT_TEMPLATE",
+      "kind": "function",
+      "module": "code/planandsolve_v3.py",
+      "description": "Template used for the second planner call when the first response fails to parse."
+    },
+    {
+      "name": "JSON_PLAN_PROMPT_TEMPLATE",
+      "kind": "function",
+      "module": "code/planandsolve_v3.py",
+      "description": "Template used for the third planner call requesting a JSON object with a 'steps' array."
+    }
+  ],
+  "dependencies": [],
+  "test_paths": [
+    "code/test_planandsolve_v3.py"
+  ],
+  "categories": [
+    "agent-evaluation",
+    "granularity-conditioning"
+  ],
+  "created_by_task": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "date_created": "2026-05-02"
+}

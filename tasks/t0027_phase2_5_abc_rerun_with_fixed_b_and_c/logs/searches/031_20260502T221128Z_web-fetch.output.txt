@@ -1,0 +1,8 @@
+{
+  "bytes": 57132,
+  "code": 200,
+  "codeText": "Ok",
+  "result": "# Django Ticket #31928: Coroutine Passed to First Middleware\n\n## Problem Description\n\nWhen using Django 3.1 with an ASGI server (like uvicorn), the first middleware in the chain receives a coroutine object as its response parameter instead of an `HttpResponse` object. Subsequent middlewares correctly receive the `HttpResponse` object.\n\nThis issue affected packages like django-cors-headers, which are typically placed first in the middleware stack.\n\n## Root Cause Analysis\n\nKevin Michel identified the core issue in the comments:\n\n> \"SecurityMiddleware and the three cache middlewares were not calling super().init() during their initialization or calling the required MiddlewareMixin._async_check() method.\"\n\nThe specific problem: Several Django middlewares (SecurityMiddleware, UpdateCacheMiddleware, FetchFromCacheMiddleware, CacheMiddleware, and SessionMiddleware) failed to call `super().__init__()` in their initialization. This prevented the `MiddlewareMixin._async_check()` method from being invoked, which meant the `_is_coroutine` magic attribute wasn't properly set. This caused the middleware chain to mishandle async responses in fully async contexts.\n\n## Resolution\n\nThe fix involved updating these middlewares to properly call `super().__init__()`, ensuring async detection worked correctly throughout the middleware chain.",
+  "durationMs": 4033,
+  "url": "https://code.djangoproject.com/ticket/31928"
+}

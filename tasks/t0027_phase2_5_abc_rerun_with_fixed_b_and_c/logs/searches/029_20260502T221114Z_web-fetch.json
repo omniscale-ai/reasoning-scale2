@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:11:14Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/django/django/main/django/utils/deprecation.py",
+    "prompt": "Extract the complete MiddlewareMixin class with __init__, __call__, and __acall__ methods"
+  },
+  "url": "https://raw.githubusercontent.com/django/django/main/django/utils/deprecation.py",
+  "prompt": "Extract the complete MiddlewareMixin class with __init__, __call__, and __acall__ methods"
+}

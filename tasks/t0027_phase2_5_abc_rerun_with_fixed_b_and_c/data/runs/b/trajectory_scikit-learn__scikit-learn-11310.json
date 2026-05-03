@@ -1,0 +1,13 @@
+{
+  "instance_id": "scikit-learn__scikit-learn-11310",
+  "subset": "swebench",
+  "variant": "b",
+  "final_answer": null,
+  "final_confidence": null,
+  "cost_usd": 0.032688,
+  "parser_recovery_path": "unknown",
+  "parser_attempts": 0,
+  "trajectory": {
+    "error": "TimeoutExpired: Command '['claude', '-p', '-', '--model', 'claude-sonnet-4-6', '--output-format', 'json']' timed out after 180.0 seconds"
+  }
+}

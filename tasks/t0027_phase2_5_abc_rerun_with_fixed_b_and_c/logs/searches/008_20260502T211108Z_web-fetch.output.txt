@@ -1,0 +1,8 @@
+{
+  "bytes": 81842,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# Import Statements Analysis\n\nLooking at lines 1-50 of the provided code, here are the key import statements:\n\n**Standard Library Imports:**\n- `import numbers`\n- `import operator`\n- `import re`\n- `import time` (line 18)\n- `import warnings`\n- `from abc import ABCMeta, abstractmethod`\n- `from collections import defaultdict`\n- `from collections.abc import Iterable, Mapping, Sequence`\n- `from copy import deepcopy`\n- `from functools import partial, reduce`\n- `from inspect import signature`\n- `from itertools import product`\n\n**Third-Party Libraries:**\n- `import numpy as np`\n- `from numpy.ma import MaskedArray`\n- `from scipy.stats import rankdata`\n\n**Scikit-Learn Imports:**\nMultiple imports from `sklearn` submodules including base classes, exceptions, metrics, model selection utilities, and validation functions.\n\nThe `time` module (imported on line 18) is utilized later in the code for tracking refitting duration, as seen in the `fit` method where `refit_start_time` and `refit_end_time` are captured to calculate `self.refit_time_`.",
+  "durationMs": 3473,
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/model_selection/_search.py"
+}

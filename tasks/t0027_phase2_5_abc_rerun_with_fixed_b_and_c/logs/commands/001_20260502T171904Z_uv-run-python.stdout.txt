@@ -1,0 +1,11 @@
+
+Verifying: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/research/research_code.md
+
+[31m[1mERRORS:[0m
+[31m  RC-E006 error: Inline citation [t0006] has no matching Task Index entry[0m
+[31m  RC-E006 error: Inline citation [t0011] has no matching Task Index entry[0m
+[31m  RC-E006 error: Inline citation [t0012] has no matching Task Index entry[0m
+[31m  RC-E006 error: Inline citation [t0022] has no matching Task Index entry[0m
+
+[31m[1mFAILED[0m — 4 error(s), 0 warning(s)
+

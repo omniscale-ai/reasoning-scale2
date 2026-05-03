@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "command": "uv run python -u -m arf.scripts.verificators.verify_predictions_asset abc-rerun-b --task-id t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "exit_code": 1,
+  "duration_seconds": 0.042,
+  "started_at": "2026-05-02T20:19:32Z",
+  "completed_at": "2026-05-02T20:19:32Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "stdout_file": "011_20260502T201932Z_uv-run-python.stdout.txt",
+  "stderr_file": "011_20260502T201932Z_uv-run-python.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 1,
+  "truncated": false
+}

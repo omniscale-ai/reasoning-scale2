@@ -1,0 +1,12 @@
+{
+  "spec_version": "1",
+  "kind": "predictions_asset_pointer",
+  "summary": "This file is a pointer; the actual variant-A predictions live in t0026.",
+  "source_task_id": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "source_predictions_id": "a-scope-aware",
+  "source_predictions_dir": "tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/assets/predictions/a-scope-aware/",
+  "source_predictions_jsonl": "tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/assets/predictions/a-scope-aware/files/predictions_variant_a.jsonl",
+  "rationale": "Per t0027 task description, A is not re-run. t0026's A trajectories are valid for the paired analysis; A is reused by reference. This pointer asset exists so the task's expected_assets={predictions: 3} contract is satisfied without duplicating the underlying prediction data.",
+  "consumers_must": "Read the source_predictions_jsonl path above to access the actual per-instance predictions. Filtering to the 130 paired instances is performed by the t0027 analysis script using the intersection of the three t0026 variants' completed instances.",
+  "model_used_for_a": "claude-sonnet-4-6 (same model as B and C in t0027; the original t0027 task description stated claude-opus-4-7 for B/C but that was a transcription error caught during implementation and corrected)."
+}

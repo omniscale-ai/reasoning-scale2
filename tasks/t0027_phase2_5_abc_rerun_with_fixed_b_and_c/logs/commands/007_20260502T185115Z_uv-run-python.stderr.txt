@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/run_abc_rerun.py", line 42, in <module>
+    from tasks.t0021_plan_and_solve_v2_with_final_confidence.code.planandsolve_v2 import (
+        MalformedPlanError,
+    )
+ImportError: cannot import name 'MalformedPlanError' from 'tasks.t0021_plan_and_solve_v2_with_final_confidence.code.planandsolve_v2' (/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0021_plan_and_solve_v2_with_final_confidence/code/planandsolve_v2.py)

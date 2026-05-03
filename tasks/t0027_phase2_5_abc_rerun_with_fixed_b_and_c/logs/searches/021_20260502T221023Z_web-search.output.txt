@@ -1,0 +1,52 @@
+{
+  "query": "Django MiddlewareMixin __call__ method github",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01P7hQ5DRczEYPZeXXzFtJqK",
+      "content": [
+        {
+          "title": "django/django/utils/deprecation.py at main \u00b7 django/django",
+          "url": "https://github.com/django/django/blob/main/django/utils/deprecation.py"
+        },
+        {
+          "title": "Middleware | Django documentation | Django",
+          "url": "https://docs.djangoproject.com/en/5.2/topics/http/middleware/"
+        },
+        {
+          "title": "Django Middleware - The new version of middleware and how to use it? | CoWhite Software",
+          "url": "https://django.cowhite.com/blog/django-middleware-the-new-version-of-middleware-and-how-to-use-it/"
+        },
+        {
+          "title": "GitHub - twtrubiks/django_middleware_tutorial: \u4ecb\u7d39 django \u4e2d\u7684 middleware",
+          "url": "https://github.com/twtrubiks/django_middleware_tutorial"
+        },
+        {
+          "title": "Django custom middleware introduction | by Hemanth S P | Django lions \ud83d\udd25 | Medium",
+          "url": "https://medium.com/djangotube/django-custom-middleware-introduction-2d9e999c5377"
+        },
+        {
+          "title": "Add GetResponseAsyncCallable? / typing of MiddlewareMixin \u00b7 Issue #1269 \u00b7 typeddjango/django-stubs",
+          "url": "https://github.com/typeddjango/django-stubs/issues/1269"
+        },
+        {
+          "title": "Understanding Middleware Functionality in Django2.0 | MicroPyramid",
+          "url": "https://micropyramid.com/blog/understanding-middleware-functionality-in-django2/"
+        },
+        {
+          "title": "A Comprehensive Guide to Django Middleware - DEV Community",
+          "url": "https://dev.to/bikramjeetsingh/a-comprehensive-guide-to-django-middleware-2fee"
+        },
+        {
+          "title": "Embracing the Power of Django\u2019s Middleware: An Advanced Guide | by Abdo OTMANI | Django Unleashed | Medium",
+          "url": "https://medium.com/django-unleashed/embracing-the-power-of-djangos-middleware-an-advanced-guide-c56bde9bbe5c"
+        },
+        {
+          "title": "Middleware \u2014 Django 6.0.1 documentation",
+          "url": "https://django.readthedocs.io/en/stable/topics/http/middleware.html"
+        }
+      ]
+    },
+    "Based on the search results, I found comprehensive information about Django's MiddlewareMixin `__call__` method from the official Django GitHub repository and documentation.\n\n## Django MiddlewareMixin `__call__` Method\n\nThe `MiddlewareMixin` class is found in `django/utils/deprecation.py`. The mixin provides an `__init__()` method that requires a get_response argument and stores it in self.get_response. It then calls self.process_request(request) (if defined) and calls self.get_response(request) to get the response from later middleware and the view.\n\nThe `__call__` method implements the logic to call the process_request() and process_response() methods in the order as required by the new middleware.\n\nKey points about the `__call__` method:\n\n- The `__call__()` method is called once per request, whereas `__init__()` is called only once, when the web server starts.\n\n- If used with MIDDLEWARE_CLASSES, the `__call__()` method will never be used; Django calls process_request() and process_response() directly.\n\n- The `__call__` method allows an object of the middleware class to be called like a function, turning it into a callable, and this is where the actual middleware logic is put.\n\nYou can view the complete implementation in the Django GitHub repository: https://github.com/django/django/blob/main/django/utils/deprecation.py"
+  ],
+  "durationSeconds": 5.048044750000001
+}

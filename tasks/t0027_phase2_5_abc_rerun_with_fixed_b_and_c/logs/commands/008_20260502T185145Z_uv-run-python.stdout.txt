@@ -1,0 +1,2 @@
+wrote paired manifest: 130 instances, per_subset={'swebench': 20, 'frontsci': 26, 'taubench': 84}, path=/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/data/paired_manifest.json
+wrote full instance manifest: 147 instances, path=/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/data/instance_manifest.json

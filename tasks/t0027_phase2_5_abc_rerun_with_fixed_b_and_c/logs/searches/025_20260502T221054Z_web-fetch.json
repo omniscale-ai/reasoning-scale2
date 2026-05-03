@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:10:54Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/django/django/main/django/core/handlers/wsgi.py",
+    "prompt": "Show the WSGIHandler class, its __init__ method and how it loads middleware"
+  },
+  "url": "https://raw.githubusercontent.com/django/django/main/django/core/handlers/wsgi.py",
+  "prompt": "Show the WSGIHandler class, its __init__ method and how it loads middleware"
+}

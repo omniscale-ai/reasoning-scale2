@@ -1,0 +1,8 @@
+{
+  "bytes": 394423,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# MiddlewareMixin Class Overview\n\nThe `MiddlewareMixin` class from Django's deprecation module provides a foundation for middleware that supports both synchronous and asynchronous request handling.\n\n## Key Components\n\n**Initialization (`__init__`):**\nThe constructor accepts a `get_response` callable and validates it exists. It detects whether `get_response` is a coroutine function to determine if async mode is needed, then marks the instance accordingly.\n\n**Call Method (`__call__`):**\nThis synchronous entry point checks `async_mode` and routes to the appropriate handler. For sync requests, it:\n1. Calls `process_request()` if defined\n2. Invokes `get_response()` \n3. Calls `process_response()` if defined\n\n**Async Call Method (`__acall__`):**\nThe async counterpart mirrors sync behavior but wraps synchronous middleware methods using `sync_to_async()` with `thread_sensitive=True` to maintain thread safety.\n\n## Capabilities\n\nThe class declares `sync_capable = True` and `async_capable = True`, enabling it to function in both request contexts. The `__repr__()` method provides readable debugging output showing the middleware's `get_response` function.\n\nThis design allows developers to write middleware that automatically adapts to Django's execution environment without manually handling async/sync compatibility.",
+  "durationMs": 4358,
+  "url": "https://github.com/django/django/blob/main/django/utils/deprecation.py"
+}

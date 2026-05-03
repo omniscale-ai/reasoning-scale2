@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:11:41Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/django/django/main/django/core/handlers/exception.py",
+    "prompt": "Extract the complete convert_exception_to_response function and show how it wraps handlers"
+  },
+  "url": "https://raw.githubusercontent.com/django/django/main/django/core/handlers/exception.py",
+  "prompt": "Extract the complete convert_exception_to_response function and show how it wraps handlers"
+}

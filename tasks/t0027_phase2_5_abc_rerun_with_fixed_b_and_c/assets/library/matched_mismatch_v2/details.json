@@ -1,0 +1,41 @@
+{
+  "spec_version": "2",
+  "library_id": "matched_mismatch_v2",
+  "name": "Matched-Mismatch v2 (PlanAndSolveAgentV3 delegate)",
+  "version": "0.2.0",
+  "short_description": "Forks t0010's matched-mismatch wrapper to delegate to PlanAndSolveAgentV3 instead of scope_aware_react, addressing S-0026-02 so variant C is B-with-extra-degradation rather than A-with-noise.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/matched_mismatch_v2.py"
+  ],
+  "entry_points": [
+    {
+      "name": "MatchedMismatchV2Agent",
+      "kind": "class",
+      "module": "code/matched_mismatch_v2.py",
+      "description": "Variant-C agent: runs PlanAndSolveAgentV3 once on the problem, then post-processes the v3 trajectory to overwrite each record's granularity with an adversarially-perturbed label drawn from the v2 hierarchy phase walk."
+    },
+    {
+      "name": "AgentRunResultV2",
+      "kind": "class",
+      "module": "code/matched_mismatch_v2.py",
+      "description": "Aggregate result with the PnS-v3 trajectory shape (TrajectoryRecordV2 records) plus the un-perturbed phase walk and the literal delegate id used for logging."
+    },
+    {
+      "name": "DELEGATE_PLAN_AND_SOLVE_V3",
+      "kind": "function",
+      "module": "code/matched_mismatch_v2.py",
+      "description": "String constant 'scope_unaware_planandsolve_v3' — the single supported delegate id for the v2 wrapper, used in the t0027 harness for symmetry with t0010 logging."
+    }
+  ],
+  "dependencies": [],
+  "test_paths": [
+    "code/test_matched_mismatch_v2.py"
+  ],
+  "categories": [
+    "agent-evaluation",
+    "granularity-conditioning"
+  ],
+  "created_by_task": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "date_created": "2026-05-02"
+}

@@ -1,0 +1,8 @@
+{
+  "bytes": 380262,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# The `load_middleware()` Method\n\nThe `load_middleware()` method in Django's `BaseHandler` class constructs the middleware chain by iterating through `settings.MIDDLEWARE` in reverse order.\n\n## Key Process Steps\n\n**Initialization**: The method starts by creating empty lists for view, template response, and exception middleware, then establishes a base handler using either `_get_response_async` or `_get_response`.\n\n**Middleware Loading**: For each middleware path in reversed settings, the method:\n\n1. Imports the middleware class\n2. Checks `sync_capable` and `async_capable` attributes\n3. Adapts the handler to the appropriate mode (sync/async)\n4. Instantiates the middleware with the adapted handler\n5. Extracts specialized middleware methods (`process_view`, `process_template_response`, `process_exception`)\n\n**Mode Adaptation**: The code states: \"Adapt handler, if needed\" by determining whether to wrap handlers using `sync_to_async()` or `async_to_sync()` based on capability flags.\n\n**Final Assignment**: \"We only assign to this when initialization is complete as it is used as a flag for initialization being complete\" \u2014 the constructed chain is assigned to `self._middleware_chain` only after all middleware are processed.\n\nThis creates a nested chain where each middleware wraps the previous handler, enabling request/response processing to flow through all configured middleware in the correct execution order.",
+  "durationMs": 5486,
+  "url": "https://github.com/django/django/blob/main/django/core/handlers/base.py"
+}

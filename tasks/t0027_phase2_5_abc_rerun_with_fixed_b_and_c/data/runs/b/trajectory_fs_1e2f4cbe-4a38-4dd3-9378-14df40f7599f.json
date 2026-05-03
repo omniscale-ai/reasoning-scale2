@@ -1,0 +1,70 @@
+{
+  "instance_id": "fs_1e2f4cbe-4a38-4dd3-9378-14df40f7599f",
+  "subset": "frontsci",
+  "variant": "b",
+  "final_answer": "$E_{\\text{avg}} = 3k_B T$",
+  "final_confidence": 0.82,
+  "cost_usd": 0.267108,
+  "parser_recovery_path": "clean",
+  "parser_attempts": 1,
+  "trajectory": {
+    "plan": [
+      "Identify the physics regime: hole size much smaller than mean free path \u2192 **effusion** (not viscous flow)",
+      "Derive the speed distribution of **escaping** molecules (effusion-weighted)",
+      "Compute the average **translational** kinetic energy of escaping molecules",
+      "Compute the average **rotational** energy of escaping molecules (N\u2082 is diatomic)",
+      "Sum for total average energy --- ## Step 1: Effusion speed distribution In effusion, molecules escape at a rate proportional to their speed (faster molecules hit the hole more frequently). If the Maxwell-Boltzmann speed distribution in the container is: $$f_{MB}(v) \\propto v^2 \\exp\\!\\left(-\\frac{mv^2}{2k_BT}\\right)$$ then the **distribution of escaping molecules** is weighted by an extra factor of $v$: $$P_\\text{eff}(v) \\propto v^3 \\exp\\!\\left(-\\frac{mv^2}{2k_BT}\\right)$$ --- ## Step 2: Average translational KE of escaping molecules Let $\\alpha = \\dfrac{m}{2k_BT}$. Using the standard integrals: $$\\int_0^\\infty v^{2n+1}e^{-\\alpha v^2}dv = \\frac{n!}{2\\,\\alpha^{n+1}}$$ - Denominator: $\\displaystyle\\int_0^\\infty v^3 e^{-\\alpha v^2}dv = \\frac{1}{2\\alpha^2}$ - Numerator: $\\displaystyle\\int_0^\\infty \\tfrac{1}{2}mv^2 \\cdot v^3 e^{-\\alpha v^2}dv = \\frac{m}{2}\\cdot\\frac{1}{\\alpha^3}$ Therefore: $$\\langle E_\\text{trans}\\rangle = \\frac{\\tfrac{m}{2}\\cdot\\tfrac{1}{\\alpha^3}}{\\tfrac{1}{2\\alpha^2}} = \\frac{m}{\\alpha} = \\frac{m}{\\,m/(2k_BT)\\,} = 2k_BT$$ *(Compare: average translational KE in the bulk is $\\tfrac{3}{2}k_BT$. Escaping molecules are preferentially faster.)* --- ## Step 3: Average rotational energy of escaping molecules N\u2082 is a linear diatomic molecule with **2 rotational degrees of freedom**. Rotational energy is statistically **independent** of translational velocity, so the effusion selection does not bias the rotational energy distribution. $$\\langle E_\\text{rot}\\rangle = 2\\times\\tfrac{1}{2}k_BT = k_BT$$ --- ## Step 4: Total average energy $$E_\\text{avg} = \\langle E_\\text{trans}\\rangle + \\langle E_\\text{rot}\\rangle = 2k_BT + k_BT = 3k_BT$$ --- FINAL ANSWER $$E_{\\text{avg}} = 3k_B T$$"
+    ],
+    "trajectory": [
+      {
+        "turn_index": 0,
+        "granularity": "unspecified",
+        "thought": "The hole size is much smaller than the mean free path (\u221aA \u226a \u03bb), which places this firmly in the effusion regime. In effusion, gas molecules escape independently without collisions near the hole \u2014 each molecule that happens to reach the hole escapes without interacting with others. This contrasts with viscous/hydrodynamic flow where collective behavior dominates. The effusion regime means the escape rate is proportional to the molecular flux hitting the hole, which depends on molecular speed, leading to a speed-biased distribution for escaping molecules.",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 1,
+        "granularity": "unspecified",
+        "thought": "In effusion, the flux of molecules escaping through the hole is proportional to $v \\cdot f_{MB}(v)$, because faster molecules strike the hole more frequently. The Maxwell-Boltzmann speed distribution inside the container is:",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 2,
+        "granularity": "unspecified",
+        "thought": "",
+        "action": "python_exec({\"code\": \"import numpy as np\\nfrom scipy import integrate\\n\\n# Set m=1, k_B=1, T=1 for numerical verification\\nm, kB, T = 1.0, 1.0, 1.0\\nalpha = m / (2 * kB * T)  # = 0.5\\n\\n# Effusion distribution: P(v) \u221d v^3 * exp(-alpha*v^2)\\n# Average translational KE = integral of (1/2 m v^2) * v^3 * exp(-alpha v^2) dv\\n#                           / integral of v^3 * exp(-alpha v^2) dv\\n\\nv_max = 20.0\\n\\ndef numerator(v):\\n    return 0.5 * m * v**2 * v**3 * np.exp(-alpha * v**2)\\n\\ndef denominator(v):\\n    return v**3 * np.exp(-alpha * v**2)\\n\\nnum_val, _ = integrate.quad(numerator, 0, v_max)\\nden_val, _ = integrate.quad(denominator, 0, v_max)\\n\\navg_trans_KE = num_val / den_val\\nprint(f'alpha = {alpha}')\\nprint(f'Numerator integral = {num_val:.6f}')\\nprint(f'Denominator integral = {den_val:.6f}')\\nprint(f'Average translational KE = {avg_trans_KE:.6f}')\\nprint(f'Expected 2*k_B*T = {2*kB*T:.6f}')\\nprint(f'Match: {np.isclose(avg_trans_KE, 2*kB*T)}')\\n\\n# Also verify analytically:\\n# denominator = 1/(2*alpha^2) = 1/(2*0.25) = 2.0\\n# numerator = (m/2) * 1/alpha^3 = 0.5 * 8 = 4.0\\n# ratio = 4/2 = 2 = 2*k_B*T \u2713\\nprint(f'\\\\nAnalytic denominator = {1/(2*alpha**2):.6f}')\\nprint(f'Analytic numerator = {(m/2)/alpha**3:.6f}')\\nprint(f'Analytic ratio = {((m/2)/alpha**3) / (1/(2*alpha**2)):.6f}')\\n\"})",
+        "observation": "<no output>",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 3,
+        "granularity": "unspecified",
+        "thought": "N\u2082 is a linear diatomic molecule with 2 rotational degrees of freedom. By the equipartition theorem, each rotational degree of freedom contributes \u00bdk_BT to the average energy. Since rotational energy is independent of translational velocity, the effusion selection (which biases toward faster molecules) does not affect the rotational energy distribution. Therefore, the average rotational energy of escaping molecules is the same as in the bulk: \u27e8E_rot\u27e9 = 2 \u00d7 \u00bdk_BT = k_BT.",
+        "action": "thought_only",
+        "observation": "",
+        "confidence": null,
+        "final_confidence": null
+      },
+      {
+        "turn_index": 4,
+        "granularity": "unspecified",
+        "thought": "## Step 5: Sum for Total Average Energy\n\nCollecting results from the previous steps:\n\n**Translational kinetic energy** (from effusion-weighted speed distribution):\n\nThe escaping molecule flux is proportional to $v \\cdot f_{MB}(v)$, so:\n$$P_\\text{eff}(v) \\propto v^3 \\exp\\!\\left(-\\frac{mv^2}{2k_BT}\\right)$$\n\nWith $\\alpha = m/(2k_BT)$:\n$$\\langle E_\\text{trans}\\rangle = \\frac{\\int_0^\\infty \\tfrac{1}{2}mv^2 \\cdot v^3 e^{-\\alpha v^2}\\,dv}{\\int_0^\\infty v^3 e^{-\\alpha v^2}\\,dv} = \\frac{\\tfrac{m}{2}\\cdot\\tfrac{1}{\\alpha^3}}{\\tfrac{1}{2\\alpha^2}} = \\frac{m}{\\alpha} = 2k_BT$$\n\nAlternatively, decomposing by component: the $v_x$ direction (toward the hole) contributes $k_BT$, while $v_y$ and $v_z$ are unbiased, each contributing $\\tfrac{1}{2}k_BT$:\n$$\\langle E_\\text{trans}\\rangle = k_BT + \\tfrac{1}{2}k_BT + \\tfrac{1}{2}k_BT = 2k_BT$$\n\n**Rotational energy** (N\u2082 is linear diatomic, 2 rotational DOF):\n\nRotational energy is statistically independent of translational speed, so effusion selection does not bias it:\n$$\\langle E_\\text{rot}\\rangle = 2 \\times \\tfrac{1}{2}k_BT = k_BT$$\n\n**Total average energy of each escaping molecule:**\n$$E_\\text{avg} = \\langle E_\\text{trans}\\rangle + \\langle E_\\text{rot}\\rangle = 2k_BT + k_BT = 3k_BT$$",
+        "action": "finish",
+        "observation": "$E_{\\text{avg}} = 3k_B T$",
+        "confidence": null,
+        "final_confidence": 0.82
+      }
+    ],
+    "final_confidence": 0.82,
+    "final_confidence_parse_failures": 0,
+    "plan_parser_recovery_path": "clean",
+    "plan_parser_attempts": 1
+  }
+}

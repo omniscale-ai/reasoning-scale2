@@ -1,0 +1,49 @@
+E501 Line too long (101 > 100)
+   --> tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/make_result_charts.py:180:101
+    |
+178 |         )
+179 |         ax.plot(xs, ys, color=colors[variant_key], linewidth=1.2, alpha=0.6)
+180 |     ax.plot([0, 1], [0, 1], color="gray", linestyle="--", linewidth=1.0, label="Perfect calibration")
+    |                                                                                                     ^
+181 |     ax.set_xlabel("Mean predicted confidence (per bin)")
+182 |     ax.set_ylabel("Empirical success rate (per bin)")
+    |
+
+F841 Local variable `p_full` is assigned to but never used
+   --> tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/make_result_charts.py:229:5
+    |
+227 |     fig, ax = plt.subplots(figsize=(6.5, 4.5))
+228 |     x = np.arange(len(variants), dtype=float)
+229 |     p_full = ax.bar(x, full, label="Agent (full 130)", color="#4c72b0")
+    |     ^^^^^^
+230 |     p_judge = ax.bar(x, judge, bottom=full, label="Sonnet judge", color="#dd8452")
+231 |     smoke_bottoms = [a + b for a, b in zip(full, judge, strict=True)]
+    |
+help: Remove assignment to unused variable `p_full`
+
+F841 Local variable `p_judge` is assigned to but never used
+   --> tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/make_result_charts.py:230:5
+    |
+228 |     x = np.arange(len(variants), dtype=float)
+229 |     p_full = ax.bar(x, full, label="Agent (full 130)", color="#4c72b0")
+230 |     p_judge = ax.bar(x, judge, bottom=full, label="Sonnet judge", color="#dd8452")
+    |     ^^^^^^^
+231 |     smoke_bottoms = [a + b for a, b in zip(full, judge, strict=True)]
+232 |     p_smoke = ax.bar(x, smoke, bottom=smoke_bottoms, label="Smoke gate", color="#55a467")
+    |
+help: Remove assignment to unused variable `p_judge`
+
+F841 Local variable `p_smoke` is assigned to but never used
+   --> tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/make_result_charts.py:232:5
+    |
+230 |     p_judge = ax.bar(x, judge, bottom=full, label="Sonnet judge", color="#dd8452")
+231 |     smoke_bottoms = [a + b for a, b in zip(full, judge, strict=True)]
+232 |     p_smoke = ax.bar(x, smoke, bottom=smoke_bottoms, label="Smoke gate", color="#55a467")
+    |     ^^^^^^^
+233 |     totals = [a + b + c for a, b, c in zip(full, judge, smoke, strict=True)]
+234 |     for i, t in enumerate(totals):
+    |
+help: Remove assignment to unused variable `p_smoke`
+
+Found 4 errors.
+No fixes available (3 hidden fixes can be enabled with the `--unsafe-fixes` option).

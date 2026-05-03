@@ -1,0 +1,5 @@
+smoke run for variant 'c': 5 FrontierScience paired instances
+  variant c: 5/5 done, cost $1.2935, elapsed 1147.1s
+smoke variant c complete: cost $1.2935, runs=5, parser_failures=0, projected_full=$20.49 (fs=$0.2587*26*1.5=$10.09 + other=$0.1000*104=$10.40)
+recovery_path_counts: {'unknown': 2, 'clean': 3}
+SMOKE GATE PASS: variant c OK to proceed with full run.

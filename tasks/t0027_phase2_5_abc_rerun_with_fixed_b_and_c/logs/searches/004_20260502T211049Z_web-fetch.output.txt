@@ -1,0 +1,8 @@
+{
+  "bytes": 13977,
+  "code": 200,
+  "codeText": "OK",
+  "result": "# SequentialFeatureSelector Class Overview\n\nThe web page provides the complete `SequentialFeatureSelector` class implementation. Here's a summary of the full `fit()` method:\n\n## fit() Method Structure\n\nThe `fit()` method includes these key steps:\n\n1. **Input Validation**: Uses `validate_data()` to ensure X is properly formatted with at least 2 features.\n\n2. **Feature Count Determination**: Sets `n_features_to_select_` based on the parameter:\n   - \"auto\" with tolerance \u2192 uses `n_features - 1`\n   - \"auto\" without tolerance \u2192 uses `n_features // 2`\n   - Integer value \u2192 uses the specified number\n   - Float value \u2192 converts to integer fraction of total features\n\n3. **Validation Checks**: Ensures tolerance is strictly positive for forward selection.\n\n4. **Cross-Validation Setup**: Initializes the CV strategy via `check_cv()`.\n\n5. **Iterative Selection Loop**: Performs feature selection iterations by:\n   - Calling `_get_best_new_feature_score()` repeatedly\n   - Updating the feature mask based on direction (forward/backward)\n   - Stopping early if tolerance threshold is met with auto-selection\n\n6. **Final Processing**: Inverts the mask for backward selection and sets the support attribute.\n\nThe complete implementation shown includes parameter handling for metadata routing (version 1.6+) and returns `self` for method chaining.",
+  "durationMs": 4261,
+  "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/sklearn/feature_selection/_sequential.py"
+}

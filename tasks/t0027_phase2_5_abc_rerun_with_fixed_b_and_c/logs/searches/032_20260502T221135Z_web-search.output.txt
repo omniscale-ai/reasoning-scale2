@@ -1,0 +1,52 @@
+{
+  "query": "\"django/core/handlers/base.py\" \"convert_exception_to_response\" middleware chain wrapping",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01HiR2svrgTHAFQS4kiLGP4H",
+      "content": [
+        {
+          "title": "django/django/core/handlers/base.py at main \u00b7 django/django",
+          "url": "https://github.com/django/django/blob/main/django/core/handlers/base.py"
+        },
+        {
+          "title": "#28244 (Exceptions derived from BaseException instead of Exception are not caught by convert_exception_to_response()) \u2013 Django",
+          "url": "https://code.djangoproject.com/ticket/28244"
+        },
+        {
+          "title": "Middleware | Django documentation | Django",
+          "url": "https://docs.djangoproject.com/en/5.2/topics/http/middleware/"
+        },
+        {
+          "title": "Middleware \u2014 Django 6.0.1 documentation",
+          "url": "https://django.readthedocs.io/en/stable/topics/http/middleware.html"
+        },
+        {
+          "title": "#28244 (Exceptions derived from BaseException instead of Exception are not correctly handled) \u2013 Django",
+          "url": "https://code.djangoproject.com/ticket/28244?version=2"
+        },
+        {
+          "title": "Django: django/core/handlers/base.py | Fossies",
+          "url": "https://fossies.org/linux/Django/django/core/handlers/base.py"
+        },
+        {
+          "title": "django/django/core/handlers/base.py at 2.0.5 \u00b7 django/django",
+          "url": "https://github.com/django/django/blob/2.0.5/django/core/handlers/base.py"
+        },
+        {
+          "title": "Middleware magic: How to use Django middleware for advanced error handling and exception management | by Aditya Sharma | Medium",
+          "url": "https://medium.com/@techWithAditya/middleware-magic-how-to-use-django-middleware-for-advanced-error-handling-and-exception-management-78573a27204e"
+        },
+        {
+          "title": "Middleware \u2014 Django 2.1.16.dev20191202082911 documentation",
+          "url": "https://django.readthedocs.io/en/2.1.x/topics/http/middleware.html"
+        },
+        {
+          "title": "django/django/core/handlers/exception.py at main \u00b7 django/django",
+          "url": "https://github.com/django/django/blob/main/django/core/handlers/exception.py"
+        }
+      ]
+    },
+    "Based on the search results, I've found relevant information about `convert_exception_to_response` and how it wraps the middleware chain in Django.\n\n## Key Findings\n\n**Function Location and Purpose:**\nThe `convert_exception_to_response` function wraps the given get_response callable in exception-to-response conversion.\n\n**How It Works in the Middleware Chain:**\nIn `django/core/handlers/base.py`, the `load_middleware` method gets the response handler and then wraps it with `convert_exception_to_response(get_response)`. Each middleware instance is also wrapped with `convert_exception_to_response(mw_instance)` as the handler is built up.\n\n**Exception Handling Scope:**\nThe function converts all known 4xx exceptions (Http404, PermissionDenied, MultiPartParserError, SuspiciousOperation) to the appropriate response, and all other exceptions to 500 responses.\n\n**Middleware Chain Benefits:**\nThis decorator is automatically applied to all middleware to ensure that no middleware leaks an exception and that the next middleware in the stack can rely on getting a response instead of an exception. Additionally, this conversion takes place before and after each middleware (you can think of it as the thin film in between each layer of the onion), so that every middleware can always rely on getting some kind of HTTP response back from calling its get_response callable."
+  ],
+  "durationSeconds": 5.423175917000001
+}

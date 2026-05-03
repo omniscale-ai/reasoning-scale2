@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:10:02Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://github.com/django/django/blob/main/django/core/handlers/asgi.py",
+    "prompt": "Show the ASGIHandler class and how it loads and chains middleware, specifically the __call__ and _get_response methods"
+  },
+  "url": "https://github.com/django/django/blob/main/django/core/handlers/asgi.py",
+  "prompt": "Show the ASGIHandler class and how it loads and chains middleware, specifically the __call__ and _get_response methods"
+}

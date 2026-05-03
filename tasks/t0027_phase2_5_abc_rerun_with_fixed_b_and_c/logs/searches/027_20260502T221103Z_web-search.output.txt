@@ -1,0 +1,20 @@
+{
+  "query": "site:github.com/django/django \"adapt_method_mode\" raw",
+  "results": [
+    {
+      "tool_use_id": "srvtoolu_01VNgEqAfWX2W7Rfp7fz8kLV",
+      "content": [
+        {
+          "title": "django/django/core/handlers/base.py at main \u00b7 django/django",
+          "url": "https://github.com/django/django/blob/main/django/core/handlers/base.py"
+        },
+        {
+          "title": "[3.1.x] Fixed #32299 -- Prevented mutating handlers when processing m\u2026 \u00b7 django/django@6b4b7da",
+          "url": "https://github.com/django/django/commit/6b4b7da740cea6d1fc7ae7028a357587f3e9d0b3"
+        }
+      ]
+    },
+    "The web search found results related to `adapt_method_mode` in the Django repository. Here's what was found:\n\nThe `adapt_method_mode` method is used in Django's request handler to adapt middleware methods, being called with parameters like middleware async status, the handler, handler async status, debug flag, and a name identifier.\n\nThe search results show this method being used in `django/core/handlers/base.py` to adapt various middleware methods based on whether they are asynchronous or synchronous. One commit shows a fix where `adapt_method_mode` was used to prevent mutating handlers when processing middlewares marking as unused in an async context."
+  ],
+  "durationSeconds": 3.2690408339999992
+}

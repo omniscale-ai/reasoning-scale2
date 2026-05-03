@@ -1,0 +1,32 @@
+full run for variant 'b': 130 paired instances (target N_PAIRED_EXPECTED=130)
+  variant b: 5/130 done, cost $0.9367, elapsed 373.0s
+  variant b: 10/130 done, cost $1.3458, elapsed 452.6s
+  variant b: 15/130 done, cost $2.3292, elapsed 690.5s
+  variant b: 20/130 done, cost $2.8629, elapsed 885.1s
+  variant b: 25/130 done, cost $3.2910, elapsed 967.0s
+  variant b: 30/130 done, cost $3.8681, elapsed 1133.5s
+  variant b: 35/130 done, cost $4.2926, elapsed 1349.2s
+  variant b: 40/130 done, cost $4.8575, elapsed 1710.7s
+  variant b: 45/130 done, cost $5.0282, elapsed 1815.7s
+  variant b: 50/130 done, cost $5.3294, elapsed 1889.9s
+  variant b: 55/130 done, cost $5.6662, elapsed 2012.2s
+  variant b: 60/130 done, cost $6.1806, elapsed 2200.3s
+  variant b: 65/130 done, cost $6.4095, elapsed 2279.7s
+  variant b: 70/130 done, cost $6.5635, elapsed 2421.2s
+  variant b: 75/130 done, cost $6.9291, elapsed 2605.0s
+  variant b: 80/130 done, cost $7.2135, elapsed 2738.3s
+  variant b: 85/130 done, cost $7.3800, elapsed 2846.3s
+  variant b: 90/130 done, cost $7.6850, elapsed 2989.9s
+  variant b: 95/130 done, cost $8.0173, elapsed 3160.5s
+  variant b: 100/130 done, cost $8.3948, elapsed 3336.2s
+  variant b: 105/130 done, cost $8.5764, elapsed 3458.8s
+  variant b: 110/130 done, cost $8.7266, elapsed 3558.6s
+  variant b: 115/130 done, cost $8.9527, elapsed 3714.8s
+  variant b: 120/130 done, cost $9.0812, elapsed 3850.2s
+  variant b: 125/130 done, cost $9.2451, elapsed 3971.8s
+  variant b: 130/130 done, cost $9.4534, elapsed 4100.6s
+full variant b agent run complete: cost $9.4534, runs=130, parser_failures=0
+--- judging variant b predictions with primary sonnet judge ---
+variant b judging complete: total cost $9.6068 (agent $9.4534 + judge $0.1534)
+wrote predictions JSONL: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/predictions/abc-rerun-b/files/predictions_variant_b.jsonl
+variant b success rate (sonnet judge): 6/130 = 0.0462

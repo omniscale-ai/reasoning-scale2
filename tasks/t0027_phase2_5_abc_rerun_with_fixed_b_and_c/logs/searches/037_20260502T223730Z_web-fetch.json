@@ -1,0 +1,13 @@
+{
+  "spec_version": "1",
+  "task_id": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "tool": "WebFetch",
+  "timestamp": "2026-05-02T22:37:30Z",
+  "source": "web-fetch",
+  "input": {
+    "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/sets.py",
+    "prompt": "Extract the exact code for: 1) Set.is_subset method, 2) Set._eval_is_subset method if it exists, 3) ProductSet class definition, 4) ProductSet._eval_is_subset if it exists, 5) FiniteSet._eval_is_subset if it exists. Include line numbers."
+  },
+  "url": "https://raw.githubusercontent.com/sympy/sympy/master/sympy/sets/sets.py",
+  "prompt": "Extract the exact code for: 1) Set.is_subset method, 2) Set._eval_is_subset method if it exists, 3) ProductSet class definition, 4) ProductSet._eval_is_subset if it exists, 5) FiniteSet._eval_is_subset if it exists. Include line numbers."
+}

@@ -1,0 +1,202 @@
+{
+  "spec_version": "1",
+  "method": "10-equal-width-bin Expected Calibration Error (Xiong2024 \u00a73.2)",
+  "n_bins": 10,
+  "variants": {
+    "b_t0027": {
+      "ece": 0.3362745098039216,
+      "n_total": 51,
+      "bins": [
+        {
+          "bin_index": 0,
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 1,
+          "mean_confidence": 0.05,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.05
+        },
+        {
+          "bin_index": 1,
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 6,
+          "mean_confidence": 0.10000000000000002,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.10000000000000002
+        },
+        {
+          "bin_index": 2,
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "n": 11,
+          "mean_confidence": 0.2545454545454545,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.2545454545454545
+        },
+        {
+          "bin_index": 3,
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "n": 2,
+          "mean_confidence": 0.35,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.35
+        },
+        {
+          "bin_index": 4,
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 5,
+          "mean_confidence": 0.4,
+          "mean_outcome": 0.2,
+          "abs_gap": 0.2
+        },
+        {
+          "bin_index": 5,
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "n": 12,
+          "mean_confidence": 0.5166666666666667,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.5166666666666667
+        },
+        {
+          "bin_index": 6,
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "n": 6,
+          "mean_confidence": 0.6833333333333332,
+          "mean_outcome": 0.16666666666666666,
+          "abs_gap": 0.5166666666666666
+        },
+        {
+          "bin_index": 7,
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "n": 1,
+          "mean_confidence": 0.75,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.75
+        },
+        {
+          "bin_index": 8,
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 6,
+          "mean_confidence": 0.82,
+          "mean_outcome": 0.5,
+          "abs_gap": 0.31999999999999995
+        },
+        {
+          "bin_index": 9,
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 1,
+          "mean_confidence": 0.97,
+          "mean_outcome": 1.0,
+          "abs_gap": 0.030000000000000027
+        }
+      ]
+    },
+    "c_t0027": {
+      "ece": 0.37428571428571433,
+      "n_total": 56,
+      "bins": [
+        {
+          "bin_index": 0,
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 1,
+          "mean_confidence": 0.05,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.05
+        },
+        {
+          "bin_index": 1,
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 6,
+          "mean_confidence": 0.10000000000000002,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.10000000000000002
+        },
+        {
+          "bin_index": 2,
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "n": 6,
+          "mean_confidence": 0.3,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.3
+        },
+        {
+          "bin_index": 3,
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "n": 0,
+          "mean_confidence": null,
+          "mean_outcome": null,
+          "abs_gap": null
+        },
+        {
+          "bin_index": 4,
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 13,
+          "mean_confidence": 0.40384615384615385,
+          "mean_outcome": 0.15384615384615385,
+          "abs_gap": 0.25
+        },
+        {
+          "bin_index": 5,
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "n": 12,
+          "mean_confidence": 0.5208333333333334,
+          "mean_outcome": 0.08333333333333333,
+          "abs_gap": 0.43750000000000006
+        },
+        {
+          "bin_index": 6,
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "n": 5,
+          "mean_confidence": 0.674,
+          "mean_outcome": 0.0,
+          "abs_gap": 0.674
+        },
+        {
+          "bin_index": 7,
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "n": 3,
+          "mean_confidence": 0.7399999999999999,
+          "mean_outcome": 0.6666666666666666,
+          "abs_gap": 0.07333333333333325
+        },
+        {
+          "bin_index": 8,
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 8,
+          "mean_confidence": 0.8150000000000001,
+          "mean_outcome": 0.125,
+          "abs_gap": 0.6900000000000001
+        },
+        {
+          "bin_index": 9,
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 2,
+          "mean_confidence": 0.95,
+          "mean_outcome": 0.5,
+          "abs_gap": 0.44999999999999996
+        }
+      ]
+    },
+    "a_t0026": {
+      "note": "calibration not computed for variant A: scope-aware ReAct does not elicit a verbalised final_confidence; final_confidence is null for all rows."
+    }
+  }
+}
