@@ -1,0 +1,6 @@
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/data/rq4_stratification.json
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/images/rq4_stratification_heatmap.png
+  swebench: n=20 cells=(BP=0, A=0, B=6, BF=14) disc=6 p=0.03125
+  frontsci: n=26 cells=(BP=0, A=5, B=0, BF=21) disc=5 p=0.0625
+  taubench: n=84 cells=(BP=0, A=1, B=0, BF=83) disc=1 p=1.0
+  ALL: n=130 cells=(BP=0, A=6, B=6, BF=118) disc=12 p=1.0

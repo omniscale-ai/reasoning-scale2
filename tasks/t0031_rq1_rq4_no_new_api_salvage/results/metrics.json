@@ -1,0 +1,14 @@
+{
+  "task_success_rate": null,
+  "overconfident_error_rate": null,
+  "avg_decisions_per_task": null,
+  "_notes": "Registered metrics are not directly derivable from t0026/t0027 outputs in a way that adds new evidence vs the source tasks; this is an analysis-only task and does not produce new per-instance scores.",
+  "_derived": {
+    "discordance_rate_t0027": 0.09230769230769231,
+    "expected_discordant_n_at_cap": 32,
+    "power_at_p1_0_65": 0.40473417108921755,
+    "power_at_p1_0_70": 0.6440177486549022,
+    "power_at_p1_0_75": 0.8464053667616979,
+    "new_pairs_admitted_at_cap": 218
+  }
+}

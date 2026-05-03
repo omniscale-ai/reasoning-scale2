@@ -1,0 +1,99 @@
+E501 Line too long (109 > 100)
+  --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/analysis_log_audit.py:44:101
+   |
+44 | def _audit_arm_with_recovery(*, df: pd.DataFrame, recovery_col: str, judge_col: str, label: str) -> ArmAudit:
+   |                                                                                                     ^^^^^^^^^
+45 |     n_total = len(df)
+46 |     judged = df[judge_col].astype(bool)
+   |
+
+E501 Line too long (106 > 100)
+   --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/analysis_log_audit.py:309:101
+    |
+307 |     )
+308 |     print(
+309 |         f"  arm_b: infra={audit_b.infra_failures}, genuine={audit_b.genuine_failures} (no recovery field)"
+    |                                                                                                     ^^^^^^
+310 |     )
+311 |     print(
+    |
+
+SIM108 Use ternary operator `mcnemar_p = binom_two_sided_p(k=b_only, n=discordant_n, p=0.5) if discordant_n >= 1 else None` instead of `if`-`else`-block
+  --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/analysis_rq4_stratification.py:70:5
+   |
+68 |       arm_b_pass_n = int(b.sum())
+69 |       discordant_n = a_only + b_only
+70 | /     if discordant_n >= 1:
+71 | |         mcnemar_p = binom_two_sided_p(k=b_only, n=discordant_n, p=0.5)
+72 | |     else:
+73 | |         mcnemar_p = None
+   | |________________________^
+74 |       note_parts: list[str] = []
+75 |       if n < 5:
+   |
+help: Replace `if`-`else`-block with `mcnemar_p = binom_two_sided_p(k=b_only, n=discordant_n, p=0.5) if discordant_n >= 1 else None`
+
+E501 Line too long (105 > 100)
+   --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/build_report.py:208:101
+    |
+206 |         f"{discordant_n} pairs ({_fmt_pct(value=discordance_rate, digits=2)}), split "
+207 |         f"symmetrically as 6 arm-A wins and 6 arm-B wins (McNemar two-sided p = "
+208 |         f"{_fmt_p(value=next(s for s in rq4['strata'] if s['label'] == 'ALL')['mcnemar_p_two_sided'])})."
+    |                                                                                                     ^^^^^
+209 |         " Stratification by benchmark reveals SWE-bench discordance concentrated entirely "
+210 |         "on the arm-B side and FrontierScience discordance concentrated entirely on the "
+    |
+
+E501 Line too long (109 > 100)
+   --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/build_report.py:506:101
+    |
+504 |     rq1: dict[str, Any],
+505 | ) -> dict[str, Any]:
+506 |     """Use registered metrics where derivable; null otherwise. Plus a small flat block of derived metrics."""
+    |                                                                                                     ^^^^^^^^^
+507 |
+508 |     p1_065 = _grid_power(rq1=rq1, p1=0.65)
+    |
+
+UP042 Class ArmKind inherits from both `str` and `enum.Enum`
+  --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/constants.py:12:7
+   |
+12 | class ArmKind(str, Enum):
+   |       ^^^^^^^
+13 |     ARM_A = "arm_a"
+14 |     ARM_B = "arm_b"
+   |
+help: Inherit from `enum.StrEnum`
+
+UP042 Class SubsetKind inherits from both `str` and `enum.Enum`
+  --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/constants.py:18:7
+   |
+18 | class SubsetKind(str, Enum):
+   |       ^^^^^^^^^^
+19 |     SWEBENCH = "swebench"
+20 |     FRONTSCI = "frontsci"
+   |
+help: Inherit from `enum.StrEnum`
+
+UP042 Class RecoveryPath inherits from both `str` and `enum.Enum`
+  --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/constants.py:24:7
+   |
+24 | class RecoveryPath(str, Enum):
+   |       ^^^^^^^^^^^^
+25 |     CLEAN = "clean"
+26 |     REPROMPT = "reprompt"
+   |
+help: Inherit from `enum.StrEnum`
+
+E501 Line too long (102 > 100)
+   --> tasks/t0031_rq1_rq4_no_new_api_salvage/code/load_paired_outputs.py:108:101
+    |
+107 |     # Variant A rows lack `plan_parser_recovery_path`.
+108 |     # After inversion, arm_b inherits this lack; arm_a (from variant_b) and arm_c (variant_c) keep it.
+    |                                                                                                     ^^
+109 |     arm_b_df = df_a.rename(
+110 |         columns={
+    |
+
+Found 13 errors (4 fixed, 9 remaining).
+No fixes available (4 hidden fixes can be enabled with the `--unsafe-fixes` option).

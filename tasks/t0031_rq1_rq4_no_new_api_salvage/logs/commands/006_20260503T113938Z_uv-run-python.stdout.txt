@@ -1,0 +1,7 @@
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/results_summary.md
+  first line: 'NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029'
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/results_detailed.md
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/metrics.json
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/costs.json
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/remote_machines_used.json
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/suggestions.json

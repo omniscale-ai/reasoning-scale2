@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0031_rq1_rq4_no_new_api_salvage",
+  "command": "uv run mypy -p tasks.t0031_rq1_rq4_no_new_api_salvage.code",
+  "exit_code": 0,
+  "duration_seconds": 1.476,
+  "started_at": "2026-05-03T11:40:41Z",
+  "completed_at": "2026-05-03T11:40:43Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage",
+  "stdout_file": "010_20260503T114041Z_uv-run-mypy.stdout.txt",
+  "stderr_file": "010_20260503T114041Z_uv-run-mypy.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

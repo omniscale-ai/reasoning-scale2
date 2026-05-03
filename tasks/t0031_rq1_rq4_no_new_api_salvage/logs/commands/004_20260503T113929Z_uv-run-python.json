@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0031_rq1_rq4_no_new_api_salvage",
+  "command": "uv run python -m tasks.t0031_rq1_rq4_no_new_api_salvage.code.analysis_rq1_power",
+  "exit_code": 0,
+  "duration_seconds": 1.133,
+  "started_at": "2026-05-03T11:39:29Z",
+  "completed_at": "2026-05-03T11:39:31Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage",
+  "stdout_file": "004_20260503T113929Z_uv-run-python.stdout.txt",
+  "stderr_file": "004_20260503T113929Z_uv-run-python.stderr.txt",
+  "stdout_lines": 9,
+  "stderr_lines": 0,
+  "truncated": false
+}
