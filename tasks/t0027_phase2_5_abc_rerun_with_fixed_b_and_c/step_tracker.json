@@ -77,9 +77,9 @@
       "step": 9,
       "name": "implementation",
       "description": "Build plan_and_solve_v3 + matched_mismatch_v2 libraries, re-run B and C on 130 paired instances, run McNemar and calibration.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-02T17:26:53Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T07:50:03Z",
       "log_file": "logs/steps/009_implementation/"
     },
     {
