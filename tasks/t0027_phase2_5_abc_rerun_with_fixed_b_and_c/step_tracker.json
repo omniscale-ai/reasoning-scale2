@@ -122,9 +122,9 @@
       "step": 14,
       "name": "suggestions",
       "description": "Write suggestions.json with follow-up items raised by the re-run results.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T08:04:37Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T08:06:34Z",
       "log_file": "logs/steps/014_suggestions/"
     },
     {
