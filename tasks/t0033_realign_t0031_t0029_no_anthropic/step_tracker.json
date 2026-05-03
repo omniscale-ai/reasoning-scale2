@@ -104,8 +104,8 @@
       "step": 12,
       "name": "suggestions",
       "description": "Confirm no follow-up suggestions; emit empty suggestions array; run verify_suggestions.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T13:14:47Z",
       "completed_at": null,
       "log_file": "logs/steps/012_suggestions/"
     },
