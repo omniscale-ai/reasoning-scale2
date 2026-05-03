@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0033-01",
+  "correcting_task": "t0033_realign_t0031_t0029_no_anthropic",
+  "target_task": "t0031_rq1_rq4_no_new_api_salvage",
+  "target_kind": "suggestion",
+  "target_id": "S-0031-01",
+  "action": "update",
+  "changes": {
+    "title": "Decide a no-Anthropic RQ1 execution path",
+    "description": "Anthropic API access is unavailable indefinitely, so the t0029 locked plan cannot be executed and 'unblock t0029 by provisioning ANTHROPIC_API_KEY' is no longer actionable. RQ1 instead needs an execution/verdict path that does not require Anthropic access. The decision is owned by t0032_no_anthropic_rq1_path_decision, which compares four options: (a) accept the existing t0027/t0031 evidence as the final verdict, (b) re-run on locally available open-weight models, (c) substitute a non-Anthropic paid provider under a tight budget, or (d) close RQ1 with an explicit 'underpowered, provider-blocked' stop. The chosen path must be costed as a USD point estimate, must explicitly state its comparability with the t0027 labelled-arm baseline, and must not assume Anthropic access becomes available."
+  },
+  "rationale": "Anthropic API access is now confirmed unavailable indefinitely (not 'credentials pending'), so the original suggestion's 'provision the key and run t0029' framing is no longer actionable. The replacement-path decision is now owned by t0032_no_anthropic_rq1_path_decision; this update redirects S-0031-01 to that no-Anthropic decision while preserving its priority and kind."
+}

@@ -86,8 +86,8 @@
       "step": 10,
       "name": "implementation",
       "description": "Write two correction files for S-0031-01 and S-0031-02; edit t0029 task.json to set status=intervention_blocked; write the t0029 intervention markdown file.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T13:09:35Z",
       "completed_at": null,
       "log_file": "logs/steps/010_implementation/"
     },

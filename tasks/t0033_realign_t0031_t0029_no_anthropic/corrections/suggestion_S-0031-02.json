@@ -1,0 +1,13 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0033-02",
+  "correcting_task": "t0033_realign_t0031_t0029_no_anthropic",
+  "target_task": "t0031_rq1_rq4_no_new_api_salvage",
+  "target_kind": "suggestion",
+  "target_id": "S-0031-02",
+  "action": "update",
+  "changes": {
+    "description": "t0031 shows that at the t0027 discordance rate (~9.2%), the locked t0029 $35 cap yields expected discordant n ≈ 32, which gives <50% McNemar power for any conditional B-wins rate <= 0.65. The original cap was sized for Anthropic-policy execution, which is no longer available indefinitely. This cap-reconsideration is therefore conditional: it applies only if t0032_no_anthropic_rq1_path_decision recommends a future paid execution path on a non-Anthropic provider. In that case the reconsideration should weigh raising the cap, switching to a stratified resample (oversampling SWE-bench and FrontSci where the discordance lives), or accepting the futility and pursuing RQ4 stratification first. If t0032 recommends 'existing-results-only verdict' (option a) or 'project-level stop' (option d), this suggestion should be marked rejected by a follow-up correction."
+  },
+  "rationale": "The original suggestion implicitly assumed the locked t0029 path under Anthropic execution. Under permanent no-Anthropic constraint that path is dead, so the cap-reconsideration must be reframed as conditional on any future non-Anthropic paid execution path; this update preserves priority and kind while making the conditional dependency on t0032 explicit."
+}
