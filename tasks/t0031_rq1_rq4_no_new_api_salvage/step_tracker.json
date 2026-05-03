@@ -14,9 +14,9 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0026 and t0027 are completed and load their result files for downstream analyses.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T11:18:23Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T11:19:08Z",
       "log_file": "logs/steps/002_check-deps/"
     },
     {
