@@ -122,9 +122,9 @@
       "step": 14,
       "name": "suggestions",
       "description": "Write suggestions.json with follow-up redesign ideas; no work spawned from t0031.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T11:46:59Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T11:47:21Z",
       "log_file": "logs/steps/014_suggestions/"
     },
     {
