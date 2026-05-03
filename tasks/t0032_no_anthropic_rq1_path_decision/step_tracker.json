@@ -122,9 +122,9 @@
       "step": 14,
       "name": "suggestions",
       "description": "Emit at most three follow-up suggestions tied to the chosen path.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T14:03:49Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T14:05:01Z",
       "log_file": "logs/steps/014_suggestions/"
     },
     {
