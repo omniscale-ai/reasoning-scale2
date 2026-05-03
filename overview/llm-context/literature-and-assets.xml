@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-02T14:56:06Z">
+<llm_context_archive preset_id="literature-and-assets" generated_at_utc="2026-05-03T08:13:00Z">
   <archive_summary>
     <title>Literature and Assets</title>
     <description>Paper summaries and reusable project assets without the heaviest task reports.</description>
     <use_case>Method discussion, resource selection, and related-work chats.</use_case>
     <section_count>8</section_count>
-    <char_count>69165</char_count>
-    <byte_count>69273</byte_count>
-    <estimated_tokens>17291</estimated_tokens>
+    <char_count>71709</char_count>
+    <byte_count>71824</byte_count>
+    <estimated_tokens>17927</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -155,9 +155,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0024_brainstorm_results_7</id>
         <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
         <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
+        <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
       </source_ids>
       <content>
-Completed tasks: 25
+Completed tasks: 26
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -308,6 +309,12 @@ ID: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 Completed: 2026-05-02
 Short description: Run A (scope-aware ReAct) / B (Plan-and-Solve v2) / C (mismatched-scope) on 20 SWE-bench + 87 Tau-bench + 40 FrontierScience instances to answer RQ1-RQ5.
 Result summary: t0026 Phase 2 A/B/C Runtime — Results Summary Summary The strict double inequality `success(A) &gt; success(B) &gt; success(C)` posited by RQ5 is **not supported**. On the paired N=130 set (the same 130 instances run by every variant), variants A and B are statistically tied, and the adversarial-mismatched variant C significantly outperforms B. The sweep ran the full A/B/C × {SWE-bench, Tau-bench, FrontierScience} grid against `claude-sonnet-4-6` with a paired McNemar test on each pair, an Expected Calibration Error on variant B&#x27;s verbalized `final_confidence`, and a sonnet/opus inter-judge agreement check. RQ3 (judge ↔ program-truth agreement) and RQ4 (B&#x27;s calibration) are answered cleanly. RQ1...
+
+## Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C
+ID: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+Completed: 2026-05-03
+Short description: Fix B&#x27;s plan parser (S-0026-01), redesign C to delegate to plan_and_solve (S-0026-02), then re-run A/B/C on the 130 paired instances to get real RQ1 and RQ5 answers.
+Result summary: Results Summary — t0027 Phase 2.5 A/B/C re-run Summary Forked t0021&#x27;s plan-and-solve v2 into a fault-tolerant `plan_and_solve_v3` (bounded 3-attempt plan-parse recovery) and t0010&#x27;s mismatch wrapper into `matched_mismatch_v2` (now delegating to v3), re-ran B and C on t0026&#x27;s 130 paired instances under claude-sonnet-4-6, and recomputed paired McNemar (Bonferroni α=0.025) for RQ1 (A vs B) and RQ5 (B vs C) plus 10-bin ECE calibration. Both McNemar tests are **do_not_reject** under Bonferroni; parser-failure rate is **0.0** for both variants (down from t0026&#x27;s B=12%). Total task spend was **$20.7631** (cap $50). Metrics * **Variant A (reused from t0026)** — task_success_rate = **0.0462** (6/130)...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -613,9 +620,11 @@ Hierarchical Annotation v2-sonnet is the controlled-rerun companion to t0009&#x2
         <id>abc_harness_metrics</id>
         <id>phase2_smoke_harness_v1</id>
         <id>scope_unaware_planandsolve_v2</id>
+        <id>matched_mismatch_v2</id>
+        <id>plan_and_solve_v3</id>
       </source_ids>
       <content>
-Libraries: 7
+Libraries: 9
 
 ## Matched-Mismatch Agent (v1)
 ID: matched_mismatch_v1
@@ -665,6 +674,20 @@ Version: 1
 Created by task: t0021_plan_and_solve_v2_with_final_confidence
 Module paths: tasks/t0021_plan_and_solve_v2_with_final_confidence/code/planandsolve_v2.py, tasks/t0021_plan_and_solve_v2_with_final_confidence/code/constants.py, tasks/t0021_plan_and_solve_v2_with_final_confidence/code/paths.py
 This library ships a thin v2 wrapper around the existing scope-unaware Plan-and-Solve agent that emits a verbalized `final_confidence` value on every result. The implementation strategy is composition: v1 is imported unchanged, the v1 agent runs to produce an answer, and a single post-call elicitation following the Xiong et al. 2024 section 3.2 black-box protocol attaches a `[0.0, 1.0]` confidence (or `None` on...
+
+## Matched-Mismatch v2 (PlanAndSolveAgentV3 delegate)
+ID: matched_mismatch_v2
+Version: 0.2.0
+Created by task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+Module paths: tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/matched_mismatch_v2.py
+Matched-Mismatch v2 is the surgical fix to the t0026 variant-C delegate defect (S-0026-02). The implementation is ~80 lines of code: it imports the adversarial map and phase walker from t0010 verbatim, runs `PlanAndSolveAgentV3` once on the full problem, and overwrites the resulting v2 trajectory records&#x27; `granularity` field using a per-index lookup into the v2 phase walk. The external API is intentionally close to...
+
+## Plan-and-Solve v3 (Fault-Tolerant Plan Parser)
+ID: plan_and_solve_v3
+Version: 0.3.0
+Created by task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+Module paths: tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/planandsolve_v3.py
+Plan-and-Solve v3 is a minimal, surgical fix to the parser fragility identified by S-0026-01. The fork preserves every v1/v2 semantic and only adds a three-attempt plan-parser pipeline plus two diagnostic counters. On the t0026 paired set the v3 harness will produce trajectories that either look exactly like clean v2 trajectories (when the first attempt succeeds — expected on the vast majority of instances) or carry...
       </content>
     </section>
     <section id="metrics" source_kind="aggregator">

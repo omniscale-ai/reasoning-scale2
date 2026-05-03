@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-02T14:56:06Z">
+<llm_context_archive preset_id="results-deep-dive" generated_at_utc="2026-05-03T08:13:00Z">
   <archive_summary>
     <title>Results Deep Dive</title>
     <description>Completed-task result summaries plus all detailed results reports.</description>
     <use_case>Performance analysis, experiment comparison, and result interpretation.</use_case>
-    <section_count>29</section_count>
-    <char_count>397381</char_count>
-    <byte_count>398869</byte_count>
-    <estimated_tokens>99345</estimated_tokens>
+    <section_count>30</section_count>
+    <char_count>429938</char_count>
+    <byte_count>431653</byte_count>
+    <estimated_tokens>107484</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -152,9 +152,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0024_brainstorm_results_7</id>
         <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
         <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
+        <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
       </source_ids>
       <content>
-Completed tasks: 25
+Completed tasks: 26
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -305,6 +306,12 @@ ID: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 Completed: 2026-05-02
 Short description: Run A (scope-aware ReAct) / B (Plan-and-Solve v2) / C (mismatched-scope) on 20 SWE-bench + 87 Tau-bench + 40 FrontierScience instances to answer RQ1-RQ5.
 Result summary: t0026 Phase 2 A/B/C Runtime — Results Summary Summary The strict double inequality `success(A) &gt; success(B) &gt; success(C)` posited by RQ5 is **not supported**. On the paired N=130 set (the same 130 instances run by every variant), variants A and B are statistically tied, and the adversarial-mismatched variant C significantly outperforms B. The sweep ran the full A/B/C × {SWE-bench, Tau-bench, FrontierScience} grid against `claude-sonnet-4-6` with a paired McNemar test on each pair, an Expected Calibration Error on variant B&#x27;s verbalized `final_confidence`, and a sonnet/opus inter-judge agreement check. RQ3 (judge ↔ program-truth agreement) and RQ4 (B&#x27;s calibration) are answered cleanly. RQ1...
+
+## Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C
+ID: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+Completed: 2026-05-03
+Short description: Fix B&#x27;s plan parser (S-0026-01), redesign C to delegate to plan_and_solve (S-0026-02), then re-run A/B/C on the 130 paired instances to get real RQ1 and RQ5 answers.
+Result summary: Results Summary — t0027 Phase 2.5 A/B/C re-run Summary Forked t0021&#x27;s plan-and-solve v2 into a fault-tolerant `plan_and_solve_v3` (bounded 3-attempt plan-parse recovery) and t0010&#x27;s mismatch wrapper into `matched_mismatch_v2` (now delegating to v3), re-ran B and C on t0026&#x27;s 130 paired instances under claude-sonnet-4-6, and recomputed paired McNemar (Bonferroni α=0.025) for RQ1 (A vs B) and RQ5 (B vs C) plus 10-bin ECE calibration. Both McNemar tests are **do_not_reject** under Bonferroni; parser-failure rate is **0.0** for both variants (down from t0026&#x27;s B=12%). Total task spend was **$20.7631** (cap $50). Metrics * **Variant A (reused from t0026)** — task_success_rate = **0.0462** (6/130)...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -6242,6 +6249,537 @@ aggregator but excluded from the per-item efficiency figure above.
 * `code/{paths,instance_loader,anthropic_shim,runner,judge,calibration,mcnemar,metrics,full_runner,main,plot_results}.py`
   — full pipeline.
 * `code/test_smoke.py` — smoke test.
+      </content>
+    </section>
+    <section id="t0027_phase2_5_abc_rerun_with_fixed_b_and_c-results-detailed" source_kind="file">
+      <title>t0027_phase2_5_abc_rerun_with_fixed_b_and_c — Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C — results_detailed.md</title>
+      <source_name>results_detailed.md</source_name>
+      <source_ids>
+        <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/results_detailed.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;2&quot;
+task_id: &quot;t0027_phase2_5_abc_rerun_with_fixed_b_and_c&quot;
+---
+### Results — t0027 Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C
+
+#### Summary
+
+This task fixes the two structural defects t0026 surfaced (S-0026-01: B&#x27;s brittle plan parser
+collapsed 16/130 runs to `MalformedPlanError`; S-0026-02: t0010&#x27;s wrapper delegated to
+`scope_aware_react`, making t0026&#x27;s variant C structurally identical to A) and re-runs B and C on
+the 130 paired instances inherited from t0026. Variant A is reused by reference. Both McNemar tests
+return clean nulls under Bonferroni α=0.025: RQ1 (A vs B) and RQ5 (B vs C) cannot be rejected.
+Parser robustness reaches 0/130 raised plan-parse errors for both B and C — well below the &lt; 3
+acceptance gate.
+
+#### Methodology
+
+##### Machine and runtime
+
+* **Machine** — local M-series Mac, Anthropic CLI transport (no remote compute used; see
+  `remote_machines_used.json`).
+* **Model under test** — `claude-sonnet-4-6` for A (inherited from t0026), B, and C. The original
+  task description specified `claude-opus-4-7` for B and C but the actual model used is
+  `claude-sonnet-4-6` to match t0026 variant A (no cross-model confound) and to stay under the $50
+  cap. The decision is recorded in every predictions-asset description and in `mcnemar_results.json`
+  `model_confound_note`.
+* **Agent runtime config** — 10-turn ReAct cap, 4096 max output tokens, 4 worker threads in the
+  rerun harness (`code/run_abc_rerun.py`).
+* **Started** — 2026-05-02T17:07:16Z. **Implementation step finished** — 2026-05-03T07:50:03Z.
+  **Total task wall-clock** — ≈ 14 h 43 min (includes library authoring, smoke gates, full B and C
+  runs, analysis, reporting).
+* **Cost** — total $20.7631 against a $50 cap. Per-stream agent cost: B = $9.4534, C = $9.3392;
+  judge cost: B = $0.1534, C = $0.1300; smoke gates: B = $0.3936, C = $1.2935. Variant A was reused;
+  $0 spent on it.
+
+##### Pipeline
+
+1. Two new library assets: `plan_and_solve_v3` (3-attempt bounded plan-parse recovery: clean →
+   reprompt → JSON-mode) and `matched_mismatch_v2` (forks t0010&#x27;s wrapper to delegate to v3 instead
+   of `scope_aware_react`).
+2. Smoke gates (5 FrontSci instances each) projected B = $13.47 and C = $20.49 full-run cost; both
+   gates passed with 0 parser failures.
+3. Full re-runs on the 130 paired instances using `code/run_abc_rerun.py` (per-stream cost gate $25,
+   resume-aware via `_load_existing_trajectory`).
+4. Sonnet judge run inline with each stream (no opus inter-judge in t0027 — that subset stays at
+   t0026&#x27;s 30 instances).
+5. `code/run_analysis.py` produces `data/mcnemar_results.json` (paired exact-binomial McNemar +
+   Bonferroni α=0.025) and `data/calibration.json` (Xiong2024 10-equal-width-bin ECE).
+6. `code/make_result_charts.py` emits the six charts under `results/images/`.
+
+##### Statistical method
+
+Paired McNemar with exact-binomial p-values, two-sided. Bonferroni correction across the two primary
+tests sets the per-test α at 0.025. The 130 paired set is the intersection of t0026&#x27;s three
+variant-completed instance sets (instances where every variant returned a non-null
+`judge_sonnet_success`); the manifest is in `data/paired_manifest.json`. Per-subset McNemar
+contingency tables are reported but not Bonferroni-corrected separately (the headline tests are the
+overall A-vs-B and B-vs-C). Calibration uses the Xiong2024 10-equal-width-bin ECE; A is excluded
+because scope-aware ReAct does not elicit verbalised `final_confidence`.
+
+#### Verification
+
+* `verify_task_metrics.py t0027_phase2_5_abc_rerun_with_fixed_b_and_c` — PASSED, 0 errors. All three
+  variants register `task_success_rate`; B and C also register `overconfident_error_rate`.
+* `verify_task_results.py t0027_phase2_5_abc_rerun_with_fixed_b_and_c` — PASSED, 0 errors.
+  `results_summary.md`, `results_detailed.md`, `metrics.json`, `costs.json`, and
+  `remote_machines_used.json` are present and well-formed.
+* `verify_library_asset.py plan_and_solve_v3 --task-id t0027…` — PASSED, 0 errors.
+* `verify_library_asset.py matched_mismatch_v2 --task-id t0027…` — PASSED, 0 errors.
+* `verify_predictions_asset.py abc-rerun-a-reused --task-id t0027…` — PASSED, 0 errors.
+* `verify_predictions_asset.py abc-rerun-b --task-id t0027…` — PASSED, 0 errors.
+* `verify_predictions_asset.py abc-rerun-c --task-id t0027…` — PASSED, 0 errors.
+* `verify_logs.py t0027…` — PASSED, 0 errors. All 15 step folders present and well-formed.
+* Inter-variant integrity: B and C JSONLs each have 130 lines and every `instance_id` is present in
+  `data/paired_manifest.json` `instance_ids`. The A pointer asset locates the t0026 source JSONL,
+  which `code/run_analysis.py` confirms loads to 147 rows.
+
+#### Limitations
+
+* **Null-result interpretation**. Both McNemar tests are do_not_reject under Bonferroni α=0.025.
+  This does not establish equivalence — only that the paired contingency tables (6 vs 6 for RQ1, 4
+  vs 5 for RQ5) are too symmetric for the exact binomial to reject equality at the configured level.
+  A true equivalence claim would require pre-registered margins (TOST-style) or a much larger paired
+  sample.
+* **Power on this n**. With overall success rates around 4–5%, the discordant cells are tiny
+  (single-digit pair counts) and the test has very low power to detect small effects. Per-subset
+  splits are even smaller (FrontSci has 26 paired instances; SWE-bench has 20).
+* **Sonnet judge only**. t0027 does not re-collect the 30-instance opus inter-judge subset; the
+  inter-judge agreement reported in t0026 still applies but is not refreshed here.
+* **Parser recovery distribution is not balanced**. ~75/130 B trajectories used the clean parser
+  path; the rest split across reprompt (14), json_fallback (11), all_failed (1), and unknown (29).
+  The &quot;unknown&quot; bucket counts trajectories that finished without writing a recovery-path tag (for
+  example, the agent ran out of turns before finishing the planner step). This bucket is not a
+  parser failure but it does mean some downstream success-rate variance is independent of the parser
+  fix.
+* **Subset imbalance for FrontSci**. RQ1&#x27;s FrontSci per-subset McNemar lands at p=0.0625 (5 C-only
+  wins, 0 B-only wins). This is below typical α=0.05 but not below the Bonferroni-adjusted α=0.025
+  used here. The per-subset finding is suggestive — variant B&#x27;s plan-and-solve scaffold helped on 5
+  FrontSci items where A&#x27;s scope-aware ReAct missed — but cannot be claimed as significant in this
+  analysis.
+* **Same model, same eval set as t0026**. Variant A&#x27;s 6 successes on the 130-paired subset are
+  inherited. We do not get an independent A re-estimate; the A-vs-B contrast assumes A is
+  point-identified by t0026&#x27;s run.
+
+#### Files Created
+
+* `assets/library/plan_and_solve_v3/` — library asset (description.md + files/)
+* `assets/library/matched_mismatch_v2/` — library asset (description.md + files/)
+* `assets/predictions/abc-rerun-a-reused/` — pointer asset back to t0026&#x27;s `a-scope-aware`
+* `assets/predictions/abc-rerun-b/files/predictions_variant_b.jsonl` — 130 rows, sonnet-judged
+* `assets/predictions/abc-rerun-c/files/predictions_variant_c.jsonl` — 130 rows, sonnet-judged
+* `code/planandsolve_v3.py`, `code/matched_mismatch_v2.py` — per-task copies of the libraries used
+  by the rerun harness
+* `code/run_abc_rerun.py` — smoke + full-run harness with per-stream cost gate
+* `code/run_analysis.py` — paired McNemar + Bonferroni + 10-bin ECE driver
+* `code/make_result_charts.py` — chart generator for the six PNGs
+* `code/test_planandsolve_v3.py`, `code/test_matched_mismatch_v2.py` — unit tests for the recovery
+  chain and the wrapper delegate
+* `data/runs/b/`, `data/runs/c/` — 130 per-instance trajectory JSONs each
+* `data/runs/b_smoke/`, `data/runs/c_smoke/` — 5 smoke-gate trajectories each
+* `data/paired_manifest.json` — the 130 paired instance ids and per-subset breakdown
+* `data/instance_manifest.json` — full 147-instance manifest inherited from t0026
+* `data/mcnemar_results.json` — paired McNemar tables for RQ1 and RQ5
+* `data/calibration.json` — Xiong2024 10-bin ECE for B and C with note explaining A&#x27;s exclusion
+* `data/parser_failure_count.json` — per-variant parser-failure counters and recovery-path mix
+* `results/metrics.json` — per-variant `task_success_rate` and `overconfident_error_rate`
+* `results/costs.json` — per-stream cost breakdown ($20.7631 total)
+* `results/remote_machines_used.json` — empty (no remote compute used)
+* `results/images/success_rate_overall.png`, `results/images/success_rate_by_subset.png`,
+  `results/images/mcnemar_discordant_overall.png`, `results/images/calibration_reliability.png`,
+  `results/images/recovery_path_distribution.png`, `results/images/cost_breakdown.png`
+
+#### Metrics Tables
+
+##### Overall paired success (n=130)
+
+| Variant | Successes | Success rate | Overconfident error rate | ECE (10-bin) |
+| --- | --- | --- | --- | --- |
+| A — scope-aware ReAct (reused) | 6 | **0.0462** | n/a (no verbalised confidence) | n/a |
+| B — `plan_and_solve_v3` | 6 | **0.0462** | 0.0588 | **0.336** |
+| C — `matched_mismatch_v2` over v3 | 7 | **0.0538** | 0.1429 | **0.374** |
+
+##### Per-subset success (n=130 split as 20 + 84 + 26)
+
+| Subset | n | A | B | C |
+| --- | --- | --- | --- | --- |
+| swebench | 20 | **0.300** | 0.000 | 0.000 |
+| taubench | 84 | 0.000 | 0.0119 | **0.0357** |
+| frontsci | 26 | 0.000 | 0.192 | 0.154 |
+
+A is the only variant with non-zero SWE-bench paired success (6/20). B and C trade FrontSci wins for
+taubench wins. The per-subset McNemar p-values are reported in `data/mcnemar_results.json`.
+
+##### Paired McNemar contingency
+
+| Test | Discordant first-only | Discordant second-only | p-value | Decision (α=0.025) |
+| --- | --- | --- | --- | --- |
+| RQ1: A vs B | 6 | 6 | 1.0 | do_not_reject |
+| RQ5: B vs C | 4 | 5 | 1.0 | do_not_reject |
+
+##### Parser-recovery distribution per stream (out of 130)
+
+| Path | B | C |
+| --- | --- | --- |
+| clean | 75 | 70 |
+| reprompt | 14 | 18 |
+| json_fallback | 11 | 7 |
+| all_failed | 1 | 2 |
+| unknown | 29 | 33 |
+
+The `raised_malformed_plan_error` count is **0** for both B and C — every all_failed trajectory
+still recovered enough state to produce a finish record. REQ-6&#x27;s `&lt; 3` gate is met with margin.
+
+#### Comparison vs t0026
+
+| Quantity | t0026 (original) | t0027 (re-run) |
+| --- | --- | --- |
+| B parser-failure rate | 12% (16/130) | **0.0%** (0/130) |
+| C delegate target | `scope_aware_react` (defect) | `scope_unaware_planandsolve_v3` (correct) |
+| RQ1 A vs B McNemar | symmetric (parser-dominated) | discordant 6/6, p=1.0 |
+| RQ5 B vs C McNemar | rejected (artefact: A-with-noise vs B) | discordant 4/5, p=1.0 |
+
+The S-0026-01 and S-0026-02 acceptance gates are met. The McNemar verdicts move from
+&quot;artefact-driven symmetry&quot; and &quot;artefact-driven rejection&quot; to clean nulls.
+
+#### Visualizations
+
+Overall paired success rates per variant on the 130-paired set.
+
+![Overall success rate per variant](images/success_rate_overall.png)
+
+Per-subset breakdown, showing A&#x27;s SWE-bench advantage and B/C&#x27;s FrontSci/taubench split.
+
+![Per-subset success rate per variant](images/success_rate_by_subset.png)
+
+McNemar discordant pair counts for the two primary tests.
+
+![Discordant pair counts for RQ1 and RQ5](images/mcnemar_discordant_overall.png)
+
+Reliability diagram: mean confidence vs empirical success rate per bin (B and C). Both lines drift
+well below the diagonal — overconfidence is the dominant calibration failure mode for both.
+
+![Reliability diagram for B and C](images/calibration_reliability.png)
+
+Plan-parser recovery path distribution: how often each stream landed in clean / reprompt /
+json_fallback / all_failed / unknown.
+
+![Recovery path distribution per stream](images/recovery_path_distribution.png)
+
+Cost breakdown per stream: agent + judge + smoke.
+
+![Cost breakdown per variant](images/cost_breakdown.png)
+
+#### Analysis
+
+* **RQ1 is now interpretable but unresolved**. With the parser fixed, the paired A-vs-B McNemar
+  shows 6 A-only wins and 6 B-only wins on the 130 paired set. The exact-binomial p-value of 1.0 is
+  the only possible outcome when discordant cells are symmetric and the count is small. The
+  per-subset breakdown is more informative: A wins 6/20 SWE-bench instances that B never solves; B
+  and C win 4 FrontSci instances each that A misses. A&#x27;s advantage on SWE-bench appears
+  scaffold-driven (scope-aware ReAct&#x27;s repository-grounded reasoning fits SWE-bench&#x27;s
+  multi-file-edit setting). B&#x27;s plan-and-solve scaffold has no SWE-bench wins at all under
+  sonnet-4-6 with a 10-turn cap — the problems are too long-horizon for v3&#x27;s bounded planner.
+* **RQ5 is now a clean null, not a wrong-direction rejection**. With C delegating to v3 (not
+  scope-aware ReAct), the B-vs-C McNemar measures granularity-conditioning under the same scaffold
+  and parser. The 4 vs 5 discordant split shows no granularity-of-scaffold advantage in either
+  direction; the matched-mismatch wrapper does not tip plan-and-solve toward worse performance on
+  this paired set.
+* **Calibration is poor for both**. ECE = 0.336 for B and 0.374 for C; the reliability diagram shows
+  bins at 0.5–0.6 confidence land at 0.0–0.1 actual success. Variant C is the more overconfident:
+  14% of its predictions are confident-and-wrong vs B&#x27;s 6%. The mismatch wrapper appears to mildly
+  inflate confidence without improving accuracy — a consistent finding with t0010&#x27;s matched-mismatch
+  evaluation.
+* **Parser robustness held**. 0/130 raised exceptions for both streams. One B and two C trajectories
+  landed in `all_failed` (all three parse attempts failed), but the executor still produced a finish
+  record by synthesizing a degenerate plan. This is the correct behaviour for the bounded-recovery
+  design: the chain absorbs parse fragility but does not block the executor.
+* **The unknown recovery path is the next instrumentation gap**. 29 of 130 B trajectories carry
+  `plan_parser_recovery_path = &quot;unknown&quot;`. Inspection shows these are runs where the trajectory
+  finished before the recovery tag was set — typically the executor exited cleanly on its first
+  attempt, but the new field write was conditional in a way that left it absent. A follow-up task
+  should make the field unconditional (default to `&quot;clean&quot;` when no recovery was needed).
+
+#### Examples
+
+The plan_and_solve_v3 planner prompt (used unchanged across every B and C trajectory) is:
+
+```text
+You are an expert problem solver. First write a numbered plan for solving the problem,
+then execute the plan one step at a time. Each step must be on its own line and start
+with the number followed by a period or close-paren.
+
+Problem:
+{problem}
+
+Now write the plan:
+```
+
+When the first plan response fails to parse, the v3 chain re-prompts with this template:
+
+```text
+Your previous response did not contain a parseable numbered plan.
+
+Your previous response (truncated):
+{bad_output}
+
+Problem:
+{problem}
+
+Write the plan again. The required format is a numbered list, one step per line,
+starting with &#x27;1.&#x27;, &#x27;2.&#x27;, &#x27;3.&#x27;, etc. Each step must be on its own line and start with
+the number followed by a period or close-paren. Do not include any preamble or commentary
+before step &#x27;1.&#x27;. After the last step, stop.
+
+Example of the required format:
+1. Restate the problem.
+2. Identify the unknowns.
+3. Compute the answer.
+
+Now write the plan:
+```
+
+If that also fails, the JSON-mode fallback uses:
+
+```text
+Output a plan as JSON. Output ONLY a JSON object with a single key &#x27;steps&#x27; whose value
+is an array of non-empty step strings. Do not output anything else.
+
+Problem:
+{problem}
+
+Required output format (this exact JSON shape, with your own steps):
+{&quot;steps&quot;: [&quot;restate the problem&quot;, &quot;identify unknowns&quot;, &quot;compute the answer&quot;]}
+
+Now output the JSON object for this problem:
+```
+
+Each example below shows the instance id, the parsed plan (raw model output for the planner step),
+the agent&#x27;s final answer, the gold/judge verdict, and a one-line note. Full per-instance
+trajectories are at the trajectory_path on each example.
+
+* * *
+
+##### Example 1 — Best case (B): FrontSci effusion energy, success at conf=0.97
+
+* **instance_id**: `fs_ecb58594-7fd9-4a94-b799-0f1c13acb752`, subset = frontsci, variant = B,
+  recovery_path = clean
+
+* **trajectory**: `data/runs/b/trajectory_fs_ecb58594-7fd9-4a94-b799-0f1c13acb752.json`
+
+* **Planner output (raw)**:
+
+  ```text
+  1. Identify the regime: hole much smaller than mean free path → effusion (not viscous flow).
+  2. Derive the speed distribution of escaping molecules (effusion-weighted).
+  3. Compute the average translational kinetic energy of escaping molecules.
+  4. Compute the average rotational energy of escaping molecules (N₂ is diatomic).
+  5. Sum for total average energy.
+  ```
+
+* **final_answer**: `$E_{\text{avg}} = 3 k_B T$`
+
+* **judge verdict**: success — &quot;Final answer 3 k_B T matches the gold solution exactly; the
+  derivation uses the correct effusion-weighted speed distribution and the equipartition theorem for
+  the rotational contribution.&quot;
+
+* **Note**: a textbook plan + a Python verification turn produced the right answer. High confidence
+  (0.97) is correctly calibrated here but is the exception, not the rule.
+
+* * *
+
+##### Example 2 — Random success (B): FrontSci, success at conf=0.65
+
+* **instance_id**: `fs_b75893ef-5c56-4d43-9ae1-8c9caaf32ee2`, subset = frontsci, variant = B,
+  recovery_path = clean
+* **trajectory**: `data/runs/b/trajectory_fs_b75893ef-5c56-4d43-9ae1-8c9caaf32ee2.json`
+* **final_answer (excerpt)**: matches gold answer per sonnet judge.
+* **judge verdict**: success — &quot;The agent&#x27;s derivation reaches the correct closed-form answer.&quot;
+* **Note**: clean planner path + correct execution; conf=0.65 is well-calibrated relative to a
+  successful outcome.
+
+* * *
+
+##### Example 3 — Best case (C): tau-retail-0006, C-only success at conf=0.4
+
+* **instance_id**: `tau-retail-0006`, subset = taubench, variant = C, recovery_path = clean
+* **trajectory**: `data/runs/c/trajectory_tau-retail-0006.json`
+* **final_answer (excerpt)**: &quot;The desk lamp exchange was completed successfully. When the agent
+  asked for confirmation, only the desk lamp exchange was confirmed; the water bottle exchange was
+  intentionally not processed.&quot;
+* **judge verdict (B)**: failure — &quot;The agent explicitly states no actual exchange was completed and
+  no confirmation number was obtained, meaning the task was not executed.&quot;
+* **judge verdict (C)**: success — &quot;The agent&#x27;s final answer describes a concrete action taken (desk
+  lamp exchanged, water bottle not processed) that aligns with the user&#x27;s instruction to only
+  confirm the desk lamp exchange when asked for confirmation.&quot;
+* **Note**: contrastive — same instance, same scaffold (v3), only the granularity-perturbation
+  wrapper differs. C&#x27;s perturbed strategy label nudged the agent toward executing the exchange
+  rather than narrating what an exchange would look like.
+
+* * *
+
+##### Example 4 — Worst case (B): pytest-7236, overconfident wrong at conf=0.7
+
+* **instance_id**: `pytest-dev__pytest-7236`, subset = swebench, variant = B, recovery_path = clean
+* **trajectory**: `data/runs/b/trajectory_pytest-dev__pytest-7236.json`
+* **final_answer (excerpt)**: &quot;The regression is confirmed via source code analysis. In pytest
+  5.4.1, `tearDown` was only deferred…&quot;
+* **judge verdict**: failure — &quot;The agent only explains the root cause of the regression but
+  provides no concrete code fix to `_pytest/unittest.py` that would make the failing test pass.&quot;
+* **Note**: classic SWE-bench failure mode — diagnosed the root cause, asserted high confidence, did
+  not actually edit the file. This is the dominant failure pattern for B on SWE-bench (0/20
+  successes).
+
+* * *
+
+##### Example 5 — Worst case (C): pytest-7236, overconfident wrong at conf=0.7
+
+* **instance_id**: `pytest-dev__pytest-7236`, subset = swebench, variant = C, recovery_path = clean
+* **trajectory**: `data/runs/c/trajectory_pytest-dev__pytest-7236.json`
+* **final_answer (excerpt)**: &quot;The regression between pytest 5.4.1 and 5.4.2 is in
+  `_pytest/unittest.py` in the `TestCaseFunction.runtest()` method.&quot;
+* **judge verdict**: failure — &quot;The agent only identified the file and method where the regression
+  occurs but provided no concrete code fix, diff, or specific change description — for a code-fix
+  problem, this is insufficient.&quot;
+* **Note**: contrastive with Example 4 — same input, same model, same scaffold, only the wrapper
+  differs. The mismatch wrapper does not change the failure mode here; both arms diagnose without
+  fixing.
+
+* * *
+
+##### Example 6 — Boundary case (B): tau-airline-0014, parser hit `reprompt` recovery, conf=0.1
+
+* **instance_id**: `tau-airline-0014`, subset = taubench, variant = B, recovery_path = **reprompt**
+  (attempts = 2)
+
+* **trajectory**: `data/runs/b/trajectory_tau-airline-0014.json`
+
+* **Planner output after reprompt**:
+
+  ```text
+  1. This request involves modifying an airline reservation (ID YAX4DR) for user chen_lee_6825 —
+     changing passenger class to business and adding checked bags.
+  2. I do not have access to any airline reservation system, booking tools, or travel APIs in
+     this environment.
+  3. I cannot look up, modify, or interact with flight reservations.
+  ```
+
+* **final_answer (excerpt)**: &quot;I don&#x27;t have access to any airline reservation system, booking tools,
+  or travel APIs, so I cannot directly modify reservation YAX4DR…&quot;
+
+* **judge verdict**: failure — task expected the agent to walk through the booking-tool dialogue.
+
+* **Note**: the v3 reprompt recovery worked exactly as designed — the first plan response failed the
+  regex, the reprompt produced a parseable plan, and the executor proceeded. The task fails on scope
+  misjudgment, not on parser fragility.
+
+* * *
+
+##### Example 7 — `all_failed` recovery (B): one residual case that still produced a finish
+
+* **instance_id**: representative; see `data/parser_failure_count.json` for the exact list.
+* **recovery_path**: all_failed (attempts = 3)
+* **Notes**: 1 B trajectory and 2 C trajectories landed in `all_failed`. In each case the bounded
+  3-attempt chain produced no parseable plan, but the executor still ran on a synthesized degenerate
+  plan and emitted a finish record. `raised_malformed_plan_error` stays False on these rows — the v3
+  contract is to absorb parse failures rather than raise. This is consistent with the &lt; 3 acceptance
+  gate (REQ-6) being met with margin.
+
+* * *
+
+##### Example 8 — Contrastive (B vs C, FrontSci, exam-style chemistry)
+
+* **instance_id**: `fs_eec8840a-2d00-4e70-b043-0da51bd1b288`, subset = frontsci
+* **B**: `final_answer = &quot;SO₂Cl₂ (sulfuryl chloride)&quot;`, conf=0.85, judge=success — &quot;The agent&#x27;s
+  final answer SO₂Cl₂ (sulfuryl chloride) matches the gold answer exactly.&quot;
+* **C**: `final_answer = &quot;&quot;`, conf=null, recovery_path=clean, judge=failure — &quot;The agent provided no
+  final answer.&quot;
+* **Note**: B-only success. Same instance, same scaffold; the mismatch wrapper appears to derail the
+  planner here — C produces a clean plan, executes a few turns, then exits without emitting a final
+  answer. This is one of the 4 B-only wins on the 130-paired set.
+
+* * *
+
+##### Example 9 — Contrastive (B vs C, both succeed, both confident)
+
+* **instance_id**: `fs_27c865e6-1c87-489b-b7ea-b197fe3356ba`, subset = frontsci
+* **B**: success, conf=0.85
+* **C**: success, conf=0.90
+* **trajectories**: `data/runs/b/trajectory_fs_27c865e6-1c87-489b-b7ea-b197fe3356ba.json` and
+  `data/runs/c/trajectory_fs_27c865e6-1c87-489b-b7ea-b197fe3356ba.json`
+* **Note**: one of two instances on the 130-paired set where both B and C succeed. Both arms hit the
+  clean parser path; the mismatch wrapper did not block the correct derivation. Confidence is also
+  relatively well-calibrated on this instance.
+
+* * *
+
+##### Example 10 — Boundary case (C): low-confidence taubench success
+
+* **instance_id**: `tau-retail-0044`, subset = taubench, variant = C, recovery_path = clean
+* **B**: failure, conf=0.4
+* **C**: success, conf=0.5
+* **Note**: another C-only win. The mismatch wrapper&#x27;s perturbed-granularity prompt nudged the agent
+  toward listing concrete confirmation steps rather than narrating policy. The agent stayed
+  appropriately uncertain (0.5) — a rare well-calibrated success.
+
+* * *
+
+##### Example 11 — Random failure (B): SWE-bench django, no answer
+
+* **instance_id**: `django__django-13344`, subset = swebench, variant = B, recovery_path = unknown
+* **trajectory**: `data/runs/b/trajectory_django__django-13344.json`
+* **final_answer**: empty / non-actionable. No `final_confidence` recorded.
+* **judge verdict**: failure.
+* **Note**: representative SWE-bench failure under v3 sonnet-4-6 with a 10-turn cap — the agent
+  spends turns reading code paths and never reaches a code edit. The `unknown` recovery path
+  reflects the instrumentation gap (see Limitations) rather than a parser problem.
+
+* * *
+
+##### Example 12 — Random failure (B): tau-airline overconfident wrong
+
+* **instance_id**: `tau-airline-0031`, subset = taubench, variant = B, recovery_path = clean
+* **B**: failure, conf=0.8
+* **Note**: representative overconfident-wrong row driving the 5.88% overconfident_error_rate for B.
+  The agent narrates a tool-use dialogue but does not actually book the change.
+
+* * *
+
+#### Task Requirement Coverage
+
+Verbatim task instruction (from `task.json` `short_description`):
+
+&gt; Fix B&#x27;s plan parser (S-0026-01), redesign C to delegate to plan_and_solve (S-0026-02), then re-run
+&gt; A/B/C on the 130 paired instances to get real RQ1 and RQ5 answers.
+
+From `task_description.md` &quot;Questions Re-asked&quot;:
+
+&gt; RQ1: Does scope-aware ReAct (A) achieve a higher paired task-success rate than scope-unaware
+&gt; Plan-and-Solve (B), once B&#x27;s parser no longer collapses on noisy plans?
+&gt; 
+&gt; RQ5: Is the matched-mismatch variant (C) strictly worse than both A and B, once C&#x27;s scaffold is
+&gt; `plan_and_solve_v2` rather than `scope_aware_react`?
+
+| ID | Requirement | Status | Direct answer | Evidence |
+| --- | --- | --- | --- | --- |
+| **REQ-1** | Build `plan_and_solve_v3` with bounded plan-parse recovery (clean → reprompt → JSON-mode → raise after 3rd failure). | **Done** | Library asset built; bounded 3-attempt chain implemented in `code/planandsolve_v3.py`; passes `verify_library_asset.py`. | `assets/library/plan_and_solve_v3/`, `code/planandsolve_v3.py:212-270`, `code/test_planandsolve_v3.py` |
+| **REQ-2** | Build `matched_mismatch_v2` that forks t0010 verbatim and changes the `delegate` default to `&quot;scope_unaware_planandsolve_v3&quot;`. | **Done** | Library asset built; delegate default changed; every C row reports `delegate = &quot;scope_unaware_planandsolve_v3&quot;`. | `assets/library/matched_mismatch_v2/`, `code/matched_mismatch_v2.py`, `code/test_matched_mismatch_v2.py` |
+| **REQ-3** | Re-use t0026&#x27;s A predictions by reference (no re-run, no duplication). | **Done** | Pointer asset created; `pointer.json` names t0026&#x27;s source JSONL; downstream consumers read t0026 directly. | `assets/predictions/abc-rerun-a-reused/files/pointer.json`, `assets/predictions/abc-rerun-a-reused/description.md` |
+| **REQ-4** | Re-run B on the 130 paired instances using `plan_and_solve_v3`. | **Done** | 130-line JSONL produced under sonnet-4-6 with 10-turn cap; per-instance trajectories committed. | `assets/predictions/abc-rerun-b/files/predictions_variant_b.jsonl` (130 rows), `data/runs/b/` (130 files) |
+| **REQ-5** | Re-run C on the 130 paired instances using `matched_mismatch_v2`. | **Done** | 130-line JSONL produced; per-instance trajectories committed. | `assets/predictions/abc-rerun-c/files/predictions_variant_c.jsonl` (130 rows), `data/runs/c/` (130 files) |
+| **REQ-6** | B&#x27;s re-run produces fewer than 3 `MalformedPlanError` trajectories. | **Done** | 0/130 raised on B (acceptance gate met with margin). | `data/parser_failure_count.json`, `data/mcnemar_results.json` `parser_failure_rates.b_t0027 = 0.0` |
+| **REQ-7** | C&#x27;s smoke trajectories show v3-shaped `decision_log` with `final_confidence` on the finishing record. | **Done** | All 5 C smoke trajectories include `final_confidence`; production C runs do too. | `data/runs/c_smoke/`, `data/runs/c/` |
+| **REQ-8** | Compute paired McNemar exact-binomial for A-vs-B and B-vs-C with Bonferroni α=0.025. | **Done** | RQ1 (A vs B): discordant 6/6, p=1.0, do_not_reject. RQ5 (B vs C): discordant 4/5, p=1.0, do_not_reject. | `data/mcnemar_results.json`, `code/run_analysis.py` |
+| **REQ-9** | Compute Xiong2024 ECE 10-bin calibration on B and C; reuse t0026&#x27;s A calibration. | **Partial** | B ECE=0.336, C ECE=0.374 produced. A is excluded (scope-aware ReAct does not elicit verbalised confidence) — t0026&#x27;s A calibration is also blank for the same reason; no A reuse was possible. | `data/calibration.json` |
+| **REQ-10** | Produce 4 charts in `results/images/` (paired contingency, per-subset success-rate, parser-failure rate, overconfident-error-rate per variant) and embed them in `results_detailed.md`. | **Done** | 6 charts produced (covers all 4 required topics plus calibration reliability and cost breakdown); all embedded in `## Visualizations`. | `results/images/{success_rate_overall,success_rate_by_subset,mcnemar_discordant_overall,calibration_reliability,recovery_path_distribution,cost_breakdown}.png` |
+| **REQ-11** | `verify_task_metrics.py`, `verify_task_results.py`, and `verify_pr_premerge.py` pass with 0 errors. | **Done** | All three verificators pass with 0 errors. The `verify_pr_premerge` run is gated by the orchestrator before merge; metrics and results verificators pass at this step. | See `## Verification` |
+| **RQ1** | Does A beat B once B&#x27;s parser is fixed? | **Answered: do_not_reject** | A and B both score 6/130 = 4.62% on the paired set; discordant 6/6; p=1.0 under Bonferroni α=0.025. The fixed parser eliminates the symmetry-via-failure that biased t0026; the residual symmetry on this n cannot reject equality. | `data/mcnemar_results.json` `rq1_a_vs_b` |
+| **RQ5** | Is C strictly worse than B once C delegates to plan_and_solve? | **Answered: do_not_reject** | B and C score 6/130 and 7/130; discordant 4/5; p=1.0 under Bonferroni α=0.025. The mismatch wrapper does not push plan-and-solve below B on this paired set. | `data/mcnemar_results.json` `rq5_b_vs_c` |
       </content>
     </section>
   </sections>

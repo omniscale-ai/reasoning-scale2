@@ -6,7 +6,7 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 
 **Detail pages**: [Papers (14)](../papers/by-category/hierarchical-planning.md) | [Answers
 (2)](../answers/by-category/hierarchical-planning.md) | [Suggestions
-(27)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
+(28)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
 (4)](../datasets/by-category/hierarchical-planning.md) | [Libraries
 (4)](../libraries/by-category/hierarchical-planning.md) | [Predictions
 (2)](../predictions/by-category/hierarchical-planning.md)
@@ -751,20 +751,23 @@ matched pool.
 
 </details>
 
-## Suggestions (20 open, 7 closed)
+## Suggestions (20 open, 8 closed)
 
 <details>
-<summary>🔧 <strong>Make the Plan-and-Solve v2 plan parser fault-tolerant</strong>
-(S-0026-01)</summary>
+<summary>🧪 <strong>Ablate the planner: run plan_and_solve_v3 with an empty/identity
+plan to isolate planner contribution</strong> (S-0027-03)</summary>
 
-**Kind**: technique | **Priority**: high | **Date**: 2026-05-02 | **Source**:
-[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
 
-Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
-instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
-function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
-B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
-symmetric.
+RQ1 came back as A=B at 4.62% on the 130-paired set, which is consistent with two competing
+hypotheses: (1) the plan-and-solve scaffold adds zero value over scope_aware_react on this
+dataset blend, or (2) the planner prompt is actively harmful and is being rescued by the
+bounded recovery chain. Run a B-prime variant that uses plan_and_solve_v3's
+parse/recovery/action machinery but replaces the planner output with a single identity step
+('execute the requested task'), then compare B-prime vs B vs A on the same 130-paired set. If
+B-prime ≈ B ≈ A, the planner is neutral; if B-prime ≈ A but B > A, the planner is helpful; if
+B-prime > B ≈ A, the planner is actively harmful.
 
 </details>
 

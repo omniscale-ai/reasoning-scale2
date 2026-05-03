@@ -4,15 +4,15 @@
   <a href="papers/"><img src="https://img.shields.io/badge/Papers-21-4169E1" alt="Papers"></a>
   <a href="datasets/"><img src="https://img.shields.io/badge/Datasets-8-2E8B57" alt="Datasets"></a>
   <a href="models/"><img src="https://img.shields.io/badge/Models-0-FF8C00" alt="Models"></a>
-  <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-8-9370DB" alt="Predictions"></a>
-  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-7-20B2AA" alt="Libraries"></a>
+  <a href="predictions/"><img src="https://img.shields.io/badge/Predictions-11-9370DB" alt="Predictions"></a>
+  <a href="libraries/"><img src="https://img.shields.io/badge/Libraries-9-20B2AA" alt="Libraries"></a>
   <a href="answers/"><img src="https://img.shields.io/badge/Answers-2-CD853F" alt="Answers"></a>
 </p>
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-26-4682B4" alt="Tasks"></a>
-  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-86-DAA520" alt="Suggestions"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-27-4682B4" alt="Tasks"></a>
+  <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-92-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
   <a href="metrics-results/"><img src="https://img.shields.io/badge/Results-3-DC143C" alt="Results"></a>
@@ -30,15 +30,15 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (9K) |
-[full](llm-context/full.xml) (111K) | [roadmap](llm-context/roadmap.xml) (22K) |
-[results](llm-context/results-deep-dive.xml) (99K) |
-[assets](llm-context/literature-and-assets.xml) (17K)
+[full](llm-context/full.xml) (120K) | [roadmap](llm-context/roadmap.xml) (24K) |
+[results](llm-context/results-deep-dive.xml) (107K) |
+[assets](llm-context/literature-and-assets.xml) (18K)
 
-*Last updated: 2026-05-02 14:56 UTC*
+*Last updated: 2026-05-03 08:13 UTC*
 
-* **Budget**: **$113** spent of $200
-* **Remaining**: **$87**
-* **Usage**: `███████████░░░░░░░░░` 56.3%
+* **Budget**: **$133** spent of $200
+* **Remaining**: **$67**
+* **Usage**: `█████████████░░░░░░░` 66.7%
 
 ---
 
@@ -66,10 +66,11 @@ No blocked tasks.
 
 ---
 
-## [Recently Completed (25 total)](tasks/by-status/completed.md)
+## [Recently Completed (26 total)](tasks/by-status/completed.md)
 
 | # | Task | Results | Completed |
 |---|------|---------|-----------|
+| 0027 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | [`results`](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/results_detailed.md) | 2026-05-03 08:07 |
 | 0026 | [Phase 2 A/B/C Runtime (N=147) for RQ1-RQ5](../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | [`results`](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/results/results_detailed.md) | 2026-05-02 14:50 |
 | 0025 | [Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)](../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | [`results`](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/results/results_detailed.md) | 2026-05-01 21:46 |
 | 0022 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`results`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/results_detailed.md) | 2026-05-01 20:40 |
@@ -79,9 +80,8 @@ No blocked tasks.
 | 0020 | [v2 Truncation vs Schema Ablation](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | [`results`](../tasks/t0020_v2_truncation_vs_schema_ablation/results/results_detailed.md) | 2026-05-01 14:53 |
 | 0018 | [Brainstorm session 6: paper-driven slate after t0017 literature survey](../overview/tasks/task_pages/t0018_brainstorm_results_6.md) | [`results`](../tasks/t0018_brainstorm_results_6/results/results_detailed.md) | 2026-05-01 13:30 |
 | 0012 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`results`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/results_detailed.md) | 2026-05-01 04:43 |
-| 0017 | [Literature: Hierarchical Agents and LLM-as-Judge](../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) | [`results`](../tasks/t0017_literature_hierarchical_agents_and_judges/results/results_detailed.md) | 2026-05-01 01:40 |
 
-*15 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
+*16 more completed tasks → [completed tasks](tasks/by-status/completed.md)*
 
 ---
 
@@ -102,24 +102,115 @@ No blocked tasks.
 | 9 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v1-sonnet judged by substantive-sonnet | **0.6667** |
 | 10 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | v1-sonnet judged by model-rotated-sonnet | **0.5833** |
 
-*11 more results → [all results](metrics-results/)*
+*14 more results → [all results](metrics-results/)*
 
 ---
 
-## [Recent Suggestions (72 open)](suggestions/)
+## [Recent Suggestions (77 open)](suggestions/)
 
 <details>
-<summary>🔧 <strong>Make the Plan-and-Solve v2 plan parser fault-tolerant</strong>
-(S-0026-01)</summary>
+<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
+calibrator over v3 features</strong> (S-0027-01)</summary>
 
-**Kind**: technique | **Priority**: high | **Date**: 2026-05-02 | **Source**:
-[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+**Kind**: technique | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
 
-Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
-instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
-function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
-B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
-symmetric.
+After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
+matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
+actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
+scaling first, then isotonic regression as a stretch) over the four content features used in
+t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
+telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
+same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
+predictor.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
+behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
+
+matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
+structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
+(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
+adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
+meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
+plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
+critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
+stronger structural difference produces a discordance pattern that can move McNemar.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Ablate the planner: run plan_and_solve_v3 with an empty/identity
+plan to isolate planner contribution</strong> (S-0027-03)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
+
+RQ1 came back as A=B at 4.62% on the 130-paired set, which is consistent with two competing
+hypotheses: (1) the plan-and-solve scaffold adds zero value over scope_aware_react on this
+dataset blend, or (2) the planner prompt is actively harmful and is being rescued by the
+bounded recovery chain. Run a B-prime variant that uses plan_and_solve_v3's
+parse/recovery/action machinery but replaces the planner output with a single identity step
+('execute the requested task'), then compare B-prime vs B vs A on the same 130-paired set. If
+B-prime ≈ B ≈ A, the planner is neutral; if B-prime ≈ A but B > A, the planner is helpful; if
+B-prime > B ≈ A, the planner is actively harmful.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Instrument recovery_path unconditionally and audit the ~30
+'unknown' trajectories per variant</strong> (S-0027-04)</summary>
+
+**Kind**: technique | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
+
+Recovery-path telemetry is incomplete: B has 75 clean / 14 reprompt / 11 json_fallback / 1
+all_failed and 29 'unknown', and C has 70 / 18 / 7 / 2 and 33 'unknown'. The 'unknown' bucket
+is an instrumentation gap (the recovery_path field is not unconditionally written), not a
+parser failure (raised_malformed_plan_error is 0/130 for both). Patch plan_and_solve_v3 to
+emit recovery_path on every trajectory and re-run a small replay over the existing trajectory
+artifacts to backfill the field for completed runs. Report the corrected distribution and
+check whether the 29/33 currently-unknown trajectories are dominated by the clean path (most
+likely) or by silent fallbacks.
+
+</details>
+
+<details>
+<summary>📊 <strong>Build a discordance-rich paired sample to gain power for RQ1
+and RQ5</strong> (S-0027-05)</summary>
+
+**Kind**: evaluation | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
+
+On the current 130-paired set, RQ1 has only 6 discordant pairs (3 A-only + 3 B-only) and RQ5
+has only 5 (1 B-only + 4 C-only) — McNemar power is at the floor by construction. Aggregate
+the per-instance success bits from t0022 (A vs B), t0023 (sonnet swebench), t0026 (full
+A/B/C), and now t0027 to build a discordance-rich paired set: select 130 instances where the
+two variants disagreed in at least one prior run. Re-run A vs B and B vs C on that set under
+claude-sonnet-4-6 and report whether the McNemar p-values move off symmetric. This decouples
+'no detectable effect' from 'underpowered test' for the next iteration.
+
+</details>
+
+<details>
+<summary>📚 <strong>Promote bounded plan-parse recovery into every other scaffold
+in the library</strong> (S-0027-06)</summary>
+
+**Kind**: library | **Priority**: low | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
+
+plan_and_solve_v3's 3-attempt recovery chain (clean → reprompt → JSON-mode → degenerate plan)
+eliminated parser failures (12% in t0026 → 0% in t0027) without measurable cost (~$10 for 130
+instances). The same parse-failure path exists in scope_aware_react (multi-tool JSON), in
+scratchpad-style ablations, and in any future scaffold that asks the model for structured
+intermediate output. Refactor the recovery chain into a shared utility under assets/library/
+and adopt it in every scaffold that does structured-output parsing, then verify on a small
+sweep that no new scaffold emits raised_malformed_plan_error.
 
 </details>
 
@@ -183,105 +274,45 @@ mcnemar_p_b_vs_c keep the same sign.
 
 </details>
 
-<details>
-<summary>🔧 <strong>Recover the 17 missing instances per variant for a full N=147
-paired set</strong> (S-0026-06)</summary>
-
-**Kind**: technique | **Priority**: low | **Date**: 2026-05-02 | **Source**:
-[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
-
-The resumable-checkpoint path filtered 17 instances per variant from a corrupted earlier run,
-dropping the paired sample from N=147 to N=130. Add a 'force-rerun' flag to full_runner.py
-that re-emits trajectories for those ids and rerun A/B/C on the missing 17. The McNemar tests
-are statistically valid as-is, but the absolute success rates would be unbiased on the full
-N=147.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Add tool use (search, code execution) to the smoke harness for
-FrontierScience-Olympiad</strong> (S-0012-03)</summary>
-
-**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
-[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
-
-The smoke ran with calculator+finish only. FrontierScience-Olympiad requires multi-step
-numerical computation, retrieval, and code execution for most problems. Adding a Python code
-execution tool and a retrieval tool would lift accuracy above the current floor and make
-A-vs-B-vs-C differences observable even on haiku. Cost per row would increase by ~2-5x but
-confirmatory N would decrease proportionally.
-
-</details>
-
-<details>
-<summary>📂 <strong>Fix task_id collision in FrontierScience-Olympiad pilot
-dataset</strong> (S-0012-04)</summary>
-
-**Kind**: dataset | **Priority**: medium | **Date**: 2026-05-01 | **Source**:
-[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
-
-The hierarchical-annotation-v2 FrontierScience-Olympiad subset has 40 rows but only 26 unique
-task_ids. Multiple rows share the same task_id (different granularity levels of the same
-problem), which means the pairing logic treats them as separate predictions for the same task.
-A deduplication or re-keying correction task should produce a version of the dataset with
-unique task_ids per row, or document the intended semantics of multi-row task_ids.
-
-</details>
-
-<details>
-<summary>🧪 <strong>Multi-provider replication: run Phase 2 harness with GPT-4o and
-Gemini 1.5 Pro</strong> (S-0012-05)</summary>
-
-**Kind**: experiment | **Priority**: low | **Date**: 2026-05-01 | **Source**:
-[t0012_phase2_abc_smoke_frontierscience](../tasks/t0012_phase2_abc_smoke_frontierscience/)
-
-The smoke used only claude-haiku-4-5. Replicating on GPT-4o and Gemini 1.5 Pro (both now
-available via project API keys) would test whether the granularity conditioning effect is
-model-specific or generalizes across providers. The harness's model_call.py abstraction layer
-makes this a configuration change rather than a code change. Defer until the confirmatory N
-result is available from S-0012-02 to avoid spending budget before the primary hypothesis is
-tested.
-
-</details>
-
-<details>
-<summary>📊 <strong>Adopt Trust-or-Escalate selective evaluation for the multi-judge
-agreement study</strong> (S-0017-01)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0017_literature_hierarchical_agents_and_judges](../tasks/t0017_literature_hierarchical_agents_and_judges/)
-
-S-0009-03 calls for a multi-judge agreement study; Jung2024 ("Trust or Escalate", ICLR 2025)
-provides the right primitive. Implement a selective-judging pipeline with two ingredients: (1)
-Simulated Annotators on top of the project's existing judge LLM to produce ensemble-based
-confidence scores, and (2) a calibrated abstention threshold using fixed-sequence testing
-(Bauer 1991, Bates et al. 2021) so the pipeline ships with a finite-sample, distribution-free
-guarantee on human-judge agreement. Empirically Jung2024 shows that 75% of pairwise judging on
-ChatArena can be delegated to Mistral-7B/GPT-3.5 while preserving an 80% human-agreement floor
-that GPT-4 alone never reaches, so this is also a cost-reduction path for any large-scale
-annotation rerun. Deliverable: a small library that wraps the existing judge call with
-confidence + abstain semantics, exposed to t0009-style annotation tasks.
-
-</details>
-
-*62 more open suggestions → [open suggestions](suggestions/)*
+*67 more open suggestions → [open suggestions](suggestions/)*
 
 ---
 
-## [High Priority Suggestions (17)](suggestions/)
+## [High Priority Suggestions (18)](suggestions/)
 
 <details>
-<summary>🔧 <strong>Make the Plan-and-Solve v2 plan parser fault-tolerant</strong>
-(S-0026-01)</summary>
+<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
+calibrator over v3 features</strong> (S-0027-01)</summary>
 
-**Kind**: technique | **Priority**: high | **Date**: 2026-05-02 | **Source**:
-[t0026_phase2_abc_runtime_n147_for_rq1_rq5](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/)
+**Kind**: technique | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
 
-Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
-instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
-function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
-B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
-symmetric.
+After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
+matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
+actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
+scaling first, then isotonic regression as a stretch) over the four content features used in
+t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
+telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
+same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
+predictor.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
+behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
+
+matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
+structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
+(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
+adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
+meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
+plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
+critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
+stronger structural difference produces a discordance pattern that can move McNemar.
 
 </details>
 
@@ -422,23 +453,7 @@ budget.
 
 </details>
 
-<details>
-<summary>📊 <strong>Replace haiku judge with a sonnet-rotated or programmatic grader
-for all Phase 2 A/B/C scoring</strong> (S-0025-04)</summary>
-
-**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-01 | **Source**:
-[t0025_lit_survey_hierarchical_agents_and_judges_2024_2026](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/)
-
-t0019 found judge anchoring on model identity inflates the schema effect by ~+33 pp under the
-haiku judge versus a sonnet rotated judge. Any RQ1 / RQ2 / RQ4 measurement that uses the haiku
-judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the default for
-Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
-SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
-judge from the gradient.
-
-</details>
-
-*7 more high-priority suggestions → [high-priority suggestions](suggestions/)*
+*8 more high-priority suggestions → [high-priority suggestions](suggestions/)*
 
 ---
 
@@ -1040,25 +1055,31 @@ No models yet.
 
 ---
 
-## [Latest Predictions (8 total)](predictions/)
+## [Latest Predictions (11 total)](predictions/)
 
 | Name | Source | Created |
 |------|--------|---------|
 | [Variant C: Mismatched (atomic granularity, adversarial annotation)](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/assets/predictions/c-mismatched/description.md) | [26](../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | 2026-05-02 |
+| [Variant C (re-run): matched_mismatch_v2 wrapping plan_and_solve_v3](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/predictions/abc-rerun-c/description.md) | [27](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | 2026-05-02 |
 | [Variant B: Plan-and-Solve v2 with final_confidence](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/assets/predictions/b-plan-and-solve/description.md) | [26](../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | 2026-05-02 |
+| [Variant B (re-run): plan_and_solve_v3 with bounded plan-recovery chain](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/predictions/abc-rerun-b/description.md) | [27](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | 2026-05-02 |
 | [Variant A: Scope-Aware ReAct (atomic granularity)](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/assets/predictions/a-scope-aware/description.md) | [26](../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | 2026-05-02 |
+| [Variant A (reused pointer to t0026 a-scope-aware predictions)](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/predictions/abc-rerun-a-reused/description.md) | [27](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | 2026-05-02 |
 | [v2 tree-schema annotations on truncated 1500-char problems (haiku judge verdicts)](../tasks/t0020_v2_truncation_vs_schema_ablation/assets/predictions/v2-truncated-ablation/description.md) | [20](../overview/tasks/task_pages/t0020_v2_truncation_vs_schema_ablation.md) | 2026-05-01 |
 | [v2 Judge Calibration: 3 judges x 3 annotators on 55-row pool](../tasks/t0019_v2_judge_calibration_sonnet/assets/predictions/v2-judge-calibration/description.md) | [19](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | 2026-05-01 |
 | [Phase 2 smoke condition C (scope-mismatched random) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-c/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
 | [Phase 2 smoke condition B (scope-unaware Plan-and-Solve) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-b/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
-| [Phase 2 smoke condition A (scope-aware ReAct) on FrontierScience-Olympiad](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/predictions/phase2-smoke-a/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
+
+*1 more prediction → [predictions](predictions/)*
 
 ---
 
-## [Latest Libraries (7 total)](libraries/)
+## [Latest Libraries (9 total)](libraries/)
 
 | Name | Source | Created |
 |------|--------|---------|
+| [Plan-and-Solve v3 (Fault-Tolerant Plan Parser)](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/library/plan_and_solve_v3/description.md) | [27](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | 2026-05-02 |
+| [Matched-Mismatch v2 (PlanAndSolveAgentV3 delegate)](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/library/matched_mismatch_v2/description.md) | [27](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | 2026-05-02 |
 | [Scope-Unaware Plan-and-Solve v2 (with final_confidence)](../tasks/t0021_plan_and_solve_v2_with_final_confidence/assets/library/scope_unaware_planandsolve_v2/description.md) | [21](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | 2026-05-01 |
 | [Phase 2 A/B/C Smoke Harness (v1)](../tasks/t0012_phase2_abc_smoke_frontierscience/assets/library/phase2_smoke_harness_v1/description.md) | [12](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | 2026-05-01 |
 | [ABC Harness Metrics](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/assets/library/abc_harness_metrics/description.md) | [22](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | 2026-05-01 |
@@ -1069,12 +1090,13 @@ No models yet.
 
 ---
 
-## [Cost Leaders (10 tasks with spend)](costs/)
+## [Cost Leaders (11 tasks with spend)](costs/)
 
 | Task | Cost | Date |
 |------|------|------|
 | [Phase 2 A/B/C Runtime (N=147) for RQ1-RQ5](../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | [`$38.61`](../tasks/t0026_phase2_abc_runtime_n147_for_rq1_rq5/results/costs.json) | 2026-05-02 14:50 |
 | [v2 annotator Sonnet rerun: deconfound schema vs model](../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md) | [`$21.16`](../tasks/t0014_v2_annotator_sonnet_rerun/results/costs.json) | 2026-04-30 23:59 |
+| [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | [`$20.76`](../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/results/costs.json) | 2026-05-03 08:07 |
 | [v2 Judge Calibration with Sonnet (Substantive + Familial Bias)](../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) | [`$19.30`](../tasks/t0019_v2_judge_calibration_sonnet/results/costs.json) | 2026-05-01 17:55 |
 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | [`$18.37`](../tasks/t0012_phase2_abc_smoke_frontierscience/results/costs.json) | 2026-05-01 04:43 |
 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | [`$9.10`](../tasks/t0009_hierarchical_annotation_v2/results/costs.json) | 2026-04-30 00:53 |
@@ -1082,4 +1104,5 @@ No models yet.
 | [ABC Harness with Progress Rate and EAI Error Taxonomy](../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | [`$2.42`](../tasks/t0022_abc_harness_progress_rate_and_error_taxonomy/results/costs.json) | 2026-05-01 20:40 |
 | [Plan-and-Solve v2 with final_confidence Field](../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | [`$0.54`](../tasks/t0021_plan_and_solve_v2_with_final_confidence/results/costs.json) | 2026-05-01 17:10 |
 | [Synthesize Best-Available Answers to Research Questions (RQ1-RQ5)](../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | [`$0.20`](../tasks/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026/results/costs.json) | 2026-05-01 21:46 |
-| [Hierarchical annotation pilot v1: audit and conform existing 115 rows](../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md) | [`$0.06`](../tasks/t0005_hierarchical_annotation_pilot_v1/results/costs.json) | 2026-04-29 20:14 |
+
+*1 more tasks with spend → [tasks with spend](costs/)*

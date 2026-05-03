@@ -6,9 +6,9 @@ subtask, atomic).
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (6)](../papers/by-category/granularity-conditioning.md) |
-[Suggestions (26)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
+[Suggestions (27)](../suggestions/by-category/granularity-conditioning.md) | [Datasets
 (3)](../datasets/by-category/granularity-conditioning.md) | [Libraries
-(5)](../libraries/by-category/granularity-conditioning.md) | [Predictions
+(7)](../libraries/by-category/granularity-conditioning.md) | [Predictions
 (2)](../predictions/by-category/granularity-conditioning.md)
 
 ---
@@ -297,7 +297,25 @@ decomposition without solution-reuse loses much of LtM's gain.
 
 No answers in this category.
 
-## Suggestions (19 open, 7 closed)
+## Suggestions (20 open, 7 closed)
+
+<details>
+<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
+behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
+
+**Kind**: experiment | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0027_phase2_5_abc_rerun_with_fixed_b_and_c](../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/)
+
+matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
+structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
+(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
+adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
+meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
+plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
+critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
+stronger structural difference produces a discordance pattern that can move McNemar.
+
+</details>
 
 <details>
 <summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally

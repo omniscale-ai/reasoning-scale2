@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-27 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **20 open** (6
-high, 10 medium, 4 low), **7 closed**.
+28 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **20 open** (5
+high, 11 medium, 4 low), **8 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -51,27 +51,6 @@ Extend the v1 pilot to >=200 rows by re-running the upstream pilot pipeline with
 retry policy (eliminate the 11 FrontierScience-Olympiad rows where steps==null), then perform
 a full human-rater review of every row. Compute inter-rater agreement (Krippendorff's alpha or
 Cohen's kappa) between the human rater and the LLM annotator.
-
-</details>
-
-<details>
-<summary>🔧 <strong>Make the Plan-and-Solve v2 plan parser fault-tolerant</strong>
-(S-0026-01)</summary>
-
-| Field | Value |
-|---|---|
-| **ID** | `S-0026-01` |
-| **Kind** | technique |
-| **Date added** | 2026-05-02 |
-| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
-| **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
-
-Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
-instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
-function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
-B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
-symmetric.
 
 </details>
 
@@ -142,6 +121,30 @@ task was built for.
 </details>
 
 ## Medium Priority
+
+<details>
+<summary>🧪 <strong>Ablate the planner: run plan_and_solve_v3 with an empty/identity
+plan to isolate planner contribution</strong> (S-0027-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+RQ1 came back as A=B at 4.62% on the 130-paired set, which is consistent with two competing
+hypotheses: (1) the plan-and-solve scaffold adds zero value over scope_aware_react on this
+dataset blend, or (2) the planner prompt is actively harmful and is being rescued by the
+bounded recovery chain. Run a B-prime variant that uses plan_and_solve_v3's
+parse/recovery/action machinery but replaces the planner output with a single identity step
+('execute the requested task'), then compare B-prime vs B vs A on the same 130-paired set. If
+B-prime ≈ B ≈ A, the planner is neutral; if B-prime ≈ A but B > A, the planner is helpful; if
+B-prime > B ≈ A, the planner is actively harmful.
+
+</details>
 
 <details>
 <summary>🔧 <strong>Add a gold_actions structural-mirror validator for non-empty
@@ -554,6 +557,29 @@ template per granularity, the tagging logic that decides which granularity is ac
 LLM call, and a logging schema that records the active granularity for every action so
 post-hoc per-granularity analysis is possible. Replicate Least-to-Most's solution-reuse
 pattern [Zhou2022] inside the implementation.
+
+</details>
+
+<details>
+<summary>✅ <s>Make the Plan-and-Solve v2 plan parser fault-tolerant</s> — covered by
+<a
+href="../../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/"><code>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</code></a>
+(S-0026-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-01` |
+| **Kind** | technique |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
+instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
+function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
+B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
+symmetric.
 
 </details>
 

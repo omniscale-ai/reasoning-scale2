@@ -1,35 +1,164 @@
 # Suggestions by Date Added
 
-86 suggestion(s) grouped by derived added date.
+92 suggestion(s) grouped by derived added date.
 
 [Back to all suggestions](../README.md)
 
 ---
 
-## 2026-05-02 (6)
+## 2026-05-03 (6)
 
 ## High Priority
 
 <details>
-<summary>🔧 <strong>Make the Plan-and-Solve v2 plan parser fault-tolerant</strong>
-(S-0026-01)</summary>
+<summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
+behavior, not just a v3 delegation</strong> (S-0027-02)</summary>
 
 | Field | Value |
 |---|---|
-| **ID** | `S-0026-01` |
-| **Kind** | technique |
-| **Date added** | 2026-05-02 |
-| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **ID** | `S-0027-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
 | **Source paper** | — |
-| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
 
-Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
-instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
-function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
-B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
-symmetric.
+matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A's scope_aware_react (the
+structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes
+(discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the
+adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a
+meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled
+plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial
+critique loop before the action stage. Re-run B vs C on the same paired set to test whether a
+stronger structural difference produces a discordance pattern that can move McNemar.
 
 </details>
+
+<details>
+<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
+calibrator over v3 features</strong> (S-0027-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-01` |
+| **Kind** | technique |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
+matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
+actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
+scaling first, then isotonic regression as a stretch) over the four content features used in
+t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
+telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
+same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
+predictor.
+
+</details>
+
+## Medium Priority
+
+<details>
+<summary>🧪 <strong>Ablate the planner: run plan_and_solve_v3 with an empty/identity
+plan to isolate planner contribution</strong> (S-0027-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-03` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+RQ1 came back as A=B at 4.62% on the 130-paired set, which is consistent with two competing
+hypotheses: (1) the plan-and-solve scaffold adds zero value over scope_aware_react on this
+dataset blend, or (2) the planner prompt is actively harmful and is being rescued by the
+bounded recovery chain. Run a B-prime variant that uses plan_and_solve_v3's
+parse/recovery/action machinery but replaces the planner output with a single identity step
+('execute the requested task'), then compare B-prime vs B vs A on the same 130-paired set. If
+B-prime ≈ B ≈ A, the planner is neutral; if B-prime ≈ A but B > A, the planner is helpful; if
+B-prime > B ≈ A, the planner is actively harmful.
+
+</details>
+
+<details>
+<summary>📊 <strong>Build a discordance-rich paired sample to gain power for RQ1
+and RQ5</strong> (S-0027-05)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-05` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+On the current 130-paired set, RQ1 has only 6 discordant pairs (3 A-only + 3 B-only) and RQ5
+has only 5 (1 B-only + 4 C-only) — McNemar power is at the floor by construction. Aggregate
+the per-instance success bits from t0022 (A vs B), t0023 (sonnet swebench), t0026 (full
+A/B/C), and now t0027 to build a discordance-rich paired set: select 130 instances where the
+two variants disagreed in at least one prior run. Re-run A vs B and B vs C on that set under
+claude-sonnet-4-6 and report whether the McNemar p-values move off symmetric. This decouples
+'no detectable effect' from 'underpowered test' for the next iteration.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Instrument recovery_path unconditionally and audit the ~30
+'unknown' trajectories per variant</strong> (S-0027-04)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-04` |
+| **Kind** | technique |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+Recovery-path telemetry is incomplete: B has 75 clean / 14 reprompt / 11 json_fallback / 1
+all_failed and 29 'unknown', and C has 70 / 18 / 7 / 2 and 33 'unknown'. The 'unknown' bucket
+is an instrumentation gap (the recovery_path field is not unconditionally written), not a
+parser failure (raised_malformed_plan_error is 0/130 for both). Patch plan_and_solve_v3 to
+emit recovery_path on every trajectory and re-run a small replay over the existing trajectory
+artifacts to backfill the field for completed runs. Report the corrected distribution and
+check whether the 29/33 currently-unknown trajectories are dominated by the clean path (most
+likely) or by silent fallbacks.
+
+</details>
+
+## Low Priority
+
+<details>
+<summary>📚 <strong>Promote bounded plan-parse recovery into every other scaffold
+in the library</strong> (S-0027-06)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-06` |
+| **Kind** | library |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/) |
+
+plan_and_solve_v3's 3-attempt recovery chain (clean → reprompt → JSON-mode → degenerate plan)
+eliminated parser failures (12% in t0026 → 0% in t0027) without measurable cost (~$10 for 130
+instances). The same parse-failure path exists in scope_aware_react (multi-tool JSON), in
+scratchpad-style ablations, and in any future scaffold that asks the model for structured
+intermediate output. Refactor the recovery chain into a shared utility under assets/library/
+and adopt it in every scaffold that does structured-output parsing, then verify on a small
+sweep that no new scaffold emits raised_malformed_plan_error.
+
+</details>
+
+## 2026-05-02 (6)
+
+## High Priority
 
 <details>
 <summary>🧪 <strong>Reframe the matched-mismatch wrapper so C is structurally
@@ -137,6 +266,31 @@ dropping the paired sample from N=147 to N=130. Add a 'force-rerun' flag to full
 that re-emits trajectories for those ids and rerun A/B/C on the missing 17. The McNemar tests
 are statistically valid as-is, but the absolute success rates would be unbiased on the full
 N=147.
+
+</details>
+
+## Closed
+
+<details>
+<summary>✅ <s>Make the Plan-and-Solve v2 plan parser fault-tolerant</s> — covered by
+<a
+href="../../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/"><code>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</code></a>
+(S-0026-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0026-01` |
+| **Kind** | technique |
+| **Date added** | 2026-05-02 |
+| **Source task** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) |
+| **Source paper** | — |
+| **Categories** | [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+Variant B lost 12% of paired runs (16 of 130) to MalformedPlanError, and zero of 20 SWE-bench
+instances succeeded. Add a re-prompt-on-parse-failure path and a structured-output /
+function-calling fallback so a noisy plan does not collapse the entire trajectory. Re-run the
+B leg on the same 130-instance paired set and verify whether the A vs B McNemar moves off
+symmetric.
 
 </details>
 

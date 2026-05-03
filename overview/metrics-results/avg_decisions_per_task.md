@@ -1,6 +1,6 @@
 # Average Decisions per Task
 
-**Key**: `avg_decisions_per_task` | **Unit**: count | **Results**: 9
+**Key**: `avg_decisions_per_task` | **Unit**: count | **Results**: 12
 
 [Back to all metrics](README.md)
 
@@ -15,3 +15,6 @@
 | 7 | [Hierarchical annotation v2: tree schema with subtask-to-atomic edges](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md) | — | **16.38** |
 | 8 | [Phase 2 A/B/C smoke harness on FrontierScience subset](../../../overview/tasks/task_pages/t0012_phase2_abc_smoke_frontierscience.md) | Condition C: scope-mismatched (random) | **26.0** |
 | 9 | [Plan-and-Solve v2 with final_confidence Field](../../../overview/tasks/task_pages/t0021_plan_and_solve_v2_with_final_confidence.md) | Condition C: scope-mismatched (random) | **31.0** |
+| 10 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | A — scope-aware ReAct (reused from t0026) | — |
+| 11 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | B — plan_and_solve_v3 with bounded plan-recovery chain | — |
+| 12 | [Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | C — matched_mismatch_v2 over plan_and_solve_v3 (adversarial) | — |

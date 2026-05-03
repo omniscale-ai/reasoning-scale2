@@ -1,7 +1,7 @@
 # Suggestions: `uncertainty-calibration`
 
-16 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **13 open** (5
+17 suggestion(s) in category
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **14 open** (6
 high, 3 medium, 5 low), **3 closed**.
 
 [Back to all suggestions](../README.md)
@@ -102,6 +102,30 @@ judge to grade A vs B is judge-confounded. Adopt a sonnet rotated judge as the d
 Phase 2 grading and use programmatic benchmark-specific graders (FrontierScience scorer,
 SWE-bench harness, tau-bench scorer, WorkArena++ scorer) wherever possible to remove the LLM
 judge from the gradient.
+
+</details>
+
+<details>
+<summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
+calibrator over v3 features</strong> (S-0027-01)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0027-01` |
+| **Kind** | technique |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Source paper** | — |
+| **Categories** | [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and
+matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across
+actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature
+scaling first, then isotonic regression as a stretch) over the four content features used in
+t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3
+telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
+same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
+predictor.
 
 </details>
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-05-02T14:56:06Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-05-03T08:13:00Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>2811</char_count>
-    <byte_count>2811</byte_count>
-    <estimated_tokens>702</estimated_tokens>
+    <char_count>3025</char_count>
+    <byte_count>3025</byte_count>
+    <estimated_tokens>756</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -18,9 +18,9 @@
       <source_name>aggregate_costs_full</source_name>
       <content>
 Total budget: $200.00
-Total spent: $112.69
-Budget remaining: $87.31
-Spent: 56.3%
+Total spent: $133.46
+Budget remaining: $66.54
+Spent: 66.7%
 
 ### Cost Breakdown by Category
 
@@ -31,6 +31,8 @@ Spent: 56.3%
 * judge_total_estimated_usd: $12.53
 * substantive_sonnet_judge: $9.68
 * model_rotated_sonnet_judge: $9.63
+* variant_b_agent_full: $9.45
+* variant_c_agent_full: $9.34
 * runs_variant_b_usd: $9.07
 * annotator_haiku_4_5: $7.42
 * judge_opus_estimated_usd: $6.68
@@ -40,13 +42,17 @@ Spent: 56.3%
 * claude-haiku-4-5_progress_rate_judge: $1.55
 * claude-haiku-4-5-annotator: $1.55
 * claude-haiku-4-5-judge: $1.38
+* variant_c_smoke: $1.29
 * claude-haiku-4-5_error_taxonomy_judge: $0.86
+* variant_b_smoke: $0.39
 * synthesis_subagent: $0.20
+* variant_b_judge: $0.15
+* variant_c_judge: $0.13
 * anthropic_api: $0.06
 
 ### Cost Breakdown by Service
 
-* anthropic_api: $43.62
+* anthropic_api: $64.38
 
 ### Per-Task Costs
 
@@ -75,6 +81,7 @@ Spent: 56.3%
 * t0024_brainstorm_results_7: $0.00
 * t0025_lit_survey_hierarchical_agents_and_judges_2024_2026: $0.20
 * t0026_phase2_abc_runtime_n147_for_rq1_rq5: $38.61
+* t0027_phase2_5_abc_rerun_with_fixed_b_and_c: $20.76
       </content>
     </section>
   </sections>

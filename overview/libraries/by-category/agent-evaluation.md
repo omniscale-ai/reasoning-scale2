@@ -1,6 +1,6 @@
 # Libraries: `agent-evaluation`
 
-5 librar(y/ies).
+7 librar(y/ies).
 
 [Back to all libraries](../README.md)
 
@@ -79,6 +79,39 @@ delegate.
 </details>
 
 <details>
+<summary>📦 <strong>Matched-Mismatch v2 (PlanAndSolveAgentV3 delegate)</strong>
+(<code>matched_mismatch_v2</code>)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `matched_mismatch_v2` |
+| **Version** | 0.2.0 |
+| **Modules** | `tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/matched_mismatch_v2.py` |
+| **Dependencies** | — |
+| **Date created** | 2026-05-02 |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+| **Created by** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Documentation** | [`description.md`](../../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/library/matched_mismatch_v2/description.md) |
+
+**Entry points:**
+
+* `MatchedMismatchV2Agent` (class) — Variant-C agent: runs PlanAndSolveAgentV3 once on the
+  problem, then post-processes the v3 trajectory to overwrite each record's granularity with
+  an adversarially-perturbed label drawn from the v2 hierarchy phase walk.
+* `AgentRunResultV2` (class) — Aggregate result with the PnS-v3 trajectory shape
+  (TrajectoryRecordV2 records) plus the un-perturbed phase walk and the literal delegate id
+  used for logging.
+* `DELEGATE_PLAN_AND_SOLVE_V3` (function) — String constant 'scope_unaware_planandsolve_v3' —
+  the single supported delegate id for the v2 wrapper, used in the t0027 harness for symmetry
+  with t0010 logging.
+
+Forks t0010's matched-mismatch wrapper to delegate to PlanAndSolveAgentV3 instead of
+scope_aware_react, addressing S-0026-02 so variant C is B-with-extra-degradation rather than
+A-with-noise.
+
+</details>
+
+<details>
 <summary>📦 <strong>Phase 2 A/B/C Smoke Harness (v1)</strong>
 (<code>phase2_smoke_harness_v1</code>)</summary>
 
@@ -130,6 +163,39 @@ delegate.
 Experiment harness that runs scope-aware (A), scope-unaware (B), and scope-mismatched (C)
 agents on FrontierScience-Olympiad rows of hierarchical-annotation-v2, paired by task_id, with
 budget enforcement, per-row checkpointing, and pre-registered RQ1/RQ2/RQ5 hypothesis tests.
+
+</details>
+
+<details>
+<summary>📦 <strong>Plan-and-Solve v3 (Fault-Tolerant Plan Parser)</strong>
+(<code>plan_and_solve_v3</code>)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `plan_and_solve_v3` |
+| **Version** | 0.3.0 |
+| **Modules** | `tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/code/planandsolve_v3.py` |
+| **Dependencies** | — |
+| **Date created** | 2026-05-02 |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`granularity-conditioning`](../../../meta/categories/granularity-conditioning/) |
+| **Created by** | [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) |
+| **Documentation** | [`description.md`](../../../tasks/t0027_phase2_5_abc_rerun_with_fixed_b_and_c/assets/library/plan_and_solve_v3/description.md) |
+
+**Entry points:**
+
+* `PlanAndSolveAgentV3` (class) — Plan-and-Solve v3 agent: v2 with a fault-tolerant
+  plan-parsing prefix and the same verbalized-confidence postlude.
+* `AgentResultV3` (class) — Aggregate result with the v2 fields plus plan_parser_recovery_path
+  and plan_parser_attempts diagnostics.
+* `_robust_parse_plan` (function) — Standalone planner helper that drives the three-attempt
+  fallback chain (clean / re-prompt / JSON-fallback).
+* `REPROMPT_PLAN_PROMPT_TEMPLATE` (function) — Template used for the second planner call when
+  the first response fails to parse.
+* `JSON_PLAN_PROMPT_TEMPLATE` (function) — Template used for the third planner call requesting
+  a JSON object with a 'steps' array.
+
+Forks Plan-and-Solve v2 (t0021) by adding a re-prompt and JSON-mode fallback chain when the
+planner emits an unparseable numbered list, addressing S-0026-01.
 
 </details>
 

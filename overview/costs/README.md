@@ -1,6 +1,6 @@
 # Project Costs
 
-Spent $112.69 of $200.00 USD. $87.31 remains overall and $87.31 remains before the 100% stop
+Spent $133.46 of $200.00 USD. $66.54 remains overall and $66.54 remains before the 100% stop
 threshold.
 
 ## Budget Summary
@@ -8,22 +8,22 @@ threshold.
 | Field | Value |
 |-------|-------|
 | Total budget | $200.00 USD |
-| Total spent | $112.69 USD |
-| Budget left | $87.31 USD |
-| Budget left before stop threshold | $87.31 USD |
-| Spent percent | 56.35% |
+| Total spent | $133.46 USD |
+| Budget left | $66.54 USD |
+| Budget left before stop threshold | $66.54 USD |
+| Spent percent | 66.73% |
 | Warn threshold | 80% ($160.00) |
 | Stop threshold | 100% ($200.00) |
 | Default per-task limit | $10.00 USD |
-| Tasks with cost records | 25 |
-| Tasks with non-zero spend | 10 |
+| Tasks with cost records | 26 |
+| Tasks with non-zero spend | 11 |
 | Skipped tasks | 1 |
 
 ## Service Totals
 
 | Key | Cost (USD) |
 |-----|------------|
-| `anthropic_api` | $43.62 |
+| `anthropic_api` | $64.38 |
 
 ## Breakdown Totals
 
@@ -36,6 +36,8 @@ threshold.
 | `judge_total_estimated_usd` | $12.53 |
 | `substantive_sonnet_judge` | $9.68 |
 | `model_rotated_sonnet_judge` | $9.63 |
+| `variant_b_agent_full` | $9.45 |
+| `variant_c_agent_full` | $9.34 |
 | `runs_variant_b_usd` | $9.07 |
 | `annotator_haiku_4_5` | $7.42 |
 | `judge_opus_estimated_usd` | $6.68 |
@@ -45,8 +47,12 @@ threshold.
 | `claude-haiku-4-5_progress_rate_judge` | $1.55 |
 | `claude-haiku-4-5-annotator` | $1.55 |
 | `claude-haiku-4-5-judge` | $1.38 |
+| `variant_c_smoke` | $1.29 |
 | `claude-haiku-4-5_error_taxonomy_judge` | $0.86 |
+| `variant_b_smoke` | $0.39 |
 | `synthesis_subagent` | $0.20 |
+| `variant_b_judge` | $0.15 |
+| `variant_c_judge` | $0.13 |
 | `anthropic_api` | $0.06 |
 
 15 task cost record(s) are zero-cost and omitted from the main spend table.
@@ -65,6 +71,7 @@ threshold.
 | [`t0022_abc_harness_progress_rate_and_error_taxonomy`](../../overview/tasks/task_pages/t0022_abc_harness_progress_rate_and_error_taxonomy.md) | completed | $2.42 | $2.00 | yes |
 | [`t0025_lit_survey_hierarchical_agents_and_judges_2024_2026`](../../overview/tasks/task_pages/t0025_lit_survey_hierarchical_agents_and_judges_2024_2026.md) | completed | $0.20 | $10.00 | no |
 | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md) | completed | $38.61 | $10.00 | yes |
+| [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md) | completed | $20.76 | $50.00 | no |
 
 ## Skipped Tasks
 

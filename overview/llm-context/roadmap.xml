@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-02T14:56:06Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-05-03T08:13:00Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>89085</char_count>
-    <byte_count>89173</byte_count>
-    <estimated_tokens>22271</estimated_tokens>
+    <char_count>95581</char_count>
+    <byte_count>95694</byte_count>
+    <estimated_tokens>23895</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -152,9 +152,10 @@ annotations bootstrap the gold-action set required by all three metrics.
         <id>t0024_brainstorm_results_7</id>
         <id>t0025_lit_survey_hierarchical_agents_and_judges_2024_2026</id>
         <id>t0026_phase2_abc_runtime_n147_for_rq1_rq5</id>
+        <id>t0027_phase2_5_abc_rerun_with_fixed_b_and_c</id>
       </source_ids>
       <content>
-Completed tasks: 25
+Completed tasks: 26
 
 ## Brainstorm session 1: plan first project tasks
 ID: t0001_brainstorm_results_1
@@ -305,6 +306,12 @@ ID: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 Completed: 2026-05-02
 Short description: Run A (scope-aware ReAct) / B (Plan-and-Solve v2) / C (mismatched-scope) on 20 SWE-bench + 87 Tau-bench + 40 FrontierScience instances to answer RQ1-RQ5.
 Result summary: t0026 Phase 2 A/B/C Runtime — Results Summary Summary The strict double inequality `success(A) &gt; success(B) &gt; success(C)` posited by RQ5 is **not supported**. On the paired N=130 set (the same 130 instances run by every variant), variants A and B are statistically tied, and the adversarial-mismatched variant C significantly outperforms B. The sweep ran the full A/B/C × {SWE-bench, Tau-bench, FrontierScience} grid against `claude-sonnet-4-6` with a paired McNemar test on each pair, an Expected Calibration Error on variant B&#x27;s verbalized `final_confidence`, and a sonnet/opus inter-judge agreement check. RQ3 (judge ↔ program-truth agreement) and RQ4 (B&#x27;s calibration) are answered cleanly. RQ1...
+
+## Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C
+ID: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+Completed: 2026-05-03
+Short description: Fix B&#x27;s plan parser (S-0026-01), redesign C to delegate to plan_and_solve (S-0026-02), then re-run A/B/C on the 130 paired instances to get real RQ1 and RQ5 answers.
+Result summary: Results Summary — t0027 Phase 2.5 A/B/C re-run Summary Forked t0021&#x27;s plan-and-solve v2 into a fault-tolerant `plan_and_solve_v3` (bounded 3-attempt plan-parse recovery) and t0010&#x27;s mismatch wrapper into `matched_mismatch_v2` (now delegating to v3), re-ran B and C on t0026&#x27;s 130 paired instances under claude-sonnet-4-6, and recomputed paired McNemar (Bonferroni α=0.025) for RQ1 (A vs B) and RQ5 (B vs C) plus 10-bin ECE calibration. Both McNemar tests are **do_not_reject** under Bonferroni; parser-failure rate is **0.0** for both variants (down from t0026&#x27;s B=12%). Total task spend was **$20.7631** (cap $50). Metrics * **Variant A (reused from t0026)** — task_success_rate = **0.0462** (6/130)...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
@@ -365,6 +372,8 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0025-04</id>
         <id>S-0026-01</id>
         <id>S-0026-02</id>
+        <id>S-0027-01</id>
+        <id>S-0027-02</id>
         <id>S-0002-01</id>
         <id>S-0002-05</id>
         <id>S-0002-08</id>
@@ -399,6 +408,9 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0026-03</id>
         <id>S-0026-04</id>
         <id>S-0026-05</id>
+        <id>S-0027-03</id>
+        <id>S-0027-04</id>
+        <id>S-0027-05</id>
         <id>S-0002-03</id>
         <id>S-0002-10</id>
         <id>S-0003-05</id>
@@ -418,9 +430,10 @@ The evidence is mixed. Under substantive-sonnet the schema-only delta is +24.6 p
         <id>S-0025-05</id>
         <id>S-0025-06</id>
         <id>S-0026-06</id>
+        <id>S-0027-06</id>
       </source_ids>
       <content>
-Open suggestions: 73
+Open suggestions: 79
 
 ## Implement verbalized-confidence + 3-sample self-consistency aggregator for Metric 2
 ID: S-0002-02
@@ -561,6 +574,20 @@ Priority: high
 Kind: experiment
 Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 Variant C beat B (paired McNemar p = 0.019) but only because the &#x27;adversarial&#x27; wrapper delegates to scope_aware_react with a perturbed strategy label, making C structurally A-with-noise rather than B-with-extra-degradation. Redesign the matched-mismatch interface so the adversarial variant operates on top of B&#x27;s plan-and-solve scaffold, not A&#x27;s, then re-run the B vs C pair on the same paired set to test whether the inversion survives.
+
+## Replace verbalized final_confidence with a content-driven calibrator over v3 features
+ID: S-0027-01
+Priority: high
+Kind: technique
+Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+After the parser fix, plan_and_solve_v3 still has 10-bin ECE = 0.336 on the 130-paired set and matched_mismatch_v2 over v3 has 0.374. Verbalized confidence remains roughly uniform across actually-correct and actually-wrong trajectories. Train a post-hoc calibrator (temperature scaling first, then isotonic regression as a stretch) over the four content features used in t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the new v3 telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the same 130-paired set. Compare against raw verbalized confidence and against a constant-rate predictor.
+
+## Give matched_mismatch a structurally distinct adversarial behavior, not just a v3 delegation
+ID: S-0027-02
+Priority: high
+Kind: experiment
+Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+matched_mismatch_v2 now delegates to plan_and_solve_v3 instead of A&#x27;s scope_aware_react (the structural fix this task implemented), but C and B agree on 125 of 130 paired outcomes (discordant 4/5, McNemar p=1.0). C is effectively B-with-a-perturbed-strategy-label — the adversarial signal is too weak to move the success rate. Redesign the wrapper to inject a meaningfully different scaffold over v3: either a self-consistency vote across 3 sampled plans, a chain-of-thought decomposition over the plan steps, or an explicit adversarial critique loop before the action stage. Re-run B vs C on the same paired set to test whether a stronger structural difference produces a discordance pattern that...
 
 ## Register pass^k as a project metric for reliability reporting
 ID: S-0002-01
@@ -800,6 +827,27 @@ Kind: experiment
 Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 All current results are Sonnet-only. The C &gt; B inversion may flip on a stronger model where B&#x27;s plan parser sees fewer malformed plans and where C&#x27;s longer reasoning chains finish more often. Repeat the 130-instance paired sweep with claude-opus-4-7 as the model under test (judges remain sonnet primary + opus inter-judge) and report whether mcnemar_p_a_vs_b and mcnemar_p_b_vs_c keep the same sign.
 
+## Ablate the planner: run plan_and_solve_v3 with an empty/identity plan to isolate planner contribution
+ID: S-0027-03
+Priority: medium
+Kind: experiment
+Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+RQ1 came back as A=B at 4.62% on the 130-paired set, which is consistent with two competing hypotheses: (1) the plan-and-solve scaffold adds zero value over scope_aware_react on this dataset blend, or (2) the planner prompt is actively harmful and is being rescued by the bounded recovery chain. Run a B-prime variant that uses plan_and_solve_v3&#x27;s parse/recovery/action machinery but replaces the planner output with a single identity step (&#x27;execute the requested task&#x27;), then compare B-prime vs B vs A on the same 130-paired set. If B-prime ≈ B ≈ A, the planner is neutral; if B-prime ≈ A but B &gt; A, the planner is helpful; if B-prime &gt; B ≈ A, the planner is actively harmful.
+
+## Instrument recovery_path unconditionally and audit the ~30 &#x27;unknown&#x27; trajectories per variant
+ID: S-0027-04
+Priority: medium
+Kind: technique
+Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+Recovery-path telemetry is incomplete: B has 75 clean / 14 reprompt / 11 json_fallback / 1 all_failed and 29 &#x27;unknown&#x27;, and C has 70 / 18 / 7 / 2 and 33 &#x27;unknown&#x27;. The &#x27;unknown&#x27; bucket is an instrumentation gap (the recovery_path field is not unconditionally written), not a parser failure (raised_malformed_plan_error is 0/130 for both). Patch plan_and_solve_v3 to emit recovery_path on every trajectory and re-run a small replay over the existing trajectory artifacts to backfill the field for completed runs. Report the corrected distribution and check whether the 29/33 currently-unknown trajectories are dominated by the clean path (most likely) or by silent fallbacks.
+
+## Build a discordance-rich paired sample to gain power for RQ1 and RQ5
+ID: S-0027-05
+Priority: medium
+Kind: evaluation
+Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+On the current 130-paired set, RQ1 has only 6 discordant pairs (3 A-only + 3 B-only) and RQ5 has only 5 (1 B-only + 4 C-only) — McNemar power is at the floor by construction. Aggregate the per-instance success bits from t0022 (A vs B), t0023 (sonnet swebench), t0026 (full A/B/C), and now t0027 to build a discordance-rich paired set: select 130 instances where the two variants disagreed in at least one prior run. Re-run A vs B and B vs C on that set under claude-sonnet-4-6 and report whether the McNemar p-values move off symmetric. This decouples &#x27;no detectable effect&#x27; from &#x27;underpowered test&#x27; for the next iteration.
+
 ## Set up ServiceNow + BrowserGym harness shared by WorkArena and WorkArena++
 ID: S-0002-03
 Priority: low
@@ -932,6 +980,13 @@ Priority: low
 Kind: technique
 Source task: t0026_phase2_abc_runtime_n147_for_rq1_rq5
 The resumable-checkpoint path filtered 17 instances per variant from a corrupted earlier run, dropping the paired sample from N=147 to N=130. Add a &#x27;force-rerun&#x27; flag to full_runner.py that re-emits trajectories for those ids and rerun A/B/C on the missing 17. The McNemar tests are statistically valid as-is, but the absolute success rates would be unbiased on the full N=147.
+
+## Promote bounded plan-parse recovery into every other scaffold in the library
+ID: S-0027-06
+Priority: low
+Kind: library
+Source task: t0027_phase2_5_abc_rerun_with_fixed_b_and_c
+plan_and_solve_v3&#x27;s 3-attempt recovery chain (clean → reprompt → JSON-mode → degenerate plan) eliminated parser failures (12% in t0026 → 0% in t0027) without measurable cost (~$10 for 130 instances). The same parse-failure path exists in scope_aware_react (multi-tool JSON), in scratchpad-style ablations, and in any future scaffold that asks the model for structured intermediate output. Refactor the recovery chain into a shared utility under assets/library/ and adopt it in every scaffold that does structured-output parsing, then verify on a small sweep that no new scaffold emits raised_malformed_plan_error.
       </content>
     </section>
   </sections>
