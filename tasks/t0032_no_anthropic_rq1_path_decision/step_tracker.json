@@ -41,8 +41,8 @@
       "step": 5,
       "name": "research-internet",
       "description": "Minimal scan of non-Anthropic API providers' published per-token pricing to support option (c) numbers; no other internet research needed.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T13:22:34Z",
       "completed_at": null,
       "log_file": "logs/steps/005_research-internet/"
     },
