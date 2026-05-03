@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0028-02",
+  "correcting_task": "t0028_brainstorm_results_8",
+  "target_task": "t0025_lit_survey_hierarchical_agents_and_judges_2024_2026",
+  "target_kind": "suggestion",
+  "target_id": "S-0025-01",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "file_changes": null,
+  "rationale": "Obsolete. S-0025-01 proposed a pre-Phase-2 sampling target that t0027 already addressed diagnostically: the McNemar p=1.0 result is now traced to insufficient discordant pairs (12 total), not to the original sampling concerns. The new t0029 task supersedes this suggestion with a discordance-rich resample and an explicit ≥30 discordant-pair target."
+}

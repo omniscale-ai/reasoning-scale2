@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0028-03",
+  "correcting_task": "t0028_brainstorm_results_8",
+  "target_task": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "target_kind": "suggestion",
+  "target_id": "S-0027-01",
+  "action": "update",
+  "changes": {
+    "priority": "medium"
+  },
+  "file_changes": null,
+  "rationale": "Demoted HIGH → MEDIUM. The post-hoc calibrator + A confidence-emission patch remains load-bearing for closing RQ2, but is deferred outside this brainstorm wave. The minimum viable wave (t0029 + t0030) prioritises closing RQ1 and RQ4 within the $35 cap; RQ2 closure can revisit this suggestion in the next session once the discordance-rich resample reports."
+}

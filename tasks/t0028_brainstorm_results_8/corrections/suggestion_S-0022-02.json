@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0028-07",
+  "correcting_task": "t0028_brainstorm_results_8",
+  "target_task": "t0022_abc_harness_progress_rate_and_error_taxonomy",
+  "target_kind": "suggestion",
+  "target_id": "S-0022-02",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "file_changes": null,
+  "rationale": "Demoted HIGH → LOW. The progress-rate metric variant was proposed before direct runtime data was available. t0027's small-N runtime now exposes that the binding constraint on RQ1 / RQ5 verdicts is statistical power (12 discordant pairs), not metric design. Refining alternative success metrics will not change the McNemar verdict; the resample (t0029) will."
+}

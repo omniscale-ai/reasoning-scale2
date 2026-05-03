@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0028-08",
+  "correcting_task": "t0028_brainstorm_results_8",
+  "target_task": "t0022_abc_harness_progress_rate_and_error_taxonomy",
+  "target_kind": "suggestion",
+  "target_id": "S-0022-05",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "file_changes": null,
+  "rationale": "Demoted HIGH → LOW. The error-taxonomy refinement was useful for understanding failure modes pre-Phase-2, but the taxonomy is already established in t0022 and t0027 produced first-order recovery distributions (B=75/14/11/1/29 clean/reprompt/json_fallback/all_failed/unknown; C=70/18/7/2/33). Further taxonomy refinement is not on the critical path to closing any RQ within the remaining budget."
+}
