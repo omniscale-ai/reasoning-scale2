@@ -113,9 +113,9 @@
       "step": 13,
       "name": "results",
       "description": "Write results_summary.md (with required headline label) and results_detailed.md, plus metrics/costs/remote_machines JSON.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T11:44:17Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T11:46:38Z",
       "log_file": "logs/steps/013_results/"
     },
     {
