@@ -1,0 +1,34 @@
+{
+  "total_cost_usd": 20.7631,
+  "breakdown": {
+    "variant_b_agent_full": {
+      "description": "Variant B (plan_and_solve_v3) agent calls on 130 paired instances via claude-sonnet-4-6",
+      "cost_usd": 9.4534
+    },
+    "variant_b_judge": {
+      "description": "Sonnet judge for variant B (130 instances)",
+      "cost_usd": 0.1534
+    },
+    "variant_b_smoke": {
+      "description": "Variant B smoke gate (5 FrontSci instances)",
+      "cost_usd": 0.3936
+    },
+    "variant_c_agent_full": {
+      "description": "Variant C (matched_mismatch_v2 over plan_and_solve_v3) agent calls on 130 paired instances via claude-sonnet-4-6",
+      "cost_usd": 9.3392
+    },
+    "variant_c_judge": {
+      "description": "Sonnet judge for variant C (130 instances)",
+      "cost_usd": 0.1300
+    },
+    "variant_c_smoke": {
+      "description": "Variant C smoke gate (5 FrontSci instances)",
+      "cost_usd": 1.2935
+    }
+  },
+  "services": {
+    "anthropic_api": 20.7631
+  },
+  "budget_limit": 50.0,
+  "note": "Variant A is reused by reference from t0026 and incurs $0 in this task. The original t0027 task description specified claude-opus-4-7 for B and C; the actual model used is claude-sonnet-4-6 to match t0026 variant A (no cross-model confound) and to stay under the $50 cap."
+}
