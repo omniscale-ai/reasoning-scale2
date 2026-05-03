@@ -104,9 +104,9 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md and results_detailed.md recording the two status flips and the rationale.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-05-03T14:24:33Z",
-      "completed_at": null,
+      "completed_at": "2026-05-03T14:26:46Z",
       "log_file": "logs/steps/012_results/"
     },
     {
