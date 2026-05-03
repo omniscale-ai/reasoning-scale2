@@ -5,8 +5,8 @@ Running the A/B/C conditions against annotated tasks and computing the three pro
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (14)](../papers/by-category/agent-evaluation.md) | [Answers
-(1)](../answers/by-category/agent-evaluation.md) | [Suggestions
-(56)](../suggestions/by-category/agent-evaluation.md) | [Datasets
+(2)](../answers/by-category/agent-evaluation.md) | [Suggestions
+(59)](../suggestions/by-category/agent-evaluation.md) | [Datasets
 (4)](../datasets/by-category/agent-evaluation.md) | [Libraries
 (7)](../libraries/by-category/agent-evaluation.md) | [Predictions
 (10)](../predictions/by-category/agent-evaluation.md)
@@ -688,7 +688,26 @@ hierarchical-judge designs are exploring.
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
 | 0017 | [Literature: Hierarchical Agents and LLM-as-Judge](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) | completed | 2026-05-01 01:40 |
 
-## Answers (1)
+## Answers (2)
+
+<details>
+<summary><strong>Which RQ1 execution path do we follow under the permanent
+no-Anthropic constraint: (a) existing-results-only verdict, (b) local /
+open-weight rerun, (c) alternative paid provider, or (d) project-level
+underpowered / provider-blocked stop?</strong></summary>
+
+**Confidence**: high | **Date**: 2026-05-03 | **Full answer**:
+[`no-anthropic-rq1-path-a`](../../tasks/t0032_no_anthropic_rq1_path_decision/assets/answer/no-anthropic-rq1-path-a/)
+
+Option (a), the existing-results-only verdict, is the right path. The t0031 re-derivation
+already yields the formal RQ1 conclusion at $0 with arm-labelling comparability with t0027 /
+t0028 preserved by construction: 12 / 130 = 9.23% discordance, 6 arm-A wins and 6 arm-B wins,
+two-sided exact-binomial McNemar p = 1.0000, with a SWE-bench arm-B advantage and a
+FrontierScience arm-A advantage that cancel in aggregate. Options (b) and (c) replace the
+policy under each arm label and turn any rerun into a verdict on a new experiment, while
+option (d) forecloses the verdict that (a) can deliver immediately.
+
+</details>
 
 <details>
 <summary><strong>Does the v2 schema retain a 30+ pp accept-rate delta over v1 under
@@ -706,7 +725,7 @@ canonical.
 
 </details>
 
-## Suggestions (46 open, 10 closed)
+## Suggestions (49 open, 10 closed)
 
 <details>
 <summary>🧪 <strong>Give matched_mismatch a structurally distinct adversarial
@@ -793,6 +812,56 @@ scratchpad-style ablations, and in any future scaffold that asks the model for s
 intermediate output. Refactor the recovery chain into a shared utility under assets/library/
 and adopt it in every scaffold that does structured-output parsing, then verify on a small
 sweep that no new scaffold emits raised_malformed_plan_error.
+
+</details>
+
+<details>
+<summary>📊 <strong>Close t0029 / t0030 via correction as no-longer-actionable under
+no-Anthropic constraint</strong> (S-0032-01)</summary>
+
+**Kind**: evaluation | **Priority**: high | **Date**: 2026-05-03 | **Source**:
+[t0032_no_anthropic_rq1_path_decision](../../tasks/t0032_no_anthropic_rq1_path_decision/)
+
+Now that t0032 locks in option (a) — existing-results-only verdict — as the recommended RQ1
+execution path, t0029 (rerun B+C at the 218-pair cap) and t0030 (B-only matched-mismatch
+follow-up) are no longer actionable. Both rely on Sonnet via the Anthropic API, which the
+project memory marks as permanently unavailable. Emit a downstream correction task that flips
+both task statuses to 'cancelled' with a rationale referencing t0032's verdict and the
+no-Anthropic constraint, so aggregators stop surfacing them as outstanding work.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Spend released RQ1 budget on cost-tracker fix, bootstrap CIs, and
+RQ4 stratification follow-ups</strong> (S-0032-02)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
+[t0032_no_anthropic_rq1_path_decision](../../tasks/t0032_no_anthropic_rq1_path_decision/)
+
+With option (a) locked in, the ~$26.54 reserved for the t0029 218-pair rerun is released.
+Reinvest it in three cost-free or near-zero analyses directly motivated by t0032's
+creative-thinking pass: (1) implement S-0031-03 to fix per-instance cost tracking so future
+paired runs report Sonnet cost reliably; (2) compute 95% bootstrap confidence intervals around
+the per-stratum McNemar cells from t0031 (SWE-bench 6/0, FrontierScience 0/5, tau-bench 1 of
+84) to harden the conclusion that arms differ qualitatively by benchmark; (3) re-stratify the
+existing 130-pair t0031 sample by trace length / tool-call count for the RQ4
+efficiency-vs-accuracy story without any new paid API call.
+
+</details>
+
+<details>
+<summary>📊 <strong>Qualitative trajectory typology of the 12 t0031 discordant
+pairs</strong> (S-0032-03)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-03 | **Source**:
+[t0032_no_anthropic_rq1_path_decision](../../tasks/t0032_no_anthropic_rq1_path_decision/)
+
+Build a small qualitative typology of the 12 discordant paired instances from t0031 (6 a_only
++ 6 b_only) to characterise how plan-and-solve_v3 (arm A) and matched_mismatch_v2 (arm B)
+diverge on the same instance. Tag each discordant pair by failure mode (planning error, tool
+misuse, retrieval gap, formatting, etc.) and benchmark stratum. The output is one short
+markdown asset; the task is zero-cost (reads existing trajectories from t0026/t0027) and feeds
+back into RQ1 reporting and future agent-design suggestions.
 
 </details>
 

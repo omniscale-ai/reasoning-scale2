@@ -1,8 +1,8 @@
 # Suggestions: `hierarchical-planning`
 
-28 suggestion(s) in category
-[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **20 open** (3
-high, 11 medium, 6 low), **8 closed**.
+29 suggestion(s) in category
+[`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) **21 open** (3
+high, 11 medium, 7 low), **8 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -392,6 +392,28 @@ corresponds exactly to the project's mid-granularity (subtask) annotation layer.
 A/B/C prompting shows weak runtime gains, the next experiment should be a small-scale
 group-level DPO fine-tune on the v2-tree annotated subset, comparing to a flat-DPO baseline.
 Defer until after Phase 2 is complete and budget is reassessed.
+
+</details>
+
+<details>
+<summary>📊 <strong>Qualitative trajectory typology of the 12 t0031 discordant
+pairs</strong> (S-0032-03)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0032-03` |
+| **Kind** | evaluation |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`hierarchical-planning`](../../../meta/categories/hierarchical-planning/) |
+
+Build a small qualitative typology of the 12 discordant paired instances from t0031 (6 a_only
++ 6 b_only) to characterise how plan-and-solve_v3 (arm A) and matched_mismatch_v2 (arm B)
+diverge on the same instance. Tag each discordant pair by failure mode (planning error, tool
+misuse, retrieval gap, formatting, etc.) and benchmark stratum. The output is one short
+markdown asset; the task is zero-cost (reads existing trajectories from t0026/t0027) and feeds
+back into RQ1 reporting and future agent-design suggestions.
 
 </details>
 

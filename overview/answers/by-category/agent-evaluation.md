@@ -1,6 +1,6 @@
-# Answers: `agent-evaluation` (1)
+# Answers: `agent-evaluation` (2)
 
-1 answer(s).
+2 answer(s).
 
 [Back to all answers](../README.md)
 
@@ -32,5 +32,37 @@ canonical.
 | **Task sources** | [`t0005_hierarchical_annotation_pilot_v1`](../../../overview/tasks/task_pages/t0005_hierarchical_annotation_pilot_v1.md), [`t0009_hierarchical_annotation_v2`](../../../overview/tasks/task_pages/t0009_hierarchical_annotation_v2.md), [`t0014_v2_annotator_sonnet_rerun`](../../../overview/tasks/task_pages/t0014_v2_annotator_sonnet_rerun.md), [`t0015_correct_proxy_benchmark_labels`](../../../overview/tasks/task_pages/t0015_correct_proxy_benchmark_labels.md) |
 | **URL sources** | — |
 | **Created by** | [`t0019_v2_judge_calibration_sonnet`](../../../overview/tasks/task_pages/t0019_v2_judge_calibration_sonnet.md) |
+
+</details>
+
+<details>
+<summary><strong>Which RQ1 execution path do we follow under the permanent
+no-Anthropic constraint: (a) existing-results-only verdict, (b) local /
+open-weight rerun, (c) alternative paid provider, or (d) project-level
+underpowered / provider-blocked stop?</strong></summary>
+
+**Confidence**: high
+
+Option (a), the existing-results-only verdict, is the right path. The t0031 re-derivation
+already yields the formal RQ1 conclusion at $0 with arm-labelling comparability with t0027 /
+t0028 preserved by construction: 12 / 130 = 9.23% discordance, 6 arm-A wins and 6 arm-B wins,
+two-sided exact-binomial McNemar p = 1.0000, with a SWE-bench arm-B advantage and a
+FrontierScience arm-A advantage that cancel in aggregate. Options (b) and (c) replace the
+policy under each arm label and turn any rerun into a verdict on a new experiment, while
+option (d) forecloses the verdict that (a) can deliver immediately.
+
+| Field | Value |
+|---|---|
+| **Full answer** | [`full_answer.md`](../../../tasks/t0032_no_anthropic_rq1_path_decision/assets/answer/no-anthropic-rq1-path-a/full_answer.md) |
+| **ID** | [`no-anthropic-rq1-path-a`](../../../tasks/t0032_no_anthropic_rq1_path_decision/assets/answer/no-anthropic-rq1-path-a/) |
+| **Question** | Which RQ1 execution path do we follow under the permanent no-Anthropic constraint: (a) existing-results-only verdict, (b) local / open-weight rerun, (c) alternative paid provider, or (d) project-level underpowered / provider-blocked stop? |
+| **Methods** | `code-experiment`, `internet` |
+| **Confidence** | high |
+| **Date created** | 2026-05-03 |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+| **Paper sources** | — |
+| **Task sources** | [`t0026_phase2_abc_runtime_n147_for_rq1_rq5`](../../../overview/tasks/task_pages/t0026_phase2_abc_runtime_n147_for_rq1_rq5.md), [`t0027_phase2_5_abc_rerun_with_fixed_b_and_c`](../../../overview/tasks/task_pages/t0027_phase2_5_abc_rerun_with_fixed_b_and_c.md), [`t0028_brainstorm_results_8`](../../../overview/tasks/task_pages/t0028_brainstorm_results_8.md), [`t0029_rq1_discordance_rich_resample`](../../../overview/tasks/task_pages/t0029_rq1_discordance_rich_resample.md), [`t0031_rq1_rq4_no_new_api_salvage`](../../../overview/tasks/task_pages/t0031_rq1_rq4_no_new_api_salvage.md) |
+| **URL sources** | [url 1](https://openai.com/api/pricing/), [url 2](https://ai.google.dev/gemini-api/docs/pricing), [url 3](https://www.anthropic.com/pricing) |
+| **Created by** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
 
 </details>

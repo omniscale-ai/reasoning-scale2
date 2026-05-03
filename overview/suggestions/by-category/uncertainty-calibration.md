@@ -1,8 +1,8 @@
 # Suggestions: `uncertainty-calibration`
 
-17 suggestion(s) in category
-[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **13 open** (3
-high, 4 medium, 6 low), **4 closed**.
+18 suggestion(s) in category
+[`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) **14 open** (3
+high, 5 medium, 6 low), **4 closed**.
 
 [Back to all suggestions](../README.md)
 
@@ -152,6 +152,30 @@ t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the n
 telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
 same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
 predictor.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Spend released RQ1 budget on cost-tracker fix, bootstrap CIs, and
+RQ4 stratification follow-ups</strong> (S-0032-02)</summary>
+
+| Field | Value |
+|---|---|
+| **ID** | `S-0032-02` |
+| **Kind** | experiment |
+| **Date added** | 2026-05-03 |
+| **Source task** | [`t0032_no_anthropic_rq1_path_decision`](../../../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) |
+| **Source paper** | — |
+| **Categories** | [`agent-evaluation`](../../../meta/categories/agent-evaluation/), [`uncertainty-calibration`](../../../meta/categories/uncertainty-calibration/) |
+
+With option (a) locked in, the ~$26.54 reserved for the t0029 218-pair rerun is released.
+Reinvest it in three cost-free or near-zero analyses directly motivated by t0032's
+creative-thinking pass: (1) implement S-0031-03 to fix per-instance cost tracking so future
+paired runs report Sonnet cost reliably; (2) compute 95% bootstrap confidence intervals around
+the per-stratum McNemar cells from t0031 (SWE-bench 6/0, FrontierScience 0/5, tau-bench 1 of
+84) to harden the conclusion that arms differ qualitatively by benchmark; (3) re-stratify the
+existing 130-pair t0031 sample by trace length / tool-call count for the RQ4
+efficiency-vs-accuracy story without any new paid API call.
 
 </details>
 

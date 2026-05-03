@@ -6,7 +6,7 @@ Decomposition of tasks into global plan, subtask, and atomic execution levels.
 
 **Detail pages**: [Papers (14)](../papers/by-category/hierarchical-planning.md) | [Answers
 (2)](../answers/by-category/hierarchical-planning.md) | [Suggestions
-(28)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
+(29)](../suggestions/by-category/hierarchical-planning.md) | [Datasets
 (4)](../datasets/by-category/hierarchical-planning.md) | [Libraries
 (4)](../libraries/by-category/hierarchical-planning.md) | [Predictions
 (2)](../predictions/by-category/hierarchical-planning.md)
@@ -751,7 +751,7 @@ matched pool.
 
 </details>
 
-## Suggestions (20 open, 8 closed)
+## Suggestions (21 open, 8 closed)
 
 <details>
 <summary>🧪 <strong>Ablate the planner: run plan_and_solve_v3 with an empty/identity
@@ -768,6 +768,22 @@ parse/recovery/action machinery but replaces the planner output with a single id
 ('execute the requested task'), then compare B-prime vs B vs A on the same 130-paired set. If
 B-prime ≈ B ≈ A, the planner is neutral; if B-prime ≈ A but B > A, the planner is helpful; if
 B-prime > B ≈ A, the planner is actively harmful.
+
+</details>
+
+<details>
+<summary>📊 <strong>Qualitative trajectory typology of the 12 t0031 discordant
+pairs</strong> (S-0032-03)</summary>
+
+**Kind**: evaluation | **Priority**: low | **Date**: 2026-05-03 | **Source**:
+[t0032_no_anthropic_rq1_path_decision](../../tasks/t0032_no_anthropic_rq1_path_decision/)
+
+Build a small qualitative typology of the 12 discordant paired instances from t0031 (6 a_only
++ 6 b_only) to characterise how plan-and-solve_v3 (arm A) and matched_mismatch_v2 (arm B)
+diverge on the same instance. Tag each discordant pair by failure mode (planning error, tool
+misuse, retrieval gap, formatting, etc.) and benchmark stratum. The output is one short
+markdown asset; the task is zero-cost (reads existing trajectories from t0026/t0027) and feeds
+back into RQ1 reporting and future agent-design suggestions.
 
 </details>
 

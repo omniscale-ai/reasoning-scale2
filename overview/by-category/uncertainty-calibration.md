@@ -6,8 +6,8 @@ probabilities.
 [Back to Dashboard](../README.md)
 
 **Detail pages**: [Papers (2)](../papers/by-category/uncertainty-calibration.md) | [Answers
-(1)](../answers/by-category/uncertainty-calibration.md) | [Suggestions
-(17)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
+(2)](../answers/by-category/uncertainty-calibration.md) | [Suggestions
+(18)](../suggestions/by-category/uncertainty-calibration.md) | [Libraries
 (3)](../libraries/by-category/uncertainty-calibration.md) | [Predictions
 (1)](../predictions/by-category/uncertainty-calibration.md)
 
@@ -115,7 +115,26 @@ condition's confidence elicitation.
 | 0002 | [Literature survey: granularity conditioning and hierarchical agents](../../overview/tasks/task_pages/t0002_literature_survey_granularity_conditioning.md) | completed | 2026-04-29 14:26 |
 | 0017 | [Literature: Hierarchical Agents and LLM-as-Judge](../../overview/tasks/task_pages/t0017_literature_hierarchical_agents_and_judges.md) | completed | 2026-05-01 01:40 |
 
-## Answers (1)
+## Answers (2)
+
+<details>
+<summary><strong>Which RQ1 execution path do we follow under the permanent
+no-Anthropic constraint: (a) existing-results-only verdict, (b) local /
+open-weight rerun, (c) alternative paid provider, or (d) project-level
+underpowered / provider-blocked stop?</strong></summary>
+
+**Confidence**: high | **Date**: 2026-05-03 | **Full answer**:
+[`no-anthropic-rq1-path-a`](../../tasks/t0032_no_anthropic_rq1_path_decision/assets/answer/no-anthropic-rq1-path-a/)
+
+Option (a), the existing-results-only verdict, is the right path. The t0031 re-derivation
+already yields the formal RQ1 conclusion at $0 with arm-labelling comparability with t0027 /
+t0028 preserved by construction: 12 / 130 = 9.23% discordance, 6 arm-A wins and 6 arm-B wins,
+two-sided exact-binomial McNemar p = 1.0000, with a SWE-bench arm-B advantage and a
+FrontierScience arm-A advantage that cancel in aggregate. Options (b) and (c) replace the
+policy under each arm label and turn any rerun into a verdict on a new experiment, while
+option (d) forecloses the verdict that (a) can deliver immediately.
+
+</details>
 
 <details>
 <summary><strong>Does the v2 schema retain a 30+ pp accept-rate delta over v1 under
@@ -133,7 +152,7 @@ canonical.
 
 </details>
 
-## Suggestions (13 open, 4 closed)
+## Suggestions (14 open, 4 closed)
 
 <details>
 <summary>🔧 <strong>Replace verbalized final_confidence with a content-driven
@@ -150,6 +169,24 @@ t0022 (subset, plan_length, n_actions, judge_program_agreement_proxy) plus the n
 telemetry fields (parse_attempts, recovery_path) and report ECE on a held-out slice of the
 same 130-paired set. Compare against raw verbalized confidence and against a constant-rate
 predictor.
+
+</details>
+
+<details>
+<summary>🧪 <strong>Spend released RQ1 budget on cost-tracker fix, bootstrap CIs, and
+RQ4 stratification follow-ups</strong> (S-0032-02)</summary>
+
+**Kind**: experiment | **Priority**: medium | **Date**: 2026-05-03 | **Source**:
+[t0032_no_anthropic_rq1_path_decision](../../tasks/t0032_no_anthropic_rq1_path_decision/)
+
+With option (a) locked in, the ~$26.54 reserved for the t0029 218-pair rerun is released.
+Reinvest it in three cost-free or near-zero analyses directly motivated by t0032's
+creative-thinking pass: (1) implement S-0031-03 to fix per-instance cost tracking so future
+paired runs report Sonnet cost reliably; (2) compute 95% bootstrap confidence intervals around
+the per-stratum McNemar cells from t0031 (SWE-bench 6/0, FrontierScience 0/5, tau-bench 1 of
+84) to harden the conclusion that arms differ qualitatively by benchmark; (3) re-stratify the
+existing 130-pair t0031 sample by trace length / tool-call count for the RQ4
+efficiency-vs-accuracy story without any new paid API call.
 
 </details>
 

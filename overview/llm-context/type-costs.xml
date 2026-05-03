@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-05-03T13:17:17Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-05-03T14:08:41Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>3151</char_count>
-    <byte_count>3151</byte_count>
-    <estimated_tokens>787</estimated_tokens>
+    <char_count>3197</char_count>
+    <byte_count>3197</byte_count>
+    <estimated_tokens>799</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -84,6 +84,7 @@ Spent: 66.7%
 * t0027_phase2_5_abc_rerun_with_fixed_b_and_c: $20.76
 * t0028_brainstorm_results_8: $0.00
 * t0031_rq1_rq4_no_new_api_salvage: $0.00
+* t0032_no_anthropic_rq1_path_decision: $0.00
 * t0033_realign_t0031_t0029_no_anthropic: $0.00
       </content>
     </section>
