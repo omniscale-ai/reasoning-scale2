@@ -103,6 +103,27 @@ for these reasons:
 * `verify_task_file t0030_rq4_info_asymmetry_stratification` — passed.
 * `verify_logs t0028_brainstorm_results_8` — passed.
 
+## Files Created
+
+* `tasks/t0028_brainstorm_results_8/task.json`
+* `tasks/t0028_brainstorm_results_8/task_description.md`
+* `tasks/t0028_brainstorm_results_8/step_tracker.json`
+* `tasks/t0028_brainstorm_results_8/plan/plan.md`
+* `tasks/t0028_brainstorm_results_8/research/{research_papers,research_internet,research_code}.md`
+* `tasks/t0028_brainstorm_results_8/results/{results_summary,results_detailed}.md`
+* `tasks/t0028_brainstorm_results_8/results/{metrics,suggestions,costs,remote_machines_used}.json`
+* `tasks/t0028_brainstorm_results_8/logs/steps/00{1,2,3,4}_*/step_log.md`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0020-01.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0021-02.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0022-02.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0022-05.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0025-01.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0026-02.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0027-01.json`
+* `tasks/t0028_brainstorm_results_8/corrections/suggestion_S-0027-02.json`
+* `tasks/t0029_rq1_discordance_rich_resample/{task.json,task_description.md}`
+* `tasks/t0030_rq4_info_asymmetry_stratification/{task.json,task_description.md}`
+
 ## Limitations
 
 * No RQ answered in this session by design.
