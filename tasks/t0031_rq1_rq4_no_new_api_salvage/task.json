@@ -5,13 +5,13 @@
   "name": "RQ1/RQ4 no-new-API preliminary salvage on existing t0026/t0027 outputs",
   "short_description": "Run no-new-API preliminary RQ1/RQ4 analyses on existing t0026/t0027 outputs to extract salvage evidence while t0029 is intervention_blocked.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
     "t0027_phase2_5_abc_rerun_with_fixed_b_and_c"
   ],
   "start_time": "2026-05-03T11:14:49Z",
-  "end_time": null,
+  "end_time": "2026-05-03T11:47:30Z",
   "expected_assets": {},
   "task_types": [
     "data-analysis"

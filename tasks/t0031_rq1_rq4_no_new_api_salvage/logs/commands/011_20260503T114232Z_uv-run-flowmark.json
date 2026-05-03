@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0031_rq1_rq4_no_new_api_salvage",
+  "command": "uv run flowmark --inplace --nobackup tasks/t0031_rq1_rq4_no_new_api_salvage/results/results_summary.md tasks/t0031_rq1_rq4_no_new_api_salvage/results/results_detailed.md",
+  "exit_code": 0,
+  "duration_seconds": 0.105,
+  "started_at": "2026-05-03T11:42:32Z",
+  "completed_at": "2026-05-03T11:42:32Z",
+  "working_directory": "/Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage",
+  "stdout_file": "011_20260503T114232Z_uv-run-flowmark.stdout.txt",
+  "stderr_file": "011_20260503T114232Z_uv-run-flowmark.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 0,
+  "truncated": false
+}

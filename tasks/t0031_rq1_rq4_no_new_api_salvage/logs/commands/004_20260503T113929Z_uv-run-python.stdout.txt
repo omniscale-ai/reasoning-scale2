@@ -1,0 +1,9 @@
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/data/rq1_power_grid.json
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/images/rq1_power_curve.png
+Cap admits 218 new pairs; total 348 paired; expected disc ≈ 32
+  p1=0.55: power=0.082, smallest_n_for_80=None
+  p1=0.6: power=0.205, smallest_n_for_80=158
+  p1=0.65: power=0.405, smallest_n_for_80=69
+  p1=0.7: power=0.644, smallest_n_for_80=37
+  p1=0.75: power=0.846, smallest_n_for_80=23
+  p1=0.8: power=0.959, smallest_n_for_80=18

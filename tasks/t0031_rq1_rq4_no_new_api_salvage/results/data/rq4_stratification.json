@@ -1,0 +1,123 @@
+{
+  "spec_version": "1",
+  "task_id": "t0031_rq1_rq4_no_new_api_salvage",
+  "n_total": 130,
+  "n_per_subset": {
+    "frontsci": 26,
+    "swebench": 20,
+    "taubench": 84
+  },
+  "discordance_rate_overall": 0.09230769230769231,
+  "discordant_b_wins_overall": 6,
+  "discordant_a_wins_overall": 6,
+  "strata": [
+    {
+      "label": "swebench",
+      "n": 20,
+      "cells": {
+        "both_pass": 0,
+        "a_only": 0,
+        "b_only": 6,
+        "both_fail": 14
+      },
+      "discordant_n": 6,
+      "mcnemar_p_two_sided": 0.03125,
+      "arm_a_pass_ci": {
+        "point": 0.0,
+        "lower": 0.0,
+        "upper": 0.16112515805281938,
+        "n": 20,
+        "successes": 0
+      },
+      "arm_b_pass_ci": {
+        "point": 0.3,
+        "lower": 0.1454772448676043,
+        "upper": 0.5189728183535235,
+        "n": 20,
+        "successes": 6
+      },
+      "note": ""
+    },
+    {
+      "label": "frontsci",
+      "n": 26,
+      "cells": {
+        "both_pass": 0,
+        "a_only": 5,
+        "b_only": 0,
+        "both_fail": 21
+      },
+      "discordant_n": 5,
+      "mcnemar_p_two_sided": 0.0625,
+      "arm_a_pass_ci": {
+        "point": 0.19230769230769232,
+        "lower": 0.0850706114894241,
+        "upper": 0.3787625711931699,
+        "n": 26,
+        "successes": 5
+      },
+      "arm_b_pass_ci": {
+        "point": 0.0,
+        "lower": 0.0,
+        "upper": 0.1287289218592153,
+        "n": 26,
+        "successes": 0
+      },
+      "note": ""
+    },
+    {
+      "label": "taubench",
+      "n": 84,
+      "cells": {
+        "both_pass": 0,
+        "a_only": 1,
+        "b_only": 0,
+        "both_fail": 83
+      },
+      "discordant_n": 1,
+      "mcnemar_p_two_sided": 1.0,
+      "arm_a_pass_ci": {
+        "point": 0.011904761904761904,
+        "lower": 0.002104583087549225,
+        "upper": 0.064395437507714,
+        "n": 84,
+        "successes": 1
+      },
+      "arm_b_pass_ci": {
+        "point": 0.0,
+        "lower": 0.0,
+        "upper": 0.04373172841465989,
+        "n": 84,
+        "successes": 0
+      },
+      "note": ""
+    },
+    {
+      "label": "ALL",
+      "n": 130,
+      "cells": {
+        "both_pass": 0,
+        "a_only": 6,
+        "b_only": 6,
+        "both_fail": 118
+      },
+      "discordant_n": 12,
+      "mcnemar_p_two_sided": 1.0,
+      "arm_a_pass_ci": {
+        "point": 0.046153846153846156,
+        "lower": 0.021321953068066113,
+        "upper": 0.09703792555457165,
+        "n": 130,
+        "successes": 6
+      },
+      "arm_b_pass_ci": {
+        "point": 0.046153846153846156,
+        "lower": 0.021321953068066113,
+        "upper": 0.09703792555457165,
+        "n": 130,
+        "successes": 6
+      },
+      "note": ""
+    }
+  ]
+}

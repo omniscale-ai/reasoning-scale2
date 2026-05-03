@@ -1,0 +1,68 @@
+{
+  "spec_version": "1",
+  "task_id": "t0031_rq1_rq4_no_new_api_salvage",
+  "pre_fix_t0026": {
+    "labels_note": "t0026 internal labels: A=scope-aware (=arm_b), B=plan_and_solve_v2 (=arm_a), C=mismatched (=arm_c). All counts are out of 147 attempted instances.",
+    "arm_a_pre_fix": {
+      "timeouts": 22,
+      "runtime_errors": 2,
+      "malformed_plan_errors": 16,
+      "total": 40,
+      "n_attempted": 147,
+      "infra_total": 40
+    },
+    "arm_b_pre_fix": {
+      "timeouts": 12,
+      "runtime_errors": 1,
+      "malformed_plan_errors": 0,
+      "total": 13,
+      "n_attempted": 147,
+      "infra_total": 13
+    },
+    "arm_c_pre_fix": {
+      "timeouts": 43,
+      "runtime_errors": 1,
+      "malformed_plan_errors": 0,
+      "total": 44,
+      "n_attempted": 147,
+      "infra_total": 44
+    }
+  },
+  "post_fix_t0027": {
+    "n_paired": 130,
+    "labels_note": "t0031 inversion applied: arm_a=PaS v3 baseline, arm_b=scope-aware ReAct, arm_c=matched-mismatch v2.",
+    "arm_a": {
+      "n_total": 130,
+      "judged_pass": 6,
+      "judged_fail": 124,
+      "recovery_clean": 75,
+      "recovery_reprompt": 14,
+      "recovery_json_fallback": 11,
+      "recovery_all_failed": 1,
+      "recovery_unknown": 29,
+      "infra_failures": 29,
+      "genuine_failures": 95
+    },
+    "arm_b": {
+      "n_total": 130,
+      "judged_pass": 6,
+      "judged_fail": 124,
+      "recovery_unknown": 0,
+      "infra_failures": 0,
+      "genuine_failures": 124,
+      "note": "arm_b rows from t0026 variant_a have no parser_recovery_path field; infra noise for arm_b is captured by the t0026 pre-fix counts (12 timeouts + 1 runtime error)."
+    },
+    "arm_c": {
+      "n_total": 130,
+      "judged_pass": 7,
+      "judged_fail": 123,
+      "recovery_clean": 70,
+      "recovery_reprompt": 18,
+      "recovery_json_fallback": 7,
+      "recovery_all_failed": 2,
+      "recovery_unknown": 33,
+      "infra_failures": 33,
+      "genuine_failures": 90
+    }
+  }
+}

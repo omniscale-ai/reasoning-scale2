@@ -1,0 +1,5 @@
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/data/log_audit.json
+Wrote /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0031_rq1_rq4_no_new_api_salvage/tasks/t0031_rq1_rq4_no_new_api_salvage/results/images/log_audit_failure_breakdown.png
+  arm_a: infra=29, genuine=95, unknown_total=29
+  arm_b: infra=0, genuine=124 (no recovery field)
+  arm_c: infra=33, genuine=90, unknown_total=33
