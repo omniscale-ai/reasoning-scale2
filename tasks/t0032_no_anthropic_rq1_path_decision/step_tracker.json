@@ -113,8 +113,8 @@
       "step": 13,
       "name": "results",
       "description": "Write results bundle (results_summary.md headline labels the chosen path; results_detailed.md embeds the comparison table; metrics/costs/remote_machines).",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T13:58:43Z",
       "completed_at": null,
       "log_file": "logs/steps/013_results/"
     },

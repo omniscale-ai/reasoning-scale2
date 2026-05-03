@@ -1,0 +1,5 @@
+{
+  "total_cost_usd": 0.0,
+  "breakdown": {},
+  "note": "Analysis-only task; no paid API call and no remote compute. Inputs are JSON sidecars from t0026, t0027, and t0031."
+}
