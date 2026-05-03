@@ -1,0 +1,5 @@
+branch: task/t0033_realign_t0031_t0029_no_anthropic
+base_branch: main
+base_commit: 71b2bc7231351e5470366d5791e9768a538f7894
+worktree_path: /Users/lysaniuk/Documents/reasoning-scale2-worktrees/t0033_realign_t0031_t0029_no_anthropic
+created_at: 2026-05-03T13:07:33Z
