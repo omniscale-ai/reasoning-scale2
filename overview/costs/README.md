@@ -17,7 +17,7 @@ threshold.
 | Default per-task limit | $10.00 USD |
 | Tasks with cost records | 28 |
 | Tasks with non-zero spend | 11 |
-| Skipped tasks | 4 |
+| Skipped tasks | 5 |
 
 ## Service Totals
 
@@ -81,3 +81,4 @@ threshold.
 | `t0029_rq1_discordance_rich_resample` | results/costs.json is missing or invalid |
 | `t0030_rq4_info_asymmetry_stratification` | results/costs.json is missing or invalid |
 | `t0032_no_anthropic_rq1_path_decision` | results/costs.json is missing or invalid |
+| `t0033_realign_t0031_t0029_no_anthropic` | results/costs.json is missing or invalid |

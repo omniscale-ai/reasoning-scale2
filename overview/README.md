@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="news/"><img src="https://img.shields.io/badge/News-0-FF6347" alt="News"></a>
-  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-32-4682B4" alt="Tasks"></a>
+  <a href="tasks/"><img src="https://img.shields.io/badge/Tasks-33-4682B4" alt="Tasks"></a>
   <a href="suggestions/"><img src="https://img.shields.io/badge/Suggestions-95-DAA520" alt="Suggestions"></a>
   <a href="llm-context/"><img src="https://img.shields.io/badge/LLM%20Contexts-8-8B4513" alt="LLM Contexts"></a>
   <a href="metrics/"><img src="https://img.shields.io/badge/Metrics-3-708090" alt="Metrics"></a>
@@ -30,11 +30,11 @@
 [uncertainty-calibration](by-category/uncertainty-calibration.md)
 
 **[LLM Contexts](llm-context/README.md)**: [overview](llm-context/project-overview.xml) (10K)
-| [full](llm-context/full.xml) (129K) | [roadmap](llm-context/roadmap.xml) (29K) |
-[results](llm-context/results-deep-dive.xml) (112K) |
+| [full](llm-context/full.xml) (130K) | [roadmap](llm-context/roadmap.xml) (31K) |
+[results](llm-context/results-deep-dive.xml) (113K) |
 [assets](llm-context/literature-and-assets.xml) (19K)
 
-*Last updated: 2026-05-03 12:18 UTC*
+*Last updated: 2026-05-03 13:07 UTC*
 
 * **Budget**: **$133** spent of $200
 * **Remaining**: **$67**
@@ -56,11 +56,12 @@ No daily news yet.
 
 ---
 
-## [Ready to Start (1)](tasks/by-status/not_started.md)
+## [Ready to Start (2)](tasks/by-status/not_started.md)
 
 | # | Task | Description | Date Added |
 |---|------|-------------|------------|
 | 0032 | [No-Anthropic RQ1 path decision](../overview/tasks/task_pages/t0032_no_anthropic_rq1_path_decision.md) | [`description`](../tasks/t0032_no_anthropic_rq1_path_decision/task_description.md) | 2026-05-03 |
+| 0033 | [Realign t0031 suggestions and t0029 status under no-Anthropic constraint](../overview/tasks/task_pages/t0033_realign_t0031_t0029_no_anthropic.md) | [`description`](../tasks/t0033_realign_t0031_t0029_no_anthropic/task_description.md) | 2026-05-03 |
 
 ---
 

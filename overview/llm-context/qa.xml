@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="qa" generated_at_utc="2026-05-03T12:18:50Z">
+<llm_context_archive preset_id="qa" generated_at_utc="2026-05-03T13:07:13Z">
   <archive_summary>
     <title>Questions and Answers</title>
     <description>Question-centric preset with the full answer corpus and compact project state.</description>
     <use_case>Answer review, follow-up questioning, and project knowledge-base chats.</use_case>
     <section_count>4</section_count>
-    <char_count>53599</char_count>
-    <byte_count>53695</byte_count>
-    <estimated_tokens>13399</estimated_tokens>
+    <char_count>53995</char_count>
+    <byte_count>54091</byte_count>
+    <estimated_tokens>13498</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -334,9 +334,10 @@ Result summary: NO-NEW-API PRELIMINARY EVIDENCE — NOT A REPLACEMENT FOR t0029 
         <id>t0029_rq1_discordance_rich_resample</id>
         <id>t0030_rq4_info_asymmetry_stratification</id>
         <id>t0032_no_anthropic_rq1_path_decision</id>
+        <id>t0033_realign_t0031_t0029_no_anthropic</id>
       </source_ids>
       <content>
-Planned or active tasks: 3
+Planned or active tasks: 4
 
 ## RQ1 discordance-rich paired resample with hard $35 cap
 ID: t0029_rq1_discordance_rich_resample
@@ -358,6 +359,13 @@ Status: not_started
 Effective date: 2026-05-03
 Short description: Choose one RQ1 execution path under permanent no-Anthropic constraint: existing-only verdict, local rerun, alternate provider, or stop.
 Dependencies: t0027_phase2_5_abc_rerun_with_fixed_b_and_c, t0031_rq1_rq4_no_new_api_salvage
+
+## Realign t0031 suggestions and t0029 status under no-Anthropic constraint
+ID: t0033_realign_t0031_t0029_no_anthropic
+Status: not_started
+Effective date: 2026-05-03
+Short description: Correct two t0031 suggestions and flip t0029 to intervention_blocked on permanent provider unavailability.
+Dependencies: t0031_rq1_rq4_no_new_api_salvage
       </content>
     </section>
     <section id="questions-and-answers" source_kind="aggregator">
