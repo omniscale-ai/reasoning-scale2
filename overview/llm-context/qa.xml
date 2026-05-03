@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="qa" generated_at_utc="2026-05-03T08:13:00Z">
+<llm_context_archive preset_id="qa" generated_at_utc="2026-05-03T08:50:39Z">
   <archive_summary>
     <title>Questions and Answers</title>
     <description>Question-centric preset with the full answer corpus and compact project state.</description>
