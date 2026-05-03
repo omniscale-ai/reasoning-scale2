@@ -5,14 +5,14 @@
   "name": "Phase 2.5 A/B/C re-run with fault-tolerant B and structurally-distinct C",
   "short_description": "Fix B's plan parser (S-0026-01), redesign C to delegate to plan_and_solve (S-0026-02), then re-run A/B/C on the 130 paired instances to get real RQ1 and RQ5 answers.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0010_matched_mismatch_library",
     "t0021_plan_and_solve_v2_with_final_confidence",
     "t0026_phase2_abc_runtime_n147_for_rq1_rq5"
   ],
   "start_time": "2026-05-02T17:07:16Z",
-  "end_time": null,
+  "end_time": "2026-05-03T08:07:00Z",
   "expected_assets": {
     "library": 2,
     "predictions": 3
