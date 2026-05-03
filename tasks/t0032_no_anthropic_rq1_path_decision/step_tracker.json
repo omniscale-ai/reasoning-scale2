@@ -59,8 +59,8 @@
       "step": 7,
       "name": "planning",
       "description": "Write plan/plan.md describing the four-option comparison and the analysis-only execution shape.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-05-03T13:36:11Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/"
     },
