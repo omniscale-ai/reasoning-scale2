@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0028-01",
+  "correcting_task": "t0028_brainstorm_results_8",
+  "target_task": "t0026_phase2_abc_runtime_n147_for_rq1_rq5",
+  "target_kind": "suggestion",
+  "target_id": "S-0026-02",
+  "action": "update",
+  "changes": {
+    "status": "rejected"
+  },
+  "file_changes": null,
+  "rationale": "Duplicate of S-0027-02. Both propose a structurally-distinct C wrapper rebuild around an explicit scope contract. S-0027-02 from the more recent task is the canonical entry; S-0026-02 is rejected to keep one active suggestion for this work item."
+}

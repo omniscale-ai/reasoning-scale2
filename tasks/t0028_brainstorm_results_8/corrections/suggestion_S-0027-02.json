@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0028-04",
+  "correcting_task": "t0028_brainstorm_results_8",
+  "target_task": "t0027_phase2_5_abc_rerun_with_fixed_b_and_c",
+  "target_kind": "suggestion",
+  "target_id": "S-0027-02",
+  "action": "update",
+  "changes": {
+    "priority": "medium"
+  },
+  "file_changes": null,
+  "rationale": "Demoted HIGH → MEDIUM. The structurally-distinct C wrapper rebuild remains needed for an RQ5 verdict, but t0027's counter-direction signal (C ≥ B at C=7 vs B=6 successes) on a small N is not yet a strict-worse refutation. The brainstorm-8 wave defers RQ5 closure to a later session and prioritises RQ1/RQ4 closure within the $35 cap."
+}

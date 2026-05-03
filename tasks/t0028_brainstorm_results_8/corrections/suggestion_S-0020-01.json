@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0028-05",
+  "correcting_task": "t0028_brainstorm_results_8",
+  "target_task": "t0020_v2_truncation_vs_schema_ablation",
+  "target_kind": "suggestion",
+  "target_id": "S-0020-01",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "file_changes": null,
+  "rationale": "Demoted HIGH → LOW. S-0020-01 was a pre-Phase-2 instruction-following hypothesis. Direct runtime A/B/C measurements in t0026 and t0027 now provide stronger evidence about granularity-conditioning effects than instruction-following ablations would. The hypothesis is not on the critical path to closing any of RQ1-RQ5 within the remaining $66 budget."
+}

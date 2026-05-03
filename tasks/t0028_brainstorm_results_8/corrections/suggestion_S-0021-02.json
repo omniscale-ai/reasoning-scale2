@@ -1,0 +1,14 @@
+{
+  "spec_version": "3",
+  "correction_id": "C-0028-06",
+  "correcting_task": "t0028_brainstorm_results_8",
+  "target_task": "t0021_plan_and_solve_v2_with_final_confidence",
+  "target_kind": "suggestion",
+  "target_id": "S-0021-02",
+  "action": "update",
+  "changes": {
+    "priority": "low"
+  },
+  "file_changes": null,
+  "rationale": "Demoted HIGH → LOW. Plan-and-Solve framing tweaks were the proposed fix for the all-100 confidence floor. t0019, t0020, and t0027 now show the floor is content-driven, not template-driven: ECE B=0.336 / C=0.374 in t0027 confirms further template iteration cannot unstick the calibration problem. RQ2 closure requires a content-driven calibrator (S-0027-01), not framing variants."
+}
